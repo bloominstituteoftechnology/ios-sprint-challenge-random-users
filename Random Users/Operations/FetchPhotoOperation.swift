@@ -41,6 +41,7 @@ class FetchThumbNailOperation: ConcurrentOperation {
     var photoData: Data?
     var thumbData: Data?
     
+    
     private(set) var photoDataTask: URLSessionDataTask?
     private(set) var thumbDataTask: URLSessionDataTask?
 }
