@@ -9,9 +9,8 @@
 import UIKit
 
 class UsersTableViewController: UITableViewController {
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         userController.getUsers { (error) in
             if let error = error {
                 NSLog("problem fetching users \(error)")
@@ -22,7 +21,7 @@ class UsersTableViewController: UITableViewController {
             }
         }
     }
-    
+        
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
