@@ -8,6 +8,15 @@
 
 import UIKit
 
+struct Users: Decodable {
+    
+    enum CodingKeys: String, CodingKey {
+        case users = "results"
+    }
+    
+    var users: [User]
+}
+
 struct User: Decodable {
     
     // MARK: - Coding Keys

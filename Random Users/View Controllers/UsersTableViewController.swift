@@ -10,9 +10,23 @@ import UIKit
 
 class UsersTableViewController: UITableViewController {
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        userClient.fetchUsers { (users, error) in
+            if let error = error {
+                NSLog("Error fetching users: \(error)")
+                return
+            }
+            
+            self.users = users
+        }
+    }
+    
     // MARK: - Properties
     
-    
+    let userClient = UserClient()
+    var users: [User]?
     
     // MARK: - Actions
     
@@ -24,7 +38,7 @@ class UsersTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return users?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

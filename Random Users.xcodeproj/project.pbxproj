@@ -15,6 +15,8 @@
 		D68486662142CB2F0054A03A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68486652142CB2F0054A03A /* User.swift */; };
 		D68486692142D1D00054A03A /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68486682142D1D00054A03A /* UsersTableViewController.swift */; };
 		D684866B2142D1DE0054A03A /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D684866A2142D1DE0054A03A /* UserDetailViewController.swift */; };
+		D684866E2142D3FD0054A03A /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D684866D2142D3FD0054A03A /* Cache.swift */; };
+		D68486712142D5210054A03A /* UserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68486702142D5210054A03A /* UserClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		D68486652142CB2F0054A03A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D68486682142D1D00054A03A /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		D684866A2142D1DE0054A03A /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		D684866D2142D3FD0054A03A /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		D68486702142D5210054A03A /* UserClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,8 @@
 			isa = PBXGroup;
 			children = (
 				D68486642142CB180054A03A /* Model Object */,
+				D684866F2142D5120054A03A /* Model Controller */,
+				D684866C2142D3EA0054A03A /* New Group */,
 				9D5CCA56214231E400224681 /* Operations */,
 				D68486672142D1AF0054A03A /* View Controllers */,
 				9D5CCA522142305600224681 /* Resources */,
@@ -103,6 +109,22 @@
 				D684866A2142D1DE0054A03A /* UserDetailViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		D684866C2142D3EA0054A03A /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				D684866D2142D3FD0054A03A /* Cache.swift */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		D684866F2142D5120054A03A /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D68486702142D5210054A03A /* UserClient.swift */,
+			);
+			path = "Model Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,6 +202,8 @@
 				D684866B2142D1DE0054A03A /* UserDetailViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				D68486692142D1D00054A03A /* UsersTableViewController.swift in Sources */,
+				D68486712142D5210054A03A /* UserClient.swift in Sources */,
+				D684866E2142D3FD0054A03A /* Cache.swift in Sources */,
 				D68486662142CB2F0054A03A /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
