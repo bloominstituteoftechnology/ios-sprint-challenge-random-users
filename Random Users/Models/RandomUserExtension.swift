@@ -10,6 +10,11 @@ import UIKit
 
 extension RandomUser: Decodable {
     
+    enum Images: String {
+        case thumbnail
+        case large
+    }
+    
     enum CodingKeys: String, CodingKey {
         case name
         case phoneNumber = "phone"
