@@ -31,4 +31,4 @@ The requirements for this project are as follows:
 5. Your app must fetch images on-demand as the corresponding row is scrolled on screen.
 6. It must cancel no-longer-needed fetches as rows scroll off screen.
 7. Scrolling must be smooth and responsive regardless of the number of loaded users.
-8. You must implement an `ImageCache` to cache already-fetched thumbnail and fullsize images. `ImageCache` **must** be thread-safe.
+8. You must implement a generic `Cache` to cache already-fetched thumbnail and fullsize images. `Cache` **must** be thread-safe.
