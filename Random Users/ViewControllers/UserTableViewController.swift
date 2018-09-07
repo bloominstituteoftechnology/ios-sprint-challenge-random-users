@@ -9,22 +9,31 @@
 import UIKit
 
 class UserTableViewController: UITableViewController {
+    
+    // MARK: - Properties
+    var users: [User]?
+    var userClient = UserClient()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        userClient.fetchUsers() { users, error in
+            if let error = error {
+                NSLog("Error fetching data from network: \(error)")
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.users = users
+                print(users as Any)
+            }
+        }
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

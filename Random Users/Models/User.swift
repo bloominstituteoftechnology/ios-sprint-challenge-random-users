@@ -11,18 +11,24 @@ import Foundation
 struct User: Decodable, Equatable {
     
     var name: String
-    var gender: String
+    var title: String
     var phone: String
     var email: String
     var pictureUrl: URL
+    var id: String = UUID().uuidString
     
     enum CodingKeys: String, CodingKey {
         case name
-        case gender
         case phone
         case email
         case image
         case pictureUrl = "picture"
+        
+        enum NameCodingKeys: String, CodingKey {
+            case first
+            case last
+            case title
+        }
         
         enum PictureCodingKeys: String, CodingKey {
             case medium
@@ -31,13 +37,23 @@ struct User: Decodable, Equatable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.name = try container.decode(String.self, forKey: .name)
-        self.gender = try container.decode(String.self, forKey: .gender)
-        self.phone = try container.decode(String.self, forKey: .gender)
+        let nameContainer = try container.nestedContainer(keyedBy: CodingKeys.NameCodingKeys.self, forKey: .name)
+        let firstName = try nameContainer.decode(String.self, forKey: .first)
+        let lastName = try nameContainer.decode(String.self, forKey: .last)
+        self.title = try nameContainer.decode(String.self, forKey: .title)
+        self.name = "\(firstName) \(lastName)"
+        
+        self.phone = try container.decode(String.self, forKey: .phone)
         self.email = try container.decode(String.self, forKey: .email)
         
         let pictureContainer = try container.nestedContainer(keyedBy: CodingKeys.PictureCodingKeys.self, forKey: .pictureUrl)
         self.pictureUrl = try pictureContainer.decode(URL.self, forKey: .medium)
     }
+    
+}
+
+struct Users: Decodable, Equatable {
+    
+    let results: [User]
     
 }
