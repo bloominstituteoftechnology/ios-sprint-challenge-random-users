@@ -92,6 +92,12 @@ class UsersTableViewController: UITableViewController {
 
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let user = users?[indexPath.row], let phoneNumber = user.phoneNumber else { return }
+        let op = fetchRequests[phoneNumber]
+        op?[.thumbnail]?.cancel()
+    }
 
     
     // MARK: - Navigation
