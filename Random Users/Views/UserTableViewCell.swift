@@ -17,4 +17,6 @@ class UserTableViewCell: UITableViewCell {
     
     // MARK: - Private methods
 
+    
+    
 }

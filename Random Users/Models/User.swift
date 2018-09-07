@@ -16,6 +16,7 @@ struct User: Decodable, Equatable {
     var email: String
     var pictureUrl: URL
     var id: String = UUID().uuidString
+    var picture: Data?
     
     enum CodingKeys: String, CodingKey {
         case name
