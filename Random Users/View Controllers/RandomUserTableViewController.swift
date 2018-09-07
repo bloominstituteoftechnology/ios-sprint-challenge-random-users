@@ -38,6 +38,13 @@ class RandomUserTableViewController: UITableViewController {
 
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let randomUser = randomUsers?[indexPath.row],
+            let phoneNumber = randomUser.phoneNumber else { return }
+        
+        activeOperations[phoneNumber]?[.thumbnail]?.cancel()
+    }
 
     private func loadImage(forCell cell: RandomUserTableViewCell, forItemAt indexPath: IndexPath) {
         
