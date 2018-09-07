@@ -68,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				13E880702142D05400593E61 /* UserController.swift */,
+				137ED9C72142E9E200049C76 /* Cache.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -97,7 +98,6 @@
 				13E880672142CADA00593E61 /* View Controllers */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
-				137ED9C72142E9E200049C76 /* Cache.swift */,
 			);
 			path = "Random Users";
 			sourceTree = "<group>";

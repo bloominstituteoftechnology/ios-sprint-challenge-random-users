@@ -39,12 +39,12 @@ class UserController {
     func loadUserImageForCell(user: User, cell: UITableViewCell) {
         let userId = user.email
         
-        let isCached = cache?.cachedItems.contains(where: { (key, value) -> Bool in
+        let isCached = cache.cachedItems.contains(where: { (key, value) -> Bool in
             key == userId
         })
         
-        if let _ = isCached {
-            guard let imageData = cache?.cachedItems[userId] else { return }
+        if isCached {
+            guard let imageData = cache.cachedItems[userId] else { return }
             cell.imageView?.image = UIImage(data: imageData)
             return
         }
@@ -55,7 +55,7 @@ class UserController {
         
         let cacheOperation = BlockOperation {
             guard let imageData = fetchPhoto.imageData else { return }
-            self.cache?.cache(value: imageData, for: userId)
+            self.cache.cache(value: imageData, for: userId)
         }
         
         let imageSetOperation = BlockOperation {
@@ -90,7 +90,7 @@ class UserController {
     }
     
     var users: [User] = []
-    var cache: Cache<String, Data>?
+    var cache: Cache<String, Data> = Cache()
     private var photoFetchQueue: OperationQueue = OperationQueue()
     static var baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
 }
