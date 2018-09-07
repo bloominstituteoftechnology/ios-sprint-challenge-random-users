@@ -16,6 +16,7 @@
 		DE71D6EE2142CC9E00C9DC63 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE71D6ED2142CC9E00C9DC63 /* DetailViewController.swift */; };
 		DE71D6F02142CFA100C9DC63 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE71D6EF2142CFA100C9DC63 /* User.swift */; };
 		DE71D6F22142CFAE00C9DC63 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE71D6F12142CFAE00C9DC63 /* UserController.swift */; };
+		DE71D6F72142E1DB00C9DC63 /* UserFetchOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE71D6F62142E1DB00C9DC63 /* UserFetchOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		DE71D6ED2142CC9E00C9DC63 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DE71D6EF2142CFA100C9DC63 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DE71D6F12142CFAE00C9DC63 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		DE71D6F62142E1DB00C9DC63 /* UserFetchOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFetchOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				DE71D6F12142CFAE00C9DC63 /* UserController.swift */,
+				DE71D6F62142E1DB00C9DC63 /* UserFetchOperation.swift */,
 			);
 			path = ModelController;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 			files = (
 				DE71D6F22142CFAE00C9DC63 /* UserController.swift in Sources */,
 				DE71D6EC2142CC7300C9DC63 /* RandomUsersTableViewController.swift in Sources */,
+				DE71D6F72142E1DB00C9DC63 /* UserFetchOperation.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				DE71D6F02142CFA100C9DC63 /* User.swift in Sources */,
