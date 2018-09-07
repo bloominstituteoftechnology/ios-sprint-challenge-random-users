@@ -25,13 +25,14 @@ class RandomUserTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return randomUsers?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RandomUserCell", for: indexPath) as! RandomUserTableViewCell
 
-        
+        let randomUser = randomUsers?[indexPath.row]
+        cell.nameLabel.text = randomUser?.name
 
         return cell
     }
@@ -46,7 +47,13 @@ class RandomUserTableViewController: UITableViewController {
     }
     
     let randomUserController = RandomUserController()
-    var randomUsers: [RandomUser]?
+    var randomUsers: [RandomUser]? {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
     var cache: Cache<String, [String: UIImage]> = Cache()
     
 }
