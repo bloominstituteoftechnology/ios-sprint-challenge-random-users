@@ -19,6 +19,14 @@ struct Users: Decodable {
 
 struct User: Decodable {
     
+    // MARK: - Images enum
+    
+    enum Images: String {
+        case thumbnail
+        case large
+    }
+    
+    
     // MARK: - Coding Keys
     
     enum CodingKeys: String, CodingKey {

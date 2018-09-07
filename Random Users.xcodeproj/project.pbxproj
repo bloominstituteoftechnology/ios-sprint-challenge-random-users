@@ -64,9 +64,8 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
+				D684866D2142D3FD0054A03A /* Cache.swift */,
 				D68486642142CB180054A03A /* Model Object */,
-				D684866F2142D5120054A03A /* Model Controller */,
-				D684866C2142D3EA0054A03A /* New Group */,
 				9D5CCA56214231E400224681 /* Operations */,
 				D68486672142D1AF0054A03A /* View Controllers */,
 				9D5CCA522142305600224681 /* Resources */,
@@ -98,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				D68486652142CB2F0054A03A /* User.swift */,
+				D68486702142D5210054A03A /* UserClient.swift */,
 			);
 			path = "Model Object";
 			sourceTree = "<group>";
@@ -109,22 +109,6 @@
 				D684866A2142D1DE0054A03A /* UserDetailViewController.swift */,
 			);
 			path = "View Controllers";
-			sourceTree = "<group>";
-		};
-		D684866C2142D3EA0054A03A /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-				D684866D2142D3FD0054A03A /* Cache.swift */,
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
-		D684866F2142D5120054A03A /* Model Controller */ = {
-			isa = PBXGroup;
-			children = (
-				D68486702142D5210054A03A /* UserClient.swift */,
-			);
-			path = "Model Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

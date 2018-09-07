@@ -26,12 +26,48 @@ class UsersTableViewController: UITableViewController {
     
     let userClient = UserClient()
     var users: [User]?
-    var cache: Cache<String, [String: UIImage]> = Cache()
+    var cache: Cache<String, [User.Images: UIImage]> = Cache()
+    var userFetchQueue = OperationQueue()
+    var fetchRequests: [String: [User.Images: FetchThumbnailPhotoOperation]] = [:]
     
     // MARK: - Actions
     
     @IBAction func loadMoreUsers(_ sender: Any) {
         
+    }
+    
+    
+    // MARK: - Private functions
+    
+    private func loadImage(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+        
+        guard let user = users?[indexPath.row], let phoneNumber = user.phoneNumber else { return }
+        
+        if let phoneNumber = user.phoneNumber, let imageArray = cache[phoneNumber] {
+            cell.imageView?.image = imageArray[.thumbnail]
+            
+        } else {
+            
+            let op1 = FetchThumbnailPhotoOperation(user: user)
+            
+            let op2 = BlockOperation {
+                guard let image = op1.thumbnailImage else { return }
+                self.cache.cache(value: [.thumbnail: image], for: phoneNumber)
+            }
+            op2.addDependency(op1)
+            
+            let op3 = BlockOperation {
+                guard let image = op1.thumbnailImage else { return }
+                if indexPath == self.tableView.indexPath(for: cell) {
+                    cell.imageView?.image = image
+                }
+            }
+            op3.addDependency(op1)
+            
+            userFetchQueue.addOperations([op1, op2], waitUntilFinished: false)
+            OperationQueue.main.addOperation(op3)
+            fetchRequests[phoneNumber] = [.thumbnail: op1]
+        }
     }
     
     
@@ -44,7 +80,7 @@ class UsersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
 
-        
+        loadImage(forCell: cell, forItemAt: indexPath)
 
         return cell
     }
