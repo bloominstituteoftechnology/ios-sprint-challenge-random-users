@@ -18,6 +18,8 @@
 		FF89A85C2142D4B1006F14EE /* RandomUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89A85B2142D4B1006F14EE /* RandomUser.swift */; };
 		FF89A85E2142D4CA006F14EE /* RandomUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89A85D2142D4CA006F14EE /* RandomUserController.swift */; };
 		FF89A8602142D650006F14EE /* RandomUserExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89A85F2142D650006F14EE /* RandomUserExtension.swift */; };
+		FF89A8622142E0DB006F14EE /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89A8612142E0DB006F14EE /* Cache.swift */; };
+		FF89A8642142E802006F14EE /* FetchThumbnailOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89A8632142E802006F14EE /* FetchThumbnailOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		FF89A85B2142D4B1006F14EE /* RandomUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUser.swift; sourceTree = "<group>"; };
 		FF89A85D2142D4CA006F14EE /* RandomUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserController.swift; sourceTree = "<group>"; };
 		FF89A85F2142D650006F14EE /* RandomUserExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserExtension.swift; sourceTree = "<group>"; };
+		FF89A8612142E0DB006F14EE /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		FF89A8632142E802006F14EE /* FetchThumbnailOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchThumbnailOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,7 @@
 				FF1AFE342142CF3C0091C41D /* Views */,
 				FF1AFE332142CEF80091C41D /* View Controllers */,
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+				FF89A8612142E0DB006F14EE /* Cache.swift */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
@@ -92,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				FF89A8632142E802006F14EE /* FetchThumbnailOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -202,9 +208,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				FF89A8622142E0DB006F14EE /* Cache.swift in Sources */,
 				FF89A8602142D650006F14EE /* RandomUserExtension.swift in Sources */,
 				FF1AFE3A2142CF9F0091C41D /* RandomUserTableViewController.swift in Sources */,
 				FF1AFE382142CF890091C41D /* RandomUserTableViewCell.swift in Sources */,
+				FF89A8642142E802006F14EE /* FetchThumbnailOperation.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				FF1AFE3C2142CFB30091C41D /* RandomUserDetailViewController.swift in Sources */,
 				FF89A85E2142D4CA006F14EE /* RandomUserController.swift in Sources */,

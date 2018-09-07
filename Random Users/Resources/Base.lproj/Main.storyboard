@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="58" id="Jra-4e-w6o" customClass="RandomUserTableViewCell" customModule="Random_Users" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RandomUserCell" rowHeight="58" id="Jra-4e-w6o" customClass="RandomUserTableViewCell" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="58"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jra-4e-w6o" id="EeW-89-Z2a">
@@ -52,7 +52,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="zx7-s6-Ck6" kind="show" id="Yoe-1R-AdH"/>
+                                    <outlet property="nameLabel" destination="2st-Yk-M6l" id="ZnR-nK-fmE"/>
+                                    <outlet property="randomImageView" destination="djG-6U-Qas" id="YpA-O6-NbO"/>
+                                    <segue destination="zx7-s6-Ck6" kind="show" identifier="ShowDetailView" id="Yoe-1R-AdH"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -125,6 +127,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vRl-lC-fhx"/>
                     </view>
+                    <connections>
+                        <outlet property="emailAddressLabel" destination="r5A-Ug-ToQ" id="CK0-R0-Cyw"/>
+                        <outlet property="nameLabel" destination="brx-Ek-R7u" id="dEv-sp-tjt"/>
+                        <outlet property="phoneNumberLabel" destination="45m-aC-RIc" id="e8J-TZ-mVS"/>
+                        <outlet property="randomImageView" destination="XcS-H9-yyf" id="Kwx-hq-FgX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CeB-MQ-h0J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

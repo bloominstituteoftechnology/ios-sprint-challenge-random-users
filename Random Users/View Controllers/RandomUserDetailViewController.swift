@@ -16,5 +16,9 @@ class RandomUserDetailViewController: UIViewController {
         
     }
 
-
+    @IBOutlet weak var randomImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet weak var emailAddressLabel: UILabel!
+    
 }

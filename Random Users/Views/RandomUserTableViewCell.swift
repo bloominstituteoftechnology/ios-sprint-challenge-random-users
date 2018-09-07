@@ -11,5 +11,8 @@ import UIKit
 class RandomUserTableViewCell: UITableViewCell {
 
     
-
+    
+    @IBOutlet weak var randomImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    
 }
