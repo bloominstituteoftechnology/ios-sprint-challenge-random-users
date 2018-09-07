@@ -38,7 +38,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="rUt-yy-w5X" kind="show" identifier="ShowUser" trigger="accessoryAction" id="9OU-sx-6PH"/>
+                                    <segue destination="rUt-yy-w5X" kind="show" identifier="ShowUser" trigger="accessoryAction" id="s3b-vr-peM"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -133,6 +133,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8vO-Qg-Vdt"/>
                     </view>
+                    <connections>
+                        <outlet property="emailLabel" destination="Smg-7f-VrM" id="Xmw-hF-0lV"/>
+                        <outlet property="imageLabel" destination="qoV-I5-qQG" id="dbv-3s-aD5"/>
+                        <outlet property="nameLabel" destination="NEE-d0-uLS" id="YVj-b0-cfJ"/>
+                        <outlet property="phoneLabel" destination="R8e-NB-5ZU" id="0yo-rc-29b"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lbt-jp-Fi8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

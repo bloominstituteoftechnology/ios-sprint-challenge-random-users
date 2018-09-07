@@ -7,7 +7,11 @@
 //
 
 import Foundation
-
+extension String{
+    func capitalizeFirstLetter() -> String {
+        return prefix(1).uppercased() + dropFirst()
+    }
+}
 struct User: Codable {
     
     init(fullName: String, email: String, phone: String, photoURL: String, thumbnailURL: String){
@@ -20,8 +24,9 @@ struct User: Codable {
     
     init(userRepresentation: UserRepresentation) {
         let name = userRepresentation.name
-        self.fullName = name.title + " " + name.first
-         + " " + name.last
+        self.fullName = name.title.capitalizeFirstLetter() + " " +
+            name.first.capitalizeFirstLetter() + " " +
+            name.last.capitalizeFirstLetter()
         
         self.email = userRepresentation.email
         self.phone = userRepresentation.phone

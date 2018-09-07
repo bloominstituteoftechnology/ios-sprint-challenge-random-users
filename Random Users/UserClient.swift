@@ -10,8 +10,12 @@ import UIKit
 
 private let queryURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
 
-class UserController{
-    func fetchUsers(){
+class UserClient{
+    static let shared = UserClient()
+    
+    func fetchUserData(completion: @escaping ([User]) -> Void){
+        var userData = [User]()
+        
         URLSession.shared.dataTask(with: queryURL) { (data, _, error) in
             if let error = error {
                 NSLog("Error fetching user data: \(error)")
@@ -21,17 +25,17 @@ class UserController{
                 return
             }
             do{
-                let decodedData = try JSONDecoder().decode(UserData.self, from: data)
+                let decodedData = try JSONDecoder().decode(UserResults.self, from: data)
                 
                 for representation in decodedData.results{
-                    self.userData.append(User(userRepresentation: representation))
+                    userData.append(User(userRepresentation: representation))
                 }
             } catch {
                 NSLog("Error decoding: \(error)")
             }
+            completion(userData)
             }.resume()
         
     }
     
-    private(set) var userData = [User]()
 }

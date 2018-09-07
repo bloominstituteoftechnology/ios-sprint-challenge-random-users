@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct UserData: Codable {
+struct UserResults: Codable {
     let results: [UserRepresentation]
 }
 
