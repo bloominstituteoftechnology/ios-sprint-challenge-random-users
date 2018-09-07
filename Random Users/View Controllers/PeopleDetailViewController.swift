@@ -32,10 +32,11 @@ class PeopleDetailViewController: UIViewController {
     func updateViews() {
         guard let user = user else { return }
         
-//        self.imageView = user.pictures
         self.nameLabel?.text = "Name: \(user.name.capitalized)"
         self.phoneLabel?.text = "Phone: \(user.phone)"
         self.emailLabel?.text = "Email: \(user.email)"
+        
+//        self.imageView?.image = 
     }
 
 }

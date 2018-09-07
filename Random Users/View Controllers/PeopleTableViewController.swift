@@ -11,6 +11,12 @@ import UIKit
 class PeopleTableViewController: UITableViewController {
     
     var userController = UserController()
+    
+    private var thumbnailCache: Cache<String, UIImage> = Cache()
+    private var largeImageCache: Cache<String, UIImage> = Cache()
+    
+    private var photoFetchQueue = OperationQueue()
+    private var fetchOperationDictionary: [String : PhotoFetchOperation] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,12 +44,47 @@ class PeopleTableViewController: UITableViewController {
         cell.imageView?.image = #imageLiteral(resourceName: "Lambda_Logo_Full")
         
         // use the loadImage func to get images
+        loadImage(forCell: cell, forItemAt: indexPath)
 
         return cell
     }
     
     private func loadImage(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+        let user = userController.users[indexPath.row]
         
+        guard let url = user.pictures["thumbnail"] else { return }
+        let name = user.name
+        
+        if let image = thumbnailCache.value(for: name) {
+            cell.imageView?.image = image
+            cell.setNeedsLayout()
+
+        } else {
+            let photoFetchOperation = PhotoFetchOperation(url: url)
+            let storeInCacheOperation = BlockOperation { [weak self] in
+                guard let data = photoFetchOperation.pictureData else { return }
+                guard let image = UIImage(data: data) else { return }
+                self?.thumbnailCache.cache(value: image, for: name)
+            }
+            let updateCellOperation = BlockOperation { [weak self] in
+                guard let image = self?.thumbnailCache.value(for: name) else { return }
+                
+                if let currentIndexPath = self?.tableView.indexPath(for: cell), currentIndexPath != indexPath {
+                    return
+                }
+                cell.imageView?.image = image
+                cell.setNeedsLayout()
+            }
+            
+            storeInCacheOperation.addDependency(photoFetchOperation)
+            updateCellOperation.addDependency(storeInCacheOperation)
+            
+            photoFetchQueue.addOperations([photoFetchOperation, storeInCacheOperation], waitUntilFinished: false)
+            OperationQueue.main.addOperation(updateCellOperation)
+            
+            // saving this fetchPhotoOperation to the dictionary with the id key
+            fetchOperationDictionary[name] = photoFetchOperation
+        }
     }
     
     // MARK: - Navigation
