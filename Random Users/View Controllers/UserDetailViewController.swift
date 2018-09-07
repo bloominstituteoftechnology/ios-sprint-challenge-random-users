@@ -12,24 +12,34 @@ class UserDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        updateViews()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func updateViews() {
+        guard let userImage = userImage,
+            let userName = userName,
+            let userEmail = userEmail,
+            let userPhoneNumber = userPhoneNumber else { return }
+        
+        if let user = user {
+            userController?.loadUserImageForDetail(user: user, imageView: userImage)
+            userName.text = "\(user.name.first.capitalized) \(user.name.last.capitalized)"
+            userEmail.text = user.email
+            userPhoneNumber.text = user.phone
+        }
     }
-    */
-
+    
+    
+    var user: User? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    var userController: UserController?
+    
+    @IBOutlet var userImage: UIImageView!
+    @IBOutlet var userName: UILabel!
+    @IBOutlet var userEmail: UILabel!
+    @IBOutlet var userPhoneNumber: UILabel!
 }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class UserController {
     func getUsers(completion: @escaping (Error?) -> Void) {
@@ -32,6 +33,39 @@ class UserController {
                 return
             }
             completion(nil)
+        }.resume()
+    }
+    
+    func loadUserImageForCell(user: User, cell: UITableViewCell) {
+        let url = URL(string: user.picture.thumbnail)!
+        
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
+            if let error = error {
+                NSLog("Error GETting randomUser photo: \(error) - \(url)")
+                return
+            }
+            
+            guard let data = data else { return }
+            DispatchQueue.main.async {
+                cell.imageView?.image = UIImage(data: data)
+            }
+        }.resume()
+    }
+    
+    
+    func loadUserImageForDetail(user: User, imageView: UIImageView) {
+        let url = URL(string: user.picture.large)!
+        
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
+            if let error = error {
+                NSLog("Error GETting randomUser photo: \(error) - \(url)")
+                return
+            }
+            
+            guard let data = data else { return }
+            DispatchQueue.main.async {
+                imageView.image = UIImage(data: data)
+            }
         }.resume()
     }
 

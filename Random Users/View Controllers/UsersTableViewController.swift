@@ -32,27 +32,22 @@ class UsersTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
         
         let user = userController.users[indexPath.row]
-        cell.textLabel?.text = "\(user.name.first) \(user.name.last)"
+        cell.textLabel?.text = "\(user.name.first.capitalized) \(user.name.last.capitalized)"
         
-        loadUserImage(user: user, cell: cell)
+        userController.loadUserImageForCell(user: user, cell: cell)
         
         return cell
     }
     
-    func loadUserImage(user: User, cell: UITableViewCell) {
-        let url = URL(string: user.picture.thumbnail)!
-        
-        URLSession.shared.dataTask(with: url) { (data, _, error) in
-            if let error = error {
-                NSLog("Error GETting randomUser photo: \(error) - \(url)")
-                return
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "UserDetailSegue" {
+            if let vc = segue.destination as? UserDetailViewController {
+                if let indexPath = self.tableView.indexPathForSelectedRow {
+                    vc.user = userController.users[indexPath.row]
+                    vc.userController = userController
+                }
             }
-            
-            guard let data = data else { return }
-            DispatchQueue.main.async {
-                cell.imageView?.image = UIImage(data: data)
-            }
-        }.resume()
+        }
     }
     
     let userController = UserController()

@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -40,7 +41,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="8vm-3O-e8U" kind="show" id="twm-0S-nMe"/>
+                                    <segue destination="8vm-3O-e8U" kind="show" identifier="UserDetailSegue" id="twm-0S-nMe"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -62,13 +63,57 @@
                     <view key="view" contentMode="scaleToFill" id="cQl-ag-pEa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="nXh-Iy-fGg">
+                                <rect key="frame" x="16" y="80" width="343" height="326.5"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Lambda_Logo_Full" translatesAutoresizingMaskIntoConstraints="NO" id="kOM-h7-oW8">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="249"/>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="py5-xI-jDe">
+                                        <rect key="frame" x="0.0" y="249" width="42" height="77.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKf-2Z-vKS">
+                                                <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ct-ez-mvB">
+                                                <rect key="frame" x="0.0" y="28.5" width="42" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCY-zi-eKc">
+                                                <rect key="frame" x="0.0" y="57" width="42" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="nXh-Iy-fGg" secondAttribute="trailing" constant="16" id="Bvp-Sj-erq"/>
+                            <constraint firstItem="nXh-Iy-fGg" firstAttribute="top" secondItem="mji-2X-N10" secondAttribute="top" constant="16" id="t3q-Z3-fv8"/>
+                            <constraint firstItem="nXh-Iy-fGg" firstAttribute="leading" secondItem="mji-2X-N10" secondAttribute="leading" constant="16" id="y03-Uu-FVt"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="mji-2X-N10"/>
                     </view>
+                    <connections>
+                        <outlet property="userEmail" destination="6Ct-ez-mvB" id="pMo-5w-765"/>
+                        <outlet property="userImage" destination="kOM-h7-oW8" id="ZD8-Du-Q3a"/>
+                        <outlet property="userName" destination="SKf-2Z-vKS" id="zki-JI-TEV"/>
+                        <outlet property="userPhoneNumber" destination="PCY-zi-eKc" id="DNW-UL-Ov8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dcs-C1-oih" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="735" y="244"/>
+            <point key="canvasLocation" x="733.60000000000002" y="243.32833583208398"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FUI-O2-dB5">
