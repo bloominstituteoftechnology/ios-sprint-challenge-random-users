@@ -6,4 +6,8 @@
 //  Copyright © 2018 Erica Sadun. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class RandomUserController {
+    
+}
