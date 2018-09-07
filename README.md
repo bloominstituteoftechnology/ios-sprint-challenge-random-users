@@ -16,6 +16,8 @@ If you have any questions about the project requirements or expectations, ask yo
 
 Please view the screen recordings so you will know what your finished project should look like:
 
+![randomusers](https://user-images.githubusercontent.com/1057175/45200559-ae75de00-b22e-11e8-90ff-43dffe42c27c.gif)
+
 (The gif is fairly large in size. It may take a few seconds for it to appear)
 
 ## Requirements
