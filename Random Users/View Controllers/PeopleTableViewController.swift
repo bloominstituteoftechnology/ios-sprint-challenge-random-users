@@ -40,7 +40,7 @@ class PeopleTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
 
         let user = userController.users[indexPath.row]
-        cell.textLabel?.text = user.name
+        cell.textLabel?.text = user.name.capitalized
         cell.imageView?.image = #imageLiteral(resourceName: "Lambda_Logo_Full")
         
         // use the loadImage func to get images
@@ -92,6 +92,8 @@ class PeopleTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let detailVC = segue.destination as? PeopleDetailViewController {
             detailVC.userController = userController
+            detailVC.photoFetchQueue = photoFetchQueue
+            detailVC.largeImageCache = largeImageCache
             
             if segue.identifier == "ShowDetail" {
                 guard let index = tableView.indexPathForSelectedRow?.row else { return }
