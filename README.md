@@ -6,7 +6,7 @@
 
 This sprint challenge is designed to ensure that you are competent with the concepts taught throughout Sprint 7, Intermediate Swift.
 
-Begin by forking this repository. Clone your forked repository to your machine. Use the provided Xcode project in the repository. It includes `ConcurrentOperation` for you to use. Commit as appropriate while you work. Push your final project to GitHub, then create a pull request back to this original repository.
+Begin by forking this repository. Clone your forked repository to your machine. Use the provided Xcode project in the repository. It includes `ConcurrentOperation` for you to use, as well as a placeholder Lambda logo image you can use if you'd like. Commit as appropriate while you work. Push your final project to GitHub, then create a pull request back to this original repository.
 
 **You will have 3 hours to complete this sprint challenge**
 
