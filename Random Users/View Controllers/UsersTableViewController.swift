@@ -18,7 +18,6 @@ class UsersTableViewController: UITableViewController {
                 NSLog("Error fetching users: \(error)")
                 return
             }
-            
             self.users = users
         }
     }
@@ -27,6 +26,7 @@ class UsersTableViewController: UITableViewController {
     
     let userClient = UserClient()
     var users: [User]?
+    var cache: Cache<String, [String: UIImage]> = Cache()
     
     // MARK: - Actions
     
