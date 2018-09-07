@@ -60,9 +60,9 @@ struct User: Codable, Equatable
     var image: URL
     var email: String
     var phone: String
-    var identifier: [String:String]
+    var identifier: String
     
-    init(name: String, thumbnail: URL, image: URL, email: String, phone: String, identifier: [String:String])
+    init(name: String, thumbnail: URL, image: URL, email: String, phone: String, identifier: String)
     {
         self.name = name
         self.thumbnail = thumbnail
@@ -110,7 +110,7 @@ struct User: Codable, Equatable
         
         let phone = try container.decode(String.self, forKey: .phone)
         
-        let identifier = try container.decode([String:String].self, forKey: .identifier)
+        let identifier = try container.decode(String.self, forKey: .identifier)
         
         self.name = name
         self.thumbnail = thumbnail
