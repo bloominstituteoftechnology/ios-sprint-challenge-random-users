@@ -12,7 +12,7 @@ class UserTableViewController: UITableViewController {
     
     // MARK: - Properties
     var users: [User] = []
-    var userImage: Data?
+    var userImages: [String : Data] = [:]
     var userClient = UserClient()
     private var cache = Cache<String, User>()
     private var imageOperationQueue = OperationQueue()
@@ -62,12 +62,11 @@ class UserTableViewController: UITableViewController {
     // MARK: - Private methods
     
     private func loadImage(for cell: UserTableViewCell, atIndexPath indexPath: IndexPath) {
-        let user = users[indexPath.row]
+        var user = users[indexPath.row]
         
         if let cachedUser = cache.value(for: user.id) {
             cell.nameTextLabel?.text = cachedUser.name
             if let picture = cachedUser.picture {
-                self.userImage = picture
                 cell.userImageView?.image = UIImage(data: picture)
             }
             return
@@ -77,6 +76,9 @@ class UserTableViewController: UITableViewController {
         imageFetchOperations[user.id] = fetchOperation
         
         let cacheOperation = BlockOperation {
+            if let image = fetchOperation.imageData {
+                self.userImages[user.id] = image
+            }
             self.cache.cache(for: user.id, with: user)
         }
         
@@ -87,7 +89,7 @@ class UserTableViewController: UITableViewController {
             }
             
             if let image = fetchOperation.imageData {
-                self.userImage = image
+                user.picture = image
                 cell.userImageView?.image = UIImage(data: image)
             }
             cell.nameTextLabel?.text = user.name
@@ -109,10 +111,7 @@ class UserTableViewController: UITableViewController {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             let user = users[indexPath.row]
             detailVC.user = user
-            
-            if let image = userImage {
-                detailVC.userImage = image
-            }
+            detailVC.userImage = userImages[user.id]
         }
     }
 
