@@ -1,5 +1,5 @@
 //
-//  FetchThumbnailOperation.swift
+//  FetchLargeImageOperation.swift
 //  Random Users
 //
 //  Created by Lisa Sampson on 9/7/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FetchThumbnailOperation: ConcurrentOperation {
+class FetchLargeImageOperation: ConcurrentOperation {
     
     init(randomUser: RandomUser) {
         self.randomUser = randomUser
@@ -17,7 +17,7 @@ class FetchThumbnailOperation: ConcurrentOperation {
     override func start() {
         state = .isExecuting
         
-        guard let url = randomUser.thumbnailImageURL else { return }
+        guard let url = randomUser.largeImageURL else { return }
         dataTask = URLSession.shared.dataTask(with: url) { (data, _, error) in
             defer { self.state = .isFinished }
             
@@ -30,7 +30,7 @@ class FetchThumbnailOperation: ConcurrentOperation {
                 NSLog("No data found.")
                 return
             }
-            self.thumbnailImage = UIImage(data: data)
+            self.largeImage = UIImage(data: data)
         }
         dataTask?.resume()
     }
@@ -40,6 +40,6 @@ class FetchThumbnailOperation: ConcurrentOperation {
     }
     
     var randomUser: RandomUser
-    var thumbnailImage: UIImage?
+    var largeImage: UIImage?
     private var dataTask: URLSessionDataTask?
 }
