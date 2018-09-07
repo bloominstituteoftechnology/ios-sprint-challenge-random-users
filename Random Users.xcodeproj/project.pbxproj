@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		137ED9C82142E9E200049C76 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137ED9C72142E9E200049C76 /* Cache.swift */; };
+		137ED9CA2142EA4E00049C76 /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137ED9C92142EA4E00049C76 /* FetchPhotoOperation.swift */; };
 		13E880692142CAEF00593E61 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E880682142CAEF00593E61 /* UsersTableViewController.swift */; };
 		13E8806B2142CB0F00593E61 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E8806A2142CB0F00593E61 /* UserDetailViewController.swift */; };
 		13E8806E2142D00800593E61 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E8806D2142D00800593E61 /* User.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		137ED9C72142E9E200049C76 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		137ED9C92142EA4E00049C76 /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
 		13E880682142CAEF00593E61 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		13E8806A2142CB0F00593E61 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		13E8806D2142D00800593E61 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -93,6 +97,7 @@
 				13E880672142CADA00593E61 /* View Controllers */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
+				137ED9C72142E9E200049C76 /* Cache.swift */,
 			);
 			path = "Random Users";
 			sourceTree = "<group>";
@@ -112,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				137ED9C92142EA4E00049C76 /* FetchPhotoOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -187,6 +193,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				137ED9C82142E9E200049C76 /* Cache.swift in Sources */,
+				137ED9CA2142EA4E00049C76 /* FetchPhotoOperation.swift in Sources */,
 				13E880712142D05400593E61 /* UserController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,

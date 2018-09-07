@@ -9,6 +9,7 @@
 import UIKit
 
 class UsersTableViewController: UITableViewController {
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         userController.getUsers { (error) in
