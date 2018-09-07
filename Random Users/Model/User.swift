@@ -8,18 +8,11 @@
 
 import Foundation
 
-struct UserResult: Decodable, Equatable {
+struct User: Decodable, Equatable {
     var name: String
     var email: String
     var phone: String
     var pictures: [String : URL]
-    
-    init(name: String, email: String, phone: String, picture: [String : URL]) {
-        self.name = name
-        self.email = email
-        self.phone = phone
-        self.pictures = picture
-    }
     
     enum CodingKeys: String, CodingKey {
         case name
@@ -60,5 +53,5 @@ struct UserResult: Decodable, Equatable {
 
 
 struct UserResults: Decodable {
-    let results: [UserResult]
+    let results: [User]
 }

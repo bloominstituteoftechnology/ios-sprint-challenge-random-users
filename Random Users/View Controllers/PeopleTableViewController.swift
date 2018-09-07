@@ -9,22 +9,35 @@
 import UIKit
 
 class PeopleTableViewController: UITableViewController {
+    
+    var userController = UserController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        userController.getUsers { (error) in
+            if let error = error {
+                NSLog("Error getting user data from server: \(error)")
+                return
+            }
+            self.tableView.reloadData()
+        }
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return userController.users.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
 
-        // Configure the cell...
+        let user = userController.users[indexPath.row]
+        cell.textLabel?.text = user.name
+        cell.imageView?.image = nil
+        
+        // use the loadImage func to get images
 
         return cell
     }
