@@ -49,6 +49,13 @@ class PeopleTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let user = userController.users[indexPath.row]
+        let name = user.name
+        let fetchPhotoOperation = fetchOperationDictionary[name]
+        fetchPhotoOperation?.cancel()
+    }
+    
     private func loadImage(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         let user = userController.users[indexPath.row]
         
