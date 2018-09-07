@@ -12,6 +12,7 @@ class UserTableViewController: UITableViewController {
     
     // MARK: - Properties
     var users: [User] = []
+    var userImage: Data?
     var userClient = UserClient()
     private var cache = Cache<String, User>()
     private var imageOperationQueue = OperationQueue()
@@ -66,6 +67,7 @@ class UserTableViewController: UITableViewController {
         if let cachedUser = cache.value(for: user.id) {
             cell.nameTextLabel?.text = cachedUser.name
             if let picture = cachedUser.picture {
+                self.userImage = picture
                 cell.userImageView?.image = UIImage(data: picture)
             }
             return
@@ -85,6 +87,7 @@ class UserTableViewController: UITableViewController {
             }
             
             if let image = fetchOperation.imageData {
+                self.userImage = image
                 cell.userImageView?.image = UIImage(data: image)
             }
             cell.nameTextLabel?.text = user.name
@@ -100,10 +103,17 @@ class UserTableViewController: UITableViewController {
     }
 
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == "ShowUserDetail" {
+            let detailVC = segue.destination as! UserDetailViewController
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            let user = users[indexPath.row]
+            detailVC.user = user
+            
+            if let image = userImage {
+                detailVC.userImage = image
+            }
+        }
     }
 
 }

@@ -32,7 +32,7 @@ struct User: Decodable, Equatable {
         }
         
         enum PictureCodingKeys: String, CodingKey {
-            case medium
+            case large
         }
     }
     
@@ -48,7 +48,7 @@ struct User: Decodable, Equatable {
         self.email = try container.decode(String.self, forKey: .email)
         
         let pictureContainer = try container.nestedContainer(keyedBy: CodingKeys.PictureCodingKeys.self, forKey: .pictureUrl)
-        self.pictureUrl = try pictureContainer.decode(URL.self, forKey: .medium)
+        self.pictureUrl = try pictureContainer.decode(URL.self, forKey: .large)
     }
     
 }
