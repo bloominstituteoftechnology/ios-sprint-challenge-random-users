@@ -51,6 +51,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10B350CC2142FE1100152F24 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1006F19C2142DB9F0065B661 /* UserClient.swift */,
+				1006F19E2142DD490065B661 /* User.swift */,
+				1006F1A02142DE150065B661 /* UserRepresentation.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		10BF9E502142DAA70046EADB /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -79,11 +89,8 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
-				10B350CA2142FCA300152F24 /* Cache.swift */,
 				8ED6A98B2140178A00FC395A /* Main.storyboard */,
-				1006F19C2142DB9F0065B661 /* UserClient.swift */,
-				1006F19E2142DD490065B661 /* User.swift */,
-				1006F1A02142DE150065B661 /* UserRepresentation.swift */,
+				10B350CC2142FE1100152F24 /* Models */,
 				10BF9E502142DAA70046EADB /* View Controllers */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
@@ -94,6 +101,7 @@
 		9D5CCA522142305600224681 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				10B350CA2142FCA300152F24 /* Cache.swift */,
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
 				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,

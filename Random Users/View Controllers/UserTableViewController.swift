@@ -31,7 +31,7 @@ class UserTableViewController: UITableViewController {
     }
 
     func loadImage(forCell: UITableViewCell, forItemAt: IndexPath){
-        let imageFetchOperation = FetchThumbNailOperation()
+//        let imageFetchOperation = FetchThumbNailOperation()
         
     }
     
