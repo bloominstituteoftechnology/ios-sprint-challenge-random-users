@@ -17,6 +17,7 @@
 		DE71D6F02142CFA100C9DC63 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE71D6EF2142CFA100C9DC63 /* User.swift */; };
 		DE71D6F22142CFAE00C9DC63 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE71D6F12142CFAE00C9DC63 /* UserController.swift */; };
 		DE71D6F72142E1DB00C9DC63 /* UserFetchOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE71D6F62142E1DB00C9DC63 /* UserFetchOperation.swift */; };
+		DE71D6F92142F7A900C9DC63 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE71D6F82142F7A900C9DC63 /* Cache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		DE71D6EF2142CFA100C9DC63 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DE71D6F12142CFAE00C9DC63 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		DE71D6F62142E1DB00C9DC63 /* UserFetchOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFetchOperation.swift; sourceTree = "<group>"; };
+		DE71D6F82142F7A900C9DC63 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				DE71D6F82142F7A900C9DC63 /* Cache.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 			files = (
 				DE71D6F22142CFAE00C9DC63 /* UserController.swift in Sources */,
 				DE71D6EC2142CC7300C9DC63 /* RandomUsersTableViewController.swift in Sources */,
+				DE71D6F92142F7A900C9DC63 /* Cache.swift in Sources */,
 				DE71D6F72142E1DB00C9DC63 /* UserFetchOperation.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
