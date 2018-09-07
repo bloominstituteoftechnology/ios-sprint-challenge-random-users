@@ -12,6 +12,12 @@
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
 		8ED6A9922140178C00FC395A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
+		BFFFD22E2142D02200025ED2 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFD22D2142D02200025ED2 /* Person.swift */; };
+		BFFFD2302142D15E00025ED2 /* PersonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFD22F2142D15E00025ED2 /* PersonController.swift */; };
+		BFFFD2322142D90600025ED2 /* PeopleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFD2312142D90600025ED2 /* PeopleTableViewController.swift */; };
+		BFFFD2342142D91300025ED2 /* PeopleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFD2332142D91300025ED2 /* PeopleTableViewCell.swift */; };
+		BFFFD2362142DCF500025ED2 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFD2352142DCF500025ED2 /* Cache.swift */; };
+		BFFFD2382142DD7300025ED2 /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFD2372142DD7300025ED2 /* FetchPhotoOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +28,12 @@
 		8ED6A9912140178C00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ED6A9932140178C00FC395A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
+		BFFFD22D2142D02200025ED2 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		BFFFD22F2142D15E00025ED2 /* PersonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonController.swift; sourceTree = "<group>"; };
+		BFFFD2312142D90600025ED2 /* PeopleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewController.swift; sourceTree = "<group>"; };
+		BFFFD2332142D91300025ED2 /* PeopleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewCell.swift; sourceTree = "<group>"; };
+		BFFFD2352142DCF500025ED2 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		BFFFD2372142DD7300025ED2 /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +77,10 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A98B2140178A00FC395A /* Main.storyboard */,
+				BFFFD2312142D90600025ED2 /* PeopleTableViewController.swift */,
+				BFFFD2372142DD7300025ED2 /* FetchPhotoOperation.swift */,
+				BFFFD2352142DCF500025ED2 /* Cache.swift */,
+				BFFFD2332142D91300025ED2 /* PeopleTableViewCell.swift */,
 				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
 				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
 				8ED6A9932140178C00FC395A /* Info.plist */,
@@ -76,6 +92,8 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				BFFFD22D2142D02200025ED2 /* Person.swift */,
+				BFFFD22F2142D15E00025ED2 /* PersonController.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -151,8 +169,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFFFD2362142DCF500025ED2 /* Cache.swift in Sources */,
+				BFFFD2382142DD7300025ED2 /* FetchPhotoOperation.swift in Sources */,
+				BFFFD2302142D15E00025ED2 /* PersonController.swift in Sources */,
+				BFFFD22E2142D02200025ED2 /* Person.swift in Sources */,
+				BFFFD2342142D91300025ED2 /* PeopleTableViewCell.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				BFFFD2322142D90600025ED2 /* PeopleTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
