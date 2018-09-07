@@ -20,6 +20,7 @@
 		FF89A8602142D650006F14EE /* RandomUserExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89A85F2142D650006F14EE /* RandomUserExtension.swift */; };
 		FF89A8622142E0DB006F14EE /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89A8612142E0DB006F14EE /* Cache.swift */; };
 		FF89A8642142E802006F14EE /* FetchThumbnailOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89A8632142E802006F14EE /* FetchThumbnailOperation.swift */; };
+		FF89A8682142F937006F14EE /* FetchLargeImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89A8672142F937006F14EE /* FetchLargeImageOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		FF89A85F2142D650006F14EE /* RandomUserExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserExtension.swift; sourceTree = "<group>"; };
 		FF89A8612142E0DB006F14EE /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		FF89A8632142E802006F14EE /* FetchThumbnailOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchThumbnailOperation.swift; sourceTree = "<group>"; };
+		FF89A8672142F937006F14EE /* FetchLargeImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLargeImageOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
 				FF89A8632142E802006F14EE /* FetchThumbnailOperation.swift */,
+				FF89A8672142F937006F14EE /* FetchLargeImageOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				FF89A8682142F937006F14EE /* FetchLargeImageOperation.swift in Sources */,
 				FF89A8622142E0DB006F14EE /* Cache.swift in Sources */,
 				FF89A8602142D650006F14EE /* RandomUserExtension.swift in Sources */,
 				FF1AFE3A2142CF9F0091C41D /* RandomUserTableViewController.swift in Sources */,
