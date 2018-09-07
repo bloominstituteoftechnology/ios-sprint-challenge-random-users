@@ -7,10 +7,12 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Users-->
         <scene sceneID="jaa-vU-8ud">
             <objects>
                 <tableViewController id="W8Z-n8-WCI" customClass="PeopleTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
@@ -52,6 +54,7 @@
                                 <connections>
                                     <outlet property="nameLabel" destination="uPu-AN-XNm" id="cwr-lM-He6"/>
                                     <outlet property="personImageView" destination="X13-NX-Ej0" id="7OW-r0-BdP"/>
+                                    <segue destination="i2d-ok-Km0" kind="show" id="ajJ-55-rN9"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -60,11 +63,66 @@
                             <outlet property="delegate" destination="W8Z-n8-WCI" id="c1U-eO-KLz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="wc2-0n-lRQ"/>
+                    <navigationItem key="navigationItem" title="Users" id="wc2-0n-lRQ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ne1-Q7-v4d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-116" y="165.06746626686657"/>
+        </scene>
+        <!--People Details View Controller-->
+        <scene sceneID="Fu1-jf-FYZ">
+            <objects>
+                <viewController id="i2d-ok-Km0" customClass="PeopleDetailsViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="l0E-l6-ZlB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Bfj-tb-aeu">
+                                <rect key="frame" x="67" y="175" width="240" height="317"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jND-j4-0xp">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="231"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKU-ED-zEU">
+                                        <rect key="frame" x="0.0" y="239" width="240" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LaP-r4-6A3">
+                                        <rect key="frame" x="0.0" y="268" width="240" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUz-t1-Wlm">
+                                        <rect key="frame" x="0.0" y="296.5" width="240" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Bfj-tb-aeu" firstAttribute="leading" secondItem="THX-TP-WJX" secondAttribute="leading" constant="67" id="Z5Y-3m-2jX"/>
+                            <constraint firstItem="Bfj-tb-aeu" firstAttribute="centerX" secondItem="l0E-l6-ZlB" secondAttribute="centerX" id="c0p-Dv-qM8"/>
+                            <constraint firstItem="Bfj-tb-aeu" firstAttribute="centerY" secondItem="l0E-l6-ZlB" secondAttribute="centerY" id="gtX-Wx-1an"/>
+                            <constraint firstItem="Bfj-tb-aeu" firstAttribute="top" secondItem="THX-TP-WJX" secondAttribute="top" constant="111" id="nER-Pc-5vX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="THX-TP-WJX"/>
+                    </view>
+                    <connections>
+                        <outlet property="emailLabel" destination="LaP-r4-6A3" id="vH4-v4-WQl"/>
+                        <outlet property="nameLabel" destination="AKU-ED-zEU" id="MVu-md-ubr"/>
+                        <outlet property="personImageView" destination="jND-j4-0xp" id="vjc-8t-mmZ"/>
+                        <outlet property="phoneNumberLabel" destination="bUz-t1-Wlm" id="Byj-Bo-TBO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wWg-y0-DLB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="669.60000000000002" y="163.26836581709148"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="l1g-dK-KXP">

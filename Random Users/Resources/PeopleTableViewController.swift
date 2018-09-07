@@ -10,6 +10,8 @@ import UIKit
 
 class PeopleTableViewController: UITableViewController {
     
+    
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         personController.searchForPeople { (error) in
@@ -27,8 +29,6 @@ class PeopleTableViewController: UITableViewController {
     
     
     // MARK: - Table view data source
-
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return personController.people.count
     }
@@ -94,6 +94,14 @@ class PeopleTableViewController: UITableViewController {
         
         fetchOperationsDictionary[personsName["title"]! + " " + personsName["first"]! + " " + personsName["last"]!] = photoFetchOperation
   
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! PeopleDetailsViewController
+        let cell = sender as! PeopleTableViewCell
+        guard let indexPath = tableView.indexPath(for: cell) else {return}
+        destinationVC.person = personController.people[indexPath.row]
     }
 
 }
