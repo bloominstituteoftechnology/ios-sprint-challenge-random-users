@@ -106,7 +106,9 @@ class UsersTableViewController: UITableViewController {
         if segue.identifier == "ShowUserDetail" {
             let destinationVC = segue.destination as! UserDetailViewController
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            destinationVC.user = users?[indexPath.row]
+            let user = users?[indexPath.row]
+            destinationVC.user = user
+            destinationVC.title = user?.name
         }
     }
 }
