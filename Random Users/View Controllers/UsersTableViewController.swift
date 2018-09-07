@@ -21,7 +21,7 @@ class UsersTableViewController: UITableViewController {
             }
         }
     }
-        
+    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -30,12 +30,16 @@ class UsersTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
-        
-        let user = userController.users[indexPath.row]
-        cell.textLabel?.text = "\(user.name.first.capitalized) \(user.name.last.capitalized)"
-        
-        userController.loadUserImageForCell(user: user, cell: cell)
-        
+        if let visibleRows = tableView.indexPathsForVisibleRows {
+            if visibleRows.contains(indexPath) {
+                let user = userController.users[indexPath.row]
+                cell.textLabel?.text = "\(user.name.first.capitalized) \(user.name.last.capitalized)"
+                
+                userController.loadUserImageForCell(user: user, cell: cell)
+                
+                return cell
+            }
+        }
         return cell
     }
     
