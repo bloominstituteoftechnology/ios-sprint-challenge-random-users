@@ -25,7 +25,13 @@ class UsersTableViewController: UITableViewController {
     // MARK: - Properties
     
     let userClient = UserClient()
-    var users: [User]?
+    var users: [User]? {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
     var cache: Cache<String, [User.Images: UIImage]> = Cache()
     var userFetchQueue = OperationQueue()
     var fetchRequests: [String: [User.Images: FetchThumbnailPhotoOperation]] = [:]
@@ -80,6 +86,8 @@ class UsersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
 
+        let user = users?[indexPath.row]
+        cell.textLabel?.text = user?.name
         loadImage(forCell: cell, forItemAt: indexPath)
 
         return cell

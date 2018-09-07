@@ -33,7 +33,7 @@ struct User: Decodable {
         case name
         case phoneNumber = "phone"
         case emailAddress = "email"
-        case imageURLs = "pictures"
+        case imageURLs = "picture"
         
         enum NameCodingKeys: String, CodingKey {
             case first
