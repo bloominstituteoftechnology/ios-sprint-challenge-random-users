@@ -66,21 +66,30 @@ class ConcurrentOperation: Operation {
 
 // MARK: - Subclass
 
-class FetchThumbnailPhotoOperation: ConcurrentOperation {
+class FetchImageOperation: ConcurrentOperation {
     
-    init(user: User) {
+    init(user: User, imageType: User.Images) {
         self.user = user
+        self.imageType = imageType
     }
     
     var user: User
-    var thumbnailImage: UIImage?
+    var imageType: User.Images
+    var image: UIImage?
     
     private var dataTask: URLSessionDataTask?
     
     override func start() {
         state = .isExecuting
         
-        guard let url = user.thumbnailURL else { return }
+        var imageURL: URL?
+        if imageType == .large {
+            imageURL = user.largeURL
+        } else if imageType == .thumbnail {
+            imageURL = user.thumbnailURL
+        }
+        
+        guard let url = imageURL else { return }
         dataTask = URLSession.shared.dataTask(with: url) { (data, _, error) in
             defer { self.state = .isFinished }
             if let error = error {
@@ -88,7 +97,7 @@ class FetchThumbnailPhotoOperation: ConcurrentOperation {
                 return
             }
             guard let data = data else { return }
-            self.thumbnailImage = UIImage(data: data)
+            self.image = UIImage(data: data)
         }
         
         dataTask?.resume()

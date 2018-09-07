@@ -32,9 +32,9 @@ class UsersTableViewController: UITableViewController {
             }
         }
     }
-    var cache: Cache<String, [User.Images: UIImage]> = Cache()
+    var thumbnailCache: Cache<String, UIImage> = Cache()
     var userFetchQueue = OperationQueue()
-    var fetchRequests: [String: [User.Images: FetchThumbnailPhotoOperation]] = [:]
+    var fetchRequests: [String: FetchImageOperation] = [:]
     
     // MARK: - Actions
     
@@ -49,21 +49,21 @@ class UsersTableViewController: UITableViewController {
         
         guard let user = users?[indexPath.row], let phoneNumber = user.phoneNumber else { return }
         
-        if let phoneNumber = user.phoneNumber, let imageArray = cache[phoneNumber] {
-            cell.imageView?.image = imageArray[.thumbnail]
+        if let phoneNumber = user.phoneNumber, let image = thumbnailCache[phoneNumber] {
+            cell.imageView?.image = image
             
         } else {
             
-            let op1 = FetchThumbnailPhotoOperation(user: user)
+            let op1 = FetchImageOperation(user: user, imageType: .thumbnail)
             
             let op2 = BlockOperation {
-                guard let image = op1.thumbnailImage else { return }
-                self.cache.cache(value: [.thumbnail: image], for: phoneNumber)
+                guard let image = op1.image else { return }
+                self.thumbnailCache.cache(value: image, for: phoneNumber)
             }
             op2.addDependency(op1)
             
             let op3 = BlockOperation {
-                guard let image = op1.thumbnailImage else { return }
+                guard let image = op1.image else { return }
                 if indexPath == self.tableView.indexPath(for: cell) {
                     cell.imageView?.image = image
                 }
@@ -72,7 +72,7 @@ class UsersTableViewController: UITableViewController {
             
             userFetchQueue.addOperations([op1, op2], waitUntilFinished: false)
             OperationQueue.main.addOperation(op3)
-            fetchRequests[phoneNumber] = [.thumbnail: op1]
+            fetchRequests[phoneNumber] = op1
         }
     }
     
@@ -96,7 +96,7 @@ class UsersTableViewController: UITableViewController {
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let user = users?[indexPath.row], let phoneNumber = user.phoneNumber else { return }
         let op = fetchRequests[phoneNumber]
-        op?[.thumbnail]?.cancel()
+        op?.cancel()
     }
 
     
@@ -104,7 +104,9 @@ class UsersTableViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowUserDetail" {
-            
+            let destinationVC = segue.destination as! UserDetailViewController
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            destinationVC.user = users?[indexPath.row]
         }
     }
 }
