@@ -39,7 +39,7 @@ struct Person:Codable
 		let first = try nameCon.decode(String.self, forKey: .first).capitalized
 		let last = try nameCon.decode(String.self, forKey: .last).capitalized
 
-		name = "\(title). \(first) \(last)"
+		name = "\(title) \(first) \(last)"
 
 		let photoCon = try con.nestedContainer(keyedBy: PhotoKeys.self, forKey: .picture)
 		largeImg = try photoCon.decode(URL.self, forKey: .large)
@@ -84,9 +84,12 @@ class PersonController
 
 	func load(_ completion:@escaping (String?)->Void)
 	{
-		// this is fine for now.
 		people = [Person()]
+
+		// this is fine for now.
+		// we could do some fancy stuff but whatever
 		let baseURL = URL(string:"https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
+
 		URLSession.shared.dataTask(with: baseURL) { data, _, error in
 			if let error = error {
 				NSLog("There was an error \(error)");
