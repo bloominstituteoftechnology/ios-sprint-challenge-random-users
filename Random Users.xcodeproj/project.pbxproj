@@ -13,6 +13,8 @@
 		8ED6A9922140178C00FC395A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
 		D68486662142CB2F0054A03A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68486652142CB2F0054A03A /* User.swift */; };
+		D68486692142D1D00054A03A /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68486682142D1D00054A03A /* UsersTableViewController.swift */; };
+		D684866B2142D1DE0054A03A /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D684866A2142D1DE0054A03A /* UserDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		8ED6A9932140178C00FC395A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 		D68486652142CB2F0054A03A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D68486682142D1D00054A03A /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
+		D684866A2142D1DE0054A03A /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 			children = (
 				D68486642142CB180054A03A /* Model Object */,
 				9D5CCA56214231E400224681 /* Operations */,
+				D68486672142D1AF0054A03A /* View Controllers */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
 			path = "Random Users";
@@ -89,6 +94,15 @@
 				D68486652142CB2F0054A03A /* User.swift */,
 			);
 			path = "Model Object";
+			sourceTree = "<group>";
+		};
+		D68486672142D1AF0054A03A /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D68486682142D1D00054A03A /* UsersTableViewController.swift */,
+				D684866A2142D1DE0054A03A /* UserDetailViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,7 +177,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				D684866B2142D1DE0054A03A /* UserDetailViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				D68486692142D1D00054A03A /* UsersTableViewController.swift in Sources */,
 				D68486662142CB2F0054A03A /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

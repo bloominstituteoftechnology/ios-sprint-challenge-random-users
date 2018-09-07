@@ -15,7 +15,7 @@
         <!--Users-->
         <scene sceneID="XMT-h5-RkM">
             <objects>
-                <tableViewController id="b9P-Oo-wdU" sceneMemberID="viewController">
+                <tableViewController id="b9P-Oo-wdU" customClass="UsersTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="W9n-J1-7ug">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -52,7 +52,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Users" id="X2l-ca-Mdd">
-                        <barButtonItem key="rightBarButtonItem" title="Load more users" id="rXP-Rz-zzP"/>
+                        <barButtonItem key="rightBarButtonItem" title="Load more users" id="rXP-Rz-zzP">
+                            <connections>
+                                <action selector="loadMoreUsers:" destination="b9P-Oo-wdU" id="1T5-i2-MVo"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2kN-3N-jyI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -62,7 +66,7 @@
         <!--Name-->
         <scene sceneID="leU-Xw-wsn">
             <objects>
-                <viewController id="Zhu-Mf-OfM" sceneMemberID="viewController">
+                <viewController id="Zhu-Mf-OfM" customClass="UserDetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nba-CR-H0P">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -104,6 +108,12 @@
                         <viewLayoutGuide key="safeArea" id="6x5-q0-Yk5"/>
                     </view>
                     <navigationItem key="navigationItem" title="Name" id="X4m-dk-jtM"/>
+                    <connections>
+                        <outlet property="emailAddressLabel" destination="oqi-QE-YOx" id="0BM-zI-erP"/>
+                        <outlet property="imageView" destination="0Pl-vh-cOM" id="sNA-Jm-9gX"/>
+                        <outlet property="nameLabel" destination="ql9-6f-Qxf" id="u3M-a9-qyl"/>
+                        <outlet property="phoneNumberLabel" destination="Yjk-n0-IgA" id="YwS-UB-SN3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hLw-mu-x5c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
