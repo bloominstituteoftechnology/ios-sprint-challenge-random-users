@@ -35,16 +35,28 @@ class PeopleTableViewController: UITableViewController {
 
         let user = userController.users[indexPath.row]
         cell.textLabel?.text = user.name
-        cell.imageView?.image = nil
+        cell.imageView?.image = #imageLiteral(resourceName: "Lambda_Logo_Full")
         
         // use the loadImage func to get images
 
         return cell
     }
     
+    private func loadImage(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+        
+    }
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       
+        if let detailVC = segue.destination as? PeopleDetailViewController {
+            detailVC.userController = userController
+            
+            if segue.identifier == "ShowDetail" {
+                guard let index = tableView.indexPathForSelectedRow?.row else { return }
+                let user = userController.users[index]
+                detailVC.user = user
+            }
+        }
     }
 }

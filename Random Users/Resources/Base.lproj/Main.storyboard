@@ -85,7 +85,6 @@
                         <constraints>
                             <constraint firstItem="33O-6n-xWW" firstAttribute="top" secondItem="xhK-DS-Pfe" secondAttribute="bottom" constant="53" id="0Ij-Pn-3jV"/>
                             <constraint firstItem="33O-6n-xWW" firstAttribute="leading" secondItem="Soy-Ix-peK" secondAttribute="leading" constant="56" id="1XF-Rf-1b1"/>
-                            <constraint firstItem="Soy-Ix-peK" firstAttribute="trailing" secondItem="AhD-Zl-cHE" secondAttribute="trailing" constant="278" id="1lr-Fl-cYd"/>
                             <constraint firstItem="xhK-DS-Pfe" firstAttribute="top" secondItem="Soy-Ix-peK" secondAttribute="top" constant="71" id="2YI-RB-WQJ"/>
                             <constraint firstItem="6R2-f3-SAe" firstAttribute="top" secondItem="33O-6n-xWW" secondAttribute="bottom" constant="8" id="52J-Ba-jj9"/>
                             <constraint firstItem="xhK-DS-Pfe" firstAttribute="leading" secondItem="Soy-Ix-peK" secondAttribute="leading" constant="67" id="E2z-FU-wu9"/>
@@ -93,9 +92,7 @@
                             <constraint firstItem="Soy-Ix-peK" firstAttribute="bottom" secondItem="AhD-Zl-cHE" secondAttribute="bottom" constant="187" id="lh3-er-QS4"/>
                             <constraint firstItem="AhD-Zl-cHE" firstAttribute="leading" secondItem="Soy-Ix-peK" secondAttribute="leading" constant="56" id="phl-Se-aE6"/>
                             <constraint firstItem="6R2-f3-SAe" firstAttribute="leading" secondItem="Soy-Ix-peK" secondAttribute="leading" constant="56" id="qvN-iU-Coc"/>
-                            <constraint firstItem="Soy-Ix-peK" firstAttribute="trailing" secondItem="33O-6n-xWW" secondAttribute="trailing" constant="274" id="wB5-sZ-0pZ"/>
                             <constraint firstItem="AhD-Zl-cHE" firstAttribute="top" secondItem="6R2-f3-SAe" secondAttribute="bottom" constant="8" id="xnM-mm-vrA"/>
-                            <constraint firstItem="Soy-Ix-peK" firstAttribute="trailing" secondItem="6R2-f3-SAe" secondAttribute="trailing" constant="270" id="z6h-Ou-Zlo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Soy-Ix-peK"/>
                     </view>
