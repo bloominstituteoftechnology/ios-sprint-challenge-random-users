@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-struct Name: Codable, Equatable
+struct Name: Decodable
 {
-    var title: String
-    var firstName: String
-    var lastName: String
+    var title: String?
+    var firstName: String?
+    var lastName: String?
     
     init(title: String, firstName: String, lastName: String)
     {
@@ -41,105 +41,96 @@ struct Name: Codable, Equatable
         self.firstName = firstName
         self.lastName = lastName
     }
+}
+
+struct Picture: Decodable
+{
+    let large: URL?
+    let medium: URL?
+    let thumbnail: URL?
     
-    func encode(to encoder: Encoder) throws
+    enum PictureCodingKeys: String, CodingKey
     {
-        var nameContainer = encoder.container(keyedBy: NameCodingKeys.self)
+        case large
+        case medium
+        case thumbnail
+    }
+    
+    init(from decoder: Decoder) throws
+    {
+        let pictureContainer = try decoder.container(keyedBy: PictureCodingKeys.self)
+        let largeString = try pictureContainer.decode(String.self, forKey: .large)
+        let mediumString = try pictureContainer.decode(String.self, forKey: .medium)
+        let thumbnailString = try pictureContainer.decode(String.self, forKey: .thumbnail)
         
-        try nameContainer.encode(title, forKey: .title)
-        try nameContainer.encode(firstName, forKey: .first)
-        try nameContainer.encode(lastName, forKey: .last)
+        var large: URL?
+        let lString = largeString
+        large = URL(string: lString)
+        
+        var medium: URL?
+        let mString = mediumString
+        medium = URL(string: mString)
+        
+        var thumbnail: URL?
+        let tString = thumbnailString
+        thumbnail = URL(string: tString)
+        
+        self.large = large
+        self.medium = medium
+        self.thumbnail = thumbnail
     }
 }
 
-
-struct User: Codable, Equatable
+struct User: Decodable
 {
-    var name: String
-    var thumbnail: URL
-    var image: URL
-    var email: String
-    var phone: String
-    var identifier: String
-    
-    init(name: String, thumbnail: URL, image: URL, email: String, phone: String, identifier: String)
-    {
-        self.name = name
-        self.thumbnail = thumbnail
-        self.image = image
-        self.email = email
-        self.phone = phone
-        self.identifier = identifier
-    }
+    var name: Name?
+    var email: String?
+    var phone: String?
+    var picture: Picture?
+    var identifier: String = UUID().uuidString
     
     enum CodingKeys: String, CodingKey
     {
         case name
-        case thumbnail
-        case image = "large"
         case email
         case phone
-        case identifier = "id"
-        
-        enum idCodingKeys: String, CodingKey
-        {
-            case name
-            case value
-        }
-        
-        enum NameCodingKeys: String, CodingKey
-        {
-            
-            case first
-            
-        }
+        case picture
         
     }
     
     init(from decoder: Decoder) throws
     {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        let nameContainer = try decoder.container(keyedBy: CodingKeys.NameCodingKeys.self)
-        let name = try nameContainer.decode(String.self, forKey: .first)
         
-        let thumbnail = try container.decode(URL.self, forKey: .thumbnail)
-        
-        let image = try container.decode(URL.self, forKey: .image)
+        let name = try container.decode(Name.self, forKey: .name)
         
         let email = try container.decode(String.self, forKey: .email)
         
         let phone = try container.decode(String.self, forKey: .phone)
         
-        let identifier = try container.decode(String.self, forKey: .identifier)
+        let picture = try container.decode(Picture.self, forKey: .picture)
         
         self.name = name
-        self.thumbnail = thumbnail
-        self.image = image
         self.email = email
         self.phone = phone
-        self.identifier = identifier
-    }
-    
-    func encode(to encoder: Encoder) throws
-    {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        
-        try container.encode(name, forKey: .name)
-        
-        try container.encode(thumbnail, forKey: .thumbnail)
-        
-        try container.encode(image, forKey: .image)
-        
-        try container.encode(email, forKey: .email)
-        
-        try container.encode(phone, forKey: .phone)
-        
-        try container.encode(identifier, forKey: .identifier)
+        self.picture = picture
     }
 }
 
-struct Users: Codable, Equatable
+struct Users: Decodable
 {
-    let users: [User]
+    let results: [User]?
+    
+    enum CodingKeys: String, CodingKey
+    {
+        case results
+    }
+    
+    init(from decoder: Decoder) throws
+    {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        results = try container.decode([User].self, forKey: .results)
+        
+    }
 }
 

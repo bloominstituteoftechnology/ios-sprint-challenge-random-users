@@ -18,6 +18,7 @@
 		DE71D6F22142CFAE00C9DC63 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE71D6F12142CFAE00C9DC63 /* UserController.swift */; };
 		DE71D6F72142E1DB00C9DC63 /* UserFetchOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE71D6F62142E1DB00C9DC63 /* UserFetchOperation.swift */; };
 		DE71D6F92142F7A900C9DC63 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE71D6F82142F7A900C9DC63 /* Cache.swift */; };
+		DE71D6FB21434A9F00C9DC63 /* ImageFetchOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE71D6FA21434A9F00C9DC63 /* ImageFetchOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		DE71D6F12142CFAE00C9DC63 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		DE71D6F62142E1DB00C9DC63 /* UserFetchOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFetchOperation.swift; sourceTree = "<group>"; };
 		DE71D6F82142F7A900C9DC63 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		DE71D6FA21434A9F00C9DC63 /* ImageFetchOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetchOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			children = (
 				DE71D6F12142CFAE00C9DC63 /* UserController.swift */,
 				DE71D6F62142E1DB00C9DC63 /* UserFetchOperation.swift */,
+				DE71D6FA21434A9F00C9DC63 /* ImageFetchOperation.swift */,
 			);
 			path = ModelController;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				DE71D6F02142CFA100C9DC63 /* User.swift in Sources */,
+				DE71D6FB21434A9F00C9DC63 /* ImageFetchOperation.swift in Sources */,
 				DE71D6EE2142CC9E00C9DC63 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

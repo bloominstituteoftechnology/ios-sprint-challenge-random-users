@@ -14,6 +14,7 @@ class UserFetchOperation: ConcurrentOperation
     var userController: UserController?
     var user: User?
     
+    
     override func start()
     {
         state = .isExecuting
@@ -40,16 +41,9 @@ class UserFetchOperation: ConcurrentOperation
             
             do
             {
-                let jsonDecoder = JSONDecoder()
-                let results = try jsonDecoder.decode(User.self, from: data)
+                let decodedData = try JSONDecoder().decode(Users.self, from: data).results
                 
-                DispatchQueue.main.async() {
-                    
-                    let _ = results
-                    
-                    self.state = .isFinished
-                }
-                
+                self.state = .isFinished
             }
             catch
             {
