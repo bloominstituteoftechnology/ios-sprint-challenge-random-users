@@ -27,6 +27,7 @@ class UserTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
         cell.textLabel?.text = userData[indexPath.row].fullName
+        loadImage(forCell: cell, forItemAt: indexPath)
         return cell
     }
     
@@ -49,13 +50,26 @@ class UserTableViewController: UITableViewController {
             }
             let reuseCheckOperation = BlockOperation()
             if indexPath == self.tableView.indexPath(for: cell){
-                
+                guard let imageData = imageFetchOperation.thumbData else {return}
+                cell.imageView?.image = UIImage(data: imageData)
             }
+            cacheOperation.addDependency(imageFetchOperation)
+            reuseCheckOperation.addDependency(imageFetchOperation)
+            
+            queue.addOperations([imageFetchOperation , cacheOperation], waitUntilFinished: false)
+            OperationQueue.main.addOperation(reuseCheckOperation)
+            
+            fetchDictionary[imageFetchOperation.user.fullName] = imageFetchOperation
         }
         
     }
     
-    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let fullName = cell.textLabel?.text,
+        let operation = fetchDictionary[fullName] else {return}
+        operation.cancel()
+        
+    }
     
     
     // MARK: - Navigation
@@ -73,7 +87,7 @@ class UserTableViewController: UITableViewController {
     //MARK: Properties
     private let imageFetchQueue = OperationQueue()
     private var cache: Cache<String, Data> = Cache()
-    
+    private var fetchDictionary: [String: Operation] = [:]
     var userData = [User](){
         didSet{
             DispatchQueue.main.async {

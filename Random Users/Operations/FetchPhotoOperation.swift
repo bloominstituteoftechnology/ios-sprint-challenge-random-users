@@ -8,7 +8,7 @@
 
 import Foundation
 
-class FetchThumbNailOperation: ConcurrentOperation {
+class FetchPhotoOperation: ConcurrentOperation {
     
     init(user: User){
         self.user = user
@@ -17,21 +17,21 @@ class FetchThumbNailOperation: ConcurrentOperation {
     override func start() {
         self.state = .isExecuting
         
-        let thumbURL = URL(string: user.thumbnailURL)!
-        thumbDataTask = URLSession.shared.dataTask(with: thumbURL, completionHandler: { (data, _, error) in
+        let photoURL = URL(string: user.photoURL)!
+        photoDataTask = URLSession.shared.dataTask(with: photoURL, completionHandler: { (data, _, error) in
             if let error = error {
                 NSLog("Error fetching large photo: \(error)")
             }
-            self.thumbData = data
+            self.photoData = data
             defer {
                 self.state = .isFinished
             }
         })
-        thumbDataTask?.resume()
+        photoDataTask?.resume()
         //TODO: let photoURL = URL(string: user.photoURL)!
     }
     override func cancel() {
-        thumbDataTask?.cancel()
+        photoDataTask?.cancel()
     }
     
     
@@ -39,9 +39,6 @@ class FetchThumbNailOperation: ConcurrentOperation {
     //MARK: - Properties
     let user:User
     var photoData: Data?
-    var thumbData: Data?
-    
     
     private(set) var photoDataTask: URLSessionDataTask?
-    private(set) var thumbDataTask: URLSessionDataTask?
 }
