@@ -28,6 +28,7 @@ class ContactDetailViewController: UIViewController {
         updateViews()
     }
     
+    // MARK: - Utility Methods
     private func updateViews() {
         guard let contact = contact else {
             title = "Add Contact"

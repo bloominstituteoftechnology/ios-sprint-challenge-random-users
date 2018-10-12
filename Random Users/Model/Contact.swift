@@ -24,7 +24,7 @@ struct Contact: Decodable {
         return "\(title.capitalized) \(firstName.capitalized) \(lastName.capitalized)"
     }
     
-    // MARK: - Decodable
+    // Coding keys used for decoding and encoding
     enum CodingKeys: String, CodingKey {
         case name
         case email
@@ -49,6 +49,7 @@ struct Contact: Decodable {
         }
     }
     
+    // MARK: - Decodable
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
@@ -85,6 +86,7 @@ struct Contact: Decodable {
     }
 }
 
+// Convience struct for holding the top-level result from the JSON
 struct ContactResults: Decodable {
     let results: [Contact]
 }

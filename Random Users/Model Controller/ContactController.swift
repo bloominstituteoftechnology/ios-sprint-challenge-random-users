@@ -9,16 +9,19 @@
 import Foundation
 
 class ContactController {
+    
+    // MARK: - Properties
     private(set) var contacts: [Contact] = []
     private let baseURL = URL(string: "https://randomuser.me/api/")!
     
+    // MARK: - Networking
     func fetchContacts(completion: @escaping CompletionHandler = { _ in }) {
         guard var requestComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true) else {
             completion(NSError())
             return
         }
         let formatQuery = URLQueryItem(name: "format", value: "json")
-        let includeQuery = URLQueryItem(name: "inc", value: "name,email,login,phone,picture")
+        let includeQuery = URLQueryItem(name: "inc", value: "name,email,login,phone,cell,picture")
         let resultsQuery = URLQueryItem(name: "results", value: "1000")
         
         requestComponents.queryItems = [formatQuery, includeQuery, resultsQuery]

@@ -75,6 +75,14 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		34303DBC2171160200019F5C /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				34303DB32170F6AD00019F5C /* ContactController.swift */,
+			);
+			path = "Model Controller";
+			sourceTree = "<group>";
+		};
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
@@ -95,8 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
-				34303DB32170F6AD00019F5C /* ContactController.swift */,
 				34303DB22170F2EE00019F5C /* Model */,
+				34303DBC2171160200019F5C /* Model Controller */,
 				34303DAD2170F14100019F5C /* View Controller */,
 				9D5CCA56214231E400224681 /* Operations */,
 				34303DB72170F74700019F5C /* Helpers */,
