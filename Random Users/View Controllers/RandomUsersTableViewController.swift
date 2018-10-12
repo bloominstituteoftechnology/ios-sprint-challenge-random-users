@@ -39,9 +39,9 @@ class RandomUsersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "User", for: indexPath)
-        let user = userController.users[indexPath.row]
+        //let user = userController.users[indexPath.row]
         loadImage(forCell: cell, forItemAt: indexPath)
-        cell.prepareForReuse()
+        //cell.prepareForReuse()
         return cell
     }
     
