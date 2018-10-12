@@ -9,12 +9,16 @@
 import UIKit
 
 struct User: Decodable {
+    
+    // MARK: - Properties
+    
     let name: String
     let phone: String
     let email: String
-    let largeURL: URL!
-    let thumbnailURL: URL!
+    let largeURL: URL?
+    let thumbnailURL: URL?
 
+    // MARK: - Coding Keys
     
     enum ResultsKeys: String, CodingKey {
         case name
@@ -33,6 +37,8 @@ struct User: Decodable {
             case thumbnail
         }
     }
+    
+    // MARK: - Decoding
     
     init(decoder: Decoder) throws {
         let resultsContainer = try decoder.container(keyedBy: ResultsKeys.self)
@@ -61,6 +67,8 @@ struct User: Decodable {
         self.thumbnailURL = thumbnailURL
     }
 }
+
+// MARK: - Top Level Model
 
 struct Results: Decodable {
     var results: [User]

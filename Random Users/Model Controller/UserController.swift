@@ -10,7 +10,12 @@ import Foundation
 
 class UserController {
     
+    // MARK: - Properties
+    
     let url = URL(string: "https:randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
+    
+    
+    // MARK: - Fetch random users
     
     func fetchRandomUsers(completion: @escaping ([User]?, Error?) -> Void) {
         URLSession.shared.dataTask(with: url) { (data, _, error) in
