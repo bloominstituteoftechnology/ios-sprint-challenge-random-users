@@ -17,7 +17,7 @@ class FetchThumbnailOperation: ConcurrentOperation {
         return URLSession.shared.dataTask(with: thumbnailURL) { (data, _, _) in
             
             guard let data = data else {
-                NSLog("Data Corrupted")
+//                NSLog("Data Corrupted")
                 return
             }
             

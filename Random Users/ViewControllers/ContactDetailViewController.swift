@@ -11,7 +11,8 @@ import UIKit
 class ContactDetailViewController: UIViewController {
     
     var user: Users.User?
-
+    var userImage: UIImage?
+    
     @IBOutlet weak var largeImageView: UIImageView!
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -32,6 +33,11 @@ class ContactDetailViewController: UIViewController {
         guard let user = user else {return}
         
         nameLabel.text = user.name
+        phoneLabel.text = user.phone
+        emailLabel.text = user.email
+        
+        largeImageView.image = userImage
+        largeImageView.contentMode = .scaleAspectFit
         
     }
     

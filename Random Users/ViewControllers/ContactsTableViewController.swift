@@ -113,6 +113,7 @@ class ContactsTableViewController: UITableViewController {
             let user = users[indexPath.row]
             
             destVC.user = user
+            destVC.userImage = cache.value(for: user.phone)
             
         }
     

@@ -19,7 +19,6 @@
 		D82E06582170F8190007A7FC /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E06572170F8190007A7FC /* ContactTableViewCell.swift */; };
 		D82E065A217102C10007A7FC /* FetchThumbnailOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E0659217102C10007A7FC /* FetchThumbnailOperation.swift */; };
 		D886828321710DD100993190 /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D886828221710DD100993190 /* ContactDetailViewController.swift */; };
-		D886828521710E2A00993190 /* FetchLargeImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D886828421710E2A00993190 /* FetchLargeImageOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +36,6 @@
 		D82E06572170F8190007A7FC /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		D82E0659217102C10007A7FC /* FetchThumbnailOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchThumbnailOperation.swift; sourceTree = "<group>"; };
 		D886828221710DD100993190 /* ContactDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
-		D886828421710E2A00993190 /* FetchLargeImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLargeImageOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +94,6 @@
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
 				D82E0659217102C10007A7FC /* FetchThumbnailOperation.swift */,
-				D886828421710E2A00993190 /* FetchLargeImageOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -194,7 +191,6 @@
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				D82E065A217102C10007A7FC /* FetchThumbnailOperation.swift in Sources */,
-				D886828521710E2A00993190 /* FetchLargeImageOperation.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				D82E06522170EF430007A7FC /* Users.swift in Sources */,
 				D886828321710DD100993190 /* ContactDetailViewController.swift in Sources */,
