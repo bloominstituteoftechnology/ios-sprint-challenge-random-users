@@ -12,6 +12,7 @@ class DetailViewController: UIViewController {
     
     // MARK: - Properties
     var user: User?
+    let randomUserFetchQueue = OperationQueue()
     
     // MARK: - Outlets
     
@@ -24,6 +25,22 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let user = user else { return }
+        let largeImageOperation = FetchLargeImageOperation(user: user)
+        
+        let operation = BlockOperation {
+            guard let image = largeImageOperation.largeImage else { return }
+            self.userImageView.image = image
+        }
+        
+        operation.addDependency(largeImageOperation)
+        randomUserFetchQueue.addOperation(largeImageOperation)
+        OperationQueue.main.addOperation(operation)
+        
+        userName.text = user.name
+        userPhone.text = user.phone
+        userEmail.text = user.email
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -32,6 +32,14 @@ class UsersTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        userController.fetchRandomUsers { (users, error) in
+            if error != nil {
+                NSLog("Error fetching users")
+                return
+            }
+            self.users = users
+        }
     }
 
     // MARK: - Table view data source
@@ -42,6 +50,11 @@ class UsersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        let user = users?[indexPath.row]
+        cell.textLabel?.text = user?.name
+        
+        loadImage(for: cell, forItemAt: indexPath)
+        
         cell.prepareForReuse()
         return cell
     }

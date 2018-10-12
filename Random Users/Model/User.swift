@@ -14,13 +14,13 @@ struct User: Decodable {
     
     let name: String
     let phone: String?
-    let email: String?
+    let email: String
     let largeURL: URL?
     let thumbnailURL: URL?
 
     // MARK: - Coding Keys
     
-    enum ResultsKeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case name
         case phone
         case email
@@ -45,22 +45,22 @@ struct User: Decodable {
     
     // MARK: - Decoding
     
-    init(decoder: Decoder) throws {
-        let resultsContainer = try decoder.container(keyedBy: ResultsKeys.self)
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
         
         // Decode name
-        let nameContainer = try resultsContainer.nestedContainer(keyedBy: ResultsKeys.NameKeys.self, forKey: .name)
+        let nameContainer = try container.nestedContainer(keyedBy: CodingKeys.NameKeys.self, forKey: .name)
         let title = try nameContainer.decode(String.self, forKey: .title)
         let first = try nameContainer.decode(String.self, forKey: .first)
         let last = try nameContainer.decode(String.self, forKey: .last)
         let name = "\(title) \(first) \(last)"
         
         // Decode phone. email
-        let phone = try resultsContainer.decode(String.self, forKey: .phone)
-        let email = try resultsContainer.decode(String.self, forKey: .email)
+        let phone = try container.decode(String.self, forKey: .phone)
+        let email = try container.decode(String.self, forKey: .email)
         
         // Decode picture
-        let pictureContainer = try resultsContainer.nestedContainer(keyedBy: ResultsKeys.PictureKeys.self, forKey: .picture)
+        let pictureContainer = try container.nestedContainer(keyedBy: CodingKeys.PictureKeys.self, forKey: .picture)
         let largeURL = try pictureContainer.decode(URL.self, forKey: .large)
         let thumbnailURL = try pictureContainer.decode(URL.self, forKey: .thumbnail)
         
@@ -77,4 +77,8 @@ struct User: Decodable {
 
 struct Results: Decodable {
     var results: [User]
+    
+    enum CodingKeys: String, CodingKey {
+        case results
+    }
 }

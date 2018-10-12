@@ -46,6 +46,8 @@ class FetchThumbnailImageOperation: ConcurrentOperation {
             
             self.thumbnailImage = UIImage(data: data)
         })
+        
+        task.resume()
     }
     
     // MARK: - Cancel
