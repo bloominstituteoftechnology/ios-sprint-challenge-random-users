@@ -79,8 +79,6 @@ class RandomUsersTableViewController: UITableViewController {
                     //cell.prepareForReuse()
                     cell.textLabel!.text = "\(user.firstName) \(user.lastName)"
                     cell.imageView!.image = image
-                } else {
-                    cell.prepareForReuse()
                 }
             }
         }
