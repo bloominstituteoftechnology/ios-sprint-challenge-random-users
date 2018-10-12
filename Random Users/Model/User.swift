@@ -23,6 +23,7 @@ struct User: Decodable {
         }
         
         enum PictureCodingKeys: String, CodingKey {
+            case large
             case thumbnail
         }
     }
@@ -43,19 +44,24 @@ struct User: Decodable {
         
         let pictureContainer = try container.nestedContainer(keyedBy: CodingKeys.PictureCodingKeys.self, forKey: .picture)
         
-        let pictureString = try pictureContainer.decode(String.self, forKey: .thumbnail)
-        let pictureURL = URL(string: pictureString)!
+        let thumbnailString = try pictureContainer.decode(String.self, forKey: .thumbnail)
+        let thumbnailURL = URL(string: thumbnailString)!
+        
+        let fullSizeString = try pictureContainer.decode(String.self, forKey: .large)
+        let fullSizeURL = URL(string: fullSizeString)!
         
         self.email = email
         self.phone = phone
         self.name = fullName
-        self.pictureURL = pictureURL
+        self.thumbnailURL = thumbnailURL
+        self.fullSizeURL = fullSizeURL
     }
     
     let name: String
     let email: String
     let phone: String
-    let pictureURL: URL
+    let thumbnailURL: URL
+    let fullSizeURL: URL
     
 }
 
