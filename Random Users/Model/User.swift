@@ -50,9 +50,9 @@ struct User: Decodable {
         
         // Decode name
         let nameContainer = try container.nestedContainer(keyedBy: CodingKeys.NameKeys.self, forKey: .name)
-        let title = try nameContainer.decode(String.self, forKey: .title)
-        let first = try nameContainer.decode(String.self, forKey: .first)
-        let last = try nameContainer.decode(String.self, forKey: .last)
+        let title = try nameContainer.decode(String.self, forKey: .title).capitalized
+        let first = try nameContainer.decode(String.self, forKey: .first).capitalized
+        let last = try nameContainer.decode(String.self, forKey: .last).capitalized
         let name = "\(title) \(first) \(last)"
         
         // Decode phone. email

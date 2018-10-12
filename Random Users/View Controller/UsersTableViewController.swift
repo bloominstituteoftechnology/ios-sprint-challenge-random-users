@@ -52,14 +52,28 @@ class UsersTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? UserTableViewCell else { return UITableViewCell()}
         
         let user = users?[indexPath.row]
-        cell.textLabel?.text = user?.name
+        cell.userName.text = user?.name
         
         loadImage(for: cell, forItemAt: indexPath)
         
-        cell.prepareForReuse()
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let user = users?[indexPath.row],
+        let phone = user.phone else { return}
+        
+        activeOperations[phone]?[.thumbnail]?.cancel()
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return UITableViewAutomaticDimension
+        } else {
+            return 140
+        }
+    }
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
