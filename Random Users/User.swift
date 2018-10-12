@@ -38,6 +38,31 @@ struct User: Decodable {
         
     }
     
+//    mutating func setImageData(imageURL: URL, completion: @escaping (Data?, Error?) -> Void) {
+//        URLSession.shared.dataTask(with: imageURL) { (data, _, error) in
+//            if let error = error {
+//                NSLog("Error getting Image \(error)")
+//                completion(nil, error)
+//                return
+//            }
+//
+//            guard let data =  data else {
+//                NSLog("Error returning data \(error)")
+//                completion(nil, nil)
+//                return
+//            }
+//
+//            do {
+//                completion(data, nil)
+//            } catch {
+//                NSLog("Error decoding random users JSON \(error)")
+//                completion(nil, error)
+//                return
+//            }
+//
+//        }.resume()
+//    }
+    
      init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
@@ -57,6 +82,15 @@ struct User: Decodable {
         
         let thumbnailImageUrl = try imageContainer.decode(String.self, forKey: .thumbnail)
         
+//        setImageData(imageURL: URL(string: largeImageUrl)!) { (data, _) in
+//            guard let data = data else { return }
+//            self.largeImageData = data
+//        }
+//
+//        setImageData(imageURL: URL(string: thumbnailImageUrl)!) { (data, _) in
+//            self.thumbnailImageData = data
+//        }
+        
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
@@ -72,5 +106,7 @@ struct User: Decodable {
     var phoneNumber: String
     var largeImageUrl: URL
     var thumbnailImageUrl: URL
+//    var largeImageData: Data
+//    var thumbnailImageData: Data
     
 }
