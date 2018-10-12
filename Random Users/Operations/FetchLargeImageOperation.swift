@@ -29,18 +29,18 @@ class FetchLargeImageOperation: ConcurrentOperation {
     override func start() {
         state = .isExecuting
         
-        guard let url = user.largeURL else { return }
+        guard let largeImageURL = user.largeURL else { return }
         
-        task = URLSession.shared.dataTask(with: url, completionHandler: { (data, _, error) in
+        task = URLSession.shared.dataTask(with: largeImageURL, completionHandler: { (data, _, error) in
             defer { self.state = .isFinished }
             
             if error != nil {
-                NSLog("Error loading image")
+                NSLog("Error loading large images: \(error)")
                 return
             }
             
             guard let data = data else {
-                NSLog("No image data returned")
+                NSLog("No large image data returned")
                 return
             }
             
