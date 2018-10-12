@@ -17,6 +17,7 @@
 		EB2224072170F8C00000501A /* RandomUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2224062170F8C00000501A /* RandomUserViewController.swift */; };
 		EB2224092170FA920000501A /* RandomUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2224082170FA920000501A /* RandomUser.swift */; };
 		EB22240B2170FE3D0000501A /* RandomUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22240A2170FE3D0000501A /* RandomUserController.swift */; };
+		EB22240D217104550000501A /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22240C217104550000501A /* Cache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		EB2224062170F8C00000501A /* RandomUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RandomUserViewController.swift; path = "Random Users/View Controller/RandomUserViewController.swift"; sourceTree = SOURCE_ROOT; };
 		EB2224082170FA920000501A /* RandomUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUser.swift; sourceTree = "<group>"; };
 		EB22240A2170FE3D0000501A /* RandomUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserController.swift; sourceTree = "<group>"; };
+		EB22240C217104550000501A /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				EB22240C217104550000501A /* Cache.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				EB2224072170F8C00000501A /* RandomUserViewController.swift in Sources */,
+				EB22240D217104550000501A /* Cache.swift in Sources */,
 				EB2224032170F84B0000501A /* RandomUserTableViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				EB2224052170F88B0000501A /* RandomUserTableViewCell.swift in Sources */,
