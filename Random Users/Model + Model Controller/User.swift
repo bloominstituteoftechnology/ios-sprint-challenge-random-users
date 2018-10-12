@@ -8,14 +8,13 @@
 
 import Foundation
 
-struct Users {
+struct Users: Codable {
     let results: [User]
 }
 
 struct User: Codable {
     let gender: String
     let name: UserName
-    let location: UserLocation
     let email: String
     let dob: UserBirthday
     let phone: String
@@ -27,47 +26,26 @@ struct User: Codable {
         let first: String
         let last: String
         
-        init(title: String, first: String, last: String) {
-            self.title = title.capitalized.appending(".")
-            self.first = first.capitalized
-            self.last = last.capitalized
-        }
-    }
-    
-    struct UserLocation: Codable {
-        let street: String
-        let city: String
-        let state: String
-        let postcode: String
-        
-        init(street: String, city: String, state: String, postcode: String) {
-            self.street = street.capitalized
-            self.city = city.capitalized
-            self.state = state.capitalized
-            self.postcode = postcode
+        var formatted: (String, String, String) {
+            get { return (title: title.appending(".").capitalized, first: first.capitalized, last: last.capitalized) }
         }
     }
     
     struct UserBirthday: Codable {
         let date: String
         
-        init(date: String) {
+        var formatted: String {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
             dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-            let date = dateFormatter.date(from: date)!
+            let date = dateFormatter.date(from: self.date)!
             dateFormatter.dateStyle = .medium
             dateFormatter.timeStyle = .none
-            self.date = dateFormatter.string(from: date)
+            return dateFormatter.string(from: date)
         }
     }
     
     struct UserPicture: Codable {
         let thumbnail: String
-        
-        init(thumbnail: String) {
-            self.thumbnail = thumbnail
-        }
     }
-
 }
