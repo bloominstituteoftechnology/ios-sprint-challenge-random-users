@@ -10,6 +10,9 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    // MARK: - Properties
+    var user: User?
+    
     // MARK: - Outlets
     
     @IBOutlet weak var userImageView: UIImageView!

@@ -13,8 +13,8 @@ struct User: Decodable {
     // MARK: - Properties
     
     let name: String
-    let phone: String
-    let email: String
+    let phone: String?
+    let email: String?
     let largeURL: URL?
     let thumbnailURL: URL?
 
@@ -36,6 +36,11 @@ struct User: Decodable {
             case large
             case thumbnail
         }
+    }
+    
+    enum Pictures {
+        case large
+        case thumbnail
     }
     
     // MARK: - Decoding

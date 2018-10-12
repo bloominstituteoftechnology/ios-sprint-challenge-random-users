@@ -35,7 +35,7 @@ class FetchThumbnailImageOperation: ConcurrentOperation {
             defer { self.state = .isFinished}
             
             if error != nil {
-                NSLog("Error loading thumbnail images: \(error)")
+                NSLog("Error loading thumbnail images")
                 return
             }
             

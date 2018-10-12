@@ -35,7 +35,7 @@ class FetchLargeImageOperation: ConcurrentOperation {
             defer { self.state = .isFinished }
             
             if error != nil {
-                NSLog("Error loading large images: \(error)")
+                NSLog("Error loading large images")
                 return
             }
             
