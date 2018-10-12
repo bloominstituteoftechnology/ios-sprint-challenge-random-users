@@ -13,6 +13,7 @@ class ContactTableViewController: UITableViewController {
     let contactController = ContactController()
     private let fetchImageQueue = OperationQueue()
     private let cache = Cache<String, Data>()
+    private var fetchOperations: [String: FetchImageOperation] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,16 @@ class ContactTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let contact = contactController.contacts[indexPath.row]
+        
+        if let fetchImageOperation = fetchOperations[contact.id] {
+            fetchImageOperation.cancel()
+            fetchOperations.removeValue(forKey: contact.id)
+        }
+    }
+    
+    // MARK: - Utility Methods
     private func loadImage(for cell: UITableViewCell, at indexPath: IndexPath) {
         let contact = contactController.contacts[indexPath.row]
         
@@ -66,6 +77,8 @@ class ContactTableViewController: UITableViewController {
         
         cacheImageOperation.addDependency(thumbnailFetchOperation)
         updateUIOperation.addDependency(thumbnailFetchOperation)
+        
+        fetchOperations[contact.id] = thumbnailFetchOperation
         
         fetchImageQueue.addOperation(thumbnailFetchOperation)
         fetchImageQueue.addOperation(cacheImageOperation)
