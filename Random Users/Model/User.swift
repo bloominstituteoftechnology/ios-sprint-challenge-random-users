@@ -64,8 +64,4 @@ struct User: Decodable {
 
 struct Results: Decodable {
     var results: [User]
-    
-    enum ResultsKeys: String, CodingKey {
-        case results
-    }
 }
