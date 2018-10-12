@@ -41,7 +41,6 @@ class RandomUsersTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "User", for: indexPath)
         let user = userController.users[indexPath.row]
         loadImage(forCell: cell, forItemAt: indexPath)
-        cell.textLabel?.text = "\(user.firstName) \(user.lastName)"
         cell.prepareForReuse()
         return cell
     }
@@ -76,6 +75,8 @@ class RandomUsersTableViewController: UITableViewController {
                 if self.tableView.indexPath(for: cell) == indexPath {
                     let image = UIImage(data: imageData)
                     cell.imageView?.image = image
+                    cell.textLabel?.text = "\(user.firstName) \(user.lastName)"
+                    //self.tableView.reloadData()
                 }
             }
         }
