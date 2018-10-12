@@ -56,14 +56,14 @@ struct Users: Decodable {
             let title = try nameContainer.decode(String.self, forKey: .title)
             let firstName = try nameContainer.decode(String.self, forKey: .first)
             let lastName = try nameContainer.decode(String.self, forKey: .last)
-            let name = "\(title) \(firstName) \(lastName)"
+            let name = "\(title). \(firstName) \(lastName)"
             
             let pictureContainer = try userContainer.nestedContainer(keyedBy: PictureCodingKeys.self, forKey: .picture)
             
             let largeURL = try pictureContainer.decode(String.self, forKey: .large)
             let thumbnailURL = try pictureContainer.decode(String.self, forKey: .thumbnail)
             
-            let user = User(name: name, phone: phone, email: email, imageThumbnailURL: URL(string: largeURL)!, imageLargeURL: URL(string: thumbnailURL)!)
+            let user = User(name: name.capitalized, phone: phone, email: email, imageThumbnailURL: URL(string: largeURL)!, imageLargeURL: URL(string: thumbnailURL)!)
             
             users.append(user)
             
