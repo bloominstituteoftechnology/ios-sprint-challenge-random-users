@@ -41,7 +41,6 @@ class RandomUsersTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "User", for: indexPath)
         //let user = userController.users[indexPath.row]
         loadImage(forCell: cell, forItemAt: indexPath)
-        //cell.prepareForReuse()
         return cell
     }
     
@@ -49,6 +48,7 @@ class RandomUsersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let fetchImageOperation = operations[userController.users[indexPath.item].phoneNumber] else { return }
         fetchImageOperation.cancel()
+        print("Cancelling fetch")
     }
     
     private func loadImage(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) {
@@ -72,8 +72,10 @@ class RandomUsersTableViewController: UITableViewController {
             DispatchQueue.main.async {
                 guard let imageData = fetchImageOperation.imageData else { return }
                 print("Image is fetched")
-                if self.tableView.indexPath(for: cell) == indexPath {
+                guard let rowsOnScreen = self.tableView.indexPathsForVisibleRows else { return }
+                if rowsOnScreen.contains(indexPath) {
                     let image = UIImage(data: imageData)
+                    //cell.prepareForReuse()
                     cell.textLabel?.text = "\(user.firstName) \(user.lastName)"
                     cell.imageView?.image = image
                     //self.tableView.reloadData()
@@ -87,7 +89,9 @@ class RandomUsersTableViewController: UITableViewController {
         operations[user.phoneNumber] = fetchImageOperation
         
         
-        imageFetchQueue.addOperations([fetchImageOperation, cacheOperation], waitUntilFinished: false)
+        //imageFetchQueue.addOperations([fetchImageOperation, cacheOperation], waitUntilFinished: false)
+        imageFetchQueue.addOperation(fetchImageOperation)
+        imageFetchQueue.addOperation(cacheOperation)
         OperationQueue.main.addOperation(setImageAndUpdateUIOperation)
         
     }
