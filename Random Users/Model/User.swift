@@ -12,14 +12,14 @@ struct User: Decodable {
     
     var firstName: String = "First Name"
     var lastName: String = "Last Name"
-    var largePicURL: [URL]
-    var thumbPicURL: [URL]
+    var largePic: String
+    var thumbPic: String
     
-    init(firstName: String, lastName: String, largePicURL: [URL], thumbPicURL: [URL]) {
+    init(firstName: String, lastName: String, largePic: String, thumbPic: String) {
         self.firstName = firstName
         self.lastName = lastName
-        self.largePicURL = largePicURL
-        self.thumbPicURL = thumbPicURL
+        self.largePic = largePic
+        self.thumbPic = thumbPic
     }
     
     enum CodingKeys: String, CodingKey {
@@ -63,8 +63,8 @@ struct User: Decodable {
         
         self.firstName = firstName
         self.lastName = lastName
-        self.largePicURL = largePicURL
-        self.thumbPicURL = thumbPicURL
+        self.largePic = largePic
+        self.thumbPic = thumbPic
         
     }
     

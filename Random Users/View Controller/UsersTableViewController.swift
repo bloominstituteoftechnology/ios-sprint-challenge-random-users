@@ -24,13 +24,15 @@ class UsersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return userController.users.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
+        
+        let user = userController.users[indexPath.row]
+        cell.imageView?.image = user.thumbPic // Need to conver to UIImage
+        cell.textLabel?.text = user.firstName
 
         return cell
     }
@@ -49,9 +51,11 @@ class UsersTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "UserToDetail" {
+            guard let detailVC = segue.destination as? DetailViewController else { return }
+            detailVC.userController = userController
+        }
     }
     
-
+    let userController = UserController()
 }
