@@ -16,6 +16,7 @@
 		A190EE382170F478002E2449 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A190EE372170F478002E2449 /* UserController.swift */; };
 		A190EE3A2170FC3D002E2449 /* RandomUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A190EE392170FC3D002E2449 /* RandomUsersTableViewController.swift */; };
 		A190EE3F2170FC9C002E2449 /* RandomUserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A190EE3E2170FC9C002E2449 /* RandomUserDetailViewController.swift */; };
+		A190EE4121710632002E2449 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A190EE4021710632002E2449 /* Cache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		A190EE372170F478002E2449 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		A190EE392170FC3D002E2449 /* RandomUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersTableViewController.swift; sourceTree = "<group>"; };
 		A190EE3E2170FC9C002E2449 /* RandomUserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserDetailViewController.swift; sourceTree = "<group>"; };
+		A190EE4021710632002E2449 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
 				A190EE352170EFC5002E2449 /* User.swift */,
+				A190EE4021710632002E2449 /* Cache.swift */,
 			);
 			path = "Random Users";
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A190EE4121710632002E2449 /* Cache.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				A190EE3A2170FC3D002E2449 /* RandomUsersTableViewController.swift in Sources */,
