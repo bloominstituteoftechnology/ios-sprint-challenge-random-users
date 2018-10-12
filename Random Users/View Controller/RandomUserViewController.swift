@@ -12,9 +12,25 @@ class RandomUserViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        guard let randomUser = randomUser else { return }
+        let largeImageOperation = FetchLargeImageOperation(randomUser: randomUser)
+        let operation = BlockOperation {
+            guard let image = largeImageOperation.largeImage else { return }
+            self.randomImageView.image = image
+        }
+        operation.addDependency(largeImageOperation)
+        
+        randomUserFetchQueue.addOperation(largeImageOperation)
+        OperationQueue.main.addOperation(operation)
+        
+        nameLabel.text = randomUser.name
+        phoneNumberLabel.text = randomUser.phoneNumber
+        emailAddressLabel.text = randomUser.emailAddress
     }
+    
+    var randomUser: RandomUser?
+    let randomUserFetchQueue = OperationQueue()
     
     @IBOutlet weak var randomImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!

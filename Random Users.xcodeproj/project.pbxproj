@@ -70,7 +70,6 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
-				EB2224012170F3800000501A /* Networking */,
 				EB2224002170F3720000501A /* Model Controller */,
 				EB2223FF2170F35A0000501A /* View Controller */,
 				EB2223FE2170F33B0000501A /* Model */,
@@ -127,13 +126,6 @@
 				EB22240A2170FE3D0000501A /* RandomUserController.swift */,
 			);
 			path = "Model Controller";
-			sourceTree = "<group>";
-		};
-		EB2224012170F3800000501A /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
