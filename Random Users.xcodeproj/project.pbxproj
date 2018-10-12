@@ -14,6 +14,7 @@
 		8268B5402171090D00AB7165 /* FetchLargeImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268B53F2171090D00AB7165 /* FetchLargeImageOperation.swift */; };
 		8268B5422171094300AB7165 /* FetchThumbnailImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268B5412171094300AB7165 /* FetchThumbnailImageOperation.swift */; };
 		8268B544217109F200AB7165 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268B543217109F200AB7165 /* UserController.swift */; };
+		8268B5482171240900AB7165 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268B5472171240900AB7165 /* UserTableViewCell.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 		8268B53F2171090D00AB7165 /* FetchLargeImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLargeImageOperation.swift; sourceTree = "<group>"; };
 		8268B5412171094300AB7165 /* FetchThumbnailImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchThumbnailImageOperation.swift; sourceTree = "<group>"; };
 		8268B543217109F200AB7165 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		8268B5472171240900AB7165 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -91,6 +93,14 @@
 			path = "Model Controller";
 			sourceTree = "<group>";
 		};
+		8268B5492171240E00AB7165 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8268B5472171240900AB7165 /* UserTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +122,7 @@
 			children = (
 				8268B53B2170F95300AB7165 /* Model */,
 				8268B545217109F500AB7165 /* Model Controller */,
+				8268B5492171240E00AB7165 /* View */,
 				8268B5352170F48F00AB7165 /* View Controller */,
 				8268B5362170F4A500AB7165 /* Storyboards */,
 				9D5CCA56214231E400224681 /* Operations */,
@@ -216,6 +227,7 @@
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				8268B5402171090D00AB7165 /* FetchLargeImageOperation.swift in Sources */,
+				8268B5482171240900AB7165 /* UserTableViewCell.swift in Sources */,
 				8268B5422171094300AB7165 /* FetchThumbnailImageOperation.swift in Sources */,
 				8268B5342170F48200AB7165 /* UsersTableViewController.swift in Sources */,
 				8268B53A2170F94F00AB7165 /* User.swift in Sources */,
