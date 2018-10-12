@@ -39,13 +39,13 @@ class ContactsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? ContactTableViewCell else {fatalError()}
 
-        // Configure the cell...
-        guard let users = users?.users else {fatalError()}
-        let user = users[indexPath.row]
         
-        cell.textLabel?.text = user.name
+//        guard let users = users?.users else {fatalError()}
+//        let user = users[indexPath.row]
+//
+//        cell.textLabel?.text = user.name
 
         return cell
     }
