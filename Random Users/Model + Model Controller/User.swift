@@ -26,8 +26,13 @@ struct User: Codable {
         let first: String
         let last: String
         
-        var formatted: (String, String, String) {
-            get { return (title: title.appending(".").capitalized, first: first.capitalized, last: last.capitalized) }
+        var formatted: (String, String, String, String) {
+            get {
+                let titleFormatted = title.appending(".").capitalized
+                let firstFormatted = first.capitalized
+                let lastFormatted = last.capitalized
+                let full = firstFormatted + " " + lastFormatted
+                return (title: titleFormatted, first: firstFormatted, last: lastFormatted, full: full) }
         }
     }
     
@@ -47,5 +52,6 @@ struct User: Codable {
     
     struct UserPicture: Codable {
         let thumbnail: String
+        let large: String
     }
 }

@@ -9,9 +9,7 @@
 import Foundation
 
 class UserController {
-    
-    typealias CompletionHandler = (Error?) -> Void
-    
+        
     func getUsersFromAPI(completion: @escaping CompletionHandler = { _ in }) {
         
         var components = URLComponents(url: baseUrl, resolvingAgainstBaseURL: true)
@@ -63,4 +61,6 @@ class UserController {
     
     private(set) var users: [User] = []
     let baseUrl = URL(string: "https://randomuser.me/api/")!
+    
+    typealias CompletionHandler = (Error?) -> Void
 }
