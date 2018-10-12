@@ -1,20 +1,25 @@
 //
-//  FetchPhotoOperation.swift
-//  Astronomy
+//  FetchLargeImageOperation.swift
+//  Random Users
 //
-//  Created by Farhan on 10/11/18.
-//  Copyright © 2018 Lambda School. All rights reserved.
+//  Created by Farhan on 10/12/18.
+//  Copyright © 2018 Erica Sadun. All rights reserved.
 //
 
 import Foundation
 
-class FetchThumbnailOperation: ConcurrentOperation {
+class FetchLargeImageOperation: ConcurrentOperation {
     
-    var thumbnailURL: URL
+    var largeImageURL: URL
     var imageData: Data?
     
     var dataTask: URLSessionDataTask {
-        return URLSession.shared.dataTask(with: thumbnailURL) { (data, _, _) in
+        return URLSession.shared.dataTask(with: largeImageURL) { (data, _, error) in
+            
+            if let error = error {
+                NSLog("Error Initializing DataTask: \(error)")
+                return
+            }
             
             guard let data = data else {
                 NSLog("Data Corrupted")
@@ -29,8 +34,8 @@ class FetchThumbnailOperation: ConcurrentOperation {
         }
     }
     
-    init(thumbnailURL: URL) {
-        self.thumbnailURL = thumbnailURL
+    init(largeImageURL: URL) {
+        self.largeImageURL = largeImageURL
     }
     
     override func start() {
