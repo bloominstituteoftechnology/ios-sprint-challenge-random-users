@@ -12,6 +12,9 @@
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
 		8ED6A9922140178C00FC395A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
+		EB2224032170F84B0000501A /* RandomUserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2224022170F84B0000501A /* RandomUserTableViewController.swift */; };
+		EB2224052170F88B0000501A /* RandomUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2224042170F88B0000501A /* RandomUserTableViewCell.swift */; };
+		EB2224072170F8C00000501A /* RandomUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2224062170F8C00000501A /* RandomUserViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		8ED6A9912140178C00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ED6A9932140178C00FC395A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
+		EB2224022170F84B0000501A /* RandomUserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RandomUserTableViewController.swift; path = "Random Users/View Controller/RandomUserTableViewController.swift"; sourceTree = SOURCE_ROOT; };
+		EB2224042170F88B0000501A /* RandomUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RandomUserTableViewCell.swift; path = "Random Users/View Controller/RandomUserTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
+		EB2224062170F8C00000501A /* RandomUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RandomUserViewController.swift; path = "Random Users/View Controller/RandomUserViewController.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,10 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
+				EB2224012170F3800000501A /* Networking */,
+				EB2224002170F3720000501A /* Model Controller */,
+				EB2223FF2170F35A0000501A /* View Controller */,
+				EB2223FE2170F33B0000501A /* Model */,
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
@@ -78,6 +88,37 @@
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
 			);
 			path = Operations;
+			sourceTree = "<group>";
+		};
+		EB2223FE2170F33B0000501A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EB2223FF2170F35A0000501A /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EB2224042170F88B0000501A /* RandomUserTableViewCell.swift */,
+				EB2224022170F84B0000501A /* RandomUserTableViewController.swift */,
+				EB2224062170F8C00000501A /* RandomUserViewController.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		EB2224002170F3720000501A /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Model Controller";
+			sourceTree = "<group>";
+		};
+		EB2224012170F3800000501A /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,7 +193,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				EB2224072170F8C00000501A /* RandomUserViewController.swift in Sources */,
+				EB2224032170F84B0000501A /* RandomUserTableViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				EB2224052170F88B0000501A /* RandomUserTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,7 +341,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Random Users/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -315,7 +359,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Random Users/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
