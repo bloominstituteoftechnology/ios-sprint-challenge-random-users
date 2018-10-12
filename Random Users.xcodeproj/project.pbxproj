@@ -12,6 +12,8 @@
 		34303DB12170F2E900019F5C /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34303DB02170F2E900019F5C /* Contact.swift */; };
 		34303DB42170F6AD00019F5C /* ContactController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34303DB32170F6AD00019F5C /* ContactController.swift */; };
 		34303DB62170F73800019F5C /* NetworkHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34303DB52170F73800019F5C /* NetworkHelpers.swift */; };
+		34303DB92170FCB800019F5C /* FetchImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34303DB82170FCB700019F5C /* FetchImageOperation.swift */; };
+		34303DBB217103E800019F5C /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34303DBA217103E800019F5C /* Cache.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -25,6 +27,8 @@
 		34303DB02170F2E900019F5C /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		34303DB32170F6AD00019F5C /* ContactController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactController.swift; sourceTree = "<group>"; };
 		34303DB52170F73800019F5C /* NetworkHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelpers.swift; sourceTree = "<group>"; };
+		34303DB82170FCB700019F5C /* FetchImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImageOperation.swift; sourceTree = "<group>"; };
+		34303DBA217103E800019F5C /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -58,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				34303DB02170F2E900019F5C /* Contact.swift */,
+				34303DBA217103E800019F5C /* Cache.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -115,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				34303DB82170FCB700019F5C /* FetchImageOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -191,7 +197,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				34303DBB217103E800019F5C /* Cache.swift in Sources */,
 				34303DB62170F73800019F5C /* NetworkHelpers.swift in Sources */,
+				34303DB92170FCB800019F5C /* FetchImageOperation.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				34303DB42170F6AD00019F5C /* ContactController.swift in Sources */,
 				34303DB12170F2E900019F5C /* Contact.swift in Sources */,

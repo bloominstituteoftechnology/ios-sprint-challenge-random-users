@@ -18,7 +18,7 @@ class ContactController {
             return
         }
         let formatQuery = URLQueryItem(name: "format", value: "json")
-        let includeQuery = URLQueryItem(name: "inc", value: "name,email,phone,picture")
+        let includeQuery = URLQueryItem(name: "inc", value: "name,email,login,phone,picture")
         let resultsQuery = URLQueryItem(name: "results", value: "1000")
         
         requestComponents.queryItems = [formatQuery, includeQuery, resultsQuery]

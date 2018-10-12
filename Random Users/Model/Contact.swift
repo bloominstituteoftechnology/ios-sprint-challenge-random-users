@@ -18,6 +18,7 @@ struct Contact: Decodable {
     let phoneNumbers: [String]
     let thumbnailURL: URL?
     let imageURL: URL?
+    let id: String
     
     var name: String {
         return "\(title.capitalized) \(firstName.capitalized) \(lastName.capitalized)"
@@ -30,6 +31,7 @@ struct Contact: Decodable {
         case phone
         case cell
         case picture
+        case login
         
         enum NameCodingKeys: String, CodingKey {
             case title
@@ -40,6 +42,10 @@ struct Contact: Decodable {
         enum PictureCodingKeys: String, CodingKey {
             case large
             case thumbnail
+        }
+        
+        enum LoginCodingKeys: String, CodingKey {
+            case uuid
         }
     }
     
@@ -65,6 +71,9 @@ struct Contact: Decodable {
         let imageURLString = try pictureContainer.decode(String.self, forKey: .large)
         let imageURL = URL(string: imageURLString)
         
+        let loginContainer = try container.nestedContainer(keyedBy: CodingKeys.LoginCodingKeys.self, forKey: .login)
+        let id = try loginContainer.decode(String.self, forKey: .uuid)
+        
         self.title = title
         self.firstName = firstName
         self.lastName = lastName
@@ -72,6 +81,7 @@ struct Contact: Decodable {
         self.phoneNumbers = phoneNumbers
         self.thumbnailURL = thumbnailURL
         self.imageURL = imageURL
+        self.id = id
     }
 }
 

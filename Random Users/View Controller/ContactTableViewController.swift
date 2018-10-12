@@ -11,6 +11,8 @@ import UIKit
 class ContactTableViewController: UITableViewController {
     
     let contactController = ContactController()
+    private let fetchImageQueue = OperationQueue()
+    private let cache = Cache<String, Data>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,8 @@ class ContactTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
         }
+        
+        fetchImageQueue.name = "com.dillonMcelhinney.randomUsers.fetchImageQueue"
     }
 
     // MARK: - Table View Data Source
@@ -32,18 +36,55 @@ class ContactTableViewController: UITableViewController {
         let contact = contactController.contacts[indexPath.row]
         
         cell.textLabel?.text = contact.name
-
+        loadImage(for: cell, at: indexPath)
+        
         return cell
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    private func loadImage(for cell: UITableViewCell, at indexPath: IndexPath) {
+        let contact = contactController.contacts[indexPath.row]
+        
+        if let imageData = cache.value(for: contact.id),
+            tableView.cellForRow(at: indexPath) === cell {
+            cell.imageView?.image = UIImage(data: imageData)
+            return
+        }
+        
+        let thumbnailFetchOperation = FetchImageOperation(contact: contact)
+        let cacheImageOperation = BlockOperation { [weak self] in
+            if let imageData = thumbnailFetchOperation.imageData {
+                self?.cache.cache(value: imageData, for: contact.id)
+            }
+        }
+        let updateUIOperation = BlockOperation { [weak self] in
+            if let imageData = thumbnailFetchOperation.imageData,
+                self?.tableView.cellForRow(at: indexPath) === cell {
+                cell.imageView?.image = UIImage(data: imageData)
+                cell.setNeedsLayout()
+            }
+        }
+        
+        cacheImageOperation.addDependency(thumbnailFetchOperation)
+        updateUIOperation.addDependency(thumbnailFetchOperation)
+        
+        fetchImageQueue.addOperation(thumbnailFetchOperation)
+        fetchImageQueue.addOperation(cacheImageOperation)
+        OperationQueue.main.addOperation(updateUIOperation)
     }
-    */
+
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowContactSegue" {
+            guard let destinationVC = segue.destination as? ContactDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow else { return }
+            let contact = contactController.contacts[indexPath.row]
+            let thumbnailData = cache.value(for: contact.id)
+            
+            destinationVC.contact = contact
+            if let thumbnailData = thumbnailData {
+                destinationVC.tempImage = UIImage(data: thumbnailData)
+            }
+        }
+    }
 
 }
