@@ -20,7 +20,7 @@ class ConcurrentOperation: Operation {
     
     private var _state = State.isReady
     
-    private let stateQueue = DispatchQueue(label: "com.LambdaSchool.RandomUsers.ConcurrentOperation")
+    private let stateQueue = DispatchQueue(label: "com.LambdaSchool.RandomUsers.ConcurrentOperationStateQueue")
     var state: State {
         get {
             var result: State?

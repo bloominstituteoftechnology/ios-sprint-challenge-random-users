@@ -51,7 +51,7 @@ struct User: Codable {
     }
     
     struct UserPicture: Codable {
-        let thumbnail: String
+        let medium: String
         let large: String
     }
 }
