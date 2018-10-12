@@ -86,12 +86,12 @@ class UsersTableViewController: UITableViewController {
     
     // MARK: - Load image
     
-    func loadImage(for cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+    func loadImage(for cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
         guard let user = users?[indexPath.row],
             let phone = user.phone else { return }
         
         if let image = cache.value(forKey: phone) {
-            cell.imageView?.image = image[.thumbnail]
+            cell.userImageView.image = image[.thumbnail]
         } else {
             let thumbnailOperation = FetchThumbnailImageOperation(user: user)
             
@@ -100,18 +100,18 @@ class UsersTableViewController: UITableViewController {
                 self.cache.cache(value: [.thumbnail: image], forKey: phone)
             }
             
-            let nonReusedOperation = BlockOperation {
+            let reusedOperation = BlockOperation {
                 guard let image = thumbnailOperation.thumbnailImage else { return }
                 if indexPath == self.tableView.indexPath(for: cell) {
-                    cell.imageView?.image = image
+                    cell.userImageView.image = image
                 }
             }
             
             storeOperation.addDependency(thumbnailOperation)
-            nonReusedOperation.addDependency(thumbnailOperation)
+            reusedOperation.addDependency(thumbnailOperation)
             
             randomUserFetchQueue.addOperations([thumbnailOperation, storeOperation], waitUntilFinished: false)
-            OperationQueue.main.addOperation(nonReusedOperation)
+            OperationQueue.main.addOperation(reusedOperation)
             activeOperations[phone] = [.thumbnail:thumbnailOperation]
         }
         
