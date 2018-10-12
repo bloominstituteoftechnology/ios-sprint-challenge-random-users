@@ -58,19 +58,25 @@ class UsersTableViewController: UITableViewController {
     
     //Loads image for a given cell.
     private func loadImage(of user: User, for cell: UITableViewCell) {
+        
+        //Checks to see if image data is already cached.
         if let imageData = cache.value(for: user.name) {
+            //If it is, it sets the image for the cell.
             let image = UIImage(data: imageData)
             cell.imageView?.image = image
             return
         }
         
+        //Create fetch photo operations with user.
         let fetchPhotoOp = FetchPhotoOperation(user: user)
         
+        //Creates bloack operation to store image data in cache.
         let storeDataInCacheOp = BlockOperation {
             guard let data = fetchPhotoOp.imageData else { return }
             self.cache.cache(value: data, for: user.name)
         }
         
+        //Updates cell with image from image data.
         let updateCellImageOp = BlockOperation {
             guard let imageData = fetchPhotoOp.imageData else { return }
             let image = UIImage(data: imageData)
@@ -80,31 +86,41 @@ class UsersTableViewController: UITableViewController {
             }
         }
         
+        //Both store and update operations are dependant on the fetch photo operation.
         storeDataInCacheOp.addDependency(fetchPhotoOp)
         updateCellImageOp.addDependency(fetchPhotoOp)
         
+        //Add fetch photo and store data operations on background queue.
         photoFetchQueue.addOperation(fetchPhotoOp)
         photoFetchQueue.addOperation(storeDataInCacheOp)
+       
+        //Add update image operation on main queue.
         OperationQueue.main.addOperation(updateCellImageOp)
         
+        //Add fetch photo operation to array in case you need to cancel it.
         fetchOperations[user.name] = fetchPhotoOp
     }
-     
+    
+    //Adds 1000 random users to the table view.
      @IBAction func addUsers(_ sender: Any) {
+        
+        //Creates another fetch users operation.
         let fetchUsersOp = FetchUsersOperation(url: fetchURL)
         userFetchQueue.addOperation(fetchUsersOp)
         userFetchQueue.waitUntilAllOperationsAreFinished()
-        guard let newUsers = fetchUsersOp.users else { return}
         
+        //Adds new users to existing array of users.
+        guard let newUsers = fetchUsersOp.users else { return}
         users.append(contentsOf: newUsers)
-        print("\(users.count)")
+//        print("\(users.count)")
         
     }
  
     // MARK: - Navigation
 
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        //Pass selected user to the user detail VC.
         if segue.identifier == "ShowUser" {
             guard let destinationVC = segue.destination as? UserDetailViewController,
                 let indexPath = tableView.indexPathForSelectedRow else { return }
@@ -113,7 +129,9 @@ class UsersTableViewController: UITableViewController {
         }
     }
     
-    //Not sure.
+    
+    // MARK: - Properties
+
     var users: [User] = [] {
         didSet {
             DispatchQueue.main.async {

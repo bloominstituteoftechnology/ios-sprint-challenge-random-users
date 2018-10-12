@@ -9,13 +9,18 @@
 import UIKit
 
 class UserDetailViewController: UIViewController {
-
+    
+    // MARK: - Lifecycle Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         updateViews()
     }
     
+    // MARK: - Private Methods
+    
+    //Updates view to display user's info.
     private func updateViews() {
         guard isViewLoaded,
             let user = user else { return }
@@ -27,6 +32,11 @@ class UserDetailViewController: UIViewController {
         emailLabel.text = user.email
         
         let imageURL = user.fullSizeURL
+        loadImage(from: imageURL)
+    }
+    
+    //Performs data task to load image from url.
+    private func loadImage(from imageURL: URL) {
         URLSession.shared.dataTask(with: imageURL) { (data, _, error) in
             if let error = error {
                 NSLog("Error fetching image data: \(error)")
