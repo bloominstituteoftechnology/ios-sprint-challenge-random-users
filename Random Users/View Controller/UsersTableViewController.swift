@@ -13,13 +13,19 @@ class UsersTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        userController.fetchUsers { (_),_  in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
+    }
+    
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -31,7 +37,7 @@ class UsersTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
         
         let user = userController.users[indexPath.row]
-        cell.imageView?.image = user.thumbPic // Need to conver to UIImage
+        loadImage(forCell: cell, forItemAt: indexPath)
         cell.textLabel?.text = user.firstName
 
         return cell
@@ -56,6 +62,20 @@ class UsersTableViewController: UITableViewController {
             detailVC.userController = userController
         }
     }
+    
+    private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
+        
+        let thumbPic = UIImage()
+
+        DispatchQueue.main.async {
+            cell.imageView?.image = thumbPic
+            //cell.imageView?.image = cell.imageView.thumbPic
+        }
+        
+    }
+    
+    // Mark: Properties
+    let user = [User]()
     
     let userController = UserController()
 }
