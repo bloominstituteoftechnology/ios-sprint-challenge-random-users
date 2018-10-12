@@ -17,6 +17,7 @@
 		A190EE3A2170FC3D002E2449 /* RandomUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A190EE392170FC3D002E2449 /* RandomUsersTableViewController.swift */; };
 		A190EE3F2170FC9C002E2449 /* RandomUserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A190EE3E2170FC9C002E2449 /* RandomUserDetailViewController.swift */; };
 		A190EE4121710632002E2449 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A190EE4021710632002E2449 /* Cache.swift */; };
+		A190EE4521710764002E2449 /* FetchImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A190EE4421710764002E2449 /* FetchImageOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		A190EE392170FC3D002E2449 /* RandomUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersTableViewController.swift; sourceTree = "<group>"; };
 		A190EE3E2170FC9C002E2449 /* RandomUserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserDetailViewController.swift; sourceTree = "<group>"; };
 		A190EE4021710632002E2449 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		A190EE4421710764002E2449 /* FetchImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImageOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				A190EE4421710764002E2449 /* FetchImageOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 			files = (
 				A190EE4121710632002E2449 /* Cache.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				A190EE4521710764002E2449 /* FetchImageOperation.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				A190EE3A2170FC3D002E2449 /* RandomUsersTableViewController.swift in Sources */,
 				A190EE382170F478002E2449 /* UserController.swift in Sources */,

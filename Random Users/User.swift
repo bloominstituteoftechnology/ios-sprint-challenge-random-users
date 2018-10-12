@@ -38,27 +38,23 @@ struct User: Decodable {
         
     }
     
-//    mutating func setImageData(imageURL: URL, completion: @escaping (Data?, Error?) -> Void) {
+//    mutating func setImageData(imageURL: URL, completion: @escaping (Error?) -> Void) {
 //        URLSession.shared.dataTask(with: imageURL) { (data, _, error) in
 //            if let error = error {
 //                NSLog("Error getting Image \(error)")
-//                completion(nil, error)
+//                completion( error)
 //                return
 //            }
 //
 //            guard let data =  data else {
 //                NSLog("Error returning data \(error)")
-//                completion(nil, nil)
+//                completion(nil)
 //                return
 //            }
 //
-//            do {
-//                completion(data, nil)
-//            } catch {
-//                NSLog("Error decoding random users JSON \(error)")
-//                completion(nil, error)
-//                return
-//            }
+//                self.largeImageData = data
+//                completion(nil)
+//
 //
 //        }.resume()
 //    }
