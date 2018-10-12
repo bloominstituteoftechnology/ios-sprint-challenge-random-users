@@ -50,12 +50,18 @@ class ContactsTableViewController: UITableViewController {
             self.updateCell(forCell: cell, forItemAt: indexPath)
         }
         
-//        guard let users = users?.users else {fatalError()}
-//        let user = users[indexPath.row]
-//
-//        cell.textLabel?.text = user.name
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        guard let users = users?.users else {return}
+        let user = users[indexPath.row]
+        
+        guard let operation = operations[user.phone] else {return}
+        operation.cancel()
+
     }
     
     // MARK: - Private Methods
@@ -88,8 +94,6 @@ class ContactsTableViewController: UITableViewController {
         OperationQueue.main.addOperation(setOperation)
         
         operations.updateValue(fetchOperation, forKey: user.phone)
-        
-        
         
     }
 
