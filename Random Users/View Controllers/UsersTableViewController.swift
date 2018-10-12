@@ -9,38 +9,54 @@
 import UIKit
 
 class UsersTableViewController: UITableViewController {
+    
+    // MARK: - Lifecycle Methods
+    
+    //Creates a fetch request to fill the table view with users.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let fetchUsersOp = FetchUsersOperation(url: fetchURL)
+        userFetchQueue.addOperation(fetchUsersOp)
+        userFetchQueue.waitUntilAllOperationsAreFinished()
+        
+        //If users returned, sets the users array to just fetched users.
+        guard let users = fetchUsersOp.users else { return}
+        self.users = users
+//        print("\(users.count)")
+    }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return users.count
     }
 
-
+    //Sets up cells for reuse with content from model object.
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
-        
+        //Sets up cell with user's name and thumbnail image
         let user = users[indexPath.row]
-        
         loadImage(of: user, for: cell)
-        
         cell.textLabel?.text = user.name
         
-        print("Updating cell at \(indexPath)")
-
+//        print("Updating cell at \(indexPath)")
         return cell
     }
     
+    //Cancels fetch operation for cells out of view.
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let user = users[indexPath.row]
+        //If fetch operation exists, it cancels it.
         if let fetchOperation = fetchOperations[user.name] {
             fetchOperation.cancel()
             print("Canceling operation at \(indexPath)")
         }
     }
   
-
+    // MARK: - Private Methods
+    
+    //Loads image for a given cell.
     private func loadImage(of user: User, for cell: UITableViewCell) {
         if let imageData = cache.value(for: user.name) {
             let image = UIImage(data: imageData)
@@ -78,8 +94,11 @@ class UsersTableViewController: UITableViewController {
         let fetchUsersOp = FetchUsersOperation(url: fetchURL)
         userFetchQueue.addOperation(fetchUsersOp)
         userFetchQueue.waitUntilAllOperationsAreFinished()
-        guard let users = fetchUsersOp.users else { return}
-        self.users = users
+        guard let newUsers = fetchUsersOp.users else { return}
+        
+        users.append(contentsOf: newUsers)
+        print("\(users.count)")
+        
     }
  
     // MARK: - Navigation
@@ -109,5 +128,4 @@ class UsersTableViewController: UITableViewController {
     
     private var userFetchQueue = OperationQueue()
     let fetchURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
-
 }
