@@ -48,7 +48,6 @@ class RandomUsersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let fetchImageOperation = operations[userController.users[indexPath.item].phoneNumber] else { return }
         fetchImageOperation.cancel()
-        print("Cancelling fetch or being used from Cache")
     }
     
     private func loadImage(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) {
