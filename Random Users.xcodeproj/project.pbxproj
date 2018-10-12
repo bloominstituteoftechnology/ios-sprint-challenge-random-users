@@ -15,6 +15,7 @@
 		D82E06502170EF430007A7FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D82E064C2170EF430007A7FC /* Main.storyboard */; };
 		D82E06512170EF430007A7FC /* UsersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E064D2170EF430007A7FC /* UsersController.swift */; };
 		D82E06522170EF430007A7FC /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E064E2170EF430007A7FC /* Users.swift */; };
+		D82E06562170F1BC0007A7FC /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E06552170F1BB0007A7FC /* Cache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		D82E064C2170EF430007A7FC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D82E064D2170EF430007A7FC /* UsersController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersController.swift; sourceTree = "<group>"; };
 		D82E064E2170EF430007A7FC /* Users.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		D82E06552170F1BB0007A7FC /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 		9D5CCA522142305600224681 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D82E06552170F1BB0007A7FC /* Cache.swift */,
 				D82E064C2170EF430007A7FC /* Main.storyboard */,
 				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
 				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
@@ -137,6 +140,7 @@
 				TargetAttributes = {
 					8ED6A9832140178A00FC395A = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -180,6 +184,7 @@
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				D82E06522170EF430007A7FC /* Users.swift in Sources */,
 				D82E06512170EF430007A7FC /* UsersController.swift in Sources */,
+				D82E06562170F1BC0007A7FC /* Cache.swift in Sources */,
 				D82E064F2170EF430007A7FC /* ContactsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,7 +330,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LambdaSchool.RandomUsers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -343,7 +348,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LambdaSchool.RandomUsers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
