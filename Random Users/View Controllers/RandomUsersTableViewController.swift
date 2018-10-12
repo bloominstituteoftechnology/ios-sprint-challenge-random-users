@@ -74,8 +74,8 @@ class RandomUsersTableViewController: UITableViewController {
                 print("Image is fetched")
                 if self.tableView.indexPath(for: cell) == indexPath {
                     let image = UIImage(data: imageData)
-                    cell.imageView?.image = image
                     cell.textLabel?.text = "\(user.firstName) \(user.lastName)"
+                    cell.imageView?.image = image
                     //self.tableView.reloadData()
                 }
             }
