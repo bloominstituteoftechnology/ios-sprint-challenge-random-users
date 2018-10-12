@@ -16,6 +16,16 @@ class RandomUserDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    func loadImage() {
+        guard let user = user else { return }
+        if let imageData = cache?.value(for: user.email ) {
+            print("Large Image Used From Cache")
+            self.userImageView.image = UIImage(data: imageData)
+        } else {
+            loadRandomUserImage()
+        }
+    }
+    
     func loadRandomUserImage(completion: @escaping (Error?) -> Void = { _ in }) {
         guard let user = user else { return }
         URLSession.shared.dataTask(with: user.largeImageUrl) { (data, _, error) in
@@ -38,8 +48,9 @@ class RandomUserDetailViewController: UIViewController {
     }
     
     func updateViews() {
+
         guard let user = user else { return }
-        loadRandomUserImage()
+        loadImage()
         nameLabel.text = "\(user.firstName) \(user.lastName)"
         phoneLabel.text = user.phoneNumber
         emailLabel.text = user.email
@@ -53,6 +64,7 @@ class RandomUserDetailViewController: UIViewController {
         }
     }
     
+    var cache: Cache<String, Data>?
     
     
     @IBOutlet weak var nameLabel: UILabel!

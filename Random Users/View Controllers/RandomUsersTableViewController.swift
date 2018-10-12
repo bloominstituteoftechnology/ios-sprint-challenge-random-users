@@ -48,6 +48,7 @@ class RandomUsersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let fetchImageOperation = operations[userController.users[indexPath.item].phoneNumber] else { return }
         fetchImageOperation.cancel()
+        operations.removeValue(forKey: userController.users[indexPath.item].phoneNumber)
     }
     
     private func loadImage(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) {
@@ -60,11 +61,19 @@ class RandomUsersTableViewController: UITableViewController {
             return
         }
         
-        let fetchImageOperation = FetchImageOperation(user: user)
+        let fetchImageOperation = FetchImageOperation(imageUrl: user.thumbnailImageUrl)
+        
+        let fetchLargeImageOperation = FetchImageOperation(imageUrl: user.largeImageUrl)
         
         let cacheOperation = BlockOperation {
-            guard let imageData = fetchImageOperation.imageData else { return }
-            self.cache.cache(value: imageData, for: user.phoneNumber)
+            guard let thumbnailImageData = fetchImageOperation.imageData else { return }
+            self.cache.cache(value: thumbnailImageData, for: user.phoneNumber)
+
+        }
+        
+        let largeImageCacheOperation = BlockOperation {
+            guard let largeImageData = fetchLargeImageOperation.imageData else {print("Didn't work"); return }
+            self.cache.cache(value: largeImageData, for: user.email)
         }
         
         let setImageAndUpdateUIOperation = BlockOperation {
@@ -75,7 +84,6 @@ class RandomUsersTableViewController: UITableViewController {
                 guard let rowsOnScreen = self.tableView.indexPathsForVisibleRows else { return }
                 if rowsOnScreen.contains(indexPath) {
                     let image = UIImage(data: imageData)
-                    //cell.prepareForReuse()
                     cell.textLabel!.text = "\(user.firstName) \(user.lastName)"
                     cell.imageView!.image = image
                 }
@@ -83,14 +91,17 @@ class RandomUsersTableViewController: UITableViewController {
         }
         
         cacheOperation.addDependency(fetchImageOperation)
+        largeImageCacheOperation.addDependency(fetchLargeImageOperation)
         setImageAndUpdateUIOperation.addDependency(fetchImageOperation)
-        
+        setImageAndUpdateUIOperation.addDependency(fetchLargeImageOperation)
         operations[user.phoneNumber] = fetchImageOperation
         
         
         //imageFetchQueue.addOperations([fetchImageOperation, cacheOperation], waitUntilFinished: false)
         imageFetchQueue.addOperation(fetchImageOperation)
+        imageFetchQueue.addOperation(fetchLargeImageOperation)
         imageFetchQueue.addOperation(cacheOperation)
+        imageFetchQueue.addOperation(largeImageCacheOperation)
         OperationQueue.main.addOperation(setImageAndUpdateUIOperation)
         
     }
@@ -108,6 +119,7 @@ class RandomUsersTableViewController: UITableViewController {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             let user = userController.users[indexPath.row]
             destVC.user = user
+            destVC.cache = cache
         }
     }
     

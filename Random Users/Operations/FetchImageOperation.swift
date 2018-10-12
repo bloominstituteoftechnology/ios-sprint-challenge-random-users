@@ -10,17 +10,16 @@ import Foundation
 
 
 class FetchImageOperation: ConcurrentOperation {
-    var user: User
+    var imageUrl: URL
     var task: URLSessionDataTask = URLSessionDataTask()
     var imageData: Data?
     
-    init(user: User) {
-        self.user = user
+    init(imageUrl: URL) {
+        self.imageUrl = imageUrl
     }
     
     override func start() {
         state = .isExecuting
-        let imageUrl = user.thumbnailImageUrl 
         task = URLSession.shared.dataTask(with: imageUrl) { (data, _, error) in
             defer { self.state = .isFinished }
             if let error = error {
