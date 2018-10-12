@@ -10,39 +10,104 @@ import UIKit
 
 class UsersTableViewController: UITableViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return users.count
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
+        
+        let user = users[indexPath.row]
+        
+        loadImage(of: user, for: cell)
+        
+        cell.textLabel?.text = user.name
+        
+        print("Updating cell at \(indexPath)")
 
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let user = users[indexPath.row]
+        if let fetchOperation = fetchOperations[user.name] {
+            fetchOperation.cancel()
+            print("Canceling operation at \(indexPath)")
+        }
+    }
   
 
-     
+    private func loadImage(of user: User, for cell: UITableViewCell) {
+        if let imageData = cache.value(for: user.name) {
+            let image = UIImage(data: imageData)
+            cell.imageView?.image = image
+            return
+        }
+        
+        let fetchPhotoOp = FetchPhotoOperation(user: user)
+        
+        let storeDataInCacheOp = BlockOperation {
+            guard let data = fetchPhotoOp.imageData else { return }
+            self.cache.cache(value: data, for: user.name)
+        }
+        
+        let updateCellImageOp = BlockOperation {
+            guard let imageData = fetchPhotoOp.imageData else { return }
+            let image = UIImage(data: imageData)
+            if self.tableView.visibleCells.contains(cell) {
+                cell.imageView?.image = image
+                self.tableView.reloadData()
+            }
+        }
+        
+        storeDataInCacheOp.addDependency(fetchPhotoOp)
+        updateCellImageOp.addDependency(fetchPhotoOp)
+        
+        photoFetchQueue.addOperation(fetchPhotoOp)
+        photoFetchQueue.addOperation(storeDataInCacheOp)
+        OperationQueue.main.addOperation(updateCellImageOp)
+        
+        fetchOperations[user.name] = fetchPhotoOp
+    }
      
      @IBAction func addUsers(_ sender: Any) {
-     }
+        let fetchUsersOp = FetchUsersOperation(url: fetchURL)
+        userFetchQueue.addOperation(fetchUsersOp)
+        userFetchQueue.waitUntilAllOperationsAreFinished()
+        guard let users = fetchUsersOp.users else { return}
+        self.users = users
+    }
  
     // MARK: - Navigation
 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ShowUser" {
+            guard let destinationVC = segue.destination as? UserDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow else { return }
+            let user = users[indexPath.row]
+            destinationVC.user = user
+        }
     }
+    
+    //Not sure.
+    var users: [User] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    var fetchOperations: [String: FetchPhotoOperation] = [:]
+    private var photoFetchQueue = OperationQueue()
+    private var cache = Cache<String, Data>()
+    
+    private var userFetchQueue = OperationQueue()
+    let fetchURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
 
 }

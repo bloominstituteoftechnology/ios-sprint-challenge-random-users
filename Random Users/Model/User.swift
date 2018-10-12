@@ -40,7 +40,7 @@ struct User: Decodable {
         let first = try nameContainer.decode(String.self, forKey: .first)
         let last = try nameContainer.decode(String.self, forKey: .last)
         
-        let fullName = "\(title) \(first) \(last)"
+        let fullName = "\(title.capitalized) \(first.capitalized) \(last.capitalized)"
         
         let pictureContainer = try container.nestedContainer(keyedBy: CodingKeys.PictureCodingKeys.self, forKey: .picture)
         
@@ -65,6 +65,6 @@ struct User: Decodable {
     
 }
 
-struct results: Decodable {
+struct Results: Decodable {
     let results: [User]
 }
