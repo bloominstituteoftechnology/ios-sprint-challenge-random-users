@@ -48,7 +48,7 @@ class RandomUsersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let fetchImageOperation = operations[userController.users[indexPath.item].phoneNumber] else { return }
         fetchImageOperation.cancel()
-        print("Cancelling fetch")
+        print("Cancelling fetch or being used from Cache")
     }
     
     private func loadImage(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) {
@@ -56,6 +56,7 @@ class RandomUsersTableViewController: UITableViewController {
         
         if let image = cache.value(for: user.phoneNumber) {
             cell.imageView?.image = UIImage(data: image)
+            cell.textLabel?.text = "\(user.firstName) \(user.lastName)"
             print("Image used from cached")
             return
         }
@@ -76,9 +77,10 @@ class RandomUsersTableViewController: UITableViewController {
                 if rowsOnScreen.contains(indexPath) {
                     let image = UIImage(data: imageData)
                     //cell.prepareForReuse()
-                    cell.textLabel?.text = "\(user.firstName) \(user.lastName)"
-                    cell.imageView?.image = image
-                    //self.tableView.reloadData()
+                    cell.textLabel!.text = "\(user.firstName) \(user.lastName)"
+                    cell.imageView!.image = image
+                } else {
+                    cell.prepareForReuse()
                 }
             }
         }
