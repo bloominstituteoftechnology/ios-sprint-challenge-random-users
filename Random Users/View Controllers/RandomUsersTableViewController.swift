@@ -48,7 +48,6 @@ class RandomUsersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let fetchImageOperation = operations[userController.users[indexPath.item].phoneNumber] else { return }
         fetchImageOperation.cancel()
-        operations.removeValue(forKey: userController.users[indexPath.item].phoneNumber)
     }
     
     private func loadImage(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) {
@@ -84,8 +83,8 @@ class RandomUsersTableViewController: UITableViewController {
                 guard let rowsOnScreen = self.tableView.indexPathsForVisibleRows else { return }
                 if rowsOnScreen.contains(indexPath) {
                     let image = UIImage(data: imageData)
-                    cell.textLabel!.text = "\(user.firstName) \(user.lastName)"
-                    cell.imageView!.image = image
+                    cell.textLabel?.text = "\(user.firstName) \(user.lastName)"
+                    cell.imageView?.image = image
                 }
             }
         }
@@ -118,8 +117,8 @@ class RandomUsersTableViewController: UITableViewController {
             guard let destVC = segue.destination as? RandomUserDetailViewController else { return }
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             let user = userController.users[indexPath.row]
-            destVC.user = user
             destVC.cache = cache
+            destVC.user = user
         }
     }
     
