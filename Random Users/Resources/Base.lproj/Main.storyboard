@@ -53,6 +53,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="imageView" destination="EWn-Nz-FRc" id="5ha-Zx-ai8"/>
+                                    <outlet property="nameLabel" destination="6yw-Ro-8kz" id="mIe-gv-A1g"/>
                                     <segue destination="ojm-2h-dwk" kind="show" id="cKh-ro-QdS"/>
                                 </connections>
                             </tableViewCell>
@@ -63,7 +65,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Random Users" id="N8B-Tw-e8Y">
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="a2U-hH-zBj"/>
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="a2U-hH-zBj">
+                            <connections>
+                                <action selector="loadData:" destination="2OU-za-p3Z" id="LKU-ke-uEp"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sqm-Gz-ghO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -120,6 +126,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rvK-hs-eQ8"/>
                     </view>
+                    <connections>
+                        <outlet property="emailLabel" destination="Sa5-4B-SHw" id="ywu-58-5Oq"/>
+                        <outlet property="nameLabel" destination="tA7-3a-cS3" id="kag-Mt-RA2"/>
+                        <outlet property="phoneLabel" destination="tJZ-we-RFw" id="cOa-Nl-Sd7"/>
+                        <outlet property="userImageView" destination="gP5-pM-47o" id="qFa-E2-8cf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TAM-S7-hGV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
