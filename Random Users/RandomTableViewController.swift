@@ -48,15 +48,15 @@ class RandomTableViewController: UITableViewController {
     private func loadingImages(forCell cell: RandomTableViewCell, forItemAt indexPath: IndexPath) {
         
         guard let randomUser = randomUsers?[indexPath.row],
-            let phoneNumber = randomUser.phone else { return }
+            let phone = randomUser.phone else { return }
         
-        if let image = cache.value(for: phoneNumber) {
+        if let image = cache.value(for: phone) {
             cell.userImage.image = image[.thumbnail]
         } else {
             let thumbnailOperation = FetchingThumbnails(randomUsers: randomUser)
             let storingOperation = BlockOperation {
                 guard let image = thumbnailOperation.thumbail else { return }
-                self.cache.cache(value: [.thumbnail: image], for: phoneNumber)
+                self.cache.cache(value: [.thumbnail: image], for: phone)
             }
             let nonReusedOperation = BlockOperation {
                 guard let image = thumbnailOperation.thumbail else { return }
@@ -70,7 +70,7 @@ class RandomTableViewController: UITableViewController {
             
             userFetch.addOperations([thumbnailOperation, storingOperation], waitUntilFinished: false)
             OperationQueue.main.addOperation(nonReusedOperation)
-            activeOperations[phoneNumber] = [.thumbnail: thumbnailOperation]
+            activeOperations[phone] = [.thumbnail: thumbnailOperation]
         }
     }
     
