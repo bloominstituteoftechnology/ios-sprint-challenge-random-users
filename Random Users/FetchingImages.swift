@@ -37,6 +37,8 @@ class FetchingImages: ConcurrentOperation {
     }
     
     
+    
+    
     override func cancel() {
         task?.cancel()
     }

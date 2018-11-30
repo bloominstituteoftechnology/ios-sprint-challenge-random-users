@@ -9,7 +9,7 @@
 import Foundation
 
 class FetchRandomUsersController {
-    static let url = URL(string: "https:randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
+    static let url = URL(string: "https:randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1050")!
     
     func fetchUsers(completion: @escaping ([RandomUser]?, Error?)-> Void ) {
         URLSession.shared.dataTask(with: FetchRandomUsersController.url) { (data, _, error) in
