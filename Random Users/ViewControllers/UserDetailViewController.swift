@@ -16,7 +16,17 @@ class UserDetailViewController: UIViewController {
         
     }
     
-
+    var user: User? {
+        didSet{
+            updateViews()
+        }
+    }
+    
+    func updateViews() {
+        
+    }
+    
+    
     /*
     // MARK: - Navigation
 
