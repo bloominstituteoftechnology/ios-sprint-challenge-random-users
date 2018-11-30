@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Random Table View Controller-->
         <scene sceneID="7jS-WF-cR3">
             <objects>
-                <tableViewController id="rQK-Mk-lPI" sceneMemberID="viewController">
+                <tableViewController id="rQK-Mk-lPI" customClass="RandomTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZKg-cW-H6V">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -40,7 +40,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="66s-7f-r4g" kind="show" id="0dT-pd-fDu"/>
+                                    <segue destination="66s-7f-r4g" kind="show" identifier="Details" id="0dT-pd-fDu"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -55,10 +55,10 @@
             </objects>
             <point key="canvasLocation" x="816.79999999999995" y="186.65667166416793"/>
         </scene>
-        <!--View Controller-->
+        <!--Random Detail View Controller-->
         <scene sceneID="RWb-En-QFZ">
             <objects>
-                <viewController id="66s-7f-r4g" sceneMemberID="viewController">
+                <viewController id="66s-7f-r4g" customClass="RandomDetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uAr-NF-pcH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -92,6 +92,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="LYw-jN-9xS"/>
                     </view>
+                    <connections>
+                        <outlet property="email" destination="4sY-Vd-95s" id="Ryv-I0-Ub4"/>
+                        <outlet property="imageViewUser" destination="6jC-2r-rgy" id="Bck-7U-SOJ"/>
+                        <outlet property="name" destination="Sjt-mU-Mf9" id="Xol-fe-wpP"/>
+                        <outlet property="phone" destination="XEO-Fm-TEL" id="hrc-in-fyz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ZZ-tq-0m4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
