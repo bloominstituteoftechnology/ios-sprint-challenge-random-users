@@ -47,11 +47,13 @@ class UsersTableViewController: UITableViewController {
     }
 
     
+    let reuseIdentifier = "userCell"
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! UserTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! UserTableViewCell
         
         let user = users?[indexPath.row]
-        cell.nameLabel.text = user?.name
+        cell.nameLabel.text = user?.name.capitalized
         
     
         // need images

@@ -23,7 +23,7 @@ class UserViewController: UIViewController {
         
         guard let user = user else { return }
 
-        nameLabel.text = user.name
+        nameLabel.text = user.name.capitalized
         phoneLabel.text = user.phone
         emailLabel.text = user.email
         
