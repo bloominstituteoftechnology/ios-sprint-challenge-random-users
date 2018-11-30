@@ -9,14 +9,14 @@
 import UIKit
 
 class UserTableViewController: UITableViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         let fetchUsersOp = FetchUserOp(url: fetchURL)
         userFetchQueue.addOperation(fetchUsersOp)
         userFetchQueue.waitUntilAllOperationsAreFinished()
@@ -24,7 +24,6 @@ class UserTableViewController: UITableViewController {
         self.users = users
         
         
-
     }
     
     // MARK: - Properties
@@ -46,12 +45,12 @@ class UserTableViewController: UITableViewController {
     
     // set up cache
     private var cache = Cache<String, Data>()
-
+    
     let fetchURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=200")!
     
-
+    
     // MARK: - Table view data source
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count
     }
@@ -59,21 +58,21 @@ class UserTableViewController: UITableViewController {
     //Sets up cells for reuse with content from model object.
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
-       
+        
         let user = users[indexPath.row]
-       
+        
         cell.textLabel?.text = user.name
         cell.layer.borderWidth = 0.5
         
         loadUserPhoto(of: user, for: cell)
-      
+        
         return cell
     }
     
-
+    
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let user = users[indexPath.row]
-     
+        
         if let fetchOperation = fetchOperations[user.name] {
             fetchOperation.cancel() // cancels out or view cells
         }
@@ -122,7 +121,7 @@ class UserTableViewController: UITableViewController {
         fetchOperations[user.name] = fetchPhotoOp
     }
     
-   
+    
     
     // MARK: - Navigation
     
@@ -135,8 +134,7 @@ class UserTableViewController: UITableViewController {
         }
     }
     
-    
-    // MARK: - Outlets
+    // Mark: - Outlets
     @IBAction func addUsers(_ sender: Any) {
         
         let fetchUsersOp = FetchUserOp(url: fetchURL)

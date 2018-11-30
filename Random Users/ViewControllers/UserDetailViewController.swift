@@ -13,6 +13,7 @@ class UserDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+        view.backgroundColor = .gray
         
     }
     
