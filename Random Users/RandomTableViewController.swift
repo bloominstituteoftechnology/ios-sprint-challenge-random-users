@@ -41,6 +41,7 @@ class RandomTableViewController: UITableViewController {
        guard let phone = ranUser.phone else { return }
         
         activeOperations[phone]?[.thumbnail]?.cancel()
+ 
     }
     
     

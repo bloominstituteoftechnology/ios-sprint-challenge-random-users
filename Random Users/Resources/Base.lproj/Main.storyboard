@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Random Table View Controller-->
+        <!--Users-->
         <scene sceneID="7jS-WF-cR3">
             <objects>
                 <tableViewController id="rQK-Mk-lPI" customClass="RandomTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
@@ -30,7 +30,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zQA-Lm-Xlw">
                                             <rect key="frame" x="0.0" y="7.5" width="375" height="50"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hPK-vt-EBq">
+                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hPK-vt-EBq">
                                                     <rect key="frame" x="0.0" y="0.0" width="179.5" height="50"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GY3-2q-WkB">
@@ -67,7 +67,7 @@
                             <outlet property="delegate" destination="rQK-Mk-lPI" id="xEZ-1e-dQU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="gMf-15-Hci"/>
+                    <navigationItem key="navigationItem" title="Users" id="gMf-15-Hci"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LX4-QY-MMi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
