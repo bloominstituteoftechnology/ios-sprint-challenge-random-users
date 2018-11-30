@@ -10,12 +10,12 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var nameOutlet: UILabel!
-    @IBOutlet weak var emailOutlet: UILabel!
-    @IBOutlet weak var phoneOutlet: UILabel!
+    @IBOutlet weak var detailImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
     
-
+    
     
     var user: User?
     let userFetchQueue = OperationQueue()
@@ -27,16 +27,16 @@ class DetailViewController: UIViewController {
         let op1 = FetchPhotoOperation(user: user, imageType: .large)
         let op2 = BlockOperation {
             guard let image = op1.image else { return }
-            self.imageView.image = image
+            self.detailImageView.image = image
         }
         op2.addDependency(op1)
         
         userFetchQueue.addOperation(op1)
         OperationQueue.main.addOperation(op2)
         
-        nameOutlet.text = user.name
-        phoneOutlet.text = user.phoneNumber
-        emailOutlet.text = user.emailAddress
+        nameLabel.text = user.name
+        phoneLabel.text = user.phoneNumber
+        emailLabel.text = user.emailAddress
     }
 }
 
