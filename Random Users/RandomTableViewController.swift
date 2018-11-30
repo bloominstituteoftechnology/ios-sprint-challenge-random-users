@@ -13,78 +13,118 @@ class RandomTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        fetchRandomUserController.fetchUsers { (randomUsers, error) in
+            if let error = error {
+                NSLog("Error fetching users: \(error)")
+                return
+            }
+            self.randomUsers = randomUsers
+        }
+        
+        
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
+
+    
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return randomUsers?.count ?? 0
     }
 
-    /*
+
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let ranUser = randomUsers?[indexPath.row] else {return}
+       guard let phone = ranUser.phone else { return }
+        
+        activeOperations[phone]?[.thumbnail]?.cancel()
+    }
+    
+    
+  
+    private func loadingImages(forCell cell: RandomTableViewCell, forItemAt indexPath: IndexPath) {
+        
+        guard let randomUser = randomUsers?[indexPath.row],
+            let phoneNumber = randomUser.phone else { return }
+        
+        if let image = cache.value(for: phoneNumber) {
+            cell.userImage.image = image[.thumbnail]
+        } else {
+            let thumbnailOperation = FetchingThumbnails(randomUsers: randomUser)
+            let storingOperation = BlockOperation {
+                guard let image = thumbnailOperation.thumbail else { return }
+                self.cache.cache(value: [.thumbnail: image], for: phoneNumber)
+            }
+            let nonReusedOperation = BlockOperation {
+                guard let image = thumbnailOperation.thumbail else { return }
+                if indexPath == self.tableView.indexPath(for: cell) {
+                    cell.userImage.image = image
+                }
+            }
+            
+            storingOperation.addDependency(thumbnailOperation)
+            nonReusedOperation.addDependency(thumbnailOperation)
+            
+            userFetch.addOperations([thumbnailOperation, storingOperation], waitUntilFinished: false)
+            OperationQueue.main.addOperation(nonReusedOperation)
+            activeOperations[phoneNumber] = [.thumbnail: thumbnailOperation]
+        }
+    }
+    
+    
+    
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RandomTableViewCell
 
-        // Configure the cell...
-
+   let user = randomUsers?[indexPath.row]
+        cell.userName.text = user?.name
+        loadingImages(forCell: cell, forItemAt: indexPath)
+        
         return cell
     }
-    */
+   
+    
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
+    
+ 
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "Details" {
+            let detailVC = segue.destination as! RandomDetailViewController
+            guard let index = tableView.indexPathForSelectedRow else { return }
+            detailVC.randomUser = randomUsers?[index.row]
+        }
     }
-    */
+        
+        
+        
 
+    
+    
+    
+    let fetchRandomUserController = FetchRandomUsersController()
+    var userFetch = OperationQueue()
+     var cache: Cache<String, [RandomUser.Images: UIImage]> = Cache()
+    var randomUsers: [RandomUser]?
+    {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    
+    
+   var activeOperations: [String: [RandomUser.Images: FetchingThumbnails]] = [:]
+    
+    
 }

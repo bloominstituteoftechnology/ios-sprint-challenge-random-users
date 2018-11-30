@@ -13,10 +13,30 @@ class RandomDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        guard let randomUser = randomUser else { return }
+        let imageOperation = FetchingImages(randomUsers: randomUser)
+        let operation = BlockOperation {
+            guard let image = imageOperation.Image else { return }
+            self.imageViewUser.image = image
+        
+        
     }
     
-
+        operation.addDependency(imageOperation)
+        
+       userFetchQueue.addOperation(imageOperation)
+        OperationQueue.main.addOperation(operation)
+       phone.text = randomUser.phone
+       name.text = randomUser.name
+       
+        email.text = randomUser.email
+        
+        
+        
+        
+        
+        
+    }
     /*
     // MARK: - Navigation
 
@@ -26,8 +46,8 @@ class RandomDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-    
+     let userFetchQueue = OperationQueue()
+    var randomUser: RandomUser?
     
     @IBOutlet weak var imageViewUser: UIImageView!
     

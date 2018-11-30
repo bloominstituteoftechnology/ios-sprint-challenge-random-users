@@ -10,8 +10,8 @@ import Foundation
 
 struct RandomUser: Equatable{
     var name: String
-    var email: String
-    var phone: String
+    var email: String?
+    var phone: String?
     var largeImageURL: URL?
     var thumbnailImageURL: URL?
 }
@@ -27,6 +27,12 @@ struct RandomUsers: Decodable {
 
 
 extension RandomUser: Decodable {
+    
+    enum Images: String {
+        case thumbnail
+        case large
+    }
+    
     enum CodingKeys: String, CodingKey {
  
     case name
@@ -43,10 +49,7 @@ extension RandomUser: Decodable {
         }
         
         
-        enum Images: String {
-            case thumbnail
-            case large
-        }
+        
         
         enum ImageURLCodingKeys: String, CodingKey {
             case thumbnail
