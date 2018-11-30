@@ -11,6 +11,7 @@ import UIKit
 class MainTVC: UITableViewController {
     
     let networking = UserNetworking()
+    
     var users: [User]? {
         didSet {
             DispatchQueue.main.async {
@@ -39,33 +40,32 @@ class MainTVC: UITableViewController {
         
         guard let user = users?[indexPath.row], let phoneNumber = user.phoneNumber else { return }
         
-        if let cacheImage = cache.value(for: user.phoneNumber!) {
+        if let phoneNumber = user.phoneNumber, let cacheImage = cache.value(for: phoneNumber) {
             cell.imageView?.image = cacheImage
-            return
-        }
-        
-        
-        let op1 = FetchPhotoOperation(user: user, imageType: .thumbnail)
-        
-        let op2 = BlockOperation {
-            guard let image = op1.image else { return }
-            self.cache.cache(value: image, for: phoneNumber)
-        }
-        
-        op2.addDependency(op1)
-        
-        let op3 = BlockOperation {
-            guard let image = op1.image else { return }
-            if indexPath == self.tableView.indexPath(for: cell) {
-                cell.imageView?.image = image
+        } else {
+            
+            let op1 = FetchPhotoOperation(user: user, imageType: .thumbnail)
+            
+            let op2 = BlockOperation {
+                guard let image = op1.image else { return }
+                self.cache.cache(value: image, for: phoneNumber)
             }
+            
+            op2.addDependency(op1)
+            
+            let op3 = BlockOperation {
+                guard let image = op1.image else { return }
+                if indexPath == self.tableView.indexPath(for: cell) {
+                    cell.imageView?.image = image
+                }
+            }
+            op3.addDependency(op1)
+            
+            userFetchQueue.addOperation(op1)
+            userFetchQueue.addOperation(op2)
+            OperationQueue.main.addOperation(op3)
+            fetchRequests[phoneNumber] = op1
         }
-        op3.addDependency(op1)
-        
-        userFetchQueue.addOperation(op1)
-        userFetchQueue.addOperation(op2)
-        OperationQueue.main.addOperation(op3)
-        fetchRequests[phoneNumber] = op1
     }
     
     
