@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!-- User Directory-->
         <scene sceneID="w2G-Su-D91">
             <objects>
                 <tableViewController id="Fnp-YY-SH6" customClass="UserTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
@@ -45,7 +45,7 @@
                             <outlet property="delegate" destination="Fnp-YY-SH6" id="Pzy-NK-Paz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="rnm-wn-AZj">
+                    <navigationItem key="navigationItem" title=" User Directory" id="rnm-wn-AZj">
                         <barButtonItem key="rightBarButtonItem" title="Add" id="6Cq-25-zlY">
                             <connections>
                                 <action selector="addUsers:" destination="Fnp-YY-SH6" id="o3b-Jc-yZ3"/>

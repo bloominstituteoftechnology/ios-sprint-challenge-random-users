@@ -12,7 +12,7 @@ class UserDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateViews()
         
     }
     
@@ -22,20 +22,42 @@ class UserDetailViewController: UIViewController {
         }
     }
     
-    func updateViews() {
+    private func updateViews() {
         
+        guard isViewLoaded,
+            let user = user else { return }
+        
+        title = user.name
+        
+        let imageURL = user.fullSizeURL
+        loadUserPhoto(from: imageURL)
+        
+        userNameLabel.text = user.name
+        userPhoneLabel.text = user.phone
+        userEmailLabel.text = user.email
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func loadUserPhoto(from imageURL: URL) {
+        URLSession.shared.dataTask(with: imageURL) { (data, _, error) in
+            if let error = error {
+                NSLog("Error fetching image data: \(error)")
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("No data was returned. Please check URL.")
+                return
+            }
+            
+            let image = UIImage(data: data)
+            DispatchQueue.main.async {
+                self.userImageView.image = image
+            }
+            
+            }.resume()
     }
-    */
+    
+  
 
     // MARK: - Outlets
     

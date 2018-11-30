@@ -17,7 +17,7 @@ class FetchUserOp: ConcurrentOperation {
         self.url = url
     }
     
-    // Start (self.defer) - Cancel Methods 
+    // Start Methods
     
     override func start() {
         state = .isExecuting
@@ -46,10 +46,6 @@ class FetchUserOp: ConcurrentOperation {
                 self.state = .isFinished
             }
             }.resume()
-    }
-    
-    override func cancel() {
-        self.cancel()
     }
     
 }
