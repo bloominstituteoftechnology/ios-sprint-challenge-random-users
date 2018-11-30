@@ -26,7 +26,6 @@ struct RandomUsers: Decodable {
 }
 
 
-
 extension RandomUser: Decodable {
     enum CodingKeys: String, CodingKey {
  
@@ -85,7 +84,6 @@ extension RandomUser: Decodable {
         self.phone = phone
         self.thumbnailImageURL = thumbnailURL
         self.largeImageURL = largeURL
-        
         
         
     }
