@@ -21,4 +21,11 @@ class RandomTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    
+    @IBOutlet weak var userImage: UIImageView!
+    
+    @IBOutlet weak var userName: UILabel!
+    
+    
+    
 }
