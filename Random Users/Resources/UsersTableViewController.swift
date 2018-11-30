@@ -25,7 +25,7 @@ class UsersTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     @IBAction func loadData(_ sender: Any) {
         
         userController.loadUsers { (users, error) in
@@ -35,17 +35,17 @@ class UsersTableViewController: UITableViewController {
             }
             self.users = users
         }
-
+        
     }
     
-   
+    
     // MARK: - Table view data source
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return users?.count ?? 0
     }
-
+    
     
     let reuseIdentifier = "userCell"
     
@@ -55,9 +55,9 @@ class UsersTableViewController: UITableViewController {
         let user = users?[indexPath.row]
         cell.nameLabel.text = user?.name.capitalized
         
-    
+        
         // need images
-
+        
         
         return cell
     }
@@ -77,14 +77,14 @@ class UsersTableViewController: UITableViewController {
     
     
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-            let destination = segue.destination as! UserViewController
-            guard let index = tableView.indexPathForSelectedRow else { return }
-            destination.user = users?[index.row]
+        let destination = segue.destination as! UserViewController
+        guard let index = tableView.indexPathForSelectedRow else { return }
+        destination.user = users?[index.row]
         
     }
     
-
+    
 }

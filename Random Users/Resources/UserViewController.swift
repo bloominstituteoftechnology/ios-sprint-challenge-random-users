@@ -17,18 +17,29 @@ class UserViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         guard let user = user else { return }
-
+        
         nameLabel.text = user.name.capitalized
         phoneLabel.text = user.phone
         emailLabel.text = user.email
         
-        // image loading here
+        let imageOperation = FetchImageOperation(user: user)
+        
+        let operation = BlockOperation {
+            
+            guard let image = imageOperation.image else { return }
+            
+            self.userImageView.image = image
+            
+        }
+        
+        operation.addDependency(imageOperation)
+        fetchQueue.addOperation(imageOperation)
+        OperationQueue.main.addOperation(operation)
         
     }
-    
 }
