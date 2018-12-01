@@ -12,10 +12,6 @@ class UserTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
         let fetchUsersOp = FetchUserOp(url: fetchURL)
         userFetchQueue.addOperation(fetchUsersOp)
@@ -23,8 +19,19 @@ class UserTableViewController: UITableViewController {
         guard let users = fetchUsersOp.users else { return}
         self.users = users
         
-        
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//
+//        let fetchUsersOp = FetchUserOp(url: fetchURL)
+//        userFetchQueue.addOperation(fetchUsersOp)
+//        userFetchQueue.waitUntilAllOperationsAreFinished()
+//        guard let users = fetchUsersOp.users else { return}
+//        self.users = users
+//
+//
+//    }
     
     // MARK: - Properties
     
@@ -101,14 +108,18 @@ class UserTableViewController: UITableViewController {
         let updateUserPhotoOp = BlockOperation {
             guard let imageData = fetchPhotoOp.imageData else { return }
             let image = UIImage(data: imageData)
-            if self.tableView.visibleCells.contains(cell) {
-                cell.imageView?.image = image
-                self.tableView.reloadData()
-            }
+            
+//            if let currentIndexPath = self.tableView.indexPath(for: cell),
+//                currentIndexPath != indexPath {
+//                print("Got image for now-reused cell")
+//                return // Cell has been reused
+//            }
+//
+//            if self.tableView.visibleCells.contains(cell) {
+//                cell.imageView?.image = image
+//                self.tableView.reloadData()
+//            }
         }
-        
-        //imageOp on main queue.
-        OperationQueue.main.addOperation(updateUserPhotoOp)
         
         // add dependancies, then opperations
         dataCacheOp.addDependency(fetchPhotoOp)
@@ -117,8 +128,9 @@ class UserTableViewController: UITableViewController {
         photoFetchQueue.addOperation(fetchPhotoOp)
         photoFetchQueue.addOperation(dataCacheOp)
         
-        //Add fetch photo operation to array in case you need to cancel it.
-        fetchOperations[user.name] = fetchPhotoOp
+        
+        //imageOp on main queue.
+        OperationQueue.main.addOperation(updateUserPhotoOp)
     }
     
     
