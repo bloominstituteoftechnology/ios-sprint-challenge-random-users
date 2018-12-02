@@ -11,18 +11,18 @@ import UIKit
 
 struct User: Codable {
     let results: [Result]
-}
 
-struct Result: Codable {
+    struct Result: Codable {
     let name: Name
     let email, phone: String
     let picture: Picture
-}
 
-struct Name: Codable {
-    let first, last: String
-}
+        struct Name: Codable {
+            let first, last: String
+        }
 
-struct Picture: Codable {
-    let large, thumbnail: String
+        struct Picture: Codable {
+            let large, thumbnail: String
+        }
+    }
 }
