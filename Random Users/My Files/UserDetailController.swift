@@ -18,9 +18,11 @@ class UserDetailController: UIViewController {
     
     var currentUser: IndexPath?
     
+    var userRef = UserManager.shared
+    
     
     func createMainView() {
-        var singleUser = UserManager().addressbook[(currentUser?.row)!]
+        var singleUser = userRef.addressbook[(currentUser?.row)!]
         
       
     }

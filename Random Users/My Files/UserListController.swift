@@ -11,7 +11,13 @@ import UIKit
 
 class UserListController: UITableViewController {
     
-    let managerRef = UserManager()
+    let managerRef = UserManager.shared
+    
+    //Set up sections
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
     
     //Set up rows
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

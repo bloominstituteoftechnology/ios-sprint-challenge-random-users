@@ -11,6 +11,9 @@ import UIKit
 
 class UserManager {
     
+    static var shared = UserManager()
+
+    
     var addressbook: [User] = []
     
     func createUser(infoFromAPI: User) {

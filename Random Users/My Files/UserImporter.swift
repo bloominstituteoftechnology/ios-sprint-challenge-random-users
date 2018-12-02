@@ -24,10 +24,12 @@ class UserImporter {
         //Requesting both data and the error information in case I can't get the data.
         URLSession.shared.dataTask(with: request) { (data, _, error) in
         print("Error")
+            
         if let error = error { //Assigns the standard error to a property so it can be customised.
+            
         NSLog("Error: \(error.localizedDescription)") //Print the error description not just the standard error message
         completion(error) //Show error message in Debugger log.
-                return }
+                return } //End of IF statement
         
         //Assigning the data that's fetched to a property for easy manipulation later.
             guard let foundData = data else {
@@ -39,8 +41,9 @@ class UserImporter {
                 return }
         
             do { //Same Do-Catch statement from normal Persistence but from Data above not local file
+                
             let jsonDecoder = JSONDecoder() //jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-            let decodedUser = try jsonDecoder.decode(User.self, from: foundData)
+                let decodedUser = try jsonDecoder.decode(User.self, from: foundData)
                 
             UserManager().createUser(infoFromAPI: decodedUser)
           
