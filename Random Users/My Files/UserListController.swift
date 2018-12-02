@@ -33,7 +33,9 @@ class UserListController: UITableViewController {
     //Pass selected cell information via segue to detail view as index path
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "detailSegue" { let detailVC = segue.destination as! UserDetailController }
-        
+        if segue.identifier == "detailSegue" { let detailVC = segue.destination as! UserDetailController
+            
+            detailVC.currentUser = IndexPath
+        }
     }
 }

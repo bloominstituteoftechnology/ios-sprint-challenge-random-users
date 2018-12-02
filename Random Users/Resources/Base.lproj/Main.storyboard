@@ -113,6 +113,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UYh-Is-SVK"/>
                     </view>
+                    <connections>
+                        <outlet property="userEmail" destination="7Hq-oN-cGw" id="zwK-4a-Cau"/>
+                        <outlet property="userImage" destination="G6b-fl-5jH" id="318-ks-1fD"/>
+                        <outlet property="userName" destination="gLe-ok-u2o" id="2zQ-a9-lFT"/>
+                        <outlet property="userPhone" destination="dCj-wV-Y0d" id="VG7-cU-1wh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q9d-Pm-6s3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
