@@ -27,6 +27,9 @@ class UserListController: UITableViewController {
         //Use my custom cell or the regular cell if impossible
         guard let cell = basicCell as? UserCellController else { return basicCell }
         
+        cell.firstName.text = managerRef.addressbook[indexPath.row].results[indexPath.row].name.first
+        cell.surName.text = managerRef.addressbook[indexPath.row].results[indexPath.row].name.last
+        
         return cell
     }
     
@@ -35,7 +38,8 @@ class UserListController: UITableViewController {
         
         if segue.identifier == "detailSegue" { let detailVC = segue.destination as! UserDetailController
             
-            detailVC.currentUser = IndexPath
+            guard let indexPath = tableView.indexPathForSelectedRow else { return } //Unwrap the index path and make it easy to access in the Detail View
+            detailVC.currentUser = indexPath
         }
     }
 }

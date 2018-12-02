@@ -16,13 +16,13 @@ class UserDetailController: UIViewController {
     @IBOutlet weak var userEmail: UILabel!
     @IBOutlet weak var userPhone: UILabel!
     
-    var currentUser: IndexPath
+    var currentUser: IndexPath?
+    
     
     func createMainView() {
+        var singleUser = UserManager().addressbook[(currentUser?.row)!]
         
-        userName.text = UserManager().addressbook[currentUser.row].name
-        userEmail.text = UserManager().addressbook[currentUser.row].email
-        userPhone.text = UserManager().addressbook[currentUser.row].phone
+      
     }
     
 }

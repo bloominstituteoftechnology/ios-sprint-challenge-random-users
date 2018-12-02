@@ -15,9 +15,5 @@ class UserCellController: UITableViewCell {
     @IBOutlet weak var firstName: UILabel!
     @IBOutlet weak var surName: UILabel!
     
-    func makeUser() {
-        
-        firstName.text = UserManager().addressbook[indexPath.row].name
-        surName.text = UserManager().addressbook[indexPath.row].name
-    }
+
 }
