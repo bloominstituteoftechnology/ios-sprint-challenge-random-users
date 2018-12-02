@@ -41,8 +41,10 @@ class UserImporter {
             do { //Same Do-Catch statement from normal Persistence but from Data above not local file
             let jsonDecoder = JSONDecoder() //jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
             let decodedUser = try jsonDecoder.decode(User.self, from: foundData)
+                
+            UserManager().createUser(infoFromAPI: decodedUser)
           
-                completion(nil)//Set completion to nothing since decoding worked.
+            completion(nil)//Set completion to nothing since decoding worked.
             } catch { //In case Decoding doesn't work.
             NSLog("Error: \(error.localizedDescription)")
             completion(error) //Show error message in Debugger log.

@@ -13,4 +13,11 @@ class UserManager {
     
     var addressbook: [User] = []
     
+    func createUser(infoFromAPI: User) {
+        
+    let tempUser = User(from: decodedUser)
+        
+    addressbook.append(tempUser)
+    }
+    
 }
