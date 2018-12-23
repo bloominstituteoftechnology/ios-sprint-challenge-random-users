@@ -22,6 +22,8 @@ class UserManager {
         
     addressbook.append(tempUser)
         
+    UserListController().tableView.reloadData()
+        
     
     }
     
