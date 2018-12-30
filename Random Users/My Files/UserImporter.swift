@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
 class UserImporter {
     
     var managerRef: UserManager?
     
     let randomUserAPI = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,cell,picture&results=1000")!
-    
+   
     func getUsers(completion: @escaping () -> Void) {
         
         URLSession.shared.dataTask(with: randomUserAPI) {data,_,error in
@@ -32,7 +33,7 @@ class UserImporter {
                 let decoder = JSONDecoder()
                 let myTry = try decoder.decode(Result.self, from: grabbedData)
                 self.managerRef?.addressbook = myTry.results
-                
+            
                 
             } catch { //In case decoding doesn't work
                 NSLog("Error: \(error.localizedDescription)")

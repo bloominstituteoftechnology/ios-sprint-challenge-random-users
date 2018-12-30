@@ -13,7 +13,6 @@ import UIKit
 var manager = UserManager()
 let importer = UserImporter()
 
-
 class UserListController: UITableViewController {
     
     override func viewDidLoad() {
