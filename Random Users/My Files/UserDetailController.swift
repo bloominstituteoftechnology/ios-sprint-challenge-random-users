@@ -11,6 +11,10 @@ import UIKit
 
 class UserDetailController: UIViewController {
     
+    override func viewDidLoad() {
+        createMainView()
+    }
+    
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userEmail: UILabel!
@@ -18,13 +22,16 @@ class UserDetailController: UIViewController {
     
     var currentUser: IndexPath?
     
-    var userRef = UserManager.shared
     
     
     func createMainView() {
-        var singleUser = userRef.addressbook[(currentUser?.row)!]
-        
-      
+        guard let indexPath = currentUser else { return }
+        let singleUser = manager.addressbook[indexPath.row]
+        let singlePhoto = manager.fullsizes[indexPath.row]
+        userName.text = "\(singleUser.name.title). \(singleUser.name.first) \(singleUser.name.last)"
+        userEmail.text = singleUser.email
+        userPhone.text = singleUser.cell
+        userImage.image = singlePhoto
     }
     
 }

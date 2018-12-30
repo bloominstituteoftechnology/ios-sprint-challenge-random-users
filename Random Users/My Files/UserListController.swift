@@ -9,35 +9,46 @@
 import Foundation
 import UIKit
 
+//Globals
+var manager = UserManager()
+let importer = UserImporter()
+
+
 class UserListController: UITableViewController {
     
-    let managerRef = UserManager.shared
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.delegate = self
+        importer.managerRef = manager
+        importer.getUsers {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    } //End of ViewDidLoad
     
-    //Set up sections
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
-    //Set up rows
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return managerRef.addressbook.count
+        return manager.addressbook.count
     }
     
-    //Set up cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let basicCell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath) as! UserCellController
         
-        //Use my custom cell or the regular cell if impossible
-        guard let cell = basicCell as? UserCellController else { return basicCell }
+            manager.loadImages(path: indexPath)
         
-        cell.firstName.text = managerRef.addressbook[indexPath.row].results[indexPath.row].name.first
-        cell.surName.text = managerRef.addressbook[indexPath.row].results[indexPath.row].name.last
+        cell.firstName.text = manager.addressbook[indexPath.row].name.first
+        
+        cell.surName.text = manager.addressbook[indexPath.row].name.last
+        
+        cell.imageView?.image = manager.thumbnails[indexPath.row]
+        
+        cell.heightAnchor.constraint(equalToConstant: 60.0)
         
         return cell
     }
+    
     
     //Pass selected cell information via segue to detail view as index path
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -11,22 +11,34 @@ import UIKit
 
 class UserManager {
     
-    static var shared = UserManager()
-
-    
     var addressbook: [User] = []
     
-    func createUser(infoFromAPI: User) {
-        
-    let tempUser = infoFromAPI
-        
-    addressbook.append(tempUser)
-        
-    UserListController().tableView.reloadData()
-        
+    var thumbnails: [UIImage] = []
     
+    var fullsizes: [UIImage] = []
+    
+    
+    func loadImages(path: IndexPath){
+        
+    let thumbRef = addressbook[path.row].picture.thumbnail
+    let fullRef = addressbook[path.row].picture.large
+        
+    guard let thumbURL = URL(string: thumbRef) else { return }
+    guard let fullURL = URL(string: fullRef) else { return }
+        
+    let thumbData = try? Data(contentsOf: thumbURL) //Pull image Data from URL
+    let fullData = try? Data(contentsOf: fullURL)
+
+    
+    if let thumbImageData = thumbData { //Unwrap image data
+        let thumbImage = UIImage(data: thumbImageData) //Create image from data
+        thumbnails.append(thumbImage!)
     }
-    
-    
-    
+      
+    if let fullImageData = fullData {
+        let fullImage = UIImage(data: fullImageData)
+        fullsizes.append(fullImage!)
+        }
+        
+    }//End of Load Images Function
 }

@@ -7,54 +7,43 @@
 //
 
 import Foundation
-import UIKit
 
 class UserImporter {
     
-    func importUsers(completion: @escaping (Error?) -> Void) {
-        
-        guard let randomUserAPI = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=10") else { return }
+    var managerRef: UserManager?
     
-//   let user = try? newJSONDecoder().decode(User.self, from: jsonData)
+    let randomUserAPI = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,cell,picture&results=1000")!
     
-        var request = URLRequest(url: randomUserAPI)
-    
-        request.httpMethod = "GET"
+    func getUsers(completion: @escaping () -> Void) {
         
-        //Requesting both data and the error information in case I can't get the data.
-        URLSession.shared.dataTask(with: request) { (data, _, error) in
-        print("Error")
+        URLSession.shared.dataTask(with: randomUserAPI) {data,_,error in
             
-        if let error = error { //Assigns the standard error to a property so it can be customised.
+            //Step 1 - Unwrap the error
             
-        NSLog("Error: \(error.localizedDescription)") //Print the error description not just the standard error message
-        completion(error) //Show error message in Debugger log.
-                return } //End of IF statement
-        
-        //Assigning the data that's fetched to a property for easy manipulation later.
-            guard let foundData = data else {
+            if let error = error { NSLog(error.localizedDescription); return }
             
-                NSLog("Data was not recieved.") //Print this to the Debugger log if there's an error.
+            //Step 2 - Unwrap the data
             
-                completion(error) //Implement the error message if we fail to get data.
+            guard let grabbedData = data else { NSLog("Error: \(error?.localizedDescription))"); return }
             
-                return }
-        
-            do { //Same Do-Catch statement from normal Persistence but from Data above not local file
+            //Step 3 - Decode the data
+            
+            do {
+                let decoder = JSONDecoder()
+                let myTry = try decoder.decode(Result.self, from: grabbedData)
+                self.managerRef?.addressbook = myTry.results
                 
-            let jsonDecoder = JSONDecoder() //jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-                let decodedUser = try jsonDecoder.decode(User.self, from: foundData)
                 
-            UserManager().createUser(infoFromAPI: decodedUser)
-          
-            completion(nil)//Set completion to nothing since decoding worked.
-            } catch { //In case Decoding doesn't work.
-            NSLog("Error: \(error.localizedDescription)")
-            completion(error) //Show error message in Debugger log.
-            return }
+            } catch { //In case decoding doesn't work
+                NSLog("Error: \(error.localizedDescription)")
+                return
+                
+            } //End of Do-Catch Statement
             
-        } .resume() //Resumes the fetch function if it's been suspended e.g. because of errors.
+            completion()
+            
+            } .resume() //End of Data Task
         
-    }//End of import users function
+    }//End of Function
     
-}
+} //End of Class

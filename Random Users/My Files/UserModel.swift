@@ -9,20 +9,20 @@
 import Foundation
 import UIKit
 
+struct Result: Codable {
+    let results: [User]
+}
+
 struct User: Codable {
-    let results: [Result]
-
-    struct Result: Codable {
     let name: Name
-    let email, phone: String
+    let email, cell: String
     let picture: Picture
+}
 
-        struct Name: Codable {
-            let first, last: String
-        }
+struct Name: Codable {
+    let title, first, last: String
+}
 
-        struct Picture: Codable {
-            let large, thumbnail: String
-        }
-    }//Close Result
-} //Close User
+struct Picture: Codable {
+    let large, medium, thumbnail: String
+}
