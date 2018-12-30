@@ -8,20 +8,20 @@
 
 import Foundation
 
-struct Cache<Key: Hashable, Value> {
+class Cache<Key, Value> where Key: Hashable {
     
-    var queue = DispatchQueue(label: "com.scott.Cache.SyncQueue")
-    var items:[Key: Value] = [:]
+    private var cachedItems: [Key: Value] = [:]
+    private var queue = DispatchQueue(label: "com.LambdaSchool.RandomUsers.cacheQueue")
     
-    func retrieve(_ key: Key) -> Value? {
-        return queue.sync{
-            items[key]
+    public func cache(value: Value, for key: Key) {
+        queue.async {
+            self.cachedItems[key] = value
         }
     }
     
-    mutating func store(_ key: Key, _ value: Value) {
-        queue.sync {
-            items[key] = value
+    public func value(for key: Key) -> Value? {
+        return queue.sync {
+            cachedItems[key]
         }
     }
 }

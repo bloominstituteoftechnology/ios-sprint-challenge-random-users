@@ -8,22 +8,25 @@
 
 import UIKit
 
-class FetchPhotoOperation: ConcurrentOperation
-{
-    var imageData: UIImage!
-    var task: URLSessionDataTask!
-    var url: URL
+class FetchPhotoOperation: ConcurrentOperation {
     
-    init(_ url:URL)
-    {
-        self.url = url
-        super.init()
+    // MARK: - Properties
+    
+    var imageData: Data?
+    var task: URLSessionDataTask?
+    let user: User
+    
+    init(user: User) {
+        self.user = user
     }
     
+    // Fetch thumbnail images
     override func start() {
         state = .isExecuting
-        task = URLSession.shared.dataTask(with: self.url) { data, _, error in
-            defer { self.state = .isFinished}
+        
+        let imageURL = user.thumbNail
+        
+        task = URLSession.shared.dataTask(with: imageURL, completionHandler: { data, _, error in
             if let error = error {
                 NSLog("Error loading image: \(error)")
                 return
@@ -34,20 +37,16 @@ class FetchPhotoOperation: ConcurrentOperation
                 return
             }
             
-            if let image = UIImage(data: data) {
-                self.imageData = image
-                return
-            } else {
-                NSLog("Error decoding image")
-                return
+            self.imageData = data
+            
+            defer {
+                self.state = .isFinished      
             }
-        }
-        task.resume()
+        })
+        task?.resume()
     }
     
     override func cancel() {
-        if let task = task {
-            task.cancel()
-        }
+            task?.cancel()
     }
 }
