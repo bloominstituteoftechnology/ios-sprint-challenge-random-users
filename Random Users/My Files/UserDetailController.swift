@@ -15,6 +15,11 @@ class UserDetailController: UIViewController {
         super.viewDidLoad()
         loadingIndicator.startAnimating()
         loadingIndicator.isHidden = false
+        guard let photoURL = URL(string: manager.addressbook[currentUser!.row].picture.large) else { return }
+        
+        DispatchQueue.main.async {
+            self.cache.loadImages(url: photoURL) { image in self.image = image }
+        }
 
         createMainView()
     }
@@ -29,7 +34,9 @@ class UserDetailController: UIViewController {
     var cache: Cache!
 
     private var image: UIImage? { didSet {
-        userImage.image = image //Assigns to outlet above
+        DispatchQueue.main.async {
+            self.userImage.image = self.image //Assigns to outlet above
+        }
         loadingIndicator.stopAnimating()
         loadingIndicator.isHidden = true } }
     
@@ -42,11 +49,7 @@ class UserDetailController: UIViewController {
         userEmail.text = singleUser.email
         userPhone.text = singleUser.cell
         
-        guard let photoURL = URL(string: singleUser.picture.large) else { return }
         
-        DispatchQueue.main.async {
-            self.cache.loadImages(url: photoURL) { image in self.image = image }
-        }
         
         
         //userImage.image = singlePhoto

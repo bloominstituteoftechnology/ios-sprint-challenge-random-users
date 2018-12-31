@@ -43,8 +43,6 @@ class UserListController: UITableViewController {
         
         cell.imageView?.image = manager.thumbnails[indexPath.row]
         
-        cell.heightAnchor.constraint(equalToConstant: 60.0)
-        
         return cell
     }
     
