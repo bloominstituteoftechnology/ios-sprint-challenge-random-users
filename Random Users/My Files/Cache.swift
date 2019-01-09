@@ -11,39 +11,31 @@ import UIKit
 
 class Cache {
 
-    var imageCache = NSCache<NSString, UIImage>()
+   static let imageCache = NSCache<NSString, UIImage>()
 
-
-    func loadImages(url: URL, completion: @escaping (UIImage?) -> Void) {
+    static func loadImages(url: URL, completion: @escaping (_ peepimage: UIImage?) -> ()) {
     
-    //First attempt to Load the Image from the Cache.
-    if let cachedImage = imageCache.object(forKey: url.absoluteString as NSString) { completion(cachedImage) } else {
-
-    //If Cached Image is not available, download it directly.
-    let request = URLRequest(url: url, cachePolicy: URLRequest.CachePolicy.returnCacheDataElseLoad, timeoutInterval: 10.0)
-
-    URLSession.shared.dataTask(with: request) { data, response, error in
-            
-            //Step 1 - Unwrap the error
-            
-        guard error == nil, data != nil,
-                let response = response as? HTTPURLResponse, response.statusCode == 200 else { return }
-            
-            //Step 2 - Unwrap the data
-            
-            guard let photoData = data else { NSLog("Error: \(error?.localizedDescription))"); return }
-            
-            //Step 3 - Create the image using the data
+        let dataTask = URLSession.shared.dataTask(with: url) { data, responseURL, error in
         
-            guard let image = UIImage(data: photoData) else { return }
-        
-            self.imageCache.setObject(image, forKey: url.absoluteString as NSString)
-                
-            DispatchQueue.main.async { completion(image) }
+        //Unwrap the image data
+        var downloadedImage: UIImage?
+ 
+        if let foundData = data { downloadedImage = UIImage(data: foundData) }
             
-            } .resume() //End of Data Task
-        }//End of If Let Else
+        //Save data to cache
+        if downloadedImage != nil { imageCache.setObject(downloadedImage!, forKey: url.absoluteString as NSString)}
+ 
+        DispatchQueue.main.async {
+            completion(downloadedImage) } //End of Dispatch Queue
+            
+        }//End of Data Task
+    
+        dataTask.resume()
         
     }//End of Function
     
-}//End of Class
+    static func checkImage(url: URL, completion: @escaping (_ cacheimage: UIImage?) ->()) {
+        if let cacheimage = imageCache.object(forKey: url.absoluteString as NSString) { completion(cacheimage) }
+        else { loadImages(url: url, completion: completion)}
+    }//End of Check Image function
+}
