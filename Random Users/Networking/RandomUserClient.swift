@@ -60,14 +60,18 @@ class RandomUserClient {
                     
                     // add data to the cache
                     var count = 0
+                    
+                    
                     for randomUser in decodedObject.results{
                         
                         self.cache.cache(value: randomUser, for: count)
                         
+                        if count < 2 {
+                            print(randomUser)
+                        }
                         count += 1
+                        
                     }
-                    
-                    print(self.cache.value(for: 1))
                     
                     completion(nil)
                     return
@@ -80,7 +84,7 @@ class RandomUserClient {
         }.resume()
     }
     
-    private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=3")!
+    private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
 
     var cache = Cache<Int,RandomUser>()
 }
