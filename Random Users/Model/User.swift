@@ -3,69 +3,46 @@ import Foundation
 struct User: Decodable {
     
     enum Keys: String, CodingKey {
-        case results
+        case name
+        case email
+        case phone
         case large
         case thumbnail
         
         enum NameKeys: String, CodingKey {
-            case name
-            
-            enum FullNameKeys: String, CodingKey {
-                case first
-                case last
-            }
+            case first
+            case last
         }
-        enum LocationKeys: String, CodingKey {
-            case location
-            
-            enum EmailKeys: String, CodingKey {
-                case email
-            }
+    
+        enum PictureKeys: String, CodingKey {
+            case large
+            case thumbnail
         }
-        enum RegisteredKeys: String, CodingKey {
-            case registered
-            
-            enum PhoneKeys: String, CodingKey {
-                case phone
-            }
-        }
-        
     }
     
-    let results: [String]
+    let first: String
+    let last: String
     let email: String
     let phone: String
-    let large: URL
-    let thumbnail: URL
+    let large: URL?
+    let thumbnail: URL?
+    var name: String {
+        return "\(first) \(last)"
+    }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Keys.self)
         
         // Names
-        var resultsContainer = try container.nestedUnkeyedContainer(forKey: .results)
-        var fullNames: [String] = []
-        
-        while resultsContainer.isAtEnd == false {
-            let namesContainer = try resultsContainer.nestedContainer(keyedBy: Keys.NameKeys.self)
-            
-            let fullNameContainer = try namesContainer.nestedContainer(keyedBy: Keys.NameKeys.FullNameKeys.self, forKey: .name)
-            let firstName = try fullNameContainer.decode(String.self, forKey: .first)
-            let lastName = try fullNameContainer.decode(String.self, forKey: .last)
-            
-            fullNames.append(firstName)
-            fullNames.append(lastName)
-        }
-        results = fullNames
+        let nameContainer = try container.nestedContainer(keyedBy: Keys.NameKeys.self, forKey: .name)
+        first = try nameContainer.decode(String.self, forKey: .first)
+        last = try nameContainer.decode(String.self, forKey: .last)
         
         // Email
-        let locationContainer = try container.nestedContainer(keyedBy: Keys.LocationKeys.self, forKey: .results)
-        let emailContainer = try locationContainer.nestedContainer(keyedBy: Keys.LocationKeys.EmailKeys.self, forKey: .location)
-        email = try emailContainer.decode(String.self, forKey: .email)
+        email = try container.decode(String.self, forKey: .email)
         
         // Phone
-        let registeredContainer = try container.nestedContainer(keyedBy: Keys.RegisteredKeys.self, forKey: .results)
-        let phoneContainer = try registeredContainer.nestedContainer(keyedBy: Keys.RegisteredKeys.PhoneKeys.self, forKey: .registered)
-        phone = try phoneContainer.decode(String.self, forKey: .phone)
+        phone = try container.decode(String.self, forKey: .phone)
         
         // Photos
         large = try container.decode(URL.self, forKey: .large)
