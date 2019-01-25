@@ -14,7 +14,7 @@
 		4C13253221FB89AB0009B87C /* UserCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C13253121FB89AB0009B87C /* UserCellController.swift */; };
 		4C13253421FB89B50009B87C /* UserListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C13253321FB89B50009B87C /* UserListController.swift */; };
 		4C13253621FB89C30009B87C /* UserDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C13253521FB89C30009B87C /* UserDetailController.swift */; };
-		4C13253821FB89E80009B87C /* FetchPhotosOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C13253721FB89E80009B87C /* FetchPhotosOperation.swift */; };
+		4C13253821FB89E80009B87C /* PhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C13253721FB89E80009B87C /* PhotoOperation.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -30,7 +30,7 @@
 		4C13253121FB89AB0009B87C /* UserCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellController.swift; sourceTree = "<group>"; };
 		4C13253321FB89B50009B87C /* UserListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListController.swift; sourceTree = "<group>"; };
 		4C13253521FB89C30009B87C /* UserDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailController.swift; sourceTree = "<group>"; };
-		4C13253721FB89E80009B87C /* FetchPhotosOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotosOperation.swift; sourceTree = "<group>"; };
+		4C13253721FB89E80009B87C /* PhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoOperation.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
-				4C13253721FB89E80009B87C /* FetchPhotosOperation.swift */,
+				4C13253721FB89E80009B87C /* PhotoOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -200,7 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C13253021FB89A20009B87C /* UserManager.swift in Sources */,
-				4C13253821FB89E80009B87C /* FetchPhotosOperation.swift in Sources */,
+				4C13253821FB89E80009B87C /* PhotoOperation.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				4C13253421FB89B50009B87C /* UserListController.swift in Sources */,
 				4C13253621FB89C30009B87C /* UserDetailController.swift in Sources */,

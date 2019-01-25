@@ -22,6 +22,7 @@ class UserDetailController: UIViewController {
     
     //Properties
     var currentUser: User?
+    private var photoQueue = ConcurrentOperation()
     
     func showUser() {
         
@@ -29,6 +30,8 @@ class UserDetailController: UIViewController {
         guard let mainPhotoData = try? Data(contentsOf: photoURL) else { return }
         mainPhoto.image = UIImage(data: mainPhotoData)
         nameLabel.text = "\(currentUser?.name.first) \(currentUser?.name.last)"
+        phoneLabel.text = "\(currentUser?.cell)"
+        emailLabel.text = "\(currentUser?.email)"
     }
     
 }
