@@ -2,6 +2,10 @@ import Foundation
 
 struct UserResults: Decodable {
     let results: [User]
+    
+    enum ResultsKeys: String, CodingKey {
+        case results
+    }
 }
 
 struct User: Decodable {
@@ -49,14 +53,18 @@ struct User: Decodable {
         
         // Photos
         let pictureContainer = try container.nestedContainer(keyedBy: Keys.PictureKeys.self, forKey: .picture)
-        let large = try pictureContainer.decode(URL?.self, forKey: .large)
-        let thumbnail = try pictureContainer.decode(URL?.self, forKey: .thumbnail)
+        let large = try pictureContainer.decode(String.self, forKey: .large)
+        let largeURL = URL(string: large)
+        
+        let thumbnail = try pictureContainer.decode(String.self, forKey: .thumbnail)
+        let thumbnailURL = URL(string: thumbnail)
+        
         
         self.first = first
         self.last = last
         self.email = email
         self.phone = phone
-        self.large = large
-        self.thumbnail = thumbnail
+        self.large = largeURL
+        self.thumbnail = thumbnailURL
     }
 }
