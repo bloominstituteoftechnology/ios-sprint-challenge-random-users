@@ -19,9 +19,9 @@ class UsersTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! UserTableViewCell
 
         let user = userController.users[indexPath.row]
-        cell.userNameLabel.text = user.results.first
+        cell.userNameLabel.text = user.first
         
-        let imageURL = user.thumbnail
+        guard let imageURL = user.thumbnail else { return UITableViewCell() }
         cell.userImageView?.load(url: imageURL)
 
         return cell
@@ -36,10 +36,10 @@ class UsersTableViewController: UITableViewController {
                 let detailVC = segue.destination as? DetailViewController else { return }
             let user = userController.users[indexPath.row]
             
-            let imageURL = user.large
+            guard let imageURL = user.large else { return }
             detailVC.userImageView.load(url: imageURL)
             
-            detailVC.userNameLabel.text = user.results.first
+            detailVC.userNameLabel.text = user.first
             detailVC.userPhoneLabel.text = user.phone
             detailVC.userEmailLabel.text = user.email
         }

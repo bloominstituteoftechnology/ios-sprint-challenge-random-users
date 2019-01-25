@@ -1,13 +1,16 @@
 import Foundation
 
+struct UserResults: Decodable {
+    let results: [User]
+}
+
 struct User: Decodable {
     
     enum Keys: String, CodingKey {
         case name
         case email
         case phone
-        case large
-        case thumbnail
+        case picture
         
         enum NameKeys: String, CodingKey {
             case first
@@ -35,17 +38,25 @@ struct User: Decodable {
         
         // Names
         let nameContainer = try container.nestedContainer(keyedBy: Keys.NameKeys.self, forKey: .name)
-        first = try nameContainer.decode(String.self, forKey: .first)
-        last = try nameContainer.decode(String.self, forKey: .last)
+        let first = try nameContainer.decode(String.self, forKey: .first)
+        let last = try nameContainer.decode(String.self, forKey: .last)
         
         // Email
-        email = try container.decode(String.self, forKey: .email)
+        let email = try container.decode(String.self, forKey: .email)
         
         // Phone
-        phone = try container.decode(String.self, forKey: .phone)
+        let phone = try container.decode(String.self, forKey: .phone)
         
         // Photos
-        large = try container.decode(URL.self, forKey: .large)
-        thumbnail = try container.decode(URL.self, forKey: .thumbnail)
+        let pictureContainer = try container.nestedContainer(keyedBy: Keys.PictureKeys.self, forKey: .picture)
+        let large = try pictureContainer.decode(URL?.self, forKey: .large)
+        let thumbnail = try pictureContainer.decode(URL?.self, forKey: .thumbnail)
+        
+        self.first = first
+        self.last = last
+        self.email = email
+        self.phone = phone
+        self.large = large
+        self.thumbnail = thumbnail
     }
 }
