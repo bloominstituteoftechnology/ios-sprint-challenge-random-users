@@ -21,7 +21,7 @@ class UserDetailController: UIViewController {
     @IBOutlet weak var emailLabel: UILabel!
     
     //Properties
-    var currentUser: User? = nil
+    var currentUser: User?
     
     func showUser() {
         
