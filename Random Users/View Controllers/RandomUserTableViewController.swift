@@ -14,11 +14,11 @@ class RandomUserTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        randomUserController.fetchRandomUsers { (error) -> (Void) in
-//            DispatchQueue.main.async {
-//                self.tableView.reloadData()
-//            }
-//        }
+        randomUserController.fetchRandomUsers { (error) -> (Void) in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
         
     }
 
@@ -31,13 +31,12 @@ class RandomUserTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        print(Model.shared.randomUsers?.results.count)
         return Model.shared.randomUsersCount
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        loadRandomUser(forCell: cell, forItemAt: indexPath)
+        loadImage(forCell: cell, forItemAt: indexPath)
         return cell
     }
 
@@ -50,23 +49,30 @@ class RandomUserTableViewController: UITableViewController {
         guard let indexPath = tableView.indexPathForSelectedRow else {return}
         destination.randomUser = Model.shared.randomUsers?.results[indexPath.row]
     }
-    private func loadRandomUser(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) {
-        
-        guard let randomUser = cache.getValueWithIndex(index: indexPath.row) else {
-            if let randomUser = randomUserController.fetchSingleRandomUser(completionHandler: {_ in }) {
-            cache.cache(forKey: (randomUser.email), forValue: randomUser)
-            cell.textLabel?.text = Model.shared.getName(randomUser)
-            cell.imageView?.image = Model.shared.getImage((randomUser.picture.thumbnail))
+    private func loadImage(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+        guard let randomUserThumbnail = Model.shared.randomUsers?.results[indexPath.row].picture.thumbnail else {return}
+        if let data = cache.value(for: (randomUserThumbnail)) {
+            cell.imageView?.image = UIImage(data: data)
+            cell.textLabel?.text = Model.shared.getName((Model.shared.randomUsers?.results[indexPath.row])!)
+        } else {
+            do {
+                let data = try Data(contentsOf: URL(string: randomUserThumbnail)!)
+                cell.imageView?.image = UIImage(data: data)
+                cell.textLabel?.text = Model.shared.getName((Model.shared.randomUsers?.results[indexPath.row])!)
+                cache.cache(forKey: randomUserThumbnail, forValue: data)
+            } catch {
+                fatalError("Could not turn thumbnail url into data.")
             }
-            return
+            //TODO: must cancel no-longer-needed fetches as rows scroll off screen
         }
-        cell.textLabel?.text = Model.shared.getName(randomUser)
-        cell.imageView?.image = Model.shared.getImage(randomUser.picture.thumbnail)
-        cache.cache(forKey: randomUser.email, forValue: randomUser)
+    }
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.prepareForReuse()
     }
     //MARK: Propertires
     
     let randomUserController = RandomUserController()
-    let cache = Cache<String, RandomUser>()
+    let cache = Cache<String, Data>()
 
 }

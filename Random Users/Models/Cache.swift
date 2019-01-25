@@ -25,21 +25,10 @@ class Cache<Key, Value> where Key: Hashable {
     }
         return false
     }
-    func getValueWithIndex(index: Int) -> Value? {
-        if let value = valueArray?[index] {
-        return value
-        }
-        return nil
-    }
     
     //MARK: Properties
     
     private let queue = DispatchQueue(label: "cacheQueue")
-    private var cacheDictionary: [Key: Value] = [:] {
-        didSet {
-            valueArray? = cacheDictionary.map{ $0.value }
-            print(cacheDictionary)
-        }
-    }
-    private var valueArray: [Value]?
+    private var cacheDictionary: [Key: Value] = [:]
+    
 }
