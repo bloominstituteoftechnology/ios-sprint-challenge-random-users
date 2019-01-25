@@ -10,16 +10,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--User List Controller-->
         <scene sceneID="Dci-ua-4uQ">
             <objects>
-                <tableViewController id="70c-mg-OMj" sceneMemberID="viewController">
+                <tableViewController id="70c-mg-OMj" customClass="UserListController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="1yu-A8-UPM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="userCell" rowHeight="60" id="Nqt-bo-ldh">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="userCell" rowHeight="60" id="Nqt-bo-ldh" customClass="UserCellController" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nqt-bo-ldh" id="2cA-t9-Kqv">
@@ -54,7 +54,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="VCl-px-a0i" kind="show" id="l98-fa-3Zm"/>
+                                    <outlet property="contactLabel" destination="4nE-7K-XmJ" id="cxJ-Dq-Dkn"/>
+                                    <outlet property="photoThumb" destination="T8D-Fx-yAf" id="3Xt-V2-RRI"/>
+                                    <segue destination="VCl-px-a0i" kind="show" identifier="detailSegue" id="l98-fa-3Zm"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -71,10 +73,10 @@
             </objects>
             <point key="canvasLocation" x="-1844" y="1676.311844077961"/>
         </scene>
-        <!--View Controller-->
+        <!--User Detail Controller-->
         <scene sceneID="AgG-Ov-Je1">
             <objects>
-                <viewController id="VCl-px-a0i" sceneMemberID="viewController">
+                <viewController id="VCl-px-a0i" customClass="UserDetailController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6zV-cA-f6o">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -131,6 +133,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0r1-9E-oEF"/>
                     </view>
+                    <connections>
+                        <outlet property="emailLabel" destination="Cs5-dt-FXy" id="4ds-MH-0lK"/>
+                        <outlet property="mainPhoto" destination="eFi-Hc-DUJ" id="btl-4o-CD4"/>
+                        <outlet property="nameLabel" destination="wUE-DK-V89" id="Gdr-kd-jXi"/>
+                        <outlet property="phoneLabel" destination="eH3-Wf-xcd" id="RF8-RW-7lq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lYh-5Y-Nlg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
