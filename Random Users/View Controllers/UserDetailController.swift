@@ -22,16 +22,38 @@ class UserDetailController: UIViewController {
     
     //Properties
     var currentUser: User?
-    private var photoQueue = ConcurrentOperation()
+    private var photoQueue = OperationQueue() //My background queue for photos
+    
+
     
     func showUser() {
         
-        guard let photoURL = URL(string: (currentUser?.picture.large)!) else { return }
-        guard let mainPhotoData = try? Data(contentsOf: photoURL) else { return }
-        mainPhoto.image = UIImage(data: mainPhotoData)
+        //Using the photo operation to download the main photo.
+        let mainPhotoDownload = PhotoOperation(theUser: currentUser!, size: .large)
+        
+        let addMainPhotoOp = BlockOperation { //Updating the main photo
+            
+            if let mainPhotoData = mainPhotoDownload.photoData {
+                self.mainPhoto.image = UIImage(data: mainPhotoData)
+            } //End of unwrapping photo data
+        } //End of updating the main photo
+        
+        //Updating the main photo is dependent on the success of it downloading.
+        addMainPhotoOp.addDependency(mainPhotoDownload)
+        
+        //Downloading the main photo should happen on the background photo queue.
+        photoQueue.addOperation(mainPhotoDownload)
+      
+        //Update the main photo on the main queue since it's part of the UI.
+        OperationQueue.main.addOperation(addMainPhotoOp)
+        
+
+        //Updating the labels via regular assignments
         nameLabel.text = "\(currentUser?.name.first) \(currentUser?.name.last)"
         phoneLabel.text = "\(currentUser?.cell)"
         emailLabel.text = "\(currentUser?.email)"
+        
+        
     }
     
 }
