@@ -14,6 +14,12 @@ class ContactDetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        guard let user = user else {fatalError("no user passed")}
+        let fullName = "\(user.name.title) \(user.name.first) \(user.name.last)"
+        contactNameLabel.text = fullName
+        contactEmailLabel.text = user.email
+        contactPhoneNumberLabel.text = user.phone
+
     }
     
     @IBOutlet weak var contactImageView: UIImageView!
@@ -21,4 +27,5 @@ class ContactDetailViewController: UIViewController {
     @IBOutlet weak var contactPhoneNumberLabel: UILabel!
     @IBOutlet weak var contactEmailLabel: UILabel!
 
+    var user: RandomUser?
 }

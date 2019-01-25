@@ -22,4 +22,8 @@ class Cache<Key: Hashable, Value> {
         return queue.sync { items[key] }
     }
     
+    var count : Int {
+        return queue.sync { items.count }
+    }
+    
 }

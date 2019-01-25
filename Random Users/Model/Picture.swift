@@ -13,21 +13,21 @@ struct Picture: Codable {
     // MARK: - Properties
     var large: String
     var medium: String
-    var small: String
+    var thumbnail: String
     
     // Coding keys for encoding and decoding
     enum CodingKeys: String, CodingKey {
         case large
         case medium
-        case small
+        case thumbnail
         
     }
     
     // MARK: - Initializers
-    init (large: String, medium: String, small: String) {
+    init (large: String, medium: String, thumbnail: String) {
         self.large = large
         self.medium = medium
-        self.small = small
+        self.thumbnail = thumbnail
     }
     
     // MARK: - Codable
@@ -37,12 +37,12 @@ struct Picture: Codable {
         // Decode the easy stuff
         let large = try container.decode(String.self, forKey: .large)
         let medium = try container.decode(String.self, forKey: .medium)
-        let small = try container.decode(String.self, forKey: .small)
+        let thumbnail = try container.decode(String.self, forKey: .thumbnail)
         
         // Set the properties
         self.large = large
         self.medium = medium
-        self.small = small
+        self.thumbnail = thumbnail
     }
     
     // Not sure we're going to need this
@@ -52,7 +52,7 @@ struct Picture: Codable {
         // Encode the easy stuff
         try container.encode(large, forKey: .large)
         try container.encode(medium, forKey: .medium)
-        try container.encode(small, forKey: .small)
+        try container.encode(thumbnail, forKey: .thumbnail)
         
     }
 }

@@ -8,36 +8,9 @@
 
 import Foundation
 
-class MarsRoverClient {
+class RandomUserClient {
     
-    func fetchMarsRover(named name: String,
-                        using session: URLSession = URLSession.shared,
-                        completion: @escaping (MarsRover?, Error?) -> Void) {
-        
-        let url = self.url(forInfoForRover: name)
-        fetch(from: url, using: session) { (dictionary: [String : MarsRover]?, error: Error?) in
-            guard let rover = dictionary?["photoManifest"] else {
-                completion(nil, error)
-                return
-            }
-            completion(rover, nil)
-        }
-    }
-    
-    func fetchPhotos(from rover: MarsRover,
-                     onSol sol: Int,
-                     using session: URLSession = URLSession.shared,
-                     completion: @escaping ([MarsPhotoReference]?, Error?) -> Void) {
-        
-        let url = self.url(forPhotosfromRover: rover.name, on: sol)
-        fetch(from: url, using: session) { (dictionary: [String : [MarsPhotoReference]]?, error: Error?) in
-            guard let photos = dictionary?["photos"] else {
-                completion(nil, error)
-                return
-            }
-            completion(photos, nil)
-        }
-    }
+    typealias CompletionHandler = (Error?) -> Void
     
     // MARK: - Private
     
@@ -51,12 +24,12 @@ class MarsRoverClient {
             }
             
             guard let data = data else {
-                completion(nil, NSError(domain: "com.LambdaSchool.Astronomy.ErrorDomain", code: -1, userInfo: nil))
+                completion(nil, NSError(domain: "com.benhakes.randomuser.ErrorDomain", code: -1, userInfo: nil))
                 return
             }
             
             do {
-                let jsonDecoder = MarsPhotoReference.jsonDecoder
+                let jsonDecoder = Results.jsonDecoder
                 let decodedObject = try jsonDecoder.decode(T.self, from: data)
                 completion(decodedObject, nil)
             } catch {
@@ -65,26 +38,49 @@ class MarsRoverClient {
             }.resume()
     }
     
-    private let baseURL = URL(string: "https://api.nasa.gov/mars-photos/api/v1")!
-    private let apiKey = "qzGsj0zsKk6CA9JZP1UjAbpQHabBfaPg2M5dGMB7"
     
-    private func url(forInfoForRover roverName: String) -> URL {
-        var url = baseURL
-        url.appendPathComponent("manifests")
-        url.appendPathComponent(roverName)
-        let urlComponents = NSURLComponents(url: url, resolvingAgainstBaseURL: true)!
-        urlComponents.queryItems = [URLQueryItem(name: "api_key", value: apiKey)]
-        return urlComponents.url!
+    // MARK: - Networking
+    func getRandomUser(completion: @escaping CompletionHandler = { _ in }){
+            URLSession.shared.dataTask(with: baseURL){(data, _, error) in
+                
+                if let error = error {
+                    NSLog("Error GETting albums from server: \(error)")
+                    completion(error)
+                    return
+                }
+                
+                guard let data = data else {
+                    NSLog("No data was returned.")
+                    completion(NSError())
+                    return
+                }
+                
+                do {
+                    let decodedObject = try JSONDecoder().decode(Results.self, from: data)
+                    
+                    // add data to the cache
+                    var count = 0
+                    for randomUser in decodedObject.results{
+                        
+                        self.cache.cache(value: randomUser, for: count)
+                        
+                        count += 1
+                    }
+                    
+                    print(self.cache.value(for: 1))
+                    
+                    completion(nil)
+                    return
+                } catch {
+                    NSLog("Error decoding albums: \(error)")
+                    completion(error)
+                    return
+                }
+                
+        }.resume()
     }
     
-    private func url(forPhotosfromRover roverName: String, on sol: Int) -> URL {
-        var url = baseURL
-        url.appendPathComponent("rovers")
-        url.appendPathComponent(roverName)
-        url.appendPathComponent("photos")
-        let urlComponents = NSURLComponents(url: url, resolvingAgainstBaseURL: true)!
-        urlComponents.queryItems = [URLQueryItem(name: "sol", value: String(sol)),
-                                    URLQueryItem(name: "api_key", value: apiKey)]
-        return urlComponents.url!
-    }
+    private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=3")!
+
+    var cache = Cache<Int,RandomUser>()
 }

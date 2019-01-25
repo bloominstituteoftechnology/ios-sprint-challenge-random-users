@@ -21,7 +21,8 @@ class RandomContactsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    @IBOutlet weak var contactNameLabel: UIStackView!
+    @IBOutlet weak var contactNameLabel: UILabel!
     @IBOutlet weak var contactImageView: UIImageView!
     
+    var contact: RandomUser?
 }
