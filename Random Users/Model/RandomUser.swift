@@ -56,5 +56,10 @@ class RandomUser: Codable, CustomStringConvertible {
         self.picture = picture
         self.phone = phone
     }
+    func capitalizeFirstLetterOfNames() {
+        self.name.title = name.title.capitalizingFirstLetter()
+        self.name.first = name.first.capitalizingFirstLetter()
+        self.name.last = name.last.capitalizingFirstLetter()
+    }
     
 }

@@ -33,7 +33,6 @@ class RandomUserClient {
                 completion(nil, error)
                 return
             }
-//            print("Data: \(data), Response: \(response), Error: \(error)")
             
             guard let data = data else {
                 completion(nil, NSError(domain: "com.benhakes.randomuser.ErrorDomain", code: -1, userInfo: nil))

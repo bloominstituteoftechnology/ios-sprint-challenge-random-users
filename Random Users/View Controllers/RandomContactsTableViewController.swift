@@ -22,9 +22,9 @@ class RandomContactsTableViewController: UITableViewController {
             var counter = 0
             for randomUser in results.results {
                 randomUser.id = counter
+                randomUser.capitalizeFirstLetterOfNames()
                 self.userReferences.append(randomUser)
                 counter += 1
-                print(randomUser.id)
             }
         }
         
@@ -52,10 +52,10 @@ class RandomContactsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-
-        if let fetchPhotoOperation = fetchOperations[indexPath.row] {
+        let user = userReferences[indexPath.row]
+        
+        if let fetchPhotoOperation = fetchOperations[user.id] {
             fetchPhotoOperation.cancel()
-            print("Cancelled photo operation")
         }
     }
     

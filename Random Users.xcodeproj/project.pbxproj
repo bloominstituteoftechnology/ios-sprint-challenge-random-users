@@ -12,6 +12,7 @@
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
 		8ED6A9922140178C00FC395A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
+		D13C811D21FCDCCA0016A6FC /* String+CapitalizingFirstLetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13C811C21FCDCCA0016A6FC /* String+CapitalizingFirstLetter.swift */; };
 		D14EAB6921FB6B4A005417D2 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14EAB6821FB6B4A005417D2 /* Appearance.swift */; };
 		D14EAB6D21FB6C9A005417D2 /* RandomContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14EAB6C21FB6C9A005417D2 /* RandomContactsTableViewController.swift */; };
 		D14EAB6F21FB6CE8005417D2 /* RandomContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14EAB6E21FB6CE8005417D2 /* RandomContactsTableViewCell.swift */; };
@@ -34,6 +35,7 @@
 		8ED6A9912140178C00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ED6A9932140178C00FC395A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
+		D13C811C21FCDCCA0016A6FC /* String+CapitalizingFirstLetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CapitalizingFirstLetter.swift"; sourceTree = "<group>"; };
 		D14EAB6821FB6B4A005417D2 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		D14EAB6C21FB6C9A005417D2 /* RandomContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomContactsTableViewController.swift; sourceTree = "<group>"; };
 		D14EAB6E21FB6CE8005417D2 /* RandomContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomContactsTableViewCell.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				D14EAB6821FB6B4A005417D2 /* Appearance.swift */,
+				D13C811C21FCDCCA0016A6FC /* String+CapitalizingFirstLetter.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				D14EAB7121FB6DB8005417D2 /* ContactDetailViewController.swift in Sources */,
 				D14EAB8321FB8655005417D2 /* FetchPhotoOperation.swift in Sources */,
 				D14EAB6F21FB6CE8005417D2 /* RandomContactsTableViewCell.swift in Sources */,
+				D13C811D21FCDCCA0016A6FC /* String+CapitalizingFirstLetter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
