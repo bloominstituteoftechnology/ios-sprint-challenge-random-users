@@ -13,7 +13,11 @@ class RandomContactsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        client.getRandomUser()
+        self.client.getRandomUsers() {_ in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
         
     }
 
@@ -21,7 +25,7 @@ class RandomContactsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        print(client.cache.count)
+        
         return client.cache.count
     }
 
@@ -30,28 +34,36 @@ class RandomContactsTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "RandomContactCell", for: indexPath) as? RandomContactsTableViewCell else {fatalError("failed to deque cell as random contacts TVCell")}
         
         loadImage(forCell: cell, forItemAt: indexPath)
-        
+
         guard let user = client.cache.value(for: indexPath.row) else {fatalError("no user for indexPath")}
         
-        cell.contactNameLabel.text = user.email
+        cell.contact = user
+        cell.contactNameLabel.text = "\(user.name.title) \(user.name.first) \(user.name.last)"
+        let urlString = user.picture.thumbnail
+
+        if let url = URL(string: urlString) {
+            do {
+                let imageData = try Data(contentsOf: url)
+                DispatchQueue.main.async {
+                    cell.contactImageView.image = UIImage(data: imageData)
+                }
+                
+            } catch {
+                print("Something went wrong loading the image")
+            }
+        }
+        
         
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let cell = tableView.cellForRow(at: indexPath)
-        
-        self.performSegue(withIdentifier: "ContactDetailSegue", sender: cell)
-    }
-    
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let userReference = userReferences[indexPath.row]
-        
-        if let fetchPhotoOperation = fetchOperations[indexPath.row] {
-            fetchPhotoOperation.cancel()
-            print("Cancelled photo operation")
-        }
+//        let userReference = userReferences[indexPath.row]
+//
+//        if let fetchPhotoOperation = fetchOperations[indexPath.row] {
+//            fetchPhotoOperation.cancel()
+//            print("Cancelled photo operation")
+//        }
     }
     
     // MARK: - Navigation
@@ -60,26 +72,24 @@ class RandomContactsTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-//        guard let cell = sender as? RandomContactsTableViewCell else { fatalError("Sender for segue was not a RandomContactsTableViewCell")}
+        guard let cell = sender as? RandomContactsTableViewCell else { fatalError("Sender for segue was not a RandomContactsTableViewCell")}
+        
+        guard let user = cell.contact else { fatalError("Was not able to get random user")}
         
         guard let indexPath = tableView.indexPathForSelectedRow else { fatalError("Couldn't get index path")}
 
         let destVC = segue.destination as! ContactDetailViewController
-        guard let user = client.cache.value(for: indexPath.row) else { fatalError("Couldn't get user for that table view row")}
         
         destVC.user = user
-        
-        let photoString = user.picture.large
-        destVC.contactImageView.image = UIImage(contentsOfFile: photoString)
     }
     
     // MARK: - Private
     
     private func loadImage(forCell cell: RandomContactsTableViewCell, forItemAt indexPath: IndexPath) {
         
-        let userReference = userReferences[indexPath.item]
-        guard let user = client.cache.value(for: indexPath.row) else { return }
-        
+//        let userReference = userReferences[indexPath.item]
+//        guard let user = client.cache.value(for: indexPath.row) else { return }
+//
 //        if let imageString = user.picture.thumbnail {
 //            let image = UIImage(string: imageString)
 //            cell.imageView.image = image
@@ -97,16 +107,16 @@ class RandomContactsTableViewController: UITableViewController {
 //                cell.contactImageView.image = image
 //            }
 //        }
-//        
+//
 //        cachePhotoOperation.addDependency(fetchPhotoOperation)
 //        updateUIOpteration.addDependency(fetchPhotoOperation)
-//        
+//
 //        fetchOperations[indexPath.row] = fetchPhotoOperation
-//        
+//
 //        photoFetchQueue.addOperation(fetchPhotoOperation)
 //        photoFetchQueue.addOperation(cachePhotoOperation)
 //        OperationQueue.main.addOperation(updateUIOpteration)
-//        
+//
     }
     
     

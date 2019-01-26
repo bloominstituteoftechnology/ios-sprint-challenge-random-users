@@ -12,6 +12,20 @@ class RandomUserClient {
     
     typealias CompletionHandler = (Error?) -> Void
     
+//    func fetchPhotos(using session: URLSession = URLSession.shared,
+//                     completion: @escaping ([RandomUser]?, Error?) -> Void) {
+//
+//        let url = baseURL
+//        fetch(from: url, using: session) { (dictionary: [String : [RandomUser]]?, error: Error?) in
+//            guard let photos = dictionary?["photos"] else {
+//                completion(nil, error)
+//                return
+//            }
+//            completion(photos, nil)
+//        }
+//    }
+//
+    
     // MARK: - Private
     
     private func fetch<T: Codable>(from url: URL,
@@ -40,7 +54,7 @@ class RandomUserClient {
     
     
     // MARK: - Networking
-    func getRandomUser(completion: @escaping CompletionHandler = { _ in }){
+    func getRandomUsers(completion: @escaping CompletionHandler = { _ in }){
             URLSession.shared.dataTask(with: baseURL){(data, _, error) in
                 
                 if let error = error {
@@ -61,14 +75,10 @@ class RandomUserClient {
                     // add data to the cache
                     var count = 0
                     
-                    
                     for randomUser in decodedObject.results{
                         
                         self.cache.cache(value: randomUser, for: count)
                         
-                        if count < 2 {
-                            print(randomUser)
-                        }
                         count += 1
                         
                     }

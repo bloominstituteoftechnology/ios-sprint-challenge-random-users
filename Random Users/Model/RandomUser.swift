@@ -56,16 +56,4 @@ class RandomUser: Codable, CustomStringConvertible {
         self.phone = phone
     }
     
-    // not sure if we'll need this
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        
-        // Encode the easy stuff
-        
-        try container.encode(name, forKey: .name)
-        try container.encode(email, forKey: .email)
-        try container.encode(picture, forKey: .picture)
-        try container.encode(phone, forKey: .phone)
-        
-    }
 }
