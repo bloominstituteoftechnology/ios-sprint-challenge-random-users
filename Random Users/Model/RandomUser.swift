@@ -22,6 +22,7 @@ class RandomUser: Codable, CustomStringConvertible {
     var phone: String
     var picture: Picture
     var uid: UUID = UUID()
+    var id: Int = 0
     
     // Coding keys for encoding and decoding
     enum CodingKeys: String, CodingKey {
@@ -29,7 +30,6 @@ class RandomUser: Codable, CustomStringConvertible {
         case email
         case phone
         case picture
-
     }
     
     // MARK: - Initializers

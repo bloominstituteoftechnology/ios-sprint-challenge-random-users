@@ -12,29 +12,14 @@ class RandomUserClient {
     
     typealias CompletionHandler = (Error?) -> Void
     
+    // MARK: - Networking
     func fetchAllContent(using session: URLSession = URLSession.shared,
                         completion: @escaping (Results?, Error?) -> Void) {
         
         let url = baseURL
         fetch(from: url, using: session) { (results: Results?, error: Error?) in
-//            guard let rover = dictionary?["photoManifest"] else {
-//                completion(nil, error)
-//                return
-//            }
+            
             completion(results, nil)
-        }
-    }
-    
-    func fetchPhotos(using session: URLSession = URLSession.shared,
-                     completion: @escaping ([RandomUser]?, Error?) -> Void) {
-        
-        let url = baseURL
-        fetch(from: url, using: session) { (dictionary: [String : [RandomUser]]?, error: Error?) in
-            guard let pictures = dictionary?["picture"] else {
-                completion(nil, error)
-                return
-            }
-            completion(pictures, nil)
         }
     }
     
@@ -48,6 +33,7 @@ class RandomUserClient {
                 completion(nil, error)
                 return
             }
+//            print("Data: \(data), Response: \(response), Error: \(error)")
             
             guard let data = data else {
                 completion(nil, NSError(domain: "com.benhakes.randomuser.ErrorDomain", code: -1, userInfo: nil))
@@ -64,47 +50,6 @@ class RandomUserClient {
             }.resume()
     }
     
-    
-    // MARK: - Networking
-    func getRandomUsers(completion: @escaping CompletionHandler = { _ in }){
-            URLSession.shared.dataTask(with: baseURL){(data, _, error) in
-                
-                if let error = error {
-                    NSLog("Error GETting albums from server: \(error)")
-                    completion(error)
-                    return
-                }
-                
-                guard let data = data else {
-                    NSLog("No data was returned.")
-                    completion(NSError())
-                    return
-                }
-                
-                do {
-                    let decodedObject = try JSONDecoder().decode(Results.self, from: data)
-                    
-                    // add data to the cache
-                    var count = 0
-                    
-                    for randomUser in decodedObject.results{
-                        
-                        self.cache.cache(value: randomUser, for: count)
-                        
-                        count += 1
-                        
-                    }
-                    
-                    completion(nil)
-                    return
-                } catch {
-                    NSLog("Error decoding albums: \(error)")
-                    completion(error)
-                    return
-                }
-                
-        }.resume()
-    }
     
     private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
 

@@ -31,7 +31,8 @@ class ContactDetailViewController: UIViewController {
             }
             
         } catch {
-            print("Something went wrong loading the image")
+            NSLog("Error fetching image: \(error)")
+            return
         }
         
     }

@@ -19,8 +19,12 @@ class RandomContactsTableViewController: UITableViewController {
                 return
             }
             guard let results = results else { return }
+            var counter = 0
             for randomUser in results.results {
+                randomUser.id = counter
                 self.userReferences.append(randomUser)
+                counter += 1
+                print(randomUser.id)
             }
         }
         
@@ -29,7 +33,6 @@ class RandomContactsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return userReferences.count
     }
 
@@ -43,20 +46,7 @@ class RandomContactsTableViewController: UITableViewController {
         
         cell.contact = user
         cell.contactNameLabel.text = "\(user.name.title) \(user.name.first) \(user.name.last)"
-        let urlString = user.picture.thumbnail
-
-        if let url = URL(string: urlString) {
-            do {
-                let imageData = try Data(contentsOf: url)
-                DispatchQueue.main.async {
-                    cell.contactImageView.image = UIImage(data: imageData)
-                }
-                
-            } catch {
-                print("Something went wrong loading the image")
-            }
-        }
-        
+  
         
         return cell
     }
@@ -89,8 +79,8 @@ class RandomContactsTableViewController: UITableViewController {
     private func loadImage(forCell cell: RandomContactsTableViewCell, forItemAt indexPath: IndexPath) {
         
         let user = userReferences[indexPath.row]
-
-        if let imageData = cache.value(for: indexPath.row) {
+        
+        if let imageData = cache.value(for: user.id) {
             let image = UIImage(data: imageData)
             cell.contactImageView.image = image
             return
@@ -98,9 +88,10 @@ class RandomContactsTableViewController: UITableViewController {
         
         let fetchPhotoOperation = FetchPhotoOperation(user: user)
         
-        guard let fetchedPhotoOperationImageData = fetchPhotoOperation.imageData else { return }
+        
         let cachePhotoOperation = BlockOperation {
-            self.cache.cache(value: fetchedPhotoOperationImageData, for: indexPath.row)
+            guard let fetchedPhotoOperationImageData = fetchPhotoOperation.imageData else { return }
+            self.cache.cache(value: fetchedPhotoOperationImageData, for: user.id)
         }
         
         let updateUIOpteration = BlockOperation {
@@ -113,7 +104,7 @@ class RandomContactsTableViewController: UITableViewController {
         cachePhotoOperation.addDependency(fetchPhotoOperation)
         updateUIOpteration.addDependency(fetchPhotoOperation)
         
-        fetchOperations[indexPath.row] = fetchPhotoOperation
+        fetchOperations[user.id] = fetchPhotoOperation
         
         photoFetchQueue.addOperation(fetchPhotoOperation)
         photoFetchQueue.addOperation(cachePhotoOperation)
