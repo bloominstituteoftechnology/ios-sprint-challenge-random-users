@@ -19,7 +19,8 @@ class RandomContactsTableViewController: UITableViewController {
                 return
             }
             guard let results = results else { return }
-            var counter = 0
+            var counter = self.userReferences.count
+            print(counter)
             for randomUser in results.results {
                 randomUser.id = counter
                 randomUser.capitalizeFirstLetterOfNames()
@@ -110,6 +111,25 @@ class RandomContactsTableViewController: UITableViewController {
         photoFetchQueue.addOperation(cachePhotoOperation)
         OperationQueue.main.addOperation(updateUIOpteration)
 
+    }
+    
+    
+    @IBAction func addMoreRandomUsers(_ sender: Any) {
+        client.fetchAllContent { (results, error) in
+            if let error = error {
+                NSLog("Error fetching data from server: \(error)")
+                return
+            }
+            guard let results = results else { return }
+            var counter = self.userReferences.count
+            print(counter)
+            for randomUser in results.results {
+                randomUser.id = counter
+                randomUser.capitalizeFirstLetterOfNames()
+                self.userReferences.append(randomUser)
+                counter += 1
+            }
+        }
     }
     
     

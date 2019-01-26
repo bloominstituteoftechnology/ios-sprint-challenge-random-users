@@ -50,7 +50,6 @@ class RandomUserClient {
     }
     
     
-    private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
+    private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=5")!
 
-    var cache = Cache<Int,RandomUser>()
 }

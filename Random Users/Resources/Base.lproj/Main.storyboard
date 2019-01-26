@@ -36,11 +36,17 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D55-8x-moV">
-                                                    <rect key="frame" x="54" y="0.0" width="305" height="45.5"/>
+                                                    <rect key="frame" x="54" y="0.0" width="267" height="45.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrows_right" translatesAutoresizingMaskIntoConstraints="NO" id="lGo-6l-Znv">
+                                                    <rect key="frame" x="329" y="0.0" width="30" height="45.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="Fg8-NL-ChN"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                         </stackView>
                                     </subviews>
@@ -64,7 +70,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Contacts" id="zFO-1d-Mrw">
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="Rh0-bj-d70"/>
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="Rh0-bj-d70">
+                            <connections>
+                                <action selector="addMoreRandomUsers:" destination="ywX-RD-ybh" id="wB1-kk-QxK"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eQB-2j-Mol" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -156,4 +166,7 @@
             <point key="canvasLocation" x="-838" y="186"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrows_right" width="64" height="64"/>
+    </resources>
 </document>
