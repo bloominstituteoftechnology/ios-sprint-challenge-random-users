@@ -12,19 +12,31 @@ class RandomUserClient {
     
     typealias CompletionHandler = (Error?) -> Void
     
-//    func fetchPhotos(using session: URLSession = URLSession.shared,
-//                     completion: @escaping ([RandomUser]?, Error?) -> Void) {
-//
-//        let url = baseURL
-//        fetch(from: url, using: session) { (dictionary: [String : [RandomUser]]?, error: Error?) in
-//            guard let photos = dictionary?["photos"] else {
+    func fetchAllContent(using session: URLSession = URLSession.shared,
+                        completion: @escaping (Results?, Error?) -> Void) {
+        
+        let url = baseURL
+        fetch(from: url, using: session) { (results: Results?, error: Error?) in
+//            guard let rover = dictionary?["photoManifest"] else {
 //                completion(nil, error)
 //                return
 //            }
-//            completion(photos, nil)
-//        }
-//    }
-//
+            completion(results, nil)
+        }
+    }
+    
+    func fetchPhotos(using session: URLSession = URLSession.shared,
+                     completion: @escaping ([RandomUser]?, Error?) -> Void) {
+        
+        let url = baseURL
+        fetch(from: url, using: session) { (dictionary: [String : [RandomUser]]?, error: Error?) in
+            guard let pictures = dictionary?["picture"] else {
+                completion(nil, error)
+                return
+            }
+            completion(pictures, nil)
+        }
+    }
     
     // MARK: - Private
     

@@ -13,9 +13,14 @@ class RandomContactsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.client.getRandomUsers() {_ in
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+        client.fetchAllContent { (results, error) in
+            if let error = error {
+                NSLog("Error fetching data from server: \(error)")
+                return
+            }
+            guard let results = results else { return }
+            for randomUser in results.results {
+                self.userReferences.append(randomUser)
             }
         }
         
@@ -24,9 +29,8 @@ class RandomContactsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         
-        return client.cache.count
+        return userReferences.count
     }
 
 
@@ -35,7 +39,7 @@ class RandomContactsTableViewController: UITableViewController {
         
         loadImage(forCell: cell, forItemAt: indexPath)
 
-        guard let user = client.cache.value(for: indexPath.row) else {fatalError("no user for indexPath")}
+        let user = userReferences[indexPath.row]
         
         cell.contact = user
         cell.contactNameLabel.text = "\(user.name.title) \(user.name.first) \(user.name.last)"
@@ -58,12 +62,11 @@ class RandomContactsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        let userReference = userReferences[indexPath.row]
-//
-//        if let fetchPhotoOperation = fetchOperations[indexPath.row] {
-//            fetchPhotoOperation.cancel()
-//            print("Cancelled photo operation")
-//        }
+
+        if let fetchPhotoOperation = fetchOperations[indexPath.row] {
+            fetchPhotoOperation.cancel()
+            print("Cancelled photo operation")
+        }
     }
     
     // MARK: - Navigation
@@ -75,8 +78,6 @@ class RandomContactsTableViewController: UITableViewController {
         guard let cell = sender as? RandomContactsTableViewCell else { fatalError("Sender for segue was not a RandomContactsTableViewCell")}
         
         guard let user = cell.contact else { fatalError("Was not able to get random user")}
-        
-        guard let indexPath = tableView.indexPathForSelectedRow else { fatalError("Couldn't get index path")}
 
         let destVC = segue.destination as! ContactDetailViewController
         
@@ -87,36 +88,37 @@ class RandomContactsTableViewController: UITableViewController {
     
     private func loadImage(forCell cell: RandomContactsTableViewCell, forItemAt indexPath: IndexPath) {
         
-//        let userReference = userReferences[indexPath.item]
-//        guard let user = client.cache.value(for: indexPath.row) else { return }
-//
-//        if let imageString = user.picture.thumbnail {
-//            let image = UIImage(string: imageString)
-//            cell.imageView.image = image
-//            return
-//        }
-//
-//        let fetchPhotoOperation = FetchPhotoOperation(userReference: userReference)
-//        guard let image = fetchPhotoOperation.image else { return }
-//        let cachePhotoOperation = BlockOperation {
-//            self.client.cache.cache(value: image, for: userReference.id)
-//        }
-//
-//        let updateUIOpteration = BlockOperation {
-//            if let image  = fetchPhotoOperation.image {
-//                cell.contactImageView.image = image
-//            }
-//        }
-//
-//        cachePhotoOperation.addDependency(fetchPhotoOperation)
-//        updateUIOpteration.addDependency(fetchPhotoOperation)
-//
-//        fetchOperations[indexPath.row] = fetchPhotoOperation
-//
-//        photoFetchQueue.addOperation(fetchPhotoOperation)
-//        photoFetchQueue.addOperation(cachePhotoOperation)
-//        OperationQueue.main.addOperation(updateUIOpteration)
-//
+        let user = userReferences[indexPath.row]
+
+        if let imageData = cache.value(for: indexPath.row) {
+            let image = UIImage(data: imageData)
+            cell.contactImageView.image = image
+            return
+        }
+        
+        let fetchPhotoOperation = FetchPhotoOperation(user: user)
+        
+        guard let fetchedPhotoOperationImageData = fetchPhotoOperation.imageData else { return }
+        let cachePhotoOperation = BlockOperation {
+            self.cache.cache(value: fetchedPhotoOperationImageData, for: indexPath.row)
+        }
+        
+        let updateUIOpteration = BlockOperation {
+            if let imageData = fetchPhotoOperation.imageData {
+                let image = UIImage(data: imageData)
+                cell.contactImageView.image = image
+            }
+        }
+        
+        cachePhotoOperation.addDependency(fetchPhotoOperation)
+        updateUIOpteration.addDependency(fetchPhotoOperation)
+        
+        fetchOperations[indexPath.row] = fetchPhotoOperation
+        
+        photoFetchQueue.addOperation(fetchPhotoOperation)
+        photoFetchQueue.addOperation(cachePhotoOperation)
+        OperationQueue.main.addOperation(updateUIOpteration)
+
     }
     
     
@@ -129,4 +131,5 @@ class RandomContactsTableViewController: UITableViewController {
     private var photoFetchQueue =  OperationQueue()
     private var fetchOperations: [Int: FetchPhotoOperation] = [:]
     private let client = RandomUserClient()
+    private var cache = Cache<Int, Data>()
 }

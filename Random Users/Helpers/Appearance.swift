@@ -13,6 +13,7 @@ struct Appearance {
         UINavigationBar.appearance().tintColor = .accentColor
         UINavigationBar.appearance().barTintColor = .darkColor
         UINavigationBar.appearance().largeTitleTextAttributes = [ .foregroundColor: UIColor.accentColor]
+        UINavigationBar.appearance().titleTextAttributes = [ .foregroundColor: UIColor.accentColor]
         UINavigationBar.appearance().prefersLargeTitles = true
         UINavigationBar.appearance().isTranslucent = false
     }

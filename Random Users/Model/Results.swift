@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Results: Codable {
+struct Results: Codable {    
     
     // MARK: - Properties
     

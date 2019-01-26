@@ -21,6 +21,7 @@ class RandomUser: Codable, CustomStringConvertible {
     var email: String
     var phone: String
     var picture: Picture
+    var uid: UUID = UUID()
     
     // Coding keys for encoding and decoding
     enum CodingKeys: String, CodingKey {

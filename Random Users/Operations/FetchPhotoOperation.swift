@@ -18,25 +18,25 @@ import UIKit
 
 class FetchPhotoOperation: ConcurrentOperation {
     
-    var image: UIImage? = nil
-    let userReference: RandomUser
+    var imageData: Data? = nil
+    let user: RandomUser
     private var dataTask: URLSessionDataTask?
     
-    init(userReference: RandomUser) {
-        self.userReference = userReference
+    init(user: RandomUser) {
+        self.user = user
         super.init()
     }
     
     override func start() {
         state = .isExecuting
-        guard let tempURL = URL(string: userReference.picture.large) else { return }
+        guard let tempURL = URL(string: user.picture.thumbnail) else { return }
         guard let url = tempURL.usingHTTPS else { return }
         
         dataTask = URLSession.shared.dataTask(with: url, completionHandler: { (data, _, error) in
             defer { self.state = .isFinished }
             
             if let error = error {
-                NSLog("Error GETing image for \(self.userReference.name): \(error)")
+                NSLog("Error GETing image for \(self.user.name.last) with ID: \(self.user.uid.uuidString): \(error)")
                 return
             }
             
@@ -45,7 +45,7 @@ class FetchPhotoOperation: ConcurrentOperation {
                 return
             }
             
-            self.image = UIImage(data: data)
+            self.imageData = data
             return
         })
         dataTask?.resume()
