@@ -25,3 +25,4 @@ struct Name: Codable {
 struct Picture: Codable {
     let large, medium, thumbnail: String
 }
+

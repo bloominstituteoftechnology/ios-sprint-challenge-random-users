@@ -49,9 +49,9 @@ class UserDetailController: UIViewController {
         
 
         //Updating the labels via regular assignments
-        nameLabel.text = "\(currentUser?.name.first) \(currentUser?.name.last)"
-        phoneLabel.text = "\(currentUser?.cell)"
-        emailLabel.text = "\(currentUser?.email)"
+        nameLabel.text = "\(currentUser!.name.first) \(currentUser!.name.last)"
+        phoneLabel.text = "\(currentUser!.cell)"
+        emailLabel.text = "\(currentUser!.email)"
         
         
     }

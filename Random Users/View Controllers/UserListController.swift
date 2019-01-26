@@ -9,13 +9,15 @@
 import UIKit
 
 class UserListController: UITableViewController {
-    
+        
     override func viewDidLoad() {
         UserImporter.shared.downloadUsers {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
+        
+        UserManager.shared.thumbQueue.name = "com.LambdaSchool.RandomUsers.photoQueue"
     }
     
     
@@ -30,6 +32,10 @@ class UserListController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! UserCellController
         
         cell.contactLabel.text = UserManager.shared.addressbook[indexPath.row].name.first
+        
+        UserManager.shared.loadImage(for: cell, at: indexPath)
+        if let tempImage = UserManager.shared.cellImage {
+            cell.photoThumb.image = tempImage }
         
         return cell
     }

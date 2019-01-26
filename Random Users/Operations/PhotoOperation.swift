@@ -43,10 +43,11 @@ class PhotoOperation: ConcurrentOperation { //
             }
             
             //Set the download URL
-            guard let requestURL = url else { return }
+            //urguard let requestURL = url else { return }
+            
             
             // Download the image via data task
-            dataTask = URLSession.shared.dataTask(with: requestURL, completionHandler: { (data, _, error) in
+            dataTask = URLSession.shared.dataTask(with: url!, completionHandler: { (data, _, error) in
                 
                 defer { self.state = .isFinished } //Fire this last.
                 
