@@ -20,7 +20,7 @@ class RandomContactsTableViewController: UITableViewController {
             }
             guard let results = results else { return }
             var counter = self.userReferences.count
-            print(counter)
+            
             for randomUser in results.results {
                 randomUser.id = counter
                 randomUser.capitalizeFirstLetterOfNames()
@@ -122,7 +122,7 @@ class RandomContactsTableViewController: UITableViewController {
             }
             guard let results = results else { return }
             var counter = self.userReferences.count
-            print(counter)
+            
             for randomUser in results.results {
                 randomUser.id = counter
                 randomUser.capitalizeFirstLetterOfNames()

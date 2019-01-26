@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class ContactDetailViewController: UIViewController {
 
@@ -35,12 +36,41 @@ class ContactDetailViewController: UIViewController {
             return
         }
         
+        openMapForPlace(user: user)
     }
+    
+    private func openMapForPlace(user: RandomUser) {
+
+        // set initial location in Honolulu
+        
+        let latitude: CLLocationDegrees = Double(user.location.coordinates.latitude) ?? 0
+        let longitude: CLLocationDegrees = Double(user.location.coordinates.longitude) ?? 0
+        
+        let initialLocation = CLLocation(latitude: latitude, longitude: longitude)
+
+        let regionRadius: CLLocationDistance = 500000
+        
+        func centerMapOnLocation(location: CLLocation) {
+            let coordinateRegion = MKCoordinateRegion(center: location.coordinate,
+                                                      latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+            mapView.setRegion(coordinateRegion, animated: true)
+        }
+        centerMapOnLocation(location: initialLocation)
+    }
+    
+    
+    // MARK: - Properties
     
     @IBOutlet weak var contactImageView: UIImageView!
     @IBOutlet weak var contactNameLabel: UILabel!
     @IBOutlet weak var contactPhoneNumberLabel: UILabel!
     @IBOutlet weak var contactEmailLabel: UILabel!
 
+    @IBOutlet weak var latLongLabel: UILabel!
+    
+    @IBOutlet weak var mapView: MKMapView!
     var user: RandomUser?
+    
+    
+    
 }

@@ -13,6 +13,8 @@
 		8ED6A9922140178C00FC395A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
 		D13C811D21FCDCCA0016A6FC /* String+CapitalizingFirstLetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13C811C21FCDCCA0016A6FC /* String+CapitalizingFirstLetter.swift */; };
+		D13C811F21FCE4F00016A6FC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13C811E21FCE4F00016A6FC /* Location.swift */; };
+		D13C812121FCE98A0016A6FC /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13C812021FCE98A0016A6FC /* Coordinates.swift */; };
 		D14EAB6921FB6B4A005417D2 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14EAB6821FB6B4A005417D2 /* Appearance.swift */; };
 		D14EAB6D21FB6C9A005417D2 /* RandomContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14EAB6C21FB6C9A005417D2 /* RandomContactsTableViewController.swift */; };
 		D14EAB6F21FB6CE8005417D2 /* RandomContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14EAB6E21FB6CE8005417D2 /* RandomContactsTableViewCell.swift */; };
@@ -36,6 +38,8 @@
 		8ED6A9932140178C00FC395A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 		D13C811C21FCDCCA0016A6FC /* String+CapitalizingFirstLetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CapitalizingFirstLetter.swift"; sourceTree = "<group>"; };
+		D13C811E21FCE4F00016A6FC /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		D13C812021FCE98A0016A6FC /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		D14EAB6821FB6B4A005417D2 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		D14EAB6C21FB6C9A005417D2 /* RandomContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomContactsTableViewController.swift; sourceTree = "<group>"; };
 		D14EAB6E21FB6CE8005417D2 /* RandomContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomContactsTableViewCell.swift; sourceTree = "<group>"; };
@@ -154,6 +158,8 @@
 				D14EAB8021FB7453005417D2 /* Results.swift */,
 				D14EAB7821FB6FBD005417D2 /* RandomUser.swift */,
 				D14EAB7A21FB70A6005417D2 /* Name.swift */,
+				D13C811E21FCE4F00016A6FC /* Location.swift */,
+				D13C812021FCE98A0016A6FC /* Coordinates.swift */,
 				D14EAB7C21FB71B4005417D2 /* Picture.swift */,
 			);
 			path = Model;
@@ -241,7 +247,9 @@
 			files = (
 				D14EAB7721FB6F87005417D2 /* RandomUserClient.swift in Sources */,
 				D14EAB7521FB6F2B005417D2 /* Cache.swift in Sources */,
+				D13C811F21FCE4F00016A6FC /* Location.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				D13C812121FCE98A0016A6FC /* Coordinates.swift in Sources */,
 				D14EAB7D21FB71B4005417D2 /* Picture.swift in Sources */,
 				D14EAB8621FB8E92005417D2 /* URL+Secure.swift in Sources */,
 				D14EAB6D21FB6C9A005417D2 /* RandomContactsTableViewController.swift in Sources */,
