@@ -4,7 +4,13 @@ class UsersTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        userController.fetchUsers { (error) in
+            if let error = error {
+                NSLog("Error fetching users \(error)")
+                return
+            }
+        }
     }
 
     // MARK: - Table view data source
@@ -19,7 +25,7 @@ class UsersTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! UserTableViewCell
 
         let user = userController.users[indexPath.row]
-        cell.userNameLabel.text = user.first
+        cell.userNameLabel.text = user.name
         
         guard let imageURL = user.thumbnail else { return UITableViewCell() }
         cell.userImageView?.load(url: imageURL)
@@ -39,7 +45,7 @@ class UsersTableViewController: UITableViewController {
             guard let imageURL = user.large else { return }
             detailVC.userImageView.load(url: imageURL)
             
-            detailVC.userNameLabel.text = user.first
+            detailVC.userNameLabel.text = user.name
             detailVC.userPhoneLabel.text = user.phone
             detailVC.userEmailLabel.text = user.email
         }
