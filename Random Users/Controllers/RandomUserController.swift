@@ -12,6 +12,7 @@ class RandomUserController {
 
 func fetchRandomUsers(completionHandler: @escaping CompletionHandler) {
     let requestURL = baseUrl
+    var results: RandomUsers?
     
     URLSession.shared.dataTask(with: requestURL!) { (data, _, error) in
         if let error = error {
@@ -26,7 +27,7 @@ func fetchRandomUsers(completionHandler: @escaping CompletionHandler) {
         }
         let jsonDecoder = JSONDecoder()
         do {
-            let results = try jsonDecoder.decode(RandomUsers.self, from: data)
+            results = try jsonDecoder.decode(RandomUsers.self, from: data)
             Model.shared.randomUsers = results
             completionHandler(nil)
         } catch {
@@ -36,12 +37,6 @@ func fetchRandomUsers(completionHandler: @escaping CompletionHandler) {
 }
     
     //MARK: Properties
-    
-    var randomUsers: RandomUsers? {
-        didSet {
-            Model.shared.randomUsers = randomUsers
-        }
-    }
     typealias CompletionHandler = (Error?) -> (Void)
     let baseUrl = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")
     

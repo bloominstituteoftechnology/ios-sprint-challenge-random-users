@@ -27,10 +27,6 @@ class Model {
     func getName(_ randomUser: RandomUser) -> String {
         return "\(randomUser.name.title). \(randomUser.name.first) \(randomUser.name.last)".capitalized
     }
-    func fetchRandomUsers() {
-        randomUserController.fetchRandomUsers { (error) -> (Void) in
-        }
-    }
     
     
     

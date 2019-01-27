@@ -10,16 +10,32 @@ import Foundation
 
 class FetchImageOperation: ConcurrentOperation {
     
-    var randomUser: RandomUser?
-    var imageData: Data?
+    let requestURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1")
+    var dataTask: URLSessionDataTask?
+    var randomUserThumbnailData: Data?
+    var indexPath: IndexPath?
     
-    init(randomUser: RandomUser) {
-        self.randomUser = randomUser
-    }
     override func start() {
         self.state = .isExecuting
-        
+        fetchThumbnail()
+    }
+    
+    func fetchThumbnail() {
+        print(Model.shared.randomUsersCount)
+        print(indexPath)
+        guard let thumbnail = Model.shared.randomUsers?.results[(indexPath?.row)!].picture.thumbnail else {return}
+        let actualURL = URL(string: (thumbnail))
+        let thumbnailTask = URLSession.shared.dataTask(with: actualURL!) { (data, _, error) in
+            self.randomUserThumbnailData = data
+            self.state = .isFinished
+        }
+        dataTask = thumbnailTask
+        thumbnailTask.resume()
+    }
+    override func cancel() {
+        dataTask?.cancel()
     }
     
     
 }
+
