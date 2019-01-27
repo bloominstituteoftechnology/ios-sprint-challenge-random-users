@@ -31,7 +31,6 @@ class RandomUserTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        print(Model.shared.randomUsersCount)
         return Model.shared.randomUsersCount
     }
     var count = 0
@@ -53,30 +52,40 @@ class RandomUserTableViewController: UITableViewController {
     private func loadCellContent(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         
         guard let randomUserThumbnail = Model.shared.randomUsers?.results[indexPath.row].picture.thumbnail else {return}
-        if let data = cache.value(for: (randomUserThumbnail)) {
+        if let data = cache.value(for: Model.shared.getName((Model.shared.randomUsers?.results[indexPath.row])!)) {
             cell.imageView?.image = UIImage(data: data)
             cell.textLabel?.text = Model.shared.getName((Model.shared.randomUsers?.results[indexPath.row])!)
         } else {
             let fetchImageOperation = FetchImageOperation()
             fetchImageOperation.indexPath = indexPath
             let cacheAndSetBlockOperation = BlockOperation {
-                print(indexPath)
                 let data = fetchImageOperation.randomUserThumbnailData
                 self.cache.cache(forKey: Model.shared.getName((Model.shared.randomUsers?.results[indexPath.row])!), forValue: data!)
                 DispatchQueue.main.async {
                     cell.imageView?.image = UIImage(data: data!)
                     cell.textLabel?.text = Model.shared.getName(((Model.shared.randomUsers?.results[indexPath.row])!))
                     cell.setNeedsLayout()
-                    print("success")
                 }
                 
             }
             cacheAndSetBlockOperation.addDependency(fetchImageOperation)
+            dataQeue.sync {
             imageFetchQueue.addOperations([fetchImageOperation, cacheAndSetBlockOperation], waitUntilFinished: false)
+            }
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if !imageFetchQueue.operations.isEmpty {
+            if imageFetchQueue.operations[0].isExecuting {
+            imageFetchQueue.operations[0].cancel()
+                cell.prepareForReuse()
+            }
         }
     }
     //MARK: Propertires
     
+    let dataQeue = DispatchQueue(label: "dataQueue")
     let randomUserController = RandomUserController()
     let cache = Cache<String, Data>()
     let imageFetchQueue = OperationQueue()
