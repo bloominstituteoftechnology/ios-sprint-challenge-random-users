@@ -33,7 +33,6 @@ class RandomUserTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return Model.shared.randomUsersCount
     }
-    var count = 0
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
         loadCellContent(forCell: cell, forItemAt: indexPath)
@@ -75,6 +74,8 @@ class RandomUserTableViewController: UITableViewController {
         }
     }
     
+    
+    //FIXME: Something in this code is causing a bug preventing me from selecting some cells after scrolling down rapidly and then scrolling back up a little bit. I'm not sure if `cell.prepareForReuse() is making any difference here
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if !imageFetchQueue.operations.isEmpty {
             if imageFetchQueue.operations[0].isExecuting {
