@@ -11,11 +11,11 @@ import UIKit
 fileprivate let lock = NSLock()
 
 class RandomUserTableViewController: UITableViewController {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         randomUserController.fetchRandomUsers { (error) -> (Void) in
-            DispatchQueue.main.async {
+            DispatchQueue.main.sync {
+                self.tableView.isHidden = false
                 self.tableView.reloadData()
             }
         }
@@ -49,7 +49,7 @@ class RandomUserTableViewController: UITableViewController {
         destination.randomUser = Model.shared.randomUsers?.results[indexPath.row]
     }
     private func loadCellContent(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) {
-        
+        cell.isHidden = true
         guard let randomUserThumbnail = Model.shared.randomUsers?.results[indexPath.row].picture.thumbnail else {return}
         if let data = cache.value(for: Model.shared.getName((Model.shared.randomUsers?.results[indexPath.row])!)) {
             cell.imageView?.image = UIImage(data: data)
@@ -58,11 +58,12 @@ class RandomUserTableViewController: UITableViewController {
             let fetchImageOperation = FetchImageOperation()
             fetchImageOperation.indexPath = indexPath
             let cacheAndSetBlockOperation = BlockOperation {
-                let data = fetchImageOperation.randomUserThumbnailData
-                self.cache.cache(forKey: Model.shared.getName((Model.shared.randomUsers?.results[indexPath.row])!), forValue: data!)
+                guard let data = fetchImageOperation.randomUserThumbnailData else {return}
+                self.cache.cache(forKey: Model.shared.getName((Model.shared.randomUsers?.results[indexPath.row])!), forValue: data)
                 DispatchQueue.main.async {
-                    cell.imageView?.image = UIImage(data: data!)
+                    cell.imageView?.image = UIImage(data: data)
                     cell.textLabel?.text = Model.shared.getName(((Model.shared.randomUsers?.results[indexPath.row])!))
+                    cell.isHidden = false
                     cell.setNeedsLayout()
                 }
                 
