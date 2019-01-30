@@ -64,12 +64,12 @@ class ContacsTableViewController: UITableViewController
     func downloadImage(for cell: UITableViewCell, indexPath: IndexPath)
     {
         let person = personController.persons[indexPath.item]
-        let id = person.id.value
-        fetchOperationDictionary[id] = FetchPhotoOperation(person: person)
+        let email = person.email
+        fetchOperationDictionary[email] = FetchPhotoOperation(person: person)
         
-        if cache.imageIsCached(id: id)
+        if cache.imageIsCached(id: email)
         {
-            cell.imageView?.image = UIImage(data: cache.thumbnail(for: id)!)
+            cell.imageView?.image = UIImage(data: cache.thumbnail(for: email)!)
         }
         else
         {
@@ -78,13 +78,13 @@ class ContacsTableViewController: UITableViewController
                 
                 if let data = fetchOperation.thumbnailImageData
                 {
-                    self.cache.addToCache(thumbnail: data, key: id)
+                    self.cache.addToCache(thumbnail: data, key: email)
                 }
             }
             
             let completionOperation = BlockOperation {
                 
-                defer { self.fetchOperationDictionary.removeValue(forKey: id) }
+                defer { self.fetchOperationDictionary.removeValue(forKey: email) }
                 if let currentIndexPath = self.tableView.indexPath(for: cell), currentIndexPath != indexPath
                 {
                     return
@@ -103,7 +103,7 @@ class ContacsTableViewController: UITableViewController
             photoFetchQueue.addOperation(cacheOperation)
             OperationQueue.main.addOperation(completionOperation)
             
-            fetchOperationDictionary[id] = fetchOperation
+            fetchOperationDictionary[email] = fetchOperation
         }
         
         // TODO: Implement image loading here
@@ -112,7 +112,7 @@ class ContacsTableViewController: UITableViewController
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
     {
         let person = personController.persons[indexPath.item]
-        fetchOperationDictionary[person.id.value]?.cancel()
+        fetchOperationDictionary[person.email]?.cancel()
     }
     
     

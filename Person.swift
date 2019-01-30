@@ -13,14 +13,15 @@ struct Person: Decodable
     var name: Name
     var email: String
     var picture: Picture
-    var id: Id
+//    var id: Id
+    
     
     enum CodingKeys: String, CodingKey
     {
         case email
         case name
         case picture
-        case id
+//        case id
     }
     
     init(from decoder: Decoder) throws
@@ -29,12 +30,12 @@ struct Person: Decodable
         let name = try container.decode(Name.self, forKey: .name)
         let email = try container.decode(String.self, forKey: .email)
         let picture = try container.decode(Picture.self, forKey: .picture)
-        let id = try container.decode(Id.self, forKey: .id)
+//        let id = try container.decode(Id.self, forKey: .id)
         
         self.name = name
         self.email = email
         self.picture = picture
-        self.id = id
+//        self.id = id
     }
     
     
@@ -86,23 +87,23 @@ struct Person: Decodable
         }
     }
     
-    struct Id: Decodable
-    {
-        var value: String
-        
-        enum CodingKeys: String, CodingKey
-        {
-            case value
-        }
-        
-        init(from decoder: Decoder) throws
-        {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            let value = try container.decode(String.self, forKey: .value)
-            
-            self.value = value
-        }
-    }
+//    struct Id: Decodable
+//    {
+//        var value: String
+//
+//        enum CodingKeys: String, CodingKey
+//        {
+//            case value
+//        }
+//
+//        init(from decoder: Decoder) throws
+//        {
+//            let container = try decoder.container(keyedBy: CodingKeys.self)
+//            let value = try container.decode(String.self, forKey: .value)
+//
+//            self.value = value
+//        }
+//    }
 }
 
 struct Results: Decodable
