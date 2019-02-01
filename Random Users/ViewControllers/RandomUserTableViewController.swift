@@ -53,35 +53,37 @@ class RandomUserTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as? RandomUserTableViewCell else { fatalError("no such cell")}
         
-        let user = result![indexPath.row]
+        loadImage(forCell: cell, forItemAt: indexPath)
         
-        let userImageURL = user.picture.thumbnail.usingHTTPS
-      
-        URLSession.shared.dataTask(with: userImageURL!) { (data, _, error) in
-            
-            if let error = error {
-                NSLog("\(error)")
-                return
-            }
-            
-            guard let photoData = data else { return }
-            
-         //   self.cache.cache(value: photoData, forKey: photoReference.id)
-            
-            let image = UIImage(data: photoData)
-            DispatchQueue.main.async {
-                
-                    cell.userThumbnailImage.image = image
-                
-            }
-            }.resume()
-    
-        let userFirstName = user.name.first
-        let userLastName = user.name.last
-        //cell.userThumbnailImage.image = UIImage(data: <#T##Data#>)
-        cell.userNameLabel.text = "test"    //"\(userFirstName) \(userLastName)"
-
-        print("\(userFirstName) \(userLastName)")
+//        let user = result![indexPath.row]
+//
+//        let userImageURL = user.picture.thumbnail.usingHTTPS
+//
+//        URLSession.shared.dataTask(with: userImageURL!) { (data, _, error) in
+//
+//            if let error = error {
+//                NSLog("\(error)")
+//                return
+//            }
+//
+//            guard let photoData = data else { return }
+//
+//         //   self.cache.cache(value: photoData, forKey: photoReference.id)
+//
+//            let image = UIImage(data: photoData)
+//            DispatchQueue.main.async {
+//
+//                    cell.userThumbnailImage.image = image
+//
+//            }
+//            }.resume()
+//
+//        let userFirstName = user.name.first
+//        let userLastName = user.name.last
+//        //cell.userThumbnailImage.image = UIImage(data: <#T##Data#>)
+//        cell.userNameLabel.text = "test"    //"\(userFirstName) \(userLastName)"
+//
+//        print("\(userFirstName) \(userLastName)")
         return cell
     }
     
@@ -89,13 +91,15 @@ class RandomUserTableViewController: UITableViewController {
         
         let userReference = result![indexPath.item]
         
+        let userImageURL = userReference.picture.thumbnail.usingHTTPS
+        
         // TODO: Implement image loading here
         
-        if let value = cache.value(forKey: userReference.id) {
+        if let value = cache.value(forKey: Int("\(userReference.phone)")!) {
             
             
             let imageData = value
-            cell.imageView.image = UIImage(data: imageData)
+            cell.imageView?.image = UIImage(data: imageData)
         } else {
             
             URLSession.shared.dataTask(with: userImageURL!) { (data, _, error) in
