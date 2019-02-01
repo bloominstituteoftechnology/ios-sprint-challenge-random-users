@@ -3,8 +3,12 @@ import Foundation
 
 class UserController {
     
+    static let shared = UserController()
+    private init () {}
+    
     // Data source for application
     var users: [User] = []
+    var userResults: [UserResults] = []
     
     private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
     
@@ -31,6 +35,8 @@ class UserController {
                 let users = try JSONDecoder().decode(UserResults.self, from: data)
                 self.users = users.results
                 print(users)
+                self.userResults.append(users)
+                print(self.userResults)
                 completion(nil)
                 return
             } catch {

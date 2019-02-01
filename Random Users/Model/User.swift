@@ -36,8 +36,8 @@ struct User: Decodable {
         // Name is a dictionary -> keyed container
         let nameContainer = try container.nestedContainer(keyedBy: UserKeys.Name.self, forKey: .name)
         name = try nameContainer.decode(String.self, forKey: .first)
-        name = try nameContainer.decode(String.self, forKey: .last)
-        name = try nameContainer.decode(String.self, forKey: .title)
+//        name = try nameContainer.decode(String.self, forKey: .last)
+//        name = try nameContainer.decode(String.self, forKey: .title)
         
         // Picture is a dictionary -> keyed container
         let pictureContainer = try container.nestedContainer(keyedBy: UserKeys.Picture.self, forKey: .picture)
