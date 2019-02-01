@@ -13,5 +13,6 @@ class CellController: UITableViewCell {
     @IBOutlet weak var thumbView: UIImageView!
     
     @IBOutlet weak var contactLabel: UILabel!
+    
 }
 

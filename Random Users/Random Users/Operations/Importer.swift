@@ -13,7 +13,7 @@ class UserImporter {
     static let shared = UserImporter()
     
     //API URL
-    let randomUserAPI = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,cell,id,picture&results=1000")!
+    let randomUserAPI = URL(string: "https://randomuser.me/api/?format=json&results=1000")!
     
     //Import Function
     func downloadUsers(completion: @escaping () -> Void) {
@@ -26,7 +26,9 @@ class UserImporter {
             
             //Step 2 - Unwrap the data
             
-            guard let importedData = data else { NSLog("Error: \(error?.localizedDescription))"); return }
+            guard let importedData = data else { NSLog("Error: Data couldn't be imported and \(error?.localizedDescription))"); return }
+            
+            print(importedData)
             
             //Step 3 - Decode the data
             
@@ -37,7 +39,7 @@ class UserImporter {
                 
                 
             } catch { //In case decoding doesn't work
-                NSLog("Error: \(error.localizedDescription)")
+                NSLog("Error: Couldn't decode and \(error.localizedDescription)")
                 return
                 
             } //End of Do-Catch Statement

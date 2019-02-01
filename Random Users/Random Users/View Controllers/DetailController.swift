@@ -20,6 +20,7 @@ class DetailController: UIViewController {
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
+    
     //Properties
     var currentUser: User?
     

@@ -14,17 +14,18 @@ struct Result: Codable {
 
 struct User: Codable {
     let name: Name
-    let email, cell: String
+    let email: String
+    let login: Login
+    let phone, cell: String
     let picture: Picture
-    let id: ID
+}
+
+struct Login: Codable {
+    let uuid: String
 }
 
 struct Name: Codable {
     let title, first, last: String
-}
-
-struct ID: Codable {
-    let value: String
 }
 
 struct Picture: Codable {

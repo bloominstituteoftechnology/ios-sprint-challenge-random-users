@@ -28,7 +28,7 @@ class Manager {
         let user = contacts[indexPath.row]
         
         // If there's already cached thumbnail data for that contact ID...
-        if let thumbnailData = cache.getValue(for: user.id.value) {
+        if let thumbnailData = cache.getValue(for: user.login.uuid) {
             cell.thumbView.image = UIImage(data: thumbnailData) } //update the cell's thumbnail with it.
         
         // Otherwise, fetch the thumbnail through an instance of Thumbnail Operation
@@ -37,7 +37,7 @@ class Manager {
         // Then cache the data using a block operation
         let cacheThumbOperation = BlockOperation {
             if let thumbnailData = thumbnailOperation.thumbData {
-                self.cache.saveToCache(value: thumbnailData, for: user.id.value) }
+                self.cache.saveToCache(value: thumbnailData, for: user.login.uuid) }
         }
         
         // Then update the UI using another block operation
@@ -57,8 +57,8 @@ class Manager {
         //Updating the thumbnail is dependent on successfully downloading the thumbnail
         updateThumbOperation.addDependency(thumbnailOperation)
         
-        //Adds each thumbnail download to the dictionary under the unique key of each user's ID.
-         thumbnailDownloads[user.id.value] = thumbnailOperation
+        //Adds each thumbnail download to the dictionary under the unique key of each user's UUID.
+         thumbnailDownloads[user.login.uuid] = thumbnailOperation
         
         
         //Queuing
