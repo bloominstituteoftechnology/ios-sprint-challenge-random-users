@@ -4,7 +4,7 @@ class RandomUserController {
     
     static let shared = RandomUserController()
     
-    let requestURL = URL(string: "https://randomuser.me/api/?results=1")!.usingHTTPS!
+    let requestURL = URL(string: "https://randomuser.me/api/?format=pretty&results=100")!.usingHTTPS!
     var randomUserResults: [RandomUser?] = []
     
     func fetchRandomUsers(with url: URL, completion: @escaping (Error?) -> Void) {
@@ -22,17 +22,13 @@ class RandomUserController {
             }
             
             print("we have data: \(Data(data))")
-            
-            //    let results = try? JSONDecoder().decode(RandomUser.self, from: data)
-            //    print("decoding: \(results)")
-            //    randomUserResults = [results]
-            //    print(randomUserResults)
+
             
             do {
-                let results1 = try JSONDecoder().decode(RandomUser.self, from: data)
-                print("decoding: \(String(describing: results1))")
-                self.randomUserResults = [results1]
-                print(self.randomUserResults)
+                let results = try JSONDecoder().decode(RandomUser.self, from: data)
+
+                self.randomUserResults = [results]
+                print(String(describing: self.randomUserResults))
                 completion(nil)
                 
             } catch {

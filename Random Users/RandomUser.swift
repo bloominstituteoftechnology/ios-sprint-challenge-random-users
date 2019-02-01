@@ -1,6 +1,7 @@
 import Foundation
 
 struct RandomUser: Codable {
+    
     let results: [Result]
     let info: Info
     
@@ -42,8 +43,8 @@ struct Result: Codable {
 }
 
 struct ID: Codable {
-    let name: String
-    let value: String
+    let name: String?
+    let value: String?
     
     enum CodingKeys: String, CodingKey {
         case name = "name"

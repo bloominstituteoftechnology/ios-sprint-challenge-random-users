@@ -7,7 +7,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let url = RandomUserController.shared.requestURL
         RandomUserController.shared.fetchRandomUsers(with: url) {_ in
-            print("why do you only work sometimes?!!!!🤬")
+            return
         }
         
         return true
