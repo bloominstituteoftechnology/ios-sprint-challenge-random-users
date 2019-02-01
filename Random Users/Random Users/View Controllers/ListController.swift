@@ -10,15 +10,6 @@ import UIKit
 
 
 
-//Properties
-private var thumbQueue = OperationQueue() //ok
-private let cache = Cache<String, Data>() //ok
-
-//Each thumbnail download operation for each cell will live here.
-private var thumbnailDownloads: [String: ThumbnailOperation] = [:] //ok
-
-var cellImage: UIImage? = nil
-
 
 
 
