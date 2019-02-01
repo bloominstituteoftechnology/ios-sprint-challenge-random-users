@@ -15,17 +15,22 @@ class UserTableViewCell: UITableViewCell {
         }
     }
     
-    private func updateViews() {
+    func updateViews() {
         
-        // Check to make sure there is a user
-        guard let user = user else { return }
-        
-        userNameLabel.text = user.name
-        //userNameLabel.text = "\(User.UserKeys.Name.title) \(User.UserKeys.Name.first) \(User.UserKeys.Name.last)"
-        
-        guard let url = URL(string: user.picture), let imageData = try? Data(contentsOf: url) else { return }
-        
-        userImage.image = UIImage(data: imageData)
+        if let user = user {
+            
+            var punctuatedTitle = user.title.capitalized
+            if punctuatedTitle == "Mr" || punctuatedTitle == "Mrs" || punctuatedTitle == "Ms" {
+                punctuatedTitle = "\(punctuatedTitle)."
+            }
+            
+            userNameLabel.text = "\(punctuatedTitle) \(user.firstName.capitalized) \(user.lastName.capitalized)"
+            
+            guard let url = URL(string: user.picture),
+            let imageData = try? Data(contentsOf: url) else { return }
+            
+            userImage.image = UIImage(data: imageData)
+        }
         
     }
     

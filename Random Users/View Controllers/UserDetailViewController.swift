@@ -17,7 +17,12 @@ class UserDetailViewController: UIViewController {
         
         // Populate the labels and image
         
-        userNameLabel.text = user.name
+        var punctuatedTitle = user.title.capitalized
+        if punctuatedTitle == "Mr" || punctuatedTitle == "Mrs" || punctuatedTitle == "Ms" {
+            punctuatedTitle = "\(punctuatedTitle)."
+        }
+        
+        userNameLabel.text = "\(punctuatedTitle) \(user.firstName.capitalized) \(user.lastName.capitalized)"
         userPhoneLabel.text = user.phone
         userEmailLabel.text = user.email
         

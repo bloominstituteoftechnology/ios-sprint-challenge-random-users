@@ -3,7 +3,9 @@ import Foundation
 
 struct User: Decodable {
     
-    var name: String
+    var title: String
+    var firstName: String
+    var lastName: String
     var email: String
     var phone: String
     var picture: String
@@ -24,7 +26,6 @@ struct User: Decodable {
         enum Picture: String, CodingKey {
             case large
         }
-        
     }
     
     init(from decoder: Decoder) throws {
@@ -35,9 +36,9 @@ struct User: Decodable {
         
         // Name is a dictionary -> keyed container
         let nameContainer = try container.nestedContainer(keyedBy: UserKeys.Name.self, forKey: .name)
-        name = try nameContainer.decode(String.self, forKey: .first)
-//        name = try nameContainer.decode(String.self, forKey: .last)
-//        name = try nameContainer.decode(String.self, forKey: .title)
+        firstName = try nameContainer.decode(String.self, forKey: .first)
+        lastName = try nameContainer.decode(String.self, forKey: .last)
+        title = try nameContainer.decode(String.self, forKey: .title)
         
         // Picture is a dictionary -> keyed container
         let pictureContainer = try container.nestedContainer(keyedBy: UserKeys.Picture.self, forKey: .picture)
