@@ -18,7 +18,6 @@ class ListController: UITableViewController {
             }
         } //Downloading the users
         
-       // UserManager.shared.thumbQueue.name = "com.LambdaSchool.RandomUsers.photoQueue"
     }
     
     

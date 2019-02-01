@@ -21,6 +21,7 @@
 		4CA6F1932204B2DB00FE8F1A /* CellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6F1922204B2DB00FE8F1A /* CellController.swift */; };
 		4CA6F1952204B2F700FE8F1A /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6F1942204B2F700FE8F1A /* Manager.swift */; };
 		4CA6F1972204B52400FE8F1A /* ThumbnailOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6F1962204B52400FE8F1A /* ThumbnailOperation.swift */; };
+		4CA6F1992204E4F300FE8F1A /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6F1982204E4F300FE8F1A /* Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		4CA6F1922204B2DB00FE8F1A /* CellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellController.swift; sourceTree = "<group>"; };
 		4CA6F1942204B2F700FE8F1A /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		4CA6F1962204B52400FE8F1A /* ThumbnailOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailOperation.swift; sourceTree = "<group>"; };
+		4CA6F1982204E4F300FE8F1A /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				4CA6F1852204B14C00FE8F1A /* View Controllers */,
 				4CA6F16F2204B00B00FE8F1A /* AppDelegate.swift */,
 				4CA6F1732204B00B00FE8F1A /* Main.storyboard */,
+				4CA6F1982204E4F300FE8F1A /* Theme.swift */,
 				4CA6F1762204B01100FE8F1A /* Assets.xcassets */,
 				4CA6F1782204B01100FE8F1A /* LaunchScreen.storyboard */,
 				4CA6F17B2204B01100FE8F1A /* Info.plist */,
@@ -195,6 +198,7 @@
 				4CA6F18C2204B26800FE8F1A /* Cache.swift in Sources */,
 				4CA6F1822204B11500FE8F1A /* ListController.swift in Sources */,
 				4CA6F18F2204B28700FE8F1A /* User.swift in Sources */,
+				4CA6F1992204E4F300FE8F1A /* Theme.swift in Sources */,
 				4CA6F1952204B2F700FE8F1A /* Manager.swift in Sources */,
 				4CA6F1972204B52400FE8F1A /* ThumbnailOperation.swift in Sources */,
 			);

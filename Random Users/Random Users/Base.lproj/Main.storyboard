@@ -65,7 +65,7 @@
                             <outlet property="delegate" destination="YoD-1Z-obr" id="C4X-z7-mfl"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="0BD-4p-FDC"/>
+                    <navigationItem key="navigationItem" title="My Contacts" id="Q4W-JF-KSe"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="epG-CK-z2J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
