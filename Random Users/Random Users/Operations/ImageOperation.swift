@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ImageOperation: ConcurrentOperation { //
+class ImageOperation: ConcurrentOperation { 
     
     //Properties
     var imageData: Data?
@@ -46,7 +46,7 @@ class ImageOperation: ConcurrentOperation { //
                 return
             }
             
-            // Assign the image data to the propertyy
+            // Assign the image data to the property
             self.imageData = data
             
             return

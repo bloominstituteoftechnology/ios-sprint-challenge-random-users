@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ThumbnailOperation: ConcurrentOperation { //
+class ThumbnailOperation: ConcurrentOperation { 
     
     //Properties
     var thumbData: Data?
@@ -26,27 +26,27 @@ class ThumbnailOperation: ConcurrentOperation { //
     override func start() {
         state = .isExecuting
         
-        //Unwrap the image URL of the current user.
+        //Unwrap the thumbnail image URL of the current user.
         guard let url = URL(string: cellContact.picture.thumbnail) else { return }
         
-        // Download the image via data task
+        // Download the thumbnail via data task
         dataTask = URLSession.shared.dataTask(with: url, completionHandler: { (data, _, error) in
             
             defer { self.state = .isFinished } //Fire this last.
             
             //Unwrap any errors
             if let error = error {
-                NSLog("Couldn't download the image for \(self.cellContact.name): \(error)")
+                NSLog("Couldn't download the thumbnail for \(self.cellContact.name): \(error)")
                 return
             }
             
             //Unwrap the image data
             guard let data = data, data.count > 0 else {
-                NSLog("There wasn't any data for the image")
+                NSLog("There wasn't any data for the thumbnail")
                 return
             }
             
-            // Assign the image data to the propertyy
+            // Assign the image data to the property
             self.thumbData = data
             
             return
