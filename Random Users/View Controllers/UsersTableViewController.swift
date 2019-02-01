@@ -3,21 +3,25 @@ import UIKit
 
 class UsersTableViewController: UITableViewController {
     
+    // Properties
+    
     let userController = UserController.shared
     
+    var cache = Cache<String, String>()
+    
     // Array of users
-    var users: [User] = [] {
-        
-        // Anytime this variable changes...
-        didSet {
-            
-            // Reload UIKit on the main queue
-            DispatchQueue.main.async {
-                // ...reload the table view
-                self.tableView.reloadData()
-            }
-        }
-    }
+//    var users: [User] = [] {
+//
+//        // Anytime this variable changes...
+//        didSet {
+//
+//            // Reload UIKit on the main queue
+//            DispatchQueue.main.async {
+//                // ...reload the table view
+//                self.tableView.reloadData()
+//            }
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +29,8 @@ class UsersTableViewController: UITableViewController {
         userController.getUsers()
         tableView.reloadData()
         print("---------------------")
-        print(users)
+        print(userController.userResults)
+        //print(users)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,7 +42,9 @@ class UsersTableViewController: UITableViewController {
     // Number of rows
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return 3
-        return users.count
+        //return users.count
+        //return userController.users.count
+        return userController.userResults.count
     }
     
     // Cell contents
@@ -53,6 +60,14 @@ class UsersTableViewController: UITableViewController {
         
         return cell
     }
+    
+    private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
+        
+        
+        
+        
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

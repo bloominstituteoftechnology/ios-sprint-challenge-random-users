@@ -34,9 +34,10 @@ class UserController {
             do {
                 let users = try JSONDecoder().decode(UserResults.self, from: data)
                 self.users = users.results
+//                self.users.append(users.results)
                 print(users)
-                self.userResults.append(users)
-                print(self.userResults)
+//                self.userResults.append(users)
+//                print(self.userResults)
                 completion(nil)
                 return
             } catch {
