@@ -11,9 +11,9 @@ import UIKit
 class RandomUserTableViewController: UITableViewController {
 
     
-     let cache = Cache<Int, Data>()
+     let cache = Cache<String, Data>()
     let randomUserController = RandomUserController()
-    var result: [Result]? {
+    var result: RandomUsersModel? {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -31,29 +31,43 @@ class RandomUserTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.reloadData()
-        randomUserController.getRandomUsers { (result, error) in
+        randomUserController.getRandomUsers { (error) in
             if let error = error {
                 NSLog("Error fetching users: \(error)")
                 return
         }
-            self.result = result
+            DispatchQueue.main.sync {
+                
+                self.tableView.reloadData()
+            }
+            
     }
     }
 
     // MARK: - Table view data source
 
-   
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return result?.count ?? 0
+        return randomUserController.users.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as? RandomUserTableViewCell else { fatalError("no such cell")}
+         let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! RandomUserTableViewCell 
+        let userReference = randomUserController.users[indexPath.row].results[indexPath.row]
+        let userFirstName = userReference.name.first
+        let userLastName = userReference.name.last
+                //cell.userThumbnailImage.image = UIImage(data: <#T##Data#>)
+                cell.userNameLabel.text = "\(userFirstName) \(userLastName)"
         
-        loadImage(forCell: cell, forItemAt: indexPath)
+                print("\(userFirstName) \(userLastName)")
+        
+      //  loadImage(forCell: cell, forItemAt: indexPath)
         
 //        let user = result![indexPath.row]
 //
@@ -89,13 +103,13 @@ class RandomUserTableViewController: UITableViewController {
     
     private func loadImage(forCell cell: RandomUserTableViewCell, forItemAt indexPath: IndexPath) {
         
-        let userReference = result![indexPath.item]
+        let userReference = result?.results[indexPath.row]
         
-        let userImageURL = userReference.picture.thumbnail.usingHTTPS
+        let userImageURL = userReference?.picture.thumbnail.usingHTTPS
         
         // TODO: Implement image loading here
         
-        if let value = cache.value(forKey: Int("\(userReference.phone)")!) {
+        if let value = cache.value(forKey: (userReference?.phone)!) {
             
             
             let imageData = value
@@ -127,7 +141,7 @@ class RandomUserTableViewController: UITableViewController {
         if segue.identifier == "ShowDetail" {
             let detailDVC = segue.destination as! RandomUserDetailViewController
             guard let index = tableView.indexPathForSelectedRow else { return }
-            detailDVC.randomUser = result![index.row]
+            detailDVC.randomUser = result?.results[index.row]
         }
     }
     
