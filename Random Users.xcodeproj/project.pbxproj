@@ -11,7 +11,6 @@
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
 		8ED6A9922140178C00FC395A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */; };
-		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
 		A55FF5822204A709008C69CE /* RandomUsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55FF5812204A709008C69CE /* RandomUsersModel.swift */; };
 		A55FF5842204A9C5008C69CE /* URL+Secure.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55FF5832204A9C5008C69CE /* URL+Secure.swift */; };
 		A55FF5882204A9D1008C69CE /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55FF5862204A9D1008C69CE /* ConcurrentOperation.swift */; };
@@ -28,7 +27,6 @@
 		8ED6A98E2140178C00FC395A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8ED6A9912140178C00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ED6A9932140178C00FC395A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 		A55FF5812204A709008C69CE /* RandomUsersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersModel.swift; sourceTree = "<group>"; };
 		A55FF5832204A9C5008C69CE /* URL+Secure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Secure.swift"; sourceTree = "<group>"; };
 		A55FF5862204A9D1008C69CE /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
@@ -72,7 +70,6 @@
 				A55FF58A2204A9E7008C69CE /* Model */,
 				A55FF58B2204A9F9008C69CE /* ViewControllers */,
 				A55FF5852204A9D1008C69CE /* Operations */,
-				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
 			path = "Random Users";
@@ -88,14 +85,6 @@
 				8ED6A9932140178C00FC395A /* Info.plist */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		9D5CCA56214231E400224681 /* Operations */ = {
-			isa = PBXGroup;
-			children = (
-				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
-			);
-			path = Operations;
 			sourceTree = "<group>";
 		};
 		A55FF5852204A9D1008C69CE /* Operations */ = {
@@ -158,6 +147,7 @@
 				TargetAttributes = {
 					8ED6A9832140178A00FC395A = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -202,7 +192,6 @@
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				A55FF5882204A9D1008C69CE /* ConcurrentOperation.swift in Sources */,
 				A55FF58D2204AAEF008C69CE /* RandomUserTableViewController.swift in Sources */,
-				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				A55FF5912204ADF0008C69CE /* RandomUserNetworkController.swift in Sources */,
 				A55FF5822204A709008C69CE /* RandomUsersModel.swift in Sources */,
 				A55FF5892204A9D2008C69CE /* PhotoFetchOperation.swift in Sources */,
@@ -358,7 +347,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LambdaSchool.RandomUsers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -376,7 +365,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LambdaSchool.RandomUsers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -10,10 +10,18 @@ import UIKit
 
 class RandomUserDetailViewController: UIViewController {
 
+    
+    
+    var randomUser: RandomUsersModel.Result?
+    
+    @IBOutlet weak var userLargImage: UIImageView!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var userPhoneNumber: UILabel!
+    @IBOutlet weak var userEmailLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+      userLargImage.image = UIImage(named: "\(randomUser?.picture.large)")
     }
     
 

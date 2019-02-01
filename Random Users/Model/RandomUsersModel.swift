@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct RandomUser: Codable {
+struct RandomUsersModel: Codable {
     let results: [Result]
     
     

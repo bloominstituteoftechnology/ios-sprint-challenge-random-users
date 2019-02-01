@@ -9,12 +9,12 @@
 import Foundation
 
 class FetchPhotoOperation: ConcurrentOperation {
-    private var photoReferences: MarsPhotoReference
+    private var photoReferences: RandomUsersModel
     var imageData: Data?
     private var task: URLSessionDataTask?
   
     
-    init(photoReferences: MarsPhotoReference) {
+    init(photoReferences: RandomUsersModel) {
         
         self.photoReferences = photoReferences
         super.init()
@@ -22,35 +22,35 @@ class FetchPhotoOperation: ConcurrentOperation {
     }
    
     
-    override func start() {
-        super.start()
-        self.state = .isExecuting
-        let url = photoReferences.imageURL.usingHTTPS!
-        task = URLSession.shared.dataTask(with: url) { (data, _, error) in
-            
-            if let error = error {
-                self.cancel()
-                NSLog("\(error)")
-                return
-            }
-            
-            guard let photoData = data else { return }
-            self.imageData = photoData
-        }
-
-         
-
-        self.state = .isFinished
-        task?.resume()
-        }
-    
-    
-    
-    override func cancel() {
-        task?.cancel()
-        super.cancel()
-    }
-    
-    
+//    override func start() {
+//        super.start()
+//        self.state = .isExecuting
+//        let url = photoReferences.results
+//        task = URLSession.shared.dataTask(with: url) { (data, _, error) in
+//            
+//            if let error = error {
+//                self.cancel()
+//                NSLog("\(error)")
+//                return
+//            }
+//            
+//            guard let photoData = data else { return }
+//            self.imageData = photoData
+//        }
+//
+//         
+//
+//        self.state = .isFinished
+//        task?.resume()
+//        }
+//    
+//    
+//    
+//    override func cancel() {
+//        task?.cancel()
+//        super.cancel()
+//    }
+//    
+//    
     
 }
