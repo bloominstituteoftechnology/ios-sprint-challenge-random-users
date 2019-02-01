@@ -10,7 +10,7 @@ import Foundation
 
 struct RandomUsersModel: Codable {
     let results: [Result]
-    
+}
     
     struct Result: Codable {
         let name: Name
@@ -24,8 +24,8 @@ struct RandomUsersModel: Codable {
         }
         
         struct Picture: Codable {
-            let large: String
-            let thumbnail: String
+            let large: URL
+            let thumbnail: URL
         }
     }
     
@@ -42,4 +42,4 @@ struct RandomUsersModel: Codable {
         
     }
     
-}
+

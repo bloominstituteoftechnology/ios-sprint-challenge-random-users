@@ -11,6 +11,8 @@
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
 		8ED6A9922140178C00FC395A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */; };
+		A54E54912204BD3D00FB836B /* RandomUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E54902204BD3D00FB836B /* RandomUserTableViewCell.swift */; };
+		A54E54932204C6D900FB836B /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E54922204C6D900FB836B /* Cache.swift */; };
 		A55FF5822204A709008C69CE /* RandomUsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55FF5812204A709008C69CE /* RandomUsersModel.swift */; };
 		A55FF5842204A9C5008C69CE /* URL+Secure.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55FF5832204A9C5008C69CE /* URL+Secure.swift */; };
 		A55FF5882204A9D1008C69CE /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55FF5862204A9D1008C69CE /* ConcurrentOperation.swift */; };
@@ -27,6 +29,8 @@
 		8ED6A98E2140178C00FC395A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8ED6A9912140178C00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ED6A9932140178C00FC395A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A54E54902204BD3D00FB836B /* RandomUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserTableViewCell.swift; sourceTree = "<group>"; };
+		A54E54922204C6D900FB836B /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		A55FF5812204A709008C69CE /* RandomUsersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersModel.swift; sourceTree = "<group>"; };
 		A55FF5832204A9C5008C69CE /* URL+Secure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Secure.swift"; sourceTree = "<group>"; };
 		A55FF5862204A9D1008C69CE /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
@@ -79,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				A55FF5832204A9C5008C69CE /* URL+Secure.swift */,
+				A54E54922204C6D900FB836B /* Cache.swift */,
 				8ED6A98B2140178A00FC395A /* Main.storyboard */,
 				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
 				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
@@ -111,6 +116,7 @@
 			children = (
 				A55FF58C2204AAEF008C69CE /* RandomUserTableViewController.swift */,
 				A55FF58E2204AB1B008C69CE /* RandomUserDetailViewController.swift */,
+				A54E54902204BD3D00FB836B /* RandomUserTableViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -188,10 +194,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A55FF5842204A9C5008C69CE /* URL+Secure.swift in Sources */,
+				A54E54912204BD3D00FB836B /* RandomUserTableViewCell.swift in Sources */,
 				A55FF58F2204AB1B008C69CE /* RandomUserDetailViewController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				A55FF5882204A9D1008C69CE /* ConcurrentOperation.swift in Sources */,
 				A55FF58D2204AAEF008C69CE /* RandomUserTableViewController.swift in Sources */,
+				A54E54932204C6D900FB836B /* Cache.swift in Sources */,
 				A55FF5912204ADF0008C69CE /* RandomUserNetworkController.swift in Sources */,
 				A55FF5822204A709008C69CE /* RandomUsersModel.swift in Sources */,
 				A55FF5892204A9D2008C69CE /* PhotoFetchOperation.swift in Sources */,

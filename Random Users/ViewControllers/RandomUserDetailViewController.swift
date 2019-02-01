@@ -12,7 +12,7 @@ class RandomUserDetailViewController: UIViewController {
 
     
     
-    var randomUser: RandomUsersModel.Result?
+    var randomUser: Result?
     
     @IBOutlet weak var userLargImage: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
@@ -21,7 +21,7 @@ class RandomUserDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-      userLargImage.image = UIImage(named: "\(randomUser?.picture.large)")
+      userLargImage.image = UIImage(named: "")
     }
     
 
