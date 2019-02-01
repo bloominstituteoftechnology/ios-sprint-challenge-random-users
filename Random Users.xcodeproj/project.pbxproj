@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8431427C2204AAB600E23DF8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8431427B2204AAB600E23DF8 /* User.swift */; };
+		843142802204B3E300E23DF8 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8431427F2204B3E300E23DF8 /* UserController.swift */; };
 		84C67D0F2204A7360077A699 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C67D0E2204A7360077A699 /* UsersTableViewController.swift */; };
 		84C67D112204A7680077A699 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C67D102204A7680077A699 /* UserTableViewCell.swift */; };
 		84C67D132204A7A60077A699 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C67D122204A7A60077A699 /* UserDetailViewController.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		8431427B2204AAB600E23DF8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8431427F2204B3E300E23DF8 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		84C67D0E2204A7360077A699 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		84C67D102204A7680077A699 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		84C67D122204A7A60077A699 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +45,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8431427D2204B36100E23DF8 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				84C67D0E2204A7360077A699 /* UsersTableViewController.swift */,
+				84C67D102204A7680077A699 /* UserTableViewCell.swift */,
+				84C67D122204A7A60077A699 /* UserDetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		8431427E2204B38D00E23DF8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8431427B2204AAB600E23DF8 /* User.swift */,
+				8431427F2204B3E300E23DF8 /* UserController.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
@@ -63,7 +84,9 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+				8431427E2204B38D00E23DF8 /* Model */,
 				9D5CCA56214231E400224681 /* Operations */,
+				8431427D2204B36100E23DF8 /* View Controllers */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
 			path = "Random Users";
@@ -73,9 +96,6 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A98B2140178A00FC395A /* Main.storyboard */,
-				84C67D0E2204A7360077A699 /* UsersTableViewController.swift */,
-				84C67D102204A7680077A699 /* UserTableViewCell.swift */,
-				84C67D122204A7A60077A699 /* UserDetailViewController.swift */,
 				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
 				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
 				8ED6A9932140178C00FC395A /* Info.plist */,
@@ -87,7 +107,6 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
-				8431427B2204AAB600E23DF8 /* User.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -167,6 +186,7 @@
 				84C67D132204A7A60077A699 /* UserDetailViewController.swift in Sources */,
 				8431427C2204AAB600E23DF8 /* User.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				843142802204B3E300E23DF8 /* UserController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				84C67D0F2204A7360077A699 /* UsersTableViewController.swift in Sources */,
 			);
@@ -313,7 +333,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Random Users/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -331,7 +351,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Random Users/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
