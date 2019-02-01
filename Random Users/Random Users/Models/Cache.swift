@@ -13,10 +13,10 @@ class Cache<Key: Hashable, Value> {
     private let queue = DispatchQueue(label: "ng.sugabelly.Random-Users.cacheQueue")
     
     func saveToCache(value: Value?, for key: Key) {
-        queue.async { self.cachedUsers[key] = value }
+        queue.async { self.cachedContacts[key] = value }
     }
     
     func getValue(for key: Key) -> Value? {
-        return queue.sync { cachedUsers[key] }
+        return queue.sync { cachedContacts[key] }
     }
 }

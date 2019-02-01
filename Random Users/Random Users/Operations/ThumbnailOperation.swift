@@ -1,5 +1,5 @@
 //
-//  ImageOperation.swift
+//  ThumbnailOperation.swift
 //  Random Users
 //
 //  Created by Lotanna Igwe-Odunze on 2/1/19.
@@ -8,17 +8,17 @@
 
 import Foundation
 
-class ImageOperation: ConcurrentOperation { //
+class ThumbnailOperation: ConcurrentOperation { //
     
     //Properties
-    var imageData: Data?
-    let contact: User
+    var thumbData: Data?
+    let cellContact: User
     
     
     private var dataTask: URLSessionDataTask?
     
     init(contact: User) {
-        self.contact = contact //Assigns the user passed into the init to the property
+        self.cellContact = contact //Assigns the user passed into the init to the property
         super.init()
     }
     
@@ -26,8 +26,8 @@ class ImageOperation: ConcurrentOperation { //
     override func start() {
         state = .isExecuting
         
-       //Unwrap the image URL of the current user.
-        guard let url = URL(string: contact.picture.large) else { return }
+        //Unwrap the image URL of the current user.
+        guard let url = URL(string: cellContact.picture.thumbnail) else { return }
         
         // Download the image via data task
         dataTask = URLSession.shared.dataTask(with: url, completionHandler: { (data, _, error) in
@@ -36,7 +36,7 @@ class ImageOperation: ConcurrentOperation { //
             
             //Unwrap any errors
             if let error = error {
-                NSLog("Couldn't download the image for \(self.contact.name): \(error)")
+                NSLog("Couldn't download the image for \(self.cellContact.name): \(error)")
                 return
             }
             
@@ -47,7 +47,7 @@ class ImageOperation: ConcurrentOperation { //
             }
             
             // Assign the image data to the propertyy
-            self.imageData = data
+            self.thumbData = data
             
             return
         })
