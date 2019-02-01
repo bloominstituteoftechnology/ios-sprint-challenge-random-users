@@ -1,23 +1,37 @@
 
 import Foundation
 
-class Cache<Key, Value> where Key: Hashable {
+class Cache<Key: Hashable, Value> {
     
-    private var cacheDictionary: [Key: Value] = [:]
+    private var cacheDictionary = Dictionary<Key, Value>()
     
     // initialize property with a serial DispatchQueue
-    private var queue = DispatchQueue.init(label: "Background Cache Queue")
+    private let q = DispatchQueue(label: "Cache<\(Key.self),\(Value.self)>", attributes: [.concurrent])
+    
+    init() {}
+    
+    // Get value for specific key
+    func getValue(for key: Key) -> Value? {
+        var value: Value?
+        q.sync {
+            value = cacheDictionary[key]
+        }
+        return value
+    }
     
     // Add items to the cache
-    func cache(value: Value, forKey: Key) {
-        self.cacheDictionary[forKey] = value
+    func saveValue(_ value: Value?, for key: Key) {
+        
+        let work = DispatchWorkItem(flags: [.barrier], block: {
+             self.cacheDictionary[key] = value
+        })
+        q.async(execute: work)
+       
     }
     
     // Remove items from cache
-    func value(forKey: Key) -> Value? {
-        return queue.sync {
-            return self.cacheDictionary[forKey]
-        }
+    func removeValue(for key: Key) {
+        saveValue(nil, for: key)
     }
     
 }

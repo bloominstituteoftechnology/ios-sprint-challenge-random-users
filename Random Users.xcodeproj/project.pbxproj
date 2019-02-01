@@ -10,7 +10,6 @@
 		8431427C2204AAB600E23DF8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8431427B2204AAB600E23DF8 /* User.swift */; };
 		843142802204B3E300E23DF8 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8431427F2204B3E300E23DF8 /* UserController.swift */; };
 		843142822204CBD800E23DF8 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843142812204CBD800E23DF8 /* Cache.swift */; };
-		843142842204ECEB00E23DF8 /* NewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843142832204ECEA00E23DF8 /* NewTableViewController.swift */; };
 		84C67D0F2204A7360077A699 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C67D0E2204A7360077A699 /* UsersTableViewController.swift */; };
 		84C67D112204A7680077A699 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C67D102204A7680077A699 /* UserTableViewCell.swift */; };
 		84C67D132204A7A60077A699 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C67D122204A7A60077A699 /* UserDetailViewController.swift */; };
@@ -25,7 +24,6 @@
 		8431427B2204AAB600E23DF8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8431427F2204B3E300E23DF8 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		843142812204CBD800E23DF8 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
-		843142832204ECEA00E23DF8 /* NewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTableViewController.swift; sourceTree = "<group>"; };
 		84C67D0E2204A7360077A699 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		84C67D102204A7680077A699 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		84C67D122204A7A60077A699 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
@@ -55,7 +53,6 @@
 				84C67D0E2204A7360077A699 /* UsersTableViewController.swift */,
 				84C67D102204A7680077A699 /* UserTableViewCell.swift */,
 				84C67D122204A7A60077A699 /* UserDetailViewController.swift */,
-				843142832204ECEA00E23DF8 /* NewTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -191,7 +188,6 @@
 			files = (
 				84C67D112204A7680077A699 /* UserTableViewCell.swift in Sources */,
 				84C67D132204A7A60077A699 /* UserDetailViewController.swift in Sources */,
-				843142842204ECEB00E23DF8 /* NewTableViewController.swift in Sources */,
 				843142822204CBD800E23DF8 /* Cache.swift in Sources */,
 				8431427C2204AAB600E23DF8 /* User.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
