@@ -13,7 +13,7 @@ class UserImporter {
     static let shared = UserImporter()
     
     //API URL
-    let randomUserAPI = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,cell,picture&results=1000")!
+    let randomUserAPI = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,cell,id,picture&results=1000")!
     
     //Import Function
     func downloadUsers(completion: @escaping () -> Void) {
