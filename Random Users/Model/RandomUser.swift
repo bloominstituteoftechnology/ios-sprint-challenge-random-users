@@ -46,3 +46,6 @@ struct RandomUser: Decodable {
     }
 }
 
+struct RandomUsers: Decodable {
+    let results: [RandomUser]
+}
