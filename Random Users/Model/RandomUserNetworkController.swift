@@ -10,16 +10,16 @@ import Foundation
 
 class RandomUserController {
     
-    var users: [RandomUsersModel] = []
+    var users: [RandomUser] = []
     typealias ComplitionHandler = (Error?) -> Void
-    let baseURL: URL = URL(string: "https:randomuser.me/api/?format=json&inc=name,email,phone,picture&results=10")! // 10 for test
+    let baseURL: URL = URL(string: "https:randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")! // 10 for test
     
     func getRandomUsers(complition: @escaping  ComplitionHandler = { _ in }) {
         
         URLSession.shared.dataTask(with: baseURL) { (data, _, error) in
             if let error = error {
                 NSLog("Error fetching users \(error)")
-                complition( error)
+                complition(error)
                 return
             }
             guard let data = data else {
@@ -30,13 +30,14 @@ class RandomUserController {
             
             do {
                 let usersResualt = try JSONDecoder().decode(RandomUsersModel.self, from: data)
-                self.users = [usersResualt]
+                self.users = usersResualt.results
                 
                 print(self.users)
             } catch {
                 
                 NSLog("Error")
                 complition(error)
+                return
             }
             
             }.resume()

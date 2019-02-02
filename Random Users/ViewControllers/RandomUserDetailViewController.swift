@@ -12,7 +12,7 @@ class RandomUserDetailViewController: UIViewController {
 
     
     
-    var randomUser: Result?
+    var randomUser: RandomUsersModel?
     
     @IBOutlet weak var userLargImage: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
