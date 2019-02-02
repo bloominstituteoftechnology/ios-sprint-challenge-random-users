@@ -70,13 +70,13 @@ class UsersTableViewController: UITableViewController {
                     return
                 }
                 
-                guard let data = data else { return }
+                guard let imageData = data else { return }
                 
                 // Save retrieved image data to cache
                 self.cache.saveValue(data, for: userReference.email)
                 
                 // Create UIImage from received data
-                let retrievedImage = UIImage(data: data)
+                let retrievedImage = UIImage(data: imageData)
                 
                 DispatchQueue.main.async {
                     

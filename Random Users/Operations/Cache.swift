@@ -13,6 +13,8 @@ class Cache<Key: Hashable, Value> {
     // Get value for specific key
     func getValue(for key: Key) -> Value? {
         var value: Value?
+        
+        // Synchronous b/c need to return a value immediately - so everything else needs to wait for this to finish
         q.sync {
             value = cacheDictionary[key]
         }
@@ -25,6 +27,8 @@ class Cache<Key: Hashable, Value> {
         let work = DispatchWorkItem(flags: [.barrier], block: {
              self.cacheDictionary[key] = value
         })
+        
+        // Asynchronous b/c doesn't matter if this happens right away
         q.async(execute: work)
        
     }
