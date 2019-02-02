@@ -49,7 +49,7 @@
                                 <connections>
                                     <outlet property="randomUsersImageView" destination="FaN-6y-FGH" id="r4v-8l-1V0"/>
                                     <outlet property="randomUsersLabel" destination="cqP-ds-P2W" id="dm2-xj-v0h"/>
-                                    <segue destination="DdD-iD-DtJ" kind="show" id="6Ev-E5-L3Z"/>
+                                    <segue destination="DdD-iD-DtJ" kind="show" identifier="ShowRandomUser" id="6Ev-E5-L3Z"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -64,10 +64,10 @@
             </objects>
             <point key="canvasLocation" x="752.79999999999995" y="736.28185907046486"/>
         </scene>
-        <!--Random Users View Controller-->
+        <!--Random User View Controller-->
         <scene sceneID="DQB-XI-frD">
             <objects>
-                <viewController id="DdD-iD-DtJ" customClass="RandomUsersViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="DdD-iD-DtJ" customClass="RandomUserViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="flT-OT-SGa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

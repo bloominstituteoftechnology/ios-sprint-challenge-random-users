@@ -33,6 +33,7 @@ class RandomUserController {
                 completionHandler(nil)
                 return
             }
+            print("Got some DATA!")
         
             do {
                 let fetchResults = try JSONDecoder().decode(RandomUsers.self, from: data)
