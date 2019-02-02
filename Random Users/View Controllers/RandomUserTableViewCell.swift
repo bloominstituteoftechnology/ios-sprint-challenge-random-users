@@ -10,17 +10,24 @@ import UIKit
 
 class RandomUserTableViewCell: UITableViewCell {
 
+    // Variables & Constants
+    var randomUser: RandomUser? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    // Outlets and Actions
     @IBOutlet weak var randomUsersLabel: UILabel!
     @IBOutlet weak var randomUsersImageView: UIImageView!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    // Functions
+    func updateViews() {
+        if let randomUser = randomUser {
+            randomUsersLabel.text = "\(randomUser.title). \(randomUser.first) \(randomUser.last)"
+            let imageURL = URL(string: (randomUser.picture))
+            let imageData = try! Data(contentsOf: imageURL!)
+            randomUsersImageView.image = UIImage(data: imageData)
+        }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
