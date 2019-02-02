@@ -8,7 +8,8 @@
 
 import Foundation
 struct RandomUser: Decodable {
-    var title, first, last, email, phone, picture: String
+    var title, first, last, email, phone: String
+    var picture, thumbnail: URL
     
     enum CodingKeys: String, CodingKey {
         case name
@@ -24,6 +25,7 @@ struct RandomUser: Decodable {
         
         enum Picture: String, CodingKey {
             case large
+            case thumbnail
         }
     }
     
@@ -41,8 +43,8 @@ struct RandomUser: Decodable {
 
         // Make a container for the nested Picture Array
         let pictureContainer = try container.nestedContainer(keyedBy: CodingKeys.Picture.self, forKey: .picture)
-        picture = try pictureContainer.decode(String.self, forKey: .large)
-        
+        picture = try pictureContainer.decode(URL.self, forKey: .large)
+        thumbnail = try pictureContainer.decode(URL.self, forKey: .thumbnail)
     }
 }
 

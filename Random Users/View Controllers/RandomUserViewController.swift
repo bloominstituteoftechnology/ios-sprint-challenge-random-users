@@ -26,8 +26,7 @@ class RandomUserViewController: UIViewController {
         randomUserNameLabel.text = "\(randomUser.title). \(randomUser.first) \(randomUser.last)"
         randomUserPhoneLabel.text = randomUser.phone
         randomUserEmailLabel.text = randomUser.email
-        let imageURL = URL(string: (randomUser.picture))
-        let imageData = try! Data(contentsOf: imageURL!)
+        let imageData = try! Data(contentsOf: randomUser.picture)
         randomUserImageView.image = UIImage(data: imageData)
     }
 

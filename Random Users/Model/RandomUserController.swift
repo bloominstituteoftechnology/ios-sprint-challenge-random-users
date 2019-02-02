@@ -10,15 +10,12 @@ import Foundation
 
 class RandomUserController {
 
-    static let shared = RandomUserController()
-    private init() {}
     // Empty array to hold results from fetch
-    var randomUsers: [RandomUser] = []
+    private(set) var randomUsers: [RandomUser] = []
     typealias CompletionHandler = (Error?) -> Void
-    private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
+    private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=3")!
     
-    
-    func fetchRandomUsers(completionHandler: @escaping CompletionHandler) {
+    func fetchRandomUsers(completionHandler: @escaping CompletionHandler = { _ in }) {
         let requestURL = baseURL
         
         URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
@@ -38,6 +35,7 @@ class RandomUserController {
             do {
                 let fetchResults = try JSONDecoder().decode(RandomUsers.self, from: data)
                 self.randomUsers = fetchResults.results
+                print(fetchResults.results)
                 completionHandler(nil)
             } catch {
                 fatalError("\nRandomUsersController.swift\nError: Could not decode JSON")

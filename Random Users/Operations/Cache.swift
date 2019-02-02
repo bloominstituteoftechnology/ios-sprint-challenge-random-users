@@ -13,7 +13,7 @@ class Cache<Key: Hashable, Value>{
     
     init(){}
     
-    func saveValue(for key: Key, value: Value){
+    func setValue(for key: Key, value: Value){
         queue.async{
             self.cacheDictionary[key] = value
         }
