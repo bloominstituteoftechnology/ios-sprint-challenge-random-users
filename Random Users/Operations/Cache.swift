@@ -35,6 +35,7 @@ class Cache<Key: Hashable, Value> {
     
     // Remove items from cache
     func removeValue(for key: Key) {
+        // removing a value is the same as saving nil for the key
         saveValue(nil, for: key)
     }
     

@@ -7,8 +7,17 @@ class UsersTableViewController: UITableViewController {
     
     let userController = UserController.shared
     
-    // <Email, ImageURL>
-    var cache = Cache<String, Data>()
+    // <Email, Image>
+    var cache = Cache<String, UIImage>()
+    
+    var operationCache = Cache<IndexPath, Operation>()
+    
+    // In order to execute operation, create an operation queue
+    let downloadImageQueue: OperationQueue = {
+       let q = OperationQueue()
+        q.name = "Download Image Queue"
+        return q
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +58,20 @@ class UsersTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        // The cell has gone offscreen
+        
+        // Cancel an operation
+        
+        // How do I know which operation to cancel? I need to keep a list of all the operations I've started so that I can look them up
+        
+        // When I'm done displaying my cell, see if I got my operation
+        if let existingOperation = operationCache.getValue(for: indexPath) {
+            existingOperation.cancel()
+            // Don't need to remove operation from cache here b/c it will be removed when the operation "completes" with a cancellation error
+        }
+    }
+    
     private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
         
         let userReference = UserController.shared.users[indexPath.item]
@@ -56,40 +79,73 @@ class UsersTableViewController: UITableViewController {
         let userReferenceImageURL = URL(string: userReference.picture)!
         
         // Check if cache already contains data for given user reference's email
-        if let value = cache.getValue(for: userReference.email) {
+//        if let value = cache.getValue(for: userReference.email) {
+//
+//            // if it does, set cell's image
+//            let image = value
+//            cell.userImage.image = image
+//
+//        } else {
+        
+        // Create image operation
+        let imageOperation = DownloadImageOperation(url: userReferenceImageURL) { image in
             
-            // if it does, set cell's image
-            let imageData = value
-            cell.userImage.image = UIImage(data: imageData)
+            // Whether I download an image or not, I want to remove that operation from the cache
+            // Cache is already thread-safe, so this is safe to do from the background
+            self.operationCache.removeValue(for: indexPath)
             
-        } else {
+            // guard that I have an image
+            guard let image = image else { return }
             
-            URLSession.shared.dataTask(with: userReferenceImageURL) { (data, _, error) in
-                if let error = error {
-                    NSLog("Error loading image: \(error)")
-                    return
-                }
+            // Save retrieved image data to cache
+            self.cache.saveValue(image, for: userReference.email)
+            
+            // Put image into the UI
+            DispatchQueue.main.async {
                 
-                guard let imageData = data else { return }
-                
-                // Save retrieved image data to cache
-                self.cache.saveValue(data, for: userReference.email)
-                
-                // Create UIImage from received data
-                let retrievedImage = UIImage(data: imageData)
-                
-                DispatchQueue.main.async {
+                // if the cell for this index path is visible right now...
+                if let visibleCell = self.tableView.cellForRow(at: indexPath) as? UserTableViewCell {
                     
-                    // if the cell for this index path is visible right now...
-                    if let visibleCell = self.tableView.cellForRow(at: indexPath) as? UserTableViewCell {
-                        
-                        // set the cell's image
-                        visibleCell.userImage.image = retrievedImage
-                    }
-                }
+                    // set the cell's image
+                    visibleCell.userImage.image = image
+                    
             }
-           .resume()
+                
         }
+            
+// Don't need this anymore because we made the Operation
+//            URLSession.shared.dataTask(with: userReferenceImageURL) { (data, _, error) in
+//                if let error = error {
+//                    NSLog("Error loading image: \(error)")
+//                    return
+//                }
+//
+//                guard let imageData = data else { return }
+//
+//                // Create UIImage from received data
+//                let image = UIImage(data: imageData)
+//
+//                // Save retrieved image data to cache
+//                self.cache.saveValue(image, for: userReference.email)
+//                //self.cache.saveValue(data, for: userReference.email)
+//
+//                DispatchQueue.main.async {
+//
+//                    // if the cell for this index path is visible right now...
+//                    if let visibleCell = self.tableView.cellForRow(at: indexPath) as? UserTableViewCell {
+//
+//                        // set the cell's image
+//                        visibleCell.userImage.image = image
+//                    }
+//                }
+//            }
+//           .resume()
+        }
+        
+        // When I create my operation, I will cash it
+        operationCache.saveValue(imageOperation, for: indexPath)
+        
+        downloadImageQueue.addOperation(imageOperation)
         
         
     }

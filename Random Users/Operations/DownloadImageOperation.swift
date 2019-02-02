@@ -49,7 +49,7 @@ class DownloadImageOperation: ConcurrentOperation {
             }
             
             // Create UIImage from received data
-            guard let retrievedImage = UIImage(data: imageData) else {
+            guard let image = UIImage(data: imageData) else {
                 print("Data is not image data for \(self.url)")
                 self.completion(nil)
                 return
@@ -59,7 +59,7 @@ class DownloadImageOperation: ConcurrentOperation {
             
             // Need to know when this operation is done and whether it got an image or not
             // Create a completion and pass in the image
-            self.completion(retrievedImage)
+            self.completion(image)
             
             
             self.task = nil
@@ -70,7 +70,7 @@ class DownloadImageOperation: ConcurrentOperation {
     }
     
     override func cancel() {
-        
+        print("cancelling download for \(url)")
         // If I cancel the download operation, also download the task
         task?.cancel()
         super.cancel()
