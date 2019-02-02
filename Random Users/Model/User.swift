@@ -2,7 +2,7 @@
 import Foundation
 
 struct User: Decodable {
-    
+        
     var title: String
     var firstName: String
     var lastName: String

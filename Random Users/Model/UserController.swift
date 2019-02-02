@@ -34,6 +34,7 @@ class UserController {
                 self.users = userNew.results
                 print(self.users)
                 completion(nil)
+                
             } catch {
                 NSLog("Unable to decode data: \(error)")
                 completion(error)
