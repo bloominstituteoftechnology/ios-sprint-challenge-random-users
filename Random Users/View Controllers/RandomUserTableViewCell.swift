@@ -24,7 +24,7 @@ class RandomUserTableViewCell: UITableViewCell {
     // Functions
     func updateViews() {
         if let randomUser = randomUser {
-            randomUsersLabel.text = "\(randomUser.title). \(randomUser.first) \(randomUser.last)"
+            randomUsersLabel.text = "\(randomUser.title.capitalized). \(randomUser.first.capitalized) \(randomUser.last.capitalized)"
             let imageData = try! Data(contentsOf: randomUser.picture)
             randomUsersImageView.image = UIImage(data: imageData)
         }

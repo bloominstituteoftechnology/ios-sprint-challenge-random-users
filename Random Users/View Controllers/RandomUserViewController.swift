@@ -23,7 +23,7 @@ class RandomUserViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         guard let randomUser = randomUser else { return }
-        randomUserNameLabel.text = "\(randomUser.title). \(randomUser.first) \(randomUser.last)"
+        randomUserNameLabel.text = "\(randomUser.title.capitalized). \(randomUser.first.capitalized) \(randomUser.last.capitalized)"
         randomUserPhoneLabel.text = randomUser.phone
         randomUserEmailLabel.text = randomUser.email
         let imageData = try! Data(contentsOf: randomUser.picture)
