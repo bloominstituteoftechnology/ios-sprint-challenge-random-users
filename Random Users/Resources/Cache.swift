@@ -23,7 +23,6 @@ class Cache<Key, Value> where Key: Hashable {
     
     func value(forKey: Key) -> Value?  {
         
-        
         return queue.sync {
             return tempImageStore[forKey]
             

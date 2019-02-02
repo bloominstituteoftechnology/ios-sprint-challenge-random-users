@@ -12,7 +12,7 @@ class RandomUserDetailViewController: UIViewController {
 
     
     
-    var randomUser: RandomUsersModel?
+    var randomUser: RandomUser?
     
     @IBOutlet weak var userLargImage: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
@@ -20,19 +20,20 @@ class RandomUserDetailViewController: UIViewController {
     @IBOutlet weak var userEmailLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-      userLargImage.image = UIImage(named: "")
+        updateView()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func updateView() {
+        
+        guard let title = randomUser?.title, let first = randomUser?.first, let last = randomUser?.last else { return }
+        guard let largeimageURL = randomUser?.largeImageURL else { fatalError("largeImageURL fetching error") }
+        let url = largeimageURL
+        userNameLabel.text = "  \(title.capitalized)  \(first.capitalized) \(last.capitalized)"
+        userEmailLabel.text = "  Email:   \(randomUser?.emailAddress ?? "")"
+        userPhoneNumber.text = "  Phone: \(randomUser?.phoneNumber ?? "")"
+        guard let image = try? Data(contentsOf: url) else { return }
+        userLargImage.image = UIImage(data: image)
+        
     }
-    */
-
+    
 }

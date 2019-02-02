@@ -12,7 +12,7 @@ class RandomUserController {
     
     var users: [RandomUser] = []
     typealias ComplitionHandler = (Error?) -> Void
-    let baseURL: URL = URL(string: "https:randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")! // 10 for test
+    let baseURL: URL = URL(string: "https:randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
     
     func getRandomUsers(complition: @escaping  ComplitionHandler = { _ in }) {
         
