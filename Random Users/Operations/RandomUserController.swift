@@ -1,5 +1,5 @@
 //
-//  RandomUsersController.swift
+//  RandomUserController.swift
 //  Random Users
 //
 //  Created by Ivan Caldwell on 2/1/19.
@@ -8,7 +8,8 @@
 
 import Foundation
 
-class RandomUsersController {
+class RandomUserController {
+    
     typealias CompletionHandler = (Error?) -> Void
     private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
     

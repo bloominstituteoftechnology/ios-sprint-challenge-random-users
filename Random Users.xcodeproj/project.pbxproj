@@ -11,7 +11,7 @@
 		2C4724DE2204BB96002A1ABF /* RandomUsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4724DD2204BB96002A1ABF /* RandomUsersTableViewCell.swift */; };
 		2C4724E02204BBAB002A1ABF /* RandomUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4724DF2204BBAB002A1ABF /* RandomUsersViewController.swift */; };
 		2C4724E22204BBBC002A1ABF /* RandomUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4724E12204BBBC002A1ABF /* RandomUsersTableViewController.swift */; };
-		2C4724E82204C5A9002A1ABF /* RandomUsersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4724E72204C5A8002A1ABF /* RandomUsersController.swift */; };
+		2C4724E82204C5A9002A1ABF /* RandomUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4724E72204C5A8002A1ABF /* RandomUserController.swift */; };
 		2C4724EA2204CA53002A1ABF /* RandomUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4724E92204CA53002A1ABF /* RandomUser.swift */; };
 		2C4724EC2204CA6E002A1ABF /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4724EB2204CA6E002A1ABF /* Model.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
@@ -26,7 +26,7 @@
 		2C4724DD2204BB96002A1ABF /* RandomUsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersTableViewCell.swift; sourceTree = "<group>"; };
 		2C4724DF2204BBAB002A1ABF /* RandomUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersViewController.swift; sourceTree = "<group>"; };
 		2C4724E12204BBBC002A1ABF /* RandomUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersTableViewController.swift; sourceTree = "<group>"; };
-		2C4724E72204C5A8002A1ABF /* RandomUsersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersController.swift; sourceTree = "<group>"; };
+		2C4724E72204C5A8002A1ABF /* RandomUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserController.swift; sourceTree = "<group>"; };
 		2C4724E92204CA53002A1ABF /* RandomUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUser.swift; sourceTree = "<group>"; };
 		2C4724EB2204CA6E002A1ABF /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,9 +54,7 @@
 			children = (
 				2C4724DD2204BB96002A1ABF /* RandomUsersTableViewCell.swift */,
 				2C4724DF2204BBAB002A1ABF /* RandomUsersViewController.swift */,
-				2C4724E92204CA53002A1ABF /* RandomUser.swift */,
 				2C4724E12204BBBC002A1ABF /* RandomUsersTableViewController.swift */,
-				2C4724EB2204CA6E002A1ABF /* Model.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -68,6 +66,15 @@
 				8ED6A98B2140178A00FC395A /* Main.storyboard */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		2C4724F0220551FD002A1ABF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2C4724E92204CA53002A1ABF /* RandomUser.swift */,
+				2C4724EB2204CA6E002A1ABF /* Model.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		8ED6A97B2140178A00FC395A = {
@@ -90,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+				2C4724F0220551FD002A1ABF /* Model */,
 				2C4724DC2204BB54002A1ABF /* View Controllers */,
 				9D5CCA56214231E400224681 /* Operations */,
 				2C4724ED2204CE5B002A1ABF /* Views */,
@@ -110,7 +118,7 @@
 		9D5CCA56214231E400224681 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
-				2C4724E72204C5A8002A1ABF /* RandomUsersController.swift */,
+				2C4724E72204C5A8002A1ABF /* RandomUserController.swift */,
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
 				2C4724DA2204B8CE002A1ABF /* Cache.swift */,
 			);
@@ -194,7 +202,7 @@
 				2C4724E22204BBBC002A1ABF /* RandomUsersTableViewController.swift in Sources */,
 				2C4724EC2204CA6E002A1ABF /* Model.swift in Sources */,
 				2C4724EA2204CA53002A1ABF /* RandomUser.swift in Sources */,
-				2C4724E82204C5A9002A1ABF /* RandomUsersController.swift in Sources */,
+				2C4724E82204C5A9002A1ABF /* RandomUserController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				2C4724DE2204BB96002A1ABF /* RandomUsersTableViewCell.swift in Sources */,
 			);
