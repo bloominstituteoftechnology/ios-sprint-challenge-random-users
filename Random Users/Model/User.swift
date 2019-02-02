@@ -47,11 +47,7 @@ struct User: Decodable {
         // Not nested inside anything
         email = try container.decode(String.self, forKey: .email)
         phone = try container.decode(String.self, forKey: .phone)
-        
     }
-    
-    
-    
 }
 
 struct UserResults: Decodable {

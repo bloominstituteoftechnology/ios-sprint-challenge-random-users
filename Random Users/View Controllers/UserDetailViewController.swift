@@ -16,7 +16,6 @@ class UserDetailViewController: UIViewController {
         guard let user = user else { return }
         
         // Populate the labels and image
-        
         var punctuatedTitle = user.title.capitalized
         if punctuatedTitle == "Mr" || punctuatedTitle == "Mrs" || punctuatedTitle == "Ms" {
             punctuatedTitle = "\(punctuatedTitle)."

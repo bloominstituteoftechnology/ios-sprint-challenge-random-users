@@ -11,13 +11,9 @@ class DownloadImageOperation: ConcurrentOperation {
     let url: URL
     private var task: URLSessionDataTask?
     
-    //private(set) var image: UIImage?
-    
     private let completion: (UIImage?) -> Void
     
     // initializer
-    // must give a url to the url property before calling super
-    // task doesn't matter because it's optional, meaning it's okay if it's nil
     init(url: URL, completionHandler: @escaping (UIImage?) -> Void) {
         self.url = url
         self.completion = completionHandler
@@ -33,7 +29,6 @@ class DownloadImageOperation: ConcurrentOperation {
         
         //create my task and download it
         task = URLSession.shared.dataTask(with: url, completionHandler: { (data, _, error) in
-            // what should happen to the data parameter?
             
             if let error = error {
                 NSLog("Error loading image: \(error)")

@@ -27,13 +27,7 @@ class UserTableViewCell: UITableViewCell {
             }
             
             userNameLabel.text = "\(punctuatedTitle) \(user.firstName.capitalized) \(user.lastName.capitalized)"
-            
-//            guard let url = URL(string: user.picture),
-//                let imageData = try? Data(contentsOf: url) else { return }
-//
-//            userImage.image = UIImage(data: imageData)
-        }
-        
+        }        
     }
     
     override func prepareForReuse() {
@@ -41,6 +35,4 @@ class UserTableViewCell: UITableViewCell {
         indexPath = nil
         super.prepareForReuse()
     }
-    
-    
 }

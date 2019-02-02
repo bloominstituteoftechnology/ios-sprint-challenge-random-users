@@ -39,10 +39,5 @@ class UserController {
                 completion(error)
             }
         }.resume()
-        
-        
     }
-    
-
-    
 }

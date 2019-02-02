@@ -59,11 +59,9 @@ class UsersTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        // The cell has gone offscreen
+        // The cell has gone offscreen, so cancel the operation
         
-        // Cancel an operation
-        
-        // How do I know which operation to cancel? I need to keep a list of all the operations I've started so that I can look them up
+        // I will know which operation to cancel by keeping a list of all the operations I've started so that I can look them up
         
         // When I'm done displaying my cell, see if I got my operation
         if let existingOperation = operationCache.getValue(for: indexPath) {
@@ -79,13 +77,12 @@ class UsersTableViewController: UITableViewController {
         let userReferenceImageURL = URL(string: userReference.picture)!
         
         // Check if cache already contains data for given user reference's email
-//        if let value = cache.getValue(for: userReference.email) {
-//
-//            // if it does, set cell's image
-//            let image = value
-//            cell.userImage.image = image
-//
-//        } else {
+        if let value = cache.getValue(for: userReference.email) {
+
+            // if it does, set cell's image
+            let image = value
+            cell.userImage.image = image
+        }
         
         // Create image operation
         let imageOperation = DownloadImageOperation(url: userReferenceImageURL) { image in
@@ -108,48 +105,15 @@ class UsersTableViewController: UITableViewController {
                     
                     // set the cell's image
                     visibleCell.userImage.image = image
-                    
+                }
             }
-                
-        }
-            
-// Don't need this anymore because we made the Operation
-//            URLSession.shared.dataTask(with: userReferenceImageURL) { (data, _, error) in
-//                if let error = error {
-//                    NSLog("Error loading image: \(error)")
-//                    return
-//                }
-//
-//                guard let imageData = data else { return }
-//
-//                // Create UIImage from received data
-//                let image = UIImage(data: imageData)
-//
-//                // Save retrieved image data to cache
-//                self.cache.saveValue(image, for: userReference.email)
-//                //self.cache.saveValue(data, for: userReference.email)
-//
-//                DispatchQueue.main.async {
-//
-//                    // if the cell for this index path is visible right now...
-//                    if let visibleCell = self.tableView.cellForRow(at: indexPath) as? UserTableViewCell {
-//
-//                        // set the cell's image
-//                        visibleCell.userImage.image = image
-//                    }
-//                }
-//            }
-//           .resume()
         }
         
         // When I create my operation, I will cash it
         operationCache.saveValue(imageOperation, for: indexPath)
         
         downloadImageQueue.addOperation(imageOperation)
-        
-        
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -162,8 +126,4 @@ class UsersTableViewController: UITableViewController {
         // Pass the selected object to the detail view controller
         destination.user = user
     }
-    
-
-    
-    
 }

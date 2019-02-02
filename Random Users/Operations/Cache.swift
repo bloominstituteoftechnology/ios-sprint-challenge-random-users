@@ -24,13 +24,10 @@ class Cache<Key: Hashable, Value> {
     // Add items to the cache
     func saveValue(_ value: Value?, for key: Key) {
         
-        let work = DispatchWorkItem(flags: [.barrier], block: {
-             self.cacheDictionary[key] = value
-        })
-        
         // Asynchronous b/c doesn't matter if this happens right away
-        q.async(execute: work)
-       
+        q.async {
+            self.cacheDictionary[key] = value
+        }
     }
     
     // Remove items from cache
