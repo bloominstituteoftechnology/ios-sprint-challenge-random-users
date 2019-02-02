@@ -8,12 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		2C4724DB2204B8CE002A1ABF /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4724DA2204B8CE002A1ABF /* Cache.swift */; };
-		2C4724DE2204BB96002A1ABF /* RandomUsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4724DD2204BB96002A1ABF /* RandomUsersTableViewCell.swift */; };
-		2C4724E02204BBAB002A1ABF /* RandomUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4724DF2204BBAB002A1ABF /* RandomUsersViewController.swift */; };
+		2C4724DE2204BB96002A1ABF /* RandomUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4724DD2204BB96002A1ABF /* RandomUserTableViewCell.swift */; };
+		2C4724E02204BBAB002A1ABF /* RandomUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4724DF2204BBAB002A1ABF /* RandomUserViewController.swift */; };
 		2C4724E22204BBBC002A1ABF /* RandomUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4724E12204BBBC002A1ABF /* RandomUsersTableViewController.swift */; };
 		2C4724E82204C5A9002A1ABF /* RandomUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4724E72204C5A8002A1ABF /* RandomUserController.swift */; };
 		2C4724EA2204CA53002A1ABF /* RandomUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4724E92204CA53002A1ABF /* RandomUser.swift */; };
-		2C4724EC2204CA6E002A1ABF /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4724EB2204CA6E002A1ABF /* Model.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -23,12 +22,11 @@
 
 /* Begin PBXFileReference section */
 		2C4724DA2204B8CE002A1ABF /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
-		2C4724DD2204BB96002A1ABF /* RandomUsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersTableViewCell.swift; sourceTree = "<group>"; };
-		2C4724DF2204BBAB002A1ABF /* RandomUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersViewController.swift; sourceTree = "<group>"; };
+		2C4724DD2204BB96002A1ABF /* RandomUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserTableViewCell.swift; sourceTree = "<group>"; };
+		2C4724DF2204BBAB002A1ABF /* RandomUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserViewController.swift; sourceTree = "<group>"; };
 		2C4724E12204BBBC002A1ABF /* RandomUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersTableViewController.swift; sourceTree = "<group>"; };
 		2C4724E72204C5A8002A1ABF /* RandomUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserController.swift; sourceTree = "<group>"; };
 		2C4724E92204CA53002A1ABF /* RandomUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUser.swift; sourceTree = "<group>"; };
-		2C4724EB2204CA6E002A1ABF /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -52,8 +50,8 @@
 		2C4724DC2204BB54002A1ABF /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2C4724DD2204BB96002A1ABF /* RandomUsersTableViewCell.swift */,
-				2C4724DF2204BBAB002A1ABF /* RandomUsersViewController.swift */,
+				2C4724DD2204BB96002A1ABF /* RandomUserTableViewCell.swift */,
+				2C4724DF2204BBAB002A1ABF /* RandomUserViewController.swift */,
 				2C4724E12204BBBC002A1ABF /* RandomUsersTableViewController.swift */,
 			);
 			path = "View Controllers";
@@ -72,7 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				2C4724E92204CA53002A1ABF /* RandomUser.swift */,
-				2C4724EB2204CA6E002A1ABF /* Model.swift */,
+				2C4724E72204C5A8002A1ABF /* RandomUserController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -118,7 +116,6 @@
 		9D5CCA56214231E400224681 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
-				2C4724E72204C5A8002A1ABF /* RandomUserController.swift */,
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
 				2C4724DA2204B8CE002A1ABF /* Cache.swift */,
 			);
@@ -198,13 +195,12 @@
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				2C4724DB2204B8CE002A1ABF /* Cache.swift in Sources */,
-				2C4724E02204BBAB002A1ABF /* RandomUsersViewController.swift in Sources */,
+				2C4724E02204BBAB002A1ABF /* RandomUserViewController.swift in Sources */,
 				2C4724E22204BBBC002A1ABF /* RandomUsersTableViewController.swift in Sources */,
-				2C4724EC2204CA6E002A1ABF /* Model.swift in Sources */,
 				2C4724EA2204CA53002A1ABF /* RandomUser.swift in Sources */,
 				2C4724E82204C5A9002A1ABF /* RandomUserController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
-				2C4724DE2204BB96002A1ABF /* RandomUsersTableViewCell.swift in Sources */,
+				2C4724DE2204BB96002A1ABF /* RandomUserTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -122,10 +122,10 @@
                         <viewLayoutGuide key="safeArea" id="LXQ-cZ-GSg"/>
                     </view>
                     <connections>
+                        <outlet property="randomUserEmailLabel" destination="nvR-JH-07k" id="KKO-ub-1hH"/>
                         <outlet property="randomUserImageView" destination="Bpw-G3-sF6" id="fJT-jR-nO6"/>
                         <outlet property="randomUserNameLabel" destination="Yy8-sI-CP3" id="Hxw-yR-o1Y"/>
                         <outlet property="randomUserPhoneLabel" destination="3yf-WY-eHp" id="R6D-AZ-GQs"/>
-                        <outlet property="ranodomUserEmailLabel" destination="nvR-JH-07k" id="KKO-ub-1hH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pxa-X1-WPZ" userLabel="First Responder" sceneMemberID="firstResponder"/>

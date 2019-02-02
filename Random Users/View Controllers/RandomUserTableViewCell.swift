@@ -1,5 +1,5 @@
 //
-//  RandomUsersTableViewCell.swift
+//  RandomUserTableViewCell.swift
 //  Random Users
 //
 //  Created by Ivan Caldwell on 2/1/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RandomUsersTableViewCell: UITableViewCell {
+class RandomUserTableViewCell: UITableViewCell {
 
     @IBOutlet weak var randomUsersLabel: UILabel!
     @IBOutlet weak var randomUsersImageView: UIImageView!
