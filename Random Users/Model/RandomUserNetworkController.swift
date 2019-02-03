@@ -31,7 +31,7 @@ class RandomUserController {
             do {
                 let usersResualt = try JSONDecoder().decode(RandomUsersModel.self, from: data)
                 self.users = usersResualt.results
-                
+                complition(nil)
                 print(self.users)
             } catch {
                 

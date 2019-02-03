@@ -103,7 +103,7 @@ class RandomUserTableViewController: UITableViewController {
 
         if let thumbOperation = allOperations[userReference.first] {
             thumbOperation.cancel()
-            allOperations.removeValue(forKey: userReference.first)
+          
         }
     }
     
