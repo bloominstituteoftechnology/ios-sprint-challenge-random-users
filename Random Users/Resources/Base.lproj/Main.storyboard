@@ -13,13 +13,13 @@
         <!--Random Users-->
         <scene sceneID="a0C-DP-hep">
             <objects>
-                <tableViewController id="tHc-KE-nGh" sceneMemberID="viewController">
+                <tableViewController id="tHc-KE-nGh" customClass="RandomUserTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="H2z-j4-MsE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" rowHeight="100" id="dmz-zW-EuF">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" rowHeight="100" id="dmz-zW-EuF" customClass="RandomUserTableViewCell" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dmz-zW-EuF" id="SjR-Kl-Adq">
@@ -50,6 +50,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="randomUserCellImageView" destination="2dX-PE-56c" id="CYz-d7-zEP"/>
+                                    <outlet property="randomUserCellNameLabel" destination="BR7-Wh-alq" id="7Ga-03-JND"/>
                                     <segue destination="45d-Ff-bUs" kind="show" id="ghf-v4-Euc"/>
                                 </connections>
                             </tableViewCell>
@@ -65,37 +67,39 @@
             </objects>
             <point key="canvasLocation" x="565.60000000000002" y="-4.0479760119940034"/>
         </scene>
-        <!--View Controller-->
+        <!--Random User Detail View Controller-->
         <scene sceneID="zga-sF-C7R">
             <objects>
-                <viewController id="45d-Ff-bUs" sceneMemberID="viewController">
+                <viewController id="45d-Ff-bUs" customClass="RandomUserDetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L5A-56-PyW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Lambda_Logo_Full" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qk3-di-8kw">
-                                <rect key="frame" x="37" y="183" width="301" height="301"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qk3-di-8kw">
+                                <rect key="frame" x="12.5" y="158.5" width="350" height="350"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="qk3-di-8kw" secondAttribute="height" multiplier="300:300" id="q9I-4u-aS3"/>
+                                    <constraint firstAttribute="height" constant="350" id="9nU-F4-mte"/>
+                                    <constraint firstAttribute="width" constant="350" id="el7-7T-Fgd"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="rsR-g8-BXt">
-                                <rect key="frame" x="37" y="558" width="301" height="77.5"/>
+                                <rect key="frame" x="12.5" y="582.5" width="350" height="77.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4J4-q2-w9O">
-                                        <rect key="frame" x="0.0" y="0.0" width="301" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eE4-9G-i8B">
-                                        <rect key="frame" x="0.0" y="28.5" width="301" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="28.5" width="350" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsF-QX-k7n">
-                                        <rect key="frame" x="0.0" y="57" width="301" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="57" width="350" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -110,10 +114,15 @@
                             <constraint firstItem="qk3-di-8kw" firstAttribute="centerY" secondItem="L5A-56-PyW" secondAttribute="centerY" id="MeA-4Q-X6t"/>
                             <constraint firstItem="rsR-g8-BXt" firstAttribute="leading" secondItem="qk3-di-8kw" secondAttribute="leading" id="UPG-nv-VfG"/>
                             <constraint firstItem="rsR-g8-BXt" firstAttribute="trailing" secondItem="qk3-di-8kw" secondAttribute="trailing" id="uSA-dR-QRe"/>
-                            <constraint firstItem="qk3-di-8kw" firstAttribute="top" secondItem="QJA-zj-nF0" secondAttribute="top" constant="119" id="z0u-Vn-w5y"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QJA-zj-nF0"/>
                     </view>
+                    <connections>
+                        <outlet property="randomUserDetailEmailLabel" destination="tsF-QX-k7n" id="bXX-au-Ijr"/>
+                        <outlet property="randomUserDetailImageView" destination="qk3-di-8kw" id="bIs-LY-7LN"/>
+                        <outlet property="randomUserDetailNameLabel" destination="4J4-q2-w9O" id="WsZ-Ld-wCJ"/>
+                        <outlet property="randomUserDetailPhoneLabel" destination="eE4-9G-i8B" id="AxJ-eG-PlD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V0x-k2-D7H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
