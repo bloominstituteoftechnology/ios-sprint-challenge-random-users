@@ -13,9 +13,7 @@ class RandomUserTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    
-    
-    
+
     // MARK: - IB Outlets
     
     @IBOutlet weak var randomUserCellImageView: UIImageView!

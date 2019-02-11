@@ -1,8 +1,12 @@
 import Foundation
 
+struct Results: Decodable {
+    let results: [RandomPerson]
+}
+
 struct RandomPerson: Decodable {
     
-    let results: [String] = []
+    var results: [String] = []
     var name: String = ""
     //var first: String = ""
     //var last: String = ""
@@ -12,10 +16,7 @@ struct RandomPerson: Decodable {
     var thumbnail: String = ""
     var large: String = ""
     var resultsCount: Int = 0
-    
-    //if we need an id we can use seed
-    //var info: String
-    
+
     enum RandomPeopleCodingKeys: CodingKey {
         case results
         case info
@@ -43,6 +44,10 @@ struct RandomPerson: Decodable {
         }
     }
     
+    struct Results: Decodable {
+        let results: [RandomPerson]
+    }
+    
     init(from decoder: Decoder) throws {
         //properties
         
@@ -61,7 +66,7 @@ struct RandomPerson: Decodable {
         //results level
         var resultsContainer = try container.nestedUnkeyedContainer(forKey: .results)
         
-        while !resultsContainer.isAtEnd {
+        //while !resultsContainer.isAtEnd {
             //get each random person attribute
             
             //random person description level
@@ -74,7 +79,7 @@ struct RandomPerson: Decodable {
             firstName = try nameContainer.decode(String.self, forKey: .first)
             lastName = try nameContainer.decode(String.self, forKey: .last)
             nameArray.append(contentsOf: [firstName, lastName])
-            name = (nameArray.joined(separator: " "))
+            name = (nameArray.joined(separator: " ").capitalized)
             nameArray = []
             //print(name)
             

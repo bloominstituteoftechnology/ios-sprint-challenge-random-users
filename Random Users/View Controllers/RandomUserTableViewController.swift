@@ -1,9 +1,19 @@
 import UIKit
 
 class RandomUserTableViewController: UITableViewController {
+    
+    let randomUserController = RandomUserController()
+    private var cache = Cache<URL, Data>()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        randomUserController.fetchRandomUsers { _ in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -21,8 +31,8 @@ class RandomUserTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        print(RandomUserController.shared.randomUserResults.count)
-        return 100//RandomUserController.shared.randomUserResults.count
+//        print("number of results at launch: \(RandomUserController.shared.randomUserResults.count)")
+        return randomUserController.randomUserResults.count
     }
 
     
@@ -30,9 +40,10 @@ class RandomUserTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! RandomUserTableViewCell
 
         // Configure the cell...
-        //let thumbURL = RandomUserController.shared.randomUserResults[indexPath.row]?.results
-        cell.randomUserCellNameLabel.text = "test"
-        cell.randomUserCellImageView.loadImageFrom(url: URL(string: "https://via.placeholder.com/200x200?text=Image%20Unavailable")!)
+        let userAtIndex = randomUserController.randomUserResults[indexPath.row]
+        let thumbURL = randomUserController.randomUserResults[indexPath.row].thumbnail
+        cell.randomUserCellNameLabel.text = userAtIndex.name
+        cell.randomUserCellImageView.loadImageFrom(url: URL(string: thumbURL)!)
 
         return cell
     }

@@ -76,6 +76,7 @@
 				ABFB3D692204F84000065C4F /* View Controllers */,
 				ABFB3D662204F77900065C4F /* Views */,
 				ABFB3D632204F71700065C4F /* Models */,
+				AB8E399122115A5D005F6FC6 /* Controllers */,
 				ABFB3D602204C9D100065C4F /* Utilities */,
 				9D5CCA56214231E400224681 /* Operations */,
 				ABFB3D702205020200065C4F /* Cache */,
@@ -104,6 +105,14 @@
 			path = Operations;
 			sourceTree = "<group>";
 		};
+		AB8E399122115A5D005F6FC6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				ABFB3D5A2204C63900065C4F /* RandomUserController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		ABFB3D602204C9D100065C4F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,7 +125,6 @@
 		ABFB3D632204F71700065C4F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				ABFB3D5A2204C63900065C4F /* RandomUserController.swift */,
 				ABFB3D5C2204C71000065C4F /* RandomUser.swift */,
 			);
 			path = Models;

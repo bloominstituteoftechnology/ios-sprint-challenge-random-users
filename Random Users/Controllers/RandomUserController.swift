@@ -2,17 +2,17 @@ import Foundation
 
 class RandomUserController {
     
-    static let shared = RandomUserController()
-    private init(){}
+    typealias CompletionHandler = (Error?) -> Void
+    
+    private(set) var randomUserResults: [RandomPerson] = []
+    var thumbURL: String = ""
     
     ///"https://randomuser.me/api/?format=pretty&results=100"
     ///"https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=100"
     let requestURL = URL(string: "https://randomuser.me/api/?format=pretty&inc=name,email,phone,picture&results=100")!.usingHTTPS!
-    var randomUserResults: [RandomPerson] = []
-    var thumbURL: String = ""
     
     
-    func fetchRandomUsers(with url: URL, completion: @escaping (String?, Error?) -> String) {
+    func fetchRandomUsers(completion: @escaping CompletionHandler = { _ in }) {
         // create the GET request
         var request = URLRequest(url: requestURL)
         request.httpMethod = "GET"
@@ -24,9 +24,9 @@ class RandomUserController {
             guard error == nil, let data = data else {
                 if let error = error {
                     NSLog("Could not unwrap data: \(error)")
-                    completion(nil, error)
+                    completion(error)
+                    return
                 }
-                
                 return
             }
             print("We Have Data! \(data.hashValue)")
@@ -37,20 +37,18 @@ class RandomUserController {
                 let decoder = JSONDecoder()
                 
                 // decode
-                self.randomUserResults = [try decoder.decode(RandomPerson.self, from: data)]
-                print(self.randomUserResults)
-               
-                completion(nil, error)
-                print("no completion")
-                return
+                let randomUsers = try decoder.decode(RandomPerson.self, from: data)
+                self.randomUserResults = [randomUsers]
+                completion(nil)
             } catch {
-                    NSLog("Unable to decode data")
-                    completion(nil, error)
-                    
+                NSLog("Unable to decode data")
+                completion(error)
+                return
+                
             }
         }
         dataTask.resume()
-        print(self.thumbURL)
+        
     }
-   
+    
 }
