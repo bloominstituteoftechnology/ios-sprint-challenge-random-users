@@ -10,8 +10,14 @@ import UIKit
 
 class RandomUserDetailViewController: UIViewController {
 
+    var randomUser: RandomPerson?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        randomUserDetailNameLabel.text = randomUser?.fullName
+        randomUserDetailEmailLabel.text = randomUser?.email
+        randomUserDetailPhoneLabel.text = randomUser?.phone
+        randomUserDetailImageView.loadImageFrom(url: URL(string: (randomUser?.large)!)!)
 
         // Do any additional setup after loading the view.
     }

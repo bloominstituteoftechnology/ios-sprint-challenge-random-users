@@ -52,7 +52,7 @@
                                 <connections>
                                     <outlet property="randomUserCellImageView" destination="2dX-PE-56c" id="CYz-d7-zEP"/>
                                     <outlet property="randomUserCellNameLabel" destination="BR7-Wh-alq" id="7Ga-03-JND"/>
-                                    <segue destination="45d-Ff-bUs" kind="show" id="ghf-v4-Euc"/>
+                                    <segue destination="45d-Ff-bUs" kind="show" identifier="RandomUserDetail" id="ghf-v4-Euc"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

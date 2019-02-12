@@ -9,7 +9,7 @@ class RandomUserController {
     
     ///"https://randomuser.me/api/?format=pretty&results=100"
     ///"https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=100"
-    let requestURL = URL(string: "https://randomuser.me/api/?format=pretty&inc=name,email,phone,picture&results=100")!.usingHTTPS!
+    let requestURL = URL(string: "https://randomuser.me/api/?format=pretty&inc=name,email,phone,picture&results=1000")!.usingHTTPS!
     
     
     func fetchRandomUsers(completion: @escaping CompletionHandler = { _ in }) {
