@@ -32,7 +32,7 @@ class RandomUserTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
 //        print("number of results at launch: \(RandomUserController.shared.randomUserResults.count)")
-        return randomUserController.randomUserResults.count
+        return randomUserController.randomPersonResults.count
     }
 
     
@@ -40,9 +40,9 @@ class RandomUserTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! RandomUserTableViewCell
 
         // Configure the cell...
-        let userAtIndex = randomUserController.randomUserResults[indexPath.row]
-        let thumbURL = randomUserController.randomUserResults[indexPath.row].thumbnail
-        cell.randomUserCellNameLabel.text = userAtIndex.name
+        let userAtIndex = randomUserController.randomPersonResults[indexPath.row]
+        let thumbURL = randomUserController.randomPersonResults[indexPath.row].thumbnail
+        cell.randomUserCellNameLabel.text = userAtIndex.fullName
         cell.randomUserCellImageView.loadImageFrom(url: URL(string: thumbURL)!)
 
         return cell

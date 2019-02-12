@@ -4,7 +4,7 @@ class RandomUserController {
     
     typealias CompletionHandler = (Error?) -> Void
     
-    private(set) var randomUserResults: [RandomPerson] = []
+    private(set) var randomPersonResults: [RandomPerson] = []
     var thumbURL: String = ""
     
     ///"https://randomuser.me/api/?format=pretty&results=100"
@@ -30,6 +30,8 @@ class RandomUserController {
                 return
             }
             print("We Have Data! \(data.hashValue)")
+            let dataRep = String(data: data, encoding: .utf8)
+            print("Results: \(dataRep!)")
             //Decode the data
             
             do {
@@ -37,8 +39,8 @@ class RandomUserController {
                 let decoder = JSONDecoder()
                 
                 // decode
-                let randomUsers = try decoder.decode(RandomPerson.self, from: data)
-                self.randomUserResults = [randomUsers]
+                let randomUsers = try decoder.decode(RandomPersonResults.self, from: data)
+                self.randomPersonResults = randomUsers.results
                 completion(nil)
             } catch {
                 NSLog("Unable to decode data")
