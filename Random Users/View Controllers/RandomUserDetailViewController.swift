@@ -1,11 +1,4 @@
-//
-//  RandomUserDetailViewController.swift
-//  Random Users
-//
-//  Created by TuneUp Shop  on 2/1/19.
-//  Copyright © 2019 Erica Sadun. All rights reserved.
-//
-
+import Foundation
 import UIKit
 
 class RandomUserDetailViewController: UIViewController {

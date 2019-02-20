@@ -4,6 +4,8 @@ class RandomUserTableViewController: UITableViewController {
     
     let randomUserController = RandomUserController()
     private var cache = Cache<URL, Data>()
+    private var imageFetchQ = OperationQueue()
+    var imageFetchOperations: [URL: FetchRandomUserImageOperation] = [ : ]
     
 
     override func viewDidLoad() {
@@ -31,7 +33,6 @@ class RandomUserTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-//        print("number of results at launch: \(RandomUserController.shared.randomUserResults.count)")
         return randomUserController.randomPersonResults.count
     }
 
@@ -83,7 +84,12 @@ class RandomUserTableViewController: UITableViewController {
         return true
     }
     */
-
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let userImage = randomUserController.randomPersonResults[indexPath.row]
+        if let userImageFetchOperation = imageFetchOperations[URL(string: userImage.thumbnail)!] {
+            userImageFetchOperation.cancel()
+        }
+    }
     
     // MARK: - Navigation
 
@@ -99,6 +105,34 @@ class RandomUserTableViewController: UITableViewController {
         }
         
     }
+   
+    // Fetch User Images Operation
     
+    func fetchUserImages(for cell: RandomUserTableViewCell, at indexPath: IndexPath) {
+        let userImage = randomUserController.randomPersonResults[indexPath.row]
+        
+        if let imageData = cache.value(forKey: URL(string: userImage.thumbnail)!) {
+            let image = UIImage(data: imageData)
+            cell.randomUserCellImageView.image = image
+        }
+        
+        let userImageOperation = FetchRandomUserImageOperation(reference: userImage)
+        let imageCacheOperation = BlockOperation {
+            self.cache.cache(value: userImageOperation.imageData!, forKey: URL(string: userImage.thumbnail)!)
+        }
+        
+        let userImageFetchOperation = BlockOperation {
+            if let imageData = userImageOperation.imageData {
+                let image = UIImage(data: imageData)
+                cell.randomUserCellImageView.image = image
+            }
+        }
+        
+        imageCacheOperation.addDependency(userImageOperation)
+        userImageFetchOperation.addDependency(userImageOperation)
+        imageFetchOperations[URL(string: userImage.thumbnail)!] = userImageOperation
+        imageFetchQ.addOperations([userImageOperation, imageCacheOperation], waitUntilFinished: true)
+        OperationQueue.main.addOperations([userImageFetchOperation], waitUntilFinished: true)
+    }
 
 }

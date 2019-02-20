@@ -20,7 +20,7 @@
 		ABFB3D6B2204F8CA00065C4F /* RandomUserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB3D6A2204F8CA00065C4F /* RandomUserTableViewController.swift */; };
 		ABFB3D6D2204F91000065C4F /* RandomUserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB3D6C2204F91000065C4F /* RandomUserDetailViewController.swift */; };
 		ABFB3D6F220501F300065C4F /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB3D6E220501F300065C4F /* Cache.swift */; };
-		ABFB3D722205028A00065C4F /* FetchRandomUserOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB3D712205028A00065C4F /* FetchRandomUserOperation.swift */; };
+		ABFB3D722205028A00065C4F /* FetchRandomUserImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB3D712205028A00065C4F /* FetchRandomUserImageOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +39,7 @@
 		ABFB3D6A2204F8CA00065C4F /* RandomUserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserTableViewController.swift; sourceTree = "<group>"; };
 		ABFB3D6C2204F91000065C4F /* RandomUserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserDetailViewController.swift; sourceTree = "<group>"; };
 		ABFB3D6E220501F300065C4F /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
-		ABFB3D712205028A00065C4F /* FetchRandomUserOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRandomUserOperation.swift; sourceTree = "<group>"; };
+		ABFB3D712205028A00065C4F /* FetchRandomUserImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRandomUserImageOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
-				ABFB3D712205028A00065C4F /* FetchRandomUserOperation.swift */,
+				ABFB3D712205028A00065C4F /* FetchRandomUserImageOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -235,7 +235,7 @@
 				ABFB3D6F220501F300065C4F /* Cache.swift in Sources */,
 				ABFB3D622204CA0300065C4F /* UIImageView+LoadImage.swift in Sources */,
 				ABFB3D6B2204F8CA00065C4F /* RandomUserTableViewController.swift in Sources */,
-				ABFB3D722205028A00065C4F /* FetchRandomUserOperation.swift in Sources */,
+				ABFB3D722205028A00065C4F /* FetchRandomUserImageOperation.swift in Sources */,
 				ABFB3D652204F77300065C4F /* RandomUserTableViewCell.swift in Sources */,
 				ABFB3D5D2204C71000065C4F /* RandomUser.swift in Sources */,
 			);

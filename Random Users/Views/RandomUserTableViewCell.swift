@@ -17,6 +17,5 @@ class RandomUserTableViewCell: UITableViewCell {
     // MARK: - IB Outlets
     
     @IBOutlet weak var randomUserCellImageView: UIImageView!
-    
     @IBOutlet weak var randomUserCellNameLabel: UILabel!
 }

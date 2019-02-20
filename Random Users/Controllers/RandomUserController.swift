@@ -9,7 +9,7 @@ class RandomUserController {
     
     ///"https://randomuser.me/api/?format=pretty&results=100"
     ///"https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=100"
-    let requestURL = URL(string: "https://randomuser.me/api/?format=pretty&inc=name,email,phone,picture&results=1000")!.usingHTTPS!
+    let requestURL = URL(string: "https://randomuser.me/api/?format=pretty&inc=name,email,phone,picture&results=5000")!.usingHTTPS!
     
     
     func fetchRandomUsers(completion: @escaping CompletionHandler = { _ in }) {
@@ -29,9 +29,8 @@ class RandomUserController {
                 }
                 return
             }
-            print("We Have Data! \(data.hashValue)")
             let dataRep = String(data: data, encoding: .utf8)
-            print("Results: \(dataRep!)")
+
             //Decode the data
             
             do {
