@@ -58,7 +58,7 @@ class UserTableViewController: UITableViewController {
         // TODO: Implement image loading here
         
         let photoReference = userController.users[indexPath.row]
-        let photoURL = URL(string: photoReference.thumbnail)!
+       // let photoURL = URL(string: photoReference.thumbnail)!
         
         if let cacheImage = cache.valueSmall(for: photoReference.name){
             
