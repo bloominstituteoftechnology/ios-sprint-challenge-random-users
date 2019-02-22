@@ -33,7 +33,7 @@ class FetchImageOperation: ConcurrentOperation {
             
             defer { self.state = .isFinished }
             
-            
+            if self.isCancelled { return }
             
             if let error = error {
                 print("Error with data task: \(error)")
