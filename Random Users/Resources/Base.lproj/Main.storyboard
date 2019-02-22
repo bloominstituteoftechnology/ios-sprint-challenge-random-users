@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" rowHeight="100" id="JRr-Q3-kew">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" rowHeight="100" id="JRr-Q3-kew" customClass="UserTableViewCell" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JRr-Q3-kew" id="6ws-kW-fSp">
@@ -53,6 +53,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="nameLabel" destination="2Nm-gD-m1d" id="9an-8Y-xBz"/>
+                                    <outlet property="pictureView" destination="VXC-Gs-fzl" id="AxQ-Zm-QfG"/>
                                     <segue destination="ffb-Qy-bNe" kind="show" id="Afl-UW-cOg"/>
                                 </connections>
                             </tableViewCell>
@@ -114,6 +116,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="C0H-ye-mhU"/>
                     </view>
+                    <connections>
+                        <outlet property="emailLabel" destination="yoO-0Z-03P" id="plj-g8-AxE"/>
+                        <outlet property="nameLabel" destination="Obx-j5-jkk" id="Wmn-sc-Bjw"/>
+                        <outlet property="phoneLabel" destination="avt-U4-10f" id="hfU-yG-bJg"/>
+                        <outlet property="pictureView" destination="yEn-zv-0QX" id="LbK-jt-2Ur"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bZt-EH-RYh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
