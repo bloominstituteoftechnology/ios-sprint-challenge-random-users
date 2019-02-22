@@ -42,6 +42,9 @@ struct User: Decodable {
         let pictureContainer = try container.nestedContainer(keyedBy: UserKeys.PictureKeys.self, forKey: .picture)
         picture = try pictureContainer.decode(String.self, forKey: .large)
         
-
     }
+}
+
+struct UserResults: Decodable {
+    var results: [User]
 }
