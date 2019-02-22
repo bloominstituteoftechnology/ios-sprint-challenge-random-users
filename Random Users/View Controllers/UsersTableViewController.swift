@@ -45,8 +45,9 @@ class UsersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
-        // cancel operations
+        let user = usersController.users[indexPath.row]
         
+        storedFetchedOperations[user.phone]?.cancel()
     }
     
     // MARK: - Private
@@ -54,6 +55,36 @@ class UsersTableViewController: UITableViewController {
     private func loadImage(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         
         let user = usersController.users[indexPath.row]
+        
+        if let image = cache.value(for: user.phone) {
+            
+            cell.imageView?.image = image
+        } else {
+            
+            let fetchPhotoOperation = FetchPhotoOperation(user: user)
+            
+            let cacheOperation = BlockOperation {
+                guard let image = fetchPhotoOperation.image else { return }
+                
+                self.cache.cache(value: image, for: user.phone)
+            }
+            
+            let cellReusedOperation = BlockOperation {
+                guard let image = fetchPhotoOperation.image else { return }
+                
+                if self.tableView.indexPath(for: cell) == indexPath {
+                    cell.imageView?.image = image
+                }
+            }
+            
+            cacheOperation.addDependency(fetchPhotoOperation)
+            cellReusedOperation.addDependency(fetchPhotoOperation)
+            
+            photoFetchQueue.addOperations([fetchPhotoOperation, cacheOperation], waitUntilFinished: false)
+            OperationQueue.main.addOperation(cellReusedOperation)
+            
+            storedFetchedOperations[user.phone] = fetchPhotoOperation
+        }
         
     }
 
@@ -67,9 +98,11 @@ class UsersTableViewController: UITableViewController {
     
     // MARK: - Properties
     
+    private var storedFetchedOperations: [String : FetchPhotoOperation] = [:]
+    
     private let photoFetchQueue = OperationQueue()
     
-    private var cache: Cache<Int, UIImage> = Cache()
+    private var cache: Cache<String, UIImage> = Cache()
 
     let usersController = ModelClient()
 }
