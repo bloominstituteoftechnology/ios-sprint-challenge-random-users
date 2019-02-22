@@ -10,15 +10,6 @@ import Foundation
 
 struct User: Codable {
     
-
-    
-    
-    
-    
-}
-
-struct Results: Codable {
-    
     enum CodingKeys: String, CodingKey {
         case results
         enum ResultsCodingKeys: String, CodingKey {

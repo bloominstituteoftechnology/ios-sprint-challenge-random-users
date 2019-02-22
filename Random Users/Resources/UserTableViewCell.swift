@@ -21,6 +21,22 @@ class UserTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    var user: User? {
+        didSet {
+            
+        }
+    }
+    
+    func updateViews() {
+        
+        if let user = user {
+            
+            nameLabel.text = user.name
+            
+        }
+        
+    }
+    
     
     @IBOutlet weak var imageThumbnail: UIImageView!
     

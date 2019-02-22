@@ -16,16 +16,55 @@ class UserDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    var userController: UserController?
+    
+    var user: User? {
+        didSet {
+            updateViews()
+        }
     }
-    */
+    
+    let cache = Cache<String, Data>()
+    
+    func updateViews() {
+        
+        if let user = user {
+            decodePhoto(user: user)
+            
+            nameLabel.text = user.name
+            phoneNumberLabel.text = user.phone
+            emailLabel.text = user.email
+            
+        }
+        
+    }
+    
+    func decodePhoto(user: User) {
+        
+        if let cacheImage = cache.valueLarge(for: user.name){
+            
+           self.userFullSizeImage.image = UIImage(data: cacheImage)
+            
+        } else {
+            
+            let dataTask = URLSession.shared.dataTask(with: URL(string: user.largePic)!) { (photoData, _, error) in
+            
+                if let error = error {
+                    print("Error: \(error)")
+                    return
+                }
+            
+                guard let photoData = photoData else { return }
+            
+                let photo = UIImage(data: photoData)
+            
+                self.cache.cacheLarge(value: photoData, for: user.name)
+            
+                self.userFullSizeImage.image = photo
+            }
+            dataTask.resume()
+        }
+}
     
     
     @IBOutlet weak var userFullSizeImage: UIImageView!
