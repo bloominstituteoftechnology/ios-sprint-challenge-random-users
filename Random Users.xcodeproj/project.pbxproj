@@ -12,6 +12,7 @@
 		48891D7422205AEB00CF4D0B /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48891D7322205AEB00CF4D0B /* UserDetailViewController.swift */; };
 		48891D7622205BA400CF4D0B /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48891D7522205BA400CF4D0B /* UserTableViewCell.swift */; };
 		48891D792220673500CF4D0B /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48891D782220673500CF4D0B /* UserController.swift */; };
+		48891D7B2220785400CF4D0B /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48891D7A2220785400CF4D0B /* Cache.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 		48891D7322205AEB00CF4D0B /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		48891D7522205BA400CF4D0B /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		48891D782220673500CF4D0B /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		48891D7A2220785400CF4D0B /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				48891D7A2220785400CF4D0B /* Cache.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				48891D7422205AEB00CF4D0B /* UserDetailViewController.swift in Sources */,
+				48891D7B2220785400CF4D0B /* Cache.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				48891D7122205AB400CF4D0B /* UserTableViewController.swift in Sources */,
 				48891D792220673500CF4D0B /* UserController.swift in Sources */,
