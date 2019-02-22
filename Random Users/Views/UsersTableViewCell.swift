@@ -28,6 +28,10 @@ class UsersTableViewCell: UITableViewCell {
         guard let users = users else {return}
         
         userNameLabel.text = "\(users.title.capitalized) \(users.firstName.capitalized) \(users.lastName.capitalized)"
+        
+        guard let imageUrl = URL(string: users.thumbnail), let imageData = try? Data(contentsOf: imageUrl) else {return}
+        
+        userImageView.image = UIImage(data: imageData)
     }
 
    
