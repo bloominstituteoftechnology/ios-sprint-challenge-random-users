@@ -1,5 +1,5 @@
 //
-//  FetchPhotoOperation.swift
+//  FetchLargePhotoOperation.swift
 //  Random Users
 //
 //  Created by Moses Robinson on 2/22/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FetchPhotoOperation: ConcurrentOperation {
+class FetchLargePhotoOperation: ConcurrentOperation {
     
     var user: User
     var image: UIImage?
@@ -20,7 +20,7 @@ class FetchPhotoOperation: ConcurrentOperation {
     override func start() {
         state = .isExecuting
         
-        let url = user.imageURL
+        let url = user.largeImageURL
         
         let dataTask = URLSession.shared.dataTask(with: url) { (data, _, error) in
             if let error = error {
@@ -51,5 +51,5 @@ class FetchPhotoOperation: ConcurrentOperation {
     
     // MARK: - Properties
     
-     private var dataTask: URLSessionDataTask?
+    private var dataTask: URLSessionDataTask?
 }
