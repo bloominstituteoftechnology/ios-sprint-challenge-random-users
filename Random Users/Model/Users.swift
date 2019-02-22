@@ -8,6 +8,12 @@
 
 import Foundation
 
+struct UserResults: Decodable {
+    
+    var results: [Users]
+}
+
+
 struct Users: Decodable {
     var title: String
     var firstName: String
@@ -65,10 +71,4 @@ struct Users: Decodable {
         self.large = large
         self.thumbnail = thumbnail
     }
-}
-
-
-struct UserResults: Decodable {
-    
-    var results: [Users]
 }

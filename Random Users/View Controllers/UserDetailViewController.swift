@@ -26,7 +26,6 @@ class UserDetailViewController: UIViewController {
         super.viewDidLoad()
 
         updateViews()
-    
     }
     
     private func updateViews() {
@@ -45,6 +44,9 @@ class UserDetailViewController: UIViewController {
         guard let imageUrl = URL(string: users.large), let imageData = try? Data(contentsOf: imageUrl) else {return}
         let image = UIImage(data: imageData)
         userImageView.image = image
+        userImageView.layer.cornerRadius = 50
+        userImageView.layer.masksToBounds = true
+        
         
     }
     

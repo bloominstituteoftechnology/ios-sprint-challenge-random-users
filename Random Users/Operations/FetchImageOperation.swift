@@ -12,8 +12,6 @@ import UIKit
 
 class FetchImageOperation: ConcurrentOperation {
     
-//    let largeImageUrl: URL
-//    let thumbnailImageUrl: URL?
     let users: Users
     var imageData: Data?
     
@@ -21,8 +19,6 @@ class FetchImageOperation: ConcurrentOperation {
     
     init(users: Users) {
        self.users = users
-//        self.largeImageUrl = URL(string: users.large)!.usingHTTPS!
-//        self.thumbnailImageUrl = URL(string: users.thumbnail)!.usingHTTPS!
         super.init()
     }
     
