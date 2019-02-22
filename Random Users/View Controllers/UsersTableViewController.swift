@@ -12,16 +12,15 @@ class UsersTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        usersController.fetchUsers(resultsNumber: "1000") { (_) in
-            DispatchQueue.main.async {
-            self.tableView.reloadData()
-            }
-        }
     }
     
     @IBAction func addUsers(_ sender: Any) {
         
-        // fetch users code here.
+        usersController.fetchUsers(resultsNumber: "1000") { (_) in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
     
     // MARK: - Table view data source
@@ -74,6 +73,7 @@ class UsersTableViewController: UITableViewController {
                 
                 if self.tableView.indexPath(for: cell) == indexPath {
                     cell.imageView?.image = image
+                    self.tableView.reloadData()
                 }
             }
             
@@ -92,7 +92,13 @@ class UsersTableViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowUserDetail" {
+            guard let destination = segue.destination as? UserDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow else { return }
             
+            let user = usersController.users[indexPath.row]
+            
+            destination.userController = usersController
+            destination.user = user
         }
     }
     
