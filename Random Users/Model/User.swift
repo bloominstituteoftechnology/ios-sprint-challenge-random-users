@@ -14,7 +14,7 @@ struct User: Decodable {
         case email
         case phone
         case picture
-    }
+
         enum NameKeys: String, CodingKey {
             case title
             case first
@@ -24,6 +24,24 @@ struct User: Decodable {
     
         enum PictureKeys: String, CodingKey {
             case large
+       }
     }
 
+    init(from decoder: Decoder) throws {
+    let container = try decoder.container(keyedBy: UserKeys.self)
+    
+    let nameContainer = try container.nestedContainer(keyedBy: UserKeys.NameKeys.self, forKey: .name)
+        
+        title = try nameContainer.decode(String.self, forKey: .title)
+        firstName = try nameContainer.decode(String.self, forKey: .first)
+        lastName = try nameContainer.decode(String.self, forKey: .last)
+        
+        email = try container.decode(String.self, forKey: .email)
+        phone = try container.decode(String.self, forKey: .phone)
+        
+        let pictureContainer = try container.nestedContainer(keyedBy: UserKeys.PictureKeys.self, forKey: .picture)
+        picture = try pictureContainer.decode(String.self, forKey: .large)
+        
+
+    }
 }
