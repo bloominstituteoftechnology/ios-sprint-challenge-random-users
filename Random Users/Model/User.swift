@@ -21,7 +21,6 @@ struct User: Decodable {
         case email
         case phone
         case imageURL = "picture"
-        case largeImageURL
         
         enum NameCodingKeys: String, CodingKey {
             case title
@@ -54,7 +53,7 @@ struct User: Decodable {
         let smallImageContainer = try container.nestedContainer(keyedBy: CodingKeys.PictureCodingKeys.self, forKey: .imageURL)
         let imageURL = try smallImageContainer.decode(URL.self, forKey: .thumbnail)
         
-        let largeImageContainer = try container.nestedContainer(keyedBy: CodingKeys.PictureCodingKeys.self, forKey: .largeImageURL)
+        let largeImageContainer = try container.nestedContainer(keyedBy: CodingKeys.PictureCodingKeys.self, forKey: .imageURL)
         let largeImageURL = try largeImageContainer.decode(URL.self, forKey: .large)
         
         (self.name, self.email, self.phone, self.imageURL, self.largeImageURL) = (name, email, phone, imageURL, largeImageURL)

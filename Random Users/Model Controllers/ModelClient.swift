@@ -12,7 +12,7 @@ private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=na
 
 class ModelClient {
     
-    func fetchUsers(resultsNumber: String, completion: @escaping (Error?) -> Void) {
+    func fetchUsers(resultsNumber: String, completion: @escaping (Error?) -> Void = { _ in }) {
         
         var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
         let queryItem = URLQueryItem(name: "results", value: resultsNumber)
@@ -54,5 +54,5 @@ class ModelClient {
     
     // MARK: - Properties
     
-    private var users: [User] = []
+    private(set) var users: [User] = []
 }

@@ -12,6 +12,11 @@ class UsersTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        usersController.fetchUsers(resultsNumber: "1000") { (_) in
+            DispatchQueue.main.async {
+            self.tableView.reloadData()
+            }
+        }
     }
     
     @IBAction func addUsers(_ sender: Any) {
@@ -22,13 +27,18 @@ class UsersTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return usersController.users.count
     }
+    
+    let reuseIdentifier = "UserCell"
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
 
-        // Configure the cell...
+        let user = usersController.users[indexPath.row]
+        
+        cell.textLabel?.text = user.name
+        loadImage(forCell: cell, forItemAt: indexPath)
 
         return cell
     }
@@ -36,6 +46,14 @@ class UsersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         // cancel operations
+        
+    }
+    
+    // MARK: - Private
+    
+    private func loadImage(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+        
+        let user = usersController.users[indexPath.row]
         
     }
 
@@ -49,4 +67,6 @@ class UsersTableViewController: UITableViewController {
     
     // MARK: - Properties
 
+    let usersController = ModelClient()
+    
 }
