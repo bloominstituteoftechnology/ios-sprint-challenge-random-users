@@ -13,4 +13,8 @@ class FetchPhotoOperation: ConcurrentOperation {
     
     
     
+    
+    // MARK: - Properties
+    
+     private var dataTask: URLSessionDataTask?
 }

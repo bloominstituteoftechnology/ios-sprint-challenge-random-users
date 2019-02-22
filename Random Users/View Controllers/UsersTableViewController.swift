@@ -66,7 +66,10 @@ class UsersTableViewController: UITableViewController {
     }
     
     // MARK: - Properties
+    
+    private let photoFetchQueue = OperationQueue()
+    
+    private var cache: Cache<Int, UIImage> = Cache()
 
     let usersController = ModelClient()
-    
 }
