@@ -34,6 +34,12 @@ class UsersTableViewCell: UITableViewCell {
     //    userImageView.image = UIImage(data: imageData)
     }
 
+    
+    override func prepareForReuse() {
+        userImageView.image = #imageLiteral(resourceName: "Lambda_Logo_Full")
+        
+        super.prepareForReuse()
+    }
    
 
 }

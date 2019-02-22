@@ -12,7 +12,7 @@ class UsersTableViewController: UITableViewController {
     
     var usersController = UsersController()
     
-    var cache = Cache<URL, Data>()
+    var cache = Cache<String, Data>()
     var imageFetchQueue = OperationQueue()
     var imageFetchOperations: [URL: FetchImageOperation] = [:]
 
@@ -72,15 +72,19 @@ class UsersTableViewController: UITableViewController {
       
          let photoReference = usersController.users[indexPath.row]
         
-        if let imageData = cache.value(for: URL(string: photoReference.thumbnail)!) {
+         let photoFetchOperation = FetchImageOperation(users: photoReference)
+        
+        if let imageData = cache.value(for: photoReference.email) {
             let image = UIImage(data: imageData)
             cell.userImageView.image = image
             return
         }
         
-        let photoFetchOperation = FetchImageOperation(users: photoReference)
+       
         let cachePhotoOperation = BlockOperation {
-            self.cache.cache(value: photoFetchOperation.imageData!, for: URL(string: photoReference.thumbnail)!)
+            //put it in a guard cause it was crashing when it was nil
+            guard let photoFetchOperationImageData = photoFetchOperation.imageData else {return}
+            self.cache.cache(value: photoFetchOperationImageData, for: photoReference.email)
         }
         
         let updateUIImageCellOperation = BlockOperation {
@@ -110,7 +114,11 @@ class UsersTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      
+      let destinationVC = segue.destination as? UserDetailViewController
+        guard let indexPath = tableView.indexPathForSelectedRow else {return}
+        let users = usersController.users[indexPath.row]
+        destinationVC?.users = users
+        
     }
    
 
