@@ -13,10 +13,21 @@ class UsersTableViewCell: UITableViewCell {
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     
+    var users: Users? {
+        didSet {
+            updateViews()
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    func updateViews() {
+        guard let users = users else {return}
+        
+        userNameLabel.text = "\(users.title.capitalized) \(users.firstName.capitalized) \(users.lastName.capitalized)"
     }
 
    

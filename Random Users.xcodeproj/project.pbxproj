@@ -112,9 +112,9 @@
 				7A45675D2220294B00985432 /* Utilities */,
 				7A4567582220282400985432 /* Model */,
 				9D5CCA56214231E400224681 /* Operations */,
-				9D5CCA522142305600224681 /* Resources */,
 				7A4567542220255600985432 /* View Controllers */,
 				7A4567552220255E00985432 /* Views */,
+				9D5CCA522142305600224681 /* Resources */,
 			);
 			path = "Random Users";
 			sourceTree = "<group>";
