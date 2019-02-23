@@ -33,6 +33,7 @@ class UserController {
             do {
                 let decodedDict = try jsonDecoder.decode([String: User].self, from: data)
                 let users = Array(decodedDict.values)
+                print(users)
                 self.users = users
                 completion(nil)
             } catch {

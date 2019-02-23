@@ -44,6 +44,7 @@ struct User: Codable {
         var firstName: String = ""
         var lastName: String = ""
         
+        
         while !resultsContainer.isAtEnd {
             
             let resultContainer = try resultsContainer.nestedContainer(keyedBy: CodingKeys.ResultsCodingKeys.self)
@@ -64,7 +65,9 @@ struct User: Codable {
             
         }
         
-        self.results = [emailAddress, phone, name, largePic, thumbnail]
+
+        
+        self.results = [emailAddress, phone, name]
         self.firstName = firstName
         self.lastName = lastName
         self.email = emailAddress

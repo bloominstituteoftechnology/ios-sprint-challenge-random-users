@@ -19,7 +19,9 @@ class UserTableViewController: UITableViewController {
             if let error = error {
                 print(error)
             }
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         })
     }
 
