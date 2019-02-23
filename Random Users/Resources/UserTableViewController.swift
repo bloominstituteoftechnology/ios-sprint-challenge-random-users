@@ -40,7 +40,7 @@ class UserTableViewController: UITableViewController {
         
         loadImage(forCell: cell, forItemAt: indexPath)
         
-        cell.nameLabel.text = user.name
+        cell.nameLabel.text = user.fullName!
 
         return cell
     }
@@ -48,7 +48,7 @@ class UserTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let photo = userController.users[indexPath.row]
         
-        if let operation = fetchOperations[photo.name] {
+        if let operation = fetchOperations[photo.fullName!] {
             operation.cancel()
         }
     }
@@ -62,7 +62,7 @@ class UserTableViewController: UITableViewController {
         let photoReference = userController.users[indexPath.row]
        // let photoURL = URL(string: photoReference.thumbnail)!
         
-        if let cacheImage = cache.valueSmall(for: photoReference.name){
+        if let cacheImage = cache.valueSmall(for: photoReference.fullName!){
             
             cell.imageThumbnail.image = UIImage(data: cacheImage)
             
@@ -70,10 +70,10 @@ class UserTableViewController: UITableViewController {
             
             let fetchPhotoOp = FetchPhotoOperation(user: photoReference)
             
-            fetchOperations[photoReference.name] = fetchPhotoOp
+            fetchOperations[photoReference.fullName!] = fetchPhotoOp
             
             let storeDataOp = BlockOperation {
-                self.cache.cacheSmall(value: fetchPhotoOp.imageData!, for: photoReference.name)
+                self.cache.cacheSmall(value: fetchPhotoOp.imageData!, for: photoReference.fullName!)
             }
             
             let reuseOp = BlockOperation {

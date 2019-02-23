@@ -8,7 +8,14 @@
 
 import Foundation
 
-struct User: Codable {
+/*struct Results: Decodable {
+    
+ 
+    var re
+    
+}*/
+
+struct User: Decodable {
     
     enum CodingKeys: String, CodingKey {
         case results
@@ -36,63 +43,73 @@ struct User: Codable {
     
         var resultsContainer = try container.nestedUnkeyedContainer(forKey: .results)
     
-        var emailAddress: String = ""
+        var email: String = ""
         var phone: String = ""
-        var name: String = ""
+        var name: [String: String] = [:]
+        var picture: [String: String] = [:]
         var largePic: String = ""
         var thumbnail: String = ""
         var firstName: String = ""
         var lastName: String = ""
+        var fullName: String = ""
         
         
         while !resultsContainer.isAtEnd {
             
             let resultContainer = try resultsContainer.nestedContainer(keyedBy: CodingKeys.ResultsCodingKeys.self)
             
-            emailAddress = try resultContainer.decode(String.self, forKey: .email)
+            email = try resultContainer.decode(String.self, forKey: .email)
             phone = try resultContainer.decode(String.self, forKey: .phone)
             
             let nameContainer = try resultContainer.nestedContainer(keyedBy: CodingKeys.ResultsCodingKeys.NameCodingKeys.self, forKey: .name)
             firstName = try nameContainer.decode(String.self, forKey: .first)
             lastName = try nameContainer.decode(String.self, forKey: .last)
             
-            name = "\(firstName) \(lastName)"
+            name["first"] = firstName
+            name["last"] = lastName
+            
+            fullName = firstName + "" + lastName
             
             let pictureContainer = try resultContainer.nestedContainer(keyedBy: CodingKeys.ResultsCodingKeys.PictureCodingKeys.self, forKey: .picture)
             
             thumbnail = try pictureContainer.decode(String.self, forKey: .thumbnail)
             largePic = try pictureContainer.decode(String.self, forKey: .large)
             
+            picture["thumbnail"] = thumbnail
+            picture["large"] = largePic
+            
         }
         
 
         
-        self.results = [emailAddress, phone, name]
+        self.results = [[name, email, phone, picture]]
         self.firstName = firstName
         self.lastName = lastName
-        self.email = emailAddress
+        self.email = email
         self.phone = phone
         self.name = name
         self.largePic = largePic
         self.thumbnail = thumbnail
-        self.picture = [thumbnail, largePic]
+        self.picture = picture
+        self.fullName = fullName
         
     }
     
-    let results: [String]
+    let results: [[Any]]
     
-    let name: String // like species, -ability
+    let name: [String: String] // like species, -ability
     let email: String
     let phone: String
-    let firstName: String
-    let lastName: String
+    let firstName: String?
+    let lastName: String?
     
-    let picture: [String] // like species
-    let largePic: String
-    let thumbnail: String
+    let picture: [String: String] // like species
+    let largePic: String?
+    let thumbnail: String?
+    let fullName: String?
     
     
-    func encode(to encoder: Encoder) throws {
+    /*func encode(to encoder: Encoder) throws {
         
         var container = encoder.container(keyedBy: CodingKeys.self)
         
@@ -115,7 +132,7 @@ struct User: Codable {
         }
         
         
-    }
+    }*/
     
 }
     

@@ -34,7 +34,7 @@ class UserController {
                 let decodedDict = try jsonDecoder.decode([String: User].self, from: data)
                 let users = Array(decodedDict.values)
                 print(users)
-                self.users = users
+                //self.users = users
                 completion(nil)
             } catch {
                 print("Error decoding received data: \(error)")
@@ -46,7 +46,7 @@ class UserController {
         
     }
     
-    func testEncodingExampleAlbum() {
+   /* func testEncodingExampleAlbum() {
         let jsonURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=50")!
         let data = try! Data(contentsOf: jsonURL)
         
@@ -61,16 +61,7 @@ class UserController {
             NSLog("\(error)")
         }
         
-        let encoder = JSONEncoder()
-        
-        do {
-            let encoded = try encoder.encode(user!)
-            print("Encoded: \(encoded)")
-        } catch {
-            NSLog("Error encoding album: \(error)")
-        }
-        
-    }
+    }*/
 
     
     

@@ -31,7 +31,7 @@ class UserDetailViewController: UIViewController {
         if let user = user {
             decodePhoto(user: user)
             
-            nameLabel.text = user.name
+            nameLabel.text = user.fullName
             phoneNumberLabel.text = user.phone
             emailLabel.text = user.email
             
@@ -41,13 +41,13 @@ class UserDetailViewController: UIViewController {
     
     func decodePhoto(user: User) {
         
-        if let cacheImage = cache.valueLarge(for: user.name){
+        if let cacheImage = cache.valueLarge(for: user.fullName!){
             
            self.userFullSizeImage.image = UIImage(data: cacheImage)
             
         } else {
             
-            let dataTask = URLSession.shared.dataTask(with: URL(string: user.largePic)!) { (photoData, _, error) in
+            let dataTask = URLSession.shared.dataTask(with: URL(string: user.largePic!)!) { (photoData, _, error) in
             
                 if let error = error {
                     print("Error: \(error)")
@@ -58,7 +58,7 @@ class UserDetailViewController: UIViewController {
             
                 let photo = UIImage(data: photoData)
             
-                self.cache.cacheLarge(value: photoData, for: user.name)
+                self.cache.cacheLarge(value: photoData, for: user.fullName!)
             
                 self.userFullSizeImage.image = photo
             }

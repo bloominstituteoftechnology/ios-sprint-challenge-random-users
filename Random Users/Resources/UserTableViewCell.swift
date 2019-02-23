@@ -23,7 +23,7 @@ class UserTableViewCell: UITableViewCell {
     
     var user: User? {
         didSet {
-            
+            updateViews()
         }
     }
     
@@ -31,7 +31,7 @@ class UserTableViewCell: UITableViewCell {
         
         if let user = user {
             
-            nameLabel.text = user.name
+            nameLabel.text = user.fullName
             
         }
         
