@@ -49,22 +49,23 @@ class Cache<Key: Hashable, Value> {
 
 class FetchPhotoOperation: ConcurrentOperation {
     
-    var user: User?
-    
-    // var image: URL
+    let user: Result
     
     var imageData: Data?
     
-    init(user: User) {
+    init(user: Result) {
         self.user = user
     }
     
-    private var dataTask: URLSessionDataTask?
+    private var photoDataTask: URLSessionDataTask?
     
     override func start() {
         state = .isExecuting
         
-        let dataT = URLSession.shared.dataTask(with: URL(string: ((user?.thumbnail)!))!) { (data, _, error) in
+        let imageURL = URL(string: user.picture["thumbnail"]!)!
+        
+        photoDataTask = URLSession.shared.dataTask(with: imageURL, completionHandler: { (data, _, error) in
+            
             if let error = error {
                 print("Error: \(error)")
                 return
@@ -76,14 +77,15 @@ class FetchPhotoOperation: ConcurrentOperation {
             defer {
                 self.state = .isFinished
             }
-        }
-        dataT.resume()
-        dataTask = dataT
+    
+            
+        })
+        photoDataTask?.resume()
         
     }
     
     override func cancel() {
-        dataTask?.cancel()
+        photoDataTask?.cancel()
     }
     
     

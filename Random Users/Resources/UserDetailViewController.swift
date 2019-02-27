@@ -12,13 +12,13 @@ class UserDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateViews()
         // Do any additional setup after loading the view.
     }
     
     var userController: UserController?
     
-    var user: User? {
+    var user: Result? {
         didSet {
             updateViews()
         }
@@ -27,11 +27,14 @@ class UserDetailViewController: UIViewController {
     let cache = Cache<String, Data>()
     
     func updateViews() {
+        guard isViewLoaded else { return }
         
         if let user = user {
             decodePhoto(user: user)
             
-            nameLabel.text = user.fullName
+            let name: String = user.name["first"]!.capitalized + " " + user.name["last"]!.capitalized
+            
+            nameLabel.text = name
             phoneNumberLabel.text = user.phone
             emailLabel.text = user.email
             
@@ -39,15 +42,17 @@ class UserDetailViewController: UIViewController {
         
     }
     
-    func decodePhoto(user: User) {
+    func decodePhoto(user: Result) {
         
-        if let cacheImage = cache.valueLarge(for: user.fullName!){
+        let name: String = user.name["first"]! + " " + user.name["last"]!
+        
+        if let cacheImage = cache.valueLarge(for: name){
             
            self.userFullSizeImage.image = UIImage(data: cacheImage)
             
         } else {
             
-            let dataTask = URLSession.shared.dataTask(with: URL(string: user.largePic!)!) { (photoData, _, error) in
+            let dataTask = URLSession.shared.dataTask(with: URL(string: user.picture["large"]!)!) { (photoData, _, error) in
             
                 if let error = error {
                     print("Error: \(error)")
@@ -58,9 +63,11 @@ class UserDetailViewController: UIViewController {
             
                 let photo = UIImage(data: photoData)
             
-                self.cache.cacheLarge(value: photoData, for: user.fullName!)
-            
-                self.userFullSizeImage.image = photo
+                self.cache.cacheLarge(value: photoData, for: name)
+                
+                DispatchQueue.main.async {
+                    self.userFullSizeImage.image = photo
+                }
             }
             dataTask.resume()
         }

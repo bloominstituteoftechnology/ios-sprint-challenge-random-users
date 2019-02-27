@@ -9,8 +9,16 @@
 import UIKit
 
 class UserTableViewController: UITableViewController {
-
+    
     let userController = UserController()
+    
+    /*var users: [Result] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,29 +34,44 @@ class UserTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if indexPath.row == 0 {
+            return 60
+        } else {
+            return 60
+        }
+        
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return userController.users.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
 
         let user = userController.users[indexPath.row]
         
+        cell.user = user
+        
         loadImage(forCell: cell, forItemAt: indexPath)
         
-        cell.nameLabel.text = user.fullName!
+        let name: String = user.name["first"]!.capitalized + " " + user.name["last"]!.capitalized
+        
+        cell.nameLabel.text = name
 
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let photo = userController.users[indexPath.row]
+        let user = userController.users[indexPath.row]
         
-        if let operation = fetchOperations[photo.fullName!] {
+        let name: String = (user.name["first"]!) + " " + (user.name["last"]!)
+        
+        if let operation = fetchOperations[name] {
             operation.cancel()
         }
     }
@@ -56,24 +79,26 @@ class UserTableViewController: UITableViewController {
     var fetchOperations: [String: FetchPhotoOperation] = [:]
 
     private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
-        
         // TODO: Implement image loading here
         
         let photoReference = userController.users[indexPath.row]
-       // let photoURL = URL(string: photoReference.thumbnail)!
+       // let photoURL = URL(string: (photoReference.picture["thumbnail"])!)!
         
-        if let cacheImage = cache.valueSmall(for: photoReference.fullName!){
+        let name: String = (photoReference.name["first"]!) + " " + (photoReference.name["last"]!)
+        
+        if let cacheImage = cache.valueSmall(for: name){
             
             cell.imageThumbnail.image = UIImage(data: cacheImage)
             
         } else {
             
+            
             let fetchPhotoOp = FetchPhotoOperation(user: photoReference)
             
-            fetchOperations[photoReference.fullName!] = fetchPhotoOp
+            fetchOperations[name] = fetchPhotoOp
             
             let storeDataOp = BlockOperation {
-                self.cache.cacheSmall(value: fetchPhotoOp.imageData!, for: photoReference.fullName!)
+                self.cache.cacheSmall(value: fetchPhotoOp.imageData!, for: name)
             }
             
             let reuseOp = BlockOperation {
@@ -97,8 +122,8 @@ class UserTableViewController: UITableViewController {
             OperationQueue.main.addOperation(reuseOp)
             
             
-          /*
-             let dataTask = URLSession.shared.dataTask(with: photoURL) { (photoData, _, error) in
+          
+            /* let dataTask = URLSession.shared.dataTask(with: photoURL) { (photoData, _, error) in
              
                 if let error = error {
                     print("Error: \(error)")
@@ -109,7 +134,7 @@ class UserTableViewController: UITableViewController {
              
                 let photo = UIImage(data: photoData)
              
-                self.cache.cacheSmall(value: photoData, for: photoReference.name)
+                self.cache.cacheSmall(value: photoData, for: name)
              
                 DispatchQueue.main.async {
                     guard let currentIndex = self.tableView.indexPath(for: cell) else { return }

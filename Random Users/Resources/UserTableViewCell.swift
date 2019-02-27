@@ -10,18 +10,8 @@ import UIKit
 
 class UserTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
-    var user: User? {
+    var user: Result? {
         didSet {
             updateViews()
         }
@@ -31,8 +21,11 @@ class UserTableViewCell: UITableViewCell {
         
         if let user = user {
             
-            nameLabel.text = user.fullName
+            let firstName: String = user.name["first"]!.capitalized
+            let lastName: String = user.name["last"]!.capitalized
             
+            let name: String = "\(firstName) \(lastName)"
+            nameLabel.text = name
         }
         
     }
