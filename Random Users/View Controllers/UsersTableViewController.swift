@@ -79,6 +79,7 @@ class UsersTableViewController: UITableViewController {
             
             if let image = fetchThumbnailImageOperation.imageData {
                 cell.imageView?.image = UIImage(data: image)
+                self.tableView.reloadRows(at: [indexPath], with: .automatic)
             }
         }
         
