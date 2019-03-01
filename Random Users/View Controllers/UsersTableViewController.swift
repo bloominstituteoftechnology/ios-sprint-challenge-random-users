@@ -41,7 +41,12 @@ class UsersTableViewController: UITableViewController {
 
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == "DetailSegue" {
+            guard let detailVC = segue.destination as? UserDetailViewController,
+            let index = tableView.indexPathForSelectedRow
+            else { return }
+            detailVC.user = networkController.users[index.row]
+        }
     }
     
     func loadImage(for cell: UITableViewCell, at indexPath: IndexPath) {
