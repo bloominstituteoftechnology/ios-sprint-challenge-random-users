@@ -11,11 +11,10 @@ import UIKit
 
 class PersonTableViewController: UITableViewController {
     
-    var people: [Person] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("hello")
         let url = URL(string:"https://randomuser.me/api/?results=5")!
         
         URLSession.shared.dataTask(with: url){ (data, _, error) in
@@ -29,19 +28,16 @@ class PersonTableViewController: UITableViewController {
             }
             do {
                 let decoder = JSONDecoder()
-                let peopleFromServer = try decoder.decode([String: Person].self, from: data)
+                print("\(data)")
+                let peopleFromServer = try decoder.decode( [String:Results].self, from: data)
                 print("These are the people from server: \(peopleFromServer)")
-                let peopleArray = Array(peopleFromServer.values)
-                for person in peopleArray {
-                self.people.append(person)
-                }
-                print(self.people.count)
+                
             } catch {
                 NSLog("Error decoding people from server: \(error)")
                 return
             }
             
-        }
+        }.resume()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -55,7 +51,7 @@ class PersonTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return people.count
+        return 5
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
