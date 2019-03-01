@@ -9,21 +9,20 @@
 import UIKit
 
 class UsersTableViewController: UITableViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         networkController.fetchUsers { (error) in
             if let error = error {
-                NSLog("Error fecthing users: \(error)")
+                NSLog("Error fetching users: \(error)")
                 return
             }
-            
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return networkController.users.count
     }
