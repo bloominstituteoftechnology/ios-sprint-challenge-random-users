@@ -12,79 +12,81 @@ class UserTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    @IBAction func add(_ sender: Any) {
+        userController.fetchRandomUsers { (_) in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        
+    }
+    
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return userController.users.count
     }
 
-    /*
+ 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let randomUser = userController.users[indexPath.row]
+        cell.textLabel?.text = randomUser.name
+        load(for: cell, forItemAt: indexPath)
         return cell
     }
-    */
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+
+    private func load(for cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+        
+        let randomUser = userController.users[indexPath.row]
+        
+        if let image = cache.value(for: randomUser.phone) {
+            cell.imageView?.image = image
+            } else {
+            let fetchPhotoOp = FetchPhotoOp(user: randomUser)
+            
+            let cacheOperation = BlockOperation {
+                guard let image = fetchPhotoOp.image else { return }
+                self.cache.cache(value: image, for: randomUser.phone)
+            }
+            
+            
+            let reuseCellOperation = BlockOperation {
+                guard let image = fetchPhotoOp.image else { return }
+                
+                if self.tableView.indexPath(for: cell) == indexPath {
+                    cell.imageView?.image = image
+                    self.tableView.reloadData()
+                }
+            }
+            
+            cacheOperation.addDependency(fetchPhotoOp)
+            reuseCellOperation.addDependency(fetchPhotoOp)
+            
+            fetchPhotoQueue.addOperations([fetchPhotoOp, cacheOperation], waitUntilFinished: false)
+            OperationQueue.main.addOperation(reuseCellOperation)
+            
+            fetchedOperations[randomUser.phone] = fetchPhotoOp
+        }
+        
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
+    }
+  
+
+    // MARK: - Properties
+    
+    let userController = UserController()
+    private var cache: Cache<String, UIImage> = Cache()
+    private let fetchPhotoQueue = OperationQueue()
+    private var fetchedOperations: [String : FetchPhotoOp] = [:]
+    
 }

@@ -17,6 +17,7 @@
 		C4535D212229A30500CB5048 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4535D202229A30500CB5048 /* Cache.swift */; };
 		C4535D242229A4DF00CB5048 /* FetchPhotOp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4535D232229A4DF00CB5048 /* FetchPhotOp.swift */; };
 		C4535D262229A84900CB5048 /* FetchLargePhotoOp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4535D252229A84900CB5048 /* FetchLargePhotoOp.swift */; };
+		C4535D282229AA1A00CB5048 /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4535D272229AA1A00CB5048 /* UserTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		C4535D202229A30500CB5048 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		C4535D232229A4DF00CB5048 /* FetchPhotOp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotOp.swift; sourceTree = "<group>"; };
 		C4535D252229A84900CB5048 /* FetchLargePhotoOp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLargePhotoOp.swift; sourceTree = "<group>"; };
+		C4535D272229AA1A00CB5048 /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
+				C4535D272229AA1A00CB5048 /* UserTableViewController.swift */,
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				C4535D222229A44E00CB5048 /* Model */,
 				9D5CCA56214231E400224681 /* Operations */,
@@ -180,6 +183,7 @@
 				C4535D212229A30500CB5048 /* Cache.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				C4535D1F22299CD200CB5048 /* UserController.swift in Sources */,
+				C4535D282229AA1A00CB5048 /* UserTableViewController.swift in Sources */,
 				C4535D1D2229923700CB5048 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

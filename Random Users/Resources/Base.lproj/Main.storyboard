@@ -13,13 +13,13 @@
         <!--Users-->
         <scene sceneID="mKI-OS-njQ">
             <objects>
-                <tableViewController id="Ra8-E3-cRU" sceneMemberID="viewController">
+                <tableViewController id="Ra8-E3-cRU" customClass="UserTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="i5g-XV-N5t">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="pL2-De-t9n" style="IBUITableViewCellStyleDefault" id="5YO-cW-N34">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="pL2-De-t9n" style="IBUITableViewCellStyleDefault" id="5YO-cW-N34">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5YO-cW-N34" id="rg7-dz-LEb">
@@ -46,7 +46,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Users" id="PHg-qR-Qhp">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="X5T-ir-ETP"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="X5T-ir-ETP">
+                            <connections>
+                                <action selector="add:" destination="Ra8-E3-cRU" id="bbB-Fe-I71"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5vR-PL-1X8" userLabel="First Responder" sceneMemberID="firstResponder"/>
