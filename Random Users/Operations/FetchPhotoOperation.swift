@@ -12,9 +12,9 @@ class FetchPhotoOperation: ConcurrentOperation {
     private let completion: (UIImage?) -> Void
     
     
-    init(url: URL, completionHandler: @escaping (UIImage?) -> Void) {
+    init(url: URL, completion: @escaping (UIImage?) -> Void) {
         self.url = url
-        self.completion = completionHandler
+        self.completion = completion
         super.init()
     }
     

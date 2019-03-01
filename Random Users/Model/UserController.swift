@@ -9,10 +9,9 @@ class UserController {
     //MARK: - Properties
     static let shared = UserController()
     var users: [User] = []
-    typealias CompletionHandler = (Error?) -> Void
     
     //get user method
-    func getUsers(completion: @escaping CompletionHandler = { _ in }) {
+    func getUsers(completion: @escaping (Error?) -> Void = { _ in }) {
         let requestURL = baseURL
         
         URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
