@@ -16,6 +16,7 @@
 		C4535D1F22299CD200CB5048 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4535D1E22299CD200CB5048 /* UserController.swift */; };
 		C4535D212229A30500CB5048 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4535D202229A30500CB5048 /* Cache.swift */; };
 		C4535D242229A4DF00CB5048 /* FetchPhotOp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4535D232229A4DF00CB5048 /* FetchPhotOp.swift */; };
+		C4535D262229A84900CB5048 /* FetchLargePhotoOp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4535D252229A84900CB5048 /* FetchLargePhotoOp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		C4535D1E22299CD200CB5048 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		C4535D202229A30500CB5048 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		C4535D232229A4DF00CB5048 /* FetchPhotOp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotOp.swift; sourceTree = "<group>"; };
+		C4535D252229A84900CB5048 /* FetchLargePhotoOp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLargePhotoOp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
 				C4535D232229A4DF00CB5048 /* FetchPhotOp.swift */,
+				C4535D252229A84900CB5048 /* FetchLargePhotoOp.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4535D242229A4DF00CB5048 /* FetchPhotOp.swift in Sources */,
+				C4535D262229A84900CB5048 /* FetchLargePhotoOp.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				C4535D212229A30500CB5048 /* Cache.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
