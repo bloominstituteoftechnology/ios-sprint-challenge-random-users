@@ -80,6 +80,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		4B81A3622229B89200834D9E /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				4B81A35C2229A15600834D9E /* Cache.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
@@ -100,10 +108,10 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
-				4B81A35C2229A15600834D9E /* Cache.swift */,
 				4B81A356222994D900834D9E /* Model */,
 				4B81A3592229950D00834D9E /* Controller */,
 				4B81A34F2229922B00834D9E /* View Controllers */,
+				4B81A3622229B89200834D9E /* Networking */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
 			);

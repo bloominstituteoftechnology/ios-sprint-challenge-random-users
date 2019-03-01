@@ -32,6 +32,10 @@ class FetchLargeImageOperation: ConcurrentOperation {
             }
             self.largeImage = UIImage(data: data)
         }
+        dataTask?.resume()
+    }
+    
+    override func cancel() {
         dataTask?.cancel()
     }
     
