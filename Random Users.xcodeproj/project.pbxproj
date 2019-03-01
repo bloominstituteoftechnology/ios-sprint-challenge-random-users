@@ -124,9 +124,9 @@
 		9D5CCA56214231E400224681 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
+				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
 				4B81A35E2229A64A00834D9E /* FetchLargeImageOperation.swift */,
 				4B81A3602229A68200834D9E /* FetchThumbnailOperation.swift */,
-				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";

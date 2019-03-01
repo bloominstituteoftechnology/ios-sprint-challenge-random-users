@@ -14,7 +14,7 @@ extension RandomUser: Decodable {
         case name
         case phoneNumber = "phone"
         case emailAddress = "email"
-        case imageURLS = "pictures"
+        case imageURLS = "picture"
         
         enum NameCodingKeys: String, CodingKey {
             case title
