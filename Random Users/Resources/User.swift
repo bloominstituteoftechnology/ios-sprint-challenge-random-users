@@ -66,10 +66,23 @@ struct User: Decodable {
         self.thumbURL = thumbURL
         self.largeURL = largeURL
     }
+}
     
-    
-    struct Results: Decodable {
+    struct Users: Decodable {
         let results: [User]
+        
+        enum UserCodingKeys: String, CodingKey {
+            case results
+        }
+        
+        init(from decoder: Decoder) throws {
+            
+            let container = try decoder.container(keyedBy: UserCodingKeys.self)
+            
+            let results = try container.decode([User].self, forKey: .results)
+            self.results = results
+        }
+        
     }
     
-}
+
