@@ -51,7 +51,9 @@
                             <outlet property="delegate" destination="XxM-EY-fPm" id="tkw-N1-633"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Users" id="uyc-pY-UPZ"/>
+                    <navigationItem key="navigationItem" title="Users" id="uyc-pY-UPZ">
+                        <barButtonItem key="rightBarButtonItem" title="Add" style="plain" id="WQa-bG-if7"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h9l-6E-aIF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
