@@ -70,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				48754BAF2229936900DB52B2 /* User.swift */,
+				48754BB12229937900DB52B2 /* UserController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -95,7 +96,6 @@
 			children = (
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				48754BB52229939000DB52B2 /* Model */,
-				48754BB12229937900DB52B2 /* UserController.swift */,
 				48754BB32229938800DB52B2 /* Cache.swift */,
 				48754BAE2229916600DB52B2 /* Views */,
 				48754BAD2229914300DB52B2 /* View Controllers */,
