@@ -5,6 +5,8 @@ import UIKit
 class UserDetailViewController: UIViewController {
     
     //MARK: - Properties
+    var user: User?
+    var userController: UserController?
     
     //MARK: - Outlets
     @IBOutlet weak var largeImage: UIImageView!

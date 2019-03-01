@@ -9,7 +9,7 @@ struct User: Decodable {
     var lastName: String
     var email: String
     var phone: String
-    var picture: URL
+    var picture: String
     
     enum UserKeys: String, CodingKey {
         case name
@@ -38,7 +38,7 @@ struct User: Decodable {
         lastName = try nameContainer.decode(String.self, forKey: .last)
         
         let pictureContainer = try container.nestedContainer(keyedBy: UserKeys.PictureKeys.self, forKey: .picture)
-        picture = try pictureContainer.decode(URL.self, forKey: .large)
+        picture = try pictureContainer.decode(String.self, forKey: .large)
         
         email = try container.decode(String.self, forKey: .email)
         phone = try container.decode(String.self, forKey: .phone)
