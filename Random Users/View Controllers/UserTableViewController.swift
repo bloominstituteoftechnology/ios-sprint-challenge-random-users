@@ -78,7 +78,15 @@ class UserTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        if segue.identifier == "cellDetail" {
+            guard let dvc = segue.destination as? UserDetailViewController,
+                let tappedRow = tableView.indexPathForSelectedRow else { return }
+            
+            let randomUser = userController.users[tappedRow.row]
+            
+            dvc.userController = userController
+            dvc.user = randomUser
+        }
     }
   
 
