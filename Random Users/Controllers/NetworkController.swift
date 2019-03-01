@@ -29,8 +29,6 @@ class NetworkController {
             return
         }
         
-        print(url)
-        
         URLSession.shared.dataTask(with: url) { (data, _, error) in
             if let error = error {
                 NSLog("Error connnecting to server: \(error)")
