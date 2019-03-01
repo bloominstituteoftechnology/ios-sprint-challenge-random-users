@@ -36,8 +36,39 @@ class RandomUsersTableViewController: UITableViewController {
 
         let randomUser = randomUsers?[indexPath.row]
         cell.nameLabel.text = randomUser?.name
+        
+        loadImage(forCell: cell, forItemAt: indexPath)
 
         return cell
+    }
+    
+    private func loadImage(forCell cell: RandomUserTableViewCell, forItemAt indexPath: IndexPath) {
+        
+        guard let randomUser = randomUsers?[indexPath.row],
+            let phoneNumber = randomUser.phoneNumber else { return }
+        
+        if let image = cache.value(for: phoneNumber) {
+            cell.userImageView?.image = image[.thumbnail]
+        } else {
+            let thumbnailOperation = FetchThumbnailOperation(randomUser: randomUser)
+            let storeOperation = BlockOperation {
+                guard let image = thumbnailOperation.thumbnailImage else { return }
+                self.cache.cache(value: [.thumbnail: image], for: phoneNumber)
+            }
+            let nonReusedOperation = BlockOperation {
+                guard let image = thumbnailOperation.thumbnailImage else { return }
+                if indexPath == self.tableView.indexPath(for: cell) {
+                    cell.userImageView.image = image
+                }
+            }
+            
+            storeOperation.addDependency(thumbnailOperation)
+            nonReusedOperation.addDependency(thumbnailOperation)
+            
+            randomUserFetchQueue.addOperations([thumbnailOperation, storeOperation], waitUntilFinished: false)
+            OperationQueue.main.addOperation(nonReusedOperation)
+            activeOperations[phoneNumber] = [.thumbnail: thumbnailOperation]
+        }
     }
     
 
@@ -96,6 +127,8 @@ class RandomUsersTableViewController: UITableViewController {
             }
         }
     }
-    var cache: Cache<String, [String: UIImage]> = Cache()
+    var cache: Cache<String, [RandomUser.Images: UIImage]> = Cache()
+    var randomUserFetchQueue = OperationQueue()
+    var activeOperations: [String: [RandomUser.Images: FetchThumbnailOperation]] = [:]
 
 }

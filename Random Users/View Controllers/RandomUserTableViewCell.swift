@@ -10,7 +10,12 @@ import UIKit
 
 class RandomUserTableViewCell: UITableViewCell {
     
-    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        userImageView.image = #imageLiteral(resourceName: "Lambda_Logo_Full")
+        nameLabel.text = "Lambda"
+    }
     
     // MARK: - Outlets
     

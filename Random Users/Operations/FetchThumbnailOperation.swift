@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FetchThumbnaillOperation: ConcurrentOperation {
+class FetchThumbnailOperation: ConcurrentOperation {
     
     init(randomUser: RandomUser) {
         self.randomUser = randomUser
