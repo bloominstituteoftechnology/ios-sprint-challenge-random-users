@@ -13,7 +13,7 @@ class UserDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
-    }
+   }
     
     private func updateViews() {
         guard let randomUser = user else { return }
@@ -36,19 +36,30 @@ class UserDetailViewController: UIViewController {
                 self.cache.cache(value: image, for: randomUser.phone)
             }
             
-            let setImageOperation = BlockOperation {
+            let imageOperation = BlockOperation {
                 guard let image = fetchLargePhotoOp.image else { return }
                 self.imageView.image = image
+                designView()
             }
             
+            
+            
             cacheOperation.addDependency(fetchLargePhotoOp)
-            setImageOperation.addDependency(fetchLargePhotoOp)
+            imageOperation.addDependency(fetchLargePhotoOp)
             
             fetchPhotoQueue.addOperations([fetchLargePhotoOp, cacheOperation], waitUntilFinished: false)
-            OperationQueue.main.addOperation(setImageOperation)
+            OperationQueue.main.addOperation(imageOperation)
             
             fetchedOperations[randomUser.phone] = fetchLargePhotoOp
         }
+        
+        
+        func designView() {
+            imageView.layer.shadowColor = UIColor.gray.cgColor
+            imageView.layer.shadowRadius = 5
+            imageView.layer.shadowOpacity = 0.5
+        }
+        
     }
 
     
