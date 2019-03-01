@@ -14,9 +14,10 @@ class UsersTableViewController: UITableViewController {
         super.viewDidLoad()
         networkController.fetchUsers { (error) in
             if let error = error {
-                NSLog("Erroring fetching users: \(error)")
+                NSLog("Error fecthing users: \(error)")
                 return
             }
+            
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -30,9 +31,9 @@ class UsersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
-        let user = networkController.users[indexPath.row]
+        let name = networkController.users[indexPath.row].name
         
-        cell.textLabel?.text = "\(user.title.capitalized) \(user.first.capitalized) \(user.last.capitalized)"
+        cell.textLabel?.text = "\(name.title.capitalized) \(name.first.capitalized) \(name.last.capitalized)"
     
         loadImage(for: cell, at: indexPath)
         return cell

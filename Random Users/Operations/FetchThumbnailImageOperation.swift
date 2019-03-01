@@ -21,7 +21,9 @@ class FetchThumbnailImageOperation: ConcurrentOperation {
     override func start() {
         state = .isExecuting
         
-        dataTask = URLSession.shared.dataTask(with: user.thumbnailImage) { (data, _, error) in
+        let url = URL(string: user.picture.thumbnail)!
+        
+        dataTask = URLSession.shared.dataTask(with: url) { (data, _, error) in
             defer { self.state = .isFinished }
             
             if let error = error {
