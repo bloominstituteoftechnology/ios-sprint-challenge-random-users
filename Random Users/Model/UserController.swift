@@ -2,16 +2,17 @@
 
 import Foundation
 
-private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
-
 class UserController {
     
     //MARK: - Properties
+    private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
     static let shared = UserController()
     var users: [User] = []
+    typealias CompletionHandler = (Error?) -> Void
+    
     
     //get user method
-    func getUsers(completion: @escaping (Error?) -> Void = { _ in }) {
+    func getUsers(completion: @escaping CompletionHandler = { _ in }) {
         let requestURL = baseURL
         
         URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
@@ -23,7 +24,7 @@ class UserController {
             
             guard let data = data else {
                 NSLog("No data returned from the data task")
-                completion(error)
+                completion(NSError())
                 return
             }
             

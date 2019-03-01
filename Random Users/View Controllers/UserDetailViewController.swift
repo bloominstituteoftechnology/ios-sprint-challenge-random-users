@@ -5,8 +5,11 @@ import UIKit
 class UserDetailViewController: UIViewController {
     
     //MARK: - Properties
-    var user: User?
-    var userController: UserController?
+    var user: User? {
+        didSet {
+            updateViews()
+        }
+    }
     
     //MARK: - Outlets
     @IBOutlet weak var largeImage: UIImageView!
@@ -15,9 +18,22 @@ class UserDetailViewController: UIViewController {
     @IBOutlet weak var emailLabel: UILabel!
     
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateViews()
+    }
+    
+    func updateViews() {
+        guard isViewLoaded else { return }
+        guard let user = user else { return }
+        
+        nameLabel.text = "\(user.title.capitalized) \(user.firstName.capitalized) \(user.lastName.capitalized)"
+        phoneLabel.text = user.phone
+        emailLabel.text = user.email
+        
+        guard let url = URL(string: user.picture),
+            let imageData = try? Data(contentsOf: url) else { return }
+        largeImage.image = UIImage(data: imageData)
     }
 
 }

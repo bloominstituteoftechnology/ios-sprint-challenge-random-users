@@ -12,9 +12,9 @@ class FetchPhotoOperation: ConcurrentOperation {
     private let completion: (UIImage?) -> Void
     
     
-    init(url: URL, completion: @escaping (UIImage?) -> Void) {
+    init(url: URL, completionHandler: @escaping (UIImage?) -> Void) {
         self.url = url
-        self.completion = completion
+        self.completion = completionHandler
         super.init()
     }
     
@@ -52,7 +52,7 @@ class FetchPhotoOperation: ConcurrentOperation {
     }
     
     override func cancel() {
-        super.cancel()
         task?.cancel()
+        super.cancel()
     }
 }

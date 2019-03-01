@@ -11,19 +11,20 @@ class UserTableViewController: UITableViewController {
     var operationCache = Cache<IndexPath, Operation>()
     
     let fetchPhotoQueue: OperationQueue = {
-        let oQ = OperationQueue()
-        return oQ
+        let fQ = OperationQueue()
+        return fQ
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        userController.getUsers()
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
+
+        userController.getUsers { (_) in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
-
+    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -79,7 +80,6 @@ class UserTableViewController: UITableViewController {
             let indexPath = tableView.indexPathForSelectedRow else { return }
         
         let user = userController.users[indexPath.row]
-        destination.userController = userController
         destination.user = user
         
     }

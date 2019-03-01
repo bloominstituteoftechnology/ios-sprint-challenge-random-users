@@ -20,13 +20,13 @@ class UserTableViewCell: UITableViewCell {
     
     func updateViews() {
         if let user = user {
-        nameLabel.text = "\(user.title) \(user.firstName) \(user.lastName)"
+        nameLabel.text = "\(user.title.capitalized) \(user.firstName.capitalized) \(user.lastName.capitalized)"
         }
     }
     
     override func prepareForReuse() {
-        super.prepareForReuse()
         userImage.image = nil
         indexPath = nil
+        super.prepareForReuse()
     }
 }
