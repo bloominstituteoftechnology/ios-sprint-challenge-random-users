@@ -55,23 +55,4 @@ class FetchLargePhotoOp: ConcurrentOperation {
     // MARK: - Properties
     
     private var task: URLSessionDataTask?
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
