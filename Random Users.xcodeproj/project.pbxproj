@@ -13,6 +13,7 @@
 		4B81A355222994C600834D9E /* RandomUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81A354222994C600834D9E /* RandomUser.swift */; };
 		4B81A3582229950000834D9E /* RandomUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81A3572229950000834D9E /* RandomUserController.swift */; };
 		4B81A35B2229965C00834D9E /* RandomUserExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81A35A2229965C00834D9E /* RandomUserExtension.swift */; };
+		4B81A35D2229A15600834D9E /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81A35C2229A15600834D9E /* Cache.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 		4B81A354222994C600834D9E /* RandomUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUser.swift; sourceTree = "<group>"; };
 		4B81A3572229950000834D9E /* RandomUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserController.swift; sourceTree = "<group>"; };
 		4B81A35A2229965C00834D9E /* RandomUserExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserExtension.swift; sourceTree = "<group>"; };
+		4B81A35C2229A15600834D9E /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+				4B81A35C2229A15600834D9E /* Cache.swift */,
 				4B81A356222994D900834D9E /* Model */,
 				4B81A3592229950D00834D9E /* Controller */,
 				4B81A34F2229922B00834D9E /* View Controllers */,
@@ -194,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B81A34E2229922100834D9E /* RandomUserDetailViewController.swift in Sources */,
+				4B81A35D2229A15600834D9E /* Cache.swift in Sources */,
 				4B81A35B2229965C00834D9E /* RandomUserExtension.swift in Sources */,
 				4B81A3512229925F00834D9E /* RandomUserTableViewCell.swift in Sources */,
 				4B81A353222992B600834D9E /* RandomUsersTableViewController.swift in Sources */,
