@@ -8,6 +8,14 @@
 
 import Foundation
 
+struct RandomUsers: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case randomUsers = "results"
+    }
+    
+    var randomUsers: [RandomUser]
+}
+
 struct RandomUser: Equatable {
     var name: String
     var phoneNumber: String?
