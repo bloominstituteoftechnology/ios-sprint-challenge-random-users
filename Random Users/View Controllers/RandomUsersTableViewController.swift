@@ -9,8 +9,6 @@
 import UIKit
 
 class RandomUsersTableViewController: UITableViewController {
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +81,8 @@ class RandomUsersTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetailView" {
             let detailVC = segue.destination as! RandomUserDetailViewController
+            guard let index = tableView.indexPathForSelectedRow else { return }
+            detailVC.randomUser = randomUsers?[index.row]
         }
     }
     

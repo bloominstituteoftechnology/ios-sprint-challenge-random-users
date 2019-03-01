@@ -67,9 +67,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="lPP-oN-zsJ">
-                                <rect key="frame" x="16" y="80" width="343" height="433.5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="lPP-oN-zsJ">
+                                <rect key="frame" x="16" y="146" width="343" height="433.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uaf-bi-Uxd">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="340"/>
@@ -80,7 +79,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LIc-GC-mIb">
                                         <rect key="frame" x="0.0" y="356" width="343" height="77.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALO-jd-W6k">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALO-jd-W6k">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -107,6 +106,11 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lPP-oN-zsJ" firstAttribute="top" secondItem="pOa-zd-St7" secondAttribute="top" constant="30" id="Blj-KS-g1J"/>
+                            <constraint firstItem="lPP-oN-zsJ" firstAttribute="trailing" secondItem="iAn-Vp-4to" secondAttribute="trailingMargin" id="fEs-8u-aoM"/>
+                            <constraint firstItem="lPP-oN-zsJ" firstAttribute="leading" secondItem="iAn-Vp-4to" secondAttribute="leadingMargin" id="uTu-2E-Xyf"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="pOa-zd-St7"/>
                     </view>
                     <connections>

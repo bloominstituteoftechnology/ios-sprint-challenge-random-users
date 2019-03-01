@@ -10,6 +10,30 @@ import UIKit
 
 class RandomUserDetailViewController: UIViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        guard let randomUser = randomUser else { return }
+        let largeImageOperation = FetchLargeImageOperation(randomUser: randomUser)
+        let operation = BlockOperation {
+            guard let image = largeImageOperation.largeImage else { return }
+            self.randomImageView.image = image
+        }
+        operation.addDependency(largeImageOperation)
+        
+        randomUserFetchQueue.addOperation(largeImageOperation)
+        OperationQueue.main.addOperation(operation)
+        
+        nameLabel.text = randomUser.name
+        phoneNumberLabel.text = randomUser.phoneNumber
+        emailAddressLabel.text = randomUser.emailAddress
+    }
+    
+    // MARK: - Properties
+    
+    var randomUser: RandomUser?
+    let randomUserFetchQueue = OperationQueue()
+    
     // MARK: - Outlets
     
     @IBOutlet weak var randomImageView: UIImageView!
@@ -17,22 +41,4 @@ class RandomUserDetailViewController: UIViewController {
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var emailAddressLabel: UILabel!
     
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
