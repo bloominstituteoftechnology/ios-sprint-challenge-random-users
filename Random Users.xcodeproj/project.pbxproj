@@ -14,6 +14,8 @@
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
 		C4535D1D2229923700CB5048 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4535D1C2229923700CB5048 /* User.swift */; };
 		C4535D1F22299CD200CB5048 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4535D1E22299CD200CB5048 /* UserController.swift */; };
+		C4535D212229A30500CB5048 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4535D202229A30500CB5048 /* Cache.swift */; };
+		C4535D242229A4DF00CB5048 /* FetchPhotOp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4535D232229A4DF00CB5048 /* FetchPhotOp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 		C4535D1C2229923700CB5048 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C4535D1E22299CD200CB5048 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		C4535D202229A30500CB5048 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		C4535D232229A4DF00CB5048 /* FetchPhotOp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotOp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+				C4535D222229A44E00CB5048 /* Model */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
@@ -69,8 +74,8 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A98B2140178A00FC395A /* Main.storyboard */,
-				C4535D1C2229923700CB5048 /* User.swift */,
 				C4535D1E22299CD200CB5048 /* UserController.swift */,
+				C4535D202229A30500CB5048 /* Cache.swift */,
 				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
 				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
 				8ED6A9932140178C00FC395A /* Info.plist */,
@@ -82,8 +87,17 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				C4535D232229A4DF00CB5048 /* FetchPhotOp.swift */,
 			);
 			path = Operations;
+			sourceTree = "<group>";
+		};
+		C4535D222229A44E00CB5048 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C4535D1C2229923700CB5048 /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,7 +171,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4535D242229A4DF00CB5048 /* FetchPhotOp.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				C4535D212229A30500CB5048 /* Cache.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				C4535D1F22299CD200CB5048 /* UserController.swift in Sources */,
 				C4535D1D2229923700CB5048 /* User.swift in Sources */,
