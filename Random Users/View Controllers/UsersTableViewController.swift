@@ -38,7 +38,12 @@ class UsersTableViewController: UITableViewController {
         loadImage(for: cell, at: indexPath)
         return cell
     }
-
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let user = networkController.users[indexPath.row]
+        let fetchOp = fetchOperations[user.name.first + user.name.last]
+        fetchOp?.cancel()
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DetailSegue" {
@@ -66,9 +71,13 @@ class UsersTableViewController: UITableViewController {
         
         imageFetchQueue.addOperation(fetchThumbnailImageOperation)
         OperationQueue.main.addOperation(addImageOperation)
+        
+        fetchOperations[user.name.first + user.name.last] = fetchThumbnailImageOperation
     }
     
     let networkController = NetworkController()
+    
+    var fetchOperations: [String: FetchThumbnailImageOperation] = [:]
     
     let imageFetchQueue = OperationQueue()
 }
