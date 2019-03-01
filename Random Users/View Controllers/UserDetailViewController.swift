@@ -5,11 +5,7 @@ import UIKit
 class UserDetailViewController: UIViewController {
     
     //MARK: - Properties
-    var user: User? {
-        didSet {
-            updateViews()
-        }
-    }
+    var user: User?
     
     //MARK: - Outlets
     @IBOutlet weak var largeImage: UIImageView!
