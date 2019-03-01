@@ -58,24 +58,44 @@ class UsersTableViewController: UITableViewController {
         
         let user = networkController.users[indexPath.row]
         
+        if let cachedValue = self.cache.value(for: user.phone) {
+            let image = UIImage(data: cachedValue)
+            cell.imageView?.image = image
+            return
+        }
+        
         let fetchThumbnailImageOperation = FetchThumbnailImageOperation(user: user)
         
+        let cacheOperation = BlockOperation {
+            guard let image = fetchThumbnailImageOperation.imageData else { return }
+            self.cache.cache(value: image, for: user.phone)
+        }
+        
         let addImageOperation = BlockOperation {
+            
+            if let currentIndexPath = self.tableView.indexPath(for: cell),
+                currentIndexPath != indexPath {
+                return
+            }
             
             if let image = fetchThumbnailImageOperation.imageData {
                 cell.imageView?.image = UIImage(data: image)
             }
         }
         
+        cacheOperation.addDependency(fetchThumbnailImageOperation)
         addImageOperation.addDependency(fetchThumbnailImageOperation)
         
         imageFetchQueue.addOperation(fetchThumbnailImageOperation)
+        imageFetchQueue.addOperation(cacheOperation)
         OperationQueue.main.addOperation(addImageOperation)
         
         fetchOperations[user.name.first + user.name.last] = fetchThumbnailImageOperation
     }
     
     let networkController = NetworkController()
+    
+    let cache = Cache<String, Data>()
     
     var fetchOperations: [String: FetchThumbnailImageOperation] = [:]
     
