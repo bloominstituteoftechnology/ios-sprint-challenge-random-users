@@ -27,6 +27,8 @@ class RandomUserDetailViewController: UIViewController {
         nameLabel.text = randomUser.name
         phoneNumberLabel.text = randomUser.phoneNumber
         emailAddressLabel.text = randomUser.emailAddress
+        
+        navigationItem.title = randomUser.name
     }
     
     // MARK: - Properties

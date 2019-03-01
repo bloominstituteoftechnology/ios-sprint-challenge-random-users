@@ -20,6 +20,7 @@ class RandomUsersTableViewController: UITableViewController {
             }
             self.randomUsers = randomUsers
         }
+    
     }
 
     // MARK: - Table view data source
@@ -34,6 +35,8 @@ class RandomUsersTableViewController: UITableViewController {
 
         let randomUser = randomUsers?[indexPath.row]
         cell.nameLabel.text = randomUser?.name
+        cell.userImageView.layer.cornerRadius = cell.userImageView.frame.width / 2;
+        cell.userImageView.clipsToBounds = true
         
         loadImage(forCell: cell, forItemAt: indexPath)
 
