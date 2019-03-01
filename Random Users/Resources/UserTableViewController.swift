@@ -11,15 +11,7 @@ import UIKit
 class UserTableViewController: UITableViewController {
     
     let userController = UserController()
-    
-    /*var users: [Result] = [] {
-        didSet {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-    }*/
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -98,16 +90,17 @@ class UserTableViewController: UITableViewController {
             fetchOperations[name] = fetchPhotoOp
             
             let storeDataOp = BlockOperation {
-                self.cache.cacheSmall(value: fetchPhotoOp.imageData!, for: name)
+                guard let data = fetchPhotoOp.imageData else { return }
+                self.cache.cacheSmall(value: data, for: name)
             }
             
             let reuseOp = BlockOperation {
-                guard let currentIndex = self.tableView.indexPath(for: cell) else { return }
+                guard let currentIndex = self.tableView.indexPath(for: cell), let data = fetchPhotoOp.imageData else { return }
                 
                 
                 if currentIndex == indexPath {
                     
-                    cell.imageThumbnail.image = UIImage(data: fetchPhotoOp.imageData!)
+                    cell.imageThumbnail.image = UIImage(data: data)
                     
                 } else {
                     return
@@ -122,7 +115,9 @@ class UserTableViewController: UITableViewController {
             OperationQueue.main.addOperation(reuseOp)
             
             
-          
+          //..... Keeping to reference how I would implement without operations above .......
+            
+            
             /* let dataTask = URLSession.shared.dataTask(with: photoURL) { (photoData, _, error) in
              
                 if let error = error {
@@ -158,6 +153,19 @@ class UserTableViewController: UITableViewController {
     let photoFetchQueue = OperationQueue()
     let cache = Cache<String, Data>()
 
+    @IBAction func addTapped(_ sender: UIBarButtonItem) {
+        // To see my addTapped function work, change the url to fetch 5 users and then press 'add' to see the new users easier.
+        userController.addUsers = true
+        userController.getUsers(completion: { (error) in
+            if let error = error {
+                print(error)
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
+        
+    }
     
     // MARK: - Navigation
 

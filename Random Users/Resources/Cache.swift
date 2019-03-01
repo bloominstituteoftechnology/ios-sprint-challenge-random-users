@@ -67,18 +67,20 @@ class FetchPhotoOperation: ConcurrentOperation {
         photoDataTask = URLSession.shared.dataTask(with: imageURL, completionHandler: { (data, _, error) in
             
             if let error = error {
-                print("Error: \(error)")
+                NSLog("Error fetching: \(error)")
                 return
             }
             
-            guard let data = data else { return }
+            guard let data = data else {
+                NSLog("No data returned: \(error)")
+                return
+            }
             
             self.imageData = data
             defer {
                 self.state = .isFinished
             }
     
-            
         })
         photoDataTask?.resume()
         

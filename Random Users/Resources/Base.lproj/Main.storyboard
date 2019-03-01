@@ -60,7 +60,13 @@
                             <outlet property="delegate" destination="zGk-KO-r0L" id="su0-G1-aQt"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Users" id="dkF-EQ-BcU"/>
+                    <navigationItem key="navigationItem" title="Users" id="dkF-EQ-BcU">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="BwH-H4-636">
+                            <connections>
+                                <action selector="addTapped:" destination="zGk-KO-r0L" id="szE-9O-jNb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QLG-dD-4Cu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

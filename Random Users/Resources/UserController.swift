@@ -12,7 +12,11 @@ class UserController {
     
     var users: [Result] = []
     
-    var baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
+    var addUsers: Bool = false
+    
+    // To see my addUsers function work, change the url to fetch 5 users and then press 'add' to see the added users easier.
+    
+    var baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=300")!
     
     func getUsers(completion: @escaping (Error?) -> Void) {
         
@@ -32,7 +36,11 @@ class UserController {
             do {
                 let decodedObj = try jsonDecoder.decode(UserResults.self, from: data)
               //  print(decodedObj)
-                self.users = decodedObj.results
+                if self.addUsers == false {
+                    self.users = decodedObj.results
+                } else {
+                    self.users.append(contentsOf: decodedObj.results)
+                }
                 completion(nil)
             } catch {
                 print("Error decoding received data: \(error)")
