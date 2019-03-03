@@ -29,7 +29,7 @@ class PersonTableViewController: UITableViewController {
             do {
                 let decoder = JSONDecoder()
                 print("\(data)")
-                let peopleFromServer = try decoder.decode( [String:Results].self, from: data)
+                let peopleFromServer = try decoder.decode( RandomUser.self, from: data)
                 print("These are the people from server: \(peopleFromServer)")
                 
             } catch {

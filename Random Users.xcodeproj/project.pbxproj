@@ -18,6 +18,7 @@
 		A25BB14722295201002E18E8 /* chevron-right.png in Resources */ = {isa = PBXBuildFile; fileRef = A25BB14622295201002E18E8 /* chevron-right.png */; };
 		A25BB14922298307002E18E8 /* PersonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25BB14822298307002E18E8 /* PersonDetailViewController.swift */; };
 		A25BB14B222985BF002E18E8 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25BB14A222985BF002E18E8 /* Person.swift */; };
+		A25BB14D222BA837002E18E8 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25BB14C222BA837002E18E8 /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		A25BB14622295201002E18E8 /* chevron-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chevron-right.png"; sourceTree = "<group>"; };
 		A25BB14822298307002E18E8 /* PersonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailViewController.swift; sourceTree = "<group>"; };
 		A25BB14A222985BF002E18E8 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		A25BB14C222BA837002E18E8 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 		A25BB13F222947E3002E18E8 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				A25BB14C222BA837002E18E8 /* Utilities.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 			files = (
 				A25BB14B222985BF002E18E8 /* Person.swift in Sources */,
 				A25BB14522294F8B002E18E8 /* PersonTableViewController.swift in Sources */,
+				A25BB14D222BA837002E18E8 /* Utilities.swift in Sources */,
 				A25BB14122294AE7002E18E8 /* PersonTableViewCell.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				A25BB14922298307002E18E8 /* PersonDetailViewController.swift in Sources */,

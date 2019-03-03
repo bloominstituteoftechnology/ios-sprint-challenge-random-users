@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct Results: Decodable {
-    let results: [String: Person]
+struct RandomUser: Decodable {  // This is the very top level of the JSON object. JSON wasn't decoding properly because this was missing.
+    let results: [Person]
 }
 
 struct Person: Decodable {
@@ -40,11 +40,11 @@ struct Person: Decodable {
     }
 
 
-    var name: String?
-    var picture: [String : URL]?
-    var phone: String?
-    var email: String?
-    var login: UUID?
+    var name: String
+    var picture: [String : URL]
+    var phone: String
+    var email: String
+    var login: UUID
 
 
     init(from decoder: Decoder) throws {
@@ -73,7 +73,7 @@ struct Person: Decodable {
         let personUUID = UUID(uuidString: uuid)!
 
 
-        self.name = ("\(title). \(firstName) \(lastName)")
+        self.name = ("\(title.capitalizingFirstLetter()). \(firstName.capitalizingFirstLetter()) \(lastName.capitalizingFirstLetter())")
         self.picture = pictureDictionary
         self.phone = phone
         self.email = email
