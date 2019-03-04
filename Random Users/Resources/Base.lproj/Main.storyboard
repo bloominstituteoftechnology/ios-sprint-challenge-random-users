@@ -19,32 +19,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="personCell" rowHeight="63" id="1uK-vb-M6Z" customClass="PersonTableViewCell" customModule="Random_Users" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="63"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="personCell" rowHeight="60" id="1uK-vb-M6Z" customClass="PersonTableViewCell" customModule="Random_Users" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1uK-vb-M6Z" id="gaG-Mr-PDC">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="62.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="x03-zo-tl5">
-                                            <rect key="frame" x="16" y="0.0" width="300" height="62.5"/>
+                                            <rect key="frame" x="16" y="0.0" width="300" height="59.5"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ES0-fE-2VJ">
-                                                    <rect key="frame" x="0.0" y="4" width="55" height="55"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smile.png" translatesAutoresizingMaskIntoConstraints="NO" id="ES0-fE-2VJ">
+                                                    <rect key="frame" x="0.0" y="6" width="55" height="48"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="55" id="GiM-Z5-U30"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxl-vg-muz">
-                                                    <rect key="frame" x="70" y="17.5" width="230" height="27.5"/>
+                                                    <rect key="frame" x="70" y="16" width="230" height="27.5"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </stackView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron-right.png" translatesAutoresizingMaskIntoConstraints="NO" id="wCT-U6-30L">
-                                            <rect key="frame" x="320" y="0.0" width="55" height="62.5"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron-right.png" translatesAutoresizingMaskIntoConstraints="NO" id="wCT-U6-30L">
+                                            <rect key="frame" x="320" y="0.0" width="55" height="59.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="55" id="TBt-Q3-K7b"/>
                                                 <constraint firstAttribute="width" constant="55" id="Xa7-1S-CXN"/>
@@ -85,7 +85,7 @@
         <!--Title-->
         <scene sceneID="AUn-vk-aJV">
             <objects>
-                <viewController id="46k-Vk-p1I" sceneMemberID="viewController">
+                <viewController id="46k-Vk-p1I" customClass="PersonDetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0aH-Nw-qfe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -134,6 +134,12 @@
                         <viewLayoutGuide key="safeArea" id="tRn-LK-nhY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="XaG-kJ-cGC"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="VOl-bP-yI6" id="s7t-j2-Rtc"/>
+                        <outlet property="nameLabel" destination="7Tv-HG-2hE" id="MAC-D7-nbK"/>
+                        <outlet property="personImageView" destination="zVt-rz-YGi" id="Rar-7T-8Js"/>
+                        <outlet property="phoneNumberLabel" destination="Ob7-NU-4Pc" id="mxI-k6-04x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Je-ry-UsJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -160,5 +166,6 @@
     </scenes>
     <resources>
         <image name="chevron-right.png" width="24" height="24"/>
+        <image name="smile.png" width="48" height="48"/>
     </resources>
 </document>

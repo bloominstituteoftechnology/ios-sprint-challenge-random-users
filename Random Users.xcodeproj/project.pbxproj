@@ -17,8 +17,12 @@
 		A25BB14522294F8B002E18E8 /* PersonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25BB14422294F8B002E18E8 /* PersonTableViewController.swift */; };
 		A25BB14722295201002E18E8 /* chevron-right.png in Resources */ = {isa = PBXBuildFile; fileRef = A25BB14622295201002E18E8 /* chevron-right.png */; };
 		A25BB14922298307002E18E8 /* PersonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25BB14822298307002E18E8 /* PersonDetailViewController.swift */; };
-		A25BB14B222985BF002E18E8 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25BB14A222985BF002E18E8 /* Person.swift */; };
+		A25BB14B222985BF002E18E8 /* RandomUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25BB14A222985BF002E18E8 /* RandomUser.swift */; };
 		A25BB14D222BA837002E18E8 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25BB14C222BA837002E18E8 /* Utilities.swift */; };
+		A25BB14F222BC3BA002E18E8 /* RandomUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25BB14E222BC3BA002E18E8 /* RandomUserController.swift */; };
+		A25BB151222BD47C002E18E8 /* smile.png in Resources */ = {isa = PBXBuildFile; fileRef = A25BB150222BD47C002E18E8 /* smile.png */; };
+		A25BB153222BF825002E18E8 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25BB152222BF825002E18E8 /* Cache.swift */; };
+		A25BB155222C000D002E18E8 /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25BB154222C000D002E18E8 /* FetchPhotoOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,8 +38,12 @@
 		A25BB14422294F8B002E18E8 /* PersonTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewController.swift; sourceTree = "<group>"; };
 		A25BB14622295201002E18E8 /* chevron-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chevron-right.png"; sourceTree = "<group>"; };
 		A25BB14822298307002E18E8 /* PersonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailViewController.swift; sourceTree = "<group>"; };
-		A25BB14A222985BF002E18E8 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		A25BB14A222985BF002E18E8 /* RandomUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUser.swift; sourceTree = "<group>"; };
 		A25BB14C222BA837002E18E8 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		A25BB14E222BC3BA002E18E8 /* RandomUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserController.swift; sourceTree = "<group>"; };
+		A25BB150222BD47C002E18E8 /* smile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smile.png; sourceTree = "<group>"; };
+		A25BB152222BF825002E18E8 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		A25BB154222C000D002E18E8 /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +94,7 @@
 				8ED6A98B2140178A00FC395A /* Main.storyboard */,
 				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
 				A25BB14622295201002E18E8 /* chevron-right.png */,
+				A25BB150222BD47C002E18E8 /* smile.png */,
 				A25BB14222294C72002E18E8 /* persona.png */,
 				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
 				8ED6A9932140178C00FC395A /* Info.plist */,
@@ -97,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				A25BB154222C000D002E18E8 /* FetchPhotoOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -104,6 +114,7 @@
 		A25BB13B222947A4002E18E8 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				A25BB14E222BC3BA002E18E8 /* RandomUserController.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -111,7 +122,7 @@
 		A25BB13C222947BB002E18E8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A25BB14A222985BF002E18E8 /* Person.swift */,
+				A25BB14A222985BF002E18E8 /* RandomUser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -137,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				A25BB14C222BA837002E18E8 /* Utilities.swift */,
+				A25BB152222BF825002E18E8 /* Cache.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -204,6 +216,7 @@
 				A25BB14722295201002E18E8 /* chevron-right.png in Resources */,
 				8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */,
 				A25BB14322294C72002E18E8 /* persona.png in Resources */,
+				A25BB151222BD47C002E18E8 /* smile.png in Resources */,
 				8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,7 +228,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A25BB14B222985BF002E18E8 /* Person.swift in Sources */,
+				A25BB14F222BC3BA002E18E8 /* RandomUserController.swift in Sources */,
+				A25BB153222BF825002E18E8 /* Cache.swift in Sources */,
+				A25BB14B222985BF002E18E8 /* RandomUser.swift in Sources */,
+				A25BB155222C000D002E18E8 /* FetchPhotoOperation.swift in Sources */,
 				A25BB14522294F8B002E18E8 /* PersonTableViewController.swift in Sources */,
 				A25BB14D222BA837002E18E8 /* Utilities.swift in Sources */,
 				A25BB14122294AE7002E18E8 /* PersonTableViewCell.swift in Sources */,

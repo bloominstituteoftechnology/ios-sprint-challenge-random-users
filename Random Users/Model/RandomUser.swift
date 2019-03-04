@@ -1,5 +1,5 @@
 //
-//  Person.swift
+//  RandomUser.swift
 //  Random Users
 //
 //  Created by Angel Buenrostro on 3/1/19.

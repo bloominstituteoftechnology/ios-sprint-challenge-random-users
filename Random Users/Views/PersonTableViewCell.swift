@@ -23,4 +23,6 @@ class PersonTableViewCell: UITableViewCell {
 
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    
+    var largeImage : UIImage?
 }

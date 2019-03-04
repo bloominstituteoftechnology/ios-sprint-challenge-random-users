@@ -12,10 +12,15 @@ class PersonDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            self.updateViews()
+        }
+    }
 
     /*
     // MARK: - Navigation
@@ -26,9 +31,32 @@ class PersonDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    // Mark: - Private
+    
+    func updateViews() {
+        guard let person = self.person else { print("Cell has no person"); return }
+        nameLabel.text = person.name
+        phoneNumberLabel.text = person.phone
+        emailLabel.text = person.email
+        personImageView.image = largeImage
+    }
+    
     @IBOutlet weak var personImageView: UIImageView!
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
+    
+    
+    // MARK: - Properties
+    
+    var randomUserController: RandomUserController?
+    var largeImage: UIImage?
+    var person: Person? {
+        didSet {
+            DispatchQueue.main.async{
+                self.updateViews()
+            }
+        }
+    }
 }
