@@ -44,18 +44,6 @@ class RandomUserController {
             }.resume()
     }
     
-    func fetchThumbnailPhotos(person: Person) {
-        let url = person.picture["thumbnail"]!
-//
-//        URLSession.shared.dataTask(with: url){
-//            guard let data = data else {
-//                print("error finding image")
-//            }
-//        }
-//
-    }
-    
-    
     private let baseURL = URL(string: "https://randomuser.me/api/")!
     
     var people: [Person] = []

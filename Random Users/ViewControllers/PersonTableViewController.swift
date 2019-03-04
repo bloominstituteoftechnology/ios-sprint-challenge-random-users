@@ -16,7 +16,7 @@ class PersonTableViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.rowHeight = 60
         
-        self.randomUserController.fetchRandomUsers(50) { (error) in
+        self.randomUserController.fetchRandomUsers(1000) { (error) in
             print("\(self.randomUserController.people)")
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -30,7 +30,14 @@ class PersonTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let person = randomUserController.people[indexPath.row]
+        guard let fetchOpToCancel = operations[person.login] else { return }
+        guard let largeFetchOpToCancel = largeOperations[person.login] else { return }
+        fetchOpToCancel.cancel()
+        largeFetchOpToCancel.cancel()
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
