@@ -35,6 +35,7 @@ class PersonDetailViewController: UIViewController {
     
     func updateViews() {
         guard let person = self.person else { print("Cell has no person"); return }
+        self.title = person.name
         nameLabel.text = person.name
         phoneNumberLabel.text = person.phone
         emailLabel.text = person.email

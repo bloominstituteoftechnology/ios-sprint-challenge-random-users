@@ -17,7 +17,6 @@ class PersonTableViewController: UITableViewController {
         self.tableView.rowHeight = 60
         
         self.randomUserController.fetchRandomUsers(1000) { (error) in
-            print("\(self.randomUserController.people)")
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -122,12 +121,6 @@ class PersonTableViewController: UITableViewController {
             print("thumbnail and large image found in cache")
             return
         }
-//        if let cachedLargeImageData = largeImageDataCache.value(for: person.login),
-//            let image = UIImage(data: cachedLargeImageData!) {
-//            cell.largeImage = image
-//            print("large image found in cache")
-//            return
-//        }
         // Start an operation to fetch image data
         
         // 1.

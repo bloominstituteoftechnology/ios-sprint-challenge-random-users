@@ -82,7 +82,7 @@
             </objects>
             <point key="canvasLocation" x="1735.2" y="-156.07196401799101"/>
         </scene>
-        <!--Title-->
+        <!--Person Detail View Controller-->
         <scene sceneID="AUn-vk-aJV">
             <objects>
                 <viewController id="46k-Vk-p1I" customClass="PersonDetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
@@ -91,16 +91,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BvI-ID-BXu">
-                                <rect key="frame" x="16" y="64" width="343" height="298.5"/>
+                                <rect key="frame" x="16" y="64" width="343" height="398.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zVt-rz-YGi">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="200"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="300"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="200" id="hif-yT-G9S"/>
+                                            <constraint firstAttribute="height" constant="300" id="hif-yT-G9S"/>
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="CB6-cp-sCw">
-                                        <rect key="frame" x="0.0" y="200" width="343" height="98.5"/>
+                                        <rect key="frame" x="0.0" y="300" width="343" height="98.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Tv-HG-2hE">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="27.5"/>
@@ -133,7 +133,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tRn-LK-nhY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="XaG-kJ-cGC"/>
+                    <navigationItem key="navigationItem" id="XaG-kJ-cGC"/>
                     <connections>
                         <outlet property="emailLabel" destination="VOl-bP-yI6" id="s7t-j2-Rtc"/>
                         <outlet property="nameLabel" destination="7Tv-HG-2hE" id="MAC-D7-nbK"/>
