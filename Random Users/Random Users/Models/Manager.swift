@@ -66,7 +66,7 @@ class Manager {
         //Add the thumbnail download operation and the caching op to the background queue
         thumbQueue.addOperation(thumbnailOperation)
         thumbQueue.addOperation(cacheThumbOperation)
-        
+                
         //Add the update thumbnail operation to the main Queue since it's part of the UI
         OperationQueue.main.addOperation(updateThumbOperation)
         
