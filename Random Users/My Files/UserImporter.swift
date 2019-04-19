@@ -28,10 +28,12 @@ class UserImporter {
         if let error = error { //Assigns the standard error to a property so it can be customised.
             
         NSLog("Error: \(error.localizedDescription)") //Print the error description not just the standard error message
+            
         completion(error) //Show error message in Debugger log.
+            
                 return } //End of IF statement
         
-        //Assigning the data that's fetched to a property for easy manipulation later.
+        //Assigning the fetched data to a property for easy manipulation later.
             guard let foundData = data else {
             
                 NSLog("Data was not recieved.") //Print this to the Debugger log if there's an error.
@@ -40,17 +42,25 @@ class UserImporter {
             
                 return }
         
-            do { //Same Do-Catch statement from normal Persistence but from Data above not local file
+            do {
                 
-            let jsonDecoder = JSONDecoder() //jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+                let jsonDecoder = JSONDecoder() //Create an instance of the decoder
+                
+                //Attempt decoding JSON
                 let decodedUser = try jsonDecoder.decode(User.self, from: foundData)
                 
-            UserManager().createUser(infoFromAPI: decodedUser)
+                //Create a new user from the decoded data.
+                UserManager.shared.createUser(infoFromAPI: decodedUser)
           
-            completion(nil)//Set completion to nothing since decoding worked.
-            } catch { //In case Decoding doesn't work.
+                completion(nil)//Set completion to nothing since decoding worked.
+                
+            } catch { //In case Decoding doesn't work...
+                
+            //Show error message.
             NSLog("Error: \(error.localizedDescription)")
-            completion(error) //Show error message in Debugger log.
+                
+            completion(error)
+                
             return }
             
         } .resume() //Resumes the fetch function if it's been suspended e.g. because of errors.
