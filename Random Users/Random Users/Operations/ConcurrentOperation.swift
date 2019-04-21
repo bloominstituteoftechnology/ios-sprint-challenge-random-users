@@ -1,9 +1,9 @@
 //
 //  ConcurrentOperation.swift
-//  Astronomy
+//  Random Users
 //
-//  Created by Andrew R Madsen on 9/5/18.
-//  Copyright © 2018 Lambda School. All rights reserved.
+//  Created by Lotanna Igwe-Odunze on 2/1/19.
+//  Copyright © 2019 Sugabelly LLC. All rights reserved.
 //
 
 import Foundation
@@ -20,7 +20,7 @@ class ConcurrentOperation: Operation {
     
     private var _state = State.isReady
     
-    private let stateQueue = DispatchQueue(label: "com.LambdaSchool.Astronomy.ConcurrentOperationStateQueue")
+    private let stateQueue = DispatchQueue(label: "ng.sugabelly.Random-Users.ConcurrentOperationStateQueue")
     var state: State {
         get {
             var result: State?
