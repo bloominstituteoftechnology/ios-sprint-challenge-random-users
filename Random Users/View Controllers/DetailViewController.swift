@@ -48,11 +48,6 @@ class DetailViewController: UIViewController {
 			
 			
 			}.resume()
-		
-		
-		
-		
-		
 	}
 	
 

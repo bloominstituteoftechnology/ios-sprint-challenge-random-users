@@ -67,7 +67,7 @@
                                 <connections>
                                     <outlet property="nameLabel" destination="NeY-Ov-fHj" id="3KT-hb-90l"/>
                                     <outlet property="peopleImageView" destination="WkC-0u-dbV" id="agI-IP-CWJ"/>
-                                    <segue destination="U5U-Fr-rEz" kind="show" id="jnJ-ey-XLM"/>
+                                    <segue destination="U5U-Fr-rEz" kind="show" identifier="cellSegue" id="jnJ-ey-XLM"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

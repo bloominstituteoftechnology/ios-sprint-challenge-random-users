@@ -42,6 +42,18 @@ class PeopleTableViewController: UITableViewController {
 		return peopleCell
 	}
 	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "cellSegue" {
+			guard let vc = segue.destination as? DetailViewController,
+				let cell = sender as?  PeopleTableViewCell,
+				let indexPath = tableView.indexPath(for: cell)	else { return }
+			
+			let person = peopleController.poeple[indexPath.row]
+			vc.person = person
+			
+		}
+	}
+	
 	
 	let peopleController = PeopleController()
 }
