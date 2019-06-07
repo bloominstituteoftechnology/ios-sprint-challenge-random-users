@@ -38,19 +38,11 @@ class PeopleTableViewCell: UITableViewCell {
 				
 				self.peopleImageView.image = img
 			}
-			
-			
 		}.resume()
-		
-		
 	}
-	
 	
 	@IBOutlet var peopleImageView: UIImageView!
 	@IBOutlet var nameLabel: UILabel!
 	var peopleController: PeopleController?
-	var person: Person?  {
-		didSet { setupViews() }
-		
-	}
+	var person: Person?  { didSet { setupViews() } }
 }

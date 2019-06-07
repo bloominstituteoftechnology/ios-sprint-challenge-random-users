@@ -17,13 +17,10 @@ class DetailViewController: UIViewController {
 	
 	func setupView() {
 		guard let person = person else { return }
+		print(person)
 		
 		
-		nameLabel.text = person.name
-		phoneNumberLabel.text = person.phone
-		emailLabel.text = person.email
 		guard let url = URL(string: person.picture[0]) else {return}
-		
 		let shared = URLSession.shared
 		shared.dataTask(with: url) { data, response, error in
 			if let response = response as? HTTPURLResponse {
@@ -44,17 +41,17 @@ class DetailViewController: UIViewController {
 			DispatchQueue.main.async {
 				
 				self.personImageView.image = img
+				self.nameLabel.text = person.name
+				self.phoneNumberLabel.text = person.phone
+				self.emailLabel.text = person.email
 			}
-			
-			
-			}.resume()
+		}.resume()
 	}
-	
 
 	@IBOutlet var personImageView: UIImageView!
 	@IBOutlet var nameLabel: UILabel!
 	@IBOutlet var phoneNumberLabel: UILabel!
 	@IBOutlet var emailLabel: UILabel!
 	
-	var person: Person?
+	var person: Person? { didSet{ setupView() } }
 }
