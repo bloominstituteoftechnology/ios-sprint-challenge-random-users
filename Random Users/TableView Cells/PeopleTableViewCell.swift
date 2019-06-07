@@ -10,8 +10,18 @@ import UIKit
 
 class PeopleTableViewCell: UITableViewCell {
 
-
+	func setupViews() {
+		guard let person = person else { return }
+		
+		nameLabel.text = person.name
+		
+	}
+	
+	
 	@IBOutlet var peopleImageView: UIImageView!
 	@IBOutlet var nameLabel: UILabel!
-	
+	var person: Person?  {
+		didSet { setupViews() }
+		
+	}
 }

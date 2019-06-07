@@ -12,8 +12,12 @@ class PeopleTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		PeopleController().fetch { _ in
+		peopleController.fetch { _ in
 			print("Done Getting data")
+			DispatchQueue.main.async {
+				
+				self.tableView.reloadData()
+			}
 		}
 
 	}
@@ -25,17 +29,19 @@ class PeopleTableViewController: UITableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 10
+		return peopleController.poeple.count
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "PeopleCell", for: indexPath)
 		guard let peopleCell = cell as? PeopleTableViewCell else { return cell }
-		peopleCell.nameLabel.text = "\(indexPath.row)"
+		
+		let person =  peopleController.poeple[indexPath.row]
+		peopleCell.person = person
 		
 		return peopleCell
 	}
 	
 	
-
+	let peopleController = PeopleController()
 }

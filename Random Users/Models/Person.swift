@@ -60,8 +60,10 @@ struct Person: Codable {
 		
 
 
-		name = try nameContainer.decode(String.self, forKey: .first)
-
+		let first  = try nameContainer.decode(String.self, forKey: .first)
+		let last = try nameContainer.decode(String.self, forKey: .last)
+		name = "\(first) \(last)"
+		
 //		let first  = try nameContainer.decode(String.self, forKey: .first)
 //		let last = try nameContainer.decode(String.self, forKey: .last)
 //		name = first + " " + last
