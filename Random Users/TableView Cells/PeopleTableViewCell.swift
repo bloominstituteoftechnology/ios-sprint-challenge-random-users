@@ -15,7 +15,7 @@ class PeopleTableViewCell: UITableViewCell {
 		
 		nameLabel.text = person.name
 		
-		guard let url = URL(string: person.picture) else {return}
+		guard let url = URL(string: person.picture[0]) else {return}
 		
 		let shared = URLSession.shared
 		shared.dataTask(with: url) { data, response, error in
