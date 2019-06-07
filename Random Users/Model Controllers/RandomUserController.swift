@@ -27,7 +27,7 @@ class RandomUserController {
 		NetworkHandler.default.transferMahCodableDatas(with: request) { [weak self] (result: Result<RandomUserResult, NetworkError>) in
 			do {
 				let results = try result.get()
-				self?.users = results.results
+				self?.users = results.results.sorted { $0.lastName < $1.lastName }
 				completion(.success(nil))
 			} catch {
 				NSLog("Error loading random users: \(error)")
