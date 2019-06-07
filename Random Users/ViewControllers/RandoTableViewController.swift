@@ -26,6 +26,13 @@ class RandoTableViewController: UITableViewController {
 		}
 	}
 
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if let dest = segue.destination as? RandoDetailViewController {
+			guard let indexPath = tableView.indexPathForSelectedRow else { return }
+			dest.user = randomUserController.users[indexPath.row]
+		}
+	}
+
 }
 
 // MARK: - TableView Stuff
@@ -36,9 +43,9 @@ extension RandoTableViewController {
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-
+		guard let userCell = cell as? RandoTableViewCell else { return cell }
 		let user = randomUserController.users[indexPath.row]
-		cell.textLabel?.text = user.fullName
-		return cell
+		userCell.user = user
+		return userCell
 	}
 }

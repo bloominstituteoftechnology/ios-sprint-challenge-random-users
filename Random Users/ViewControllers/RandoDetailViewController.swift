@@ -22,7 +22,8 @@ class RandoDetailViewController: UIViewController {
 	}
 
 	private func updateViews() {
-		guard let user = user, isViewLoaded else { return }
+		guard let user = user else { return }
+		loadViewIfNeeded()
 		navigationItem.title = user.fullNameWithTitle
 		emailLabel.text = user.email
 		phoneLabel.text = user.phone
