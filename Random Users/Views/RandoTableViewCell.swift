@@ -17,9 +17,17 @@ class RandoTableViewCell: UITableViewCell {
 	}
 
 	private func updateViews() {
+		resetToPlaceholderImage()
 		textLabel?.text = user?.fullName
 
 		// trigger image load
 	}
 
+	override func prepareForReuse() {
+		resetToPlaceholderImage()
+	}
+
+	private func resetToPlaceholderImage() {
+		imageView?.image = #imageLiteral(resourceName: "skate")
+	}
 }

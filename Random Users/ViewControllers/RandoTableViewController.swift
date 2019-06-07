@@ -32,7 +32,6 @@ class RandoTableViewController: UITableViewController {
 			dest.user = randomUserController.users[indexPath.row]
 		}
 	}
-
 }
 
 // MARK: - TableView Stuff
