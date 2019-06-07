@@ -16,4 +16,30 @@ class ImageFetchOperation: ConcurrentOperation {
     init(with user: User) {
         self.user = user
     }
+    
+    override func start() {
+        self.state = .isExecuting
+        
+        let baseURL = user.pictureUrl
+        let request = URLRequest(url: baseURL)
+        
+        dataTask = URLSession.shared.dataTask(with: request) { (data, _, error) in
+            if let error = error {
+                NSLog("Error fetching image from network: \(error)")
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("Error loading image from network")
+                return
+            }
+            
+            self.imageData = data
+            self.state = .isFinished
+        }
+        
+        dataTask?.resume()
+    }
+    
+    
 }
