@@ -30,6 +30,16 @@ class UserProfileDetailViewController: UIViewController {
     }
     
     private func updateViews() {
+        guard let title = user?.title, let name = user?.name else {
+            return
+        }
+        
+        userNameLabel.text = "\(title) \(name)"
+        phoneLabel.text = user?.phone
+        emailLabel.text = user?.email
+        if let picture = userImage {
+            imageView.image = UIImage(data: picture)
+        }
         
     }
 }
