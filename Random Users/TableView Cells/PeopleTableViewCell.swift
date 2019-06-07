@@ -12,14 +12,23 @@ class PeopleTableViewCell: UITableViewCell {
 
 	func setupViews() {
 		guard let person = person else { return }
-		
-		nameLabel.text = person.name
+		fetchSetImage(with: person)
+//		if let row = row {
+//			print(row)
+//			if let imageData = peopleController?.thumbnailImageCache.value(for: row) {
+//				let img = UIImage(data: imageData)
+//				self.peopleImageView.image = img
+//			} else {
+//				fetchSetImage(with: person)
+//			}
+//		}
+		//nameLabel.text = person.name
 		
 //		if let imageData = peopleController?.thumbnailImageCache.value(for: row) {
 //			let img = UIImage(data: imageData)
 //			self.peopleImageView.image = img
 //		} else {
-			fetchSetImage(with: person)
+			//fetchSetImage(with: person)
 //		}
 	}
 	
