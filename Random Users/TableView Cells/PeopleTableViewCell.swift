@@ -11,12 +11,16 @@ import UIKit
 class PeopleTableViewCell: UITableViewCell {
 
 	func setupViews() {
-		guard let person = person else { return }
+		guard let person = person, let row = row else { return }
 		
 		nameLabel.text = person.name
 		
-		fetchSetImage(with: person)
-		
+		if let imageData = peopleController?.thumbnailImageCache.value(for: row) {
+			let img = UIImage(data: imageData)
+			self.peopleImageView.image = img
+		} else {
+			fetchSetImage(with: person)
+		}
 	}
 	
 	func fetchSetImage(with person: Person) {
@@ -40,7 +44,7 @@ class PeopleTableViewCell: UITableViewCell {
 			let img = UIImage(data: data)
 			
 			DispatchQueue.main.async {
-				
+//				self.peopleController?.thumbnailImageCache.cache(value:)
 				self.peopleImageView.image = img
 			}
 			}.resume()
@@ -50,5 +54,5 @@ class PeopleTableViewCell: UITableViewCell {
 	@IBOutlet var nameLabel: UILabel!
 	var peopleController: PeopleController?
 	var person: Person?  { didSet { setupViews() } }
-	
+	var row: Int?
 }
