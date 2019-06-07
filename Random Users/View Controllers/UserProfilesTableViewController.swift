@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class UserProfileTableViewController: UIViewController {
+class UserProfileTableViewController: UITableViewController {
     // MARK: - Properties
     
     var users: [User] = []
@@ -18,5 +18,28 @@ class UserProfileTableViewController: UIViewController {
     private var cache = Cache<String, User>()
     private var imageOperationQueue = OperationQueue()
     private var imageFetchOperations: [String : ImageFetchOperation] = [:]
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    // MARK: - Data source
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return users.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserProfileCell", for: indexPath) as! UserProfileTableViewCell
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let user = users[indexPath.row]
+        let fetchOperation = imageFetchOperations[user.id]
+        fetchOperation?.cancel()
+    }
+    
 
 }
