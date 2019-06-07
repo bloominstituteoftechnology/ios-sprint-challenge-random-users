@@ -11,9 +11,10 @@ import UIKit
 class RandoDetailViewController: UIViewController {
 
 	@IBOutlet var userImageView: UIImageView!
-	@IBOutlet var emailLabel: UILabel!
-	@IBOutlet var phoneLabel: UILabel!
-	@IBOutlet var cellLabel: UILabel!
+	@IBOutlet var emailButton: UIButton!
+	@IBOutlet var phoneButton: UIButton!
+	@IBOutlet var cellButton: UIButton!
+	@IBOutlet var nameLabel: UILabel!
 
 	var randomUserController: RandomUserController?
 	var user: RandomUser? {
@@ -29,9 +30,10 @@ class RandoDetailViewController: UIViewController {
 		guard let user = user else { return }
 		loadViewIfNeeded()
 		navigationItem.title = user.fullNameWithTitle
-		emailLabel.text = user.email
-		phoneLabel.text = user.phone
-		cellLabel.text = user.cell
+		emailButton.setTitle(user.email, for: .normal)
+		phoneButton.setTitle(user.phone, for: .normal)
+		cellButton.setTitle(user.cell, for: .normal)
+		nameLabel.text = user.fullName
 		userImageView.layer.cornerRadius = userImageView.frame.size.width / 2
 
 		if let imageData = randomUserController?.cache.value(forKey: user.picture.large.hashValue) {
@@ -60,4 +62,20 @@ class RandoDetailViewController: UIViewController {
 		OperationQueue.main.addOperation(completionOp)
 	}
 
+	@IBAction func emailButtonPressed(_ sender: UIButton) {
+		guard let emailString = sender.titleLabel?.text else { return }
+		guard let url = URL(string: "mailto:\(emailString)") else {
+			print("user has illegal characters in their email")
+			return
+		}
+		print("(will open on actual device) opening email app via: \(url)")
+		UIApplication.shared.open(url)
+	}
+
+	@IBAction func phoneButtonPressed(_ sender: UIButton) {
+		guard let phoneString = sender.titleLabel?.text else { return }
+		guard let url = URL(string: "tel://\(phoneString)") else { return }
+		print("(will open on actual device) opening phone app to call via: \(url)")
+		UIApplication.shared.open(url)
+	}
 }

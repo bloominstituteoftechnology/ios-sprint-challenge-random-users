@@ -52,7 +52,7 @@
             </objects>
             <point key="canvasLocation" x="919.20000000000005" y="86.806596701649184"/>
         </scene>
-        <!--FIX ME-->
+        <!--SET ME-->
         <scene sceneID="pdh-DL-Dwo">
             <objects>
                 <viewController id="8ef-sM-7Fd" customClass="RandoDetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
@@ -69,26 +69,38 @@
                                             <constraint firstAttribute="width" secondItem="FUU-UT-Bcx" secondAttribute="height" id="HgR-xV-rpd"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICP-kB-Uuj">
-                                        <rect key="frame" x="0.0" y="343" width="335" height="23"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ud7-tb-egR">
+                                        <rect key="frame" x="0.0" y="343" width="335" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IwZ-M7-boC">
+                                        <rect key="frame" x="0.0" y="377.5" width="335" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="phone" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETn-Mx-ilC">
-                                        <rect key="frame" x="0.0" y="374" width="335" height="20.5"/>
+                                        <state key="normal" title="email"/>
+                                        <connections>
+                                            <action selector="emailButtonPressed:" destination="8ef-sM-7Fd" eventType="touchUpInside" id="zsP-Ua-Mhf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ujG-cH-X6X">
+                                        <rect key="frame" x="0.0" y="420.5" width="335" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cell" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lm7-az-95o">
-                                        <rect key="frame" x="0.0" y="402.5" width="335" height="20.5"/>
+                                        <state key="normal" title="phone"/>
+                                        <connections>
+                                            <action selector="phoneButtonPressed:" destination="8ef-sM-7Fd" eventType="touchUpInside" id="7k2-dR-QCr"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdA-wQ-1Gr">
+                                        <rect key="frame" x="0.0" y="461.5" width="335" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <state key="normal" title="cell"/>
+                                        <connections>
+                                            <action selector="phoneButtonPressed:" destination="8ef-sM-7Fd" eventType="touchUpInside" id="Wum-Sv-fN9"/>
+                                        </connections>
+                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mYo-u7-PuT" userLabel="flexSpace">
-                                        <rect key="frame" x="0.0" y="431" width="335" height="80"/>
+                                        <rect key="frame" x="0.0" y="502.5" width="335" height="8.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
@@ -103,11 +115,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DC2-82-4HD"/>
                     </view>
-                    <navigationItem key="navigationItem" title="FIX ME" id="QE8-ih-oLL"/>
+                    <navigationItem key="navigationItem" title="SET ME" id="QE8-ih-oLL"/>
                     <connections>
-                        <outlet property="cellLabel" destination="Lm7-az-95o" id="bVE-OE-3Ax"/>
-                        <outlet property="emailLabel" destination="ICP-kB-Uuj" id="JSF-CQ-D2Y"/>
-                        <outlet property="phoneLabel" destination="ETn-Mx-ilC" id="6Hk-6D-uR2"/>
+                        <outlet property="cellButton" destination="cdA-wQ-1Gr" id="T7P-cH-egb"/>
+                        <outlet property="emailButton" destination="IwZ-M7-boC" id="ynF-xk-wxu"/>
+                        <outlet property="nameLabel" destination="ud7-tb-egR" id="Cnj-tk-Se9"/>
+                        <outlet property="phoneButton" destination="ujG-cH-X6X" id="sTF-nI-3Vb"/>
                         <outlet property="userImageView" destination="FUU-UT-Bcx" id="2km-qJ-aWr"/>
                     </connections>
                 </viewController>
