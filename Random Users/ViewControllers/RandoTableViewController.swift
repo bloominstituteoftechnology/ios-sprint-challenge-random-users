@@ -13,6 +13,14 @@ class RandoTableViewController: UITableViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		refreshTable()
+
+		tableView.refreshControl = UIRefreshControl()
+		tableView.refreshControl?.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
+	}
+
+	@objc func refreshTable() {
+		tableView.refreshControl?.beginRefreshing()
 		randomUserController.fetchUsers { [weak self] (result: Result<Data?, NetworkError>) in
 			DispatchQueue.main.async {
 				do {
@@ -22,6 +30,7 @@ class RandoTableViewController: UITableViewController {
 					self?.present(alert, animated: true)
 				}
 				self?.tableView.reloadData()
+				self?.tableView.refreshControl?.endRefreshing()
 			}
 		}
 	}
