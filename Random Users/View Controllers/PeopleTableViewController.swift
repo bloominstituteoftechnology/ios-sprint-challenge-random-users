@@ -38,7 +38,7 @@ class PeopleTableViewController: UITableViewController {
 		
 		let person =  peopleController.poeple[indexPath.row]
 		peopleCell.person = person
-		
+		peopleCell.row = indexPath.row
 		return peopleCell
 	}
 	

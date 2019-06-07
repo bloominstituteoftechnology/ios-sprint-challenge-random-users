@@ -11,16 +11,16 @@ import UIKit
 class PeopleTableViewCell: UITableViewCell {
 
 	func setupViews() {
-		guard let person = person, let row = row else { return }
+		guard let person = person else { return }
 		
 		nameLabel.text = person.name
 		
-		if let imageData = peopleController?.thumbnailImageCache.value(for: row) {
-			let img = UIImage(data: imageData)
-			self.peopleImageView.image = img
-		} else {
+//		if let imageData = peopleController?.thumbnailImageCache.value(for: row) {
+//			let img = UIImage(data: imageData)
+//			self.peopleImageView.image = img
+//		} else {
 			fetchSetImage(with: person)
-		}
+//		}
 	}
 	
 	func fetchSetImage(with person: Person) {
