@@ -10,6 +10,8 @@ import UIKit
 
 class UserTableViewController: UITableViewController {
     var listOfUsers: RandomUser?
+    var cache = Cache<String, Data>()
+    var fetchDictionary: [String : FetchThumbnail] = [:]
 
     override func viewDidLoad() {
         
@@ -45,55 +47,14 @@ class UserTableViewController: UITableViewController {
         guard let userForThisCell = listOfUsers?.results[indexPath.row] else { return UITableViewCell()}
 
         cell.textLabel?.text = "\(userForThisCell.name.title) \(userForThisCell.name.first) \(userForThisCell.name.last)"
-        
         loadThumbnail(forCell: cell, forItemAt: indexPath)
         
         
 
         return cell
     }
-    
-    
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
@@ -102,46 +63,58 @@ class UserTableViewController: UITableViewController {
     
     private func loadThumbnail(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         
-        guard let thumbnaillUrl = URL(string: listOfUsers?.results[indexPath.row].picture.thumbnail) else { return }
-        var imageData: Data?
-        let indexPatchForCell = indexPath
-        // TODO: Implement image loading here
+        guard let localUser = listOfUsers?.results[indexPath.row],
+        let thumbnaillUrl = URL(string: (localUser.picture.thumbnail))
+        else { return }
         
-        if let imageData = cache.value(for: photoReference.id) {
-            cell.imageView.image = UIImage(data: imageData)
+        var imageData: Data?
+//        let indexPatchForCell = indexPath
+        let fullName = "\(localUser.name.title) \(localUser.name.first) \(localUser.name.last)"
+        let lock = NSLock()
+        
+        if let imageData = cache.value(for: fullName) {
+            cell.imageView!.image = UIImage(data: imageData)
         } else {
             
-            let fetchImageDataOp = FetchPhotoOperation(marsPhotoReference: photoReference)
+            let fetchThumbnailOp = FetchThumbnail(url: thumbnaillUrl)
             
-            fetchImageDataOp.completionBlock = {
-                self.fetchDictionary.updateValue(fetchImageDataOp, forKey: photoReference.id)
+            fetchThumbnailOp.completionBlock = {
+                lock.lock()
+                self.fetchDictionary.updateValue(fetchThumbnailOp, forKey: fullName)
+                lock.unlock()
             }
             
             let getDataOp = BlockOperation {
-                imageData = fetchImageDataOp.outputImageData
+                lock.lock()
+                imageData = fetchThumbnailOp.thumbnailData
+                lock.unlock()
             }
             
             let cacheImageOp = BlockOperation {
+                lock.lock()
                 guard let data = imageData else { return }
-                self.cache.cache(value: data, for: photoReference.id)
+                self.cache.cache(value: data, for: fullName)
+                lock.unlock()
             }
             
             let displayOp = BlockOperation {
-                indexLock.lock()
-                if fetchImageDataOp.marsPhotoReference.id == photoReference.id {
+                lock.lock()
+                if fetchThumbnailOp.thumbnailURL?.absoluteString == localUser.picture.thumbnail {
                     DispatchQueue.main.async {
                         guard let data = imageData else { return }
-                        cell.imageView.image = UIImage(data: data)
+                        cell.imageView!.image = UIImage(data: data)
                     }
                 }
-                indexLock.unlock()
+                lock.unlock()
             }
             
-            getDataOp.addDependency(fetchImageDataOp)
+            getDataOp.addDependency(fetchThumbnailOp)
             cacheImageOp.addDependency(getDataOp)
             displayOp.addDependency(getDataOp)
             
-            photoFetchQueue.addOperations([fetchImageDataOp, getDataOp, cacheImageOp, displayOp], waitUntilFinished: false)
+            let thumbnailQueue = OperationQueue()
+            thumbnailQueue.maxConcurrentOperationCount = 1
+            thumbnailQueue.addOperations([fetchThumbnailOp, getDataOp, cacheImageOp, displayOp], waitUntilFinished: false)
         }
     }
 

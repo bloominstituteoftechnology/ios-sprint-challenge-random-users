@@ -17,6 +17,7 @@
 		ECA7F5C422AABDA3006995F6 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA7F5C322AABDA3006995F6 /* UserDetailViewController.swift */; };
 		ECA7F5C722AABECC006995F6 /* RandomUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA7F5C622AABECC006995F6 /* RandomUserController.swift */; };
 		ECA7F5CA22AACC8A006995F6 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA7F5C922AACC8A006995F6 /* Cache.swift */; };
+		ECA7F5CC22AACEDC006995F6 /* FetchThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA7F5CB22AACEDC006995F6 /* FetchThumbnail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		ECA7F5C322AABDA3006995F6 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		ECA7F5C622AABECC006995F6 /* RandomUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserController.swift; sourceTree = "<group>"; };
 		ECA7F5C922AACC8A006995F6 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		ECA7F5CB22AACEDC006995F6 /* FetchThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchThumbnail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				ECA7F5C622AABECC006995F6 /* RandomUserController.swift */,
+				ECA7F5CB22AACEDC006995F6 /* FetchThumbnail.swift */,
 			);
 			path = "Model Controller";
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				ECA7F5C422AABDA3006995F6 /* UserDetailViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				ECA7F5C222AABD87006995F6 /* UserTableViewController.swift in Sources */,
+				ECA7F5CC22AACEDC006995F6 /* FetchThumbnail.swift in Sources */,
 				ECA7F5BF22AABD4D006995F6 /* RandomUser.swift in Sources */,
 				ECA7F5C722AABECC006995F6 /* RandomUserController.swift in Sources */,
 			);
