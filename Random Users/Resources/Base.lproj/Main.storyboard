@@ -18,13 +18,54 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="rcQ-HS-31j" customClass="PeopleTableViewCell" customModule="Random_Users" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="80" id="rcQ-HS-31j" customClass="PeopleTableViewCell" customModule="Random_Users" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rcQ-HS-31j" id="fNB-Dr-1Az">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GSQ-eX-K8i">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="79.5"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WkC-0u-dbV">
+                                                    <rect key="frame" x="8" y="8" width="46.5" height="63.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="WkC-0u-dbV" secondAttribute="height" multiplier="25:34" id="zyB-HW-glr"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NeY-Ov-fHj">
+                                                    <rect key="frame" x="62.5" y="29.5" width="270.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="WkC-0u-dbV" firstAttribute="top" secondItem="GSQ-eX-K8i" secondAttribute="top" constant="8" id="Fos-Aa-0rD"/>
+                                                <constraint firstItem="WkC-0u-dbV" firstAttribute="leading" secondItem="GSQ-eX-K8i" secondAttribute="leading" constant="8" id="HCJ-TY-DWt"/>
+                                                <constraint firstAttribute="bottom" secondItem="WkC-0u-dbV" secondAttribute="bottom" constant="8" id="SLj-Jj-vat"/>
+                                                <constraint firstAttribute="trailing" secondItem="NeY-Ov-fHj" secondAttribute="trailing" constant="8" id="ZYd-GU-X0d"/>
+                                                <constraint firstItem="NeY-Ov-fHj" firstAttribute="leading" secondItem="WkC-0u-dbV" secondAttribute="trailing" constant="8" id="hQF-IH-M5U"/>
+                                                <constraint firstItem="NeY-Ov-fHj" firstAttribute="leading" secondItem="WkC-0u-dbV" secondAttribute="trailing" constant="8" id="lhU-Ae-1tP"/>
+                                                <constraint firstItem="NeY-Ov-fHj" firstAttribute="centerY" secondItem="GSQ-eX-K8i" secondAttribute="centerY" id="tua-qN-qyJ"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="GSQ-eX-K8i" firstAttribute="centerY" secondItem="fNB-Dr-1Az" secondAttribute="centerY" id="0Bi-tQ-HVH"/>
+                                        <constraint firstAttribute="bottom" secondItem="GSQ-eX-K8i" secondAttribute="bottom" id="6CG-eP-Ry2"/>
+                                        <constraint firstItem="GSQ-eX-K8i" firstAttribute="centerX" secondItem="fNB-Dr-1Az" secondAttribute="centerX" id="6Ry-s0-qDJ"/>
+                                        <constraint firstItem="GSQ-eX-K8i" firstAttribute="top" secondItem="fNB-Dr-1Az" secondAttribute="top" id="UP4-kq-a87"/>
+                                        <constraint firstItem="GSQ-eX-K8i" firstAttribute="leading" secondItem="fNB-Dr-1Az" secondAttribute="leading" id="gyf-4C-Qle"/>
+                                        <constraint firstAttribute="trailing" secondItem="GSQ-eX-K8i" secondAttribute="trailing" id="vVy-Wh-9wR"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="NeY-Ov-fHj" id="3KT-hb-90l"/>
+                                    <outlet property="peopleImageView" destination="WkC-0u-dbV" id="agI-IP-CWJ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

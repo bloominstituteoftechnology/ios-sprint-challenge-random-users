@@ -11,5 +11,7 @@ import UIKit
 class PeopleTableViewCell: UITableViewCell {
 
 
-
+	@IBOutlet var peopleImageView: UIImageView!
+	@IBOutlet var nameLabel: UILabel!
+	
 }
