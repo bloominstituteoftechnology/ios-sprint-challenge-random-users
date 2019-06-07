@@ -109,6 +109,7 @@ class UserTableViewController: UITableViewController {
                     DispatchQueue.main.async {
                         guard let data = imageData else { return }
                         cell.imageView!.image = UIImage(data: data)
+                        
                     }
                 }
                 lock.unlock()
@@ -126,3 +127,4 @@ class UserTableViewController: UITableViewController {
     }
 
 }
+

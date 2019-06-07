@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="UserCell" textLabel="iST-ec-FlT" imageView="uhJ-eQ-5Wb" style="IBUITableViewCellStyleDefault" id="5AG-XG-WrS">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="UserCell" textLabel="iST-ec-FlT" imageView="IrK-0w-X3P" style="IBUITableViewCellStyleDefault" id="5AG-XG-WrS">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5AG-XG-WrS" id="Y1u-hF-6p5">
@@ -27,14 +27,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iST-ec-FlT">
-                                            <rect key="frame" x="135" y="0.0" width="241" height="43.5"/>
+                                            <rect key="frame" x="79" y="0.0" width="297" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Lambda_Logo_Full" id="uhJ-eQ-5Wb">
-                                            <rect key="frame" x="20" y="0.0" width="100" height="43.5"/>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="2" id="IrK-0w-X3P">
+                                            <rect key="frame" x="20" y="0.0" width="44" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -64,7 +64,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Lambda_Logo_Full" translatesAutoresizingMaskIntoConstraints="NO" id="j6j-DH-2sQ">
-                                <rect key="frame" x="41.5" y="128" width="331" height="331"/>
+                                <rect key="frame" x="41.5" y="127.99999999999997" width="331" height="331.00000000000006"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="j6j-DH-2sQ" secondAttribute="height" multiplier="1:1" id="ITL-6M-Zvi"/>
                                 </constraints>
@@ -133,6 +133,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="2" width="48" height="48"/>
         <image name="Lambda_Logo_Full" width="574" height="249"/>
     </resources>
 </document>
