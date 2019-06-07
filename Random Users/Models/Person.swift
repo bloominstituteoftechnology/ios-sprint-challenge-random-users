@@ -18,7 +18,20 @@ struct Person: Codable, Equatable {
 	let picture: String
 
 	
-	
+	enum CodingKeys: String, CodingKey {
+		case name
+		case picture
+		
+		enum NameCodingKey: String, CodingKey {
+			case name
+		}
+		
+		enum PictureCodingKey: String, CodingKey {
+			case thumbnail
+		}
+		
+		
+	}
 	
 	
 	
