@@ -12,6 +12,8 @@ class PeopleTableViewCell: UITableViewCell {
 
 	func setupViews() {
 		guard let person = person else { return }
+		nameLabel.text = person.name
+		
 		fetchSetImage(with: person)
 //		if let row = row {
 //			print(row)
