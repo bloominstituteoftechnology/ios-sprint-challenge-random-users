@@ -47,5 +47,7 @@ class PeopleController {
 	
 	var baseUrl = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
 	var poeple: [Person] = []
+	var thumbnailImageCache: Cache = Cache<Int, Data>()
+	var largeImageCache: Cache = Cache<Int, Data>()
 	
 }

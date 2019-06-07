@@ -56,4 +56,5 @@ class PeopleTableViewController: UITableViewController {
 	
 	
 	let peopleController = PeopleController()
+	
 }

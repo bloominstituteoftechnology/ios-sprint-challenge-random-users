@@ -53,4 +53,5 @@ class DetailViewController: UIViewController {
 	@IBOutlet var emailLabel: UILabel!
 	
 	var person: Person? { didSet{ setupView() } }
+
 }
