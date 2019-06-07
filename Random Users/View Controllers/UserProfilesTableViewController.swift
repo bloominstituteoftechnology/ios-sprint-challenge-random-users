@@ -65,13 +65,28 @@ class UserProfileTableViewController: UITableViewController {
         }
         
         
+        let updateUIOperation = BlockOperation {
+            if let currentIndexPath = self.tableView.indexPath(for: cell), currentIndexPath != indexPath {
+                NSLog("Cell instance has been reused for a different indexPath")
+                return
+            }
+            
+            if let image = fetchOperation.imageData {
+                user.picture = image
+                cell.userImageView?.image = UIImage(data: image)
+            }
+            cell.userLabel?.text = user.name
+        }
+        
+        cacheOperation.addDependency(fetchOperation)
+        updateUIOperation.addDependency(fetchOperation)
+        
+        imageOperationQueue.addOperation(fetchOperation)
+        imageOperationQueue.addOperation(cacheOperation)
+        OperationQueue.main.addOperation(updateUIOperation)
+        
     }
-    
-    
-    
 }
-
-
 // MARK: - Navigation
 
 extension UserProfileTableViewController {
