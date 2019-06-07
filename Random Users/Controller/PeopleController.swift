@@ -43,13 +43,31 @@ class PeopleController {
 				return
 			}
 		}.resume()
-		
-		
-		
 	}
 	
-	
+	func fetchImage(imageUrl: String, completion: @escaping (Error?) -> ()) {
+		guard let url = URL(string: imageUrl) else {return}
+		
+		let shared = URLSession.shared
+		shared.dataTask(with: url) { data, response, error in
+			if let response = response as? HTTPURLResponse {
+				NSLog("Response Code: \(response.statusCode)")
+			}
+			
+			if let error = error {
+				NSLog("Error fetching data \(error)")
+				completion(error)
+				return
+			}
+			
+			guard let data = data else { return }
+			print(data)
+			
+			completion(nil)
+		}.resume()
+	}
 	
 	var baseUrl = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
 	var poeple: [Person] = []
+	
 }
