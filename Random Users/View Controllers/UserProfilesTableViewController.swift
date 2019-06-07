@@ -95,6 +95,8 @@ extension UserProfileTableViewController {
             let detailVC = segue.destination as! UserProfileDetailViewController
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             let user = users[indexPath.row]
+            detailVC.user = user
+            detailVC.userImage = userImages[user.id]
         }
     }
 }
