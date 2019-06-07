@@ -22,6 +22,22 @@ class UserProfileTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        networkClient.fetchUsers() { users, error in
+            if let error = error {
+                NSLog("Error fetching data from network: \(error)")
+                return
+            }
+            
+            guard let users = users else {
+                NSLog("Error loading users")
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.users = users
+                self.tableView.reloadData()
+            }
+        }
     }
     
     // MARK: - Data source
@@ -32,6 +48,8 @@ class UserProfileTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserProfileCell", for: indexPath) as! UserProfileTableViewCell
+        
+        loadUserImage(for: cell, atIndexPath: indexPath)
         return cell
     }
     

@@ -31,6 +31,10 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ePm-Pd-UXd">
                                                     <rect key="frame" x="0.0" y="0.0" width="89" height="84.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="84.5" id="Fip-CV-DKF"/>
+                                                        <constraint firstAttribute="width" constant="89" id="gMn-9Q-3ZU"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X8a-YD-yN8">
                                                     <rect key="frame" x="97" y="0.0" width="301" height="84.5"/>
@@ -39,6 +43,12 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="X8a-YD-yN8" secondAttribute="trailing" id="5k8-7b-Ce6"/>
+                                                <constraint firstItem="X8a-YD-yN8" firstAttribute="leading" secondItem="ePm-Pd-UXd" secondAttribute="trailing" constant="8" id="8lR-IH-501"/>
+                                                <constraint firstAttribute="bottom" secondItem="X8a-YD-yN8" secondAttribute="bottom" id="FBP-Ea-Wvx"/>
+                                                <constraint firstItem="X8a-YD-yN8" firstAttribute="top" secondItem="FVJ-PT-P2X" secondAttribute="top" id="m6R-SA-Jai"/>
+                                            </constraints>
                                         </stackView>
                                     </subviews>
                                     <constraints>
@@ -51,6 +61,7 @@
                                 <connections>
                                     <outlet property="userImageView" destination="ePm-Pd-UXd" id="iWF-Ph-rEd"/>
                                     <outlet property="userLabel" destination="X8a-YD-yN8" id="KcC-jv-Vqx"/>
+                                    <segue destination="TUB-Hq-SIx" kind="show" identifier="ShowUserDetail" id="dkk-wT-9ea"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -60,9 +71,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Users" id="l4G-ii-0ou"/>
-                    <connections>
-                        <segue destination="TUB-Hq-SIx" kind="show" identifier="ShowUserDetail" id="mpJ-4y-3dz"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6K2-cz-hpt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
