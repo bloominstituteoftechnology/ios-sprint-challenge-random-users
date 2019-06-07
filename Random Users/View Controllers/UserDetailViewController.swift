@@ -9,26 +9,54 @@
 import UIKit
 
 class UserDetailViewController: UIViewController {
+    
+    var localUser: Result? {
+        didSet {
+            updateViews()
+        }
+    }
+    var imageData: Data?
 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        updateViews()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func updateViews() {
+        guard isViewLoaded else {
+            return
+        }
+        guard let localUser = localUser else { return }
+        let fullName = "\(localUser.name.title) \(localUser.name.first) \(localUser.name.last)"
+        guard let url = URL(string: localUser.picture.large) else { return }
+        nameLabel.text = fullName
+        emailLabel.text = localUser.email
+        phoneLabel.text = localUser.phone
+        
+        let fetchImageQueue = OperationQueue()
+        
+        let fetchImageOp = FetchImage(url: url)
+        
+        let getDataOp = BlockOperation {
+            self.imageData = fetchImageOp.imageData
+        }
+        
+        let displayOp = BlockOperation {
+            DispatchQueue.main.async {
+                guard let imageData = self.imageData else { return }
+                self.profileImageView.image = UIImage(data: imageData)
+            }
+        }
+        
+        getDataOp.addDependency(fetchImageOp)
+        displayOp.addDependency(getDataOp)
+        
+        fetchImageQueue.addOperations([fetchImageOp, getDataOp, displayOp], waitUntilFinished: false)
     }
-    */
-
 }

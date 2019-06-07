@@ -56,10 +56,13 @@ class UserTableViewController: UITableViewController {
 
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ShowUserDetail" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let controller = segue.destination as! UserDetailViewController
+                controller.localUser = listOfUsers?.results[indexPath.row]
+            }
+        }
     }
-    */
     
     private func loadThumbnail(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         

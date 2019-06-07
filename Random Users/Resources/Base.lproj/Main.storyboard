@@ -40,7 +40,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="5fJ-M2-GQ5" kind="show" id="Cgs-s0-22P"/>
+                                    <segue destination="5fJ-M2-GQ5" kind="show" identifier="ShowUserDetail" id="Cgs-s0-22P"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
