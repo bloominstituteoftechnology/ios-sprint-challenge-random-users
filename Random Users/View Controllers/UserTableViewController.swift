@@ -53,6 +53,15 @@ class UserTableViewController: UITableViewController {
 
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let localUser = listOfUsers?.results[indexPath.row] else { return }
+        
+        let fullName = "\(localUser.name.title) \(localUser.name.first) \(localUser.name.last)"
+        if let operation = fetchDictionary[fullName] {
+            operation.cancel()
+        }
+    }
 
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -81,12 +90,6 @@ class UserTableViewController: UITableViewController {
             
             let fetchThumbnailOp = FetchThumbnail(url: thumbnaillUrl)
             
-            fetchThumbnailOp.completionBlock = {
-                lock.lock()
-                self.fetchDictionary.updateValue(fetchThumbnailOp, forKey: fullName)
-                lock.unlock()
-            }
-            
             let getDataOp = BlockOperation {
                 lock.lock()
                 imageData = fetchThumbnailOp.thumbnailData
@@ -114,6 +117,7 @@ class UserTableViewController: UITableViewController {
             getDataOp.addDependency(fetchThumbnailOp)
             cacheImageOp.addDependency(getDataOp)
             displayOp.addDependency(getDataOp)
+            fetchDictionary[fullName] = fetchThumbnailOp
             
             let thumbnailQueue = OperationQueue()
             thumbnailQueue.maxConcurrentOperationCount = 1
