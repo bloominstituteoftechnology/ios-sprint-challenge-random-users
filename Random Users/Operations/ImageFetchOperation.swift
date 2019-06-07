@@ -41,5 +41,7 @@ class ImageFetchOperation: ConcurrentOperation {
         dataTask?.resume()
     }
     
-    
+    override func cancel() {
+        dataTask?.cancel()
+    }
 }
