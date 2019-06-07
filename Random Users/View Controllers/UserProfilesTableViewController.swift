@@ -41,5 +41,32 @@ class UserProfileTableViewController: UITableViewController {
         fetchOperation?.cancel()
     }
     
-
+    //Helper Method
+    private func loadUserImage(for cell: UserProfileTableViewCell, atIndexPath indexPath: IndexPath) {
+        var user = users[indexPath.row]
+        
+        if let cachedUser = cache.value(for: user.id) {
+            cell.userLabel?.text = cachedUser.name
+            if let picture = cachedUser.picture {
+                cell.userImageView?.image = UIImage(data: picture)
+            }
+            return
+        }
+        
+        
+        let fetchOperation = ImageFetchOperation(with: user)
+        imageFetchOperations[user.id] = fetchOperation
+        
+        let cacheOperation = BlockOperation {
+            if let image = fetchOperation.imageData {
+                self.userImages[user.id] = image
+            }
+            self.cache.cache(for: user.id, with: user)
+        }
+        
+        
+    }
+    
+    
+    
 }
