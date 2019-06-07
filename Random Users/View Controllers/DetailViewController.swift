@@ -19,8 +19,8 @@ class DetailViewController: UIViewController {
 		guard let person = person else { return }
 		print(person)
 		
-		
-		guard let url = URL(string: person.picture[0]) else {return}
+		//picture = [thumbnail, medium]
+		guard let url = URL(string: person.picture[1]) else {return}
 		let shared = URLSession.shared
 		shared.dataTask(with: url) { data, response, error in
 			if let response = response as? HTTPURLResponse {
