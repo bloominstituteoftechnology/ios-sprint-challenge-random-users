@@ -35,11 +35,15 @@ struct Results: Codable {
 struct Person: Codable {
 	let name: String
 	let picture: String
+	let email: String
+	let phone: String
 
 
 	enum PerosnCodingKeys: String, CodingKey {
 		case name
 		case picture
+		case email
+		case phone
 
 		enum NameCodingKey: String, CodingKey {
 			case first
@@ -66,6 +70,10 @@ struct Person: Codable {
 		
 		let pictureContainer = try container.nestedContainer(keyedBy: PerosnCodingKeys.PictureCodingKey.self, forKey: .picture)
 		picture = try pictureContainer.decode(String.self, forKey: .thumbnail)
+		
+		email = try container.decode(String.self, forKey: .email)
+		phone = try container.decode(String.self, forKey: .phone)
+		
 	}
 
 
