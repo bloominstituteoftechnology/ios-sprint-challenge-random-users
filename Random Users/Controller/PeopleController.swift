@@ -28,8 +28,8 @@ class PeopleController {
 			print(data)
 			
 			do {
-				let peopleDecode = try JSONDecoder().decode([String: Person].self, from: data)
-				print(peopleDecode.values)
+				let peopleDecode = try JSONDecoder().decode(Results.self, from: data)
+				print(peopleDecode.results)
 				
 				completion(nil)
 			} catch {
