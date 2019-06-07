@@ -15,6 +15,11 @@ class PeopleTableViewCell: UITableViewCell {
 		
 		nameLabel.text = person.name
 		
+		fetchSetImage(with: person)
+		
+	}
+	
+	func fetchSetImage(with person: Person) {
 		guard let url = URL(string: person.picture[0]) else {return}
 		
 		let shared = URLSession.shared
@@ -31,18 +36,19 @@ class PeopleTableViewCell: UITableViewCell {
 			
 			guard let data = data else { return }
 			print(data)
-		
+			
 			let img = UIImage(data: data)
 			
 			DispatchQueue.main.async {
 				
 				self.peopleImageView.image = img
 			}
-		}.resume()
+			}.resume()
 	}
 	
 	@IBOutlet var peopleImageView: UIImageView!
 	@IBOutlet var nameLabel: UILabel!
 	var peopleController: PeopleController?
 	var person: Person?  { didSet { setupViews() } }
+	
 }
