@@ -10,7 +10,7 @@ import UIKit
 
 class PeopleController {
 	
-	func fetch(completion: @escaping (Error) -> ()) {
+	func fetch(completion: @escaping (Error?) -> ()) {
 		
 		let shared = URLSession.shared
 		let _ = shared.dataTask(with: baseUrl) { data, response, error in
@@ -26,6 +26,21 @@ class PeopleController {
 			
 			guard let data = data else { return }
 			print(data)
+			
+			do {
+				let peopleDecode = try JSONDecoder().decode(Person.self, from: data)
+				print(peopleDecode)
+				
+				completion(nil)
+			} catch {
+				NSLog("Error Decoding people: \(error)")
+				completion(error)
+				return
+			}
+			
+			
+			
+			
 		}.resume()
 		
 		
