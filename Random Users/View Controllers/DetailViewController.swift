@@ -19,7 +19,7 @@ class DetailViewController: UIViewController {
 		guard let person = person else { return }
 		print(person)
 		
-		//picture = [thumbnail, medium]
+		//picture = [thumbnail, large]
 		guard let url = URL(string: person.picture[1]) else {return}
 		let shared = URLSession.shared
 		shared.dataTask(with: url) { data, response, error in
@@ -39,7 +39,6 @@ class DetailViewController: UIViewController {
 			let img = UIImage(data: data)
 			
 			DispatchQueue.main.async {
-				
 				self.personImageView.image = img
 				self.nameLabel.text = person.name
 				self.phoneNumberLabel.text = person.phone

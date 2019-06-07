@@ -45,9 +45,8 @@ struct Person: Codable {
 		
 		let pictureContainer = try container.nestedContainer(keyedBy: PerosnCodingKeys.PictureCodingKey.self, forKey: .picture)
 		let thumbnail = try pictureContainer.decode(String.self, forKey: .thumbnail)
-		let medium = try pictureContainer.decode(String.self, forKey: .large)
-		picture = [thumbnail, medium]
-		
+		let large = try pictureContainer.decode(String.self, forKey: .large)
+		picture = [thumbnail, large]
 		
 		email = try container.decode(String.self, forKey: .email)
 		phone = try container.decode(String.self, forKey: .phone)
