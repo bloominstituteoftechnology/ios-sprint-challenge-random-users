@@ -34,21 +34,21 @@ struct Results: Codable {
 
 struct Person: Codable {
 	let name: String
-//	let picture: String
+	let picture: String
 
 
 	enum PerosnCodingKeys: String, CodingKey {
 		case name
-//		case picture
+		case picture
 
 		enum NameCodingKey: String, CodingKey {
 			case first
 			case last
 		}
 
-//		enum PictureCodingKey: String, CodingKey {
-//			case thumbnail
-//		}
+		enum PictureCodingKey: String, CodingKey {
+			case thumbnail
+		}
 
 
 	}
@@ -64,12 +64,8 @@ struct Person: Codable {
 		let last = try nameContainer.decode(String.self, forKey: .last)
 		name = "\(first) \(last)"
 		
-//		let first  = try nameContainer.decode(String.self, forKey: .first)
-//		let last = try nameContainer.decode(String.self, forKey: .last)
-//		name = first + " " + last
-//
-//		let pictureContainer = try container.nestedContainer(keyedBy: PerosnCodingKeys.PictureCodingKey.self, forKey: .picture)
-//		picture = try pictureContainer.decode(String.self, forKey: .thumbnail)
+		let pictureContainer = try container.nestedContainer(keyedBy: PerosnCodingKeys.PictureCodingKey.self, forKey: .picture)
+		picture = try pictureContainer.decode(String.self, forKey: .thumbnail)
 	}
 
 

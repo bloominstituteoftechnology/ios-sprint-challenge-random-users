@@ -33,7 +33,9 @@ class PeopleController {
 				let result = peopleDecode.results
 				self.poeple = result
 				
-				
+				for p in self.poeple {
+					print(p.picture)
+				}
 				completion(nil)
 			} catch {
 				NSLog("Error Decoding people: \(error)")
