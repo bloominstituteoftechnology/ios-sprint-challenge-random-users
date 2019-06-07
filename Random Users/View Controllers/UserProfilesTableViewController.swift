@@ -70,3 +70,16 @@ class UserProfileTableViewController: UITableViewController {
     
     
 }
+
+
+// MARK: - Navigation
+
+extension UserProfileTableViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowUserDetail" {
+            let detailVC = segue.destination as! UserProfileDetailViewController
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            let user = users[indexPath.row]
+        }
+    }
+}
