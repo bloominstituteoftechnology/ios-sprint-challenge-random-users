@@ -12,6 +12,9 @@ class PeopleTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		PeopleController().fetch { _ in
+			print("Done Getting data")
+		}
 
 	}
 	
