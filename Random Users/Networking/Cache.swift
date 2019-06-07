@@ -18,4 +18,17 @@ class Cache<Key, Value> where Key: Hashable {
             store[key] = value
         }
     }
+    
+    func value(for key: Key) -> Value? {
+        var value: Value?
+        queue.sync {
+            for item in store {
+                if item.key == key {
+                    value = item.value
+                }
+            }
+        }
+        if let value = value { return value } else { return nil }
+    }
+    
 }
