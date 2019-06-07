@@ -34,7 +34,7 @@ class PeopleController {
 				self.poeple = result
 				
 				for p in self.poeple {
-					print(p.picture)
+					print(p.phone)
 				}
 				completion(nil)
 			} catch {
@@ -42,10 +42,6 @@ class PeopleController {
 				completion(error)
 				return
 			}
-			
-			
-			
-			
 		}.resume()
 		
 		

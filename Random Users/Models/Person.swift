@@ -8,26 +8,6 @@
 
 import Foundation
 
-
-
-
-
-//	{
-//		"name": {
-//			"title": "mr",
-//			"first": "vilho",
-//			"last": "joki"
-//		},
-//		"email": "vilho.joki@example.com",
-//		"phone": "02-686-913",
-//		"picture": {
-//			"large": "https://randomuser.me/api/portraits/men/57.jpg",
-//			"medium": "https://randomuser.me/api/portraits/med/men/57.jpg",
-//			"thumbnail": "https://randomuser.me/api/portraits/thumb/men/57.jpg"
-//		}
-//}
-
-
 struct Results: Codable {
 	let results: [Person]
 }
@@ -37,7 +17,6 @@ struct Person: Codable {
 	let picture: String
 	let email: String
 	let phone: String
-
 
 	enum PerosnCodingKeys: String, CodingKey {
 		case name
@@ -53,17 +32,12 @@ struct Person: Codable {
 		enum PictureCodingKey: String, CodingKey {
 			case thumbnail
 		}
-
-
 	}
 
 	init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: PerosnCodingKeys.self)
 
 		let nameContainer = try container.nestedContainer(keyedBy: PerosnCodingKeys.NameCodingKey.self, forKey: .name)
-		
-
-
 		let first  = try nameContainer.decode(String.self, forKey: .first)
 		let last = try nameContainer.decode(String.self, forKey: .last)
 		name = "\(first) \(last)"
@@ -75,6 +49,4 @@ struct Person: Codable {
 		phone = try container.decode(String.self, forKey: .phone)
 		
 	}
-
-
 }
