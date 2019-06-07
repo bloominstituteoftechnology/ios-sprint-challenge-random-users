@@ -24,6 +24,14 @@ class RandoDetailViewController: UIViewController {
 	}
 	private var photoFetchOp: PhotoFetchOperation?
 
+	override func viewWillLayoutSubviews() {
+		super.viewWillLayoutSubviews()
+		self.userImageView.layer.cornerRadius = self.userImageView.frame.size.width / 2
+		for button in [phoneButton, cellButton, emailButton] {
+			button?.roundCorners()
+		}
+	}
+
 	private func updateViews() {
 		photoFetchOp?.cancel()
 		photoFetchOp = nil
@@ -34,7 +42,6 @@ class RandoDetailViewController: UIViewController {
 		phoneButton.setTitle(user.phone, for: .normal)
 		cellButton.setTitle(user.cell, for: .normal)
 		nameLabel.text = user.fullName
-		userImageView.layer.cornerRadius = userImageView.frame.size.width / 2
 
 		if let imageData = randomUserController?.cache.value(forKey: user.picture.large.hashValue) {
 			userImageView.image = UIImage(data: imageData)
@@ -77,5 +84,12 @@ class RandoDetailViewController: UIViewController {
 		guard let url = URL(string: "tel://\(phoneString)") else { return }
 		print("(will open on actual device) opening phone app to call via: \(url)")
 		UIApplication.shared.open(url)
+	}
+}
+
+
+extension UIButton {
+	func roundCorners(radius: CGFloat = 10) {
+		self.layer.cornerRadius = 10
 	}
 }

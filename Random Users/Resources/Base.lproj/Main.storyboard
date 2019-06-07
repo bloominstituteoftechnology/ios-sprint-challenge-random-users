@@ -77,24 +77,33 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IwZ-M7-boC">
                                         <rect key="frame" x="0.0" y="377.5" width="335" height="35"/>
+                                        <color key="backgroundColor" red="0.1111316904425621" green="0.54296040534973145" blue="0.95819979906082153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                        <state key="normal" title="email"/>
+                                        <state key="normal" title="email">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="emailButtonPressed:" destination="8ef-sM-7Fd" eventType="touchUpInside" id="zsP-Ua-Mhf"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ujG-cH-X6X">
                                         <rect key="frame" x="0.0" y="420.5" width="335" height="33"/>
+                                        <color key="backgroundColor" red="0.073978669941425323" green="0.76000779867172241" blue="0.18398895859718323" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="phone"/>
+                                        <state key="normal" title="phone">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="phoneButtonPressed:" destination="8ef-sM-7Fd" eventType="touchUpInside" id="7k2-dR-QCr"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdA-wQ-1Gr">
                                         <rect key="frame" x="0.0" y="461.5" width="335" height="33"/>
+                                        <color key="backgroundColor" red="0.073978669941425323" green="0.76000779867172241" blue="0.18398895859718323" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="cell"/>
+                                        <state key="normal" title="cell">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="phoneButtonPressed:" destination="8ef-sM-7Fd" eventType="touchUpInside" id="Wum-Sv-fN9"/>
                                         </connections>
