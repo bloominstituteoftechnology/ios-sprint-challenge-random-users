@@ -29,6 +29,10 @@ class PeopleController {
 			
 			do {
 				let peopleDecode = try JSONDecoder().decode(Results.self, from: data)
+				
+				for perosn in peopleDecode.results {
+					print(perosn.name)
+				}
 				print(peopleDecode.results)
 				
 				completion(nil)

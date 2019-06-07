@@ -33,7 +33,7 @@ struct Results: Codable {
 }
 
 struct Person: Codable {
-//	let name: [String]
+	let name: String
 //	let picture: String
 
 
@@ -57,11 +57,10 @@ struct Person: Codable {
 		let container = try decoder.container(keyedBy: PerosnCodingKeys.self)
 
 		let nameContainer = try container.nestedContainer(keyedBy: PerosnCodingKeys.NameCodingKey.self, forKey: .name)
+		
 
 
-
-//		name = []
-
+		name = try nameContainer.decode(String.self, forKey: .first)
 
 //		let first  = try nameContainer.decode(String.self, forKey: .first)
 //		let last = try nameContainer.decode(String.self, forKey: .last)
