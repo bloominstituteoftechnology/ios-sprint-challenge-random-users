@@ -13,7 +13,7 @@ class RandomUserController {
 	var users = [RandomUser]()
 	let cache = Cache<Int, Data>()
 
-	var userRequestCount = 1000
+	var userRequestCount = 5000
 	private let baseURL = URL(string: "https://randomuser.me/api/")!
 	func fetchUsers(completion: @escaping (Result<Data?, NetworkError>) -> Void = {_ in }) {
 		let query = URLQueryItem(name: "results", value: "\(userRequestCount)")
