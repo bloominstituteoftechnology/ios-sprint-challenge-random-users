@@ -32,9 +32,9 @@ class UserProfileDetailViewController: UIViewController {
     private func updateViews() {
         guard let name = user?.name, isViewLoaded else { return }
         
-        userNameLabel.text = "\(name)"
-        phoneLabel.text = user?.phone
-        emailLabel.text = user?.email
+        userNameLabel.text = "Name: \(name)"
+        phoneLabel.text = "Phone: \(user?.phone ?? "")"
+        emailLabel.text = "Email: \(user?.email ?? "")"
         
         if let picture = userImage {
             imageView?.image = UIImage(data: picture)
