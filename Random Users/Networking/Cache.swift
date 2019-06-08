@@ -11,7 +11,7 @@ import Foundation
 class Cache<Key, Value> where Key: Hashable {
     
     private var store: [Key:Value] = [:]
-    private var queue: DispatchQueue = DispatchQueue(label: "com.victor.user.cache")
+    private var queue: DispatchQueue = DispatchQueue(label: "com.Victor.user.cache")
     
     func cache(for key: Key, with value: Value) {
         queue.sync {
