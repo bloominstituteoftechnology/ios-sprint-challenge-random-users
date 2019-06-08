@@ -85,13 +85,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSd-ex-r9g">
-                                <rect key="frame" x="82" y="358" width="250" height="20.333333333333314"/>
+                                <rect key="frame" x="20" y="358" width="374" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sx0-1m-W7U">
-                                <rect key="frame" x="82" y="423" width="250" height="20"/>
+                                <rect key="frame" x="20" y="423" width="374" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -99,11 +99,11 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C37-IF-Km1">
                                 <rect key="frame" x="82" y="64" width="250" height="243"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="243" id="FLy-pb-llU"/>
+                                    <constraint firstAttribute="height" constant="243" id="zzh-Xz-Q9T"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcX-5u-qbp">
-                                <rect key="frame" x="82" y="493" width="250" height="20"/>
+                                <rect key="frame" x="20" y="493" width="374" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -111,18 +111,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="sx0-1m-W7U" firstAttribute="leading" secondItem="lfb-FJ-Pe5" secondAttribute="leading" constant="82" id="2z4-ng-sqv"/>
-                            <constraint firstItem="sx0-1m-W7U" firstAttribute="top" secondItem="cSd-ex-r9g" secondAttribute="bottom" constant="44.670000000000002" id="Bde-rP-RzD"/>
-                            <constraint firstItem="C37-IF-Km1" firstAttribute="top" secondItem="lfb-FJ-Pe5" secondAttribute="top" id="Hwx-WA-KfQ"/>
-                            <constraint firstItem="cSd-ex-r9g" firstAttribute="leading" secondItem="lfb-FJ-Pe5" secondAttribute="leading" constant="82" id="PCn-Uh-0qZ"/>
-                            <constraint firstItem="cSd-ex-r9g" firstAttribute="top" secondItem="C37-IF-Km1" secondAttribute="bottom" constant="51" id="PuL-A8-aVe"/>
-                            <constraint firstItem="NcX-5u-qbp" firstAttribute="top" secondItem="sx0-1m-W7U" secondAttribute="bottom" constant="50" id="UAU-2x-ne2"/>
-                            <constraint firstItem="C37-IF-Km1" firstAttribute="leading" secondItem="lfb-FJ-Pe5" secondAttribute="leading" constant="82" id="kBW-4T-Rnx"/>
-                            <constraint firstItem="lfb-FJ-Pe5" firstAttribute="trailing" secondItem="cSd-ex-r9g" secondAttribute="trailing" constant="82" id="kzQ-wD-cA4"/>
-                            <constraint firstItem="lfb-FJ-Pe5" firstAttribute="trailing" secondItem="C37-IF-Km1" secondAttribute="trailing" constant="82" id="pqc-pV-EoJ"/>
-                            <constraint firstItem="NcX-5u-qbp" firstAttribute="leading" secondItem="lfb-FJ-Pe5" secondAttribute="leading" constant="82" id="uxN-z2-ZYt"/>
-                            <constraint firstItem="lfb-FJ-Pe5" firstAttribute="trailing" secondItem="sx0-1m-W7U" secondAttribute="trailing" constant="82" id="vZ4-WU-g6Z"/>
-                            <constraint firstItem="lfb-FJ-Pe5" firstAttribute="trailing" secondItem="NcX-5u-qbp" secondAttribute="trailing" constant="82" id="yjo-L6-f73"/>
+                            <constraint firstItem="lfb-FJ-Pe5" firstAttribute="trailing" secondItem="C37-IF-Km1" secondAttribute="trailing" constant="82" id="0Rf-cW-dMv"/>
+                            <constraint firstItem="sx0-1m-W7U" firstAttribute="top" secondItem="cSd-ex-r9g" secondAttribute="bottom" constant="45" id="41R-0j-SP5"/>
+                            <constraint firstItem="lfb-FJ-Pe5" firstAttribute="trailing" secondItem="sx0-1m-W7U" secondAttribute="trailing" constant="20" id="5Tf-D8-c9L"/>
+                            <constraint firstItem="NcX-5u-qbp" firstAttribute="leading" secondItem="lfb-FJ-Pe5" secondAttribute="leading" constant="20" id="Bdc-62-lDh"/>
+                            <constraint firstItem="cSd-ex-r9g" firstAttribute="top" secondItem="C37-IF-Km1" secondAttribute="bottom" constant="51" id="RAl-K5-Q5T"/>
+                            <constraint firstItem="sx0-1m-W7U" firstAttribute="leading" secondItem="lfb-FJ-Pe5" secondAttribute="leading" constant="20" id="VJ3-H2-9Ew"/>
+                            <constraint firstItem="lfb-FJ-Pe5" firstAttribute="trailing" secondItem="NcX-5u-qbp" secondAttribute="trailing" constant="20" id="Vtx-0I-UAI"/>
+                            <constraint firstItem="cSd-ex-r9g" firstAttribute="leading" secondItem="lfb-FJ-Pe5" secondAttribute="leading" constant="20" id="W1q-9U-6Xl"/>
+                            <constraint firstItem="C37-IF-Km1" firstAttribute="leading" secondItem="lfb-FJ-Pe5" secondAttribute="leading" constant="82" id="h0Y-Jd-ddm"/>
+                            <constraint firstItem="NcX-5u-qbp" firstAttribute="top" secondItem="sx0-1m-W7U" secondAttribute="bottom" constant="50" id="ib5-1b-eDz"/>
+                            <constraint firstItem="lfb-FJ-Pe5" firstAttribute="trailing" secondItem="cSd-ex-r9g" secondAttribute="trailing" constant="20" id="rDK-yp-iey"/>
+                            <constraint firstItem="C37-IF-Km1" firstAttribute="top" secondItem="lfb-FJ-Pe5" secondAttribute="top" id="tem-At-gd1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lfb-FJ-Pe5"/>
                     </view>
