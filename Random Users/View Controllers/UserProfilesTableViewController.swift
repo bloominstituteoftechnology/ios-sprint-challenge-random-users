@@ -85,7 +85,7 @@ class UserProfileTableViewController: UITableViewController {
         
         let updateUIOperation = BlockOperation {
             if let currentIndexPath = self.tableView.indexPath(for: cell), currentIndexPath != indexPath {
-                NSLog("Cell instance has been reused for a different indexPath")
+                NSLog("Updated error")
                 return
             }
             
