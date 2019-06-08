@@ -104,10 +104,7 @@ class UserProfileTableViewController: UITableViewController {
         OperationQueue.main.addOperation(updateUIOperation)
         
     }
-}
-// MARK: - Navigation
-
-extension UserProfileTableViewController {
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowUserDetail" {
             let detailVC = segue.destination as! UserProfileDetailViewController

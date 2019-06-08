@@ -31,5 +31,9 @@ class UserProfileDetailViewController: UIViewController {
         userNameLabel.text = user.name
         phoneLabel.text = user.phone
         emailLabel.text = user.email
+        
+        if let picture = userImage {
+            imageView?.image = UIImage(data: picture)
+        }
     }
 }
