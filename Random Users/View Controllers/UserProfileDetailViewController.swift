@@ -11,13 +11,9 @@ import UIKit
 class UserProfileDetailViewController: UIViewController {
     // MARK: - Properties
     
-    var user: User? {
-        didSet {
-            updateViews()
-        }
-    }
-    
+    var user: User?
     var userImage: Data?
+    
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
@@ -30,16 +26,10 @@ class UserProfileDetailViewController: UIViewController {
     }
     
     private func updateViews() {
-        guard let title = user?.title, let name = user?.name else {
-            return
-        }
+        guard let user = user else { return }
         
-        userNameLabel.text = "\(title) \(name)"
-        phoneLabel.text = user?.phone
-        emailLabel.text = user?.email
-        if let picture = userImage {
-            imageView.image = UIImage(data: picture)
-        }
-        
+        userNameLabel.text = user.name
+        phoneLabel.text = user.phone
+        emailLabel.text = user.email
     }
 }
