@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PersonsTableViewController: UITableViewController {
+class UsersTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
