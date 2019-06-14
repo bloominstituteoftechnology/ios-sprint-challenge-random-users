@@ -22,10 +22,8 @@ class UserDetailViewController: UIViewController {
     }
 	
 	override func didMove(toParentViewController parent: UIViewController?) {
-		
 		if parent == nil {
-			print("The back button was pressed")
-			
+			fetchPhotoOperations?.cancel()
 		}
 	}
 	
@@ -63,6 +61,7 @@ class UserDetailViewController: UIViewController {
 		
 		photoFetchQueue.addOperations([fetchPhotoOperation,storeToCache], waitUntilFinished: false)
 		OperationQueue.main.addOperation(setImageOp)
+		fetchPhotoOperations = fetchPhotoOperation
 	}
 	
 	
@@ -73,4 +72,5 @@ class UserDetailViewController: UIViewController {
 	var userIndex: Int?
 	var userController: UserController?
 	private let photoFetchQueue = OperationQueue()
+	var fetchPhotoOperations: FetchPhotoOperation?
 }
