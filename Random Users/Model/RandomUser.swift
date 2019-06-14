@@ -46,7 +46,9 @@ struct RandomUser: Equatable, Decodable {
         let title = try nameContainer.decode(String.self, forKey: .title)
         let first = try nameContainer.decode(String.self, forKey: .first)
         let last = try nameContainer.decode(String.self, forKey: .last)
-        let name = "\(title). \(first) \(last)"
+        let titleTypes: [String] = ["mrs", "ms", "mr"]
+        let titlePuctuation = titleTypes.contains(title)  ?  "." : ""
+        let name = "\(title.firstCapitalized)\(titlePuctuation) \(first.firstCapitalized) \(last.firstCapitalized)"
         
         // Decode phone number
         let phoneNumber = try container.decode(String.self, forKey: .phoneNumber)
@@ -79,4 +81,10 @@ struct RandomUsers: Decodable {
     }
     
     var randomUsers: [RandomUser]
+}
+
+extension String {
+    var firstCapitalized: String {
+        return prefix(1).capitalized + dropFirst()
+    }
 }

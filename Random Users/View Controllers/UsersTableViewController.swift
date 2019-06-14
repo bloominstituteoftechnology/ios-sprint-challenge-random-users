@@ -19,24 +19,65 @@ class UsersTableViewController: UITableViewController {
     
 
     // MARK: - Table view data source
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.randomUsers?.count ?? 0
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RandomUserCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RandomUserCell", for: indexPath) as! UsersTableViewCell
 
-        // Configure the cell...
+        let randomUser = randomUsers?[indexPath.row]
+        cell.userNameLabel.text = randomUser?.name
+        
+        
+        
 
         return cell
     }
+    
+    // Cancel operation
+//    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        <#code#>
+//    }
+    
+    
+    private func loadImage(forCell cell: UsersTableViewCell, forItemAt indexPath: IndexPath) {
+        
+        guard let randomUser = randomUsers?[indexPath.row],
+            let phoneNumber = randomUser.phoneNumber else { return }
+        
+        if let image = cache.value(for: phoneNumber) {
+            cell.userImageView?.image = image[.thumbnail]
+        } else {
+            let thumbnailOperation = ThumbnailFetch(randomUser: randomUser)
+            let storeOperation = BlockOperation {
+                guard let image = thumbnailOperation.thumbnailImage else { return }
+                self.cache.cache(value: [.thumbnail: image], for: phoneNumber)
+            }
+            let nonReusedOperation = BlockOperation {
+                guard let image = thumbnailOperation.thumbnailImage else { return }
+                if indexPath == self.tableView.indexPath(for: cell) {
+                    cell.userImageView.image = image
+                }
+            }
+            
+            storeOperation.addDependency(thumbnailOperation)
+            nonReusedOperation.addDependency(thumbnailOperation)
+            
+            randomUserFetchQueue.addOperations([thumbnailOperation, storeOperation], waitUntilFinished: false)
+            OperationQueue.main.addOperation(nonReusedOperation)
+            activeOperations[phoneNumber] = [.thumbnail: thumbnailOperation]
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
 
     /*
     // MARK: - Navigation
@@ -77,3 +118,5 @@ class UsersTableViewController: UITableViewController {
     
 
 }
+
+
