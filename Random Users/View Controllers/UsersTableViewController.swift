@@ -9,34 +9,38 @@
 import UIKit
 
 class UsersTableViewController: UITableViewController {
-
+    
     // MARK: - View Loading
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userController.fetchUsers()
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
+        userController.fetchUsers { (error) in
+            if let error = error {
+                NSLog("Error fetching users: \(error)")
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userController.users.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
         let user = userController.users[indexPath.row]
         cell.textLabel?.text = user.name
-        loadThumbnail(for: cell, forItemAt: indexPath)
+        loadThumbnail(for: cell, of: user, forItemAt: indexPath)
         return cell
     }
     
     // MARK: - Methods
     
-    func loadThumbnail(for cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+    func loadThumbnail(for cell: UserTableViewCell, of user: User, forItemAt indexPath: IndexPath) {
         let user = userController.users[indexPath.row]
         if let cachedThumbnail = cache.value(for: user.email) {
             cell.imageView?.image = cachedThumbnail
@@ -61,10 +65,10 @@ class UsersTableViewController: UITableViewController {
             fetchedOperations[user.email] = fetchThumbnailOperation
         }
     }
-
-
+    
+    
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DetailSegue" {
             guard let userDetailVC = segue.destination as? UserDetailViewController else { return }
@@ -80,5 +84,5 @@ class UsersTableViewController: UITableViewController {
     let photoFetchQueue = OperationQueue()
     var fetchedOperations: [String : FetchThumbnailPhotoOperation] = [:]
     private let cache = Cache<String, UIImage>()
-
+    
 }
