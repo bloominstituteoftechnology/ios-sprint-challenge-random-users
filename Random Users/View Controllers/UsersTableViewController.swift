@@ -12,12 +12,20 @@ class UsersTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+		userController.fetchUsers { error in
+			if let error = error {
+				print("Error fetching usuer: \(error)")
+			}
+			DispatchQueue.main.async {
+				print(self.userController.users.count)
+				self.tableView.reloadData()
+			}
+		}
 	}
 	
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 10
+		return userController.users.count
 	}
 	
 	
@@ -25,7 +33,9 @@ class UsersTableViewController: UITableViewController {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
 		guard let userCell = cell as? UserTableViewCell else { return  cell }
 		
-		userCell.nameLabel?.text = "\(indexPath.row)"
+		
+		let user = userController.users[indexPath.row]
+		userCell.nameLabel?.text = user.name
 		
 		return  userCell
 		

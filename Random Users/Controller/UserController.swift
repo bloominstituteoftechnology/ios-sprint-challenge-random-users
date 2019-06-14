@@ -12,7 +12,7 @@ import Foundation
 class UserController {
 	
 	init() {
-		fetchUsers { _ in}
+		
 	}
 	
 	
@@ -26,6 +26,8 @@ class UserController {
 			
 			if let error = error {
 				print("fetchUsers Error: \(error)")
+				completion(error)
+				return
 			}
 			
 			guard let data = data else { return }
@@ -33,16 +35,16 @@ class UserController {
 			
 			do {
 				let decoded = try JSONDecoder().decode(Results.self, from: data)
-				print(decoded.results)
+				self.users = decoded.results
+				completion(nil)
 			} catch {
 				print("Error decoding json: \(error)")
+				completion(error)
 			}
 			
 			
-			
 		}.resume()
-		
-		
+
 	}
 	
 	
