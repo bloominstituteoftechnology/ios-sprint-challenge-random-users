@@ -12,6 +12,9 @@ class UsersTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		photoFetchQueue.name = "com.RandomeUsers.PhotFectchQueue"
+		
 		userController.fetchUsers { error in
 			if let error = error {
 				print("Error fetching usuer: \(error)")
@@ -33,16 +36,19 @@ class UsersTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
 		guard let userCell = cell as? UserTableViewCell else { return  cell }
+		
 		let user = userController.users[indexPath.row]
 		userCell.nameLabel?.text = user.name
 		
-		
+		loadImage(forCell: userCell, forItemAt: indexPath)
 		
 		return  userCell
-		
 	}
 	
 	private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
+		
+		
+		
 		
 	}
 	
@@ -64,4 +70,7 @@ class UsersTableViewController: UITableViewController {
 	
 	
 	let userController = UserController()
+	var thumbnailCache = Cache<Int, Data>()
+	var fetchPhotoOperations: [Int: FetchPhotoOperation] = [:]
+	private let photoFetchQueue = OperationQueue()
 }
