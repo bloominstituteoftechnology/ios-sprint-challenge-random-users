@@ -13,13 +13,10 @@ class UsersTableViewController: UITableViewController {
     // MARK: - View Loading
     
     override func viewDidLoad() {
-        userController.fetchUsers { (error) in
-            if let error = error {
-                NSLog("Error fetching users: \(error)")
-            }
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+        super.viewDidLoad()
+        userController.fetchUsers()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
     }
 
@@ -33,13 +30,13 @@ class UsersTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
         let user = userController.users[indexPath.row]
         cell.textLabel?.text = user.name
-        load(for: cell, forItemAt: indexPath)
+        loadThumbnail(for: cell, forItemAt: indexPath)
         return cell
     }
     
     // MARK: - Methods
     
-    func load(for cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+    func loadThumbnail(for cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         let user = userController.users[indexPath.row]
         if let cachedThumbnail = cache.value(for: user.email) {
             cell.imageView?.image = cachedThumbnail

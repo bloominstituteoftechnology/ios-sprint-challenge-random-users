@@ -15,7 +15,7 @@ class UserDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let user = user else { return }
-        load(for: user)
+        loadLargeImage(for: user)
         nameLabel.text = user.name
         phoneLabel.text = user.phone
         emailLabel.text = user.email
@@ -24,7 +24,7 @@ class UserDetailViewController: UIViewController {
 
     // MARK: - Methods
     
-    func load(for user: User) {
+    func loadLargeImage(for user: User) {
         if let cachedLargeImage = cache.value(for: user.email) {
             largeImageView?.image = cachedLargeImage
         } else {
@@ -48,8 +48,8 @@ class UserDetailViewController: UIViewController {
     
     // MARK: - Properties & Outlets
     
-    var user: User?
-    var userController: UserController?
+    var user: User? 
+    var userController = UserController()
     let photoFetchQueue = OperationQueue()
     var fetchedOperations: [String : FetchLargePhotoOperation] = [:]
     private let cache = Cache<String, UIImage>()
