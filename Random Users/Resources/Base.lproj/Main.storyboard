@@ -13,13 +13,13 @@
         <!--Users-->
         <scene sceneID="ks7-Jb-ZzE">
             <objects>
-                <tableViewController id="MO2-eR-4kx" sceneMemberID="viewController">
+                <tableViewController id="MO2-eR-4kx" customClass="UsersListTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="YU6-VC-xqW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="129" id="8fK-sJ-fvH">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="129" id="8fK-sJ-fvH" customClass="UsersTableViewCell" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="129"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8fK-sJ-fvH" id="PIv-Fd-11A">
@@ -50,6 +50,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="myImageView" destination="AhO-aE-pHJ" id="Oed-6Y-7LC"/>
+                                    <outlet property="nameLabel" destination="wes-4N-wpc" id="Lyh-AI-JYm"/>
                                     <segue destination="bmS-eo-War" kind="show" identifier="CellSegue" id="RLc-cv-MXd"/>
                                 </connections>
                             </tableViewCell>
@@ -67,10 +69,10 @@
             </objects>
             <point key="canvasLocation" x="508.69565217391306" y="121.875"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail User View Controller-->
         <scene sceneID="6vx-7E-1Ui">
             <objects>
-                <viewController id="bmS-eo-War" sceneMemberID="viewController">
+                <viewController id="bmS-eo-War" customClass="DetailUserViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D1b-W9-647">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
