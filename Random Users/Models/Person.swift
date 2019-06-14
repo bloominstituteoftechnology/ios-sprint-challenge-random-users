@@ -57,7 +57,7 @@ struct Person: Decodable {
         let title = try nameContainer.decode(String.self, forKey: .title)
         let firstName = try nameContainer.decode(String.self, forKey: .first)
         let lastName = try nameContainer.decode(String.self, forKey: .last)
-        let name = ("\(title) \(firstName) \(lastName)")
+        let name = ("\(title.capitalized) \(firstName.capitalized) \(lastName.capitalized)")
         
         let pictureContainer = try container.nestedContainer(keyedBy: CodingKeys.PictureCodingKeys.self, forKey: .picture)
         let thumbnail = try pictureContainer.decode(String.self, forKey: .thumbnail)
