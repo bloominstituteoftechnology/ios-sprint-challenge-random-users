@@ -13,7 +13,7 @@
         <!--Users-->
         <scene sceneID="Zk7-kh-NM8">
             <objects>
-                <tableViewController id="X87-ec-fRe" sceneMemberID="viewController">
+                <tableViewController id="X87-ec-fRe" customClass="UsersTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Mxc-5k-J3k">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,15 +42,15 @@
             </objects>
             <point key="canvasLocation" x="1000.8" y="104.7976011994003"/>
         </scene>
-        <!--View Controller-->
+        <!--User Detail View Controller-->
         <scene sceneID="Waw-qJ-rbK">
             <objects>
-                <viewController id="r2o-fH-UOj" sceneMemberID="viewController">
+                <viewController id="r2o-fH-UOj" customClass="UserDetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oMe-cf-yfs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BWF-U9-zRD">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BWF-U9-zRD">
                                 <rect key="frame" x="67" y="72" width="241" height="324"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ttw-XH-zkp">
@@ -91,6 +91,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gcP-Tx-T9P"/>
                     </view>
+                    <connections>
+                        <outlet property="emailLabel" destination="4v0-5M-w7R" id="mBb-AM-JXw"/>
+                        <outlet property="largeImageView" destination="Ttw-XH-zkp" id="I0u-fv-gNF"/>
+                        <outlet property="nameLabel" destination="OLs-Yw-1yy" id="l9N-zX-joo"/>
+                        <outlet property="phoneLabel" destination="DNC-IO-mpc" id="qyd-tZ-4Py"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IWx-Ue-oJC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -8,25 +8,81 @@
 
 import Foundation
 
-class Results: Codable, Equatable {
-    let results: String
+struct RandomUsers: Codable {
+    let results: [User]
+    
+    enum UsersKeys: String, CodingKey {
+        case results
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: UsersKeys.self)
+        let results = try container.decode([User].self, forKey: .results)
+        
+        self.results = results
+    }
 }
 
-class User: Results, Codable, Equatable {
-    let name: Name
-    let email: String
-    let phone: String
-    let picture: Picture
+struct User: Codable {
+    var name: String // name has nested properties: title, first, last
+    var email: String
+    var phone: String
+    var largeImageURL: URL // large is nested in picture
+    var thumbnailImageURL: URL // thumbnail is nested in picture
+    
+    enum UserKeys: String, CodingKey {
+        case name
+        case email
+        case phone
+        case picture
+        
+        enum NameKeys: String, CodingKey {
+            case title
+            case first
+            case last
+        }
+        
+        enum PictureKeys: String, CodingKey {
+            case large
+            case thumbnail
+        }
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: UserKeys.self)
+        let nameContainer = try container.nestedContainer(keyedBy: UserKeys.NameKeys.self, forKey: .name)
+        let title = try nameContainer.decode(String.self, forKey: .title)
+        let first = try nameContainer.decode(String.self, forKey: .first)
+        let last = try nameContainer.decode(String.self, forKey: .last)
+        let name = title + "" + first + "" + last
+        let email = try container.decode(String.self, forKey: .email)
+        let phone = try container.decode(String.self, forKey: .email)
+        let imageContainer = try container.nestedContainer(keyedBy: UserKeys.PictureKeys.self, forKey: .picture)
+        let largeImageURL = try imageContainer.decode(URL.self, forKey: .large)
+        let thumbnailImageURL = try imageContainer.decode(URL.self, forKey: .thumbnail)
+        
+        self.name = name
+        self.email = email
+        self.phone = phone
+        self.largeImageURL = largeImageURL
+        self.thumbnailImageURL = thumbnailImageURL
+    }
+    
 }
 
-class Name: Codable, Equatable {
-    let title: String
-    let first: String
-    let last: String
-}
-
-class Picture: Codable, Equatable {
-    let large: String
-    let thumbnail: String
-}
-
+// JSON result
+//"results": [
+//    {
+//        "name": {
+//            "title": "mr",
+//            "first": "rolf",
+//            "last": "hegdal"
+//            },
+//        "email": "rolf.hegdal@example.com",
+//        "phone": "66976498",
+//        "picture": {
+//            "large": "https://randomuser.me/api/portraits/men/65.jpg",
+//            "thumbnail": "https://randomuser.me/api/portraits/thumb/men/65.jpg"
+//            }
+//    }
+//]

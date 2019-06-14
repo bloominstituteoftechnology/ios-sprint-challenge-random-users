@@ -10,10 +10,21 @@ import UIKit
 
 class UserDetailViewController: UIViewController {
 
+    // MARK: - View Loading
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
 
+    // MARK: - Methods
+    
+    // MARK: - Properties & Outlets
+    
+    @IBOutlet weak var largeImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    
 
 }
