@@ -37,6 +37,7 @@ class UserController {
                     NSLog("Error decoding user: \(error)")
                     completion(error)
                 }
+            completion(nil)
             }.resume()
     }
 }

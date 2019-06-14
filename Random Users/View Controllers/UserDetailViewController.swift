@@ -49,7 +49,7 @@ class UserDetailViewController: UIViewController {
     // MARK: - Properties & Outlets
     
     var user: User? 
-    var userController = UserController()
+    var userController: UserController?
     let photoFetchQueue = OperationQueue()
     var fetchedOperations: [String : FetchLargePhotoOperation] = [:]
     private let cache = Cache<String, UIImage>()
