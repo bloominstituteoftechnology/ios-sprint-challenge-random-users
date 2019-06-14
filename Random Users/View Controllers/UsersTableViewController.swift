@@ -15,10 +15,6 @@ class UsersTableViewController: UITableViewController {
     // MARK: -View states
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Load the data
-
-
     }
     
 
