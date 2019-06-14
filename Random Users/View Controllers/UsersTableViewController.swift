@@ -32,6 +32,7 @@ class UsersTableViewController: UITableViewController {
         let randomUser = randomUsers?[indexPath.row]
         
         // Get the user name
+       // cell.userNameLabel.text = randomUser?.name
         cell.userNameLabel.text = randomUser?.name
         
         // Get the user's image
