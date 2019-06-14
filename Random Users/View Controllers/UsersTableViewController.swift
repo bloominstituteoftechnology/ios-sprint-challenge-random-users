@@ -10,9 +10,13 @@ import UIKit
 
 class UsersTableViewController: UITableViewController {
 
+    // MARK: - View Loading
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-        userController.fetchUsers { (_) in
+        userController.fetchUsers { (error) in
+            if let error = error {
+                NSLog("Error fetching users: \(error)")
+            }
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -32,6 +36,8 @@ class UsersTableViewController: UITableViewController {
         load(for: cell, forItemAt: indexPath)
         return cell
     }
+    
+    // MARK: - Methods
     
     func load(for cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         let user = userController.users[indexPath.row]
@@ -67,6 +73,7 @@ class UsersTableViewController: UITableViewController {
             guard let userDetailVC = segue.destination as? UserDetailViewController else { return }
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             let user = userController.users[indexPath.row]
+            userDetailVC.userController = userController
             userDetailVC.user = user
         }
     }

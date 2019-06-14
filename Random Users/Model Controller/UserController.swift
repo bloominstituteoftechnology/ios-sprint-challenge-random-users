@@ -18,9 +18,8 @@ class UserController {
     
     // MARK: - Networking Methods
     
-    func fetchUsers(completion: @escaping CompletionHandler) {
-        let requestURL = baseURL
-        URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
+    func fetchUsers(completion: @escaping CompletionHandler = { _ in }) {
+        URLSession.shared.dataTask(with: baseURL) { (data, _, error) in
             if let error = error {
                 NSLog("Error fetching users: \(error)")
                 completion(error)
@@ -31,14 +30,13 @@ class UserController {
                 completion(nil)
                 return
             }
-            DispatchQueue.main.async {
                 do {
-                    let newUser = try JSONDecoder().decode(RandomUsers.self, from: data)
+                    let newUser = try JSONDecoder().decode(Users.self, from: data)
                     self.users = newUser.results
                 } catch {
                     NSLog("Error decoding user: \(error)")
+                    completion(error)
                 }
-            }
-        }.resume()
+            }.resume()
     }
 }

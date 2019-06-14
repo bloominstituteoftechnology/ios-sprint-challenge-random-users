@@ -8,22 +8,11 @@
 
 import Foundation
 
-struct RandomUsers: Codable {
+struct Users: Decodable {
     let results: [User]
-    
-    enum UsersKeys: String, CodingKey {
-        case results
-    }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: UsersKeys.self)
-        let results = try container.decode([User].self, forKey: .results)
-        
-        self.results = results
-    }
 }
 
-struct User: Codable {
+struct User: Decodable {
     var name: String // name has nested properties: title, first, last
     var email: String
     var phone: String
@@ -54,7 +43,7 @@ struct User: Codable {
         let title = try nameContainer.decode(String.self, forKey: .title)
         let first = try nameContainer.decode(String.self, forKey: .first)
         let last = try nameContainer.decode(String.self, forKey: .last)
-        let name = title + "" + first + "" + last
+        let name = ("\(title.capitalized) \(first.capitalized) \(last.capitalized)")
         let email = try container.decode(String.self, forKey: .email)
         let phone = try container.decode(String.self, forKey: .email)
         let imageContainer = try container.nestedContainer(keyedBy: UserKeys.PictureKeys.self, forKey: .picture)
