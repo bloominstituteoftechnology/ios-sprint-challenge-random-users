@@ -45,9 +45,31 @@ class RandomUserDetailViewController: UIViewController {
         nameLabel.text = randomUser.name
         phoneLabel.text = randomUser.phone
         emailLabel.text = randomUser.email
+        loadImage(for: randomUser)
     }
     
     private func loadImage(for randomUser: RandomUser) {
-        
+        if let image = largeImageCache.value(for: randomUser.phone) {
+            randomImageView.image = image
+        } else {
+            let fetchLargeImageOp = FetchLargeImageOp(randomUser: randomUser)
+            
+            let cacheOp = BlockOperation {
+                guard let image = fetchLargeImageOp.largeImage else { return }
+                self.largeImageCache.cache(value: image, for: randomUser.phone)
+            }
+            
+            let imageOp = BlockOperation {
+                guard let image = fetchLargeImageOp.largeImage else { return }
+                self.randomImageView.image = image
+            }
+            
+            cacheOp.addDependency(fetchLargeImageOp)
+            imageOp.addDependency(fetchLargeImageOp)
+            
+            randomUserFetchQueue.addOperations([fetchLargeImageOp, cacheOp], waitUntilFinished: false)
+            OperationQueue.main.addOperation(imageOp)
+            activeOps[randomUser.phone] = fetchLargeImageOp
+        }
     }
 }
