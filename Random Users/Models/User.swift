@@ -47,7 +47,7 @@ struct User: Decodable {
 		let title = try nameContainer.decode(String.self, forKey: .title)
 		let first = try nameContainer.decode(String.self, forKey: .first)
 		let last = try nameContainer.decode(String.self, forKey: .last)
-		name = "\(title) \(first) \(last)"
+		name = "\(title.capitalizingFirstLetter()) \(first.capitalizingFirstLetter()) \(last.capitalizingFirstLetter())"
 		
 		let pictureContainer = try contianer.nestedContainer(keyedBy: Codingkeys.PictureCodingKeys.self, forKey: .picture)
 		let thumbnail = try pictureContainer.decode(String.self, forKey: .thumbnail)
@@ -55,5 +55,15 @@ struct User: Decodable {
 		let large = try pictureContainer.decode(String.self, forKey: .large)
 		picture = [thumbnail, medium, large]
 		
+	}
+}
+
+extension String {
+	func capitalizingFirstLetter() -> String {
+		return prefix(1).capitalized + dropFirst()
+	}
+	
+	mutating func capitalizeFirstLetter() {
+		self = self.capitalizingFirstLetter()
 	}
 }

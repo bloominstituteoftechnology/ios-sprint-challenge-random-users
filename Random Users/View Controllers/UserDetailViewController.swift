@@ -14,14 +14,13 @@ class UserDetailViewController: UIViewController {
 		super.viewWillAppear(animated)
 		photoFetchQueue.name = "com.RandomeUsers.UserDetailViewController"
 		setupViews()
-		
 	}
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
     }
 	
-	override func didMove(toParentViewController parent: UIViewController?) {
+	override func didMove(toParent parent: UIViewController?) {
 		if parent == nil {
 			fetchPhotoOperations?.cancel()
 		}
@@ -30,7 +29,6 @@ class UserDetailViewController: UIViewController {
 	
 	func setupViews() {
 		guard let user = user else { return }
-		
 		nameLabel?.text = user.name
 		emailLabel?.text = user.email
 		fetchCurrentImage(with: user.picture[2])
