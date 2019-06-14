@@ -14,6 +14,7 @@
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
 		E8A986EE22B3EEC0004D058E /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A986ED22B3EEC0004D058E /* UsersTableViewController.swift */; };
 		E8A986F122B3F11A004D058E /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A986F022B3F11A004D058E /* UserTableViewCell.swift */; };
+		E8A986F422B3F327004D058E /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A986F322B3F327004D058E /* UserDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 		E8A986ED22B3EEC0004D058E /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		E8A986F022B3F11A004D058E /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		E8A986F322B3F327004D058E /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				E8A986ED22B3EEC0004D058E /* UsersTableViewController.swift */,
+				E8A986F322B3F327004D058E /* UserDetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8A986F122B3F11A004D058E /* UserTableViewCell.swift in Sources */,
+				E8A986F422B3F327004D058E /* UserDetailViewController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				E8A986EE22B3EEC0004D058E /* UsersTableViewController.swift in Sources */,
