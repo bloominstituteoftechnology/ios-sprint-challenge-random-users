@@ -42,9 +42,9 @@ class RandomUserDetailViewController: UIViewController {
     private func updateViews() {
         guard let randomUser = randomUser else { return }
         
-        nameLabel.text = randomUser.name
-        phoneLabel.text = randomUser.phone
-        emailLabel.text = randomUser.email
+        nameLabel?.text = randomUser.name
+        phoneLabel?.text = randomUser.phone
+        emailLabel?.text = randomUser.email
         loadImage(for: randomUser)
     }
     

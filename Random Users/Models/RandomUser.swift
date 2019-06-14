@@ -60,7 +60,7 @@ struct RandomUser: Decodable {
         let title = try nameContainer.decode(String.self, forKey: .title)
         let first = try nameContainer.decode(String.self, forKey: .first)
         let last = try nameContainer.decode(String.self, forKey: .last)
-        let name = "\(title) \(first) \(last)"
+        let name = "\(title.capitalized) \(first.capitalized) \(last.capitalized)"
         
         let email = try container.decode(String.self, forKey: .email)
         let phone = try container.decode(String.self, forKey: .phone)
