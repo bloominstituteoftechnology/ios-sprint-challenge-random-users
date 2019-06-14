@@ -14,14 +14,22 @@ class UserDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // need to load image
+        nameLabel.text = user?.name
+        phoneLabel.text = user?.phone
+        emailLabel.text = user?.email
 
     }
 
     // MARK: - Methods
     
+    // need a load image function for loading large image
+    
     // MARK: - Properties & Outlets
     
     var user: User?
+    var userController: UserController?
+    
     @IBOutlet weak var largeImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!

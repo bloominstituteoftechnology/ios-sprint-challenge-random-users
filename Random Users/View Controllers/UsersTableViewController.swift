@@ -28,6 +28,8 @@ class UsersTableViewController: UITableViewController {
         // need to configure load method here
         return cell
     }
+    
+    // need a load image function for loading thumbnail
 
 
     // MARK: - Navigation
