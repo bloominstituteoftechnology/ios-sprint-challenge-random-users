@@ -12,9 +12,7 @@ class UsersTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		
 		photoFetchQueue.name = "com.RandomeUsers.PhotFectchQueue"
-		
 		userController.fetchUsers { error in
 			if let error = error {
 				print("Error fetching usuer: \(error)")
@@ -25,13 +23,10 @@ class UsersTableViewController: UITableViewController {
 			}
 		}
 	}
-	
-	
-	
+
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return userController.users.count
 	}
-	
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)

@@ -10,12 +10,6 @@ import Foundation
 
 
 class UserController {
-	
-	init() {
-		
-	}
-	
-	
 	func fetchUsers(completion: @escaping (Error?) -> ()) {
 		guard let url = baseUrl else { return }
 		
@@ -42,10 +36,7 @@ class UserController {
 				completion(error)
 			}
 		}.resume()
-
 	}
-	
-	
 	
 	private let baseUrl = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")
 	private (set) var users: [User] = []
