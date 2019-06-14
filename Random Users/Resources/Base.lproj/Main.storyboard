@@ -62,8 +62,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Users" id="HE0-do-QHN">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="5mT-hq-4ai"/>
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="5mT-hq-4ai"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addButton" destination="5mT-hq-4ai" id="CEK-zn-NVr"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="36j-6e-Vs0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -121,6 +124,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ci1-4u-YuS"/>
                     </view>
+                    <connections>
+                        <outlet property="emaillabel" destination="6qT-gd-0FE" id="Jj2-NO-Tk6"/>
+                        <outlet property="imageView" destination="XLO-S4-hRq" id="8ji-8r-bgP"/>
+                        <outlet property="nameLabel" destination="nuI-H4-NBD" id="Z6C-TU-JcX"/>
+                        <outlet property="phoneLabel" destination="cuc-0W-xyC" id="AfZ-jP-zpS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EGO-bl-WOe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
