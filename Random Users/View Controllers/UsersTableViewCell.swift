@@ -20,5 +20,9 @@ class UsersTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    // MARK: - Outlets
+    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var userNameLabel: UILabel!
+    
 }
