@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="65" id="Ov4-5x-SKU" customClass="UsersTableViewCell" customModule="Random_Users" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RandomUserCell" rowHeight="65" id="Ov4-5x-SKU" customClass="UsersTableViewCell" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ov4-5x-SKU" id="cC3-4v-4v4">
@@ -64,7 +64,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Users" id="jqP-xZ-MVj">
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="7Wa-wd-l37"/>
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="7Wa-wd-l37">
+                            <connections>
+                                <action selector="addUsersButtonTapped:" destination="HMV-GN-sSK" id="CRi-u3-ahb"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iue-gc-vgs" userLabel="First Responder" sceneMemberID="firstResponder"/>

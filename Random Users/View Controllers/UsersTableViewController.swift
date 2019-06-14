@@ -15,6 +15,8 @@ class UsersTableViewController: UITableViewController {
     // MARK: -View states
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Load the data
 
 
     }
@@ -33,16 +35,12 @@ class UsersTableViewController: UITableViewController {
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RandomUserCell", for: indexPath)
 
         // Configure the cell...
 
         return cell
     }
-
-
-
-
 
     /*
     // MARK: - Navigation
@@ -53,5 +51,33 @@ class UsersTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // MARK: Add button action
+    @IBAction func addUsersButtonTapped(_ sender: Any) {
+        randomUserController.fetchRandomUsers { (randomUsers, error) in
+            if let error = error {
+                NSLog("Error fetching users: \(error)")
+                return
+            }
+            self.randomUsers = randomUsers
+        }
+    }
+    
+    
+    // MARK: - Properties
+    let randomUserController = RandomUserController()
+    var cache: Cache<String, [RandomUser.UserImages: UIImage]> = Cache()
+    var randomUserFetchQueue = OperationQueue()
+    var activeOperations: [String: [RandomUser.UserImages: ThumbnailFetch]] = [:]
+    
+    var randomUsers: [RandomUser]? {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    
 
 }
