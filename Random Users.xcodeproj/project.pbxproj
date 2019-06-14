@@ -17,6 +17,10 @@
 		EF5318CC22B3F626007A4BA0 /* UsersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5318CB22B3F626007A4BA0 /* UsersController.swift */; };
 		EF5318CE22B3F938007A4BA0 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5318CD22B3F938007A4BA0 /* Cache.swift */; };
 		EF5318D022B3FA1D007A4BA0 /* FetchThumbnailOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5318CF22B3FA1D007A4BA0 /* FetchThumbnailOperation.swift */; };
+		EF5318D322B3FE55007A4BA0 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5318D222B3FE55007A4BA0 /* UsersTableViewController.swift */; };
+		EF5318D522B40075007A4BA0 /* UsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5318D422B40075007A4BA0 /* UsersTableViewCell.swift */; };
+		EF5318D722B40941007A4BA0 /* FetchLargeImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5318D622B40941007A4BA0 /* FetchLargeImageOperation.swift */; };
+		EF5318D922B40AA4007A4BA0 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5318D822B40AA4007A4BA0 /* UserDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,10 @@
 		EF5318CB22B3F626007A4BA0 /* UsersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersController.swift; sourceTree = "<group>"; };
 		EF5318CD22B3F938007A4BA0 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		EF5318CF22B3FA1D007A4BA0 /* FetchThumbnailOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchThumbnailOperation.swift; sourceTree = "<group>"; };
+		EF5318D222B3FE55007A4BA0 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
+		EF5318D422B40075007A4BA0 /* UsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewCell.swift; sourceTree = "<group>"; };
+		EF5318D622B40941007A4BA0 /* FetchLargeImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLargeImageOperation.swift; sourceTree = "<group>"; };
+		EF5318D822B40AA4007A4BA0 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +74,7 @@
 			children = (
 				EF5318C422B3EF69007A4BA0 /* Modal */,
 				EF5318CA22B3F60D007A4BA0 /* Modal Controller */,
+				EF5318D122B3FE33007A4BA0 /* View Controllers */,
 				9D5CCA56214231E400224681 /* Operations */,
 				EF5318C722B3F511007A4BA0 /* Utilities */,
 				9D5CCA522142305600224681 /* Resources */,
@@ -90,6 +99,7 @@
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
 				EF5318CF22B3FA1D007A4BA0 /* FetchThumbnailOperation.swift */,
+				EF5318D622B40941007A4BA0 /* FetchLargeImageOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -117,6 +127,16 @@
 				EF5318CB22B3F626007A4BA0 /* UsersController.swift */,
 			);
 			path = "Modal Controller";
+			sourceTree = "<group>";
+		};
+		EF5318D122B3FE33007A4BA0 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EF5318D222B3FE55007A4BA0 /* UsersTableViewController.swift */,
+				EF5318D822B40AA4007A4BA0 /* UserDetailViewController.swift */,
+				EF5318D422B40075007A4BA0 /* UsersTableViewCell.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,11 +212,15 @@
 			files = (
 				EF5318C922B3F52B007A4BA0 /* URL+Secure.swift in Sources */,
 				EF5318CC22B3F626007A4BA0 /* UsersController.swift in Sources */,
+				EF5318D722B40941007A4BA0 /* FetchLargeImageOperation.swift in Sources */,
+				EF5318D322B3FE55007A4BA0 /* UsersTableViewController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				EF5318C622B3EF7B007A4BA0 /* Users.swift in Sources */,
 				EF5318D022B3FA1D007A4BA0 /* FetchThumbnailOperation.swift in Sources */,
 				EF5318CE22B3F938007A4BA0 /* Cache.swift in Sources */,
+				EF5318D522B40075007A4BA0 /* UsersTableViewCell.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				EF5318D922B40AA4007A4BA0 /* UserDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

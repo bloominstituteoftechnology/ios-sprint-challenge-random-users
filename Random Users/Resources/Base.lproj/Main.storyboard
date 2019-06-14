@@ -50,8 +50,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="nameLabel" destination="QLh-dY-Q9Q" id="8Pn-Tg-Fu4"/>
-                                    <outlet property="userImageView" destination="Yk3-Np-uPv" id="MSj-N1-xGt"/>
+                                    <outlet property="nameLabel" destination="QLh-dY-Q9Q" id="y5a-An-LVM"/>
+                                    <outlet property="userImageView" destination="Yk3-Np-uPv" id="Hew-er-La7"/>
                                     <segue destination="b3h-0H-jGh" kind="show" identifier="ToUserDetailVC" id="NQy-Fa-PfC"/>
                                 </connections>
                             </tableViewCell>
@@ -61,7 +61,13 @@
                             <outlet property="delegate" destination="BD0-6s-FGI" id="hM6-kW-93M"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="sPe-lo-JbV"/>
+                    <navigationItem key="navigationItem" id="sPe-lo-JbV">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ut2-1o-H9W">
+                            <connections>
+                                <action selector="add:" destination="BD0-6s-FGI" id="A2R-XI-xAS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R4F-e5-07d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -136,10 +142,10 @@
                         <viewLayoutGuide key="safeArea" id="Swc-ez-sm4"/>
                     </view>
                     <connections>
-                        <outlet property="LargeImageView" destination="YA4-ss-ZCF" id="zKU-Tg-2OA"/>
-                        <outlet property="emailLabel" destination="1dI-2W-WeT" id="qvW-2J-8zR"/>
-                        <outlet property="nameLabel" destination="cJo-9l-wQM" id="9CM-S8-3xb"/>
-                        <outlet property="phoneLabel" destination="UOc-km-Hw7" id="YxJ-K2-7BR"/>
+                        <outlet property="emailLabel" destination="1dI-2W-WeT" id="mTZ-Ws-ADO"/>
+                        <outlet property="largeImageView" destination="YA4-ss-ZCF" id="m3V-dG-TbH"/>
+                        <outlet property="nameLabel" destination="cJo-9l-wQM" id="njc-6D-6Zf"/>
+                        <outlet property="phoneLabel" destination="UOc-km-Hw7" id="41Q-Yh-0Av"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pQL-rt-QNy" userLabel="First Responder" sceneMemberID="firstResponder"/>

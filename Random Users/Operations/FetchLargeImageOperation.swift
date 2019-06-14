@@ -1,5 +1,5 @@
 //
-//  FetchThumbnailOperation.swift
+//  FetchLargeImageOperation.swift
 //  Random Users
 //
 //  Created by Hayden Hastings on 6/14/19.
@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-class FetchThumbnailOperation: ConcurrentOperation {
-    
+class FetchLargeImageOperation: ConcurrentOperation {
+
     // MARK: - Properties
     var user: User
     var image: UIImage?
@@ -24,7 +24,7 @@ class FetchThumbnailOperation: ConcurrentOperation {
     override func start() {
         state = .isExecuting
         
-        let thumbURL = user.imageThumbnailURL
+        let thumbURL = user.imageLargeURL
         
         let dataTask = URLSession.shared.dataTask(with: thumbURL) { (data, _, error) in
             
@@ -34,12 +34,12 @@ class FetchThumbnailOperation: ConcurrentOperation {
             }
             
             guard let data = data else {
-                NSLog("Unable to get data")
+                NSLog("Unable to get data: \(error))")
                 return
             }
             
             guard let image = UIImage(data: data) else {
-                NSLog("Unable to get image from respective data.")
+                NSLog("Unable to get image from respective data: \(error))")
                 return
             }
             
