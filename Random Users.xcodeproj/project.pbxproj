@@ -12,6 +12,11 @@
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
 		8ED6A9922140178C00FC395A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
+		9EAAEF0922B3F7F70015596B /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAEF0822B3F7F70015596B /* UserTableViewController.swift */; };
+		9EAAEF0C22B3F8270015596B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAEF0B22B3F8270015596B /* DetailViewController.swift */; };
+		9EAAEF0E22B3F8400015596B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAEF0D22B3F8400015596B /* User.swift */; };
+		9EAAEF1022B3F8790015596B /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAEF0F22B3F8790015596B /* UserTableViewCell.swift */; };
+		9EAAEF1322B3FA1B0015596B /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAEF1222B3FA1B0015596B /* Result.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,11 @@
 		8ED6A9912140178C00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ED6A9932140178C00FC395A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
+		9EAAEF0822B3F7F70015596B /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserTableViewController.swift; path = ../UserTableViewController.swift; sourceTree = "<group>"; };
+		9EAAEF0B22B3F8270015596B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		9EAAEF0D22B3F8400015596B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		9EAAEF0F22B3F8790015596B /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		9EAAEF1222B3FA1B0015596B /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +67,8 @@
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
+				9EAAEF0A22B3F8020015596B /* View Controller */,
+				9EAAEF1122B3F96D0015596B /* New Group */,
 			);
 			path = "Random Users";
 			sourceTree = "<group>";
@@ -78,6 +90,25 @@
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
 			);
 			path = Operations;
+			sourceTree = "<group>";
+		};
+		9EAAEF0A22B3F8020015596B /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9EAAEF0822B3F7F70015596B /* UserTableViewController.swift */,
+				9EAAEF0B22B3F8270015596B /* DetailViewController.swift */,
+				9EAAEF0F22B3F8790015596B /* UserTableViewCell.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		9EAAEF1122B3F96D0015596B /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				9EAAEF0D22B3F8400015596B /* User.swift */,
+				9EAAEF1222B3FA1B0015596B /* Result.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,7 +183,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				9EAAEF0922B3F7F70015596B /* UserTableViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				9EAAEF0E22B3F8400015596B /* User.swift in Sources */,
+				9EAAEF1322B3FA1B0015596B /* Result.swift in Sources */,
+				9EAAEF1022B3F8790015596B /* UserTableViewCell.swift in Sources */,
+				9EAAEF0C22B3F8270015596B /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
