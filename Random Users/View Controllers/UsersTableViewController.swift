@@ -33,7 +33,7 @@ class UsersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
         let user = userController.users[indexPath.row]
-        cell.textLabel?.text = user.name
+        cell.nameLabel?.text = user.name
         loadThumbnail(for: cell, of: user, forItemAt: indexPath)
         return cell
     }
@@ -43,7 +43,7 @@ class UsersTableViewController: UITableViewController {
     func loadThumbnail(for cell: UserTableViewCell, of user: User, forItemAt indexPath: IndexPath) {
         let user = userController.users[indexPath.row]
         if let cachedThumbnail = cache.value(for: user.email) {
-            cell.imageView?.image = cachedThumbnail
+            cell.userImageView?.image = cachedThumbnail
         } else {
             let fetchThumbnailOperation = FetchThumbnailPhotoOperation(user: user)
             let cacheOperation = BlockOperation {
