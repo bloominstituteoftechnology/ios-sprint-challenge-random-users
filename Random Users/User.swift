@@ -40,7 +40,11 @@ struct User: Codable {
 //        picture = try pictureKeyContainer.decode(Picture.self, forKey: .large)
 //        picture.large = try pictureKeyContainer.decode(String.self, forKey: .large)
 //        picture.thumbnail = try pictureKeyContainer.decode(String.self, forKey: .thumbnail)
-        
+        email = try container.decode(String.self, forKey: .email)
+        phone = try container.decode(String.self, forKey: .phone)
+    }
+    
+    func encode(with encoder:Encoder) throws {
         
     }
 }
