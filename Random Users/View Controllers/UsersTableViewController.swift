@@ -73,13 +73,13 @@ class UsersTableViewController: UITableViewController {
 		photoFetchQueue.addOperations([fetchPhotoOperation, storeToCache], waitUntilFinished: false)
 		OperationQueue.main.addOperation(cellReusedCheck)
 		fetchPhotoOperations[indexPath.row] = fetchPhotoOperation
+		print(fetchPhotoOperations[indexPath.row]!.state)
 	}
 	
-	
-	func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-		
+	override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+		fetchPhotoOperations[indexPath.row]!.cancel()
+		print(fetchPhotoOperations[indexPath.row]!.state)
 	}
-
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "ShowUserSegue" {
