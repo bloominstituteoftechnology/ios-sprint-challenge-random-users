@@ -13,23 +13,44 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        updateViews()
+
+
+
     }
+
+    private func updateViews() {
+
+        guard let user = user else { return }
+
+        navigationItem.title = user.name
+        userNameLabel.text = user.name
+        numberLabel.text = user.phoneNumber
+        emailLabel.text = user.email
+
+        let largeImageOperation = FetchLargeImageOperation(user: user)
+
+        let operation = BlockOperation {
+            guard let image = largeImageOperation.largeImage else { return }
+            self.userImageView.image = image
+        }
+
+        operation.addDependency(largeImageOperation)
+
+        photoFetchQueue.addOperation(largeImageOperation)
+        OperationQueue.main.addOperation(operation)
+
+
+    }
+
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
+    var user: User?
+    let photoFetchQueue = OperationQueue()
 
 }
