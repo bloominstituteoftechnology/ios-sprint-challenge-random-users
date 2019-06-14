@@ -15,6 +15,8 @@
 		C431ED9F22B3EF6D00D67592 /* PeopleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C431ED9E22B3EF6D00D67592 /* PeopleTableViewController.swift */; };
 		C431EDA122B3EF7900D67592 /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C431EDA022B3EF7900D67592 /* PersonTableViewCell.swift */; };
 		C431EDA322B3EF8800D67592 /* PersonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C431EDA222B3EF8800D67592 /* PersonDetailViewController.swift */; };
+		C431EDA622B3F1EF00D67592 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C431EDA522B3F1EF00D67592 /* Cache.swift */; };
+		C431EDA922B3F25300D67592 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = C431EDA822B3F25300D67592 /* Person.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		C431ED9E22B3EF6D00D67592 /* PeopleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewController.swift; sourceTree = "<group>"; };
 		C431EDA022B3EF7900D67592 /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
 		C431EDA222B3EF8800D67592 /* PersonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailViewController.swift; sourceTree = "<group>"; };
+		C431EDA522B3F1EF00D67592 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		C431EDA822B3F25300D67592 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 			children = (
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				C431EDA022B3EF7900D67592 /* PersonTableViewCell.swift */,
+				C431EDA722B3F24600D67592 /* Models */,
 				C431EDA422B3EF9F00D67592 /* ViewControllers */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
@@ -95,6 +100,15 @@
 				C431EDA222B3EF8800D67592 /* PersonDetailViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C431EDA722B3F24600D67592 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C431EDA522B3F1EF00D67592 /* Cache.swift */,
+				C431EDA822B3F25300D67592 /* Person.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,6 +186,8 @@
 				C431ED9F22B3EF6D00D67592 /* PeopleTableViewController.swift in Sources */,
 				C431EDA122B3EF7900D67592 /* PersonTableViewCell.swift in Sources */,
 				C431EDA322B3EF8800D67592 /* PersonDetailViewController.swift in Sources */,
+				C431EDA922B3F25300D67592 /* Person.swift in Sources */,
+				C431EDA622B3F1EF00D67592 /* Cache.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
