@@ -14,7 +14,11 @@ class PersonDetailViewController: UIViewController {
     var largeImageFetchQueue = OperationQueue()
     var largeImageFetchOperations: [String : FetchLargeImageOperation] = [:]
     var personController: PersonController?
-    var person: Person?
+    var person: Person? {
+        didSet {
+            updateViews()
+        }
+    }
     
     @IBOutlet weak var largeImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -28,8 +32,8 @@ class PersonDetailViewController: UIViewController {
     
     
     func updateViews() {
-        if !isViewLoaded { return }
-        guard let person = person else { return }
+        guard isViewLoaded,
+            let person = person else { return }
         
         nameLabel.text = person.name
         emailLabel.text = ("Email: \(person.email)")

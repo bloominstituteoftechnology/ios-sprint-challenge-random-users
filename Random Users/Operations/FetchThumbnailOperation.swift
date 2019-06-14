@@ -41,8 +41,8 @@ class FetchThumbnailOperation: ConcurrentOperation {
     }
     
     override func cancel() {
-        super.cancel()
         dataTask?.cancel()
+        super.cancel()
     }
     
 }

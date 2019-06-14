@@ -40,4 +40,9 @@ class FetchLargeImageOperation: ConcurrentOperation {
         
     }
     
+    override func cancel() {
+        dataTask?.cancel()
+        super.cancel()
+    }
+    
 }

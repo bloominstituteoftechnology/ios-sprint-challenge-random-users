@@ -50,7 +50,10 @@ class PeopleTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let person = personController.people[indexPath.row]
-        imageFetchOperations[person.email]?.cancel()
+        if let fetchOperation = imageFetchOperations[person.thumbnail] {
+            fetchOperation.cancel()
+        }
+        
     }
 
  
