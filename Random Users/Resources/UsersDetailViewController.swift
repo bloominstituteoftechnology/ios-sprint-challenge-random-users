@@ -36,7 +36,7 @@ class UsersDetailViewController: UIViewController {
             let name = nameLabel,
             let email = emailLabel,
             let phone = phoneLabel,
-            let cache = cache,
+            let _ = cache,
             let user = user else { return }
             
             if let cachedValue = self.cache?.value(for: user.phone) {
