@@ -15,37 +15,18 @@ class UserDetailViewController: UIViewController {
         super.viewDidLoad()
         // Make sure we have a user
         guard let user = user else { return }
-        
-        // Get and display the large image
-       // displayUserImage(user.largeImageURL!)
-        let fetchLargeImage = LargeImageFetch(randomUser: user)
-        let blockOperation = BlockOperation {
-            guard let largeImage = fetchLargeImage.largeImage else { return }
-            self.userImageView.image = largeImage
-        }
-        blockOperation.addDependency(fetchLargeImage)
-        fetchRandomUserQueue.addOperation(blockOperation)
-        OperationQueue.main.addOperation(blockOperation)
-        
-        // Display the text data
+        // Display the image
+        let largeImageURL = user.largeImageURL!
+        let imageData = try? Data(contentsOf: largeImageURL)
+        userImageView.image = UIImage(data: imageData!)
+        // and the user info
          populateLabels(user)
     }
-    
-    
-    // MARK: - Display user details
-    func displayUserImage(_ imageURL: URL) {
-        let fetchLargeImage = LargeImageFetch(randomUser: user!)
-        let blockOperation = BlockOperation {
-            guard let largeImage = fetchLargeImage.largeImage else { return }
-            self.userImageView.image = largeImage
-        }
-        blockOperation.addDependency(fetchLargeImage)
-        fetchRandomUserQueue.addOperation(blockOperation)
-        OperationQueue.main.addOperation(blockOperation)
-    }
+
     
     // Display the user name, phone, and email
     func populateLabels(_ user: RandomUser) {
+        //userImageView.image =
         userNameLabel.text = user.name
         phoneNumberLabel.text = user.phoneNumber
         emailLabel.text = user.email
