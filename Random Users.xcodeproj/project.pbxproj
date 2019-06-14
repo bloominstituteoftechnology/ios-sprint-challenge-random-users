@@ -19,6 +19,8 @@
 		9EAAEF1322B3FA1B0015596B /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAEF1222B3FA1B0015596B /* Result.swift */; };
 		9EAAEF1522B3FFE50015596B /* UserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAEF1422B3FFE50015596B /* UserClient.swift */; };
 		9EAAEF1822B4003F0015596B /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAEF1722B4003F0015596B /* Cache.swift */; };
+		9EAAEF1A22B408660015596B /* FetchLargeImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAEF1922B408660015596B /* FetchLargeImageOperation.swift */; };
+		9EAAEF1C22B40B690015596B /* ThumbNailOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAEF1B22B40B690015596B /* ThumbNailOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		9EAAEF1222B3FA1B0015596B /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		9EAAEF1422B3FFE50015596B /* UserClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClient.swift; sourceTree = "<group>"; };
 		9EAAEF1722B4003F0015596B /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		9EAAEF1922B408660015596B /* FetchLargeImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLargeImageOperation.swift; sourceTree = "<group>"; };
+		9EAAEF1B22B40B690015596B /* ThumbNailOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbNailOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,8 @@
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
 				9EAAEF1722B4003F0015596B /* Cache.swift */,
+				9EAAEF1922B408660015596B /* FetchLargeImageOperation.swift */,
+				9EAAEF1B22B40B690015596B /* ThumbNailOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -198,6 +204,8 @@
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9EAAEF1822B4003F0015596B /* Cache.swift in Sources */,
+				9EAAEF1A22B408660015596B /* FetchLargeImageOperation.swift in Sources */,
+				9EAAEF1C22B40B690015596B /* ThumbNailOperation.swift in Sources */,
 				9EAAEF1522B3FFE50015596B /* UserClient.swift in Sources */,
 				9EAAEF0922B3F7F70015596B /* UserTableViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,

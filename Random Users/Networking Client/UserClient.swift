@@ -12,6 +12,8 @@ class UserClient {
 
 static let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
 
+    var users: [User] = []
+
     func fetchUsers(completion: @escaping ([User]?, Error?) -> Void) {
 
         let url = UserClient.baseURL
@@ -33,15 +35,14 @@ static let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=nam
 
             do {
                 let results = try decoder.decode(Result.self, from: data)
-                let users = results.results
-                completion(users, nil)
-                return
+                self.users = results.results
+
 
             } catch {
                 NSLog("Error decoding users: \(error)")
                 completion(nil, error)
                 return
             }
-        }
+        }.resume()
     }
 }
