@@ -15,22 +15,67 @@ class UsersDetailViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var bigImageView: UIImageView!
     
+ 
+        
+    var user: User? {
+        didSet {
+            updateViews()
+        }
+    }
     
+    
+    var cache: Cache<String, Data>?
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        updateViews()
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+        
+    private func updateViews() {
+        guard let image = bigImageView,
+            let name = nameLabel,
+            let email = emailLabel,
+            let phone = phoneLabel,
+            let cache = cache,
+            let user = user else { return }
+            
+            if let cachedValue = self.cache?.value(for: user.phone) {
+                let cachedImage = UIImage(data: cachedValue)
+                image.image = cachedImage
+                print("loaded")
+            } else {
+                
+                let fetchLargeImageOperation = FetchLargeImageOperation(user: user)
+                
+                let addImageOpperation = BlockOperation {
+                    if let imageData = fetchLargeImageOperation.imageData {
+                        image.image = UIImage(data: imageData)
+                    }
+                    
+                }
+                
+                let cacheOperation = BlockOperation {
+                    guard let image = fetchLargeImageOperation.imageData else { return }
+                    self.cache?.cache(value: image, for: user.phone)
+                    print("cached")
+                }
+                
+                addImageOpperation.addDependency(fetchLargeImageOperation)
+                cacheOperation.addDependency(fetchLargeImageOperation)
+                
+                let fetchOpQueue = OperationQueue()
+                
+                fetchOpQueue.addOperation(fetchLargeImageOperation)
+                fetchOpQueue.addOperation(cacheOperation)
+                OperationQueue.main.addOperation(addImageOpperation)
+            }
+            
+        
+            email.text = user.email
+            phone.text = user.phone
+            name.text = "\(user.name.title.capitalized) \(user.name.first.capitalized) \(user.name.last.capitalized)"
+            navigationItem.title = "\(name.text ?? "")"
+        }
+        
 
 }
