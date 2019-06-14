@@ -31,6 +31,15 @@ class UserController {
 			guard let data = data else { return }
 			print(data)
 			
+			do {
+				let decoded = try JSONDecoder().decode(Results.self, from: data)
+				print(decoded.results)
+			} catch {
+				print("Error decoding json: \(error)")
+			}
+			
+			
+			
 		}.resume()
 		
 		
