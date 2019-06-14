@@ -10,6 +10,11 @@ import UIKit
 
 class PersonDetailViewController: UIViewController {
 
+    var cache = Cache<String, Data>()
+    var largeImageFetchQueue = OperationQueue()
+    var largeImageFetchOperations: [String : FetchLargeImageOperation] = [:]
+    var personController: PersonController?
+    var person: Person?
     
     @IBOutlet weak var largeImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -18,19 +23,55 @@ class PersonDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        updateViews()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func updateViews() {
+        if !isViewLoaded { return }
+        guard let person = person else { return }
+        
+        nameLabel.text = person.name
+        emailLabel.text = ("Email: \(person.email)")
+        phoneLabel.text = ("Phone Number: \(person.phone)")
+        
+        loadLargeImage(person: person)
+        
     }
-    */
+    
+    func loadLargeImage(person: Person) {
+        
+        if let cachedImage = cache.value(key: person.email) {
+            self.largeImageView.image = UIImage(data: cachedImage)
+            return
+        }
+        
+        let fetchOp = FetchLargeImageOperation(person: person)
+        let cacheOp = BlockOperation {
+            if let data = fetchOp.imageData {
+                self.cache.cache(value: data, key: person.email)
+            }
+        }
+        
+        let checkReuseOp = BlockOperation {
+            if self.cache.value(key: person.email) != nil,
+                let data = self.cache.value(key: person.email) {
+                self.largeImageView.image = UIImage(data: data)
+            } else {
+                return
+            }
+        }
+        
+        cacheOp.addDependency(fetchOp)
+        checkReuseOp.addDependency(fetchOp)
+        
+        largeImageFetchQueue.addOperation(fetchOp)
+        largeImageFetchQueue.addOperation(cacheOp)
+        OperationQueue.main.addOperation(checkReuseOp)
+        
+        largeImageFetchOperations[person.email] = fetchOp
+
+    }
+
 
 }

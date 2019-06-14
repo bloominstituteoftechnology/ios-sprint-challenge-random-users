@@ -48,6 +48,10 @@ class PeopleTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let person = personController.people[indexPath.row]
+        imageFetchOperations[person.email]?.cancel()
+    }
 
  
 
@@ -89,8 +93,14 @@ class PeopleTableViewController: UITableViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "PersonDetailSegue" {
+            guard let detailVC = segue.destination as? PersonDetailViewController,
+                let personIndex = tableView.indexPathForSelectedRow else { return }
+            let person = personController.people[personIndex.row]
+            detailVC.personController = personController
+            detailVC.person = person
+            
+        }
     }
 
 }
