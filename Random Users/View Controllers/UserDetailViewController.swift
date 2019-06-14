@@ -12,7 +12,9 @@ class UserDetailViewController: UIViewController {
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
+		photoFetchQueue.name = "com.RandomeUsers.UserDetailViewController"
 		setupViews()
+		
 	}
 	
 	override func viewDidLoad() {
@@ -33,18 +35,17 @@ class UserDetailViewController: UIViewController {
 		
 		nameLabel?.text = user.name
 		emailLabel?.text = user.email
-		
-		
+		fetchCurrentImage(with: user.picture[2])
 	}
 	
-	func fetchCurrentImage() {
-		guard let user = user, let userIndex = userIndex else { return }
+	func fetchCurrentImage(with url: String) {
+		guard let userIndex = userIndex else { return }
 		
 		if let imageData = userController?.largeImageCache.value(for: userIndex) {
 			userImageView.image = UIImage(data: imageData)
 		}
 		
-		let fetchPhotoOperation = FetchPhotoOperation(userImageUrl: user.picture[2])
+		let fetchPhotoOperation = FetchPhotoOperation(userImageUrl: url)
 		
 		let storeToCache = BlockOperation {
 			if let imageData = fetchPhotoOperation.imageData {
@@ -53,9 +54,15 @@ class UserDetailViewController: UIViewController {
 		}
 		
 		let setImageOp = BlockOperation {
-			
+			guard let imageData = fetchPhotoOperation.imageData else { return }
+			self.userImageView?.image = UIImage(data: imageData)
 		}
 		
+		storeToCache.addDependency(fetchPhotoOperation)
+		setImageOp.addDependency(fetchPhotoOperation)
+		
+		photoFetchQueue.addOperations([fetchPhotoOperation,storeToCache], waitUntilFinished: false)
+		OperationQueue.main.addOperation(setImageOp)
 	}
 	
 	
@@ -65,4 +72,5 @@ class UserDetailViewController: UIViewController {
 	var user: User?
 	var userIndex: Int?
 	var userController: UserController?
+	private let photoFetchQueue = OperationQueue()
 }
