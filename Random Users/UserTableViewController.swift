@@ -15,7 +15,7 @@ class UserTableViewController: UITableViewController {
     var photoFetchQueue = OperationQueue()
     private var activeOperations: [String: ThumbNailOperation] = [:]
     var cache: Cache<String, UIImage> = Cache()
-    var users: [User]? = [] {
+    var users: [User] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -31,11 +31,11 @@ class UserTableViewController: UITableViewController {
                 NSLog("Error fetching users: \(error)")
                 return
             }
+            if let users = users {
 
-            self.users = users
+                self.users = users
+            }
         }
-
-
     }
 
     // MARK: - Table view data source
@@ -44,16 +44,16 @@ class UserTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return users?.count ?? 0
+        return users.count
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
 
-        let user = users?[indexPath.row]
+        let user = users[indexPath.row]
 
-        cell.nameLabel.text = user?.name
+        cell.nameLabel.text = user.name
         loadImage(forCell: cell, forItemAt: indexPath)
 
 
@@ -63,7 +63,7 @@ class UserTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
-        guard let user = users?[indexPath.row] else { return }
+       let user = users[indexPath.row]
 
         activeOperations[user.phoneNumber]?.cancel()
     }
@@ -71,11 +71,11 @@ class UserTableViewController: UITableViewController {
 
     private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
 
-        guard let user = users?[indexPath.row] else { return }
+         let user = users[indexPath.row]
 
 
         if let image = cache.value(for: user.phoneNumber) {
-            cell.imageView?.image = image
+            cell.userNameLabel.image = image
         } else {
 
             let fetchedThumbNailOperation = ThumbNailOperation(user: user)
@@ -92,7 +92,7 @@ class UserTableViewController: UITableViewController {
             let cellReusedOperation = BlockOperation {
                 guard let image = fetchedThumbNailOperation.thumbNailImage else { return }
                 if self.tableView.indexPath(for: cell) == indexPath {
-                    cell.imageView?.image = image
+                    cell.userNameLabel.image = image
 
                 }
             }
@@ -123,7 +123,7 @@ class UserTableViewController: UITableViewController {
         if segue.identifier == "DetailSegue" {
             guard let DetailVC = segue.destination as? DetailViewController,
                 let indexPath = tableView.indexPathForSelectedRow else { return }
-            DetailVC.user = users?[indexPath.row]
+            DetailVC.user = users[indexPath.row]
         }
     }
 

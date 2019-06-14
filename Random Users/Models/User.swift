@@ -46,16 +46,19 @@ struct User: Decodable {
         let name = try nameContainer.decode(String.self, forKey: .first)
 
         let largeImageContainer = try container.nestedContainer(keyedBy: CodingKeys.ImageCodingKeys.self, forKey: .imageURL)
-        let largeImageURL = try largeImageContainer.decode(URL.self, forKey: .large)
+           let largeStr = try largeImageContainer.decode(String.self, forKey: .large)
+        let largeImageURL = URL(string: largeStr)
 
         let thumbNailContainer = try container.nestedContainer(keyedBy: CodingKeys.ImageCodingKeys.self, forKey: .imageURL)
-        let thumbNailURL = try thumbNailContainer.decode(URL.self, forKey: .thumbnail)
+            let thumbStr = try thumbNailContainer.decode(String.self, forKey: .thumbnail)
+        let thumbNailURL = URL(string: thumbStr)
 
+        
         self.name = name
         self.email = email
         self.phoneNumber = phoneNumber
-        self.thumbNailImageURL = thumbNailURL
-        self.largeImageURL = largeImageURL
+        self.thumbNailImageURL = thumbNailURL!
+        self.largeImageURL = largeImageURL!
 
 
 
