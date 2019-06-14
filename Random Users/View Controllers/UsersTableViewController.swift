@@ -47,9 +47,32 @@ class UsersTableViewController: UITableViewController {
 	
 	private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
 		
+		if let imageData = thumbnailCache.value(for: indexPath.row) {
+			cell.userImageView?.image = UIImage(data: imageData)
+		}
 		
+		let user = userController.users[indexPath.row]
+		let fetchPhotoOperation = FetchPhotoOperation(userImageUrl: user.picture[0])
 		
+		let storeToCache = BlockOperation {
+			if let imageData = fetchPhotoOperation.imageData {
+				self.thumbnailCache.cache(value: imageData, for: indexPath.row)
+			}
+		}
 		
+		let cellReusedCheck = BlockOperation {
+			if self.tableView.indexPath(for: cell) == indexPath {
+				guard let imageData = fetchPhotoOperation.imageData else { return }
+				cell.userImageView.image = UIImage(data: imageData)
+			}
+		}
+		
+		storeToCache.addDependency(fetchPhotoOperation)
+		cellReusedCheck.addDependency(fetchPhotoOperation)
+		
+		photoFetchQueue.addOperations([fetchPhotoOperation, storeToCache], waitUntilFinished: false)
+		OperationQueue.main.addOperation(cellReusedCheck)
+		fetchPhotoOperations[indexPath.row] = fetchPhotoOperation
 	}
 	
 	
@@ -70,7 +93,7 @@ class UsersTableViewController: UITableViewController {
 	
 	
 	let userController = UserController()
-	var thumbnailCache = Cache<Int, Data>()
 	var fetchPhotoOperations: [Int: FetchPhotoOperation] = [:]
 	private let photoFetchQueue = OperationQueue()
+	var thumbnailCache = Cache<Int, Data>()
 }
