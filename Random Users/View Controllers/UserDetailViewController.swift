@@ -21,6 +21,7 @@ class UserDetailViewController: UIViewController {
     
     // MARK: - Properties & Outlets
     
+    var user: User?
     @IBOutlet weak var largeImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
