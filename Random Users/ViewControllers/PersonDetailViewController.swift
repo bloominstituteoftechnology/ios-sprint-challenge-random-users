@@ -61,8 +61,8 @@ class PersonDetailViewController: UIViewController {
             if self.cache.value(key: person.email) != nil,
                 let data = self.cache.value(key: person.email) {
                 self.largeImageView.image = UIImage(data: data)
-            } else {
-                return
+            } else if let imageData = fetchOp.imageData {
+                self.largeImageView.image = UIImage(data: imageData)
             }
         }
         
