@@ -33,15 +33,24 @@ class UsersTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
 		guard let userCell = cell as? UserTableViewCell else { return  cell }
-		
-		
 		let user = userController.users[indexPath.row]
 		userCell.nameLabel?.text = user.name
+		
+		
 		
 		return  userCell
 		
 	}
 	
+	private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
+		
+	}
+	
+	
+	func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+		
+	}
+
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "ShowUserSegue" {
