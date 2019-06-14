@@ -12,7 +12,11 @@ class UsersTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        userController.fetchUsers { (_) in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
 
     // MARK: - Table view data source
@@ -25,11 +29,35 @@ class UsersTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
         let user = userController.users[indexPath.row]
         cell.textLabel?.text = user.name
-        // need to configure load method here
+        load(for: cell, forItemAt: indexPath)
         return cell
     }
     
-    // need a load image function for loading thumbnail
+    func load(for cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+        let user = userController.users[indexPath.row]
+        if let cachedThumbnail = cache.value(for: user.email) {
+            cell.imageView?.image = cachedThumbnail
+        } else {
+            let fetchThumbnailOperation = FetchThumbnailPhotoOperation(user: user)
+            let cacheOperation = BlockOperation {
+                if let data = fetchThumbnailOperation.thumbnailImage {
+                    self.cache.cache(value: data, for: user.email)
+                }
+            }
+            let checkReuseOperation = BlockOperation {
+                if let currentIndexPath = self.tableView.indexPath(for: cell),
+                    currentIndexPath != indexPath { return }
+            }
+            if let data = fetchThumbnailOperation.thumbnailImage {
+                cell.imageView?.image = data
+            }
+            cacheOperation.addDependency(fetchThumbnailOperation)
+            checkReuseOperation.addDependency(fetchThumbnailOperation)
+            photoFetchQueue.addOperations([fetchThumbnailOperation, cacheOperation], waitUntilFinished: false)
+            OperationQueue.main.addOperation(checkReuseOperation)
+            fetchedOperations[user.email] = fetchThumbnailOperation
+        }
+    }
 
 
     // MARK: - Navigation
@@ -45,6 +73,8 @@ class UsersTableViewController: UITableViewController {
     
     // MARK: - Properties
     let userController = UserController()
-    
+    let photoFetchQueue = OperationQueue()
+    var fetchedOperations: [String : FetchThumbnailPhotoOperation] = [:]
+    private let cache = Cache<String, UIImage>()
 
 }
