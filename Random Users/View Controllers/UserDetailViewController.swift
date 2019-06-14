@@ -24,8 +24,23 @@ class UserDetailViewController: UIViewController {
 		}
 	}
 	
+	
+	func setupViews() {
+		guard let user = user else { return }
+		
+		nameLabel?.text = user.name
+		emailLabel?.text = user.email
+		
+		
+	}
+	
+	func fetchCurrentImage() {
+		//cache and fetch
+	}
+	
+	
 	@IBOutlet var emailLabel: UILabel!
 	@IBOutlet var nameLabel: UILabel!
 	@IBOutlet var userImageView: UIStackView!
-	
+	var user: User? { didSet { setupViews() } }
 }

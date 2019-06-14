@@ -22,7 +22,8 @@ class FetchPhotoOperation: ConcurrentOperation {
 			
 			guard let data = data else { return }
 			self.imageData = data
-			defer {self.state = .isFinished}
+			//do or defer
+			do {self.state = .isFinished}
 		}
 		
 		task?.resume()
