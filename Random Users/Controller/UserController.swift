@@ -11,10 +11,33 @@ import Foundation
 
 class UserController {
 	
+	init() {
+		fetchUsers { _ in}
+	}
+	
+	
+	func fetchUsers(completion: @escaping (Error?) -> ()) {
+		guard let url = baseUrl else { return }
+		
+		URLSession.shared.dataTask(with: url) { data, response, error in
+			if let response = response as? HTTPURLResponse {
+				print("fetchUsers Response: \(response.statusCode)")
+			}
+			
+			if let error = error {
+				print("fetchUsers Error: \(error)")
+			}
+			
+			guard let data = data else { return }
+			print(data)
+			
+		}.resume()
+		
+		
+	}
 	
 	
 	
-	
-	
+	private let baseUrl = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")
 	private (set) var users: [User] = []
 }

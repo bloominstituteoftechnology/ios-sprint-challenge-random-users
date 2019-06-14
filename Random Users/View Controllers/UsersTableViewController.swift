@@ -32,6 +32,6 @@ class UsersTableViewController: UITableViewController {
 	}
 	
 	
-	
+	let userController = UserController()
 
 }
