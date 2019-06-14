@@ -10,7 +10,7 @@ import UIKit
 
 class UsersTableViewController: UITableViewController {
     
-    // MARK: - View Loading
+    // MARK: - View Appearing/Loading
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,11 +66,18 @@ class UsersTableViewController: UITableViewController {
         }
     }
     
+    @IBAction func refresh(_ sender: UIRefreshControl) {
+        userController.fetchUsers { (_) in
+            DispatchQueue.main.async {
+                self.refreshControl?.endRefreshing()
+            }
+        }
+    }
     
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "DetailSegue" {
+        if segue.identifier == "ShowDetail" {
             guard let userDetailVC = segue.destination as? UserDetailViewController else { return }
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             let user = userController.users[indexPath.row]
