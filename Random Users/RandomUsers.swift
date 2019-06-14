@@ -14,7 +14,6 @@ struct RandomUsers: Codable {
     let results: [Result]
 }
 
-
 struct Result: Codable, Comparable {
     let name: Name
     let email: String
@@ -30,15 +29,14 @@ struct Result: Codable, Comparable {
     }
 }
 
-
 struct Name: Codable {
     let title: String
     let first: String
     let last: String
 }
 
-
 struct Picture: Codable {
     let large: String
-    let medium, thumbnail: String
+    let medium: String
+    let thumbnail: String
 }

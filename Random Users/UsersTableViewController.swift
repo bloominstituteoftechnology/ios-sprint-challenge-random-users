@@ -13,9 +13,10 @@ class UsersTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadUsers()
+
     }
 
-    @IBAction func loadMoreUsers(_ sender: Any) {
+    @IBAction func loadMoreUsersButtonPressed(_ sender: Any) {
         loadUsers()
     }
 
@@ -30,8 +31,8 @@ class UsersTableViewController: UITableViewController {
             self.users = alphabetical
             DispatchQueue.main.async {
                 self.tableView.reloadData()
-                self.navigationItem.title = "Users"
                 print("\(self.users.count) users loaded")
+                self.navigationItem.title = "\(self.users.count) Users"
             }
         }
     }

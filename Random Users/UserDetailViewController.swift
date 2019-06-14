@@ -12,11 +12,9 @@ class UserDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         updateView()
         loadImage()
     }
-
 
     private func loadImage() {
         guard let user = user,
@@ -65,7 +63,6 @@ class UserDetailViewController: UIViewController {
 
     func updateView() {
         guard let user = user else { return }
-
         DispatchQueue.main.async {
         self.nameLabel.text = "\(user.name.title.capitalizingFirstLetter()). \(user.name.first.capitalizingFirstLetter()) \(user.name.last.capitalizingFirstLetter())"
         self.phoneNumberLabel.text = user.phone
@@ -73,7 +70,6 @@ class UserDetailViewController: UIViewController {
         self.navigationItem.title = user.name.first.capitalizingFirstLetter() + " " + user.name.last.capitalizingFirstLetter()
         }
     }
-
 
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!

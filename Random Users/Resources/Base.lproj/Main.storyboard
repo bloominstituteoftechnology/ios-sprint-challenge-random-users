@@ -52,7 +52,7 @@
                     <navigationItem key="navigationItem" id="bea-9X-iQb">
                         <barButtonItem key="rightBarButtonItem" title="Add" id="Re3-Fc-OLn">
                             <connections>
-                                <action selector="loadMoreUsers:" destination="BUo-Vf-S8d" id="zkz-DW-eHQ"/>
+                                <action selector="loadMoreUsersButtonPressed:" destination="BUo-Vf-S8d" id="zkz-DW-eHQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
