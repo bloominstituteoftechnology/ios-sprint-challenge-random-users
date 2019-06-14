@@ -28,7 +28,7 @@ class UserDetailViewController: UIViewController {
         let cacheID = user.email
         if let imageData = cache.value(for: cacheID) {
             userImageView.image = UIImage(data: imageData)
-            print("Loading from large image cache")
+            print("Loaded image from cache")
         } else {
 
             let fetchImageOperation = FetchImageOperation(url: imageURL)
@@ -40,7 +40,7 @@ class UserDetailViewController: UIViewController {
             let cacheImageOperation = BlockOperation {
                 guard let data = imageData else { return }
                 self.largeImageCache?.cache(value: data, for: cacheID)
-                print("Caching large image fetch")
+                print("Cached image fetch")
             }
 
             let setImageOperation = BlockOperation {

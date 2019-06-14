@@ -12,22 +12,29 @@ class UsersTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadUsers()
+    }
 
-        randomUsersController.fetchUsers { (randomUsers, error) in
+    @IBAction func loadMoreUsers(_ sender: Any) {
+        loadUsers()
+    }
+
+    func loadUsers() {
+        randomUsersController.fetchUsers { (moreRandomUsers, error) in
             if let error = error {
-                NSLog("Error fetching users: \(error)")
+                NSLog("Error fetching more users: \(error)")
             }
-            guard let randomUsers = randomUsers else { return }
-            let unOrderedUsers = randomUsers.results
-            let alphabetical = unOrderedUsers.sorted()
+            guard let moreRandomUsers = moreRandomUsers else { return }
+            self.unorderedResults += moreRandomUsers.results
+            let alphabetical = self.unorderedResults.sorted()
             self.users = alphabetical
             DispatchQueue.main.async {
                 self.tableView.reloadData()
                 self.navigationItem.title = "Users"
+                print("\(self.users.count) users loaded")
             }
         }
     }
-
 
     // MARK: - Table view data source
 
@@ -67,7 +74,6 @@ class UsersTableViewController: UITableViewController {
         let cacheID = user.email
         if let imageData = cache.value(for: cacheID) {
             cell.imageView!.image = UIImage(data: imageData)
-            print("Loading from largeImageCache")
         } else {
 
             let fetchTumbnailOperation = FetchImageOperation(url: thumbnaillURL)
@@ -79,7 +85,6 @@ class UsersTableViewController: UITableViewController {
             let cacheImageOperation = BlockOperation {
                 guard let data = imageData else { return }
                 self.cache.cache(value: data, for: cacheID)
-                print("Caching fetch")
             }
 
             let setImageOperation = BlockOperation {
@@ -114,6 +119,7 @@ class UsersTableViewController: UITableViewController {
 
     var randomUsersController = RandomUsersController()
     var users: [Result] = []
+    var unorderedResults: [Result] = []
     var cache = Cache<String, Data>()
     var largeImageCache = Cache<String, Data>()
     var fetchDictionary: [String : FetchImageOperation] = [:]
