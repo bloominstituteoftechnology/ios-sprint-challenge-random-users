@@ -10,11 +10,15 @@ import UIKit
 
 class UserDetailViewController: UIViewController {
 
-    override func viewDidLoad() {
+	override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
+	
 
+	@IBOutlet var emailLabel: UILabel!
+	@IBOutlet var nameLabel: UILabel!
+	@IBOutlet var userImageView: UIStackView!
+	
 }

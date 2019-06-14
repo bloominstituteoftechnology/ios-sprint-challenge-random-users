@@ -125,6 +125,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GAf-ZQ-K6a"/>
                     </view>
+                    <connections>
+                        <outlet property="emailLabel" destination="JbF-bE-50N" id="9fx-GP-jWs"/>
+                        <outlet property="nameLabel" destination="IAD-a7-SSE" id="h5x-Rc-KEl"/>
+                        <outlet property="userImageView" destination="A5Q-II-YhS" id="mVf-UB-sko"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ccz-Sf-TDx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
