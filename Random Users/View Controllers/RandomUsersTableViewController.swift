@@ -41,6 +41,7 @@ class RandomUsersTableViewController: UITableViewController {
 
         let randomUser = randomUserController.randomUsers[indexPath.row]
         cell.textLabel?.text = randomUser.name
+        loadImage(forCell: cell, forItemAt: indexPath)
 
         return cell
     }
@@ -52,7 +53,33 @@ class RandomUsersTableViewController: UITableViewController {
     
     // MARK: - Image Loading Method
     private func loadImage(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+        let randomUser = randomUserController.randomUsers[indexPath.row]
         
+        if let image = cache.value(for: randomUser.phone) {
+            cell.imageView?.image = image
+        } else {
+            let fetchThumbnailOp = FetchThumbnailOp(randomUser: randomUser)
+            
+            let cacheOp = BlockOperation {
+                guard let image = fetchThumbnailOp.thumbnailImage else { return }
+                self.cache.cache(value: image, for: randomUser.phone)
+            }
+            
+            let cellReusedOp = BlockOperation {
+                guard let image = fetchThumbnailOp.thumbnailImage else { return }
+                if self.tableView.indexPath(for: cell) == indexPath {
+                    cell.imageView?.image = image
+                    self.tableView.reloadData()
+                }
+            }
+            
+            cacheOp.addDependency(fetchThumbnailOp)
+            cellReusedOp.addDependency(fetchThumbnailOp)
+            
+            randomUserFetchQueue.addOperations([fetchThumbnailOp, cacheOp], waitUntilFinished: false)
+            OperationQueue.main.addOperation(cellReusedOp)
+            activeOps[randomUser.phone] = fetchThumbnailOp
+        }
     }
 
     // MARK: - Navigation
