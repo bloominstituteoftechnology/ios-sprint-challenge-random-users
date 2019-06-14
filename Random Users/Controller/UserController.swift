@@ -41,8 +41,6 @@ class UserController {
 				print("Error decoding json: \(error)")
 				completion(error)
 			}
-			
-			
 		}.resume()
 
 	}
