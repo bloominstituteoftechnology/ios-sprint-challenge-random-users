@@ -46,7 +46,4 @@ class ThumbNailOperation: ConcurrentOperation {
     override func cancel() {
         dataTask?.cancel()
     }
-
-
-    
 }

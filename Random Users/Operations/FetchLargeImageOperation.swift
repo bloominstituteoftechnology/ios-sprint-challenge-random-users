@@ -22,7 +22,7 @@ class FetchLargeImageOperation: ConcurrentOperation {
     override func start() {
         state = .isExecuting
 
-       let imageUrl = user.largeImageURL
+        let imageUrl = user.largeImageURL
 
         dataTask = URLSession.shared.dataTask(with: imageUrl) { (data, _, error) in
             defer { self.state = .isFinished }
@@ -46,10 +46,5 @@ class FetchLargeImageOperation: ConcurrentOperation {
     override func cancel() {
         dataTask?.cancel()
     }
-
-
-
-
-
 
 }
