@@ -12,13 +12,22 @@ class UserDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        // Make sure we have a user
+        guard let user = user else { return }
+        
+        // Display the data
+        userNameLabel.text = user.name
+        phoneNumberLabel.text = user.phoneNumber
+        emailLabel.text = user.email
+        
+        
     }
+    
+    
     
 
     // MARK: - Properties
-    var randomUser: RandomUser?
+    var user: RandomUser?
     let fetchRandomUserQueue = OperationQueue()
     
     // MARK: - Outlets
