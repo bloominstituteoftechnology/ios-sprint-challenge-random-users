@@ -30,6 +30,7 @@ class UserDetailViewController: UIViewController {
 	func setupViews() {
 		guard let user = user else { return }
 		nameLabel?.text = user.name
+		phoneLabel?.text = user.phone
 		emailLabel?.text = user.email
 		fetchCurrentImage(with: user.picture[2])
 	}
@@ -62,6 +63,7 @@ class UserDetailViewController: UIViewController {
 		fetchPhotoOperations = fetchPhotoOperation
 	}
 	
+	@IBOutlet var phoneLabel: UILabel!
 	
 	@IBOutlet var emailLabel: UILabel!
 	@IBOutlet var nameLabel: UILabel!

@@ -134,6 +134,7 @@
                     <connections>
                         <outlet property="emailLabel" destination="JbF-bE-50N" id="9fx-GP-jWs"/>
                         <outlet property="nameLabel" destination="IAD-a7-SSE" id="h5x-Rc-KEl"/>
+                        <outlet property="phoneLabel" destination="T1K-Iw-Dyz" id="fSO-Mz-TiT"/>
                         <outlet property="userImageView" destination="HQc-Mf-SGT" id="Ftg-i7-mYI"/>
                     </connections>
                 </viewController>
