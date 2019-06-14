@@ -17,7 +17,7 @@ class ThumbnailFetch: ConcurrentOperation {
     override func start() {
         state = .isExecuting
         
-        // Fetch the thumbnaill images
+        // MARK: -  URL fetch Session
         guard let url = randomUser.thumbNailURL else { return }
         task = URLSession.shared.dataTask(with: url) { (data, _, error) in
             defer { self.state = .isFinished }
@@ -28,16 +28,25 @@ class ThumbnailFetch: ConcurrentOperation {
                 return
             }
             
-            // Check for the thumbnail
+            // Check for the thumbnail data
             guard let data = data else {
                 NSLog("Not able to fetch thumbnail data")
                 return
             }
-            
+            // Store the thumbnail
+            self.thumbnailImage = UIImage(data: data)
         }
+        task?.resume()
     }
     
     
+    // MARK: - Cancel function
+    override func cancel() {
+        task?.cancel()
+    }
+    
+    
+    // MARK: - Properties
     var randomUser: RandomUser
     private var task: URLSessionDataTask?
     var thumbnailImage: UIImage?
