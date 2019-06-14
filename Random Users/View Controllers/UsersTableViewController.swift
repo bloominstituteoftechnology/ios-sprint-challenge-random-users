@@ -43,6 +43,16 @@ class UsersTableViewController: UITableViewController {
 	}
 	
 	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "ShowUserSegue" {
+			guard let vc = segue.destination as? UserDetailViewController,
+				let indexpath = tableView.indexPathForSelectedRow	else { return }
+			
+			let user = userController.users[indexpath.row]
+			vc.user = user
+		}
+	}
+	
+	
 	let userController = UserController()
-
 }

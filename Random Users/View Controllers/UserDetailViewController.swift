@@ -10,10 +10,13 @@ import UIKit
 
 class UserDetailViewController: UIViewController {
 
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		setupViews()
+	}
+	
 	override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 	
 	override func didMove(toParentViewController parent: UIViewController?) {
@@ -42,5 +45,5 @@ class UserDetailViewController: UIViewController {
 	@IBOutlet var emailLabel: UILabel!
 	@IBOutlet var nameLabel: UILabel!
 	@IBOutlet var userImageView: UIStackView!
-	var user: User? { didSet { setupViews() } }
+	var user: User?
 }
