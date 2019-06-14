@@ -12,6 +12,13 @@
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
 		8ED6A9922140178C00FC395A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
+		FF9FBD1222B4274E00A0C5E3 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9FBD1122B4274E00A0C5E3 /* Cache.swift */; };
+		FF9FBD1422B427B800A0C5E3 /* RandomUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9FBD1322B427B800A0C5E3 /* RandomUsersTableViewController.swift */; };
+		FF9FBD1622B427CE00A0C5E3 /* RandomUserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9FBD1522B427CE00A0C5E3 /* RandomUserDetailViewController.swift */; };
+		FF9FBD1822B4280500A0C5E3 /* RandomUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9FBD1722B4280500A0C5E3 /* RandomUser.swift */; };
+		FF9FBD1A22B4281200A0C5E3 /* RandomUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9FBD1922B4281200A0C5E3 /* RandomUserController.swift */; };
+		FF9FBD1C22B4283100A0C5E3 /* FetchThumbnailOp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9FBD1B22B4283100A0C5E3 /* FetchThumbnailOp.swift */; };
+		FF9FBD1E22B4284100A0C5E3 /* FetchLargeImageOp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9FBD1D22B4284100A0C5E3 /* FetchLargeImageOp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +29,13 @@
 		8ED6A9912140178C00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ED6A9932140178C00FC395A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
+		FF9FBD1122B4274E00A0C5E3 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		FF9FBD1322B427B800A0C5E3 /* RandomUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersTableViewController.swift; sourceTree = "<group>"; };
+		FF9FBD1522B427CE00A0C5E3 /* RandomUserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserDetailViewController.swift; sourceTree = "<group>"; };
+		FF9FBD1722B4280500A0C5E3 /* RandomUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUser.swift; sourceTree = "<group>"; };
+		FF9FBD1922B4281200A0C5E3 /* RandomUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserController.swift; sourceTree = "<group>"; };
+		FF9FBD1B22B4283100A0C5E3 /* FetchThumbnailOp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchThumbnailOp.swift; sourceTree = "<group>"; };
+		FF9FBD1D22B4284100A0C5E3 /* FetchLargeImageOp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLargeImageOp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +68,9 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
-				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+				FF9FBD1022B4239F00A0C5E3 /* Models */,
+				FF9FBD0F22B4239900A0C5E3 /* Model Controllers */,
+				FF9FBD0D22B4239000A0C5E3 /* View Controllers */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
@@ -64,6 +80,7 @@
 		9D5CCA522142305600224681 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				8ED6A98B2140178A00FC395A /* Main.storyboard */,
 				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
 				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
@@ -76,8 +93,36 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				FF9FBD1B22B4283100A0C5E3 /* FetchThumbnailOp.swift */,
+				FF9FBD1D22B4284100A0C5E3 /* FetchLargeImageOp.swift */,
 			);
 			path = Operations;
+			sourceTree = "<group>";
+		};
+		FF9FBD0D22B4239000A0C5E3 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FF9FBD1322B427B800A0C5E3 /* RandomUsersTableViewController.swift */,
+				FF9FBD1522B427CE00A0C5E3 /* RandomUserDetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		FF9FBD0F22B4239900A0C5E3 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FF9FBD1122B4274E00A0C5E3 /* Cache.swift */,
+				FF9FBD1922B4281200A0C5E3 /* RandomUserController.swift */,
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		FF9FBD1022B4239F00A0C5E3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FF9FBD1722B4280500A0C5E3 /* RandomUser.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,7 +197,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				FF9FBD1E22B4284100A0C5E3 /* FetchLargeImageOp.swift in Sources */,
+				FF9FBD1422B427B800A0C5E3 /* RandomUsersTableViewController.swift in Sources */,
+				FF9FBD1222B4274E00A0C5E3 /* Cache.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				FF9FBD1622B427CE00A0C5E3 /* RandomUserDetailViewController.swift in Sources */,
+				FF9FBD1A22B4281200A0C5E3 /* RandomUserController.swift in Sources */,
+				FF9FBD1C22B4283100A0C5E3 /* FetchThumbnailOp.swift in Sources */,
+				FF9FBD1822B4280500A0C5E3 /* RandomUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
