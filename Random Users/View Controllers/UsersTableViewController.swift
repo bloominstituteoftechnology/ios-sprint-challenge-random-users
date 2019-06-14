@@ -27,20 +27,23 @@ class UsersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RandomUserCell", for: indexPath) as! UsersTableViewCell
-
+        
+        // Get the users
         let randomUser = randomUsers?[indexPath.row]
+        
+        // Get the user name
         cell.userNameLabel.text = randomUser?.name
         
-        
-        
+        // Get the user's image
+        loadImage(forCell: cell, forItemAt: indexPath)
 
         return cell
     }
     
     // Cancel operation
-//    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        <#code#>
-//    }
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+
+    }
     
     
     private func loadImage(forCell cell: UsersTableViewCell, forItemAt indexPath: IndexPath) {
