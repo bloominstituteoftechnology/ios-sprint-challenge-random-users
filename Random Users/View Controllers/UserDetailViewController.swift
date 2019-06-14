@@ -38,12 +38,31 @@ class UserDetailViewController: UIViewController {
 	}
 	
 	func fetchCurrentImage() {
-		//cache and fetch
+		guard let user = user, let userIndex = userIndex else { return }
+		
+		if let imageData = userController?.largeImageCache.value(for: userIndex) {
+			userImageView.image = UIImage(data: imageData)
+		}
+		
+		let fetchPhotoOperation = FetchPhotoOperation(userImageUrl: user.picture[2])
+		
+		let storeToCache = BlockOperation {
+			if let imageData = fetchPhotoOperation.imageData {
+				self.userController?.largeImageCache.cache(value: imageData, for: userIndex)
+			}
+		}
+		
+		let setImageOp = BlockOperation {
+			
+		}
+		
 	}
 	
 	
 	@IBOutlet var emailLabel: UILabel!
 	@IBOutlet var nameLabel: UILabel!
-	@IBOutlet var userImageView: UIStackView!
+	@IBOutlet var userImageView: UIImageView!
 	var user: User?
+	var userIndex: Int?
+	var userController: UserController?
 }

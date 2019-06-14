@@ -73,12 +73,12 @@ class UsersTableViewController: UITableViewController {
 		photoFetchQueue.addOperations([fetchPhotoOperation, storeToCache], waitUntilFinished: false)
 		OperationQueue.main.addOperation(cellReusedCheck)
 		fetchPhotoOperations[indexPath.row] = fetchPhotoOperation
-		print(fetchPhotoOperations[indexPath.row]!.state)
+//		print(fetchPhotoOperations[indexPath.row]!.state)
 	}
 	
 	override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 		fetchPhotoOperations[indexPath.row]!.cancel()
-		print(fetchPhotoOperations[indexPath.row]!.state)
+//		print(fetchPhotoOperations[indexPath.row]!.state)
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -86,8 +86,11 @@ class UsersTableViewController: UITableViewController {
 			guard let vc = segue.destination as? UserDetailViewController,
 				let indexpath = tableView.indexPathForSelectedRow	else { return }
 			
-			let user = userController.users[indexpath.row]
+			let userIndex = indexpath.row
+			let user = userController.users[userIndex]
 			vc.user = user
+			vc.userController = userController
+			vc.userIndex = userIndex
 		}
 	}
 	
