@@ -40,6 +40,7 @@ class RandomUserController {
                 return
             }
         }
+        .resume()
     }
     
     // MARK: - Properties
