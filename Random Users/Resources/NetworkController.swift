@@ -19,7 +19,7 @@ class NetworkController {
         var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
         let format = URLQueryItem(name: "format", value: "json")
         let including = URLQueryItem(name: "inc", value: "name,email,phone,picture")
-        let results = URLQueryItem(name: "results", value: "2000")
+        let results = URLQueryItem(name: "results", value: "1000")
         
         urlComponents?.queryItems = [format, including, results]
         
