@@ -17,6 +17,7 @@
 		E8A986F422B3F327004D058E /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A986F322B3F327004D058E /* UserDetailViewController.swift */; };
 		E8A986F722B3F718004D058E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A986F622B3F718004D058E /* User.swift */; };
 		E8A986FA22B3F74C004D058E /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A986F922B3F74C004D058E /* UserController.swift */; };
+		E8A986FC22B404D1004D058E /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A986FB22B404D1004D058E /* Cache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		E8A986F322B3F327004D058E /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		E8A986F622B3F718004D058E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E8A986F922B3F74C004D058E /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		E8A986FB22B404D1004D058E /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				E8A986F622B3F718004D058E /* User.swift */,
+				E8A986FB22B404D1004D058E /* Cache.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 			files = (
 				E8A986F122B3F11A004D058E /* UserTableViewCell.swift in Sources */,
 				E8A986F422B3F327004D058E /* UserDetailViewController.swift in Sources */,
+				E8A986FC22B404D1004D058E /* Cache.swift in Sources */,
 				E8A986F722B3F718004D058E /* User.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				E8A986FA22B3F74C004D058E /* UserController.swift in Sources */,

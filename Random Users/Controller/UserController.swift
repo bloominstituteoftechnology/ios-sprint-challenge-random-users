@@ -49,4 +49,6 @@ class UserController {
 	
 	private let baseUrl = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")
 	private (set) var users: [User] = []
+	var thumbnailImageCache = Cache<Int, Data>()
+	var largeImageCache = Cache<Int, Data>()
 }
