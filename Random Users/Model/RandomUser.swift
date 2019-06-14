@@ -34,7 +34,7 @@ struct RandomUser: Equatable, Decodable {
     
     enum ImageURLKeys: String, CodingKey {
         case thumbnail
-        case largeImage
+        case large
     }
 }
 
@@ -46,7 +46,7 @@ struct RandomUser: Equatable, Decodable {
         let title = try nameContainer.decode(String.self, forKey: .title)
         let first = try nameContainer.decode(String.self, forKey: .first)
         let last = try nameContainer.decode(String.self, forKey: .last)
-        let name = "\(title) \(first) \(last)"
+        let name = "\(title). \(first) \(last)"
         
         // Decode phone number
         let phoneNumber = try container.decode(String.self, forKey: .phoneNumber)
@@ -57,7 +57,7 @@ struct RandomUser: Equatable, Decodable {
         // Decode images URL strings
         let imagesContainer = try container.nestedContainer(keyedBy: CodingKeys.ImageURLKeys.self, forKey: .imagesURL)
         let thumbnailString = try imagesContainer.decode(String.self, forKey: .thumbnail)
-        let largeImageString = try imagesContainer.decode(String.self, forKey: .largeImage)
+        let largeImageString = try imagesContainer.decode(String.self, forKey: .large)
         
         // Now create image URLs
         let thumbnailURL = URL(string: thumbnailString)

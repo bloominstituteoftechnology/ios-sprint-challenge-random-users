@@ -18,7 +18,7 @@ class LargeImageFetch: ConcurrentOperation {
         state = .isExecuting
         
         // MARK: -  URL fetch Session
-        guard let url = randomUser.thumbNailURL else { return }
+        guard let url = randomUser.largeImageURL else { return }
         task = URLSession.shared.dataTask(with: url) { (data, _, error) in
             defer { self.state = .isFinished }
             
