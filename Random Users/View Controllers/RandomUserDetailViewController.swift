@@ -9,6 +9,10 @@
 import UIKit
 
 class RandomUserDetailViewController: UIViewController {
+    
+    // MARK: - Properties
+    var randomUserController: RandomUserController?
+    var randomUser: RandomUser?
 
     override func viewDidLoad() {
         super.viewDidLoad()

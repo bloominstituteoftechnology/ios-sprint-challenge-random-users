@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: - BaseURL
-private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture")!
+private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=5000")!
 
 class RandomUserController {
     
@@ -17,19 +17,8 @@ class RandomUserController {
     var randomUsers: [RandomUser] = []
     
     // MARK: - Fetch Method
-    func fetchRandomUsers(results: String, completion: @escaping (Error?) -> Void = { _ in }) {
-        
-        var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
-        let queryItem = URLQueryItem(name: "results", value: results)
-        urlComponents?.queryItems = [queryItem]
-        
-        guard let requestURL = urlComponents?.url else {
-            NSLog("Error creating request url.")
-            completion(NSError())
-            return
-        }
-        
-        URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
+    func fetchRandomUsers(completion: @escaping (Error?) -> Void = { _ in }) {
+        URLSession.shared.dataTask(with: baseURL) { (data, _, error) in
             if let error = error {
                 NSLog("Error starting data task: \(error)")
                 completion(error)
