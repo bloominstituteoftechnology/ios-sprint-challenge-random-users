@@ -48,18 +48,23 @@ class User: Codable {
             case first
             case last
         }
-    }
+    } // end enums
+    
     
     // NAV: Property Type Declarations
     
-    let name: String    // for name we will simply concatenate title + first + last names into one name
+    let title: String
+    let first: String
+    let last: String
     let phone: String
     let email: String
+    // for name we will simply concatenate title + first + last names into one name
+    let name: String
     
-    init(name: String, phone: String, email: String) {
-            self.name = name
+    init(title: String, first: String, last: String, phone: String, email: String) {
             self.phone = phone
             self.email = email
+            self.name = "\(title). \(first) \(last)"
     }
     
         required init(from decoder: Decoder) throws {
