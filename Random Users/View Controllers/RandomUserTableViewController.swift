@@ -10,8 +10,8 @@ import UIKit
 
 class RandomUserTableViewController: UITableViewController {
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         randomUserController.fetchUsers { _ in
             DispatchQueue.main.async {
                 self.tableView.reloadData()
