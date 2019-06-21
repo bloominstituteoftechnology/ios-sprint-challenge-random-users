@@ -29,10 +29,12 @@ class UserController {
             }
             
             do {
-                let users = try JSONDecoder().decode([User].self, from: data)   // is this correct? array of users
+                let downloadedUsers = try JSONDecoder().decode(Users.self, from: data)   // is this correct? array of users
                 
                 // completion can ALSO be used to send users to the calling location so long as we use @escaping, but how do we want the data to get to TableViewController given our potential problems with loading Image data?  We will need to download image data using the url separately-- inside the TableView
-                self.users = users
+                self.users = downloadedUsers.results
+            
+                
                 
                 completion(nil)
             } catch {
@@ -43,5 +45,5 @@ class UserController {
         }.resume()
     } // end getUsers
     
-    var users = [User]()
+    var users: [User] = []
 }

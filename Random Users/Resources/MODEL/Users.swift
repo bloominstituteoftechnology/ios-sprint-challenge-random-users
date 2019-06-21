@@ -11,16 +11,16 @@ import Foundation
 class Users: Decodable {
     
     enum Keys: String, CodingKey {
-        case users
+        case results
     }
     
-    let users: [User]
+    let results: [User]
     
     // Decodes data into users array, but am I double-decoding here?  Perhaps a User from below is already decoded, so I'm really just supposed to append User to users array here or in the basic init() above?
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Keys.self)
         
-        let users = try container.decode([User].self, forKey: .users)
+        let results = try container.decode([User].self, forKey: .results)
         
 //        var users: [User] = []
 //        if container.contains(.users) {
@@ -31,7 +31,7 @@ class Users: Decodable {
 //                users.append(user)
 //            }  // end while
 //        } // end if
-        self.users = users
+        self.results = results
     } // end req'd init
 } // end Users class
 
