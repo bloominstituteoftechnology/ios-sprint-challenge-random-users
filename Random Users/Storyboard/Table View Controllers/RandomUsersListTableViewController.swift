@@ -21,74 +21,100 @@ class RandomUsersListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        UserController.shared.fetchUsers { (error) in
+            if let error = error {
+                print("error ontable view: \(error)")
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.tableView.backgroundColor = .blue
+            }
+        }
     }
 
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return UserController.shared.users.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RandomUserTableViewCell
 
         // Configure the cell...
-
+        loadImage(forCell: cell, forItemAt: indexPath)
+        
+        let userToPass = UserController.shared.users[indexPath.row]
+        cell.user = userToPass
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let user = UserController.shared.users[indexPath.row]
+        
+        storedFetchOperations[user.fullName]?.cancel()
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    //call this in cellForAtRow
+    private func loadImage(forCell cell: RandomUserTableViewCell, forItemAt indexPath: IndexPath){
+        //get user
+        let user = UserController.shared.users[indexPath.row]
+        
+        //check to see if the cache contains data from the network, if it does then set the cell's properties and return
+        if let imageInCache = cache.returnCachedValue(forKey: user.fullName){
+            //user is in cache so we can set the cell's properties
+            cell.imageView?.image = imageInCache
+        } else {
+            //image not in cache, fetch user, store user in cache, check to see if cell has been reused
+            let fetchPhotoOperation = FetchPhotoOperation(user: user, imageURL: user.thumbnail) //this makes the network call for the user's thumbnail
+            
+            //cacheOperation
+            let cacheOperation = BlockOperation {
+                guard let data = fetchPhotoOperation.imageData, let image = UIImage(data: data) else { print("Error making image from data in cacheOperation"); return }
+                self.cache.cacheAdd(value: image, forKey: user.fullName)
+            }
+            
+            //this operation should check if the cell has been reused and if not set its image view image
+            let reuseOperation = BlockOperation {
+                guard let data = fetchPhotoOperation.imageData, let image = UIImage(data: data) else { print("Error making image from data in reuseOperation"); return }
+                
+                //this is checking to see if the cells are visible (on the screen)
+                if self.tableView.indexPath(for: cell) == indexPath {
+                    self.tableView.reloadData()
+                } else {
+                    //if cells are not visible/on the screen, set the image before they appear
+                    cell.imageView?.image = image
+                }
+            }
+            //make the cache and reuse dependent on fetch //this will help avoid race conditions by stating that these two cannot execute until after we've fetchedPhotos
+            cacheOperation.addDependency(fetchPhotoOperation)
+            reuseOperation.addDependency(fetchPhotoOperation)
+            
+            //add each operation to the appropriate queue
+            photoFetchQueue.addOperations([fetchPhotoOperation, cacheOperation], waitUntilFinished: true)
+            
+            //because this is actually setting/interacting with uikit we have to do this on the main queue
+            OperationQueue.main.addOperation(reuseOperation)
+            
+            
+            //when you finish creating and starting the operations for a cell, add the fetch operation to your dictionary. This way you can retrieve it later to cancel if need be
+            storedFetchOperations[user.fullName] = fetchPhotoOperation
+        }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "CellSegue" {
+            guard let toVC = segue.destination as? DetailUserViewController, let indexpath = tableView.indexPathForSelectedRow else { print("error in table view segue"); return }
+            let userToPass = UserController.shared.users[indexpath.row]
+            toVC.user = userToPass
+            toVC.cache = cache
+        }
     }
-    */
+   
 
 }

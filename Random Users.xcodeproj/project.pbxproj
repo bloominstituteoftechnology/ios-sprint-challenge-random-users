@@ -106,6 +106,7 @@
 		1BEC257B22BD75B90033BAF1 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				1BEC257122BD3B640033BAF1 /* Cache.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -154,7 +155,6 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
-				1BEC257122BD3B640033BAF1 /* Cache.swift */,
 				1BEC257522BD726F0033BAF1 /* FetchPhotoOperation.swift */,
 			);
 			path = Operations;

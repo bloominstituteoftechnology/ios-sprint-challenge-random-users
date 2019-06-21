@@ -7,14 +7,17 @@
 //
 
 import Foundation
+import UIKit
+
 class UserController {
     
     static var shared = UserController()
     var users = [User]()
+    
     typealias CompletionHandler = (Error?) -> Void
     private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
     
-    func fetchPeople(completion: @escaping CompletionHandler = { _ in }){
+    func fetchUsers(completion: @escaping CompletionHandler = { _ in }){
         URLSession.shared.dataTask(with: baseURL) { (data, response, error) in
             if let response = response as? HTTPURLResponse {
                 print("Response status code for fetching: \(response.statusCode)")
