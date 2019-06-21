@@ -32,9 +32,9 @@ class FetchPhotoOperation: ConcurrentOperation {
         
         //create a dataTask to load the image. You should store the task itself in a private property so you can cancel it if need be.
         let dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            print("Data task in fetchPhotoHit")
+        
             if let response = response as? HTTPURLResponse {
-                print("This is the FetchPhotoOperation status code: \(response.statusCode)")
+//                print("This is the FetchPhotoOperation status code: \(response.statusCode)")
             }
             if let error = error {
                 print("Error in FetchPhotoOperation network call: \(error.localizedDescription), better description of ERROR: \(error)")

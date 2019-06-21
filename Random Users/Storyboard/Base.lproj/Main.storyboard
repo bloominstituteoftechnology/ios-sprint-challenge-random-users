@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Random User list-->
         <scene sceneID="9PJ-lv-90P">
             <objects>
                 <tableViewController id="SAl-ey-ugo" customClass="RandomUsersListTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
@@ -61,7 +61,7 @@
                             <outlet property="delegate" destination="SAl-ey-ugo" id="xI3-CU-lDX"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="zmh-56-Jj4">
+                    <navigationItem key="navigationItem" title="Random User list" id="zmh-56-Jj4">
                         <barButtonItem key="rightBarButtonItem" title="Add" id="b6O-cU-kdZ"/>
                     </navigationItem>
                 </tableViewController>

@@ -52,7 +52,6 @@ class RandomUsersListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let user = UserController.shared.users[indexPath.row]
-        
         storedFetchOperations[user.fullName]?.cancel()
     }
     
@@ -97,7 +96,6 @@ class RandomUsersListTableViewController: UITableViewController {
             //because this is actually setting/interacting with uikit we have to do this on the main queue
             OperationQueue.main.addOperation(reuseOperation)
             
-            
             //when you finish creating and starting the operations for a cell, add the fetch operation to your dictionary. This way you can retrieve it later to cancel if need be
             storedFetchOperations[user.fullName] = fetchPhotoOperation
         }
@@ -115,6 +113,4 @@ class RandomUsersListTableViewController: UITableViewController {
 //            toVC.cache = cache  //passing this to the detail will make the picture really blurry for some reason
         }
     }
-   
-
 }

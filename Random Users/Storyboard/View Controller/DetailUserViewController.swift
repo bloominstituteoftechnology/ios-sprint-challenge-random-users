@@ -40,8 +40,6 @@ class DetailUserViewController: UIViewController {
     
     private func updateViews(){
         guard let passedInUser = user, isViewLoaded else { return }
-        print("update func hit")
-        
         
         if let image = loadLargePhoto(user: passedInUser){
             myImageView.image = image
@@ -49,6 +47,7 @@ class DetailUserViewController: UIViewController {
         } else {
             print("loadLargePhoto: Not returning an Image")
         }
+        title = passedInUser.firstName
         nameLabel.text = passedInUser.fullName
         phoneLabel.text = passedInUser.phone
         emailLabel.text = passedInUser.email
