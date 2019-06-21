@@ -10,15 +10,18 @@ import UIKit
 
 class RandomUserTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    var user: User? {
+        didSet {
+            updateViews()
+        }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    @IBOutlet weak var myImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+   
+    func updateViews(){
+        guard let passedInUser = user else { print("User wasnt passed through"); return }
+        nameLabel.text = passedInUser.fullName
     }
-
+    
 }
