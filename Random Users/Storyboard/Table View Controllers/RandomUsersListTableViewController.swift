@@ -10,14 +10,18 @@ import UIKit
 
 class RandomUsersListTableViewController: UITableViewController {
 
+    //this is to store thumbnail images for person. (Person is the key and the value is the image)
+    var cache: Cache<String, UIImage> = Cache()
+    
+    //this will be used to put the operations on the right queue
+    var photoFetchQueue = OperationQueue()
+    
+    //this dictionary will be used to cancel operation calls
+    var storedFetchOperations: [ String : FetchPhotoOperation ] = [:]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
