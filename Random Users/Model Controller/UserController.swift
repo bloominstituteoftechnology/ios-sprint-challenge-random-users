@@ -30,7 +30,7 @@ class UserController {
             guard let data = data else { print("Error unwrapping data in fetch network call"); completion(NSError()); return }
             let jsonDecoder = JSONDecoder()
             do {
-                let users = try jsonDecoder.decode(RandomUser.self, from: data).results.compactMap { $0 }
+                let users = try jsonDecoder.decode(RandomUser.self, from: data).results
                 self.users = users
                 
             } catch {

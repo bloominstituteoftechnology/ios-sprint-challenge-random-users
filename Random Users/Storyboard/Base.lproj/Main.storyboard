@@ -78,8 +78,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OoE-br-Bm7">
-                                <rect key="frame" x="20" y="153" width="374" height="229"/>
+                                <rect key="frame" x="20" y="153" width="355" height="229"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="355" id="4tX-7N-BbV"/>
                                     <constraint firstAttribute="height" constant="229" id="AQj-eR-bmm"/>
                                 </constraints>
                             </imageView>
@@ -111,9 +112,8 @@
                         <constraints>
                             <constraint firstItem="FRx-Jl-heg" firstAttribute="trailing" secondItem="i4P-1G-aVq" secondAttribute="trailing" constant="20" id="1WD-Fv-Jby"/>
                             <constraint firstItem="OoE-br-Bm7" firstAttribute="top" secondItem="FRx-Jl-heg" secondAttribute="top" constant="13" id="7sA-DU-GUH"/>
-                            <constraint firstItem="FRx-Jl-heg" firstAttribute="trailing" secondItem="OoE-br-Bm7" secondAttribute="trailing" constant="20" id="HAs-tn-Y7Z"/>
                             <constraint firstItem="OoE-br-Bm7" firstAttribute="leading" secondItem="FRx-Jl-heg" secondAttribute="leading" constant="20" id="Nd9-QH-uoY"/>
-                            <constraint firstItem="i4P-1G-aVq" firstAttribute="top" secondItem="OoE-br-Bm7" secondAttribute="bottom" constant="85" id="pB9-H7-jir"/>
+                            <constraint firstItem="i4P-1G-aVq" firstAttribute="top" secondItem="OoE-br-Bm7" secondAttribute="bottom" constant="85" id="st6-Qt-aPt"/>
                             <constraint firstItem="i4P-1G-aVq" firstAttribute="leading" secondItem="FRx-Jl-heg" secondAttribute="leading" constant="20" id="wrN-2f-Gs1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FRx-Jl-heg"/>

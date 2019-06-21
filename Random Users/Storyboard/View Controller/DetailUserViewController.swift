@@ -45,6 +45,7 @@ class DetailUserViewController: UIViewController {
         
         if let image = loadLargePhoto(user: passedInUser){
             myImageView.image = image
+            
         } else {
             print("loadLargePhoto: Not returning an Image")
         }

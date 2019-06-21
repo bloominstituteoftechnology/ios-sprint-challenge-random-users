@@ -112,7 +112,7 @@ class RandomUsersListTableViewController: UITableViewController {
             guard let toVC = segue.destination as? DetailUserViewController, let indexpath = tableView.indexPathForSelectedRow else { print("error in table view segue"); return }
             let userToPass = UserController.shared.users[indexpath.row]
             toVC.user = userToPass
-            toVC.cache = cache
+//            toVC.cache = cache  //passing this to the detail will make the picture really blurry for some reason
         }
     }
    
