@@ -11,6 +11,7 @@
 		1BEC255F22BD31990033BAF1 /* RandomUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEC255E22BD31990033BAF1 /* RandomUserTableViewCell.swift */; };
 		1BEC256122BD31B20033BAF1 /* DetailUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEC256022BD31B20033BAF1 /* DetailUserViewController.swift */; };
 		1BEC256922BD32B90033BAF1 /* RandomUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEC256822BD32B90033BAF1 /* RandomUser.swift */; };
+		1BEC256B22BD338E0033BAF1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEC256A22BD338E0033BAF1 /* User.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 		1BEC255E22BD31990033BAF1 /* RandomUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserTableViewCell.swift; sourceTree = "<group>"; };
 		1BEC256022BD31B20033BAF1 /* DetailUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUserViewController.swift; sourceTree = "<group>"; };
 		1BEC256822BD32B90033BAF1 /* RandomUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUser.swift; sourceTree = "<group>"; };
+		1BEC256A22BD338E0033BAF1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				1BEC256822BD32B90033BAF1 /* RandomUser.swift */,
+				1BEC256A22BD338E0033BAF1 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				1BEC255F22BD31990033BAF1 /* RandomUserTableViewCell.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				1BEC256922BD32B90033BAF1 /* RandomUser.swift in Sources */,
+				1BEC256B22BD338E0033BAF1 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

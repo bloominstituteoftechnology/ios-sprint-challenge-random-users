@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RandomUser: Codable {
+struct RandomUser: Codable {
     var results: [User]
     
     enum RandomUserKeys: String, CodingKey {
@@ -25,4 +25,5 @@ class RandomUser: Codable {
         }
         results = arrayOfUsers
     }
+    
 }
