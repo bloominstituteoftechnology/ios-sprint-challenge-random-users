@@ -17,6 +17,11 @@ class UsersTableViewController: UITableViewController {
     @IBAction func addUsersButtonPressed(_ sender: Any) {
         
         // Begin fetching users by calling GET method to download from api
+        userController.getUsers { (_) in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
         
     }
     
@@ -56,7 +61,8 @@ class UsersTableViewController: UITableViewController {
             let indexPath = tableView.indexPathForSelectedRow else {return}
             
             let user = userController.users[indexPath.row]
-            destinationVC.usersController = userController
+            destinationVC.userController = userController
+            destinationVC.user = user
         }
         
         
