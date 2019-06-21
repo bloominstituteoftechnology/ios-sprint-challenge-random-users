@@ -13,13 +13,13 @@
         <!--Users-->
         <scene sceneID="GFJ-8z-ftB">
             <objects>
-                <tableViewController id="lFQ-fj-bMR" sceneMemberID="viewController">
+                <tableViewController id="lFQ-fj-bMR" customClass="UsersTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZFA-du-Swm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="71" id="Q3C-LM-Vzx">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="71" id="Q3C-LM-Vzx" customClass="UserTableViewCell" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="71"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q3C-LM-Vzx" id="Fpg-VU-sUH">
@@ -52,7 +52,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="IRq-0g-Kdg" kind="show" id="ib3-Mf-WoM"/>
+                                    <outlet property="cellImage" destination="TJI-rV-RL1" id="wqu-cF-dp2"/>
+                                    <outlet property="cellNameLabel" destination="3cH-eb-5FH" id="SF7-T0-AZd"/>
+                                    <segue destination="IRq-0g-Kdg" kind="show" identifier="UserDetails" id="ib3-Mf-WoM"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -109,7 +111,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wwq-8w-aEQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1742" y="205"/>
+            <point key="canvasLocation" x="1886" y="203"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tbF-SJ-Zhv">
