@@ -33,9 +33,6 @@ class UserController {
                 
                 // completion can ALSO be used to send users to the calling location so long as we use @escaping, but how do we want the data to get to TableViewController given our potential problems with loading Image data?  We will need to download image data using the url separately-- inside the TableView
                 self.users = downloadedUsers.results
-            
-                
-                
                 completion(nil)
             } catch {
                 print(error)

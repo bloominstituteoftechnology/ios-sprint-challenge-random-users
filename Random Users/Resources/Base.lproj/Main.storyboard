@@ -54,7 +54,7 @@
                                 <connections>
                                     <outlet property="cellImage" destination="TJI-rV-RL1" id="wqu-cF-dp2"/>
                                     <outlet property="cellNameLabel" destination="3cH-eb-5FH" id="SF7-T0-AZd"/>
-                                    <segue destination="IRq-0g-Kdg" kind="show" identifier="UserDetails" id="ib3-Mf-WoM"/>
+                                    <segue destination="IRq-0g-Kdg" kind="show" identifier="UserDetail" id="ib3-Mf-WoM"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

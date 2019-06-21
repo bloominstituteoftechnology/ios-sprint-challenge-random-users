@@ -44,6 +44,8 @@ class UsersTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
         
         cell.cellNameLabel.text = userController.users[indexPath.row].name
+        
+        
 
         // Call a func to manage clever downloading/handling of Users PICTURE DATA into cells
         

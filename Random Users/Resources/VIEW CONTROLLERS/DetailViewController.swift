@@ -10,13 +10,20 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        updateViews()
     }
     
         private func updateViews() {
             
-            guard let user = user else {return}
+            guard isViewLoaded,
+            let user = user else {return}
             // insert values from Users to
             // detailImageView = .UIImage(from: data)
             detailNameLabel.text = user.name
