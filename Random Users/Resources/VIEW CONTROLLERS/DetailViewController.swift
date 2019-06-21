@@ -12,13 +12,21 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // insert values from Users to
-        // detailImageView = .UIImage(from: data)
-        // detailNameLabel = .name
-        // detailPhoneLabel = .phone
-        // detailEmailLabel = .email
     }
+    
+        private func updateViews() {
+            
+            guard let user = user else {return}
+            // insert values from Users to
+            // detailImageView = .UIImage(from: data)
+            detailNameLabel.text = user.name
+            detailPhoneLabel.text = user.phone
+            detailEmailLabel.text = user.email
+        
+        }
+    
+    
+
     
     @IBOutlet weak var detailImageView: UIImageView!
     @IBOutlet weak var detailNameLabel: UILabel!
@@ -27,5 +35,11 @@ class DetailViewController: UIViewController {
     
     //MARK: PROPERTIES
     
+    var userController: UserController?
     
+    var user: User? {
+        didSet {
+            updateViews()
+        }
+    }
 }

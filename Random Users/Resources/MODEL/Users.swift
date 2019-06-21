@@ -43,11 +43,16 @@ class User: Codable {
         case name
         case phone
         case email
+        case picture
         
         enum NameKeys: String, CodingKey {
             case title
             case first
             case last
+        }
+        
+        enum PictureKeys: String, CodingKey {
+            case medium
         }
     } // end enums
     
@@ -57,6 +62,8 @@ class User: Codable {
     let title: String
     let first: String
     let last: String
+    let picture: String
+    let medium: String
     let phone: String
     let email: String
     // for name we will simply concatenate title + first + last names into one name
@@ -66,6 +73,7 @@ class User: Codable {
         self.title = title
         self.first = first
         self.last = last
+        self.picture = medium
         self.phone = phone
         self.email = email
         self.name = "\(title). \(first) \(last)"
@@ -83,9 +91,14 @@ class User: Codable {
         let first = try nameContainer.decode(String.self, forKey: .first)
         let last = try nameContainer.decode(String.self, forKey: .last)
         
+        let pictureContainer = try container.nestedContainer(keyedBy: UserKeys.PictureKeys.self, forKey: .picture)
+        let medium = try pictureContainer.decode(String.self, forKey: .medium)
+        
         self.title = title
         self.first = first
         self.last = last
+        self.picture = picture
+        self.medium = medium
         self.phone = phone
         self.email = email
         self.name = "\(title). \(first) \(last)"
