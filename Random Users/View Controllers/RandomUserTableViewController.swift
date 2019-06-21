@@ -36,7 +36,16 @@ class RandomUserTableViewController: UITableViewController {
         return cell
     }
  
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "DetailSegue" {
+            guard let destinationVC = segue.destination as? DetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow else { return }
+            let user = randomUserController.users[indexPath.row]
+            destinationVC.user = user
+        }
+    }
 
-
+    private let cache = Cache<String, Data>()
+    private let operations = ConcurrentOperation()
     var randomUserController = RandomUserController()
 }

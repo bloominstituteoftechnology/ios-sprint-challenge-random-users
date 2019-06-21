@@ -13,7 +13,21 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        updateViews()
     
+    }
+    
+    private func updateViews() {
+        if let user = user {
+            nameLabel.text = user.name
+            phoneLabel.text = user.phone
+            emailLabel.text = user.email
+            let url = user.largeImageURL
+            if let data = try? Data(contentsOf: url) {
+                let image = UIImage(data: data)
+                detailImageView.image = image
+            }
+        }
     }
     
 
@@ -23,5 +37,11 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var emailLabel: UILabel!
     
     @IBOutlet weak var detailImageView: UIImageView!
+    
+    var user: User? {
+        didSet {
+            updateViews()
+        }
+    }
     
 }
