@@ -71,10 +71,10 @@
             </objects>
             <point key="canvasLocation" x="1071.2" y="202.84857571214394"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="5Aa-Nb-Qfi">
             <objects>
-                <viewController id="IRq-0g-Kdg" sceneMemberID="viewController">
+                <viewController id="IRq-0g-Kdg" customClass="DetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2km-du-AZT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,6 +108,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Q4z-ie-P3E"/>
                     </view>
+                    <connections>
+                        <outlet property="detailEmailLabel" destination="4tA-gb-eHD" id="OrX-RF-OBC"/>
+                        <outlet property="detailImageView" destination="ff9-OL-ugR" id="cq9-ve-AdO"/>
+                        <outlet property="detailNameLabel" destination="cTQ-mR-zYL" id="pGc-Ew-EOg"/>
+                        <outlet property="detailPhoneLabel" destination="DF9-5q-gpg" id="Kby-de-Ts2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wwq-8w-aEQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -13,18 +13,19 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // insert values from Users to
+        // detailImageView = .UIImage(from: data)
+        // detailNameLabel = .name
+        // detailPhoneLabel = .phone
+        // detailEmailLabel = .email
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    @IBOutlet weak var detailImageView: UIImageView!
+    @IBOutlet weak var detailNameLabel: UILabel!
+    @IBOutlet weak var detailPhoneLabel: UILabel!
+    @IBOutlet weak var detailEmailLabel: UILabel!
+    
+    //MARK: PROPERTIES
+    
+    
 }
