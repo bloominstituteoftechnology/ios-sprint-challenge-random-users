@@ -13,13 +13,13 @@
         <!--Root View Controller-->
         <scene sceneID="9PJ-lv-90P">
             <objects>
-                <tableViewController id="SAl-ey-ugo" sceneMemberID="viewController">
+                <tableViewController id="SAl-ey-ugo" customClass="RandomUsersListTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="z1b-gI-2mb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="70" id="PcS-VJ-N6c">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="70" id="PcS-VJ-N6c" customClass="RandomUserTableViewCell" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PcS-VJ-N6c" id="gsH-Dp-Vsd">
@@ -67,10 +67,10 @@
             </objects>
             <point key="canvasLocation" x="482.60869565217394" y="186.83035714285714"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail User View Controller-->
         <scene sceneID="Nol-Ne-JEP">
             <objects>
-                <viewController id="TF6-dQ-2a0" sceneMemberID="viewController">
+                <viewController id="TF6-dQ-2a0" customClass="DetailUserViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wxD-bN-9M5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
