@@ -8,16 +8,35 @@
 
 import Foundation
 
-class Results: Codable {
+class Users: Codable {
     
     enum Keys: String, CodingKey {
-        case results
+        case users
     }
-    let results: [Users]
     
-}
+    var users: [User]
+    
+    init(users: [User]) {
+        self.users = users
+    }
+    
+    // Decodes data into users array
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: Keys.self)
+        
+        var users: [User] = []
+        if container.contains(.users) {
+            
+            var usersContainer = try container.nestedUnkeyedContainer(forKey: .users)
+            while !usersContainer.isAtEnd {
+                let user = try usersContainer.decode(User.self)
+                users.append(user)
+            }  // end while
+        } // end if
+    } // end req'd init
+} // end Users
 
-class Users: Codable {
+class User: Codable {
     
     enum UserKeys: String, CodingKey {
         case name
