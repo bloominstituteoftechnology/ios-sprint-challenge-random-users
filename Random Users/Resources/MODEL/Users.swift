@@ -20,7 +20,7 @@ class Users: Codable {
         self.users = users
     }
     
-    // Decodes data into users array
+    // Decodes data into users array, but am I double-decoding here?  Perhaps a User from below is already decoded, so I'm really just supposed to append User to users array here or in the basic init() above?
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Keys.self)
         
@@ -33,6 +33,7 @@ class Users: Codable {
                 users.append(user)
             }  // end while
         } // end if
+        self.users = users
     } // end req'd init
 } // end Users
 
@@ -62,26 +63,37 @@ class User: Codable {
     let name: String
     
     init(title: String, first: String, last: String, phone: String, email: String) {
-            self.phone = phone
-            self.email = email
-            self.name = "\(title). \(first) \(last)"
+        self.title = title
+        self.first = first
+        self.last = last
+        self.phone = phone
+        self.email = email
+        self.name = "\(title). \(first) \(last)"
     }
     
-        required init(from decoder: Decoder) throws {
-            
-            let container = try decoder.container(keyedBy: UserKeys.self)
+    required init(from decoder: Decoder) throws {
+        
+        let container = try decoder.container(keyedBy: UserKeys.self)
+        
+        let phone =  try container.decode(String.self, forKey: .phone)
+        let email =  try container.decode(String.self, forKey: .email)
+        
+        let nameContainer = try container.nestedContainer(keyedBy: UserKeys.NameKeys.self, forKey: .name)
+        let title = try nameContainer.decode(String.self, forKey: .title)
+        let first = try nameContainer.decode(String.self, forKey: .first)
+        let last = try nameContainer.decode(String.self, forKey: .last)
+        
+        self.title = title
+        self.first = first
+        self.last = last
+        self.phone = phone
+        self.email = email
+        self.name = "\(title). \(first) \(last)"
+    }
     
-            let name = try container.decode(String.self, forKey: .name)
-            let nameContainer = try container.nestedContainer(keyedBy: UserKeys.NameKeys.self, forKey: .name)
-            
-            let phone = try nameContainer.decode(String.self, forKey: .phone)
-            let phoneContainer = try container.nestedContainer(keyedBy: CodingKeys.DurationCodingKeys.self, forKey: .phone)
-            
-            let email = try durationContainer.decode(String.self, forKey: .email)
-            
-        }
+}
 
-    // wrote this bc i THOUGHT i saw an "add" button on the gif, but won't implement until the end if I need it
+// wrote this bc i THOUGHT i saw an "add" button on the gif, but won't implement until the end if I need it
 //        func encode(to encoder: Encoder) throws {
 //
 //            var container = encoder.container(keyedBy: UserKeys.self)
@@ -90,9 +102,7 @@ class User: Codable {
 //            try nameContainer.encode(phone, forKey: .name)
 //
 //            try container.encode(identifier, forKey: .phone)
-//            
+//
 //            var emailContainer = container.nestedContainer(keyedBy: CodingKeys.DurationCodingKeys.self, forKey: .email)
 //            try emailContainer.encode(duration, forKey: .email)
 //        }
-}
-
