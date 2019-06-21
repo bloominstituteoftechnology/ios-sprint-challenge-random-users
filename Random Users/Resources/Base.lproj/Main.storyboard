@@ -81,27 +81,31 @@
                                 <rect key="frame" x="16" y="80" width="343" height="571"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pgh-Ij-HTx">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="379"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="399.5"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8li-eg-Ab9">
-                                        <rect key="frame" x="0.0" y="415" width="343" height="23"/>
+                                        <rect key="frame" x="0.0" y="435.5" width="343" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJY-T3-ulV">
-                                        <rect key="frame" x="0.0" y="474" width="343" height="23.5"/>
+                                        <rect key="frame" x="0.0" y="492.5" width="343" height="21.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDd-LR-zxU">
-                                        <rect key="frame" x="0.0" y="533.5" width="343" height="37.5"/>
+                                        <rect key="frame" x="0.0" y="550" width="343" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="vJY-T3-ulV" firstAttribute="height" secondItem="8li-eg-Ab9" secondAttribute="height" id="OnW-r8-6iG"/>
+                                    <constraint firstItem="WDd-LR-zxU" firstAttribute="height" secondItem="8li-eg-Ab9" secondAttribute="height" id="dka-Bj-sCe"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

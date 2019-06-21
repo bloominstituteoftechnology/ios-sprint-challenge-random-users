@@ -10,10 +10,6 @@ import Foundation
 
 class RandomUserController {
     
-    
-    init() {
-        fetchUsers()
-    }
     private(set) var users: [User] = []
     
     let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
@@ -34,9 +30,9 @@ class RandomUserController {
                 return
             }
             do {
-                
                 let randomUsers = try JSONDecoder().decode(Users.self, from: data)
                 self.users = randomUsers.results
+                print(self.users)
                 completion(nil)
             } catch {
                 NSLog("Unable to decode user data from JSON: \(error)")

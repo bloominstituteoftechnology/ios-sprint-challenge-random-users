@@ -12,9 +12,11 @@ class RandomUserTableViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-    
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
+        
+        randomUserController.fetchUsers {_ in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     // MARK: - Table view data source

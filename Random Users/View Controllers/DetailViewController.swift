@@ -19,13 +19,14 @@ class DetailViewController: UIViewController {
     
     private func updateViews() {
         if let user = user {
-            nameLabel.text = user.name
-            phoneLabel.text = user.phone
-            emailLabel.text = user.email
+            print(user)
+            nameLabel?.text = user.name
+            phoneLabel?.text = user.phone
+            emailLabel?.text = user.email
             let url = user.largeImageURL
             if let data = try? Data(contentsOf: url) {
                 let image = UIImage(data: data)
-                detailImageView.image = image
+                detailImageView?.image = image
             }
         }
     }
