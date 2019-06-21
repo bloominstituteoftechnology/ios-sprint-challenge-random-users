@@ -10,30 +10,33 @@ import UIKit
 
 class RandomUserTableViewController: UITableViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-       
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
-
     // MARK: - Table view data source
 
   
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return randomUserController.users.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? RandomUserTableViewCell else { fatalError("Unable to dequeue cell") }
 
-        // Configure the cell...
-
+        let user = randomUserController.users[indexPath.row]
+        cell.user = user
+//
         return cell
     }
  
 
 
+    var randomUserController = RandomUserController()
 }
