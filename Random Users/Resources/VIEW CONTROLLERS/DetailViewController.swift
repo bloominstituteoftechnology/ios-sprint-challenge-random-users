@@ -25,6 +25,10 @@ class DetailViewController: UIViewController {
         
         }
     
+    func GetImage(user: User) {
+        // download ONE image
+    }
+    
     
 
     

@@ -8,36 +8,34 @@
 
 import Foundation
 
-class Users: Codable {
+class Users: Decodable {
     
     enum Keys: String, CodingKey {
         case users
     }
     
-    var users: [User]
-    
-    init(users: [User]) {
-        self.users = users
-    }
+    let users: [User]
     
     // Decodes data into users array, but am I double-decoding here?  Perhaps a User from below is already decoded, so I'm really just supposed to append User to users array here or in the basic init() above?
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Keys.self)
         
-        var users: [User] = []
-        if container.contains(.users) {
-            
-            var usersContainer = try container.nestedUnkeyedContainer(forKey: .users)
-            while !usersContainer.isAtEnd {
-                let user = try usersContainer.decode(User.self)
-                users.append(user)
-            }  // end while
-        } // end if
+        let users = try container.decode([User].self, forKey: .users)
+        
+//        var users: [User] = []
+//        if container.contains(.users) {
+//
+//            var usersContainer = try container.nestedUnkeyedContainer(forKey: .users)
+//            while !usersContainer.isAtEnd {
+//                let user = try usersContainer.decode(User.self)
+//                users.append(user)
+//            }  // end while
+//        } // end if
         self.users = users
     } // end req'd init
-} // end Users
+} // end Users class
 
-class User: Codable {
+class User: Decodable {
     
     enum UserKeys: String, CodingKey {
         case name
@@ -56,29 +54,14 @@ class User: Codable {
         }
     } // end enums
     
-    
     // NAV: Property Type Declarations
-    
-    let title: String
-    let first: String
-    let last: String
-//    let picture: String
-//    let medium: String
-    let phone: String
-    let email: String
     // for name we will simply concatenate title + first + last names into one name
     let name: String
-    
-    init(title: String, first: String, last: String, phone: String, email: String) {
-        self.title = title
-        self.first = first
-        self.last = last
-//        self.picture = medium
-        self.phone = phone
-        self.email = email
-        self.name = "\(title). \(first) \(last)"
-    }
-    
+    let phone: String
+    let email: String
+    let image: URL
+
+
     required init(from decoder: Decoder) throws {
         
         let container = try decoder.container(keyedBy: UserKeys.self)
@@ -90,18 +73,16 @@ class User: Codable {
         let title = try nameContainer.decode(String.self, forKey: .title)
         let first = try nameContainer.decode(String.self, forKey: .first)
         let last = try nameContainer.decode(String.self, forKey: .last)
+        //let name = "\(title). \(first) \(last)"
         
-//        let pictureContainer = try container.nestedContainer(keyedBy: UserKeys.PictureKeys.self, forKey: .picture)
-//        let medium = try pictureContainer.decode(String.self, forKey: .medium)
+        let pictureContainer = try container.nestedContainer(keyedBy: UserKeys.PictureKeys.self, forKey: .picture)
+        let medium = try pictureContainer.decode(URL.self, forKey: .medium)
         
-        self.title = title
-        self.first = first
-        self.last = last
-//        self.picture = picture
-//        self.medium = medium
-        self.phone = phone
-        self.email = email
+
         self.name = "\(title). \(first) \(last)"
+        self.email = email
+        self.phone = phone
+        self.image = medium
     }
     
 }
