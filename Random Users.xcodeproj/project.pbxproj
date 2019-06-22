@@ -18,6 +18,7 @@
 		FC44DD3822BD2ED300EF9D21 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC44DD3722BD2ED300EF9D21 /* DetailViewController.swift */; };
 		FC44DD3B22BD3AC600EF9D21 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC44DD3A22BD3AC600EF9D21 /* Cache.swift */; };
 		FC44DD3D22BD616A00EF9D21 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC44DD3C22BD616A00EF9D21 /* UserController.swift */; };
+		FC44DD3F22BDA80A00EF9D21 /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC44DD3E22BDA80A00EF9D21 /* FetchPhotoOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		FC44DD3722BD2ED300EF9D21 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FC44DD3A22BD3AC600EF9D21 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		FC44DD3C22BD616A00EF9D21 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		FC44DD3E22BDA80A00EF9D21 /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				FC44DD3E22BDA80A00EF9D21 /* FetchPhotoOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 			files = (
 				FC44DD3B22BD3AC600EF9D21 /* Cache.swift in Sources */,
 				FC44DD3422BD2CE900EF9D21 /* UserTableViewCell.swift in Sources */,
+				FC44DD3F22BDA80A00EF9D21 /* FetchPhotoOperation.swift in Sources */,
 				FC44DD3D22BD616A00EF9D21 /* UserController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				FC44DD3122BD29CB00EF9D21 /* Users.swift in Sources */,

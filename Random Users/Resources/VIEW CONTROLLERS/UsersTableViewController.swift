@@ -45,13 +45,59 @@ class UsersTableViewController: UITableViewController {
         
         cell.cellNameLabel.text = userController.users[indexPath.row].name
         
-        
-
         // Call a func to manage clever downloading/handling of Users PICTURE DATA into cells
+        loadImage(forCell: cell, forItemAt: indexPath)
         
-        // func will need to check cache first, then user proper cancels and order of Operations to manage fast queues/threads
-
         return cell
+    }
+    
+    
+    // func will need to check cache first, then user proper cancels and order of Operations to manage fast queues/threads
+    
+    private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
+        
+        
+        let photoReference = photoReferences[indexPath.row]
+        
+        // If  image already in cache U get it for free!
+        
+        // key = imageReference (a user, but i need imagepath instead)
+        if let cachedImageData = cache.value(for: indexPath.row),     // shouldn't it just be the index?
+            let image = UIImage(data: cachedImageData) {
+            cell.imageView?.image = image
+            return
+        }
+        
+        // Start an operation to fetch image data
+        let fetchOp = FetchPhotoOperation(photoReference: photoReference)
+        
+        let cacheOp = BlockOperation {
+            if let data = fetchOp.imageData {
+                self.cache.cache(value: data, for: indexPath.row)
+            }
+        }
+        let completionOp = BlockOperation {
+            defer { self.operations.removeValue(forKey: indexPath.row) }
+            
+            if let currentIndexPath = self.tableView?.indexPath(for: cell),
+                currentIndexPath != indexPath {
+                print("Got image for now-reused cell")
+                return // Cell has been reused
+            }
+            
+            if let data = fetchOp.imageData {
+                cell.imageView?.image = UIImage(data: data)
+            }
+        }
+        
+        cacheOp.addDependency(fetchOp)
+        completionOp.addDependency(fetchOp)
+        
+        photoFetchQueue.addOperation(fetchOp)
+        photoFetchQueue.addOperation(cacheOp)
+        OperationQueue.main.addOperation(completionOp)
+        
+        operations[indexPath.row] = fetchOp
     }
 
     // MARK: - Navigation
@@ -66,13 +112,21 @@ class UsersTableViewController: UITableViewController {
             destinationVC.userController = userController
             destinationVC.user = user
         }
-        
-        
-        // Pass User object to custom cell
+
     }
     
     // MARK: PROPERTIES
     
+    
+    private let cache = Cache<Int, Data>()
+    private let photoFetchQueue = OperationQueue()
+    private var operations = [Int : Operation]()
+    
     var userController = UserController()
-
+    
+    private var photoReferences = [User]() {
+        didSet {
+            DispatchQueue.main.async { self.tableView?.reloadData() }
+        }
+    }
 }

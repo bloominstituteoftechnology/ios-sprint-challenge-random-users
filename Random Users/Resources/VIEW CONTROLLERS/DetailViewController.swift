@@ -24,8 +24,15 @@ class DetailViewController: UIViewController {
             
             guard isViewLoaded,
             let user = user else {return}
-            // insert values from Users to
-            // detailImageView = .UIImage(from: data)
+            
+            // Must convert user.image URL into actual image by fetching
+
+            //let url = user.image
+            if let data = try? Data(contentsOf: user.image) {
+                
+            detailImageView.image = UIImage(data: data)
+            } else { print("error, no image") }
+            
             detailNameLabel.text = user.name
             detailPhoneLabel.text = user.phone
             detailEmailLabel.text = user.email
