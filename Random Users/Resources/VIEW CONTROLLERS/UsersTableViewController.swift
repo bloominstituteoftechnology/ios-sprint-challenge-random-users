@@ -46,12 +46,12 @@ class UsersTableViewController: UITableViewController {
         cell.cellNameLabel.text = userController.users[indexPath.row].name
         
         // Call a func to manage clever downloading/handling of Users PICTURE DATA into cells
-        //loadImage(forCell: cell, forItemAt: indexPath)
-        let photoReferences = userController.users
-        // CheatCode
-        if let data = try? Data(contentsOf: photoReferences[indexPath.row].image) {
-            cell.cellImage.image = UIImage(data: data)
-        } else { print("error, no image") }
+        loadImage(forCell: cell, forItemAt: indexPath)
+//        let photoReferences = userController.users
+//        // CheatCode
+//        if let data = try? Data(contentsOf: photoReferences[indexPath.row].image) {
+//            cell.cellImage.image = UIImage(data: data)
+//        } else { print("error, no image") }
         
         
         return cell
