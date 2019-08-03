@@ -9,82 +9,93 @@
 import UIKit
 
 class UsersTableViewController: UITableViewController {
+    
+    // MARK: - Properties
+    let userController = UserController()
+    
+    private let cache = Cache<String, Data>()
+    private var operations = [String : Operation]()
+    private let userFetchQueue = OperationQueue()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.userController.fetchUsers { _ in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.userController.users.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
 
-        // Configure the cell...
-
+        self.loadImage(forCell: cell, forItemAt: indexPath)
+        
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let userRef = self.userController.users[indexPath.item]
+        operations[userRef.name]?.cancel()
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    private func loadImage(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+        let userReference = self.userController.users[indexPath.item]
+        
+        if let cachedData = self.cache.value(for: userReference.name),
+            let image = UIImage(data: cachedData) {
+            cell.imageView?.image = image
+            cell.textLabel?.text = userReference.name
+            return
+        }
+        
+        let fetchUserOperation = FetchUserOperation(user: userReference)
+        let cachedOperation = BlockOperation {
+            if let data = fetchUserOperation.imageData {
+                self.cache.cache(value: data, for: userReference.name)
+            }
+        }
+        
+        let checkReuseOperation = BlockOperation {
+            defer { self.operations.removeValue(forKey: userReference.name) }
+            
+            if let currentIndexPath = self.tableView?.indexPath(for: cell),
+                currentIndexPath != indexPath {
+                return
+            }
+            if let imageData = fetchUserOperation.imageData {
+                cell.imageView?.image = UIImage(data: imageData)
+                cell.textLabel?.text = userReference.name
+            }
+        }
+        
+        cachedOperation.addDependency(fetchUserOperation)
+        checkReuseOperation.addDependency(fetchUserOperation)
+        
+        userFetchQueue.addOperation(fetchUserOperation)
+        userFetchQueue.addOperation(cachedOperation)
+        OperationQueue.main.addOperation(checkReuseOperation)
+        
+        self.operations[userReference.name] = fetchUserOperation
     }
-    */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "UserDetailView" {
+            guard let userDVC = segue.destination as? UserDetailViewController,
+                let indexPath = self.tableView.indexPathForSelectedRow else { return }
+            
+            userDVC.user = self.userController.users[indexPath.row]
+        }
     }
-    */
-
 }

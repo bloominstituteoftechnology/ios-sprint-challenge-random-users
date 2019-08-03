@@ -16,6 +16,8 @@
 		D6612BE222F5E8EA0081834B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6612BE122F5E8EA0081834B /* User.swift */; };
 		D6612BE422F5E9CA0081834B /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6612BE322F5E9CA0081834B /* UsersTableViewController.swift */; };
 		D6612BE622F5EC280081834B /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6612BE522F5EC280081834B /* UserController.swift */; };
+		D6612BE822F600590081834B /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6612BE722F600590081834B /* Cache.swift */; };
+		D6612BEA22F602F80081834B /* FetchUserOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6612BE922F602F80081834B /* FetchUserOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		D6612BE122F5E8EA0081834B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D6612BE322F5E9CA0081834B /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		D6612BE522F5EC280081834B /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		D6612BE722F600590081834B /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		D6612BE922F602F80081834B /* FetchUserOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUserOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,8 +69,8 @@
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				D6612BDC22F5E8AC0081834B /* Models */,
 				D6612BDB22F5E8A00081834B /* Model Controllers */,
-				D6612BDA22F5E8930081834B /* View Controllers */,
 				9D5CCA56214231E400224681 /* Operations */,
+				D6612BDA22F5E8930081834B /* View Controllers */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
 			path = "Random Users";
@@ -87,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				D6612BE922F602F80081834B /* FetchUserOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -111,6 +116,7 @@
 		D6612BDC22F5E8AC0081834B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D6612BE722F600590081834B /* Cache.swift */,
 				D6612BE122F5E8EA0081834B /* User.swift */,
 			);
 			path = Models;
@@ -188,10 +194,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6612BE822F600590081834B /* Cache.swift in Sources */,
 				D6612BE622F5EC280081834B /* UserController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				D6612BE022F5E8DE0081834B /* UserDetailViewController.swift in Sources */,
 				D6612BE222F5E8EA0081834B /* User.swift in Sources */,
+				D6612BEA22F602F80081834B /* FetchUserOperation.swift in Sources */,
 				D6612BE422F5E9CA0081834B /* UsersTableViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 			);

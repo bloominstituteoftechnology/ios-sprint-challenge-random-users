@@ -22,13 +22,22 @@ class UserDetailViewController: UIViewController {
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.updateViews()
+    }
+    
     // MARK: - Methods
     private func updateViews() {
         guard let user = self.user, isViewLoaded else { return }
         
-        self.userImage.image = UIImage(data: user.imageData)
         self.name.text = user.name
         self.phone.text = user.phone
         self.email.text = user.email
+        
+        let url = user.largeImage
+        if let data = try? Data(contentsOf: url) {
+            self.userImage.image = UIImage(data: data)
+        }
     }
 }
