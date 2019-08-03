@@ -32,16 +32,17 @@ struct RandomUser: Codable {
 
 struct User: Codable {
     // Names
-    let title: String
-    let first: String
-    let last:  String
+    let fullName: String
+    let title:    String
+    let first:    String
+    let last:     String
     
     // Contact Info
     let email: String
     let phone: String
     
     // Pictures
-    let large: URL
+    let large:     URL
     let thumbnail: URL
     
     enum UserKeys: String, CodingKey {
@@ -69,6 +70,7 @@ struct User: Codable {
         title = try nameContainer.decode(String.self, forKey: .title)
         first = try nameContainer.decode(String.self, forKey: .first)
         last  = try nameContainer.decode(String.self, forKey: .last)
+        fullName = "\(first.capitalized) \(last.capitalized)"
         
         // Getting the picture values
         let pictureContainer = try container.nestedContainer(keyedBy: UserKeys.PictureKeys.self, forKey: .picture)

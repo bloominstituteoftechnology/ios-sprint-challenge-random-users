@@ -31,7 +31,8 @@ class UserController {
                 return
             }
             
-            guard let data = data else { NSLog("Error with the data: \(error)")
+            guard let data = data else { NSLog("Error with the data in dataTask in FetchUsers)")
+                completion(error)
                 return
             }
             
@@ -40,12 +41,12 @@ class UserController {
             do {
                 let users = try jsonDecoder.decode(RandomUser.self, from: data).results
                 self.usersArray = users
+                completion(nil)
             } catch {
                 NSLog("Error decoding the data: \(error)")
                 completion(error)
                 return
             }
-            completion(nil)
         }.resume()
     }
     

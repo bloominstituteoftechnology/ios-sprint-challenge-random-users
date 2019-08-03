@@ -16,25 +16,31 @@ class DetailVC: UIViewController {
     @IBOutlet weak var phoneLbl: UILabel!
     @IBOutlet weak var emailLbl: UILabel!
     
-    
+    var user: User? {
+        didSet {
+            self.updateViews()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         userImageView.layer.cornerRadius = 8
-        // Do any additional setup after loading the view.
+        updateViews()
     }
     
     
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func updateViews() {
+        guard let user = self.user, isViewLoaded else { return }
+        
+        navigationItem.title = user.fullName
+        self.nameLbl.text = "Name: \(user.fullName)"
+        self.phoneLbl.text = "Phone #: \(user.phone)"
+        self.emailLbl.text = "Email: \(user.email)"
+        
+        let url = user.large
+        if let data = try? Data(contentsOf: url) {
+            self.userImageView.image = UIImage(data: data)
+        }
     }
-    */
 
 }
