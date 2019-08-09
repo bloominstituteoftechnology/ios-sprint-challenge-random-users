@@ -14,16 +14,30 @@ class UserTableViewCell: UITableViewCell {
     @IBOutlet var userImageView: UIImageView!
     @IBOutlet var userNameLabel: UILabel!
     
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    var user: User? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    func updateViews() {
+        userImageView.layer.cornerRadius = self.userImageView.frame.size.width / 2.6
+        userImageView.clipsToBounds = true
+        userImageView.layer.borderWidth = 1.0
+        userImageView.layer.borderColor = AppearanceHelper.purpleColor.withAlphaComponent(0.7).cgColor
+        
+        if let user = user {
+            let firstName: String = user.name["first"]!.capitalized
+            let lastName: String = user.name["last"]!.capitalized
+            let name: String = "\(firstName) \(lastName)"
+           
+            
+            userNameLabel.text = name
+        }
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 
 }
+
+

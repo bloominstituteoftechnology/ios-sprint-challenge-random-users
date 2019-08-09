@@ -16,21 +16,82 @@ class UserDetailViewController: UIViewController {
     @IBOutlet var userNumberLabel: UILabel!
     @IBOutlet var userEmailLabel: UILabel!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+    let cache = Cache<String, Data>()
+    var userController: UserController?
+    var user: User? {
+        didSet {
+            updateViews()
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateViews()
+        view.backgroundColor = AppearanceHelper.mintColor
+        userImageView.layer.cornerRadius = self.userImageView.frame.size.width / 2
+        userImageView.clipsToBounds = true
+        userImageView.layer.borderWidth = 1.0
+        userImageView.layer.borderColor = AppearanceHelper.purpleColor.withAlphaComponent(0.7).cgColor
+        
     }
-    */
+    
+    func updateViews() {
+        guard isViewLoaded else { return }
+        
+        if let user = user {
+            getPhoto(user: user)
+            let name = user.name["first"]!.capitalized + " " + user.name["last"]!.capitalized
+            userNameLabel.text = name
+            
+            let number = user.phone
+            if number.contains("(") {
+                let fixedNumber = number.stringByReplacingFirstOccurrenceOfString(target: "-", withString: " ")
+                userNumberLabel.text = fixedNumber
+            } else {
+                userNumberLabel.text = number
+            }
+            userEmailLabel.text = user.email
+        }
+    }
+    
+    func getPhoto(user: User) {
+        let name: String = user.name["first"]! + " " + user.name["last"]!
+        
+        if let imageFromCache = cache.largePictureValue(for: name) {
+            self.userImageView.image = UIImage(data: imageFromCache)
+        } else {
+            let dataTask = URLSession.shared.dataTask(with: URL(string: user.picture["large"]!)!) { (data, _, error) in
+                
+                if let error = error {
+                    print("Error: \(error)")
+                    return
+                }
+                
+                guard let data = data else { return }
+    
+                let picture = UIImage(data: data)
+                self.cache.cacheLargePictures(value: data, for: name)
+                
+                DispatchQueue.main.async {
+                    self.userImageView.image = picture
+                }
+            }
+            dataTask.resume()
+        }
 
+    }
+
+}
+
+// Adding String extension to replace the first dash in phone numbers with area codes to spaces instead.
+extension String {
+    func stringByReplacingFirstOccurrenceOfString(
+        target: String, withString replaceString: String) -> String {
+        if let range = self.range(of: target) {
+            return self.replacingCharacters(in: range, with: replaceString)
+        }
+        return self
+    }
 }
