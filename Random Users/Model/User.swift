@@ -23,6 +23,7 @@ struct User: Decodable {
     }
     
     private enum NameCodingKeys: String, CodingKey {
+        case title
         case first
         case last
     }
@@ -49,8 +50,10 @@ extension User {
         let nameFromContainer = try values.nestedContainer(keyedBy: NameCodingKeys.self, forKey: .name)
         let firstName = try nameFromContainer.decode(String.self, forKey: .first)
         let lastName = try nameFromContainer.decode(String.self, forKey: .last)
+        let title = try nameFromContainer.decode(String.self, forKey: .title)
         name["first"] = firstName
         name["last"] = lastName
+        name["title"] = title
         
         let pictureFromContainer = try values.nestedContainer(keyedBy: PictureCodingKeys.self, forKey: .picture)
         let largePicture = try pictureFromContainer.decode(String.self, forKey: .large)

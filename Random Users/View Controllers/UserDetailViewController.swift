@@ -42,7 +42,7 @@ class UserDetailViewController: UIViewController {
         
         if let user = user {
             getPhoto(user: user)
-            let name = user.name["first"]!.capitalized + " " + user.name["last"]!.capitalized
+            let name = user.name["title"]!.capitalized + " " + user.name["first"]!.capitalized + " " + user.name["last"]!.capitalized
             userNameLabel.text = name
             
             let number = user.phone

@@ -111,7 +111,7 @@
                                             <constraint firstAttribute="width" secondItem="kgz-sh-aiP" secondAttribute="height" multiplier="1:1" id="mTh-cw-4jA"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2x-iO-V3Q">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2x-iO-V3Q">
                                         <rect key="frame" x="0.0" y="351" width="343" height="38.5"/>
                                         <fontDescription key="fontDescription" name="LexendDeca-Regular" family="Lexend Deca" pointSize="30"/>
                                         <color key="textColor" red="0.13029712439999999" green="0.40848726029999999" blue="0.41201055050000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
