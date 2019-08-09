@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BEC255D22BD31820033BAF1 /* RandomUsersListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEC255C22BD31820033BAF1 /* RandomUsersListTableViewController.swift */; };
+		1BEC255F22BD31990033BAF1 /* RandomUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEC255E22BD31990033BAF1 /* RandomUserTableViewCell.swift */; };
+		1BEC256122BD31B20033BAF1 /* DetailUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEC256022BD31B20033BAF1 /* DetailUserViewController.swift */; };
+		1BEC256922BD32B90033BAF1 /* RandomUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEC256822BD32B90033BAF1 /* RandomUser.swift */; };
+		1BEC256B22BD338E0033BAF1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEC256A22BD338E0033BAF1 /* User.swift */; };
+		1BEC257022BD34B00033BAF1 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEC256F22BD34B00033BAF1 /* UserController.swift */; };
+		1BEC257222BD3B640033BAF1 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEC257122BD3B640033BAF1 /* Cache.swift */; };
+		1BEC257622BD726F0033BAF1 /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEC257522BD726F0033BAF1 /* FetchPhotoOperation.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -15,6 +23,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1BEC255C22BD31820033BAF1 /* RandomUsersListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersListTableViewController.swift; sourceTree = "<group>"; };
+		1BEC255E22BD31990033BAF1 /* RandomUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserTableViewCell.swift; sourceTree = "<group>"; };
+		1BEC256022BD31B20033BAF1 /* DetailUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUserViewController.swift; sourceTree = "<group>"; };
+		1BEC256822BD32B90033BAF1 /* RandomUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUser.swift; sourceTree = "<group>"; };
+		1BEC256A22BD338E0033BAF1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1BEC256F22BD34B00033BAF1 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		1BEC257122BD3B640033BAF1 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		1BEC257522BD726F0033BAF1 /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -35,6 +51,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1BEC256222BD321F0033BAF1 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1BEC256022BD31B20033BAF1 /* DetailUserViewController.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		1BEC256322BD323B0033BAF1 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				8ED6A98B2140178A00FC395A /* Main.storyboard */,
+				1BEC256422BD32440033BAF1 /* Table View Controllers */,
+				1BEC256222BD321F0033BAF1 /* View Controller */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		1BEC256422BD32440033BAF1 /* Table View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1BEC255C22BD31820033BAF1 /* RandomUsersListTableViewController.swift */,
+				1BEC256522BD324E0033BAF1 /* Table View Cells */,
+			);
+			path = "Table View Controllers";
+			sourceTree = "<group>";
+		};
+		1BEC256522BD324E0033BAF1 /* Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1BEC255E22BD31990033BAF1 /* RandomUserTableViewCell.swift */,
+			);
+			path = "Table View Cells";
+			sourceTree = "<group>";
+		};
+		1BEC256622BD32800033BAF1 /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1BEC256F22BD34B00033BAF1 /* UserController.swift */,
+			);
+			path = "Model Controller";
+			sourceTree = "<group>";
+		};
+		1BEC256722BD32880033BAF1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1BEC256822BD32B90033BAF1 /* RandomUser.swift */,
+				1BEC256A22BD338E0033BAF1 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1BEC257B22BD75B90033BAF1 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				1BEC257122BD3B640033BAF1 /* Cache.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
@@ -54,7 +130,10 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
-				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+				1BEC257B22BD75B90033BAF1 /* Helper */,
+				1BEC256722BD32880033BAF1 /* Models */,
+				1BEC256622BD32800033BAF1 /* Model Controller */,
+				1BEC256322BD323B0033BAF1 /* Storyboard */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
@@ -64,7 +143,7 @@
 		9D5CCA522142305600224681 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8ED6A98B2140178A00FC395A /* Main.storyboard */,
+				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
 				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
 				8ED6A9932140178C00FC395A /* Info.plist */,
@@ -76,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				1BEC257522BD726F0033BAF1 /* FetchPhotoOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -152,7 +232,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				1BEC257222BD3B640033BAF1 /* Cache.swift in Sources */,
+				1BEC256122BD31B20033BAF1 /* DetailUserViewController.swift in Sources */,
+				1BEC257622BD726F0033BAF1 /* FetchPhotoOperation.swift in Sources */,
+				1BEC257022BD34B00033BAF1 /* UserController.swift in Sources */,
+				1BEC255D22BD31820033BAF1 /* RandomUsersListTableViewController.swift in Sources */,
+				1BEC255F22BD31990033BAF1 /* RandomUserTableViewCell.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				1BEC256922BD32B90033BAF1 /* RandomUser.swift in Sources */,
+				1BEC256B22BD338E0033BAF1 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,7 +385,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = X4W7EQ4E4R;
 				INFOPLIST_FILE = "$(SRCROOT)/Random Users/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -315,7 +403,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = X4W7EQ4E4R;
 				INFOPLIST_FILE = "$(SRCROOT)/Random Users/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
