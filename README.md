@@ -4,7 +4,7 @@
 
 **Please read this entire README to make sure you understand what is expected of you before you begin.**
 
-This sprint challenge is designed to ensure that you are competent with the concepts taught throughout Sprint 7, Intermediate Swift.
+This sprint challenge is designed to ensure that you are competent with the concepts taught throughout Intermediate Swift.
 
 Begin by forking this repository. Clone your forked repository to your machine. Use the provided Xcode project in the repository. It includes `ConcurrentOperation` for you to use, as well as a placeholder Lambda logo image you can use if you'd like. Commit as appropriate while you work. Push your final project to GitHub, then create a pull request back to this original repository.
 
