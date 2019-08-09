@@ -1,11 +1,179 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ztA-9O-cRx">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <customFonts key="customFonts">
+        <array key="LexendDeca-Regular.ttf">
+            <string>LexendDeca-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Users-->
+        <scene sceneID="fmw-9S-pF7">
+            <objects>
+                <tableViewController id="Lnt-e7-qVX" customClass="UsersTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="f97-Mt-cne">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="79" id="n4r-Pg-MmS" customClass="UserTableViewCell" customModule="Random_Users" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="79"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="n4r-Pg-MmS" id="4nM-0w-1d3">
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="78.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Tb-ju-cov">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="78.5"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="CEf-xc-lkn">
+                                                    <rect key="frame" x="16" y="0.0" width="309" height="78.5"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="anW-mP-dHr">
+                                                            <rect key="frame" x="0.0" y="0.0" width="78.5" height="78.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="anW-mP-dHr" secondAttribute="height" multiplier="1:1" id="dPy-dj-vyb"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xdd-5v-YPE">
+                                                            <rect key="frame" x="94.5" y="0.0" width="214.5" height="78.5"/>
+                                                            <fontDescription key="fontDescription" name="LexendDeca-Regular" family="Lexend Deca" pointSize="17"/>
+                                                            <color key="textColor" red="0.13029712438583374" green="0.40848726034164429" blue="0.4120105504989624" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <color key="shadowColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <size key="shadowOffset" width="0.0" height="1"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="CEf-xc-lkn" firstAttribute="top" secondItem="9Tb-ju-cov" secondAttribute="top" id="E01-6D-4BL"/>
+                                                <constraint firstItem="CEf-xc-lkn" firstAttribute="leading" secondItem="9Tb-ju-cov" secondAttribute="leading" constant="16" id="Nzv-w2-nrq"/>
+                                                <constraint firstAttribute="trailing" secondItem="CEf-xc-lkn" secondAttribute="trailing" constant="16" id="S0k-gZ-7cP"/>
+                                                <constraint firstAttribute="bottom" secondItem="CEf-xc-lkn" secondAttribute="bottom" id="bVC-Z0-Kih"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="9Tb-ju-cov" secondAttribute="trailing" id="Dwi-3O-Ael"/>
+                                        <constraint firstItem="9Tb-ju-cov" firstAttribute="leading" secondItem="4nM-0w-1d3" secondAttribute="leading" id="PKL-tk-0Vo"/>
+                                        <constraint firstItem="9Tb-ju-cov" firstAttribute="top" secondItem="4nM-0w-1d3" secondAttribute="top" id="ZBY-iY-i6R"/>
+                                        <constraint firstAttribute="bottom" secondItem="9Tb-ju-cov" secondAttribute="bottom" id="j5Q-oL-j5n"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="userImageView" destination="anW-mP-dHr" id="abq-4V-jNW"/>
+                                    <outlet property="userNameLabel" destination="Xdd-5v-YPE" id="aUA-PQ-DGK"/>
+                                    <segue destination="iXR-E8-VdM" kind="show" identifier="ShowDetails" id="8uQ-fb-dOz"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Lnt-e7-qVX" id="uyU-nL-lgP"/>
+                            <outlet property="delegate" destination="Lnt-e7-qVX" id="ZFa-24-2Wb"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Users" id="52z-qk-5JS">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="Brt-Hb-3zu">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="Lnt-e7-qVX" id="oS5-1B-pge"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oc2-bS-mJ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="860" y="107"/>
+        </scene>
+        <!--User Detail View Controller-->
+        <scene sceneID="ZqA-BO-NFX">
+            <objects>
+                <viewController id="iXR-E8-VdM" customClass="UserDetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="v3o-cT-x2X">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="iwo-WD-BEp">
+                                <rect key="frame" x="16" y="156.5" width="343" height="450.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="kgz-sh-aiP">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="343"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="kgz-sh-aiP" secondAttribute="height" multiplier="1:1" id="mTh-cw-4jA"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2x-iO-V3Q">
+                                        <rect key="frame" x="0.0" y="351" width="343" height="38.5"/>
+                                        <fontDescription key="fontDescription" name="LexendDeca-Regular" family="Lexend Deca" pointSize="30"/>
+                                        <color key="textColor" red="0.13029712439999999" green="0.40848726029999999" blue="0.41201055050000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <size key="shadowOffset" width="0.0" height="1"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SPq-gI-Qcc">
+                                        <rect key="frame" x="0.0" y="397.5" width="343" height="22.5"/>
+                                        <fontDescription key="fontDescription" name="LexendDeca-Regular" family="Lexend Deca" pointSize="17"/>
+                                        <color key="textColor" red="0.13029712439999999" green="0.40848726029999999" blue="0.41201055050000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <size key="shadowOffset" width="0.0" height="1"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4Q-70-iVC">
+                                        <rect key="frame" x="0.0" y="428" width="343" height="22.5"/>
+                                        <fontDescription key="fontDescription" name="LexendDeca-Regular" family="Lexend Deca" pointSize="17"/>
+                                        <color key="textColor" red="0.13029712439999999" green="0.40848726029999999" blue="0.41201055050000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <size key="shadowOffset" width="0.0" height="1"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iCS-ZV-4Ua" firstAttribute="bottom" secondItem="iwo-WD-BEp" secondAttribute="bottom" constant="60" id="1Kb-L2-JaE"/>
+                            <constraint firstItem="iwo-WD-BEp" firstAttribute="leading" secondItem="iCS-ZV-4Ua" secondAttribute="leading" constant="16" id="2Pm-mW-nsl"/>
+                            <constraint firstItem="iCS-ZV-4Ua" firstAttribute="trailing" secondItem="iwo-WD-BEp" secondAttribute="trailing" constant="16" id="9Gb-pv-w00"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="iCS-ZV-4Ua"/>
+                    </view>
+                    <connections>
+                        <outlet property="userEmailLabel" destination="B4Q-70-iVC" id="szs-6n-XWN"/>
+                        <outlet property="userImageView" destination="kgz-sh-aiP" id="Bsd-UK-oqm"/>
+                        <outlet property="userNameLabel" destination="I2x-iO-V3Q" id="lvy-0w-sma"/>
+                        <outlet property="userNumberLabel" destination="SPq-gI-Qcc" id="Ce5-DN-rYE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TTR-lB-Xc5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1696.8" y="102.99850074962519"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nJg-B9-7k2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ztA-9O-cRx" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Brs-Ep-aPg">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Lnt-e7-qVX" kind="relationship" relationship="rootViewController" id="Pv6-nX-RDy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QcD-aF-k43" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="88.799999999999997" y="107.49625187406298"/>
+        </scene>
+    </scenes>
 </document>
