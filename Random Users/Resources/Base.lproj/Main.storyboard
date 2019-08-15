@@ -13,13 +13,13 @@
         <!--Users-->
         <scene sceneID="sPN-zK-cTd">
             <objects>
-                <tableViewController id="SsH-G2-yG2" sceneMemberID="viewController">
+                <tableViewController id="SsH-G2-yG2" customClass="UsersTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6Dp-HA-gLT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="lLV-Nb-gxp" style="IBUITableViewCellStyleDefault" id="Ct6-lA-zdj">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" textLabel="lLV-Nb-gxp" style="IBUITableViewCellStyleDefault" id="Ct6-lA-zdj">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ct6-lA-zdj" id="yeP-vD-oHM">
@@ -36,7 +36,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="mRb-Lo-N1c" kind="show" id="qNA-L7-ZZa"/>
+                                    <segue destination="mRb-Lo-N1c" kind="show" identifier="ShowDetail" id="qNA-L7-ZZa"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -51,10 +51,10 @@
             </objects>
             <point key="canvasLocation" x="1080.8" y="40.929535232383813"/>
         </scene>
-        <!--View Controller-->
+        <!--User Detail View Controller-->
         <scene sceneID="n9S-Zh-BUF">
             <objects>
-                <viewController id="mRb-Lo-N1c" sceneMemberID="viewController">
+                <viewController id="mRb-Lo-N1c" customClass="UserDetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QrE-AF-CBj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
