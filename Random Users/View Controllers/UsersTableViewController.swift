@@ -76,6 +76,7 @@ class UsersTableViewController: UITableViewController {
             if let imageData = fetchPictureOperation.imageData {
                 cell.imageView?.image = UIImage(data: imageData)
                 cell.textLabel?.text = userReference.name
+                self.tableView.reloadRows(at: [indexPath], with: .bottom)
             }
         }
         
