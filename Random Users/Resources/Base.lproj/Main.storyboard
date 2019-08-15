@@ -97,6 +97,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Y6n-sF-1ya"/>
                     </view>
+                    <connections>
+                        <outlet property="emailLabel" destination="IdY-Tj-s5T" id="3Bn-1s-5XA"/>
+                        <outlet property="largeImageView" destination="hoy-G3-gev" id="ERQ-NY-4aU"/>
+                        <outlet property="nameLabel" destination="l3l-5A-rft" id="HyH-fQ-GLJ"/>
+                        <outlet property="phoneLabel" destination="Y9k-3v-cfL" id="iuv-Ja-IHm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UQu-EF-chB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
