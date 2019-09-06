@@ -24,7 +24,7 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		userImageView.layer.cornerRadius = 6
+		userImageView.layer.cornerRadius = userImageView.frame.height / 2
 		userImageView.image = nil
 		updateViews()
     }

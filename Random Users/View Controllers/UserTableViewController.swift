@@ -15,7 +15,7 @@ class UserTableViewController: UITableViewController {
 	var storedFetchOperations: [URL: FetchPhotoOperation] = [:]
 	private let photoFetchQueue = OperationQueue()
 	let queue = DispatchQueue(label: "CancelOperationQueue")
-	let section = ("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+	let sectionHeader = ("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,16 +30,27 @@ class UserTableViewController: UITableViewController {
 				self.tableView.reloadData()
 			}
 		}
-//		print(Array(section))
-//		print(Array(section).count)
     }
 
     // MARK: - Table view data source
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userClient.users.count
-    }
+	override func numberOfSections(in tableView: UITableView) -> Int {
+		return 1
+	}
 
+	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//		let headers = sectionHeader.map { $0 }
+		let label = UILabel()
+		label.font = .boldSystemFont(ofSize: 14)
+		label.backgroundColor = UIColor(red: 0.90, green: 0.38, blue: 0.35, alpha: 1.00)
+		label.text = "Header"
+
+		return label
+	}
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return userClient.users.count
+    }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserTableViewCell else { return UITableViewCell() }
