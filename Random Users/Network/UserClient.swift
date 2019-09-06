@@ -11,8 +11,9 @@ import Foundation
 
 class UserClient {
 
-	let userURL = URL(string: "https://randomuser.me/api/?results=1000")!
+	let userURL = URL(string: "https://randomuser.me/api/?results=1000&nat=us&inc=name,email,phone,picture")!
 	var users: [User] = []
+	var imageData: Data?
 
 	func fetchUsers(completion: @escaping(Error?) -> Void) {
 		URLSession.shared.dataTask(with: userURL) { (data, _, error) in
@@ -34,10 +35,23 @@ class UserClient {
 			} catch {
 				NSLog("Error decoding users \(error)")
 			}
+			completion(nil)
 		}.resume()
 	}
 
-	func fetchThumbnails(with url: URL, completion: @escaping(Error?) -> Void) {
-		
+	func fetchPhoto(with url: URL, completion: @escaping(Error?) -> Void) {
+		URLSession.shared.dataTask(with: url) { (data, _, error) in
+			if let error = error {
+				NSLog("Error fetching photo: \(error)")
+				completion(error)
+				return
+			}
+
+			guard let data = data else {
+				completion(error)
+				return
+			}
+			self.imageData = data
+		}.resume()
 	}
 }

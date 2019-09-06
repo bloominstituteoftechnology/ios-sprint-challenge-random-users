@@ -17,6 +17,8 @@ struct User: Codable {
 	var email: String
 	var phone: String
 	var picture: Photos
+//	var id: ID
+
 }
 
 struct Name: Codable {
@@ -30,3 +32,8 @@ struct Photos: Codable {
 	var medium: URL
 	var thumbnail: URL
 }
+
+//struct ID: Codable {
+//	var name: String
+//	var value: String
+//}

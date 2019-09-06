@@ -21,23 +21,7 @@ class FetchPhotoOperation: ConcurrentOperation {
 
 	override func start() {
 		state = .isExecuting
-		fetchThumbnailPhoto()
 		fetchLargePhoto()
-	}
-
-	private func fetchThumbnailPhoto() {
-		let url = user.picture.thumbnail
-
-		dataTask = URLSession.shared.dataTask(with: url, completionHandler: { (data, _, error) in
-			defer { self.state = .isFinished }
-
-			if let error = error {
-				print("Error fetching thumbnail photo \(error)")
-				return
-			}
-			self.imageData = data
-		})
-		dataTask?.resume()
 	}
 
 	private func fetchLargePhoto() {

@@ -16,6 +16,12 @@ class UserTableViewCell: UITableViewCell {
 		}
 	}
 
+	override func prepareForReuse() {
+		userImageView.image = nil
+		nameLabel.text = nil
+		super.prepareForReuse()
+	}
+
 	@IBOutlet weak var userImageView: UIImageView!
 	@IBOutlet weak var nameLabel: UILabel!
 
