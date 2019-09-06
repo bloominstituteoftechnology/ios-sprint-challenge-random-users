@@ -75,9 +75,7 @@
                             <outlet property="delegate" destination="ZP3-3c-4Dk" id="Plq-yR-uDj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Users" id="OcB-4P-1VD">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="4HS-6I-jD7"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Users" id="OcB-4P-1VD"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UP0-Kh-4ZU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

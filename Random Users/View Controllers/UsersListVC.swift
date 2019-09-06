@@ -62,7 +62,6 @@ class UsersListVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserCell else { return UITableViewCell() }
 
-//		cell.user = usersController.users[indexPath.row]
 		let user = usersController.users[indexPath.row]
 		
 		if let imgData = thumbCache.value(for: user.login.uuid) {
