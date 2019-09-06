@@ -18,6 +18,8 @@
 		B53BF3B32322C822005BC7A8 /* UsersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF3B22322C822005BC7A8 /* UsersController.swift */; };
 		B53BF3B52322E58A005BC7A8 /* UserDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF3B42322E58A005BC7A8 /* UserDetailsVC.swift */; };
 		B53BF3B72322E6B0005BC7A8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF3B62322E6B0005BC7A8 /* Extensions.swift */; };
+		B53BF3B92322E91F005BC7A8 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF3B82322E91F005BC7A8 /* Cache.swift */; };
+		B53BF3BB2322EB5D005BC7A8 /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF3BA2322EB5D005BC7A8 /* FetchPhotoOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		B53BF3B22322C822005BC7A8 /* UsersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersController.swift; sourceTree = "<group>"; };
 		B53BF3B42322E58A005BC7A8 /* UserDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsVC.swift; sourceTree = "<group>"; };
 		B53BF3B62322E6B0005BC7A8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		B53BF3B82322E91F005BC7A8 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		B53BF3BA2322EB5D005BC7A8 /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				B53BF3BA2322EB5D005BC7A8 /* FetchPhotoOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -125,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				B53BF3AD2322B4BA005BC7A8 /* User.swift */,
+				B53BF3B82322E91F005BC7A8 /* Cache.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -226,7 +232,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B53BF3AE2322B4BA005BC7A8 /* User.swift in Sources */,
+				B53BF3B92322E91F005BC7A8 /* Cache.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				B53BF3BB2322EB5D005BC7A8 /* FetchPhotoOperation.swift in Sources */,
 				B53BF3B32322C822005BC7A8 /* UsersController.swift in Sources */,
 				B53BF3B72322E6B0005BC7A8 /* Extensions.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,

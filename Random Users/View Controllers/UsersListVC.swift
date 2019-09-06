@@ -15,7 +15,11 @@ class UsersListVC: UITableViewController {
 	
 	//MARK: - Properties
 	
-	let usersController = UsersController()
+	private let usersController = UsersController()
+	private var thumbCache = Cache<String, Data>()
+	private let photofetchQueue = OperationQueue()
+	private var storedFetchOps = [String:FetchPhotoOperation]()
+	private let cancelQueue = DispatchQueue(label: "MyCancelationOps")
 	
 	//MARK: - Life Cycle
 	
@@ -58,18 +62,48 @@ class UsersListVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserCell else { return UITableViewCell() }
 
-		cell.user = usersController.users[indexPath.row]
+//		cell.user = usersController.users[indexPath.row]
+		let user = usersController.users[indexPath.row]
+		
+		if let imgData = thumbCache.value(for: user.login.uuid) {
+			cell.imgData = imgData
+		} else {
+			let fetchPhotoOp = FetchPhotoOperation(user: user)
+			let cacheOp = BlockOperation {
+				if let photoData = fetchPhotoOp.imageData {
+					self.thumbCache.cache(value: photoData, for: user.login.uuid)
+				}
+			}
+			
+			let cellCheckOp = BlockOperation {
+				if let cellPath = tableView.indexPath(for: cell), cellPath != indexPath {
+					return
+				}
+				if let imgData = fetchPhotoOp.imageData {
+					cell.imgData =  imgData
+				}
+			}
+			
+			cacheOp.addDependency(fetchPhotoOp)
+			cellCheckOp.addDependency(fetchPhotoOp)
+			
+			photofetchQueue.addOperations([fetchPhotoOp, cacheOp], waitUntilFinished: false)
+			OperationQueue.main.addOperation(cellCheckOp)
+			
+			storedFetchOps.updateValue(fetchPhotoOp, forKey: user.login.uuid)
+		}
 
+		cell.user = user
+		
         return cell
     }
 	
-//	override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//		let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, view, handler) in
-//			#error("Incomplete implementation, remove item from original list provided to tableView")
-//			tableView.deleteRows(at: [indexPath], with: .automatic)
-//			handler(true)
-//		}
-//
-//		return UISwipeActionsConfiguration(actions: [delete])
-//	}
+	override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+		let userId = usersController.users[indexPath.item].login.uuid		
+		guard let fetchOp = storedFetchOps[userId] else { return }
+		
+		cancelQueue.sync {
+			fetchOp.cancel()
+		}
+	}
 }

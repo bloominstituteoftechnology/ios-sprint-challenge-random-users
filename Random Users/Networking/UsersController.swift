@@ -33,7 +33,7 @@ class UsersController {
 	func getUsers(completion: @escaping resultHandler) {
 		var userComponents = URLComponents(string: baseUrlString)
 		userComponents?.queryItems = [URLQueryItem(name: "format", value: "json"),
-							   URLQueryItem(name: "inc", value: "name,email,phone,picture"),
+							   URLQueryItem(name: "inc", value: "login,name,email,phone,picture"),
 							   URLQueryItem(name: "results", value: "1000")]
 		guard let usersUrl = userComponents?.url else { return }
 		

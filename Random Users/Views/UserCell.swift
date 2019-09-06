@@ -22,6 +22,7 @@ class UserCell: UITableViewCell {
 			configCell()
 		}
 	}
+	var imgData: Data?
 	
 	//MARK: - IBActions
 	
@@ -33,6 +34,14 @@ class UserCell: UITableViewCell {
 		
 		imgView.loadImage(from: user.picture.thumbnail)
 		nameLbl.text = user.name
+		
+		if let imgData = imgData {
+			loadImage(data: imgData)
+		}
+	}
+	
+	private func loadImage(data: Data) {
+		imgView.image = UIImage(data: data)
 	}
 }
 
