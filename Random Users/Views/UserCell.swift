@@ -31,13 +31,7 @@ class UserCell: UITableViewCell {
 	private func configCell() {
 		guard let user = user else { return }
 		
-		DispatchQueue.global().async {
-			if let data = try? Data(contentsOf: user.picture.thumbnail), let image = UIImage(data: data) {
-				DispatchQueue.main.async {
-					self.imgView.image = image
-				}
-			}
-		}
+		imgView.loadImage(from: user.picture.thumbnail)
 		nameLbl.text = user.name
 	}
 }

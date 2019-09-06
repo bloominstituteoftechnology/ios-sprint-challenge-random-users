@@ -34,7 +34,7 @@ class UsersController {
 		var userComponents = URLComponents(string: baseUrlString)
 		userComponents?.queryItems = [URLQueryItem(name: "format", value: "json"),
 							   URLQueryItem(name: "inc", value: "name,email,phone,picture"),
-							   URLQueryItem(name: "results", value: "50")]
+							   URLQueryItem(name: "results", value: "1000")]
 		guard let usersUrl = userComponents?.url else { return }
 		
 		URLSession.shared.dataTask(with: usersUrl) { (data, response, error) in

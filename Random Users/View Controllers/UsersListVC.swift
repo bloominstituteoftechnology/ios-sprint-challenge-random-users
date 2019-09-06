@@ -25,6 +25,12 @@ class UsersListVC: UITableViewController {
 		loadUsers()
 	}
 	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if let detailsVC = segue.destination as? UserDetailsVC, let indexPath = tableView.indexPathForSelectedRow {
+			detailsVC.user = usersController.users[indexPath.row]
+		}
+	}
+	
 	//MARK: - IBActions
 	
 	
