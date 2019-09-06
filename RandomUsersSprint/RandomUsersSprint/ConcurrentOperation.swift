@@ -1,13 +1,12 @@
 //
 //  ConcurrentOperation.swift
-//  Astronomy
+//  RandomUsersSprint
 //
-//  Created by Andrew R Madsen on 9/5/18.
-//  Copyright © 2018 Lambda School. All rights reserved.
+//  Created by Luqmaan Khan on 9/6/19.
+//  Copyright © 2019 Luqmaan Khan. All rights reserved.
 //
 
 import Foundation
-
 class ConcurrentOperation: Operation {
     
     // MARK: Types
