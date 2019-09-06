@@ -10,34 +10,38 @@ import UIKit
 
 class UserTableViewController: UITableViewController {
 
+	let userClient = UserClient()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 		tableView.tableFooterView = UIView()
+		userClient.fetchUsers { (error) in
+			if let error = error {
+				NSLog("Error fetching users: \(error)")
+				return
+			}
+		}
     }
+
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		tableView.reloadData()
+	}
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 10
+        return userClient.users.count
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserTableViewCell else { return UITableViewCell() }
-
-		cell.nameLabel.text = "Mr Placeholder"
-
+		let user = userClient.users[indexPath.row]
+		cell.user = user
         return cell
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
 
     /*
     // Override to support editing the table view.
