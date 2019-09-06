@@ -19,7 +19,7 @@ class UserCell: UITableViewCell {
 	
 	var user: User? {
 		didSet {
-			
+			configCell()
 		}
 	}
 	

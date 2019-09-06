@@ -39,17 +39,11 @@ struct User: Codable {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		
 		let nameParts = try container.decode(NameParts.self, forKey: .name)
-		name = [nameParts.title, nameParts.first, nameParts.last].joined(separator: " ")
+		name = [nameParts.title, nameParts.first, nameParts.last].joined(separator: " ").capitalized
 		
 		email = try container.decode(String.self, forKey: .email)
 		phone = try container.decode(String.self, forKey: .phone)
 		picture = try container.decode(PictureTypes.self, forKey: .picture)
-		
-//		let nameContainer = try container.nestedContainer(keyedBy: NameKeys.self, forKey: .name)
-//		let title = try nameContainer.decode(String.self, forKey: .title)
-//		let firstName = try nameContainer.decode(String.self, forKey: .first)
-//		let lastName = try nameContainer.decode(String.self, forKey: .last)
-//		name = [title,firstName,lastName].joined(separator: " ")
 	}
 	
 	func encode(to encoder: Encoder) throws {
@@ -71,3 +65,6 @@ struct User: Codable {
 	}
 }
 
+struct UserResults: Codable {
+	let results: [User]
+}
