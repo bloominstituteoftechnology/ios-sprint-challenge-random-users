@@ -41,6 +41,7 @@ class UsersTableViewController: UITableViewController {
             }
         
         cell.usersName.text = user.first
+        cell.imageView?.image = nil
         let fetchImageOperation = FetchPhotoOperation(user: user)
         let storeDataInCache = BlockOperation {
             guard let receivedImageData = fetchImageOperation.imageData else {return}
