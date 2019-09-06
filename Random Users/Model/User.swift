@@ -1,5 +1,5 @@
 //
-//  RandomUsersClient.swift
+//  User.swift
 //  Random Users
 //
 //  Created by Marlon Raskin on 9/6/19.
@@ -8,4 +8,6 @@
 
 import Foundation
 
-
+struct User: Codable {
+	
+}
