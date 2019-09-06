@@ -17,42 +17,39 @@ struct User: Decodable {
     let thumbnail: String
     let largePhoto: String
     
+    
+    
     enum CodingKeys: String, CodingKey {
-        case result
+        case name
+        case email
+        case phone
+        case picture
         
-        enum ResultCodingKeys: String, CodingKey {
-            case name
-            case email
-            case phone
-            case picture
-            
-            enum NameCodingKeys: String, CodingKey {
-                case title
-                case first
-                case last
-            }
-            
-            enum PictureCodingKeys: String, CodingKey {
-                case large
-                case thumbnail
-            }
+        enum NameCodingKeys: String, CodingKey {
+            case title
+            case first
+            case last
+        }
+        
+        enum PictureCodingKeys: String, CodingKey {
+            case large
+            case thumbnail
         }
     }
     
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        var resultContainer = try container.nestedUnkeyedContainer(forKey: .result)
-        let userContainer = try resultContainer.nestedContainer(keyedBy: CodingKeys.ResultCodingKeys.self)
-        email = try userContainer.decode(String.self, forKey: .email)
-        phone = try userContainer.decode(String.self, forKey: .phone)
+        email = try container.decode(String.self, forKey: .email)
+        phone = try container.decode(String.self, forKey: .phone)
         
-        let NameContainer = try userContainer.nestedContainer(keyedBy: CodingKeys.ResultCodingKeys.NameCodingKeys.self, forKey: .name)
+        let NameContainer = try container.nestedContainer(keyedBy: CodingKeys.NameCodingKeys.self, forKey: .name)
         title = try NameContainer.decode(String.self, forKey: .title)
         first = try NameContainer.decode(String.self, forKey: .first)
         last = try NameContainer.decode(String.self, forKey: .last)
         
         
-        let pictureContainer = try userContainer.nestedContainer(keyedBy: CodingKeys.ResultCodingKeys.PictureCodingKeys.self, forKey: .picture)
+        let pictureContainer = try container.nestedContainer(keyedBy: CodingKeys.PictureCodingKeys.self, forKey: .picture)
         largePhoto = try pictureContainer.decode(String.self, forKey: .large)
         thumbnail = try pictureContainer.decode(String.self, forKey: .thumbnail)
     }
