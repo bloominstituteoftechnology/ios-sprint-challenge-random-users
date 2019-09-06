@@ -65,10 +65,10 @@
             </objects>
             <point key="canvasLocation" x="512.79999999999995" y="92.203898050974516"/>
         </scene>
-        <!--View Controller-->
+        <!--User Detail View Controller-->
         <scene sceneID="2QT-xf-5oj">
             <objects>
-                <viewController id="UFX-zC-IYR" sceneMemberID="viewController">
+                <viewController id="UFX-zC-IYR" customClass="UserDetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UWU-8B-X7r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -113,6 +113,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Nxy-Kg-2TQ"/>
                     </view>
+                    <connections>
+                        <outlet property="emailLabel" destination="hy1-F1-Tiq" id="42n-yS-yfS"/>
+                        <outlet property="nameLabel" destination="4B9-hs-yYd" id="O9N-cd-8Tq"/>
+                        <outlet property="phoneLabel" destination="bud-MW-ATo" id="2iz-77-lmM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zGt-Oa-bzj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

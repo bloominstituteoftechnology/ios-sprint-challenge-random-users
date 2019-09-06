@@ -9,6 +9,9 @@
 import UIKit
 
 class UserDetailViewController: UIViewController {
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
     
     private let photoFetchQueue = OperationQueue()
     private var fetchDictionary: [String: Operation] = [:]
@@ -17,37 +20,39 @@ class UserDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let user = user else {
+            return
+        }
+        nameLabel.text = user.first + " " + user.last
+        phoneLabel.text = user.phone
+        emailLabel.text = user.email
+        
+        getImage()
 
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+        guard let user = user else { return }
+        let operation = fetchDictionary[user.thumbnail]
+        operation?.cancel()
+    }
+    
+    func getImage() {
         guard let user = user else {
             return
         }
         
         let photoFetchOperation = FetchUserPhotoOperation(imageURL: user.thumbnail)
-        let saveCacheOperation = BlockOperation {
-            self.cache.cache(value: photoFetchOperation.imageData!, for: user.thumbnail)
-        }
         let setUpImageViewOperation = BlockOperation {
             DispatchQueue.main.async {
                 
-                cell.profileImageView.image = UIImage(data: photoFetchOperation.imageData!)
-                
-            }
-        }
-        if let imageData = cache.value(for: user.thumbnail) {
-            let image = UIImage(data: imageData)
-            DispatchQueue.main.async {
-                cell.profileImageView.image = image
-                print("loaded cache image")
-                return
             }
         }
         
-        saveCacheOperation.addDependency(photoFetchOperation)
+        
         setUpImageViewOperation.addDependency(photoFetchOperation)
-        photoFetchQueue.addOperations([photoFetchOperation, saveCacheOperation, setUpImageViewOperation], waitUntilFinished: true)
+        photoFetchQueue.addOperations([photoFetchOperation, setUpImageViewOperation], waitUntilFinished: true)
         
         fetchDictionary[user.thumbnail] = photoFetchOperation
     }
