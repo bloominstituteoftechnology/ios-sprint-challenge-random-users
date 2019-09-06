@@ -21,24 +21,32 @@ class DetailViewController: UIViewController {
 			updateViews()
 		}
 	}
-	
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		userImageView.layer.cornerRadius = 6
+		userImageView.image = nil
+		updateViews()
     }
 
 	private func updateViews() {
 		loadViewIfNeeded()
 		if let user = user {
-			nameLabel.text = "\(user.name.title) \(user.name.first) \(user.name.last)"
+			nameLabel.text = "\(user.name.title.capitalized) \(user.name.first.capitalized) \(user.name.last.capitalized)"
 			phoneLabel.text = "\(user.phone)"
-			phoneLabel.text = "\(user.email)"
-		}
+			emailLabel.text = "\(user.email)"
 
-		guard let client = userClient,
-		 	let user = user else { return }
-		client.fetchPhoto(with: user.picture.large) { (error) in
-			<#code#>
+			URLSession.shared.dataTask(with: user.picture.large) { (data, _, error) in
+				if let error = error {
+					NSLog("Error fetching photo: \(error)")
+					return
+				}
+
+				guard let data = data else { return }
+				DispatchQueue.main.async {
+					self.userImageView.image = UIImage(data: data)
+				}
+			}.resume()
 		}
 	}
 }

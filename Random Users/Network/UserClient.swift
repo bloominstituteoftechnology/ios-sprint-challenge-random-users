@@ -38,20 +38,4 @@ class UserClient {
 			completion(nil)
 		}.resume()
 	}
-
-	func fetchPhoto(with url: URL, completion: @escaping(Error?) -> Void) {
-		URLSession.shared.dataTask(with: url) { (data, _, error) in
-			if let error = error {
-				NSLog("Error fetching photo: \(error)")
-				completion(error)
-				return
-			}
-
-			guard let data = data else {
-				completion(error)
-				return
-			}
-			self.imageData = data
-		}.resume()
-	}
 }

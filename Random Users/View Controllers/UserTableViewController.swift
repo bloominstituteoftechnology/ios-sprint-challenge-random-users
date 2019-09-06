@@ -15,6 +15,7 @@ class UserTableViewController: UITableViewController {
 	var storedFetchOperations: [URL: FetchPhotoOperation] = [:]
 	private let photoFetchQueue = OperationQueue()
 	let queue = DispatchQueue(label: "CancelOperationQueue")
+	let section = ("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +30,9 @@ class UserTableViewController: UITableViewController {
 				self.tableView.reloadData()
 			}
 		}
+//		print(Array(section))
+//		print(Array(section).count)
     }
-
-//	override func viewWillAppear(_ animated: Bool) {
-//		super.viewWillAppear(animated)
-//		tableView.reloadData()
-//	}
 
     // MARK: - Table view data source
 

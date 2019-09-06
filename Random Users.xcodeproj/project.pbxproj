@@ -66,13 +66,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		37DA3FCB2322AF0B000D6437 /* Model Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Model Controller";
-			sourceTree = "<group>";
-		};
 		37DA3FCC2322AF34000D6437 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,7 +105,6 @@
 			children = (
 				37DA3FCD2322AF3C000D6437 /* View Controllers */,
 				37DA3FCC2322AF34000D6437 /* Views */,
-				37DA3FCB2322AF0B000D6437 /* Model Controller */,
 				37DA3FCA2322AF02000D6437 /* Model */,
 				37DA3FC72322AEAE000D6437 /* Network */,
 				9D5CCA56214231E400224681 /* Operations */,

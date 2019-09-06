@@ -27,7 +27,7 @@ class UserTableViewCell: UITableViewCell {
 
 	override func awakeFromNib() {
         super.awakeFromNib()
-
+		userImageView.layer.cornerRadius = userImageView.frame.height / 2
     }
 
 	func updateViews() {
