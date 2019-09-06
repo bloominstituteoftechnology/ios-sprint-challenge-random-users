@@ -105,4 +105,11 @@ class UserTableViewController: UITableViewController {
         let operation = fetchDictionary[user.thumbnail]
         operation?.cancel()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "UserDetailSegue" {
+            guard let userVC = segue.destination as? UserDetailViewController, let indexPath = tableView.indexPathForSelectedRow else {fatalError("cant make user vc")}
+            userVC.user = users[indexPath.row]
+        }
+    }
 }

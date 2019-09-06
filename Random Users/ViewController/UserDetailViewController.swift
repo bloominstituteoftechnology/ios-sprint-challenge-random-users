@@ -13,6 +13,7 @@ class UserDetailViewController: UIViewController {
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
+    @IBOutlet weak var imageView: UIImageView!
     private let photoFetchQueue = OperationQueue()
     private var fetchDictionary: [String: Operation] = [:]
     
@@ -43,10 +44,10 @@ class UserDetailViewController: UIViewController {
             return
         }
         
-        let photoFetchOperation = FetchUserPhotoOperation(imageURL: user.thumbnail)
+        let photoFetchOperation = FetchUserPhotoOperation(imageURL: user.largePhoto)
         let setUpImageViewOperation = BlockOperation {
             DispatchQueue.main.async {
-                
+                self.imageView.image = UIImage(data: photoFetchOperation.imageData!)
             }
         }
         
