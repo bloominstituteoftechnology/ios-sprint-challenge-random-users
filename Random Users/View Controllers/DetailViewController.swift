@@ -14,6 +14,7 @@ class DetailViewController: UIViewController {
 	@IBOutlet weak var nameLabel: UILabel!
 	@IBOutlet weak var phoneLabel: UILabel!
 	@IBOutlet weak var emailLabel: UILabel!
+	@IBOutlet weak var imageViewContainer: UIView!
 
 	var userClient: UserClient?
 	var user: User? {
@@ -25,9 +26,17 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		userImageView.layer.cornerRadius = userImageView.frame.height / 2
+		imageViewContainer.layer.cornerRadius = imageViewContainer.frame.height / 2
+		imageViewContainer.backgroundColor = UIColor(red: 0.90, green: 0.38, blue: 0.35, alpha: 1.00)
+		
 		userImageView.image = nil
 		updateViews()
     }
+
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		animateImageOnArrival()
+	}
 
 	private func updateViews() {
 		loadViewIfNeeded()
@@ -48,5 +57,15 @@ class DetailViewController: UIViewController {
 				}
 			}.resume()
 		}
+	}
+
+	private func animateImageOnArrival() {
+		UIView.animate(withDuration: 0.2, delay: 0.2, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.9, options: [.curveEaseInOut], animations: {
+			self.imageViewContainer.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+		}, completion: nil)
+
+		UIView.animate(withDuration: 0.2, delay: 0.3, options: [.curveEaseInOut], animations: {
+			self.imageViewContainer.transform = .identity
+		}, completion: nil)
 	}
 }

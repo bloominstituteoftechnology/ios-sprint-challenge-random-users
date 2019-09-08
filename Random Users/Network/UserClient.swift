@@ -11,7 +11,7 @@ import Foundation
 
 class UserClient {
 
-	let userURL = URL(string: "https://randomuser.me/api/?results=1000&nat=us&inc=name,email,phone,picture")!
+	let userURL = URL(string: "https://randomuser.me/api/?results=3000&nat=us&inc=name,email,phone,picture")!
 	var users: [User] = []
 	var imageData: Data?
 
