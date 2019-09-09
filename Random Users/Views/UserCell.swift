@@ -17,31 +17,17 @@ class UserCell: UITableViewCell {
 	
 	//MARK: - Properties
 	
-	var user: User? {
-		didSet {
-			configCell()
-		}
-	}
-	var imgData: Data?
 	
 	//MARK: - IBActions
 	
 	
 	//MARK: - Helpers
 	
-	private func configCell() {
-		guard let user = user else { return }
-		
-		imgView.loadImage(from: user.picture.thumbnail)
+	func configCell(with user: User, and imgData: Data?) {
 		nameLbl.text = user.name
-		
 		if let imgData = imgData {
-			loadImage(data: imgData)
+			imgView.image = UIImage(data: imgData)
 		}
-	}
-	
-	private func loadImage(data: Data) {
-		imgView.image = UIImage(data: data)
 	}
 }
 
