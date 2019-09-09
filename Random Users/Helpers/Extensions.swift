@@ -10,21 +10,19 @@ import UIKit
 
 extension UIImageView {
 	func loadImage(from url: URL) {
-		DispatchQueue.global().async {
-			URLSession.shared.dataTask(with: url) { (data, response, error) in				
-				if let error = error {
-					print("Error fetching photo: \(error.localizedDescription)")
-					return
-				}
-				
-				guard let imgData = data else {
-					print("No data found")
-					return }
-				
-				DispatchQueue.main.async {
-					self.image = UIImage(data: imgData)
-				}
+		URLSession.shared.dataTask(with: url) { (data, response, error) in
+			if let error = error {
+				print("Error fetching photo: \(error.localizedDescription)")
+				return
+			}
+			
+			guard let imgData = data else {
+				print("No data found")
+				return }
+			
+			DispatchQueue.main.async {
+				self.image = UIImage(data: imgData)
+			}
 			}.resume()
-		}
 	}
 }
