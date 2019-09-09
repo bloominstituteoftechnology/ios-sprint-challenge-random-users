@@ -63,12 +63,12 @@ class UsersListVC: UITableViewController {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserCell else { return UITableViewCell() }
 
 		let user = usersController.users[indexPath.row]
-		var userImgData: Data?
 		let cacheKey = user.picture.thumbnail.absoluteString
 		
+		cell.user = user
+		
 		if let imgData = thumbCache.value(for: cacheKey) {
-			userImgData = imgData
-			cell.configCell(with: user, and: userImgData)
+			cell.imgData = imgData
 		} else {
 			let fetchPhotoOp = FetchPhotoOperation(user: user)
 			let cacheOp = BlockOperation {
@@ -82,8 +82,7 @@ class UsersListVC: UITableViewController {
 					return
 				}
 				if let imgData = fetchPhotoOp.imageData {
-					userImgData = imgData
-					cell.configCell(with: user, and: userImgData)
+					cell.imgData = imgData
 				}
 			}
 			

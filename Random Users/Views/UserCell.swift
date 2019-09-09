@@ -17,17 +17,30 @@ class UserCell: UITableViewCell {
 	
 	//MARK: - Properties
 	
+	var user: User? {
+		didSet {
+			configCell()
+		}
+	}
+	var imgData: Data? {
+		didSet {
+			loadImage()
+		}
+	}
 	
 	//MARK: - IBActions
 	
 	
 	//MARK: - Helpers
 	
-	func configCell(with user: User, and imgData: Data?) {
+	private func configCell() {
+		guard let user = user else { return }
 		nameLbl.text = user.name
-		if let imgData = imgData {
-			imgView.image = UIImage(data: imgData)
-		}
+	}
+	
+	private func loadImage() {
+		guard let imgdata = imgData else { return }
+		imgView.image = UIImage(data: imgdata)
 	}
 }
 
