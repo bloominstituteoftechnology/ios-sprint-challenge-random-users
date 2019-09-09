@@ -63,14 +63,17 @@ class UsersListVC: UITableViewController {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserCell else { return UITableViewCell() }
 
 		let user = usersController.users[indexPath.row]
+		var userImgData: Data?
+		let cacheKey = user.picture.thumbnail.absoluteString
 		
-		if let imgData = thumbCache.value(for: user.login.uuid) {
-			cell.imgData = imgData
+		if let imgData = thumbCache.value(for: cacheKey) {
+			userImgData = imgData
+			cell.configCell(with: user, and: userImgData)
 		} else {
 			let fetchPhotoOp = FetchPhotoOperation(user: user)
 			let cacheOp = BlockOperation {
 				if let photoData = fetchPhotoOp.imageData {
-					self.thumbCache.cache(value: photoData, for: user.login.uuid)
+					self.thumbCache.cache(value: photoData, for: cacheKey)
 				}
 			}
 			
@@ -79,7 +82,8 @@ class UsersListVC: UITableViewController {
 					return
 				}
 				if let imgData = fetchPhotoOp.imageData {
-					cell.imgData =  imgData
+					userImgData = imgData
+					cell.configCell(with: user, and: userImgData)
 				}
 			}
 			
@@ -91,8 +95,6 @@ class UsersListVC: UITableViewController {
 			
 			storedFetchOps.updateValue(fetchPhotoOp, forKey: user.login.uuid)
 		}
-
-		cell.user = user
 		
         return cell
     }
