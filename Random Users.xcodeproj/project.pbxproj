@@ -12,6 +12,11 @@
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
 		8ED6A9922140178C00FC395A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
+		DD579F5023479921008DA8B7 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD579F4F23479921008DA8B7 /* UsersTableViewController.swift */; };
+		DD579F5223479936008DA8B7 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD579F5123479936008DA8B7 /* UserDetailViewController.swift */; };
+		DD579F5723479A5E008DA8B7 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD579F5623479A5E008DA8B7 /* API.swift */; };
+		DD579F5923479E11008DA8B7 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD579F5823479E11008DA8B7 /* Cache.swift */; };
+		DD579F5B2347A57E008DA8B7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD579F5A2347A57E008DA8B7 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,11 @@
 		8ED6A9912140178C00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ED6A9932140178C00FC395A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
+		DD579F4F23479921008DA8B7 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
+		DD579F5123479936008DA8B7 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		DD579F5623479A5E008DA8B7 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		DD579F5823479E11008DA8B7 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		DD579F5A2347A57E008DA8B7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +65,9 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+				DD579F5523479A21008DA8B7 /* Api */,
+				DD579F5423479A15008DA8B7 /* Model */,
+				DD579F5323479952008DA8B7 /* View Controllers */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
@@ -78,6 +91,32 @@
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
 			);
 			path = Operations;
+			sourceTree = "<group>";
+		};
+		DD579F5323479952008DA8B7 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DD579F5123479936008DA8B7 /* UserDetailViewController.swift */,
+				DD579F4F23479921008DA8B7 /* UsersTableViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		DD579F5423479A15008DA8B7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DD579F5823479E11008DA8B7 /* Cache.swift */,
+				DD579F5A2347A57E008DA8B7 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DD579F5523479A21008DA8B7 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				DD579F5623479A5E008DA8B7 /* API.swift */,
+			);
+			path = Api;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,6 +192,11 @@
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				DD579F5223479936008DA8B7 /* UserDetailViewController.swift in Sources */,
+				DD579F5023479921008DA8B7 /* UsersTableViewController.swift in Sources */,
+				DD579F5923479E11008DA8B7 /* Cache.swift in Sources */,
+				DD579F5723479A5E008DA8B7 /* API.swift in Sources */,
+				DD579F5B2347A57E008DA8B7 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
