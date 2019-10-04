@@ -14,7 +14,8 @@ class UsersTableViewController: UITableViewController {
     
     let userController = UserController()
     private let photoFetchQueue = OperationQueue()
-    let cache = Cache<String, Data>()
+    let imageCache = Cache<String, Data>()
+    private var operations = [String: Operation]()
     
     // MARK: - View LifeCycle
     
@@ -32,11 +33,45 @@ class UsersTableViewController: UITableViewController {
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
     }
     
-    private func loadImage(forCell: CustomUserTableViewCell, forRowAt indexPath: IndexPath) {
+    private func loadImage(forCell cell: CustomUserTableViewCell, forRowAt indexPath: IndexPath) {
         let user = userController.users[indexPath.row]
         
+        if let cachedData = imageCache.value(for: user.login.uuid),
+            let image = UIImage(data: cachedData) {
+            cell.userImageView.image = image
+            return
+        }
         
-        if let cachedData = 
+        let fetchOp = FetchPhotoOperation(user: user)
+        
+        let cacheOp = BlockOperation {
+            if let data = fetchOp.imageData {
+                self.imageCache.cache(value: data, for: user.login.uuid)
+            }
+        }
+        
+        let completionOp = BlockOperation {
+            defer { self.operations.removeValue(forKey: user.login.uuid) }
+            if let currentIndexPath = self.tableView.indexPath(for: cell),
+               currentIndexPath != indexPath {
+                print("Got image for reused cell")
+                return
+            }
+            if let data = fetchOp.imageData {
+                cell.userImageView.image = UIImage(data: data)
+            }
+            
+        }
+        
+        cacheOp.addDependency(fetchOp)
+        completionOp.addDependency(fetchOp)
+        photoFetchQueue.addOperation(fetchOp)
+        photoFetchQueue.addOperation(cacheOp)
+        OperationQueue.main.addOperation(completionOp)
+        
+        operations[user.login.uuid] = fetchOp
+        
+        
     }
     
     
@@ -60,15 +95,10 @@ class UsersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? CustomUserTableViewCell else { return UITableViewCell() }
+        loadImage(forCell: cell, forRowAt: indexPath)
         let user = userController.users[indexPath.row]
-        let userName = "\(user.name.firstName) \(user.name.lastName)"
-        let imageURL = user.picture.thumbNailURL
-              if let imageData = try? Data(contentsOf: imageURL),
-              let image = UIImage(data: imageData) {
-                cell.userImageView.image = image
-        }
-        cell.nameLabel.text = userName
-        
+        let fullName = "\(user.name.firstName) \(user.name.lastName)"
+        cell.nameLabel.text = fullName
         return cell
     }
 }

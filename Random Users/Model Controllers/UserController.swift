@@ -33,7 +33,7 @@ class UserController {
     private func cleanURL(numberOfUsers results: Int) -> URL {
         var url = baseURL
         let resultsCountString = String(results)
-        let infoLimiter = "name,email,cell,picture,id"
+        let infoLimiter = "name,email,cell,picture,id,login"
         var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)!
         
         urlComponents.queryItems = [URLQueryItem(name: "results", value: resultsCountString), URLQueryItem(name: "inc", value: infoLimiter)]
