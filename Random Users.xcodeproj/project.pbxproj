@@ -15,6 +15,7 @@
 		F69450322347A50500380A8A /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69450312347A50500380A8A /* UsersTableViewController.swift */; };
 		F69450342347A52700380A8A /* UsersDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69450332347A52700380A8A /* UsersDetailedViewController.swift */; };
 		F69450362347A5B100380A8A /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69450352347A5B100380A8A /* UserTableViewCell.swift */; };
+		F69450382347A69F00380A8A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69450372347A69F00380A8A /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		F69450312347A50500380A8A /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		F69450332347A52700380A8A /* UsersDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDetailedViewController.swift; sourceTree = "<group>"; };
 		F69450352347A5B100380A8A /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		F69450372347A69F00380A8A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 		F69450302347A4AE00380A8A /* M */ = {
 			isa = PBXGroup;
 			children = (
+				F69450372347A69F00380A8A /* User.swift */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				F69450382347A69F00380A8A /* User.swift in Sources */,
 				F69450322347A50500380A8A /* UsersTableViewController.swift in Sources */,
 				F69450342347A52700380A8A /* UsersDetailedViewController.swift in Sources */,
 				F69450362347A5B100380A8A /* UserTableViewCell.swift in Sources */,
