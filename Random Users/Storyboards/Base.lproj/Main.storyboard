@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="p4L-sV-TJU" customClass="RandomUserTableViewCell" customModule="Random_Users" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" rowHeight="60" id="p4L-sV-TJU" customClass="RandomUserTableViewCell" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="p4L-sV-TJU" id="KSX-jR-L2E">
@@ -47,8 +47,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="fullName" destination="5m1-l0-vk7" id="dpf-Bj-Lsx"/>
-                                    <outlet property="thumbnail" destination="tJR-QA-MGt" id="Zcq-sL-B7A"/>
+                                    <outlet property="fullName" destination="5m1-l0-vk7" id="Uh9-5q-24Q"/>
+                                    <outlet property="thumbnail" destination="tJR-QA-MGt" id="Emc-q8-Ps1"/>
                                     <segue destination="kOk-Pn-AOQ" kind="show" identifier="showDetailFromCellSegue" id="nmS-jJ-MWY"/>
                                 </connections>
                             </tableViewCell>
@@ -65,10 +65,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="fullName" destination="5m1-l0-vk7" id="roR-LF-7Iy"/>
-                        <outlet property="thumbnail" destination="tJR-QA-MGt" id="5Lk-FT-n8I"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="haF-PP-fmC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
