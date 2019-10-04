@@ -12,6 +12,7 @@
 		774536D42347976A00345C05 /* RandomUserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774536D32347976A00345C05 /* RandomUserDetailViewController.swift */; };
 		774536D823479C0C00345C05 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774536D723479C0C00345C05 /* UserController.swift */; };
 		774536DA23479C2600345C05 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774536D923479C2600345C05 /* User.swift */; };
+		774FA4462347BA19000CFECB /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774FA4452347BA19000CFECB /* Cache.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 		774536D32347976A00345C05 /* RandomUserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserDetailViewController.swift; sourceTree = "<group>"; };
 		774536D723479C0C00345C05 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		774536D923479C2600345C05 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		774FA4452347BA19000CFECB /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				774536D923479C2600345C05 /* User.swift */,
+				774FA4452347BA19000CFECB /* Cache.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 			files = (
 				774536D823479C0C00345C05 /* UserController.swift in Sources */,
 				774536D02347973B00345C05 /* RandomUsersTableViewController.swift in Sources */,
+				774FA4462347BA19000CFECB /* Cache.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				774536D22347975200345C05 /* RandomUserTableViewCell.swift in Sources */,

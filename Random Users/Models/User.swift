@@ -32,28 +32,6 @@ struct User: Codable {
         case phone
         case picture
     }
-    
-//    init(name: Name, email: String, phone: String, picture: Picture) {
-//        self.name = name
-//        self.email = email
-//        self.phone = phone
-//        self.picture = picture
-//    }
-//
-//    init(from decoder: Decoder) throws {
-//        let container = try decoder.container(keyedBy: CodingKeys.self)
-//        let name = try container.decode(Name.self, forKey: .name)
-//        let email = try container.decode(String.self, forKey: .email)
-//        let phone = try container.decode(String.self, forKey: .phone)
-//        let picture = try container.decode(Picture.self, forKey: .name)
-//
-//
-//
-//        self.name = name
-//        self.email = email
-//        self.phone = phone
-//        self.picture = picture
-//    }
 }
 
 struct Name: Codable {
@@ -66,25 +44,6 @@ struct Name: Codable {
         case first
         case last
     }
-    
-//    init(title: String, first: String, last: String) {
-//        self.title = title
-//        self.first = first
-//        self.last = last
-//    }
-//
-//    init(from decoder: Decoder) throws {
-//
-//        let container = try decoder.container(keyedBy: CodingKeys.self)
-//
-//        let title = try container.decode(String.self, forKey: .title)
-//        let first = try container.decode(String.self, forKey: .first)
-//        let last = try container.decode(String.self, forKey: .last)
-//
-//        self.title = title
-//        self.first = first
-//        self.last = last
-//    }
 }
 
 struct Picture: Codable {
@@ -97,24 +56,4 @@ struct Picture: Codable {
         case medium
         case thumbnail
     }
-
-    
-//    init(large: String, medium: String, thumbnail: String) {
-//        self.large = large
-//        self.medium = medium
-//        self.thumbnail = thumbnail
-//    }
-//
-//    init(from decoder: Decoder) throws {
-//
-//        let container = try decoder.container(keyedBy: CodingKeys.self)
-//
-//        let large = try container.decode(String.self, forKey: .large)
-//        let medium = try container.decode(String.self, forKey: .medium)
-//        let thumbnail = try container.decode(String.self, forKey: .thumbnail)
-//
-//        self.large = large
-//        self.medium = medium
-//        self.thumbnail = thumbnail
-//    }
 }

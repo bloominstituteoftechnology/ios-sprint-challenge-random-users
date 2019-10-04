@@ -39,17 +39,20 @@ class RandomUsersTableViewController: UITableViewController {
 
         let user = userController.users[indexPath.row]
         cell.fullName.text = "\(user.name.first) \(user.name.last)"
-//        cell.imageView = userController.users[indexPath.row].picture.thumbnail
+        //cell.imageView!.image = UIImage(contentsOfFile: user.picture.thumbnail)
 
         return cell
     }
 
-    
     // MARK: - Navigation
 
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == "showDetailFromCellSegue" {
+            guard let detailVC = segue.destination as? RandomUserDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow else { return }
+            let user = userController.users[indexPath.row]
+            detailVC.user = user
+            detailVC.userController = userController
+        }
     }
-
 }
