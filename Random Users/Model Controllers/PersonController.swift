@@ -8,10 +8,32 @@
 
 import Foundation
 
+enum HTTPMethod: String {
+    
+    case get = "GET" // read only
+    case put = "PUT" // create data
+    case post = "POST" // update or replace data
+    case delete = "DELETE" // delete data
+    
+}
+
 class PersonController {
     
+    let url = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
+    
+    func fetch(using session: URLSession = URLSession.shared, completion: @escaping ([Person]?, Error?) -> Void) {
+        
+        fetch(from: self.url) { (array: [Person]?, error: Error?) in
+            guard let people = array else {
+                completion(nil, error)
+                return
+            }
+            completion(people, nil)
+        }
+    }
+    
     // GENERIC type - Modular
-    private func fetch<T: Codable>(from url: URL, using session: URLSession = URLSession.shared, completion: @escaping (T?, Error?) -> Void) {
+   private func fetch<T: Codable>(from url: URL, using session: URLSession = URLSession.shared, completion: @escaping (T?, Error?) -> Void) {
         
         session.dataTask(with: url) { (data, response, error) in
             
