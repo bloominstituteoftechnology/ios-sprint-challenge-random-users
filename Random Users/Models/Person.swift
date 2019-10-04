@@ -16,7 +16,7 @@ class Person: Codable {
     let name: [String]
     let email: String
     let phone: String
-    let picture: [String]
+    let picture: [URL]
     
     enum PersonKeys: String, CodingKey {
         case name
@@ -37,12 +37,12 @@ class Person: Codable {
         }
     }
     
-    init?(name: [String], email: String, phone: String, picture: [String]) {
-        self.name = name
-        self.email = email
-        self.phone = phone
-        self.picture = picture
-    }
+//    init?(name: [String], email: String, phone: String, picture: [String]) {
+//        self.name = name
+//        self.email = email
+//        self.phone = phone
+//        self.picture = picture
+//    }
     
     required init(from decoder: Decoder) throws {
         
@@ -62,16 +62,21 @@ class Person: Codable {
         }
         self.name = names
         
-        var pictures: [String] = []
+        var pictures: [URL] = []
         
         var pictureContainer = try container.nestedUnkeyedContainer(forKey: .picture)
         
         while pictureContainer.isAtEnd {
             let picture2Container = try pictureContainer.nestedContainer(keyedBy: PersonKeys.PictureKeys.self)
-            let pictureURL = try picture2Container.decode(String.self, forKey: .large)
+            let pictureURL = try picture2Container.decode(URL.self, forKey: .large)
             pictures.append(pictureURL)
         }
         self.picture = pictures
     }
+    
+    static var jsonDecoder: JSONDecoder {
+           let result = JSONDecoder()
+           return result
+       }
 }
 
