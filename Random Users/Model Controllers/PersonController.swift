@@ -17,13 +17,14 @@ enum HTTPMethod: String {
     
 }
 
+
 class PersonController {
     
     let url = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
     
-    func fetch(using session: URLSession = URLSession.shared, completion: @escaping ([Person]?, Error?) -> Void) {
+    func fetch(using session: URLSession = URLSession.shared, completion: @escaping (People?, Error?) -> Void) {
         
-        fetch(from: self.url) { (array: [Person]?, error: Error?) in
+        fetch(from: self.url) { (array: People?, error: Error?) in
             guard let people = array else {
                 completion(nil, error)
                 return
@@ -38,7 +39,7 @@ class PersonController {
         session.dataTask(with: url) { (data, response, error) in
             
             if let response = response as? HTTPURLResponse,
-                response.statusCode != 201 {
+                response.statusCode != 200 {
                 print(response.statusCode)
                 completion(nil, error)
                 return

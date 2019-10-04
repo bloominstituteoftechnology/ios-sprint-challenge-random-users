@@ -14,7 +14,7 @@ class Cache<Key: Hashable, Value> {
     
     private var queue = DispatchQueue(label: "CacheQueue")
         
-    func cache(value: Value, key: Key) {
+    func add(value: Value, key: Key) {
         queue.async {
             self.cache[key] = value
         }

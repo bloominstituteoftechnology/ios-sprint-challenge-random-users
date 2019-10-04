@@ -10,13 +10,27 @@ import Foundation
 
 struct People: Codable {
     let results: [Person]
+    
+    enum PeopleKeys: String, CodingKey {
+        case results
+    }
+    
+    init(from decoder: Decoder) throws {
+        
+        let container = try decoder.container(keyedBy: PeopleKeys.self)
+        
+        let results = try container.decode([Person].self, forKey: .results)
+        
+        self.results = results
+    }
+
 }
 
-class Person: Codable {
-    let name: [String]
+struct Person: Codable {
+    let name: Name
     let email: String
     let phone: String
-    let picture: [URL]
+    let picture: Picture
     
     enum PersonKeys: String, CodingKey {
         case name
@@ -24,59 +38,64 @@ class Person: Codable {
         case phone
         case picture
         
-        enum NameKeys: String, CodingKey {
-            case title
-            case first
-            case last
-        }
-        
-        enum PictureKeys: String, CodingKey {
-            case large
-            case medium
-            case thumbnail
-        }
     }
-    
-//    init?(name: [String], email: String, phone: String, picture: [String]) {
-//        self.name = name
-//        self.email = email
-//        self.phone = phone
-//        self.picture = picture
+//
+//    required init(from decoder: Decoder) throws {
+//
+//        let container = try decoder.container(keyedBy: PersonKeys.self)
+//        var nameContainer = try container.nestedUnkeyedContainer(forKey: .name)
+//        var pictureContainer = try container.nestedUnkeyedContainer(forKey: .picture)
+//
+//        email = try container.decode(String.self, forKey: .email)
+//        phone = try container.decode(String.self, forKey: .phone)
+//        name = try nameContainer.decode(Name.self)
+//        picture = try pictureContainer.decode(Picture.self)
+
 //    }
     
-    required init(from decoder: Decoder) throws {
-        
-        let container = try decoder.container(keyedBy: PersonKeys.self)
-        
-        email = try container.decode(String.self, forKey: .email)
-        phone = try container.decode(String.self, forKey: .phone)
-        
-        var nameContainer = try container.nestedUnkeyedContainer(forKey: .name)
-        
-        var names: [String] = []
-        
-        while !nameContainer.isAtEnd {
-            let name2Container = try nameContainer.nestedContainer(keyedBy: PersonKeys.NameKeys.self)
-            let name = try name2Container.decode(String.self, forKey: .first)
-            names.append(name)
-        }
-        self.name = names
-        
-        var pictures: [URL] = []
-        
-        var pictureContainer = try container.nestedUnkeyedContainer(forKey: .picture)
-        
-        while pictureContainer.isAtEnd {
-            let picture2Container = try pictureContainer.nestedContainer(keyedBy: PersonKeys.PictureKeys.self)
-            let pictureURL = try picture2Container.decode(URL.self, forKey: .large)
-            pictures.append(pictureURL)
-        }
-        self.picture = pictures
-    }
-    
     static var jsonDecoder: JSONDecoder {
-           let result = JSONDecoder()
-           return result
-       }
+        let result = JSONDecoder()
+        return result
+    }
 }
 
+class Name: Codable {
+    let title: String
+    let first: String
+    let last: String
+    
+    enum NameKeys: String, CodingKey {
+        case title
+        case first
+        case last
+    }
+    
+//    required init(from decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: NameKeys.self)
+//
+//        title = try container.decode(String.self, forKey: .title)
+//        first = try container.decode(String.self, forKey: .first)
+//        last = try container.decode(String.self, forKey: .last)
+//    }
+}
+
+class Picture: Codable {
+    let large: URL
+    let medium: URL
+    let thumbnail: URL
+    
+    enum PictureKeys: String, CodingKey {
+        case large
+        case medium
+        case thumbnail
+    }
+    
+//    required init(from decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: PictureKeys.self)
+//        
+//        large = try container.decode(URL.self, forKey: .large)
+//        medium = try container.decode(URL.self, forKey: .medium)
+//        thumbnail = try container.decode(URL.self, forKey: .thumbnail)
+//        
+//    }
+}

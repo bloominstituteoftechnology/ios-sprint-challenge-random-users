@@ -22,28 +22,28 @@ class FetchPeoplePhotoOperation: ConcurrentOperation {
         super.init()
     }
     
-    override func start() {
-        state = .isExecuting
-        
-        guard let url = person.picture[0].usingHTTPS else {return}
-        
-        let task = session.dataTask(with: url) { (data, _, error) in
-            
-            defer { self.state = .isFinished }
-            if self.isCancelled { return }
-            
-            if let error = error {
-                NSLog("Error with data task: \(self.person), \(error)")
-                return
-            }
-            
-            guard let data = data else {return}
-                       self.imageData = data
-        }
-        
-        task.resume()
-        dataTaks = task
-    }
+//    override func start() {
+//        state = .isExecuting
+//        
+//        guard let url = person.picture.large.usingHTTPS else {return}
+//        
+//        let task = session.dataTask(with: url) { (data, _, error) in
+//            
+//            defer { self.state = .isFinished }
+//            if self.isCancelled { return }
+//            
+//            if let error = error {
+//                NSLog("Error with data task: \(self.person), \(error)")
+//                return
+//            }
+//            
+//            guard let data = data else {return}
+//                       self.imageData = data
+//        }
+//        
+//        task.resume()
+//        dataTaks = task
+//    }
     
     override func cancel() {
         dataTaks?.cancel()

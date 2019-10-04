@@ -15,6 +15,7 @@ class PersonDetailViewController: UIViewController {
     
     var person: Person?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setViews()
@@ -22,6 +23,16 @@ class PersonDetailViewController: UIViewController {
     
     private func setViews() {
         guard let person = person else {return}
-        nameLabel.text = person.name[0]
+
+
+        nameLabel.text = person.name.first
+        do {
+        let data = try Data(contentsOf: person.picture.large)
+            imageView.image = UIImage(data: data)
+        } catch {
+            NSLog("Error")
+        }
     }
 }
+
+

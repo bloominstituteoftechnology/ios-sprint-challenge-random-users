@@ -31,7 +31,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h18-Og-8Bj">
-                                            <rect key="frame" x="40" y="11.5" width="42" height="21"/>
+                                            <rect key="frame" x="20" y="11.5" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -43,7 +43,7 @@
                                         <constraint firstAttribute="trailing" secondItem="oqb-QW-iek" secondAttribute="trailing" constant="20" id="LMj-yY-m90"/>
                                         <constraint firstItem="h18-Og-8Bj" firstAttribute="centerY" secondItem="z7D-wK-AIU" secondAttribute="centerY" id="a38-6r-iIt"/>
                                         <constraint firstItem="oqb-QW-iek" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="h18-Og-8Bj" secondAttribute="trailing" constant="8" id="nIY-sW-446"/>
-                                        <constraint firstItem="h18-Og-8Bj" firstAttribute="leading" secondItem="z7D-wK-AIU" secondAttribute="leadingMargin" constant="20" id="w6n-BI-UHM"/>
+                                        <constraint firstItem="h18-Og-8Bj" firstAttribute="leading" secondItem="z7D-wK-AIU" secondAttribute="leadingMargin" id="w6n-BI-UHM"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

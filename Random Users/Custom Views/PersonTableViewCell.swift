@@ -11,8 +11,9 @@ import UIKit
 class PersonTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
+         super.prepareForReuse()
         imageView?.image = #imageLiteral(resourceName: "iconfinder_Picture1_3289576")
-        super.prepareForReuse()
+       
     }
 
     @IBOutlet weak var nameLabel: UILabel!
