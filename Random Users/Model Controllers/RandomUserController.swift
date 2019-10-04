@@ -18,8 +18,8 @@ class RandomUserController {
                         completion: @escaping ([RandomUser]?, Error?) -> Void) {
         
         let url = self.url(forAmountOfResults: 1000)
-        fetch(from: url, using: session) { (dictionary: [String : UsersList]?, error: Error?) in
-            guard let userList: UsersList = dictionary?["photo_manifest"] else {
+        fetch(from: url, using: session) { (usersList: UsersList?, error: Error?) in
+            guard let userList: UsersList = usersList else {
                 completion(nil, error)
                 return
             }
@@ -41,7 +41,6 @@ class RandomUserController {
                 completion(nil, NSError(domain: "com.LambdaSchool.Random-Users.ErrorDomain", code: -1, userInfo: nil))
                 return
             }
-            
             do {
                 let decoder = JSONDecoder()
                 let decodedObject = try decoder.decode(T.self, from: data)
