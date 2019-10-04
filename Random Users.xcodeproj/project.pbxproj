@@ -16,6 +16,9 @@
 		DDCA00E72347B4BB005C690E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA00E62347B4BB005C690E /* DetailViewController.swift */; };
 		DDCA00E92347B4F9005C690E /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA00E82347B4F9005C690E /* UserTableViewController.swift */; };
 		DDCA00EB2347B521005C690E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA00EA2347B521005C690E /* User.swift */; };
+		DDCA00EF2347BBAD005C690E /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA00EE2347BBAD005C690E /* Cache.swift */; };
+		DDCA00F32347BDA5005C690E /* UserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA00F22347BDA5005C690E /* UserClient.swift */; };
+		DDCA00F62347C209005C690E /* FetchPhotoOperaton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA00F52347C209005C690E /* FetchPhotoOperaton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		DDCA00E62347B4BB005C690E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DDCA00E82347B4F9005C690E /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
 		DDCA00EA2347B521005C690E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DDCA00EE2347BBAD005C690E /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		DDCA00F22347BDA5005C690E /* UserClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClient.swift; sourceTree = "<group>"; };
+		DDCA00F52347C209005C690E /* FetchPhotoOperaton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperaton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +52,6 @@
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
-				DDCA00EC2347B52A005C690E /* Model */,
 				8ED6A9862140178A00FC395A /* Random Users */,
 				8ED6A9852140178A00FC395A /* Products */,
 			);
@@ -63,11 +68,13 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
+				DDCA00EC2347B52A005C690E /* Model */,
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
 				DDCA00E42347B49B005C690E /* UserTableViewCell.swift */,
 				DDCA00ED2347B53B005C690E /* View Controllers */,
+				DDCA00F42347BDAC005C690E /* Networking */,
 			);
 			path = "Random Users";
 			sourceTree = "<group>";
@@ -87,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				DDCA00F52347C209005C690E /* FetchPhotoOperaton.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -95,8 +103,10 @@
 			isa = PBXGroup;
 			children = (
 				DDCA00EA2347B521005C690E /* User.swift */,
+				DDCA00EE2347BBAD005C690E /* Cache.swift */,
 			);
 			name = Model;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		DDCA00ED2347B53B005C690E /* View Controllers */ = {
@@ -106,6 +116,14 @@
 				DDCA00E82347B4F9005C690E /* UserTableViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		DDCA00F42347BDAC005C690E /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				DDCA00F22347BDA5005C690E /* UserClient.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +197,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDCA00EF2347BBAD005C690E /* Cache.swift in Sources */,
+				DDCA00F32347BDA5005C690E /* UserClient.swift in Sources */,
+				DDCA00F62347C209005C690E /* FetchPhotoOperaton.swift in Sources */,
 				DDCA00E92347B4F9005C690E /* UserTableViewController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				DDCA00EB2347B521005C690E /* User.swift in Sources */,

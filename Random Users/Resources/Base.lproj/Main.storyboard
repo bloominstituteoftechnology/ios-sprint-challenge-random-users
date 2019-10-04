@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="VvS-Ll-xeH" customClass="UserTableViewCell" customModule="Random_Users" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="80" id="VvS-Ll-xeH" customClass="UserTableViewCell" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VvS-Ll-xeH" id="HVx-rw-Vse">
@@ -37,7 +37,7 @@
                                                         <constraint firstAttribute="width" constant="40" id="wYk-xK-XW2"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syc-oz-odN">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syc-oz-odN">
                                                     <rect key="frame" x="195.5" y="0.0" width="171.5" height="40"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -53,6 +53,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="nameLabel" destination="syc-oz-odN" id="Wxt-ct-vDJ"/>
+                                    <outlet property="userImageView" destination="Uf5-Mv-rZJ" id="WnF-UI-sMZ"/>
                                     <segue destination="kkT-og-gzB" kind="show" identifier="ToDetailViewSegue" id="HsJ-55-ZLf"/>
                                 </connections>
                             </tableViewCell>
@@ -97,6 +99,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tf-9K-RoP">
+                                <rect key="frame" x="169" y="456" width="49" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdq-du-d9k">
+                                <rect key="frame" x="166" y="500" width="41" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -105,6 +121,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Yl5-QR-iva"/>
                     </view>
+                    <connections>
+                        <outlet property="emailLabel" destination="vdq-du-d9k" id="e8G-lv-ovP"/>
+                        <outlet property="nameLabel" destination="gil-Pd-jJR" id="Zcm-y9-I1X"/>
+                        <outlet property="phoneLabel" destination="1tf-9K-RoP" id="7fm-1o-rOv"/>
+                        <outlet property="userImageView" destination="fU6-NW-vqx" id="jDU-pm-eu6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2yd-OE-DFa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
