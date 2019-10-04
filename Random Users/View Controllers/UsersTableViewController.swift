@@ -42,6 +42,8 @@ class UsersTableViewController: UITableViewController {
             return
         }
         
+        //MARK: - Operations Queue
+        
         let fetchOp = FetchPhotoOperation(user: user)
         
         let cacheOp = BlockOperation {
@@ -70,11 +72,7 @@ class UsersTableViewController: UITableViewController {
         OperationQueue.main.addOperation(completionOp)
         
         operations[user.login.uuid] = fetchOp
-        
-        
     }
-    
-    
     
     // MARK: - Navigation
 
