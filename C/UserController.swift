@@ -15,7 +15,7 @@ class UserController {
     
     var baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
     
-    func fetchUsers(completion: @escaping (Error?) -> Void) {
+    func getUsers(completion: @escaping (Error?) -> Void) {
         
         URLSession.shared.dataTask(with: baseURL) { (data, _, error) in
             if let error = error {

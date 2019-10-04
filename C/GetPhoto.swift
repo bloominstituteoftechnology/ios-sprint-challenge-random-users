@@ -8,7 +8,7 @@
 
 import Foundation
 
-class FetchPhotoOperation: ConcurrentOperation {
+class GetPhoto: ConcurrentOperation {
     
     let user: User
     var imageData: Data?

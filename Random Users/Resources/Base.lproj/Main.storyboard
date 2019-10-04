@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Users Table View Controller-->
+        <!--Users-->
         <scene sceneID="g0b-Lf-1Tv">
             <objects>
                 <tableViewController id="NKD-WI-U3E" customClass="UsersTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
@@ -61,18 +61,22 @@
                             <outlet property="delegate" destination="NKD-WI-U3E" id="Ngo-ET-e31"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Imw-F7-g7M">
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="add-dM-5RK"/>
+                    <navigationItem key="navigationItem" title="Users" id="Imw-F7-g7M">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="add-dM-5RK">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="NKD-WI-U3E" id="WTV-hH-XO5"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l8w-H4-gig" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="580" y="-203.74812593703149"/>
         </scene>
-        <!--View Controller-->
+        <!--Users Detailed View Controller-->
         <scene sceneID="Pez-6M-jYH">
             <objects>
-                <viewController id="gDp-J9-DQl" sceneMemberID="viewController">
+                <viewController id="gDp-J9-DQl" customClass="UsersDetailedViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3iI-yn-znV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -114,6 +118,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AFK-B6-TDy"/>
                     </view>
+                    <connections>
+                        <outlet property="userEmailLabel" destination="Rfn-1H-VOa" id="1nF-Gr-2gn"/>
+                        <outlet property="userImageView" destination="Ogd-zA-o3f" id="CJ5-Np-ocZ"/>
+                        <outlet property="userNameLabel" destination="3uY-db-629" id="gxl-Qo-qwL"/>
+                        <outlet property="userNumberLabel" destination="5ml-Gq-4Wj" id="qmj-jY-33Y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pYS-v0-RPq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
