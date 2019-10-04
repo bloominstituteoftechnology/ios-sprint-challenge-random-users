@@ -40,8 +40,8 @@ class UserController {
         return urlComponents.url!
     }
     
-    func fetchUsers(using session: URLSession = URLSession.shared, completion: @escaping ([User]?, Error?) -> Void) {
-        let request = URLRequest(url: cleanURL(numberOfUsers: 10))
+    func fetchUsers(amountOfUsers: Int, using session: URLSession = URLSession.shared, completion: @escaping ([User]?, Error?) -> Void) {
+        let request = URLRequest(url: cleanURL(numberOfUsers: amountOfUsers))
         print("\(request)")
         session.dataTask(with: request) { (data, _, error) in
             if let error = error {

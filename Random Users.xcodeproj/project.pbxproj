@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		329FB8CD23479A0F0026B400 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329FB8CC23479A0F0026B400 /* UserDetailViewController.swift */; };
 		329FB8D023479A610026B400 /* CustomUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329FB8CF23479A610026B400 /* CustomUserTableViewCell.swift */; };
-		329FB8D223479C910026B400 /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329FB8D123479C910026B400 /* UserTableViewController.swift */; };
 		329FB8D423479DDA0026B400 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329FB8D323479DDA0026B400 /* User.swift */; };
 		329FB8D72347A3020026B400 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329FB8D62347A3020026B400 /* UserController.swift */; };
 		329FB8DA2347A8F60026B400 /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329FB8D92347A8F60026B400 /* FetchPhotoOperation.swift */; };
+		329FB8DC2347B4480026B400 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329FB8DB2347B4480026B400 /* UsersTableViewController.swift */; };
+		329FB8DE2347B7D40026B400 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329FB8DD2347B7D40026B400 /* Cache.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -23,10 +24,11 @@
 /* Begin PBXFileReference section */
 		329FB8CC23479A0F0026B400 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		329FB8CF23479A610026B400 /* CustomUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUserTableViewCell.swift; sourceTree = "<group>"; };
-		329FB8D123479C910026B400 /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
 		329FB8D323479DDA0026B400 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		329FB8D62347A3020026B400 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		329FB8D92347A8F60026B400 /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
+		329FB8DB2347B4480026B400 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
+		329FB8DD2347B7D40026B400 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -50,7 +52,7 @@
 		329FB8CB234799F20026B400 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				329FB8D123479C910026B400 /* UserTableViewController.swift */,
+				329FB8DB2347B4480026B400 /* UsersTableViewController.swift */,
 				329FB8CC23479A0F0026B400 /* UserDetailViewController.swift */,
 				329FB8CF23479A610026B400 /* CustomUserTableViewCell.swift */,
 			);
@@ -126,6 +128,7 @@
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
 				329FB8D92347A8F60026B400 /* FetchPhotoOperation.swift */,
+				329FB8DD2347B7D40026B400 /* Cache.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -201,8 +204,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				329FB8D223479C910026B400 /* UserTableViewController.swift in Sources */,
 				329FB8DA2347A8F60026B400 /* FetchPhotoOperation.swift in Sources */,
+				329FB8DE2347B7D40026B400 /* Cache.swift in Sources */,
+				329FB8DC2347B4480026B400 /* UsersTableViewController.swift in Sources */,
 				329FB8D023479A610026B400 /* CustomUserTableViewCell.swift in Sources */,
 				329FB8D423479DDA0026B400 /* User.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,

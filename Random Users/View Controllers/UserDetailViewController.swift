@@ -9,6 +9,8 @@
 import UIKit
 
 class UserDetailViewController: UIViewController {
+    
+    var user: User?
 
     @IBOutlet weak var userDetailImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -18,19 +20,21 @@ class UserDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        updateViews()
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func updateViews() {
+        guard let user = user else { return }
+        
+        let imageURL = user.picture.largeImageURL
+        if let imageData = try? Data(contentsOf: imageURL),
+            let image = UIImage(data: imageData) {
+            userDetailImageView.image = image
+        }
+        let fullName = "\(user.name.firstName) \(user.name.lastName)"
+        nameLabel.text = fullName
+        emailLabel.text = user.email
+        phoneNumberLabel.text = user.cellPhoneNumber
     }
-    */
-
 }
