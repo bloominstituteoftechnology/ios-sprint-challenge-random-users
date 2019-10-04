@@ -17,12 +17,14 @@ struct User: Codable {
     let email: String
     let cellPhoneNumber: String
     let picture: Picture
+    let login: Login
     
     enum CodingKeys: String, CodingKey {
         case name
         case email
         case cellPhoneNumber = "cell"
         case picture
+        case login
     }
 }
 
@@ -43,5 +45,13 @@ struct Picture: Codable {
     enum CodingKeys: String, CodingKey {
         case thumbNailURL = "thumbnail"
         case largeImageURL = "large"
+    }
+}
+
+struct Login: Codable {
+    let uuid: String
+    
+    enum CodingKeys: String, CodingKey {
+        case uuid
     }
 }
