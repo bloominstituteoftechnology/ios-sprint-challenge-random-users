@@ -17,7 +17,7 @@ class PeopleTableViewCell: UITableViewCell {
     }
     
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var thunbnailImage: UIImageView!
+    @IBOutlet weak var thumbnailImage: UIImageView!
     
     
     private func updateViews() {

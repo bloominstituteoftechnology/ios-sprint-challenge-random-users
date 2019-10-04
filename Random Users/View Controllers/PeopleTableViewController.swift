@@ -21,8 +21,10 @@ class PeopleTableViewController: UITableViewController {
         personController.fetchPeople { error in
             if let error = error {
                 NSLog ("PTVC: Error fetching people: \(error)")
+                return
             }
             DispatchQueue.main.async {
+                //print ("PTVC: reloading data")
                 self.tableView.reloadData()
             }
         }
@@ -37,12 +39,11 @@ class PeopleTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        //print ("PTVC: row count = \(personController.people.count)")
         return personController.people.count
     }
 
@@ -50,13 +51,13 @@ class PeopleTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PersonCell", for: indexPath) as? PeopleTableViewCell else {return UITableViewCell()}
 
         // Configure the cell...
-        print ("Setting up cell for row \(indexPath.row) with \(personController.people[indexPath.row])")
+        //print ("Setting up cell for row \(indexPath.row) with \(personController.people[indexPath.row])")
         cell.person = personController.people[indexPath.row]
         loadImage(forCell: cell, forItemAt: indexPath)
         return cell
     }
     
-    private func loadImage(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+    private func loadImage(forCell cell: PeopleTableViewCell, forItemAt indexPath: IndexPath) {
         
         let photoReference = personController.people[indexPath.row].picture
         
@@ -80,11 +81,11 @@ class PeopleTableViewController: UITableViewController {
             defer { self.operations.removeValue(forKey: photoReference.thumbnail) }
             if let currentIndexPath = self.tableView.indexPath(for: cell),
                 currentIndexPath != indexPath {
-                print("Got image for reused cell")
+                //print("Got image for reused cell")
                 return
             }
             if let data = fetchOp.imageData {
-                cell.imageView?.image = UIImage(data: data)
+                cell.thumbnailImage?.image = UIImage(data: data)
             }
         }
         
@@ -135,14 +136,15 @@ class PeopleTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        guard let vc = segue.destination as? PersonDetailViewController,
+                let index = tableView.indexPathForSelectedRow?.row
+        else { return }
+        vc.person = personController.people[index]
     }
-    */
 
 }

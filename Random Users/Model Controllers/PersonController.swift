@@ -12,7 +12,7 @@ import Foundation
 
 class PersonController {
     //MARK: - Properties
-    private let numPeople = 3
+    private let numPeople = 1000
     var people: [Person] = []
     var idPeople: [UUID: Person] = [:]
     
@@ -43,7 +43,10 @@ class PersonController {
                 return
             }
             if let results = results {
+                //let resultsString = String(describing: results.results)
+                //print ("Results fetched: \(resultsString)")
                 self.people = results.results
+                completion(nil)
             }
         }
         

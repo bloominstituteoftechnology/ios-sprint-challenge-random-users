@@ -20,6 +20,7 @@
 		E019994F23479DC500CAF5FA /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E019994E23479DC500CAF5FA /* Cache.swift */; };
 		E019995123479E6500CAF5FA /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E019995023479E6500CAF5FA /* FetchPhotoOperation.swift */; };
 		E019995423479EE700CAF5FA /* URL+Secure.swift in Sources */ = {isa = PBXBuildFile; fileRef = E019995323479EE700CAF5FA /* URL+Secure.swift */; };
+		E01999562347BFCC00CAF5FA /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01999552347BFCB00CAF5FA /* UIImageViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		E019994E23479DC500CAF5FA /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		E019995023479E6500CAF5FA /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
 		E019995323479EE700CAF5FA /* URL+Secure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Secure.swift"; sourceTree = "<group>"; };
+		E01999552347BFCB00CAF5FA /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 		E019995223479ED200CAF5FA /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				E01999552347BFCB00CAF5FA /* UIImageViewExtension.swift */,
 				E019995323479EE700CAF5FA /* URL+Secure.swift */,
 			);
 			path = Utilities;
@@ -213,6 +216,7 @@
 				E019995123479E6500CAF5FA /* FetchPhotoOperation.swift in Sources */,
 				E019994F23479DC500CAF5FA /* Cache.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				E01999562347BFCC00CAF5FA /* UIImageViewExtension.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				E01999432347987300CAF5FA /* PeopleTableViewCell.swift in Sources */,
 				E019994D23479BB600CAF5FA /* PersonController.swift in Sources */,
