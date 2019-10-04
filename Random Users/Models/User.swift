@@ -8,12 +8,15 @@
 
 import Foundation
 
+struct Results: Codable {
+    let results: [User]
+}
+
 struct User: Codable {
     let name: Name
     let email: String
     let cellPhoneNumber: String
     let picture: Picture
-    let id: ID
     
     enum CodingKeys: String, CodingKey {
         case name
@@ -34,17 +37,11 @@ struct Name: Codable {
 }
 
 struct Picture: Codable {
-    let imageURL: URL
+    let thumbNailURL: URL
+    let largeImageURL: URL
     
     enum CodingKeys: String, CodingKey {
-        case imageURL = "large"
-    }
-}
-
-struct ID: Codable {
-    let idNumber: String
-    
-    enum CodingKeys: String, CodingKey {
-        case idNumber = "value"
+        case thumbNailURL = "thumbnail"
+        case largeImageURL = "large"
     }
 }
