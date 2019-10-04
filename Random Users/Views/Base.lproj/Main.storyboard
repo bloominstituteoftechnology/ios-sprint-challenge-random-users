@@ -140,7 +140,13 @@
                             <outlet property="delegate" destination="AJe-iE-Qdp" id="7uq-hh-Yge"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="R76-aZ-PRe"/>
+                    <navigationItem key="navigationItem" id="R76-aZ-PRe">
+                        <barButtonItem key="rightBarButtonItem" title="Add More Users" id="hEz-pY-udu">
+                            <connections>
+                                <action selector="addButtonTapped:" destination="AJe-iE-Qdp" id="gJ6-3A-iyq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h4g-Lk-4E7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

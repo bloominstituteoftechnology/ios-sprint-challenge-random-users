@@ -16,21 +16,28 @@ class UsersTableViewController: UITableViewController {
     private let photoFetchQueue = OperationQueue()
     let imageCache = Cache<String, Data>()
     private var operations = [String: Operation]()
+    var userCount = 10
     
     // MARK: - View LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userController.fetchUsers(amountOfUsers: 1000) { (users, error) in
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
+        fetchUsers(amountOfUsers: userCount)
     }
     
     // MARK: - IBActions & Methods
     
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
+        userCount += 10
+        fetchUsers(amountOfUsers: userCount)
+    }
+    
+    func fetchUsers(amountOfUsers: Int) {
+        userController.fetchUsers(amountOfUsers: userCount) { (users, error) in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
     
     private func loadImage(forCell cell: CustomUserTableViewCell, forRowAt indexPath: IndexPath) {
