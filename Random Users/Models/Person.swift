@@ -13,6 +13,7 @@ struct Results: Codable {
 }
 
 struct Person: Codable {
+    let id:         UUID = UUID()
     let name:       Name
     let email:      String
     let phone:      String
@@ -27,6 +28,7 @@ struct Name: Codable {
 }
 
 struct Picture: Codable {
+    let id:         UUID = UUID()
     let large:      String
     let medium:     String
     let thumbnail:  String

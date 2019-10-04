@@ -11,9 +11,9 @@ import UIKit
 class PeopleTableViewController: UITableViewController {
 
     var personController = PersonController()
-    private let cache = Cache<String, Data>()
+    private let cache = Cache<UUID, Data>()
     private let photoFetchQueue = OperationQueue()
-    private var operations = [String : Operation]()
+    private var operations = [UUID : Operation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,11 +59,13 @@ class PeopleTableViewController: UITableViewController {
     
     private func loadImage(forCell cell: PeopleTableViewCell, forItemAt indexPath: IndexPath) {
         
-        let photoReference = personController.people[indexPath.row].picture
+        guard let photoReference = cell.person?.picture else { return }
+        
         
         // Check if there is cached data
-        if let cachedData = cache.value(key: photoReference.thumbnail),
+        if let cachedData = cache.value(key: photoReference.id),
             let image = UIImage(data: cachedData) {
+            print ("Using cached image")
             cell.imageView?.image = image
             return
         }
@@ -73,15 +75,15 @@ class PeopleTableViewController: UITableViewController {
         
         let cacheOp = BlockOperation {
             if let data = fetchOp.imageData {
-                self.cache.cache(key: photoReference.thumbnail, value: data)
+                self.cache.cache(key: photoReference.id, value: data)
             }
         }
         
         let completionOp = BlockOperation {
-            defer { self.operations.removeValue(forKey: photoReference.thumbnail) }
-            if let currentIndexPath = self.tableView.indexPath(for: cell),
-                currentIndexPath != indexPath {
-                //print("Got image for reused cell")
+            defer { self.operations.removeValue(forKey: photoReference.id) }
+            if let currentIndexPaths = self.tableView.indexPathsForVisibleRows,
+                !currentIndexPaths.contains(indexPath)  {
+                print("Got image for reused cell: \(String(describing: cell.person?.name))")
                 return
             }
             if let data = fetchOp.imageData {
@@ -96,7 +98,7 @@ class PeopleTableViewController: UITableViewController {
         photoFetchQueue.addOperation(cacheOp)
         OperationQueue.main.addOperation(completionOp)
         
-        operations[photoReference.thumbnail] = fetchOp
+        operations[photoReference.id] = fetchOp
         
     }
 
