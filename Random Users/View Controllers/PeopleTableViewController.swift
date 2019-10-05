@@ -65,9 +65,14 @@ class PeopleTableViewController: UITableViewController {
         // Check if there is cached data
         if let cachedData = cache.value(key: photoReference.id),
             let image = UIImage(data: cachedData) {
-            print ("Using cached image")
-            cell.imageView?.image = image
+            if let currentIndexPaths = self.tableView.indexPathsForVisibleRows,
+                    currentIndexPaths.contains(indexPath)  {
+                print ("Using cached image")
+                DispatchQueue.main.async {
+                    cell.setImage(image: image)
+                }
             return
+            }
         }
         
         // Start our fetch operations
@@ -83,16 +88,19 @@ class PeopleTableViewController: UITableViewController {
             defer { self.operations.removeValue(forKey: photoReference.id) }
             if let currentIndexPaths = self.tableView.indexPathsForVisibleRows,
                 !currentIndexPaths.contains(indexPath)  {
-                print("Got image for reused cell: \(String(describing: cell.person?.name))")
+                print("Canceling: Got image for reused cell: \(String(describing: cell.person?.name))")
                 return
             }
-            if let data = fetchOp.imageData {
-                cell.thumbnailImage?.image = UIImage(data: data)
+            
+            if let data = fetchOp.imageData {//WARNING: - Is this multi-threads trying to access one shared resource?
+                DispatchQueue.main.async {
+                    cell.thumbnailImage?.image = UIImage(data: data)
+                }
             }
         }
         
         cacheOp.addDependency(fetchOp)
-        completionOp.addDependency(fetchOp)
+        completionOp.addDependency(cacheOp)
         
         photoFetchQueue.addOperation(fetchOp)
         photoFetchQueue.addOperation(cacheOp)
@@ -142,7 +150,7 @@ class PeopleTableViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let vc = segue.destination as? PersonDetailViewController,
                 let index = tableView.indexPathForSelectedRow?.row
         else { return }

@@ -19,6 +19,19 @@ class PeopleTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var thumbnailImage: UIImageView!
     
+    // serial queue so that everyone can use shared resources without using NSLock
+    private var queue = DispatchQueue(label: "info.emptybliss.randomusers.ConcurrentSetImageQueue")
+    
+    // have a function to add items to the cache
+    func setImage(image : UIImage) {
+        queue.sync {
+            if self.thumbnailImage.image == nil {
+                self.thumbnailImage.image = image
+            }
+        }
+    }
+    
+    
     
     private func updateViews() {
         guard let person = person else { return}

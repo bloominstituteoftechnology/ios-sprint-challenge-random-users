@@ -44,7 +44,7 @@ class PersonController {
             }
             if let results = results {
                 //let resultsString = String(describing: results.results)
-                //print ("Results fetched: \(resultsString)")
+                //print ("Results fetched: \(resultsString)")ß
                 self.people = results.results
                 completion(nil)
             }
