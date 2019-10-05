@@ -49,7 +49,7 @@ class UserTableViewController: UITableViewController {
     private func loadCellInfo(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         let user = users[indexPath.row]
         
-        cell.textLabel?.text = "\(user.name.title.uppercased()). \(user.name.first.capitalized) \(user.name.last.capitalized)"
+        cell.textLabel?.text = "\(user.name.title.capitalized). \(user.name.first.capitalized) \(user.name.last.capitalized)"
         
         if let image = cache.fetch(key: "\(user.picture.thumbnail)") {
             cell.imageView?.image = image

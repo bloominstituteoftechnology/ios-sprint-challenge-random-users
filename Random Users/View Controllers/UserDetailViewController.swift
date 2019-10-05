@@ -59,9 +59,9 @@ class UserDetailViewController: UIViewController {
             }.resume()
         }
         
-        title = "\(user.name.title.uppercased()). \(user.name.last.capitalized)"
-        nameLabel.text = "\(user.name.title.uppercased()). \(user.name.first.capitalized) \(user.name.last.capitalized)"
-        phoneNumberLabel.text = "Cell: \(user.cell)\nPhone: \(user.phone)"
+        title = "\(user.name.title.capitalized). \(user.name.last.capitalized)"
+        nameLabel.text = "\(user.name.title.capitalized). \(user.name.first.capitalized) \(user.name.last.capitalized)"
+        phoneNumberLabel.text = "Cell Phone: \(user.cell)\nHome Phone: \(user.phone)"
         emailLabel.text = "\(user.email)"
     }
     
