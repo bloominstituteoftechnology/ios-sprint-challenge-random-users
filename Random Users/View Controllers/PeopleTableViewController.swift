@@ -15,11 +15,13 @@ class PeopleTableViewController: UITableViewController {
     var operations = [String: Operation]()
     let cache = Cache<String, Data>()
     
-   
-    
-    var peopleDummy: People?
-    
-    private var people: [Person] = []
+    private var people = [Person]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +33,6 @@ class PeopleTableViewController: UITableViewController {
                  self.tableView.reloadData()
             }
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tableView.reloadData()
     }
     
     // MARK: - Table view data source
@@ -53,7 +50,6 @@ class PeopleTableViewController: UITableViewController {
         loadImage(forCell: cell, forItemAt: indexPath)
         
         DispatchQueue.main.async {
-        
             cell.nameLabel.text = self.people[indexPath.row].name.first
         }
      return cell
@@ -76,14 +72,14 @@ class PeopleTableViewController: UITableViewController {
     
      }
      
-     private func loadImage(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+     private func loadImage(forCell cell: PersonTableViewCell, forItemAt indexPath: IndexPath) {
         
         
         let person = people[indexPath.row]
         
         if let cacheData = cache.value(key: person.name.first),
             let image = UIImage(data: cacheData) {
-            cell.imageView?.image = image
+            cell.personImageView.image = image
             return
         }
         
@@ -105,7 +101,7 @@ class PeopleTableViewController: UITableViewController {
             }
             
             if let data = fetchOp.imageData {
-                cell.imageView?.image = UIImage(data: data)
+                cell.personImageView.image = UIImage(data: data)
             }
         }
         

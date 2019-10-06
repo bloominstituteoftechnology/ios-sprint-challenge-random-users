@@ -39,19 +39,6 @@ struct Person: Codable {
         case picture
         
     }
-//
-//    required init(from decoder: Decoder) throws {
-//
-//        let container = try decoder.container(keyedBy: PersonKeys.self)
-//        var nameContainer = try container.nestedUnkeyedContainer(forKey: .name)
-//        var pictureContainer = try container.nestedUnkeyedContainer(forKey: .picture)
-//
-//        email = try container.decode(String.self, forKey: .email)
-//        phone = try container.decode(String.self, forKey: .phone)
-//        name = try nameContainer.decode(Name.self)
-//        picture = try pictureContainer.decode(Picture.self)
-
-//    }
     
     static var jsonDecoder: JSONDecoder {
         let result = JSONDecoder()
@@ -69,14 +56,7 @@ class Name: Codable {
         case first
         case last
     }
-    
-//    required init(from decoder: Decoder) throws {
-//        let container = try decoder.container(keyedBy: NameKeys.self)
-//
-//        title = try container.decode(String.self, forKey: .title)
-//        first = try container.decode(String.self, forKey: .first)
-//        last = try container.decode(String.self, forKey: .last)
-//    }
+
 }
 
 class Picture: Codable {

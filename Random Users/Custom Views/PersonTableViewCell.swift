@@ -10,9 +10,11 @@ import UIKit
 
 class PersonTableViewCell: UITableViewCell {
     
+    
+    
     override func prepareForReuse() {
          super.prepareForReuse()
-        imageView?.image = #imageLiteral(resourceName: "iconfinder_Picture1_3289576")
+        personImageView.image = #imageLiteral(resourceName: "iconfinder_Picture1_3289576")
        
     }
 
