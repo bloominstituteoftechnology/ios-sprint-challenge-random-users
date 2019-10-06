@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3880B77E23479829005FEE90 /* PersonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3880B77D23479829005FEE90 /* PersonDetailViewController.swift */; };
+		3880B78023479841005FEE90 /* PeopleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3880B77F23479841005FEE90 /* PeopleTableViewController.swift */; };
+		3880B78223479A77005FEE90 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3880B78123479A77005FEE90 /* Person.swift */; };
+		3880B7852347A33F005FEE90 /* PersonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3880B7842347A33F005FEE90 /* PersonController.swift */; };
+		3880B7892347A53B005FEE90 /* URL+Secure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3880B7882347A53B005FEE90 /* URL+Secure.swift */; };
+		3880B78B2347A57C005FEE90 /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3880B78A2347A57C005FEE90 /* PersonTableViewCell.swift */; };
+		3880B78E2347A9DD005FEE90 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3880B78D2347A9DD005FEE90 /* Cache.swift */; };
+		3880B7902347B633005FEE90 /* FetchPeoplePhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3880B78F2347B633005FEE90 /* FetchPeoplePhotos.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -15,6 +23,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3880B77D23479829005FEE90 /* PersonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailViewController.swift; sourceTree = "<group>"; };
+		3880B77F23479841005FEE90 /* PeopleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewController.swift; sourceTree = "<group>"; };
+		3880B78123479A77005FEE90 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		3880B7842347A33F005FEE90 /* PersonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonController.swift; sourceTree = "<group>"; };
+		3880B7882347A53B005FEE90 /* URL+Secure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Secure.swift"; sourceTree = "<group>"; };
+		3880B78A2347A57C005FEE90 /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
+		3880B78D2347A9DD005FEE90 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		3880B78F2347B633005FEE90 /* FetchPeoplePhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPeoplePhotos.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -35,6 +51,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3880B77C2347980C005FEE90 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3880B77D23479829005FEE90 /* PersonDetailViewController.swift */,
+				3880B77F23479841005FEE90 /* PeopleTableViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		3880B78323479A7D005FEE90 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3880B78123479A77005FEE90 /* Person.swift */,
+				3880B78D2347A9DD005FEE90 /* Cache.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3880B7862347A346005FEE90 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3880B7842347A33F005FEE90 /* PersonController.swift */,
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		3880B7872347A524005FEE90 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3880B7882347A53B005FEE90 /* URL+Secure.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		3880B78C2347A581005FEE90 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				3880B78A2347A57C005FEE90 /* PersonTableViewCell.swift */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
@@ -54,9 +112,14 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
-				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+				3880B78323479A7D005FEE90 /* Models */,
+				3880B7862347A346005FEE90 /* Model Controllers */,
+				3880B77C2347980C005FEE90 /* View Controllers */,
 				9D5CCA56214231E400224681 /* Operations */,
+				3880B7872347A524005FEE90 /* Utilities */,
+				3880B78C2347A581005FEE90 /* Custom Views */,
 				9D5CCA522142305600224681 /* Resources */,
+				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 			);
 			path = "Random Users";
 			sourceTree = "<group>";
@@ -76,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				3880B78F2347B633005FEE90 /* FetchPeoplePhotos.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -151,8 +215,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3880B7902347B633005FEE90 /* FetchPeoplePhotos.swift in Sources */,
+				3880B78223479A77005FEE90 /* Person.swift in Sources */,
+				3880B78E2347A9DD005FEE90 /* Cache.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				3880B78023479841005FEE90 /* PeopleTableViewController.swift in Sources */,
+				3880B7892347A53B005FEE90 /* URL+Secure.swift in Sources */,
+				3880B7852347A33F005FEE90 /* PersonController.swift in Sources */,
+				3880B78B2347A57C005FEE90 /* PersonTableViewCell.swift in Sources */,
+				3880B77E23479829005FEE90 /* PersonDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
