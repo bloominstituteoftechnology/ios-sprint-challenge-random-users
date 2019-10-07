@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		77352870234AC60C0004C99D /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7735286F234AC60C0004C99D /* FetchPhotoOperation.swift */; };
 		774536D02347973B00345C05 /* RandomUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774536CF2347973B00345C05 /* RandomUsersTableViewController.swift */; };
 		774536D22347975200345C05 /* RandomUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774536D12347975200345C05 /* RandomUserTableViewCell.swift */; };
 		774536D42347976A00345C05 /* RandomUserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774536D32347976A00345C05 /* RandomUserDetailViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7735286F234AC60C0004C99D /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
 		774536CF2347973B00345C05 /* RandomUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersTableViewController.swift; sourceTree = "<group>"; };
 		774536D12347975200345C05 /* RandomUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserTableViewCell.swift; sourceTree = "<group>"; };
 		774536D32347976A00345C05 /* RandomUserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserDetailViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				7735286F234AC60C0004C99D /* FetchPhotoOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 			files = (
 				774536D823479C0C00345C05 /* UserController.swift in Sources */,
 				774536D02347973B00345C05 /* RandomUsersTableViewController.swift in Sources */,
+				77352870234AC60C0004C99D /* FetchPhotoOperation.swift in Sources */,
 				774FA4462347BA19000CFECB /* Cache.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,

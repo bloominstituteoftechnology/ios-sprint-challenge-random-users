@@ -11,6 +11,9 @@ import UIKit
 class RandomUsersTableViewController: UITableViewController {
     
     var userController = UserController()
+    private let cache = Cache<String, Data>()
+    private let photoFetchQueue = OperationQueue()
+    private var operations = [String : Operation]()
     
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
         userController.fetchUsers() { _ in
@@ -39,9 +42,13 @@ class RandomUsersTableViewController: UITableViewController {
 
         let user = userController.users[indexPath.row]
         cell.fullName.text = "\(user.name.first) \(user.name.last)"
-        //cell.imageView!.image = UIImage(contentsOfFile: user.picture.thumbnail)
+        //cell.thumbnail.image = user.picture.thumbnail
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60.0
     }
 
     // MARK: - Navigation
