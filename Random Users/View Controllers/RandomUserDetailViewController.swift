@@ -25,9 +25,13 @@ class RandomUserDetailViewController: UIViewController {
     
     func updateViews() {
         guard let user = user else { return }
+        if let url = URL(string: user.picture.large) {
+            if let data = try? Data(contentsOf: url) {
+               largeImage.image = UIImage(data: data)
+            }
+        }
         name.text = user.name.first + " " + user.name.last
         email.text = user.email
         phone.text = user.phone
-        // insert large image here
     }
 }

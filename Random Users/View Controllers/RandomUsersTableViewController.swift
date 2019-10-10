@@ -42,8 +42,12 @@ class RandomUsersTableViewController: UITableViewController {
 
         let user = userController.users[indexPath.row]
         cell.fullName.text = "\(user.name.first) \(user.name.last)"
-        //cell.thumbnail.image = user.picture.thumbnail
-
+        
+        if let url = URL(string: user.picture.thumbnail) {
+            if let data = try? Data(contentsOf: url) {
+                cell.thumbnail.image = UIImage(data: data)
+            }
+        }
         return cell
     }
     
