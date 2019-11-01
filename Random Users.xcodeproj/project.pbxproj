@@ -15,6 +15,8 @@
 		DD33D94D236C9340009AA6C8 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD33D94C236C9340009AA6C8 /* DetailTableViewController.swift */; };
 		DD33D94F236C935E009AA6C8 /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD33D94E236C935E009AA6C8 /* UserTableViewController.swift */; };
 		DD33D952236C93AC009AA6C8 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD33D951236C93AC009AA6C8 /* UserTableViewCell.swift */; };
+		DD33D954236C943C009AA6C8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD33D953236C943C009AA6C8 /* User.swift */; };
+		DD33D957236C946B009AA6C8 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD33D956236C946B009AA6C8 /* Cache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		DD33D94C236C9340009AA6C8 /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailTableViewController.swift; path = "Random Users/View Controllers/DetailTableViewController.swift"; sourceTree = SOURCE_ROOT; };
 		DD33D94E236C935E009AA6C8 /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
 		DD33D951236C93AC009AA6C8 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		DD33D953236C943C009AA6C8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DD33D956236C946B009AA6C8 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,7 @@
 				9D5CCA522142305600224681 /* Resources */,
 				DD33D950236C9365009AA6C8 /* View Controllers */,
 				DD33D951236C93AC009AA6C8 /* UserTableViewCell.swift */,
+				DD33D955236C9454009AA6C8 /* Models */,
 			);
 			path = "Random Users";
 			sourceTree = "<group>";
@@ -95,6 +100,15 @@
 				DD33D94E236C935E009AA6C8 /* UserTableViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		DD33D955236C9454009AA6C8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DD33D953236C943C009AA6C8 /* User.swift */,
+				DD33D956236C946B009AA6C8 /* Cache.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,8 +182,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD33D957236C946B009AA6C8 /* Cache.swift in Sources */,
 				DD33D94D236C9340009AA6C8 /* DetailTableViewController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				DD33D954236C943C009AA6C8 /* User.swift in Sources */,
 				DD33D94F236C935E009AA6C8 /* UserTableViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				DD33D952236C93AC009AA6C8 /* UserTableViewCell.swift in Sources */,
