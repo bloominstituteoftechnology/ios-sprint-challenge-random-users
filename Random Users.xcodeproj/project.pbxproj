@@ -16,6 +16,7 @@
 		FA6BDC9B236C85B800253B6A /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6BDC9A236C85B800253B6A /* UserTableViewCell.swift */; };
 		FA6BDC9D236C85DE00253B6A /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6BDC9C236C85DE00253B6A /* UserDetailsViewController.swift */; };
 		FA6BDC9F236C85F700253B6A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6BDC9E236C85F700253B6A /* User.swift */; };
+		FA6BDCA2236C87E500253B6A /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6BDCA1236C87E500253B6A /* Cache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		FA6BDC9A236C85B800253B6A /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		FA6BDC9C236C85DE00253B6A /* UserDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
 		FA6BDC9E236C85F700253B6A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FA6BDCA1236C87E500253B6A /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +48,7 @@
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
+				FA6BDCA0236C87CE00253B6A /* Controllers */,
 				FA6BDC97236C857100253B6A /* Views */,
 				FA6BDC96236C856800253B6A /* View Controllers */,
 				FA6BDC95236C855800253B6A /* Models */,
@@ -114,6 +117,14 @@
 				FA6BDC9A236C85B800253B6A /* UserTableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		FA6BDCA0236C87CE00253B6A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA6BDCA1236C87E500253B6A /* Cache.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA6BDCA2236C87E500253B6A /* Cache.swift in Sources */,
 				FA6BDC9D236C85DE00253B6A /* UserDetailsViewController.swift in Sources */,
 				FA6BDC9B236C85B800253B6A /* UserTableViewCell.swift in Sources */,
 				FA6BDC9F236C85F700253B6A /* User.swift in Sources */,
