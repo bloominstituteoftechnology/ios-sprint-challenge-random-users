@@ -11,6 +11,7 @@ import UIKit
 class UsersTableViewController: UITableViewController {
     
     private var userController = UserController()
+    private let cache = Cache<Int, UIImage>()
     private let photoFetchQueue = OperationQueue()
     private var fetchOperations: [Int: FetchPhotoOperation] = [:]
 
@@ -92,20 +93,31 @@ class UsersTableViewController: UITableViewController {
     private func loadImage(for cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         let photoReference = userController.users[indexPath.row].thumbnailURL
         
-        let fetchOperation = FetchPhotoOperation(reference: photoReference)
-        
-        let setCellImage = BlockOperation {
-            guard let image = UIImage(data: fetchOperation.imageData ?? Data()) else { return }
-            print("Setting cell image.")
+        if let image = cache.value(for: indexPath.row) {
             cell.imageView?.image = image
+        } else {
+            let fetchOperation = FetchPhotoOperation(reference: photoReference)
+            
+            let saveToCache = BlockOperation {
+                guard let image = UIImage(data: fetchOperation.imageData ?? Data()) else { return }
+                self.cache.cache(value: image, for: indexPath.row)
+            }
+            
+            let setCellImage = BlockOperation {
+                guard let image = UIImage(data: fetchOperation.imageData ?? Data()) else { return }
+                if self.tableView.indexPath(for: cell) == indexPath {
+                    cell.imageView?.image = image
+                }
+            }
+            
+            saveToCache.addDependency(fetchOperation)
+            setCellImage.addDependency(fetchOperation)
+            
+            photoFetchQueue.addOperations([fetchOperation, saveToCache], waitUntilFinished: false)
+            OperationQueue.main.addOperations([setCellImage], waitUntilFinished: false)
+            
+            fetchOperations[indexPath.row] = fetchOperation
         }
-        
-        setCellImage.addDependency(fetchOperation)
-        
-        photoFetchQueue.addOperations([fetchOperation], waitUntilFinished: false)
-        OperationQueue.main.addOperations([setCellImage], waitUntilFinished: false)
-        
-        fetchOperations[indexPath.row] = fetchOperation
     }
 
     /*

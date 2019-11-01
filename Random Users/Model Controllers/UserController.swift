@@ -14,7 +14,7 @@ class UserController {
     
     var users: [User] = []
     
-    let url = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=10")!
+    let url = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
     
     //MARK: Networking
     
