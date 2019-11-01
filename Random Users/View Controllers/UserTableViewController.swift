@@ -37,7 +37,12 @@ class UserTableViewController: UITableViewController {
 
 		cell.textLabel?.text = "\(user.name.title.uppercased()). \(user.name.first.capitalized) \(user.name.last.capitalized)"
 
-				if let image = cache.fetch(key: "\(user.picture.thumbnail)") {
+//				if let image = cache.fetch(key: "\(user.picture.thumbnail)") {
+//			cell.imageView?.image = image
+//			return
+//		}
+
+		if let image = cache.fetch(key: "\(user.picture.thumbnail)") {
 			cell.imageView?.image = image
 			return
 		}

@@ -13,7 +13,6 @@
 		8ED6A9922140178C00FC395A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
 		DD33D94F236C935E009AA6C8 /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD33D94E236C935E009AA6C8 /* UserTableViewController.swift */; };
-		DD33D952236C93AC009AA6C8 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD33D951236C93AC009AA6C8 /* UserTableViewCell.swift */; };
 		DD33D954236C943C009AA6C8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD33D953236C943C009AA6C8 /* User.swift */; };
 		DD33D957236C946B009AA6C8 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD33D956236C946B009AA6C8 /* Cache.swift */; };
 		DD33D959236C94E1009AA6C8 /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD33D958236C94E1009AA6C8 /* FetchPhotoOperation.swift */; };
@@ -31,7 +30,6 @@
 		8ED6A9932140178C00FC395A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 		DD33D94E236C935E009AA6C8 /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
-		DD33D951236C93AC009AA6C8 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		DD33D953236C943C009AA6C8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DD33D956236C946B009AA6C8 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		DD33D958236C94E1009AA6C8 /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
@@ -74,7 +72,6 @@
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
 				DD33D950236C9365009AA6C8 /* View Controllers */,
-				DD33D951236C93AC009AA6C8 /* UserTableViewCell.swift */,
 				DD33D955236C9454009AA6C8 /* Models */,
 				DD33D95E236C979B009AA6C8 /* Networking */,
 				DD33D961236C9881009AA6C8 /* Model Controllers */,
@@ -214,7 +211,6 @@
 				DD33D954236C943C009AA6C8 /* User.swift in Sources */,
 				DD33D94F236C935E009AA6C8 /* UserTableViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
-				DD33D952236C93AC009AA6C8 /* UserTableViewCell.swift in Sources */,
 				DD33D95D236C9794009AA6C8 /* UserClient.swift in Sources */,
 				DD33D95B236C9674009AA6C8 /* DetailViewController.swift in Sources */,
 			);
