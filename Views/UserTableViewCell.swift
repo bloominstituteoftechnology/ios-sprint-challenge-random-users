@@ -10,6 +10,24 @@ import UIKit
 
 class UserTableViewCell: UITableViewCell {
 
+    let selectedView = UIView()
+    
+    var user: User? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    // MARK: Outlets
+    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    override func prepareForReuse() {
+        userImageView.image = nil
+        nameLabel.text = nil
+        super.prepareForReuse()
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +37,11 @@ class UserTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func updateViews() {
+        guard let user = user else { return }
+        nameLabel.text = "\(user.name.title) \(user.name.first) \(user.name.last)"
     }
 
 }

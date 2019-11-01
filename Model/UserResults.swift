@@ -30,4 +30,4 @@ struct Photos: Codable {
     var medium: URL
     var thumbnail: URL
 }
-}
+
