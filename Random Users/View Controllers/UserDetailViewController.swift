@@ -41,6 +41,7 @@ class UserDetailViewController: UIViewController {
     
     private func updateViews() {
         if isViewLoaded {
+            title = user.name
             nameLabel.text = user.name
             phoneLabel.text = user.phone
             emailLabel.text = user.email
