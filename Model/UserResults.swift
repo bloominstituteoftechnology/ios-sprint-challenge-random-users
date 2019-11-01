@@ -12,7 +12,7 @@ struct UserResults: Codable {
     var results: [User]
 }
 
-struct User {
+struct User: Codable {
     var name: Name
     var email: String
     var phone: String
