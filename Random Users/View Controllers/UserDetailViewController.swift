@@ -25,6 +25,12 @@ class UserDetailViewController: UIViewController {
         }
     }
     
+    var image: UIImage? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,6 +44,8 @@ class UserDetailViewController: UIViewController {
             nameLabel.text = user.name
             phoneLabel.text = user.phone
             emailLabel.text = user.email
+            
+            imageView.image = image
         }
     }
 
