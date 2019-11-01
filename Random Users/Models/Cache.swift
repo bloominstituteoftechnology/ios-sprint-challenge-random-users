@@ -8,20 +8,21 @@
 
 import Foundation
 
-class Cache<Key: Hashable, Value> {
+class Cache<Key, Value> where Key: Hashable {
 
-	private var cache = [Key : Value]()
-	private var queue = DispatchQueue(label: "com.LambdaSchool.Astronomy.ConcurrentOperationStateQueue")
+	private var queue = DispatchQueue(label: "Queue")
+
+	var imageCache: [Key: Value] = [:]
 
 	func cache(key: Key, value: Value) {
 		queue.async {
-			self.cache[key] = value
+			self.imageCache[key] = value
 		}
 	}
 
-	func value(key: Key) -> Value? {
+	func fetch(key: Key) -> Value? {
 		return queue.sync {
-			cache[key]
+			imageCache[key]
 		}
 	}
 }

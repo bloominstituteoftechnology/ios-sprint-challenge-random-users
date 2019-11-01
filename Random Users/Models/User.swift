@@ -15,7 +15,6 @@ struct UserReference: Codable {
 struct User: Codable {
 	var name: Name
 	var email: String
-	var id: ID
 	var phone: String
 	var cell: String
 	var picture: Photos
@@ -33,7 +32,3 @@ struct Photos: Codable {
 	var thumbnail: URL
 }
 
-struct ID: Codable {
-	var name: String
-	var value: String
-}

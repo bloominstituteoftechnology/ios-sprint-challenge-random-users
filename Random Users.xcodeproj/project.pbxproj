@@ -18,6 +18,8 @@
 		DD33D957236C946B009AA6C8 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD33D956236C946B009AA6C8 /* Cache.swift */; };
 		DD33D959236C94E1009AA6C8 /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD33D958236C94E1009AA6C8 /* FetchPhotoOperation.swift */; };
 		DD33D95B236C9674009AA6C8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD33D95A236C9674009AA6C8 /* DetailViewController.swift */; };
+		DD33D95D236C9794009AA6C8 /* UserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD33D95C236C9794009AA6C8 /* UserClient.swift */; };
+		DD33D960236C987D009AA6C8 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD33D95F236C987D009AA6C8 /* UserController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		DD33D956236C946B009AA6C8 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		DD33D958236C94E1009AA6C8 /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
 		DD33D95A236C9674009AA6C8 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		DD33D95C236C9794009AA6C8 /* UserClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClient.swift; sourceTree = "<group>"; };
+		DD33D95F236C987D009AA6C8 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,8 @@
 				DD33D950236C9365009AA6C8 /* View Controllers */,
 				DD33D951236C93AC009AA6C8 /* UserTableViewCell.swift */,
 				DD33D955236C9454009AA6C8 /* Models */,
+				DD33D95E236C979B009AA6C8 /* Networking */,
+				DD33D961236C9881009AA6C8 /* Model Controllers */,
 			);
 			path = "Random Users";
 			sourceTree = "<group>";
@@ -112,6 +118,22 @@
 				DD33D956236C946B009AA6C8 /* Cache.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		DD33D95E236C979B009AA6C8 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				DD33D95C236C9794009AA6C8 /* UserClient.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		DD33D961236C9881009AA6C8 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DD33D95F236C987D009AA6C8 /* UserController.swift */,
+			);
+			path = "Model Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,11 +209,13 @@
 			files = (
 				DD33D957236C946B009AA6C8 /* Cache.swift in Sources */,
 				DD33D959236C94E1009AA6C8 /* FetchPhotoOperation.swift in Sources */,
+				DD33D960236C987D009AA6C8 /* UserController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				DD33D954236C943C009AA6C8 /* User.swift in Sources */,
 				DD33D94F236C935E009AA6C8 /* UserTableViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				DD33D952236C93AC009AA6C8 /* UserTableViewCell.swift in Sources */,
+				DD33D95D236C9794009AA6C8 /* UserClient.swift in Sources */,
 				DD33D95B236C9674009AA6C8 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
