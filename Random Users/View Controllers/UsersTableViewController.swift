@@ -10,7 +10,9 @@ import UIKit
 
 class UsersTableViewController: UITableViewController {
     
-    var userController = UserController()
+    private var userController = UserController()
+    private let photoFetchQueue = OperationQueue()
+    private var fetchOperations: [Int: FetchPhotoOperation] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +43,7 @@ class UsersTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
 
         cell.textLabel?.text = userController.users[indexPath.row].name
+        loadImage(for: cell, forItemAt: indexPath)
 
         return cell
     }
@@ -79,6 +82,31 @@ class UsersTableViewController: UITableViewController {
         return true
     }
     */
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        fetchOperations[indexPath.row]?.cancel()
+    }
+    
+    //MARK: Private
+    
+    private func loadImage(for cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+        let photoReference = userController.users[indexPath.row].thumbnailURL
+        
+        let fetchOperation = FetchPhotoOperation(reference: photoReference)
+        
+        let setCellImage = BlockOperation {
+            guard let image = UIImage(data: fetchOperation.imageData ?? Data()) else { return }
+            print("Setting cell image.")
+            cell.imageView?.image = image
+        }
+        
+        setCellImage.addDependency(fetchOperation)
+        
+        photoFetchQueue.addOperations([fetchOperation], waitUntilFinished: false)
+        OperationQueue.main.addOperations([setCellImage], waitUntilFinished: false)
+        
+        fetchOperations[indexPath.row] = fetchOperation
+    }
 
     /*
     // MARK: - Navigation
