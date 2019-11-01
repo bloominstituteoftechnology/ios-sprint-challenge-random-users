@@ -37,33 +37,12 @@ class UserDetailsViewController: UIViewController {
         
         self.nameLabel.text = "\(user.name.first) \(user.name.last)"
         self.emailLabel.text = user.email
-        self.phoneNumLabel.text = user.phone
-        //.userImage.image = user.picture.large
-        
-        
+        self.phoneNumLabel.text = user.phone        
+    
         let imageURL = user.picture.large
         if let imageData = try? Data(contentsOf: imageURL),
             let largePicture = UIImage(data: imageData) {
             userImage.image = largePicture
         }
-        
     }
-    
-    
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    
-    
-
 }

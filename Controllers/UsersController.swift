@@ -12,15 +12,7 @@ class UsersController {
     
     let baseURL = URL(string: "https://randomuser.me/api/")!
     var users: [User] = []
-    
-//
-//    // Using this initializer as the "viewDidLoad" of the VC
-//    init() {
-//        fetchUsers()
-//    }
-    
-    
-    
+
     private func cleanURL(numberOfUsers results: Int) -> URL {
         var url = baseURL
         let resultsCountString = String(results)
@@ -35,10 +27,8 @@ class UsersController {
     
     
     
-    // Fetch Users
+    // Fetch All Users
     func fetchUsers(session: URLSession = URLSession.shared, completion: @escaping ([User]?, Error?) -> Void) {
-        
-        
         
         let request = URLRequest(url: cleanURL(numberOfUsers: 1_000))
             print("\(request)")
@@ -64,7 +54,6 @@ class UsersController {
                 completion(self.users, nil)
             }.resume()
         }
-
 }
 
 enum HTTPMethod: String {

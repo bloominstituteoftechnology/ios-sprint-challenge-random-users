@@ -70,7 +70,6 @@ class FetchPhotoOperation: ConcurrentOperation {
     var session: URLSession
     var dataTask: URLSessionDataTask?
     
-    
     let fullName: String
     let email: String
     let phone: String
@@ -83,7 +82,6 @@ class FetchPhotoOperation: ConcurrentOperation {
         self.phone = user.phone
         self.imageURL = user.picture.thumbnail
         self.session = session
-        //super.init()
     }
 
     override func start() {
@@ -112,7 +110,6 @@ class FetchPhotoOperation: ConcurrentOperation {
             task.resume()
             dataTask? = task
         }
-
 
         override func cancel() {
             super.cancel()

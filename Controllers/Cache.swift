@@ -20,18 +20,10 @@ class Cache<Key: Hashable, Value> {
         }
     }
     
-    //    func value(key: Key) {
-    
     func value(key: Key) -> Value? {
-        //        return queue.sync {
-        //            catchedImages[key]
-        //
-        //        }
-        
         queue.sync {
             guard let value = cachedImages[key] else { return nil }
             return value
         }
     }
-    
 }

@@ -13,11 +13,7 @@ struct Results: Codable {
 }
 
 struct User: Codable {
-    
-    //    var results: [UserResult]
-    
-    //    struct UserResult: Codable {
-    
+
     var name: UserName
     var email: String
     var phone: String
@@ -28,7 +24,6 @@ struct User: Codable {
         case email
         case phone
         case picture
-        
     }
 }
     
@@ -54,7 +49,3 @@ struct User: Codable {
             case thumbnail
         }
     }
-    //    }
-
-
-
