@@ -40,9 +40,10 @@ class UsersController {
         
         
         
-        let request = URLRequest(url: cleanURL(numberOfUsers: 10))
+        let request = URLRequest(url: cleanURL(numberOfUsers: 1_000))
             print("\(request)")
             session.dataTask(with: request) { (data, _, error) in
+                
                 if let error = error {
                     NSLog("error fetching user:\(error)")
                     return
@@ -63,56 +64,7 @@ class UsersController {
                 completion(self.users, nil)
             }.resume()
         }
-        
-        
-        
-        
-    
-        
-//        // Set up the URL
-//        let requestURL = baseURL
-//            .appendingPathExtension("?format=json&inc=name,email,phone,picture&results=1000")
-////            .appendingPathExtension("?format=json&inc=name,picture&results=1000")
-//
-//
-//
-//        // Create the URLRequest
-//
-//        var request = URLRequest(url: requestURL)
-//
-//        // Perform the data task
-//
-//        URLSession.shared.dataTask(with: request) { (data, _, error) in
-//
-//
-//            if let error = error {
-//                NSLog("Error fetching users: \(error)")
-//                completion()
-//                return
-//            }
-//
-//            guard let data = data else {
-//                NSLog("No data returned from users fetch data task")
-//                completion()
-//                return
-//            }
-//
-//            let decoder = JSONDecoder()
-//
-//            do {
-//
-//                let users = try decoder.decode(Users.self, from: data)
-//
-////                let users = try decoder.decode(String: Users.self, from: data).map({ $0.value })
-//
-//            } catch {
-//                NSLog("Error decoding users: \(error)")
-//            }
-//
-//            completion()
-//
-//        }.resume()
-//    }
+
 }
 
 enum HTTPMethod: String {

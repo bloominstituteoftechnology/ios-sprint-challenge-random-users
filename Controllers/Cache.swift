@@ -22,9 +22,11 @@ class Cache<Key: Hashable, Value> {
     
     func value(key: Key) -> Value? {
         return queue.sync {
-            catchedImages[key]        }
+            catchedImages[key]
+            
+        }
+        
+
     }
-    
-    
     
 }

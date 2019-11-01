@@ -28,7 +28,6 @@ class UserDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
-        // Do any additional setup after loading the view.
     }
     
     //Update
@@ -36,10 +35,17 @@ class UserDetailsViewController: UIViewController {
         guard let user = user,
             isViewLoaded else { return }
         
-        //self.nameLabel.text = user.fullName
+        self.nameLabel.text = "\(user.name.first) \(user.name.last)"
         self.emailLabel.text = user.email
         self.phoneNumLabel.text = user.phone
         //.userImage.image = user.picture.large
+        
+        
+        let imageURL = user.picture.large
+        if let imageData = try? Data(contentsOf: imageURL),
+            let largePicture = UIImage(data: imageData) {
+            userImage.image = largePicture
+        }
         
     }
     

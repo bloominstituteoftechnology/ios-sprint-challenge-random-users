@@ -50,15 +50,17 @@ class UsersTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserTableViewCell else { return UITableViewCell() }
         
         let user = usersController.users[indexPath.row]
-        
         let userName = "\(user.name.first) \(user.name.last)"
-        //        UserTableViewCell.user = user
-//        cell.userImage.image = UIImage((user.picture.thumbnail))
-//        cell.nameLabel.text = user.fullName
-        cell.nameLabel.text = userName
 
+        cell.nameLabel.text = userName
         
+        let imageURL = user.picture.thumbnail
         
+        if let imageData = try? Data(contentsOf: imageURL),
+            let image = UIImage(data: imageData) {
+            cell.userImage.image = image
+        }
+       
         return cell
     }
     
@@ -108,14 +110,9 @@ class UsersTableViewController: UITableViewController {
             if let detailVC = segue.destination as? UserDetailsViewController,
                 let indexPath = tableView.indexPathForSelectedRow {
                 
-                //detailVC.user = fetch
+                detailVC.user = usersController.users[indexPath.row]
             }
         }
-        
-        
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+
     }
-    
-    
 }

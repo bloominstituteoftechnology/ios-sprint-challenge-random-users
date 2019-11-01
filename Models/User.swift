@@ -22,11 +22,7 @@ struct User: Codable {
     var email: String
     var phone: String
     var picture: ImageSize
-    //var userImage: Data
-    //var fullName: String = "\(UserName.NameKeys.first) \(UserName.NameKeys.last)"
-    //var largeImage: Data
-   // var thumbnailImage: Data
-    
+ 
     enum UserKeys: String, CodingKey {
         case name
         case email
