@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Lambda_Logo_Full.pdf",
+      "filename" : "lambda_logo.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Lambda_Logo_Full-1.pdf",
+      "filename" : "lambda_logo-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Lambda_Logo_Full-2.pdf",
+      "filename" : "lambda_logo-2.png",
       "scale" : "3x"
     }
   ],
