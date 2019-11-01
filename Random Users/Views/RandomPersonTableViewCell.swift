@@ -12,15 +12,17 @@ class RandomPersonTableViewCell: UITableViewCell {
 
     @IBOutlet weak var personImageView: UIImageView!
     @IBOutlet weak var personNameLabel: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    var name: Name? {
+        didSet {
+            updateViews()
+        }
     }
+    
+    func updateViews() {
+        guard let name = name else { return }
+        personNameLabel.text = "\(name.title) \(name.first) \(name.last)"
+    }
+    
 
 }

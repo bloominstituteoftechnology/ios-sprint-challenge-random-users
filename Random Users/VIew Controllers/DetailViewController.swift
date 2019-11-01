@@ -14,21 +14,29 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var phoneNumLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    var imageData: Data?
+    var name: Name?
+    var person: Person? {
+        didSet {
+            updateViews()
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateViews()
     }
-    */
-
+    
+    func updateViews() {
+        guard let person = person, let imageData = imageData, let name = name, isViewLoaded else { return }
+        
+        if let image = UIImage(data: imageData) {
+            personImageVIew.image = image
+        }
+        
+        nameLabel.text = "\(name.title) \(name.first) \(name.last)"
+        phoneNumLabel.text = person.phone
+        emailLabel.text = person.email
+        
+    }
 }

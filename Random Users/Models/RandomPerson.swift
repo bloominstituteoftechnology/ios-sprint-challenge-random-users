@@ -17,16 +17,16 @@ struct Person: Codable {
     let email: String
     let phone: String
     let picture: Picture
-    
-    struct Name: Codable {
-        let title: String
-        let first: String
-        let last: String
-    }
+}
+
+struct Name: Codable {
+    let title: String
+    let first: String
+    let last: String
 }
 
 struct Picture: Codable {
     let large: String
     let thumbnail: String
-    let id: UUID?
+    var id: UUID?
 }

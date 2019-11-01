@@ -1,5 +1,5 @@
 //
-//  FetchPersonOperation.swift
+//  FetchPictureOperation.swift
 //  Random Users
 //
 //  Created by Gi Pyo Kim on 11/1/19.
@@ -8,31 +8,11 @@
 
 import Foundation
 
-class FetchPersonOperation: ConcurrentOperation {
+class FetchPictureOperation: ConcurrentOperation {
     
     private var dataTask: URLSessionTask?
     let pictureReference: Picture
-    var thumbnailData: Data? {
-        didSet {
-            guard let largeURL = URL(string: pictureReference.large) else { return }
-            var largeRequestURL = URLRequest(url: largeURL)
-            largeRequestURL.httpMethod = "GET"
-            
-            URLSession.shared.dataTask(with: largeRequestURL) { (data, _, error) in
-                if let error = error {
-                    NSLog("Error fetching large picture: \(error)")
-                    return
-                }
-                
-                guard let data = data else {
-                    NSLog("Invalid Data")
-                    return
-                }
-                
-                self.largeData = data
-            }
-        }
-    }
+    var thumbnailData: Data?
     var largeData: Data?
     
     init(pictureReference: Picture) {
@@ -54,18 +34,37 @@ class FetchPersonOperation: ConcurrentOperation {
                 return
             }
             
-            defer {
-                self.state = .isFinished
-            }
-            
             guard let data = data else {
                 NSLog("Invalid Data")
                 return
             }
             
             self.thumbnailData = data
+            
+            guard let largeURL = URL(string: self.pictureReference.large) else { return }
+            var largeRequestURL = URLRequest(url: largeURL)
+            largeRequestURL.httpMethod = "GET"
+            
+            URLSession.shared.dataTask(with: largeRequestURL) { (data, _, error) in
+                if let error = error {
+                    NSLog("Error fetching large picture: \(error)")
+                    return
+                }
+                
+                defer {
+                    self.state = .isFinished
+                }
+                
+                guard let data = data else {
+                    NSLog("Invalid Data")
+                    return
+                }
+                
+                self.largeData = data
+            }.resume()
         })
         dataTask?.resume()
+        
     }
     
     override func cancel() {

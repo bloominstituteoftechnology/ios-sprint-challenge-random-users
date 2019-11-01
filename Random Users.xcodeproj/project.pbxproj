@@ -15,9 +15,10 @@
 		A67411DA236C862900C9F410 /* RandomPeopleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67411D9236C862900C9F410 /* RandomPeopleTableViewController.swift */; };
 		A67411DC236C864A00C9F410 /* RandomPersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67411DB236C864A00C9F410 /* RandomPersonTableViewCell.swift */; };
 		A67411DE236C866500C9F410 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67411DD236C866500C9F410 /* DetailViewController.swift */; };
-		A67411E2236C8A7300C9F410 /* FetchPersonOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67411E1236C8A7300C9F410 /* FetchPersonOperation.swift */; };
+		A67411E2236C8A7300C9F410 /* FetchPictureOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67411E1236C8A7300C9F410 /* FetchPictureOperation.swift */; };
 		A67411E4236C8AD300C9F410 /* RandomPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67411E3236C8AD300C9F410 /* RandomPerson.swift */; };
 		A67411E7236C955600C9F410 /* RandomPersonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67411E6236C955600C9F410 /* RandomPersonController.swift */; };
+		A67411E9236CC96200C9F410 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67411E8236CC96200C9F410 /* Cache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,9 +32,10 @@
 		A67411D9236C862900C9F410 /* RandomPeopleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPeopleTableViewController.swift; sourceTree = "<group>"; };
 		A67411DB236C864A00C9F410 /* RandomPersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPersonTableViewCell.swift; sourceTree = "<group>"; };
 		A67411DD236C866500C9F410 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		A67411E1236C8A7300C9F410 /* FetchPersonOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPersonOperation.swift; sourceTree = "<group>"; };
+		A67411E1236C8A7300C9F410 /* FetchPictureOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPictureOperation.swift; sourceTree = "<group>"; };
 		A67411E3236C8AD300C9F410 /* RandomPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPerson.swift; sourceTree = "<group>"; };
 		A67411E6236C955600C9F410 /* RandomPersonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPersonController.swift; sourceTree = "<group>"; };
+		A67411E8236CC96200C9F410 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				A67411E0236C87F400C9F410 /* Views */,
 				A67411E5236C8AD900C9F410 /* Models */,
 				A67411E6236C955600C9F410 /* RandomPersonController.swift */,
+				A67411E8236CC96200C9F410 /* Cache.swift */,
 			);
 			path = "Random Users";
 			sourceTree = "<group>";
@@ -92,7 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
-				A67411E1236C8A7300C9F410 /* FetchPersonOperation.swift */,
+				A67411E1236C8A7300C9F410 /* FetchPictureOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -194,13 +197,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				A67411E9236CC96200C9F410 /* Cache.swift in Sources */,
 				A67411DC236C864A00C9F410 /* RandomPersonTableViewCell.swift in Sources */,
 				A67411E4236C8AD300C9F410 /* RandomPerson.swift in Sources */,
 				A67411E7236C955600C9F410 /* RandomPersonController.swift in Sources */,
 				A67411DE236C866500C9F410 /* DetailViewController.swift in Sources */,
 				A67411DA236C862900C9F410 /* RandomPeopleTableViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
-				A67411E2236C8A7300C9F410 /* FetchPersonOperation.swift in Sources */,
+				A67411E2236C8A7300C9F410 /* FetchPictureOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
