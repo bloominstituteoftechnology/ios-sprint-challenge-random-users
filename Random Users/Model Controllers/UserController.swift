@@ -41,7 +41,7 @@ class UserController {
             do {
                 let results = try JSONDecoder().decode(Results.self, from: data)
                 
-                self.users = results.results
+                self.users.append(contentsOf: results.results)
                 completion(nil)
             } catch {
                 NSLog("Error decoding users: \(error)")

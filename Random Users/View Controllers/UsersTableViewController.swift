@@ -19,13 +19,7 @@ class UsersTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        userController.fetchUsers { (error) in
-            if error == nil {
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            }
-        }
+        fetchMoreUsers()
     }
 
     // MARK: - Table view data source
@@ -53,21 +47,28 @@ class UsersTableViewController: UITableViewController {
     
     //MARK: Private
     
+    private func fetchMoreUsers() {
+        userController.fetchUsers { (error) in
+            if error == nil {
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+    
     private func loadImage(forItemAt indexPath: IndexPath, sized imageSize: User.UserKeys.PictureKeys, cache: Cache<Int, UIImage>, completion: @escaping (UIImage?) -> Void) {
         let user = userController.users[indexPath.row]
         let photoReference: URL
         
         switch imageSize {
         case .thumbnail:
-            print("Thumbnail")
             photoReference = user.thumbnailURL
         case .medium:
             photoReference = user.mediumPictureURL
         case .large:
-            print("Large photo")
             photoReference = user.largePictureURL
         }
-        print(photoReference)
         
         if let image = cache.value(for: indexPath.row) {
             completion(image)
@@ -114,5 +115,11 @@ class UsersTableViewController: UITableViewController {
             }
         }
     }
-
+    
+    //MARK: Actions
+    
+    @IBAction func fetchMoreUsersTapped(_ sender: UIButton) {
+        fetchMoreUsers()
+    }
+    
 }
