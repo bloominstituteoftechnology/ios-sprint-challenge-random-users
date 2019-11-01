@@ -17,7 +17,7 @@ struct RandomUsers: Codable {
     let name : Name
     let email: String
     let dob: DOB
-    let image: Picture
+    let picture: Picture
     }
     
     struct Name: Codable {
@@ -30,7 +30,19 @@ struct RandomUsers: Codable {
     }
     
     struct Picture: Codable {
-        let largePhoto: URL
+        let large: URL
         let thumbnail: URL
     }
+
+
+
+
+
+
+
+
+
+
+
+
 

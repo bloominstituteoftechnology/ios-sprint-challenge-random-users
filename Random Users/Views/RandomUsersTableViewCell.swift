@@ -10,30 +10,18 @@ import UIKit
 
 class RandomUsersTableViewCell: UITableViewCell {
     
-    // MARK: - Properties
-    var users: RandomUsers? {
+    var user: Users? {
         didSet {
             updateViews()
         }
     }
-    var client: RandomUsersClient?
     
     // MARK: - Outlets
     @IBOutlet weak var userThumbnail: UIImageView!
     @IBOutlet weak var userName: UILabel!
     
-
     func updateViews() {
-        guard let users = users else { return }
-        
-        userName.text = users.name.first
-        client?.fetchImage(at: (users.image.thumbnail), completion: { (image) in
-            DispatchQueue.main.async {
-                self.userThumbnail.image = image
-            }
-        })
+        guard let user = user else { return }
+        userName.text = "\(user.name.first) \(user.name.last)"
     }
-
-    
-    
 }

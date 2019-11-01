@@ -15,63 +15,45 @@ enum HTTPMethod: String {
     case delete = "DELETE"
 }
 
+enum NetworkingError: Error {
+    case noData
+    case noBearer
+    case serverError(Error)
+    case unexpectedStatusCode
+    case badDecode
+    case badEncode
+    case fetchError
+}
+
 class RandomUsersClient {
     
-    private let baseURL = URL(string: "https://randomuser.me/api/?results=10")!
+    private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,dob,picture&noinfo&results=1001")!
     
-    var savedUsers: [RandomUsers] = []
+    var savedUsers: [Users] = []
     
-    func fetchUsers(completion: @escaping () -> Void) {
+    func fetchUsers(completion: @escaping (NetworkingError?) -> Void) {
         
-        var request = URLRequest(url: baseURL)
-        request.httpMethod = HTTPMethod.get.rawValue
-        
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let response = response as? HTTPURLResponse,
-                response.statusCode == 401 {
-                completion()
-                return
-            }
+        URLSession.shared.dataTask(with: baseURL) { (data, _, error) in
             
-            if let _ = error {
-                completion()
+            if let error = error {
+                NSLog("Error with fetch: \(error)")
+                completion(.fetchError)
                 return
             }
             
             guard let data = data else {
-                completion()
+                NSLog("Error with data")
+                completion(.noData)
                 return
             }
             
             do {
-                self.savedUsers = try JSONDecoder().decode([RandomUsers].self, from: data)
-                completion()
+                let result = try JSONDecoder().decode(RandomUsers.self, from: data)
+                self.savedUsers = result.results
             } catch {
-                NSLog("Error: \(error)")
-                completion()
-                return
+                NSLog("Error decoding users: \(error)")
             }
+            completion(nil)
         }.resume()
-    }
-    
-    func fetchImage(at url: URL, completion: @escaping (UIImage?) -> Void) {
-        
-        URLSession.shared.dataTask(with: url) { (data, _, error) in
-            
-            if let error = error {
-                NSLog("Error fetching images: \(error)")
-                completion(nil)
-                return
-            }
-            
-            guard let data = data else {
-                NSLog("No data returned from image fetch data task")
-                completion(nil)
-                return
-            }
-            
-            let image = UIImage(data: data)
-            completion(image)
-        }
     }
 }

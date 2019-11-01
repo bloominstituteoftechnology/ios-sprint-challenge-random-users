@@ -50,7 +50,7 @@
                                 <connections>
                                     <outlet property="userName" destination="5gp-Dj-R7X" id="zyM-Qd-vh7"/>
                                     <outlet property="userThumbnail" destination="ntk-PH-gkm" id="RBe-uE-wuM"/>
-                                    <segue destination="tdq-hV-u8a" kind="show" id="ETR-9b-dss"/>
+                                    <segue destination="tdq-hV-u8a" kind="show" identifier="ShowDetail" id="ETR-9b-dss"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

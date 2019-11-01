@@ -12,7 +12,8 @@
 		809A973F236C8322007BBBB1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809A973E236C8322007BBBB1 /* DetailViewController.swift */; };
 		809A9742236C892F007BBBB1 /* RandomUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809A9741236C892F007BBBB1 /* RandomUsers.swift */; };
 		809A9745236C896A007BBBB1 /* RandomUsersClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809A9744236C896A007BBBB1 /* RandomUsersClient.swift */; };
-		809A9748236C913D007BBBB1 /* URL+Secure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809A9747236C913D007BBBB1 /* URL+Secure.swift */; };
+		809A974A236CDDD8007BBBB1 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809A9749236CDDD8007BBBB1 /* Cache.swift */; };
+		809A974C236CDFFD007BBBB1 /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809A974B236CDFFD007BBBB1 /* FetchPhotoOperation.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -26,7 +27,8 @@
 		809A973E236C8322007BBBB1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		809A9741236C892F007BBBB1 /* RandomUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsers.swift; sourceTree = "<group>"; };
 		809A9744236C896A007BBBB1 /* RandomUsersClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersClient.swift; sourceTree = "<group>"; };
-		809A9747236C913D007BBBB1 /* URL+Secure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Secure.swift"; sourceTree = "<group>"; };
+		809A9749236CDDD8007BBBB1 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		809A974B236CDFFD007BBBB1 /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -80,14 +82,6 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		809A9746236C9127007BBBB1 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				809A9747236C913D007BBBB1 /* URL+Secure.swift */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
@@ -107,7 +101,6 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
-				809A9746236C9127007BBBB1 /* Utilities */,
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				809A9743236C8953007BBBB1 /* Networking */,
 				809A9740236C891B007BBBB1 /* Models */,
@@ -134,6 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				809A9749236CDDD8007BBBB1 /* Cache.swift */,
+				809A974B236CDFFD007BBBB1 /* FetchPhotoOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -209,9 +204,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				809A9748236C913D007BBBB1 /* URL+Secure.swift in Sources */,
 				809A973A236C81E7007BBBB1 /* RandomUsersTableViewController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				809A974C236CDFFD007BBBB1 /* FetchPhotoOperation.swift in Sources */,
+				809A974A236CDDD8007BBBB1 /* Cache.swift in Sources */,
 				809A973F236C8322007BBBB1 /* DetailViewController.swift in Sources */,
 				809A9745236C896A007BBBB1 /* RandomUsersClient.swift in Sources */,
 				809A9742236C892F007BBBB1 /* RandomUsers.swift in Sources */,
