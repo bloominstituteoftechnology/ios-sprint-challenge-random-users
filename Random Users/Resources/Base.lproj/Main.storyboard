@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="UfF-P6-x3o" customClass="UserTableViewCell" customModule="Random_Users" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="80" id="UfF-P6-x3o" customClass="UserTableViewCell" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UfF-P6-x3o" id="NLT-2M-ite">
@@ -50,6 +50,10 @@
                                         <constraint firstItem="rRY-X7-Voe" firstAttribute="leading" secondItem="NLT-2M-ite" secondAttribute="leading" constant="4" id="fBk-hs-FRl"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="9Rg-eP-QEE" id="gam-lS-JD1"/>
+                                    <outlet property="userImageView" destination="fI8-Tw-MsS" id="LbM-2T-y49"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -69,10 +73,10 @@
             </objects>
             <point key="canvasLocation" x="754" y="-149"/>
         </scene>
-        <!--User Table View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="ec8-gg-49Z">
             <objects>
-                <viewController id="YAd-uc-ago" customClass="UserTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="YAd-uc-ago" customClass="DetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lgL-2A-QUl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -115,6 +119,12 @@
                         <viewLayoutGuide key="safeArea" id="Eda-TQ-fmF"/>
                     </view>
                     <navigationItem key="navigationItem" id="RUz-xA-RwJ"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="FpM-oz-10n" id="SNk-6X-29z"/>
+                        <outlet property="nameLabel" destination="mc0-JP-rJ3" id="wzV-SQ-rSS"/>
+                        <outlet property="phoneLabel" destination="BKR-YJ-oKJ" id="U46-Sd-ZBv"/>
+                        <outlet property="userImageView" destination="XKE-Yv-hvK" id="sgH-b4-env"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CKp-44-8a9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
