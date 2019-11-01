@@ -8,6 +8,10 @@
 
 import Foundation
 
+struct Results: Codable {
+    let results: [User]
+}
+
 struct User: Codable {
     
     //    var results: [UserResult]
@@ -19,10 +23,9 @@ struct User: Codable {
     var phone: String
     var picture: ImageSize
     //var userImage: Data
-    var fullName: String = "\(UserName.NameKeys.first) \(UserName.NameKeys.last)"
-    var largeImage: Data
-    var thumbnailImage: Data
-    
+    //var fullName: String = "\(UserName.NameKeys.first) \(UserName.NameKeys.last)"
+    //var largeImage: Data
+   // var thumbnailImage: Data
     
     enum UserKeys: String, CodingKey {
         case name
@@ -31,6 +34,7 @@ struct User: Codable {
         case picture
         
     }
+}
     
     struct UserName: Codable {
         var title: String
@@ -46,7 +50,8 @@ struct User: Codable {
     
     
     struct ImageSize: Codable {
-        var picture: URL
+        var large: URL
+        var thumbnail: URL
         
         enum ImageSizeKeys: String, CodingKey {
             case large
@@ -54,7 +59,6 @@ struct User: Codable {
         }
     }
     //    }
-}
 
 
 

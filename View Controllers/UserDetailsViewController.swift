@@ -36,10 +36,10 @@ class UserDetailsViewController: UIViewController {
         guard let user = user,
             isViewLoaded else { return }
         
-        self.nameLabel.text = user.fullName
+        //self.nameLabel.text = user.fullName
         self.emailLabel.text = user.email
         self.phoneNumLabel.text = user.phone
-        self.userImage.image = UIImage(data: user.largeImage)
+        //.userImage.image = user.picture.large
         
     }
     
