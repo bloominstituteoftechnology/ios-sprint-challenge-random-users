@@ -17,6 +17,7 @@
 		DD33D952236C93AC009AA6C8 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD33D951236C93AC009AA6C8 /* UserTableViewCell.swift */; };
 		DD33D954236C943C009AA6C8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD33D953236C943C009AA6C8 /* User.swift */; };
 		DD33D957236C946B009AA6C8 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD33D956236C946B009AA6C8 /* Cache.swift */; };
+		DD33D959236C94E1009AA6C8 /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD33D958236C94E1009AA6C8 /* FetchPhotoOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		DD33D951236C93AC009AA6C8 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		DD33D953236C943C009AA6C8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DD33D956236C946B009AA6C8 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		DD33D958236C94E1009AA6C8 /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				DD33D958236C94E1009AA6C8 /* FetchPhotoOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD33D957236C946B009AA6C8 /* Cache.swift in Sources */,
+				DD33D959236C94E1009AA6C8 /* FetchPhotoOperation.swift in Sources */,
 				DD33D94D236C9340009AA6C8 /* DetailTableViewController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				DD33D954236C943C009AA6C8 /* User.swift in Sources */,
