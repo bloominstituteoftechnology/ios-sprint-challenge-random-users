@@ -19,8 +19,7 @@ class ConcurrentOperation: Operation {
     // MARK: Properties
     
     private var _state = State.isReady
-    
-    private let stateQueue = DispatchQueue(label: "com.LambdaSchool.Astronomy.ConcurrentOperationStateQueue")
+    private let stateQueue = DispatchQueue(label: "com.LambdaSchool.Random-Users.ConcurrentOperationStateQueue")
     var state: State {
         get {
             var result: State?
