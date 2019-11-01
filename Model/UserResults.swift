@@ -7,3 +7,27 @@
 //
 
 import Foundation
+
+struct UserResults: Codable {
+    var results: [User]
+}
+
+struct User {
+    var name: Name
+    var email: String
+    var phone: String
+    var picture: Photos
+    }
+
+struct Name: Codable {
+    var title: String
+    var first: String
+    var last: String
+}
+
+struct Photos: Codable {
+    var large: URL
+    var medium: URL
+    var thumbnail: URL
+}
+}
