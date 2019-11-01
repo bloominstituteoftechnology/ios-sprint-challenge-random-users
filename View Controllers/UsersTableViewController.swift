@@ -10,9 +10,12 @@ import UIKit
 
 class UsersTableViewController: UITableViewController {
     
+    //MARK: Properties
     var usersController = UsersController()
-    //var usersList: [User] = []
     var userTableViewCell = UserTableViewCell()
+    private let photoFetchQueue = OperationQueue()
+    let cache = Cache<Int, Data>()
+    private var operations = [Int: Operation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,18 +54,54 @@ class UsersTableViewController: UITableViewController {
         
         let user = usersController.users[indexPath.row]
         let userName = "\(user.name.first) \(user.name.last)"
-
         cell.nameLabel.text = userName
         
-        let imageURL = user.picture.thumbnail
         
-        if let imageData = try? Data(contentsOf: imageURL),
-            let image = UIImage(data: imageData) {
+        
+        let imageURL = user.picture.thumbnail
+        let cellKey = indexPath.row
+        
+        if let cachedData = cache.value(key: cellKey),
+            let image = UIImage(data: cachedData) {
             cell.userImage.image = image
+            return cell
         }
-       
+        
+        let fetchOp = FetchPhotoOperation(user: user)
+        
+        let cacheOp = BlockOperation {
+            if let data = fetchOp.imageData {
+                self.cache.cache(value: data, key: cellKey)
+            }
+        }
+        
+        let completionOp = BlockOperation {
+            defer { self.operations.removeValue(forKey: cellKey) }
+
+            if let currentIndexPath = self.tableView.indexPath(for: cell),
+                currentIndexPath != indexPath {
+                print("received image for reused cell")
+                return
+            }
+            if let data = fetchOp.imageData {
+                cell.userImage.image = UIImage(data: data)
+            }
+            
+        }
+        
+        cacheOp.addDependency(fetchOp)
+        completionOp.addDependency(fetchOp)
+        photoFetchQueue.addOperation(fetchOp)
+        photoFetchQueue.addOperation(cacheOp)
+        OperationQueue.main.addOperation(completionOp)
+        
+        operations[cellKey] = fetchOp
+        
+        
+        
         return cell
     }
+    
     
     
     /*
@@ -113,6 +152,6 @@ class UsersTableViewController: UITableViewController {
                 detailVC.user = usersController.users[indexPath.row]
             }
         }
-
+        
     }
 }
