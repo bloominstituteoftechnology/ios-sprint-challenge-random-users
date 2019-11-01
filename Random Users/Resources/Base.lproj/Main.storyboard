@@ -11,13 +11,13 @@
         <!--Users-->
         <scene sceneID="KIA-DK-33D">
             <objects>
-                <tableViewController id="0PK-xO-7w8" sceneMemberID="viewController">
+                <tableViewController id="0PK-xO-7w8" customClass="UsersTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="DgP-YU-xs0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="pRy-Mq-0cg">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="pRy-Mq-0cg" customClass="UserTableViewCell" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pRy-Mq-0cg" id="Aj5-LM-jlO">
@@ -50,6 +50,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="nameLabel" destination="57D-Xu-kCQ" id="R0V-B4-KFH"/>
+                                    <outlet property="userImage" destination="H9w-3O-LOt" id="veR-r8-cYJ"/>
                                     <segue destination="DoP-SD-6dg" kind="show" id="wCi-m1-rdK"/>
                                 </connections>
                             </tableViewCell>
@@ -67,10 +69,10 @@
             </objects>
             <point key="canvasLocation" x="1030.4347826086957" y="161.38392857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--User Details View Controller-->
         <scene sceneID="py1-a9-eLa">
             <objects>
-                <viewController id="DoP-SD-6dg" sceneMemberID="viewController">
+                <viewController id="DoP-SD-6dg" customClass="UserDetailsViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="B00-ZD-DS3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -117,6 +119,12 @@
                         <viewLayoutGuide key="safeArea" id="6Y8-g5-dTz"/>
                     </view>
                     <navigationItem key="navigationItem" id="kIq-fr-j4J"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="qOP-L8-HtM" id="jEg-KE-iwu"/>
+                        <outlet property="nameLabel" destination="zC6-Bh-bFu" id="mLy-zO-pRi"/>
+                        <outlet property="phoneNumLabel" destination="gzH-HZ-gNt" id="cTU-4v-TXJ"/>
+                        <outlet property="userImage" destination="Yvj-CL-eAJ" id="E3M-Bo-mHu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DUs-MN-2rT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
