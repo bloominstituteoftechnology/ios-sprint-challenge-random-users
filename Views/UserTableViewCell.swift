@@ -10,6 +10,8 @@ import UIKit
 
 class UserTableViewCell: UITableViewCell {
     
+    var user: User?
+    
     //MARK: Outlets
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!

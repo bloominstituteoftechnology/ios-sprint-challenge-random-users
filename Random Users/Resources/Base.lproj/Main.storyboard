@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="pRy-Mq-0cg" customClass="UserTableViewCell" customModule="Random_Users" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="70" id="pRy-Mq-0cg" customClass="UserTableViewCell" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pRy-Mq-0cg" id="Aj5-LM-jlO">
@@ -52,7 +52,7 @@
                                 <connections>
                                     <outlet property="nameLabel" destination="57D-Xu-kCQ" id="R0V-B4-KFH"/>
                                     <outlet property="userImage" destination="H9w-3O-LOt" id="veR-r8-cYJ"/>
-                                    <segue destination="DoP-SD-6dg" kind="show" id="wCi-m1-rdK"/>
+                                    <segue destination="DoP-SD-6dg" kind="show" identifier="ShowDetailsSegue" id="wCi-m1-rdK"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

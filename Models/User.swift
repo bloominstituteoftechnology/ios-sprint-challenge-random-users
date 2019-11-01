@@ -8,48 +8,52 @@
 
 import Foundation
 
-struct Users: Codable {
+struct User: Codable {
     
-    var results: [UserResult]
+    //    var results: [UserResult]
     
-    struct UserResult: Codable {
+    //    struct UserResult: Codable {
+    
+    var name: UserName
+    var email: String
+    var phone: String
+    var picture: ImageSize
+    //var userImage: Data
+    var fullName: String = "\(UserName.NameKeys.first) \(UserName.NameKeys.last)"
+    var largeImage: Data
+    var thumbnailImage: Data
+    
+    
+    enum UserKeys: String, CodingKey {
+        case name
+        case email
+        case phone
+        case picture
         
-        var name: UserName
-        var email: String
-        var phone: String
-        var picture: ImageSize
-        //var userImage: Data
+    }
+    
+    struct UserName: Codable {
+        var title: String
+        var first: String
+        var last: String
         
-        enum UserKeys: String, CodingKey {
-            case name
-            case email
-            case phone
-            case picture
-            
-        }
-        
-        struct UserName: Codable {
-            var title: String
-            var first: String
-            var last: String
-            
-            enum NameKeys: String, CodingKey {
-                case title
-                case first
-                case last
-            }
-        }
-        
-        
-        struct ImageSize: Codable {
-            var picture: URL
-            
-            enum ImageSizeKeys: String, CodingKey {
-                case large
-                case thumbnail
-            }
+        enum NameKeys: String, CodingKey {
+            case title
+            case first
+            case last
         }
     }
+    
+    
+    struct ImageSize: Codable {
+        var picture: URL
+        
+        enum ImageSizeKeys: String, CodingKey {
+            case large
+            case thumbnail
+        }
+    }
+    //    }
 }
 
 
