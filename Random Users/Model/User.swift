@@ -34,8 +34,6 @@ struct User {
     let largePictureURL: URL
     let mediumPictureURL: URL
     let thumbnailURL: URL
-    
-    static var jsonDecoder = JSONDecoder()
 }
 
 extension User: Decodable {
