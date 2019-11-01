@@ -35,5 +35,6 @@ class FetchPhotoOperation: ConcurrentOperation {
     
     override func cancel() {
         dataTask?.cancel()
+        //print("Photo fetch canceled.")
     }
 }

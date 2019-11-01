@@ -11,20 +11,14 @@ import UIKit
 class UsersTableViewController: UITableViewController {
     
     private var userController = UserController()
-    private let cache = Cache<Int, UIImage>()
+    private let thumbnailCache = Cache<Int, UIImage>()
+    private let largePictureCache = Cache<Int, UIImage>()
     private let photoFetchQueue = OperationQueue()
     private var fetchOperations: [Int: FetchPhotoOperation] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        print("About to fetch users.")
         userController.fetchUsers { (error) in
             if error == nil {
                 DispatchQueue.main.async {
@@ -44,7 +38,11 @@ class UsersTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
 
         cell.textLabel?.text = userController.users[indexPath.row].name
-        loadImage(for: cell, forItemAt: indexPath)
+        loadImage(forItemAt: indexPath, cache: thumbnailCache) { (image) in
+            if self.tableView.indexPath(for: cell) == indexPath {
+                cell.imageView?.image = image
+            }
+        }
 
         return cell
     }
@@ -90,44 +88,49 @@ class UsersTableViewController: UITableViewController {
     
     //MARK: Private
     
-    private func loadImage(for cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+    private func loadImage(forItemAt indexPath: IndexPath, cache: Cache<Int, UIImage>, completion: @escaping (UIImage?) -> Void) {
         let photoReference = userController.users[indexPath.row].thumbnailURL
         
-        if let image = cache.value(for: indexPath.row) {
-            cell.imageView?.image = image
+        if let image = thumbnailCache.value(for: indexPath.row) {
+            completion(image)
         } else {
             let fetchOperation = FetchPhotoOperation(reference: photoReference)
             
             let saveToCache = BlockOperation {
-                guard let image = UIImage(data: fetchOperation.imageData ?? Data()) else { return }
-                self.cache.cache(value: image, for: indexPath.row)
+                guard let image = UIImage(data: fetchOperation.imageData ?? Data()) else {
+                    completion(nil)
+                    return
+                }
+                cache.cache(value: image, for: indexPath.row)
             }
             
-            let setCellImage = BlockOperation {
-                guard let image = UIImage(data: fetchOperation.imageData ?? Data()) else { return }
-                if self.tableView.indexPath(for: cell) == indexPath {
-                    cell.imageView?.image = image
+            let setImage = BlockOperation {
+                guard let image = UIImage(data: fetchOperation.imageData ?? Data()) else {
+                    completion(nil)
+                    return
                 }
+                
+                completion(image)
             }
             
             saveToCache.addDependency(fetchOperation)
-            setCellImage.addDependency(fetchOperation)
+            setImage.addDependency(fetchOperation)
             
             photoFetchQueue.addOperations([fetchOperation, saveToCache], waitUntilFinished: false)
-            OperationQueue.main.addOperations([setCellImage], waitUntilFinished: false)
+            OperationQueue.main.addOperations([setImage], waitUntilFinished: false)
             
             fetchOperations[indexPath.row] = fetchOperation
         }
     }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let userDetailVC = segue.destination as? UserDetailViewController,
+            let indexPath = tableView.indexPathForSelectedRow {
+            userDetailVC.user = userController.users[indexPath.row]
+        }
     }
-    */
 
 }
