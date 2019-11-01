@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct UserReference: Codable {
+struct UsersReference: Codable {
 	var results: [User]
 }
 
@@ -27,8 +27,8 @@ struct Name: Codable {
 }
 
 struct Photos: Codable {
-	var large: URL
-	var medium: URL
-	var thumbnail: URL
+	var large: String
+	var medium: String
+	var thumbnail: String
 }
 

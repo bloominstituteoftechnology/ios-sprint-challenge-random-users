@@ -14,7 +14,7 @@ class Cache<Key, Value> where Key: Hashable {
 
 	var imageCache: [Key: Value] = [:]
 
-	func cache(key: Key, value: Value) {
+	func cache(value: Value, for key: Key) {
 		queue.async {
 			self.imageCache[key] = value
 		}

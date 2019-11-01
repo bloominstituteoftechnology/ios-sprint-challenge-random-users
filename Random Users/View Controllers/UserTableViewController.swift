@@ -10,7 +10,7 @@ import UIKit
 
 class UserTableViewController: UITableViewController {
 
-	private let userController = UserController()
+	private let userController = RandomUserController()
 	private let cache = Cache<String, UIImage>()
 	private var users = [User]() {
 		didSet {
@@ -37,18 +37,13 @@ class UserTableViewController: UITableViewController {
 
 		cell.textLabel?.text = "\(user.name.title.uppercased()). \(user.name.first.capitalized) \(user.name.last.capitalized)"
 
-//				if let image = cache.fetch(key: "\(user.picture.thumbnail)") {
-//			cell.imageView?.image = image
-//			return
-//		}
-
 		if let image = cache.fetch(key: "\(user.picture.thumbnail)") {
+
 			cell.imageView?.image = image
 			return
 		}
 
-		//guard let imageURL = URL(string: user.picture.large) else { return }
-		guard let imageURL = URL(string: user.picture.large.path) else { return }
+		guard let imageURL = URL(string: user.picture.large) else { return }
 		let imageRequest = URLRequest(url: imageURL)
 
 		URLSession.shared.dataTask(with: imageRequest) { (data, _, error) in
@@ -87,8 +82,6 @@ class UserTableViewController: UITableViewController {
 		return cell
 	}
 
-
-
 	// Override to support editing the table view.
 	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 	if editingStyle == .delete {
@@ -106,6 +99,4 @@ class UserTableViewController: UITableViewController {
 			detailVC.cache = cache
 		}
 	}
-
-
 }

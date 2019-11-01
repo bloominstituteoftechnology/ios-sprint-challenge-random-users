@@ -8,7 +8,7 @@
 
 import Foundation
 
-class UserController {
+class RandomUserController {
 
 	var users: [User] = []
 
@@ -18,8 +18,8 @@ class UserController {
 							completion: @escaping ([User]?, Error?) -> Void) {
 
 			let url = self.url(forAmountOfResults: 1000)
-			fetch(from: url, using: session) { (userReference: UserReference?, error: Error?) in
-				guard let userReference: UserReference = userReference else {
+			fetch(from: url, using: session) { (usersReference: UsersReference?, error: Error?) in
+				guard let userReference: UsersReference = usersReference else {
 					completion(nil, error)
 					return
 				}
@@ -57,6 +57,5 @@ class UserController {
 			urlComponents.queryItems = [URLQueryItem(name: "results", value: "\(resultsCount)")]
 			return urlComponents.url!
 		}
-
 	}
 
