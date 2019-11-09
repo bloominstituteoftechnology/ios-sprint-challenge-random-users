@@ -14,6 +14,7 @@
 		9226B78A23772F4000EF696A /* PeopleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9226B78923772F4000EF696A /* PeopleTableViewController.swift */; };
 		9226B78C23772F5700EF696A /* PersonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9226B78B23772F5700EF696A /* PersonDetailViewController.swift */; };
 		9226B78E23772F6B00EF696A /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9226B78D23772F6B00EF696A /* PersonTableViewCell.swift */; };
+		9226B7912377341900EF696A /* People.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9226B7902377341900EF696A /* People.swift */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		9226B78923772F4000EF696A /* PeopleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewController.swift; sourceTree = "<group>"; };
 		9226B78B23772F5700EF696A /* PersonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailViewController.swift; sourceTree = "<group>"; };
 		9226B78D23772F6B00EF696A /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
+		9226B7902377341900EF696A /* People.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = People.swift; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,6 +62,7 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
+				9226B78F237732DE00EF696A /* Models */,
 				9226B78823772F2500EF696A /* Custom Views */,
 				9226B78723772F1800EF696A /* View Controllers */,
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
@@ -84,6 +87,14 @@
 				9226B78D23772F6B00EF696A /* PersonTableViewCell.swift */,
 			);
 			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		9226B78F237732DE00EF696A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9226B7902377341900EF696A /* People.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		9D5CCA522142305600224681 /* Resources */ = {
@@ -180,6 +191,7 @@
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9226B78A23772F4000EF696A /* PeopleTableViewController.swift in Sources */,
 				9226B78E23772F6B00EF696A /* PersonTableViewCell.swift in Sources */,
+				9226B7912377341900EF696A /* People.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
