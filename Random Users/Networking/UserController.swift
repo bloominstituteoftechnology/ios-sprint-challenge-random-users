@@ -14,6 +14,12 @@ enum NetworkError: Error {
     case badData
 }
 
+enum HTTPMethod: String {
+    case get = "GET"
+    case put = "POST"
+    case delete = "DELETE"
+}
+
 let baseURL = URL(string: "https://randomuser.me/api/")!
 
 class UserController {

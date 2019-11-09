@@ -16,6 +16,8 @@
 		F36E36D723765C1F00C9F198 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E36D623765C1F00C9F198 /* ContactsTableViewController.swift */; };
 		F36E36D9237663F200C9F198 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E36D8237663F200C9F198 /* User.swift */; };
 		F36E36DB23766EFD00C9F198 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E36DA23766EFD00C9F198 /* UserController.swift */; };
+		F36E36DD2376757E00C9F198 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E36DC2376757E00C9F198 /* Cache.swift */; };
+		F36E36DF2376777A00C9F198 /* FetchContactOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E36DE2376777A00C9F198 /* FetchContactOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		F36E36D623765C1F00C9F198 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		F36E36D8237663F200C9F198 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F36E36DA23766EFD00C9F198 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		F36E36DC2376757E00C9F198 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		F36E36DE2376777A00C9F198 /* FetchContactOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchContactOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				F36E36DE2376777A00C9F198 /* FetchContactOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -96,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				F36E36D8237663F200C9F198 /* User.swift */,
+				F36E36DC2376757E00C9F198 /* Cache.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -195,10 +201,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F36E36DD2376757E00C9F198 /* Cache.swift in Sources */,
 				F36E36DB23766EFD00C9F198 /* UserController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				F36E36D523765BFC00C9F198 /* ContactDetailViewController.swift in Sources */,
 				F36E36D723765C1F00C9F198 /* ContactsTableViewController.swift in Sources */,
+				F36E36DF2376777A00C9F198 /* FetchContactOperation.swift in Sources */,
 				F36E36D9237663F200C9F198 /* User.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 			);

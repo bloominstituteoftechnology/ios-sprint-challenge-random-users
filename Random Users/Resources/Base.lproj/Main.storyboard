@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9ih-ex-sE6">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Contacts Table View Controller-->
         <scene sceneID="5hm-Wm-ank">
             <objects>
-                <tableViewController id="61c-Wf-mVK" sceneMemberID="viewController">
+                <tableViewController id="61c-Wf-mVK" customClass="ContactsTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="eDW-OC-9sU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,10 +49,10 @@
             </objects>
             <point key="canvasLocation" x="975.20000000000005" y="73.313343328335833"/>
         </scene>
-        <!--View Controller-->
+        <!--Contact Detail View Controller-->
         <scene sceneID="t5f-3U-h6b">
             <objects>
-                <viewController id="8go-Lg-GdA" sceneMemberID="viewController">
+                <viewController id="8go-Lg-GdA" customClass="ContactDetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mII-y2-txm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -100,6 +100,12 @@
                         <viewLayoutGuide key="safeArea" id="Fhy-4v-fxz"/>
                     </view>
                     <navigationItem key="navigationItem" id="VmI-ju-8sr"/>
+                    <connections>
+                        <outlet property="contactImage" destination="FU2-cw-L46" id="WF9-3f-6cB"/>
+                        <outlet property="emailLabel" destination="ndA-9G-NXu" id="ON1-EA-Qdt"/>
+                        <outlet property="nameLabel" destination="ufo-gn-Px3" id="eeI-FH-q6S"/>
+                        <outlet property="phoneLabel" destination="6yq-gm-OVY" id="ECs-NF-DlF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="umo-rg-h3W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
