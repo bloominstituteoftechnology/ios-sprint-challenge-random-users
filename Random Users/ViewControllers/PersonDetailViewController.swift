@@ -15,11 +15,26 @@ class PersonDetailViewController: UIViewController {
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var emailAddressLabel: UILabel!
     
-
+    var person: Person? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
+        updateViews()
+    }
+    
+    func updateViews() {
+        if isViewLoaded {
+            if let person = person {
+                personImageView.image = UIImage(named: "\(person.picture.absoluteString)")
+                nameLabel.text = person.name
+                phoneNumberLabel.text = person.phone
+                emailAddressLabel.text = person.email
+            }
+        }
     }
 
 }

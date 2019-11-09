@@ -34,7 +34,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="vdz-eM-Qb0" kind="show" id="9h4-1x-51r"/>
+                                    <segue destination="vdz-eM-Qb0" kind="show" identifier="ShowPersonDetailSegue" id="9h4-1x-51r"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

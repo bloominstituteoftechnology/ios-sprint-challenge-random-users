@@ -66,14 +66,16 @@ class PeopleTableViewController: UITableViewController {
         let checkOp = BlockOperation {
             defer { self.operations.removeValue(forKey: personReference.name) }
             
-            if let currentIndexPath = self.tableView.indexPath(for: cell),
-                currentIndexPath != indexPath {
-                return
-            }
-            
-            if let photoData = fetchPersonOp.photoData {
-                cell.imageView?.image = UIImage(data: photoData)
-                cell.textLabel?.text = personReference.name
+            DispatchQueue.main.async {
+                if let currentIndexPath = self.tableView.indexPath(for: cell),
+                    currentIndexPath != indexPath {
+                    return
+                }
+                
+                if let photoData = fetchPersonOp.photoData {
+                    cell.imageView?.image = UIImage(data: photoData)
+                    cell.textLabel?.text = personReference.name
+                }
             }
         }
         
@@ -85,15 +87,15 @@ class PeopleTableViewController: UITableViewController {
         
         self.operations[personReference.name] = fetchPersonOp
     }
-
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ShowPersonDetailSegue" {
+            guard let personDetailVC = segue.destination as? PersonDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow else { return }
+            personDetailVC.person = personController.people[indexPath.row]
+        }
     }
-    */
 
 }
