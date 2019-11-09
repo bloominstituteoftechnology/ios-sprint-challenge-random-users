@@ -15,6 +15,7 @@
 		F36E36D523765BFC00C9F198 /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E36D423765BFC00C9F198 /* ContactDetailViewController.swift */; };
 		F36E36D723765C1F00C9F198 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E36D623765C1F00C9F198 /* ContactsTableViewController.swift */; };
 		F36E36D9237663F200C9F198 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E36D8237663F200C9F198 /* User.swift */; };
+		F36E36DB23766EFD00C9F198 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E36DA23766EFD00C9F198 /* UserController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		F36E36D423765BFC00C9F198 /* ContactDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
 		F36E36D623765C1F00C9F198 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		F36E36D8237663F200C9F198 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F36E36DA23766EFD00C9F198 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		F36E36D123765BC300C9F198 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				F36E36DA23766EFD00C9F198 /* UserController.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F36E36DB23766EFD00C9F198 /* UserController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				F36E36D523765BFC00C9F198 /* ContactDetailViewController.swift in Sources */,
 				F36E36D723765C1F00C9F198 /* ContactsTableViewController.swift in Sources */,
