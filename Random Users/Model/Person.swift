@@ -53,7 +53,7 @@ struct People: Codable {
     var people: [Person]
     
     enum PeopleKeys: String, CodingKey {
-        case people
+        case people = "results"
     }
 }
 
