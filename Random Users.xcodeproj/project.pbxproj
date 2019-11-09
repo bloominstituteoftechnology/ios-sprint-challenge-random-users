@@ -14,6 +14,10 @@
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
 		E3F23A7E23773F9000A2F873 /* RandomUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F23A7D23773F9000A2F873 /* RandomUsersTableViewController.swift */; };
 		E3F23A8023773FAB00A2F873 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F23A7F23773FAB00A2F873 /* UserDetailViewController.swift */; };
+		E3F23A83237741E700A2F873 /* RandomUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F23A82237741E700A2F873 /* RandomUser.swift */; };
+		E3F23A852377434E00A2F873 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F23A842377434E00A2F873 /* Name.swift */; };
+		E3F23A87237745E000A2F873 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F23A86237745E000A2F873 /* Picture.swift */; };
+		E3F23A8A2377469600A2F873 /* RandomUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F23A892377469600A2F873 /* RandomUserController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 		E3F23A7D23773F9000A2F873 /* RandomUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersTableViewController.swift; sourceTree = "<group>"; };
 		E3F23A7F23773FAB00A2F873 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		E3F23A82237741E700A2F873 /* RandomUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUser.swift; sourceTree = "<group>"; };
+		E3F23A842377434E00A2F873 /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Name.swift; sourceTree = "<group>"; };
+		E3F23A86237745E000A2F873 /* Picture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
+		E3F23A892377469600A2F873 /* RandomUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +66,8 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
+				E3F23A882377467F00A2F873 /* Controllers */,
+				E3F23A81237741CA00A2F873 /* Models */,
 				E3F23A7C23773F6A00A2F873 /* View Controllers */,
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				9D5CCA56214231E400224681 /* Operations */,
@@ -92,6 +102,24 @@
 				E3F23A7F23773FAB00A2F873 /* UserDetailViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		E3F23A81237741CA00A2F873 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E3F23A82237741E700A2F873 /* RandomUser.swift */,
+				E3F23A842377434E00A2F873 /* Name.swift */,
+				E3F23A86237745E000A2F873 /* Picture.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E3F23A882377467F00A2F873 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E3F23A892377469600A2F873 /* RandomUserController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,10 +193,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3F23A852377434E00A2F873 /* Name.swift in Sources */,
+				E3F23A8A2377469600A2F873 /* RandomUserController.swift in Sources */,
 				E3F23A7E23773F9000A2F873 /* RandomUsersTableViewController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				E3F23A8023773FAB00A2F873 /* UserDetailViewController.swift in Sources */,
+				E3F23A87237745E000A2F873 /* Picture.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				E3F23A83237741E700A2F873 /* RandomUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
