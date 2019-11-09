@@ -11,6 +11,9 @@ import UIKit
 class PeopleTableViewController: UITableViewController {
 
     private var people: [Person] = []
+    private let fetchImageQueue = OperationQueue()
+    let cache = Cache<String, Data>()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +49,10 @@ class PeopleTableViewController: UITableViewController {
         
         let person = people[indexPath.row]
         cell.nameLabel.text = person.name
+        
+        let image = fetchImage(forCell: cell, forItemAt: indexPath)
+        
+        cell.personImageView.image = image
 
         return cell
     }
@@ -61,8 +68,48 @@ class PeopleTableViewController: UITableViewController {
     }
     */
     
-    func loadPersonImage(forCell: UITableViewCell, forItemAt indexPath: IndexPath) {
+    func fetchImage(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) -> UIImage? {
     
+        let person = people[indexPath.row]
+        var image = UIImage()
+        if let defaultImage = "👤".image() {
+            image = defaultImage
+        }
+        
+        if let cachedData = cache.value(for: person.pictureURL) {
+            guard let picture = UIImage(data: cachedData) else { return image}
+            image = picture
+        }
+        
+        // Operations
+        
+        let fetchOP = FetchImageOperation(person: person)
+        
+        let cacheOP = BlockOperation {
+            guard let data = fetchOP.imageData else { return }
+            self.cache.cache(value: data, for: person.pictureURL)
+        }
+        
+        let getImageOP = BlockOperation {
+            guard let data = fetchOP.imageData else { return }
+            
+            
+            if let newIndices = self.tableView.indexPathsForVisibleRows {
+                if newIndices.contains(indexPath) {
+                    image = UIImage(data: data)!
+                    
+                }
+            }
+        }
+        
+        cacheOP.addDependency(fetchOP)
+        getImageOP.addDependency(fetchOP)
+        
+        fetchImageQueue.addOperations([fetchOP, cacheOP], waitUntilFinished: true)
+        let mainQueue = OperationQueue.main
+        mainQueue.addOperations([getImageOP], waitUntilFinished: false)
+        
+        return image
     }
 
 }

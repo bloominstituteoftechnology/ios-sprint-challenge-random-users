@@ -63,7 +63,7 @@ class ConcurrentOperation: Operation {
     
 }
 
-class FetchPersonImageOperation: ConcurrentOperation {
+class FetchImageOperation: ConcurrentOperation {
     
     var urlSession: URLSessionDataTask?
     var imageData: Data?
