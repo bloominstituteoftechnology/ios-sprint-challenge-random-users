@@ -22,4 +22,50 @@ struct User: Equatable, Decodable {
         self.thumbnailImage = thumbnailImage
         self.largeImage = largeImage
     }
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case phone
+        case email
+        case picture
+        
+        enum ImageKeys: String, CodingKey {
+            case large, thumbnail
+        }
+        
+        enum NameKeys: String, CodingKey {
+            case first, last
+        }
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        let nameContainer = try container.nestedContainer(keyedBy: CodingKeys.NameKeys.self, forKey: .name)
+        let firstName = try nameContainer.decode(String.self, forKey: .first)
+        let lastName = try nameContainer.decode(String.self, forKey: .last)
+        self.name = "\(firstName) \(lastName)"
+        
+        self.phone = try container.decode(String.self, forKey: .phone)
+        self.email = try container.decode(String.self, forKey: .email)
+        
+        let thumbnailImageContainer = try container.nestedContainer(keyedBy: CodingKeys.ImageKeys.self, forKey: .picture)
+        self.thumbnailImage = try thumbnailImageContainer.decode(URL.self, forKey: .thumbnail)
+        
+        let ImageContainer = try container.nestedContainer(keyedBy: CodingKeys.ImageKeys.self, forKey: .picture)
+        self .largeImage = try ImageContainer.decode(URL.self, forKey: .large)
+    }
+}
+
+struct Users: Decodable {
+    let listOfContacts: [User]
+    
+    enum UserKeys: String, CodingKey  {
+        case listOfContacts
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: UserKeys.self)
+        self.listOfContacts = try container.decode([User].self, forKey: .listOfContacts)
+    }
 }
