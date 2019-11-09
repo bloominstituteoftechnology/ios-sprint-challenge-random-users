@@ -14,3 +14,9 @@ struct RandomUser: Codable {
     let phone: String
     let picture: Picture
 }
+
+extension RandomUser {
+    var fullName: String {
+        return "\(self.name.title) \(self.name.first) \(self.name.last)"
+    }
+}

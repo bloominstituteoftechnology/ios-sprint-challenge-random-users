@@ -35,9 +35,9 @@ class RandomUserController {
             
             do {
                 let decoder = JSONDecoder()
-                let randomUsers = try decoder.decode([RandomUser].self, from: data)
-                self.users = randomUsers
-                completion(randomUsers, nil)
+                let results = try decoder.decode(Results.self, from: data)
+                self.users = results.results
+                completion(self.users, nil)
             } catch {
                 print("Error: \(error.localizedDescription)")
             }
