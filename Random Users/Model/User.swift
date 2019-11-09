@@ -69,3 +69,20 @@ struct User: Codable {
         try pictureContainer.encode(pictureLarge, forKey: .large)
     }
 }
+
+struct Results: Decodable {
+    var users: [User]
+    
+    enum ResultsKeys: String, CodingKey {
+        case results
+    }
+    
+    init(from decoder: Decoder) throws {
+        users = []
+        let container = try decoder.container(keyedBy: ResultsKeys.self)
+//        while !container.isAtEnd {
+//            users.append(try container.decode(User.self))
+//        }
+        users = try container.decode([User].self, forKey: .results)
+    }
+}
