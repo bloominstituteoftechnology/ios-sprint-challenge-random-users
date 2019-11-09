@@ -11,6 +11,9 @@ import UIKit
 class PeopleTableViewController: UITableViewController {
     
     var personController = PersonController()
+    let cache = Cache<String, Data>()
+    var operations = [String: Operation]()
+    let personFetchQueue = OperationQueue()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,12 +37,53 @@ class PeopleTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PersonCell", for: indexPath)
-
-        let person = personController.people[indexPath.row]
-        cell.textLabel?.text = person.name
-        cell.imageView?.image = UIImage(named: "\(person.picture)")
-
+        self.loadPicture(forCell: cell, forRowAt: indexPath)
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let personReference = personController.people[indexPath.row]
+        operations[personReference.name]?.cancel()
+    }
+    
+    private func loadPicture(forCell cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let personReference = personController.people[indexPath.row]
+        
+        if let cachedData = self.cache.value(for: personReference.name),
+            let picture = UIImage(data: cachedData) {
+            cell.imageView?.image = picture
+            cell.textLabel?.text = personReference.name
+            return
+        }
+        
+        let fetchPersonOp = FetchPersonOperation(person: personReference)
+        let cachedOp = BlockOperation {
+            if let data = fetchPersonOp.photoData {
+                self.cache.cache(value: data, for: personReference.name)
+            }
+        }
+        
+        let checkOp = BlockOperation {
+            defer { self.operations.removeValue(forKey: personReference.name) }
+            
+            if let currentIndexPath = self.tableView.indexPath(for: cell),
+                currentIndexPath != indexPath {
+                return
+            }
+            
+            if let photoData = fetchPersonOp.photoData {
+                cell.imageView?.image = UIImage(data: photoData)
+                cell.textLabel?.text = personReference.name
+            }
+        }
+        
+        cachedOp.addDependency(fetchPersonOp)
+        checkOp.addDependency(fetchPersonOp)
+        personFetchQueue.addOperation(fetchPersonOp)
+        personFetchQueue.addOperation(checkOp)
+        OperationQueue.main.addOperation(checkOp)
+        
+        self.operations[personReference.name] = fetchPersonOp
     }
 
     /*
