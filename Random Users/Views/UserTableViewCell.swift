@@ -13,10 +13,21 @@ class UserTableViewCell: UITableViewCell {
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     
-
+    var user: User?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        updateViews()
+    }
+    
+    private func updateViews() {
+        guard let user = user else { return }
+        
+        let fullName = "\(user.title + user.first + user.last)"
+        if let data = try? Data(contentsOf: user.thumbnail) {
+            userImageView.image = UIImage(data: data)
+        }
+        userNameLabel.text = fullName
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

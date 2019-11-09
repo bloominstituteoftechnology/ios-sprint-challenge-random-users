@@ -44,6 +44,7 @@ class UserController {
             do {
                 let user = try decoder.decode(User.self, from: data)
                 completion(.success(user))
+                self.users.append(user)
                 
             } catch {
                 print("Error decoding User object: \(error)")
