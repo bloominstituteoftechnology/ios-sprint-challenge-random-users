@@ -40,12 +40,13 @@ class PersonController {
             }
             
             do {
-                let people = try JSONDecoder().decode(Person.self, from: data)
-                self.people.append(people)
+                let people = try JSONDecoder().decode(People.self, from: data)
+                self.people = people.people
                 completion(nil)
             } catch {
                 print("Error decoding people: \(error)")
                 completion(error)
+                return
             }
         }.resume()
         

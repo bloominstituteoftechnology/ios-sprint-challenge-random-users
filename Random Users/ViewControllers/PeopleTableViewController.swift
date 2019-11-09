@@ -36,8 +36,8 @@ class PeopleTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PersonCell", for: indexPath)
 
         let person = personController.people[indexPath.row]
-        cell.textLabel?.text = "\(person.name.first) \(person.name.last)"
-        cell.imageView?.image = UIImage(named: "\(person.picture.large)")
+        cell.textLabel?.text = person.name
+        cell.imageView?.image = UIImage(named: "\(person.picture)")
 
         return cell
     }
