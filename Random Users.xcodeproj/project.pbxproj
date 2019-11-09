@@ -10,6 +10,8 @@
 		3764C3D323772C420070642B /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3764C3D223772C420070642B /* UsersTableViewController.swift */; };
 		3764C3D523772C8B0070642B /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3764C3D423772C8B0070642B /* UserDetailViewController.swift */; };
 		3764C3D823772EC60070642B /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3764C3D723772EC60070642B /* UserTableViewCell.swift */; };
+		3764C3DB237731F60070642B /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3764C3DA237731F60070642B /* UserController.swift */; };
+		3764C3DE2377329B0070642B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3764C3DD2377329B0070642B /* User.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -21,6 +23,8 @@
 		3764C3D223772C420070642B /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		3764C3D423772C8B0070642B /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		3764C3D723772EC60070642B /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		3764C3DA237731F60070642B /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		3764C3DD2377329B0070642B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -58,6 +62,23 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		3764C3D9237731DC0070642B /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+				3764C3DA237731F60070642B /* UserController.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		3764C3DC2377328B0070642B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3764C3DD2377329B0070642B /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
@@ -77,7 +98,8 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
-				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+				3764C3DC2377328B0070642B /* Models */,
+				3764C3D9237731DC0070642B /* Application */,
 				3764C3D123772B940070642B /* View Controllers */,
 				3764C3D623772EAA0070642B /* Views */,
 				9D5CCA56214231E400224681 /* Operations */,
@@ -177,11 +199,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3764C3DB237731F60070642B /* UserController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				3764C3D523772C8B0070642B /* UserDetailViewController.swift in Sources */,
 				3764C3D323772C420070642B /* UsersTableViewController.swift in Sources */,
 				3764C3D823772EC60070642B /* UserTableViewCell.swift in Sources */,
+				3764C3DE2377329B0070642B /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
