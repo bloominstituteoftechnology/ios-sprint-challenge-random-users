@@ -29,10 +29,14 @@ class PersonDetailViewController: UIViewController {
     func updateViews() {
         if isViewLoaded {
             if let person = person {
-                personImageView.image = UIImage(named: "\(person.picture.absoluteString)")
+                
                 nameLabel.text = person.name
                 phoneNumberLabel.text = person.phone
                 emailAddressLabel.text = person.email
+                
+                if let data = try? Data(contentsOf: person.picture) {
+                    personImageView.image = UIImage(data: data)
+                }
             }
         }
     }

@@ -81,8 +81,10 @@ class PeopleTableViewController: UITableViewController {
         
         cachedOp.addDependency(fetchPersonOp)
         checkOp.addDependency(fetchPersonOp)
+        
         personFetchQueue.addOperation(fetchPersonOp)
-        personFetchQueue.addOperation(checkOp)
+        personFetchQueue.addOperation(cachedOp)
+        
         OperationQueue.main.addOperation(checkOp)
         
         self.operations[personReference.name] = fetchPersonOp
