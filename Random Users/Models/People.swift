@@ -49,7 +49,7 @@ struct Person: Codable {
         let first = try nameContainer.decode(String.self, forKey: .first)
         let last = try nameContainer.decode(String.self, forKey: .last)
         
-        fullNameAndTitle = "\(title) + \(first) + \(last)"
+        fullNameAndTitle = "\(title) \(first) \(last)"
         self.name = fullNameAndTitle
         
         self.email = try container.decode(String.self, forKey: .email)
