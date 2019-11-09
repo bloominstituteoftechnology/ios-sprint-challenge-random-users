@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3764C3D323772C420070642B /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3764C3D223772C420070642B /* UsersTableViewController.swift */; };
+		3764C3D523772C8B0070642B /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3764C3D423772C8B0070642B /* UserDetailViewController.swift */; };
+		3764C3D823772EC60070642B /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3764C3D723772EC60070642B /* UserTableViewCell.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -15,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3764C3D223772C420070642B /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
+		3764C3D423772C8B0070642B /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		3764C3D723772EC60070642B /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -35,6 +41,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3764C3D123772B940070642B /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3764C3D223772C420070642B /* UsersTableViewController.swift */,
+				3764C3D423772C8B0070642B /* UserDetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		3764C3D623772EAA0070642B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3764C3D723772EC60070642B /* UserTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
@@ -55,6 +78,8 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+				3764C3D123772B940070642B /* View Controllers */,
+				3764C3D623772EAA0070642B /* Views */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
@@ -112,6 +137,7 @@
 				TargetAttributes = {
 					8ED6A9832140178A00FC395A = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1120;
 					};
 				};
 			};
@@ -153,6 +179,9 @@
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				3764C3D523772C8B0070642B /* UserDetailViewController.swift in Sources */,
+				3764C3D323772C420070642B /* UsersTableViewController.swift in Sources */,
+				3764C3D823772EC60070642B /* UserTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,7 +334,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LambdaSchool.RandomUsers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -323,7 +352,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LambdaSchool.RandomUsers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
