@@ -14,7 +14,6 @@ class PeopleTableViewController: UITableViewController {
     private let fetchImageQueue = OperationQueue()
     let cache = Cache<String, Data>()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         PeopleController.shared.fetchPeople { (_) in
@@ -30,6 +29,11 @@ class PeopleTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -50,31 +54,36 @@ class PeopleTableViewController: UITableViewController {
         let person = people[indexPath.row]
         cell.nameLabel.text = person.name
         
-        let image = fetchImage(forCell: cell, forItemAt: indexPath)
-        
-        cell.personImageView.image = image
+        DispatchQueue.main.async {
+            cell.personImageView.image = self.fetchImage(forCell: cell, forItemAt: indexPath)
+        }
 
         return cell
     }
 
     
-    /*
+    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "ShowPersonDetailSegue" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let person = people[indexPath.row]
+                if let personDetailVC = segue.destination as? PersonDetailViewController {
+                    personDetailVC.person = person
+                }
+            }
+        }
     }
-    */
+    
     
     func fetchImage(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) -> UIImage? {
     
         let person = people[indexPath.row]
-        var image = UIImage()
-        if let defaultImage = "👤".image() {
-            image = defaultImage
-        }
+        var image = "👤".image()!
         
         if let cachedData = cache.value(for: person.pictureURL) {
             guard let picture = UIImage(data: cachedData) else { return image}
@@ -97,7 +106,6 @@ class PeopleTableViewController: UITableViewController {
             if let newIndices = self.tableView.indexPathsForVisibleRows {
                 if newIndices.contains(indexPath) {
                     image = UIImage(data: data)!
-                    
                 }
             }
         }
@@ -111,5 +119,11 @@ class PeopleTableViewController: UITableViewController {
         
         return image
     }
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        fetchImageQueue.cancelAllOperations()
+    }
 
 }
+
+

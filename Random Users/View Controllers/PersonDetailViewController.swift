@@ -15,22 +15,42 @@ class PersonDetailViewController: UIViewController {
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
+    var person: Person?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        loadImage()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func updateViews() {
+        guard let person = person else { return }
+        
+        nameLabel.text = "Name: \(person.name)"
+        numberLabel.text = "Phone: \(person.phone)"
+        emailLabel.text = "Email: \(person.email)"
     }
-    */
+    
+    func loadImage() {
+        guard let person = person else { return }
+        let url = URL(string: person.pictureURL)!
+        
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
+            
+            if let error = error {
+                print("Error fetching image: \(error)")
+                return
+            }
+            
+            guard let data = data else { return }
+            
+            let image = UIImage(data: data)
+            
+            DispatchQueue.main.async {
+                self.personImageView.image = image
+                self.updateViews()
+            }
+            
+        }.resume()
+    }
 
 }
