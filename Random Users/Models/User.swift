@@ -13,8 +13,8 @@ struct User: Codable {
     let title: String
     let first: String
     let last: String
-    let emailAddress: String
-    let phoneNumber: String
+    let email: String
+    let phone: String
     let thumbnail: URL
     
     enum ResultsCodingKeys: String, CodingKey {
@@ -23,8 +23,8 @@ struct User: Codable {
     
     enum UserCodingKeys: String, CodingKey {
         case name
-        case emailAddress
-        case phoneNumber
+        case email
+        case phone
         case picture
     }
     
@@ -40,18 +40,37 @@ struct User: Codable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: ResultsCodingKeys.self)
-        let resultsContainer = try container.nestedContainer(keyedBy: UserCodingKeys.self, forKey: .results)
         
-        let nameContainer = try resultsContainer.nestedContainer(keyedBy: NameCodingKeys.self, forKey: .name)
+        
+        var resultsContainer = try container.nestedUnkeyedContainer(forKey: .results)
+        
+        let nameContainer = try resultsContainer.nestedContainer(keyedBy: NameCodingKeys.self)
         title = try nameContainer.decode(String.self, forKey: .title)
         first = try nameContainer.decode(String.self, forKey: .first)
         last = try nameContainer.decode(String.self, forKey: .last)
-        
-        let pictureContainer = try resultsContainer.nestedContainer(keyedBy: PictureCodingKeys.self, forKey: .picture)
+               
+        email = try resultsContainer.decode(String.self)
+        phone = try resultsContainer.decode(String.self)
+               
+        let pictureContainer = try resultsContainer.nestedContainer(keyedBy: PictureCodingKeys.self)
         thumbnail = try pictureContainer.decode(URL.self, forKey: .thumbnail)
         
-        emailAddress = try resultsContainer.decode(String.self, forKey: .emailAddress)
-        phoneNumber = try resultsContainer.decode(String.self, forKey: .phoneNumber)
+       
+        
+        
+        
+        
+//
+//        let nameContainer = try resultsContainer.nestedContainer(keyedBy: NameCodingKeys.self, forKey: .name)
+//        title = try nameContainer.decode(String.self, forKey: .title)
+//        first = try nameContainer.decode(String.self, forKey: .first)
+//        last = try nameContainer.decode(String.self, forKey: .last)
+//
+//        let pictureContainer = try resultsContainer.nestedContainer(keyedBy: PictureCodingKeys.self, forKey: .picture)
+//        thumbnail = try pictureContainer.decode(URL.self, forKey: .thumbnail)
+//
+//        email = try resultsContainer.decode(String.self, forKey: .email)
+//        phone = try resultsContainer.decode(String.self, forKey: .phone)
         
     }
     
