@@ -15,7 +15,7 @@ class PeopleController {
     
     static var shared = PeopleController()
     
-    var peopleResults: [People] = []
+    var results: [People] = []
     
     func fetchPeople(completion: @escaping (Error?) -> Void) {
         
@@ -35,7 +35,7 @@ class PeopleController {
             do {
                 let jsonDecoder = JSONDecoder()
                 let results = try jsonDecoder.decode(People.self, from: data)
-                self.peopleResults.append(results)
+                self.results.append(results)
                 completion(nil)
             } catch {
                 print("Error decoding people from data: \(error)")
