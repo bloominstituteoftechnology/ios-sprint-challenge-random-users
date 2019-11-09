@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--People Table View Controller-->
         <scene sceneID="ni8-BM-EMj">
             <objects>
-                <tableViewController id="c65-Mg-ii4" sceneMemberID="viewController">
+                <tableViewController id="c65-Mg-ii4" customClass="PeopleTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="X16-fe-57g">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -40,10 +40,10 @@
             </objects>
             <point key="canvasLocation" x="620" y="185"/>
         </scene>
-        <!--View Controller-->
+        <!--Person Detail View Controller-->
         <scene sceneID="EQo-Bx-VEm">
             <objects>
-                <viewController id="vdz-eM-Qb0" sceneMemberID="viewController">
+                <viewController id="vdz-eM-Qb0" customClass="PersonDetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zh2-3Y-0ZS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -88,6 +88,12 @@
                         <viewLayoutGuide key="safeArea" id="CWx-ij-tMy"/>
                     </view>
                     <navigationItem key="navigationItem" id="B18-hg-Y4a"/>
+                    <connections>
+                        <outlet property="emailAddressLabel" destination="WZ5-Wm-hCr" id="3Hm-9k-WWz"/>
+                        <outlet property="nameLabel" destination="4Pn-n1-LEm" id="ORT-6L-cuT"/>
+                        <outlet property="personImageView" destination="qCE-E0-Fof" id="YoL-sQ-qxE"/>
+                        <outlet property="phoneNumberLabel" destination="AWI-Aa-lGI" id="haS-0R-Xm6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Qj-VX-kwG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
