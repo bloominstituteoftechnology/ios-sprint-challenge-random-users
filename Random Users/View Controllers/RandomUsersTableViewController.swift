@@ -9,7 +9,10 @@
 import UIKit
 
 class RandomUsersTableViewController: UITableViewController {
-    var randomUserController = RandomUserController()
+    private let cache = Cache<String, UIImage>()
+    private let operationCache = Cache<String, Operation>()
+    private let pictureFetchQueue = OperationQueue()
+    private var randomUserController = RandomUserController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +42,7 @@ class RandomUsersTableViewController: UITableViewController {
         let user = self.randomUserController.users[indexPath.row]
 
         cell.textLabel?.text = user.fullName
-        
-//        cell.imageView?.image = UIImage(
+        loadImage(forCell: cell, forItemAt: indexPath)
         return cell
     }
 
@@ -88,5 +90,39 @@ class RandomUsersTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // MARK: - Private
+    func loadImage(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+        
+        let user = randomUserController.users[indexPath.row]
+        
+        // check to see if the cache already contains data for the given picture
+        if let picture = cache.value(for: user.email) {
+            cell.imageView?.image = picture
+            return
+        }
+        
+        let fetchOp = FetchPictureOperation(url: user.picture.thumbnail)
+        
+        let cacheOp = BlockOperation {
+            if let picture = fetchOp.image {
+                self.cache.cache(value: picture, for: user.email)
+            }
+        }
+        
+        let setOp = BlockOperation {
+            DispatchQueue.main.async {
+                if self.tableView.indexPath(for: cell) == indexPath {
+                    cell.imageView?.image = fetchOp.image
+                }
+            }
+        }
+        
+        setOp.addDependency(fetchOp)
+        cacheOp.addDependency(fetchOp)
+        pictureFetchQueue.addOperations([fetchOp, cacheOp, setOp], waitUntilFinished: false)
+        
+        self.operationCache.cache(value: fetchOp, for: user.email)
+    }
 
 }
