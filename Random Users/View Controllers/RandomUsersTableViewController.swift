@@ -45,6 +45,12 @@ class RandomUsersTableViewController: UITableViewController {
         loadImage(forCell: cell, forItemAt: indexPath)
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let user = self.randomUserController.users[indexPath.row]
+        let fetchOp = operationCache.value(for: user.email)
+        fetchOp?.cancel()
+    }
 
     /*
     // Override to support conditional editing of the table view.
