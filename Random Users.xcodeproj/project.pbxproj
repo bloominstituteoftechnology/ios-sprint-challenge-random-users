@@ -12,6 +12,7 @@
 		294CD4AC23772A3C003A7095 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294CD4AB23772A3C003A7095 /* Person.swift */; };
 		294CD4AF23772EDE003A7095 /* PersonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294CD4AE23772EDE003A7095 /* PersonController.swift */; };
 		294CD4B12377397C003A7095 /* FetchPersonOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294CD4B02377397C003A7095 /* FetchPersonOperation.swift */; };
+		294CD4B323773A82003A7095 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294CD4B223773A82003A7095 /* Cache.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 		294CD4AB23772A3C003A7095 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		294CD4AE23772EDE003A7095 /* PersonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonController.swift; sourceTree = "<group>"; };
 		294CD4B02377397C003A7095 /* FetchPersonOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPersonOperation.swift; sourceTree = "<group>"; };
+		294CD4B223773A82003A7095 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -49,6 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				294CD4AB23772A3C003A7095 /* Person.swift */,
+				294CD4B223773A82003A7095 /* Cache.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 			files = (
 				294CD4AC23772A3C003A7095 /* Person.swift in Sources */,
 				294CD4AA23772953003A7095 /* PersonDetailViewController.swift in Sources */,
+				294CD4B323773A82003A7095 /* Cache.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				294CD4A823772947003A7095 /* PeopleTableViewController.swift in Sources */,
 				294CD4AF23772EDE003A7095 /* PersonController.swift in Sources */,
