@@ -16,6 +16,7 @@ class PersonDetailViewController: UIViewController {
     @IBOutlet weak var emailLabel: UILabel!
     
     var person: Person?
+    var cache: Cache<String, Data>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,26 +32,33 @@ class PersonDetailViewController: UIViewController {
     }
     
     func loadImage() {
-        guard let person = person else { return }
-        let url = URL(string: person.pictureURL)!
         
-        URLSession.shared.dataTask(with: url) { (data, _, error) in
-            
-            if let error = error {
-                print("Error fetching image: \(error)")
-                return
+        guard let person = person, let cache = cache else { return }
+        
+        if let cachedData = cache.value(for: person.pictureURL) {
+            if let picture = UIImage(data: cachedData) {
+                personImageView.image = picture
+                updateViews()
             }
+        } else {
+            let url = URL(string: person.pictureURL)!
             
-            guard let data = data else { return }
-            
-            let image = UIImage(data: data)
-            
-            DispatchQueue.main.async {
-                self.personImageView.image = image
-                self.updateViews()
-            }
-            
-        }.resume()
+            URLSession.shared.dataTask(with: url) { (data, _, error) in
+                
+                if let error = error {
+                    print("Error fetching image: \(error)")
+                    return
+                }
+                
+                guard let data = data else { return }
+                
+                let image = UIImage(data: data)
+                
+                DispatchQueue.main.async {
+                    self.personImageView.image = image
+                    self.updateViews()
+                }
+            }.resume()
+        }
     }
-
 }

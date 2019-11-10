@@ -12,16 +12,20 @@ class PeopleTableViewController: UITableViewController {
 
     private var people: [Person] = []
     private let fetchImageQueue = OperationQueue()
-    let cache = Cache<String, Data>()
+    var cache = Cache<String, Data>()
+    private var photoReferences = [String]()
+    var operationsDictionary = [ String: Operation ]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         PeopleController.shared.fetchPeople { (_) in
             
-            for results in PeopleController.shared.results {
-                let peopleResults = results.results
-                for person in peopleResults {
+            for people in PeopleController.shared.results {
+                let allPeople = people.results
+                for person in allPeople {
                     self.people.append(person)
+                    self.photoReferences.append(person.pictureURL)
                 }
             }
             
@@ -53,10 +57,7 @@ class PeopleTableViewController: UITableViewController {
         
         let person = people[indexPath.row]
         cell.nameLabel.text = person.name
-        
-        DispatchQueue.main.async {
-            cell.personImageView.image = self.fetchImage(forCell: cell, forItemAt: indexPath)
-        }
+        fetchImage(forCell: cell, forItemAt: indexPath)
 
         return cell
     }
@@ -74,20 +75,24 @@ class PeopleTableViewController: UITableViewController {
                 let person = people[indexPath.row]
                 if let personDetailVC = segue.destination as? PersonDetailViewController {
                     personDetailVC.person = person
+                    personDetailVC.cache = cache
                 }
             }
         }
     }
     
     
-    func fetchImage(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) -> UIImage? {
+    func fetchImage(forCell cell: PersonTableViewCell, forItemAt indexPath: IndexPath) {
     
+        let photoUrlString = photoReferences[indexPath.row]
         let person = people[indexPath.row]
-        var image = "👤".image()!
         
-        if let cachedData = cache.value(for: person.pictureURL) {
-            guard let picture = UIImage(data: cachedData) else { return image}
-            image = picture
+        if let cachedData = cache.value(for: photoUrlString) {
+            guard let picture = UIImage(data: cachedData) else { return }
+            
+            DispatchQueue.main.async {
+                cell.personImageView.image = picture
+            }
         }
         
         // Operations
@@ -99,31 +104,32 @@ class PeopleTableViewController: UITableViewController {
             self.cache.cache(value: data, for: person.pictureURL)
         }
         
-        let getImageOP = BlockOperation {
+        let uiOP = BlockOperation {
             guard let data = fetchOP.imageData else { return }
             
-            
-            if let newIndices = self.tableView.indexPathsForVisibleRows {
-                if newIndices.contains(indexPath) {
-                    image = UIImage(data: data)!
+            DispatchQueue.main.async {
+                if let newIndices = self.tableView.indexPathsForVisibleRows {
+                    if newIndices.contains(indexPath) {
+                        let image = UIImage(data: data)!
+                            cell.personImageView.image = image
+                    }
                 }
             }
         }
         
         cacheOP.addDependency(fetchOP)
-        getImageOP.addDependency(fetchOP)
+        uiOP.addDependency(fetchOP)
         
-        fetchImageQueue.addOperations([fetchOP, cacheOP], waitUntilFinished: true)
-        let mainQueue = OperationQueue.main
-        mainQueue.addOperations([getImageOP], waitUntilFinished: false)
+        fetchImageQueue.addOperations([fetchOP, cacheOP, uiOP], waitUntilFinished: false)
         
-        return image
+        operationsDictionary[photoUrlString] = uiOP
     }
     
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        fetchImageQueue.cancelAllOperations()
+        let photoUrlString = photoReferences[indexPath.row]
+        operationsDictionary[photoUrlString]?.cancel()
     }
-
+    
 }
 
 
