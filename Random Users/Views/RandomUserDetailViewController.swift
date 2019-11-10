@@ -24,8 +24,9 @@ class RandomUserDetailViewController: UIViewController {
 
     func updateViews() {
         guard let user = user else { return }
-        
-        imgUser.image = UIImage()
+        if let data = try? Data(contentsOf: user.pictureLarge) {
+            imgUser.image = UIImage(data: data)
+        }
         lblName.text = "\(user.title) \(user.firstName) \(user.lastName)"
         lblPhone.text = user.phone
         lblEmail.text = user.email

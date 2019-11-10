@@ -25,5 +25,6 @@ class LoadImageOperation: ConcurrentOperation {
                 self.image = image
             }
         }
+        state = .isFinished
     }
 }

@@ -14,22 +14,31 @@ class RandomUserTableViewCell: UITableViewCell {
     @IBOutlet weak var lblName: UILabel!
     
     var user: User? { didSet { updateViews() } }
+    var loadOp: LoadImageOperation?
+    var displayOp: DisplayImageOperation?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
     func updateViews() {
         guard let user = user else { return }
         
         lblName.text = ("\(user.firstName) \(user.lastName)")
+        loadOp = LoadImageOperation(url: user.thumbnail)
+        guard let loadOp = loadOp else { return }
+        displayOp = DisplayImageOperation(getImageFrom: loadOp, displayIn: self)
+        guard let displayOp = displayOp else { return }
+        displayOp.addDependency(loadOp)
+        let queue = OperationQueue()
+        queue.addOperations([loadOp, displayOp], waitUntilFinished: false)
+    }
+    
+    override func prepareForReuse() {
+        guard let loadOp = loadOp, let displayOp = displayOp else { return }
+        loadOp.cancel()
+        displayOp.cancel()
     }
 
 }
