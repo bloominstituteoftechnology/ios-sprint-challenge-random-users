@@ -12,6 +12,7 @@ import UIKit
 class LoadImageOperation: ConcurrentOperation {
     let url: URL
     var image: UIImage?
+    var data: Data?
     
     init(url: URL) {
         self.url = url
@@ -21,6 +22,7 @@ class LoadImageOperation: ConcurrentOperation {
     override func main() {
         guard !isCancelled else { return }
         if let data = try? Data(contentsOf: url) {
+            self.data = data
             if let image = UIImage(data: data) {
                 self.image = image
             }

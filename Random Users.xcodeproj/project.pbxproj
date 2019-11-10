@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D1331DE2377EDB100322ACE /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1331DD2377EDB100322ACE /* ImageCache.swift */; };
+		5D6888662377F2C600B5CA8B /* CacheThumbnailOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6888652377F2C600B5CA8B /* CacheThumbnailOperation.swift */; };
 		5D6B8D5823772C8100CF9A75 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6B8D5723772C8100CF9A75 /* User.swift */; };
 		5D6B8D5B2377346B00CF9A75 /* RandomUserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6B8D5A2377346B00CF9A75 /* RandomUserDetailViewController.swift */; };
 		5D6B8D5D2377348200CF9A75 /* RandomUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6B8D5C2377348200CF9A75 /* RandomUsersTableViewController.swift */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5D1331DD2377EDB100322ACE /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		5D6888652377F2C600B5CA8B /* CacheThumbnailOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheThumbnailOperation.swift; sourceTree = "<group>"; };
 		5D6B8D5723772C8100CF9A75 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5D6B8D5A2377346B00CF9A75 /* RandomUserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserDetailViewController.swift; sourceTree = "<group>"; };
 		5D6B8D5C2377348200CF9A75 /* RandomUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersTableViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				5D6B8D61237739AB00CF9A75 /* UserController.swift */,
+				5D1331DD2377EDB100322ACE /* ImageCache.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -121,6 +126,7 @@
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
 				5D6B8D652377CA9B00CF9A75 /* LoadImageOperation.swift */,
 				5D6B8D672377D9B100CF9A75 /* DisplayImageOperation.swift */,
+				5D6888652377F2C600B5CA8B /* CacheThumbnailOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -196,6 +202,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D1331DE2377EDB100322ACE /* ImageCache.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				5D6B8D5F237737F800CF9A75 /* RandomUserTableViewCell.swift in Sources */,
 				5D6B8D5B2377346B00CF9A75 /* RandomUserDetailViewController.swift in Sources */,
@@ -205,6 +212,7 @@
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				5D6B8D5823772C8100CF9A75 /* User.swift in Sources */,
 				5D6B8D662377CA9B00CF9A75 /* LoadImageOperation.swift in Sources */,
+				5D6888662377F2C600B5CA8B /* CacheThumbnailOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

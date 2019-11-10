@@ -26,13 +26,20 @@ class RandomUserTableViewCell: UITableViewCell {
         guard let user = user else { return }
         
         lblName.text = ("\(user.firstName) \(user.lastName)")
-        loadOp = LoadImageOperation(url: user.thumbnail)
-        guard let loadOp = loadOp else { return }
-        displayOp = DisplayImageOperation(getImageFrom: loadOp, displayIn: self)
-        guard let displayOp = displayOp else { return }
-        displayOp.addDependency(loadOp)
-        let queue = OperationQueue()
-        queue.addOperations([loadOp, displayOp], waitUntilFinished: false)
+        
+        if let data = ImageCache.shared.value(for: user.thumbnail) {
+            imgThumbnail.image = UIImage(data: data)
+        } else {
+            loadOp = LoadImageOperation(url: user.thumbnail)
+            guard let loadOp = loadOp else { return }
+            displayOp = DisplayImageOperation(getImageFrom: loadOp, displayIn: self)
+            guard let displayOp = displayOp else { return }
+            displayOp.addDependency(loadOp)
+            let queue = OperationQueue()
+            queue.addOperations([loadOp, displayOp], waitUntilFinished: false)
+        }
+        
+        
     }
     
     override func prepareForReuse() {
