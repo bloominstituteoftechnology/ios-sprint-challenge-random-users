@@ -48,7 +48,7 @@
                                 <connections>
                                     <outlet property="imgThumbnail" destination="Mcv-Ah-hdv" id="bLD-ek-c3h"/>
                                     <outlet property="lblName" destination="Ptr-gd-PGI" id="srM-y8-QhO"/>
-                                    <segue destination="bXS-c7-mJK" kind="show" id="Et8-WB-nTn"/>
+                                    <segue destination="bXS-c7-mJK" kind="show" identifier="ShowUserDetail" id="Et8-WB-nTn"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -89,9 +89,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNq-Dh-JIT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNq-Dh-JIT">
                                 <rect key="frame" x="20" y="488" width="335" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -100,11 +99,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Qbp-nO-uqg" firstAttribute="top" secondItem="WBO-bY-bog" secondAttribute="top" constant="20" id="6dj-c7-YFi"/>
+                            <constraint firstItem="CNq-Dh-JIT" firstAttribute="top" secondItem="KBs-ln-o5b" secondAttribute="bottom" constant="8" id="AoX-AV-5gr"/>
                             <constraint firstItem="1vi-Hu-Nff" firstAttribute="leading" secondItem="WBO-bY-bog" secondAttribute="leading" constant="20" id="Bxw-Wb-sVM"/>
                             <constraint firstItem="KBs-ln-o5b" firstAttribute="top" secondItem="1vi-Hu-Nff" secondAttribute="bottom" constant="8" id="Loy-p1-tEW"/>
+                            <constraint firstItem="CNq-Dh-JIT" firstAttribute="leading" secondItem="WBO-bY-bog" secondAttribute="leading" constant="20" id="SBn-4Y-YQZ"/>
                             <constraint firstItem="WBO-bY-bog" firstAttribute="trailing" secondItem="1vi-Hu-Nff" secondAttribute="trailing" constant="20" id="Vf5-wT-NGX"/>
                             <constraint firstItem="WBO-bY-bog" firstAttribute="trailing" secondItem="KBs-ln-o5b" secondAttribute="trailing" constant="20" id="Z8f-VV-nsO"/>
                             <constraint firstItem="WBO-bY-bog" firstAttribute="trailing" secondItem="Qbp-nO-uqg" secondAttribute="trailing" constant="20" id="f9d-RV-05W"/>
+                            <constraint firstItem="WBO-bY-bog" firstAttribute="trailing" secondItem="CNq-Dh-JIT" secondAttribute="trailing" constant="20" id="fPl-XM-2VY"/>
                             <constraint firstItem="KBs-ln-o5b" firstAttribute="leading" secondItem="WBO-bY-bog" secondAttribute="leading" constant="20" id="hbl-SB-GNe"/>
                             <constraint firstItem="1vi-Hu-Nff" firstAttribute="top" secondItem="Qbp-nO-uqg" secondAttribute="bottom" constant="20" id="l7j-S9-jht"/>
                             <constraint firstItem="Qbp-nO-uqg" firstAttribute="leading" secondItem="WBO-bY-bog" secondAttribute="leading" constant="20" id="n9I-NX-eXR"/>
@@ -137,7 +139,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8NE-Uw-mbP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-655" y="145"/>
+            <point key="canvasLocation" x="-543" y="144"/>
         </scene>
     </scenes>
 </document>

@@ -14,19 +14,21 @@ class RandomUserDetailViewController: UIViewController {
     @IBOutlet weak var lblPhone: UILabel!
     @IBOutlet weak var lblEmail: UILabel!
     
-    var user: User? { didSet { updateViews() } }
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        updateViews()
     }
     
 
     func updateViews() {
         guard let user = user else { return }
         
-        lblName.text = ("\(user.firstName) \(user.lastName)")
+        imgUser.image = UIImage()
+        lblName.text = "\(user.title) \(user.firstName) \(user.lastName)"
+        lblPhone.text = user.phone
+        lblEmail.text = user.email
     }
 
 }
