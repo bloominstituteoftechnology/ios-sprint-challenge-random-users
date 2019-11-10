@@ -62,3 +62,44 @@ class ConcurrentOperation: Operation {
     }
     
 }
+
+class FetchImageOperation: ConcurrentOperation {
+    
+    var urlSession: URLSessionDataTask?
+    var imageData: Data?
+    let person: Person?
+    
+    init(person: Person) {
+        self.person = person
+    }
+    
+    override func start() {
+        state = .isExecuting
+        
+        guard let pictureURLString = person?.pictureURL else { return }
+        
+        let url = URL(string: pictureURLString)!
+        
+        urlSession = URLSession.shared.dataTask(with: url) { (data, _, error) in
+            
+            defer { self.state = .isFinished }
+            
+            if let error = error {
+                print("Error fetching image: \(error)")
+                return
+            }
+            
+            guard let data = data else { return }
+            
+            self.imageData = data
+            
+        }
+        
+        urlSession?.resume()
+    }
+    
+    override func cancel() {
+        urlSession?.cancel()
+    }
+    
+}

@@ -11,6 +11,12 @@
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
 		8ED6A9922140178C00FC395A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */; };
+		9226B78A23772F4000EF696A /* PeopleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9226B78923772F4000EF696A /* PeopleTableViewController.swift */; };
+		9226B78C23772F5700EF696A /* PersonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9226B78B23772F5700EF696A /* PersonDetailViewController.swift */; };
+		9226B78E23772F6B00EF696A /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9226B78D23772F6B00EF696A /* PersonTableViewCell.swift */; };
+		9226B7912377341900EF696A /* People.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9226B7902377341900EF696A /* People.swift */; };
+		9226B79423773B5600EF696A /* PeopleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9226B79323773B5600EF696A /* PeopleController.swift */; };
+		9226B796237749DB00EF696A /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9226B795237749DB00EF696A /* Cache.swift */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
 /* End PBXBuildFile section */
 
@@ -21,6 +27,12 @@
 		8ED6A98E2140178C00FC395A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8ED6A9912140178C00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ED6A9932140178C00FC395A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9226B78923772F4000EF696A /* PeopleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewController.swift; sourceTree = "<group>"; };
+		9226B78B23772F5700EF696A /* PersonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailViewController.swift; sourceTree = "<group>"; };
+		9226B78D23772F6B00EF696A /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
+		9226B7902377341900EF696A /* People.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = People.swift; sourceTree = "<group>"; };
+		9226B79323773B5600EF696A /* PeopleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleController.swift; sourceTree = "<group>"; };
+		9226B795237749DB00EF696A /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -54,11 +66,49 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
+				9226B79223773B4200EF696A /* Networking */,
+				9226B78F237732DE00EF696A /* Models */,
+				9226B78823772F2500EF696A /* Custom Views */,
+				9226B78723772F1800EF696A /* View Controllers */,
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
 			path = "Random Users";
+			sourceTree = "<group>";
+		};
+		9226B78723772F1800EF696A /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9226B78923772F4000EF696A /* PeopleTableViewController.swift */,
+				9226B78B23772F5700EF696A /* PersonDetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		9226B78823772F2500EF696A /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				9226B78D23772F6B00EF696A /* PersonTableViewCell.swift */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		9226B78F237732DE00EF696A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9226B7902377341900EF696A /* People.swift */,
+				9226B795237749DB00EF696A /* Cache.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9226B79223773B4200EF696A /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				9226B79323773B5600EF696A /* PeopleController.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		9D5CCA522142305600224681 /* Resources */ = {
@@ -151,7 +201,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9226B78C23772F5700EF696A /* PersonDetailViewController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				9226B796237749DB00EF696A /* Cache.swift in Sources */,
+				9226B78A23772F4000EF696A /* PeopleTableViewController.swift in Sources */,
+				9226B79423773B5600EF696A /* PeopleController.swift in Sources */,
+				9226B78E23772F6B00EF696A /* PersonTableViewCell.swift in Sources */,
+				9226B7912377341900EF696A /* People.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
