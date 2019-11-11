@@ -97,6 +97,4 @@ class ContactsTableViewController: UITableViewController {
             userDetailVC.user = self.userController.users[indexPath.row]
         }
     }
-
-
 }
