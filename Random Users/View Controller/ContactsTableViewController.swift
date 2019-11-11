@@ -33,6 +33,9 @@ class ContactsTableViewController: UITableViewController {
         return self.userController.users.count
     }
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath)
@@ -97,4 +100,6 @@ class ContactsTableViewController: UITableViewController {
             userDetailVC.user = self.userController.users[indexPath.row]
         }
     }
+
+
 }
