@@ -58,14 +58,14 @@ struct User: Equatable, Decodable {
 }
 
 struct Users: Decodable {
-    let listOfContacts: [User]
+    let results: [User]
     
     enum UserKeys: String, CodingKey  {
-        case listOfContacts
+        case results
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: UserKeys.self)
-        self.listOfContacts = try container.decode([User].self, forKey: .listOfContacts)
+        self.results = try container.decode([User].self, forKey: .results)
     }
 }

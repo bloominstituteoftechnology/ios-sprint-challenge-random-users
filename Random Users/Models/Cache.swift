@@ -12,7 +12,7 @@ class Cache<Key: Hashable, Value> {
     private var cachedItems: [Key: Value] = [:]
     private let queue = DispatchQueue(label: "com.LambdaSchool.RandomUsers.CacheQueue")
     
-    func cache(value: Value?, for key: Key) {
+    func cache(value: Value, for key: Key) {
         queue.async {
             self.cachedItems[key] = value
         }

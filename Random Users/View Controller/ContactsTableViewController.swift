@@ -11,9 +11,9 @@ import UIKit
 class ContactsTableViewController: UITableViewController {
     
     let userController = UserController()
-    let cache = Cache<String, Data>()
-    var operations = [String : Operation]()
-    let fetchQueue = OperationQueue()
+    private let cache = Cache<String, Data>()
+    private var operations = [String : Operation]()
+    private let fetchQueue = OperationQueue()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +75,7 @@ class ContactsTableViewController: UITableViewController {
         cachedOperation.addDependency(fetchUserOperation)
         checkOperation.addDependency(fetchUserOperation)
         fetchQueue.addOperation(fetchUserOperation)
-        fetchQueue.addOperation(checkOperation)
+        fetchQueue.addOperation(cachedOperation)
         OperationQueue.main.addOperation(checkOperation)
         
         self.operations[userReference.name] = fetchUserOperation
@@ -85,32 +85,18 @@ class ContactsTableViewController: UITableViewController {
             let userReference = self.userController.users[indexPath.item]
             operations[userReference.name]?.cancel()
         }
-        
-        
-        
-        /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
 
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ContactDetailSegue" {
+            guard let userDetailVC = segue.destination as? ContactDetailViewController,
+                let indexPath = self.tableView.indexPathForSelectedRow else { return }
+            userDetailVC.user = self.userController.users[indexPath.row]
+        }
     }
-    */
+
 
 }

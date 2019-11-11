@@ -40,8 +40,10 @@ class UserController {
             completion(NSError())
             return
         }
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "GET"
         
-        URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
+        URLSession.shared.dataTask(with: request) { (data, _, error) in
             if let error = error {
                 NSLog("Error retrieving users: \(error)")
                 completion(error)
@@ -56,7 +58,7 @@ class UserController {
             
             do {
                 let contactResults = try JSONDecoder().decode(Users.self, from: data)
-                self.users = contactResults.listOfContacts
+                self.users = contactResults.results
                 completion(nil)
             } catch {
                 NSLog("Error decoding contacts: \(error)")

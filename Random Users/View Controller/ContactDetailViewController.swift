@@ -16,6 +16,12 @@ class ContactDetailViewController: UIViewController {
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
+    var user: User? {
+        didSet {
+            self.updateViews()
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +29,21 @@ class ContactDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    // MARK: Method
+    
+    private func updateViews() {
+        guard let user = self.user,
+            isViewLoaded else { return }
+        
+        self.nameLabel.text = user.name
+        self.emailLabel.text = user.email
+        self.phoneLabel.text = user.phone
+        
+        let url = user.largeImage
+        if let data = try? Data(contentsOf: url) {
+            self.contactImage.image = UIImage(data: data)
+        }
+    }
 
     /*
     // MARK: - Navigation
