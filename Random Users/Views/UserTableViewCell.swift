@@ -23,11 +23,12 @@ class UserTableViewCell: UITableViewCell {
     private func updateViews() {
         guard let user = user else { return }
         
-        let fullName = "\(user.title + user.first + user.last)"
-        if let data = try? Data(contentsOf: user.thumbnail) {
-            userImageView.image = UIImage(data: data)
-        }
-        userNameLabel.text = fullName
+//        let fullName = "\(user.name)"
+        userImageView.image = UIImage(named: user.picture.thumbnail)
+//        if let data = try? Data(contentsOf: user.picture.thumbnail) {
+//            userImageView.image = UIImage(data: data)
+//        }
+        userNameLabel.text = user.name.title + user.name.first + user.name.last
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -25,7 +25,7 @@ class UserController {
     
     private let baseUrl = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
     
-    func searchForUsers(completion: @escaping (Result<User, NetworkError>) -> Void) {
+    func searchForUsers(completion: @escaping (Result<Results, NetworkError>) -> Void) {
         
         var request = URLRequest(url: baseUrl)
         request.httpMethod = HTTPMethod.get.rawValue
@@ -42,10 +42,9 @@ class UserController {
             let decoder = JSONDecoder()
             
             do {
-                let user = try decoder.decode(User.self, from: data)
-                completion(.success(user))
-                self.users.append(user)
-                
+                let results = try decoder.decode(Results.self, from: data)
+                completion(.success(results))
+                self.users = results.results
             } catch {
                 print("Error decoding User object: \(error)")
                 completion(.failure(.noDecode))
