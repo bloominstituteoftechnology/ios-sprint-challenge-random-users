@@ -45,6 +45,7 @@ class UserController {
                 let results = try decoder.decode(Results.self, from: data)
                 completion(.success(results))
                 self.users = results.results
+                print(self.users.count)
             } catch {
                 print("Error decoding User object: \(error)")
                 completion(.failure(.noDecode))
