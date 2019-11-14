@@ -12,24 +12,24 @@ class UsersTableViewController: UITableViewController {
     
     var userController = UserController()
     var user: User?
+    var users: [User] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 
     // MARK: - Table view data source
 
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userController.users.count
+        return self.users.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserTableViewCell else { return UITableViewCell() }
 
-        let user = userController.users[indexPath.row]
+        let user = self.users[indexPath.row]
         cell.user = user
         
         return cell
@@ -42,7 +42,8 @@ class UsersTableViewController: UITableViewController {
             DispatchQueue.main.async {
                 do {
                     let result = try result.get()
-                    self.user = result.results.first
+                    self.users = result.results
+                    self.tableView.reloadData()
                 } catch {
                     print("Error getting result: \(error)")
                 }

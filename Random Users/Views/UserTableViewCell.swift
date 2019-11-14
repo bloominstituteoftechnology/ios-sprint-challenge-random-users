@@ -13,17 +13,20 @@ class UserTableViewCell: UITableViewCell {
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     
-    var user: User?
+    var user: User? {
+        didSet {
+            updateViews()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        updateViews()
     }
     
     private func updateViews() {
         guard let user = user else { return }
         
-//        let fullName = "\(user.name)"
+
         userImageView.image = UIImage(named: user.picture.thumbnail)
 //        if let data = try? Data(contentsOf: user.picture.thumbnail) {
 //            userImageView.image = UIImage(data: data)

@@ -21,7 +21,6 @@ enum NetworkError: Error {
 
 class UserController {
     
-    var users: [User] = []
     
     private let baseUrl = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
     
@@ -44,15 +43,17 @@ class UserController {
             do {
                 let results = try decoder.decode(Results.self, from: data)
                 completion(.success(results))
-                self.users = results.results
-                print(self.users.count)
+                
             } catch {
                 print("Error decoding User object: \(error)")
                 completion(.failure(.noDecode))
                 return
             }
+            
+            
         }.resume()
     }
+    
     
     
 }
