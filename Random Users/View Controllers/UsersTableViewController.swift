@@ -14,6 +14,8 @@ class UsersTableViewController: UITableViewController {
     var user: User?
     var users: [User] = []
     private let cache = Cache<Int, Data>()
+    private let photoFetchQueue = OperationQueue()
+    private var operations = [Int : Operation]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +34,7 @@ class UsersTableViewController: UITableViewController {
 
         let user = self.users[indexPath.row]
         cell.user = user
+        loadImage(forCell: cell, forItemAt: indexPath)
         
         return cell
     }
@@ -53,7 +56,35 @@ class UsersTableViewController: UITableViewController {
     }
     
     private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
-          
+        let user = users[indexPath.item]
+        
+        let fetchOp = FetchPhotoOperation(user: user)
+        let cacheOp = BlockOperation {
+            if let data = fetchOp.imageData {
+                self.cache.cache(value: data, for: user)
+            }
+        }
+        let completionOp = BlockOperation {
+            defer { self.operations.removeValue(forKey: user) }
+            
+            if let currentIndexPath = self.tableView.indexPath(for: cell),
+                currentIndexPath != indexPath {
+                return // Cell has been reused
+            }
+            
+            if let data = fetchOp.imageData {
+                cell.imageView?.image = UIImage(data: data)
+            }
+        }
+        cacheOp.addDependency(fetchOp)
+        completionOp.addDependency(fetchOp)
+        
+        photoFetchQueue.addOperation(fetchOp)
+        photoFetchQueue.addOperation(cacheOp)
+        OperationQueue.main.addOperation(completionOp)
+        
+        operations[user] = fetchOp
+        
        }
     
 
