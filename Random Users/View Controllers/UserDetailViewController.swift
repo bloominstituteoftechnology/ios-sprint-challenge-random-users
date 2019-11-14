@@ -24,19 +24,19 @@ class UserDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        updateViews()
     }
     
 
     private func updateViews() {
-        guard let user = user else { return }
+        guard isViewLoaded else { return }
         
-        let fullName = user.name.title + "." + " " + user.name.first + " " + user.name.last
+        
+        let fullName = user?.name.title + "." + " " + user?.name.first + " " + user?.name.last
         
         nameLabel.text = fullName
-        phoneNumberLabel.text = user.phone
-        emailAddressLabel.text = user.email
+        phoneNumberLabel.text = user?.phone
+        emailAddressLabel.text = user?.email
         
     }
 
