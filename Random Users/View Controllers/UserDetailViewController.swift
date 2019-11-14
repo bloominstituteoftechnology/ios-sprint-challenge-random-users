@@ -32,9 +32,10 @@ class UserDetailViewController: UIViewController {
         guard isViewLoaded else { return }
         
         
-        let fullName = user?.name.title + "." + " " + user?.name.first + " " + user?.name.last
+        let firstName = (user?.name.title)! + "." + " " + (user?.name.first)!
+        let lastName = user!.name.last
         
-        nameLabel.text = fullName
+        nameLabel.text = firstName + " " + lastName
         phoneNumberLabel.text = user?.phone
         emailAddressLabel.text = user?.email
         
