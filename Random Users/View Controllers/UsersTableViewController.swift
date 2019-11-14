@@ -13,6 +13,7 @@ class UsersTableViewController: UITableViewController {
     var userController = UserController()
     var user: User?
     var users: [User] = []
+    private let cache = Cache<Int, Data>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,15 +52,22 @@ class UsersTableViewController: UITableViewController {
         }
     }
     
+    private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
+          
+       }
+    
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "UserDetailShowSegue" {
+            if let detailVC = segue.destination as? UserDetailViewController, let indexPath = tableView.indexPathForSelectedRow {
+                detailVC.user = users[indexPath.row]
+            }
+        }
     }
-    */
+    
 
 }

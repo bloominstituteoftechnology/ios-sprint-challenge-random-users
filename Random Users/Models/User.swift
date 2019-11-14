@@ -71,7 +71,7 @@ struct Name: Codable {
 }
 
 struct Picture: Codable {
-    let thumbnail: String
+    let thumbnail: URL
 }
 
 

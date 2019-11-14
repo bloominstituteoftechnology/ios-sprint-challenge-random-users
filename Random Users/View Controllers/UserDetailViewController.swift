@@ -15,6 +15,12 @@ class UserDetailViewController: UIViewController {
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var emailAddressLabel: UILabel!
     
+    var user: User? {
+        didSet {
+            updateViews()
+        }
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,14 +29,15 @@ class UserDetailViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func updateViews() {
+        guard let user = user else { return }
+        
+        let fullName = user.name.title + "." + " " + user.name.first + " " + user.name.last
+        
+        nameLabel.text = fullName
+        phoneNumberLabel.text = user.phone
+        emailAddressLabel.text = user.email
+        
     }
-    */
 
 }

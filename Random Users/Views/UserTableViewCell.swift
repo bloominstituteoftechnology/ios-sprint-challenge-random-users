@@ -19,19 +19,14 @@ class UserTableViewCell: UITableViewCell {
         }
     }
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
     private func updateViews() {
         guard let user = user else { return }
-        
-
-        userImageView.image = UIImage(named: user.picture.thumbnail)
-//        if let data = try? Data(contentsOf: user.picture.thumbnail) {
-//            userImageView.image = UIImage(data: data)
-//        }
-        userNameLabel.text = user.name.title + user.name.first + user.name.last
+        userNameLabel.text = user.name.title + "." + " " + user.name.first + " " + user.name.last
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

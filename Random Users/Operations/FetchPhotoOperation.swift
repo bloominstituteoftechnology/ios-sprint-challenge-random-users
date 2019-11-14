@@ -8,7 +8,7 @@
 
 import Foundation
 
-class FetchImagesOperation: ConcurrentOperation {
+class FetchPhotoOperation: ConcurrentOperation {
     
     // MARK: - Properties
     
@@ -31,7 +31,7 @@ class FetchImagesOperation: ConcurrentOperation {
     override func start() {
         guard let user = user else { return }
         state = .isExecuting
-        let url = URL(string: user.picture.thumbnail)!
+        let url = user.picture.thumbnail
         
         let task = session.dataTask(with: url) { (data, response, error) in
             defer { self.state = .isFinished }
