@@ -32,11 +32,7 @@ class UserTableViewCell: UITableViewCell {
         
     }
     
-    override func prepareForReuse() {
-        imageView?.image = #imageLiteral(resourceName: "MarsPlaceholder")
-        
-        super.prepareForReuse()
-    }
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
