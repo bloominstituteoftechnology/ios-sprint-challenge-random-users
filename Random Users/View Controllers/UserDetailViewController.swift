@@ -41,6 +41,7 @@ class UserDetailViewController: UIViewController {
         guard let url = user?.picture.large else { return }
         if let data = try? Data(contentsOf: url) {
           imageView.image = UIImage(data: data)
+            imageView.layer.cornerRadius = 12
         }
     }
 }

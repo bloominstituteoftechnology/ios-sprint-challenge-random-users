@@ -27,6 +27,7 @@ class UserTableViewCell: UITableViewCell {
     private func updateViews() {
         guard let user = user else { return }
         userNameLabel.text = user.name.title + "." + " " + user.name.first + " " + user.name.last
+        userImageView.layer.cornerRadius = 12
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

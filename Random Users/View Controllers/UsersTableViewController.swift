@@ -17,10 +17,11 @@ class UsersTableViewController: UITableViewController {
     private let cache = Cache<String, Data>()
     private let photoFetchQueue = OperationQueue()
     private var operations = [String : Operation]()
-    var photo: UIImage?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+       
     }
 
     // MARK: - Table view data source
@@ -37,6 +38,7 @@ class UsersTableViewController: UITableViewController {
         let user = self.users[indexPath.row]
         cell.user = user
         loadImage(forCell: cell, forItemAt: indexPath)
+        
         
         return cell
     }
