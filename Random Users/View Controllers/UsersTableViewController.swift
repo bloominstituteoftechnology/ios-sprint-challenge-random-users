@@ -13,9 +13,9 @@ class UsersTableViewController: UITableViewController {
     var userController = UserController()
     var user: User?
     var users: [User] = []
-    private let cache = Cache<Int, Data>()
+    private let cache = Cache<String, Data>()
     private let photoFetchQueue = OperationQueue()
-    private var operations = [Int : Operation]()
+    private var operations = [String : Operation]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +48,7 @@ class UsersTableViewController: UITableViewController {
                     let result = try result.get()
                     self.users = result.results
                     self.tableView.reloadData()
+                    
                 } catch {
                     print("Error getting result: \(error)")
                 }
@@ -58,22 +59,28 @@ class UsersTableViewController: UITableViewController {
     private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
         let user = users[indexPath.item]
         
+        
+        if let value = cache.value(for: user.name.first), let photo = UIImage(data: value) {
+            cell.imageView?.image = photo
+        }
+        
         let fetchOp = FetchPhotoOperation(user: user)
         let cacheOp = BlockOperation {
             if let data = fetchOp.imageData {
-                self.cache.cache(value: data, for: user)
+                self.cache.cache(value: data, for: user.name.first)
             }
         }
         let completionOp = BlockOperation {
-            defer { self.operations.removeValue(forKey: user) }
-            
-            if let currentIndexPath = self.tableView.indexPath(for: cell),
-                currentIndexPath != indexPath {
-                return // Cell has been reused
-            }
-            
-            if let data = fetchOp.imageData {
-                cell.imageView?.image = UIImage(data: data)
+            defer { self.operations.removeValue(forKey: user.name.first) }
+            DispatchQueue.main.async {
+                if let currentIndexPath = self.tableView.indexPath(for: cell),
+                    currentIndexPath != indexPath {
+                    return // Cell has been reused
+                }
+                
+                if let data = fetchOp.imageData {
+                    cell.imageView?.image = UIImage(data: data)
+                }
             }
         }
         cacheOp.addDependency(fetchOp)
@@ -83,7 +90,7 @@ class UsersTableViewController: UITableViewController {
         photoFetchQueue.addOperation(cacheOp)
         OperationQueue.main.addOperation(completionOp)
         
-        operations[user] = fetchOp
+        operations[user.name.first] = fetchOp
         
        }
     
