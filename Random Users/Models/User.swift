@@ -29,6 +29,7 @@ struct Name: Codable {
 
 struct Picture: Codable {
     let thumbnail: URL
+    let large: URL
 }
 
 

@@ -11,11 +11,13 @@ import UIKit
 class UsersTableViewController: UITableViewController {
     
     var userController = UserController()
+    var userDetailViewController = UserDetailViewController()
     var user: User?
     var users: [User] = []
     private let cache = Cache<String, Data>()
     private let photoFetchQueue = OperationQueue()
     private var operations = [String : Operation]()
+    var photo: UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,6 +105,7 @@ class UsersTableViewController: UITableViewController {
         if segue.identifier == "UserDetailShowSegue" {
             if let detailVC = segue.destination as? UserDetailViewController, let indexPath = tableView.indexPathForSelectedRow {
                 detailVC.user = users[indexPath.row]
+                
             }
         }
     }
