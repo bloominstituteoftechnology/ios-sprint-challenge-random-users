@@ -13,6 +13,7 @@ class UserTableViewCell: UITableViewCell {
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     
+    
     var user: User? {
         didSet {
             updateViews()
@@ -28,6 +29,13 @@ class UserTableViewCell: UITableViewCell {
         guard let user = user else { return }
         userNameLabel.text = user.name.title + "." + " " + user.name.first + " " + user.name.last
         userImageView.layer.cornerRadius = 12
+        
+    }
+    
+    override func prepareForReuse() {
+        imageView?.image = #imageLiteral(resourceName: "MarsPlaceholder")
+        
+        super.prepareForReuse()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

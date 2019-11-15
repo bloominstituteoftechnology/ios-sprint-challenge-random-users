@@ -35,9 +35,9 @@ class UsersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserTableViewCell else { return UITableViewCell() }
 
+        loadImage(forCell: cell, forItemAt: indexPath)
         let user = self.users[indexPath.row]
         cell.user = user
-        loadImage(forCell: cell, forItemAt: indexPath)
         
         
         return cell
