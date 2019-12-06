@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct User: Codable {
+struct User: Codable, Hashable {
     
     enum PersonKeys: String, CodingKey {
         case name
@@ -33,7 +33,7 @@ struct User: Codable {
     }
 }
 
-struct Name: Codable {
+struct Name: Codable, Hashable {
     enum NameKeys: String, CodingKey {
         case title
         case first
@@ -45,7 +45,7 @@ struct Name: Codable {
     let last: String
 }
 
-struct Picture: Codable {
+struct Picture: Codable, Hashable {
     enum PictureKeys: String, CodingKey {
         case large
         case medium

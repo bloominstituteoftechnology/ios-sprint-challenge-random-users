@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -58,13 +59,7 @@
                             <outlet property="delegate" destination="vh0-Zk-KQZ" id="9hw-Lv-2qu"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="EWM-K9-ZE7">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="1sy-wP-hvf">
-                            <connections>
-                                <segue destination="H2D-8G-3in" kind="show" id="Yhc-xO-HLc"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="EWM-K9-ZE7"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Of-Gk-vC8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -79,29 +74,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fcE-Xt-Z5O">
-                                <rect key="frame" x="87" y="188" width="240" height="240"/>
+                                <rect key="frame" x="57" y="188" width="300" height="300"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="AYi-yj-J1X"/>
+                                    <constraint firstAttribute="width" constant="300" id="AYi-yj-J1X"/>
                                     <constraint firstAttribute="width" secondItem="fcE-Xt-Z5O" secondAttribute="height" multiplier="1:1" id="Aws-S2-sP6"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="41" translatesAutoresizingMaskIntoConstraints="NO" id="eab-NZ-wm6">
-                                <rect key="frame" x="87" y="628" width="119.5" height="154.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="eab-NZ-wm6">
+                                <rect key="frame" x="87" y="688" width="119.5" height="94.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwK-0j-VNe">
-                                        <rect key="frame" x="0.0" y="0.0" width="45" height="31.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwK-0j-VNe">
+                                        <rect key="frame" x="0.0" y="0.0" width="71.5" height="37.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZO-Dd-fiE">
+                                        <rect key="frame" x="0.0" y="45.5" width="119.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZO-Dd-fiE">
-                                        <rect key="frame" x="0.0" y="72.5" width="119.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24Z-dE-uvM">
-                                        <rect key="frame" x="0.0" y="134" width="45.5" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24Z-dE-uvM">
+                                        <rect key="frame" x="0.0" y="74" width="45.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -114,7 +109,7 @@
                             <constraint firstItem="eab-NZ-wm6" firstAttribute="top" secondItem="fcE-Xt-Z5O" secondAttribute="bottom" constant="200" id="0Fp-yI-3Vx"/>
                             <constraint firstItem="fcE-Xt-Z5O" firstAttribute="top" secondItem="O9J-gz-l8c" secondAttribute="top" constant="100" id="7B9-uo-d0f"/>
                             <constraint firstItem="fcE-Xt-Z5O" firstAttribute="centerX" secondItem="aHn-n3-0Xw" secondAttribute="centerX" id="CQw-Uc-Ro1"/>
-                            <constraint firstItem="O9J-gz-l8c" firstAttribute="trailing" secondItem="eab-NZ-wm6" secondAttribute="trailing" constant="207.5" id="L1Q-Bx-HD1"/>
+                            <constraint firstItem="O9J-gz-l8c" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="eab-NZ-wm6" secondAttribute="trailing" constant="20" id="L1Q-Bx-HD1"/>
                             <constraint firstItem="eab-NZ-wm6" firstAttribute="leading" secondItem="O9J-gz-l8c" secondAttribute="leading" constant="87" id="TPc-VY-ikY"/>
                             <constraint firstItem="O9J-gz-l8c" firstAttribute="bottom" secondItem="eab-NZ-wm6" secondAttribute="bottom" constant="79.5" id="YVx-LO-Lbl"/>
                         </constraints>
@@ -151,7 +146,4 @@
             <point key="canvasLocation" x="265.21739130434787" y="128.57142857142856"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="Yhc-xO-HLc"/>
-    </inferredMetricsTieBreakers>
 </document>

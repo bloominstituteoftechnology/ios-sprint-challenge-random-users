@@ -10,11 +10,11 @@ import Foundation
 
 class FetchPhotoOperation: ConcurrentOperation {
     
-    let photoReference: Picture
+    let photoReference: String
     var imageData: Data?
     private var dataTask: URLSessionDataTask?
     
-    init(photoReference: Picture) {
+    init(photoReference: String) {
         self.photoReference = photoReference
         super.init()
     }
@@ -22,7 +22,7 @@ class FetchPhotoOperation: ConcurrentOperation {
     override func start() {
         state = .isExecuting
         
-        guard let thumbNailURL = URL(string: photoReference.thumbnail)?.usingHTTPS
+        guard let thumbNailURL = URL(string: photoReference)?.usingHTTPS
             else { return }
         //guard let imageURL = photoReference.imageURL.usingHTTPS else { return }
         

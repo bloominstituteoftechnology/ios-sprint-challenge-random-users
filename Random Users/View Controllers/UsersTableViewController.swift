@@ -11,11 +11,10 @@ import UIKit
 class UsersTableViewController: UITableViewController {
 
     let userController = UserController()
+    private let cache = Cache<User, Data>()
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        self.tableView?.reloadData()
-//    }
+    private let photoFetchQueue = OperationQueue()
+    private var operations = [User: Operation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,16 +29,89 @@ class UsersTableViewController: UITableViewController {
             }
         }
     }
+    
+    private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
+        
+        let userReference = userController.users.results[indexPath.row]
+        
+        if let data = cache.value(for: userReference) {
+            cell.imageView?.image = UIImage(data: data)
+            return
+        }
+    
+        let photoFetchOperation = FetchPhotoOperation(photoReference: userReference.picture.thumbnail)
+        
+        let cacheOP = BlockOperation {
+            if let data = photoFetchOperation.imageData {
+                self.cache.cache(value: data, key: userReference)
+            }
+        }
+        
+        let completionOP = BlockOperation {
+            defer { self.operations.removeValue(forKey: userReference) }
+            if let currentIndexPath = self.tableView.indexPath(for: cell),
+                currentIndexPath != indexPath {
+                print("Reused Cell")
+                return
+            }
+            if let data = photoFetchOperation.imageData {
+                cell.imageView?.image = UIImage(data: data)
+            }
+        }
+        
+        cacheOP.addDependency(photoFetchOperation)
+        completionOP.addDependency(photoFetchOperation)
+        
+        photoFetchQueue.addOperation(photoFetchOperation)
+        photoFetchQueue.addOperation(cacheOP)
+        OperationQueue.main.addOperation(completionOP)
+        
+        self.operations[userReference] = photoFetchOperation
+        
+    }
+    
+    private func fetchImageData(forItemAt indexPath: IndexPath) -> Data? {
+        
+        let userReference = userController.users.results[indexPath.row]
+        var imageData: Data?
+        if let data = cache.value(for: userReference) {
+            return data
+        }
+        
+        let photoFetchOperation = FetchPhotoOperation(photoReference: userReference.picture.large)
+        
+        let cacheOP = BlockOperation {
+            if let data = photoFetchOperation.imageData {
+                imageData = data
+            }
+        }
+        
+        let completionOP = BlockOperation {
+            defer { self.operations.removeValue(forKey: userReference) }
+            if let data = photoFetchOperation.imageData {
+                imageData = data
+            }
+        }
+        
+        cacheOP.addDependency(photoFetchOperation)
+        completionOP.addDependency(photoFetchOperation)
+        
+        photoFetchQueue.addOperation(photoFetchOperation)
+        photoFetchQueue.addOperation(cacheOP)
+        OperationQueue.main.addOperation(completionOP)
+        
+        self.operations[userReference] = photoFetchOperation
+        return imageData
+    }
+    
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return userController.users.results.count
     }
 
@@ -47,8 +119,15 @@ class UsersTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserTableViewCell else { return UITableViewCell() }
 
         // Configure the cell...
+        loadImage(forCell: cell, forItemAt: indexPath)
         cell.user = userController.users.results[indexPath.row]
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        let userReference = userController.users.results[indexPath.row]
+        operations[userReference]?.cancel()
     }
 
     // MARK: - Navigation
@@ -61,6 +140,7 @@ class UsersTableViewController: UITableViewController {
             if segue.identifier == "ShowDetailUserSegue" {
                 if let indexPath = tableView.indexPathForSelectedRow {
                     detailVC.user = userController.users.results[indexPath.row]
+                    detailVC.imageData = fetchImageData(forItemAt: indexPath)
                 }
             }
         }

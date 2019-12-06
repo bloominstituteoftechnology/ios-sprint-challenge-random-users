@@ -15,7 +15,7 @@ class UserController {
     var users = Results()
     
     func fetchRandomUsers(completion: @escaping (Error?) -> Void) {
-        getRandomUsers(amount: 10) { (results: Results?, error) in
+        getRandomUsers(amount: 1000) { (results: Results?, error) in
             guard let results = results else {
                 completion(error)
                 return
