@@ -24,12 +24,12 @@ class DetailViewController: UIViewController {
     }
     
     func updateViews() {
-        guard let person = person, let imageData = imageData else { return }
+        guard let person = person else { return }
         detailNameLabel.text = "\(person.name.title) \(person.name.first) \(person.name.last)"
         detailPhoneLabel.text = person.phone
         detailEmailLabel.text = person.email
         
-        if isViewLoaded == true {
+        if let imageData = imageData, isViewLoaded == true {
             detailImageView.image = UIImage(data: imageData)
         }
     }

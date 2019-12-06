@@ -116,7 +116,7 @@ class RandomPersonTableViewController: UITableViewController {
                 
                 saveToCacheOperation.addDependency(fetchImageOperation)
                 
-                imageFetchQueue.addOperations([fetchImageOperation, saveToCacheOperation], waitUntilFinished: false)
+                imageFetchQueue.addOperations([fetchImageOperation, saveToCacheOperation], waitUntilFinished: true)
                 
                 fetchOperations[indexPath.row] = fetchImageOperation
             }
@@ -129,10 +129,10 @@ class RandomPersonTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DetailSegue" {
             if let detailVC = segue.destination as? DetailViewController, let indexPath = tableView.indexPathForSelectedRow {
+                detailVC.person = self.randomPeople[indexPath.row]
                 loadImage(imageType: .detail, forItemAt: indexPath) { (data) in
                     if let imageData = data {
                         detailVC.imageData = imageData
-                        detailVC.person = self.randomPeople[indexPath.row]
                     } else {
                         print("problem")
                     }
