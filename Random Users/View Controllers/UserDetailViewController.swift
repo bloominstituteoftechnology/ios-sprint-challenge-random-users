@@ -19,16 +19,29 @@ class UserDetailViewController: UIViewController {
     
     // MARK: - Properties
     
+    var user: User?
+    
     // MARK: - Lifecycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        updateViews()
     }
     
     // MARK: - Private Methods
-
+    
+    private func updateViews() {
+        guard let user = user else { return }
+        nameLabel.text = user.name
+        emailLabel.text = user.email
+        phoneLabel.text = user.phone
+        loadImage()
+    }
+    
+    private func loadImage() {
+        
+    }
     /*
     // MARK: - Navigation
 
