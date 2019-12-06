@@ -12,6 +12,8 @@
 		1C223868239ACB8100434296 /* RandomUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C223867239ACB8100434296 /* RandomUserTableViewCell.swift */; };
 		1C22386A239AD25D00434296 /* RandomUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C223869239AD25D00434296 /* RandomUsersTableViewController.swift */; };
 		1C22386C239AD38E00434296 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C22386B239AD38E00434296 /* Cache.swift */; };
+		1C22386E239AD5D500434296 /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C22386D239AD5D500434296 /* FetchPhotoOperation.swift */; };
+		1C223871239AD85700434296 /* RandomUsersClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C223870239AD85700434296 /* RandomUsersClient.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -25,6 +27,8 @@
 		1C223867239ACB8100434296 /* RandomUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserTableViewCell.swift; sourceTree = "<group>"; };
 		1C223869239AD25D00434296 /* RandomUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersTableViewController.swift; sourceTree = "<group>"; };
 		1C22386B239AD38E00434296 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		1C22386D239AD5D500434296 /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
+		1C223870239AD85700434296 /* RandomUsersClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersClient.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -64,6 +68,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		1C22386F239AD82500434296 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				1C223870239AD85700434296 /* RandomUsersClient.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +109,7 @@
 			children = (
 				8ED6A98B2140178A00FC395A /* Main.storyboard */,
 				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
+				1C22386F239AD82500434296 /* Networking */,
 				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
 				8ED6A9932140178C00FC395A /* Info.plist */,
 			);
@@ -107,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				1C22386D239AD5D500434296 /* FetchPhotoOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -183,6 +197,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C22386C239AD38E00434296 /* Cache.swift in Sources */,
+				1C22386E239AD5D500434296 /* FetchPhotoOperation.swift in Sources */,
+				1C223871239AD85700434296 /* RandomUsersClient.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				1C223866239AC65800434296 /* RandomUserDetailViewController.swift in Sources */,
 				1C223868239ACB8100434296 /* RandomUserTableViewCell.swift in Sources */,
