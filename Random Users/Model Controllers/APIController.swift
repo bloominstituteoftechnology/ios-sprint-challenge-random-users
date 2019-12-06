@@ -36,8 +36,8 @@ class APIController {
             }
             
             do {
-                let decoder = JSONDecoder()
-                let container = decoder.decode(<#T##type: Decodable.Protocol##Decodable.Protocol#>, from: <#T##Data#>)
+                let results = try JSONDecoder().decode(RandomUserAPIResults.self, from: data)
+                completion(.success(results.users))
             } catch {
                 print("ERROR DECODING FETCHED USERS\nERROR:\n\(error)")
                 completion(.failure(error))

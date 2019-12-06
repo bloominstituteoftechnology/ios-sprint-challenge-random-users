@@ -9,14 +9,14 @@
 import Foundation
 
 class RandomUserAPIResults: Decodable {
-    let results: [RandomUser]
+    let users: [RandomUser]
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.results = try container.decode([RandomUser].self, forKey: .result)
+        self.users = try container.decode([RandomUser].self, forKey: .users)
     }
     
     enum CodingKeys: String, CodingKey {
-        case result
+        case users = "results"
     }
 }
