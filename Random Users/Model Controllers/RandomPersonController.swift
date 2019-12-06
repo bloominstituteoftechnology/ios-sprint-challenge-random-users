@@ -12,6 +12,10 @@ class RandomPersonController {
 
     let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
     
+    struct Results: Decodable {
+        var results: [RandomPerson]
+    }
+    
     func fetchRandomPeople (completion: @escaping ([RandomPerson]?) -> Void) {
         var requestURL = URLRequest(url: baseURL)
         requestURL.httpMethod = "GET"
@@ -30,8 +34,8 @@ class RandomPersonController {
             }
             
             do {
-                let fetchedPeople = try JSONDecoder().decode([RandomPerson].self, from: data)
-                completion(fetchedPeople)
+                let fetchedPeople = try JSONDecoder().decode(Results.self, from: data)
+                completion(fetchedPeople.results)
             } catch {
                 print("Error decoding data: \(error)")
                 completion(nil)
