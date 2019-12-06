@@ -17,9 +17,6 @@ enum HTTPMethod: String {
 
 enum NetworkingError: Error {
     case noData
-    case noBearer
-    case serverError(Error)
-    case unexpectedStatusCode
     case badDecode
     case badEncode
     case fetchError
