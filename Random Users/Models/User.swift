@@ -17,5 +17,17 @@ struct User: Decodable {
     let thumbnail: String
     let photo: String
     
+    enum UserCodingKeys: String, CodingKey {
+        case name, phone, email, thumbnail, photo, picture
+    }
+    
+    enum NameCodingKeys: String, CodingKey {
+        case first, last
+    }
+    
+    enum PictureContainerCodingKeys: String, CodingKey {
+        case medium, thumbnail
+    }
+    
     
 }
