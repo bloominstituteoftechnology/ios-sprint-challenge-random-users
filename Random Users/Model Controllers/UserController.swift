@@ -17,7 +17,7 @@ class UserController {
     // MARK: - Methods
     
     func fetchUsers() {
-        let baseURL = URL(string: "https://randomuser.me/api/?format=json&results=100&noinfo")!
+        let baseURL = URL(string: "https://randomuser.me/api/?format=json&results=1000&noinfo")!
         
         do {
             let data = try Data(contentsOf: baseURL)

@@ -21,6 +21,7 @@ class UserDetailViewController: UIViewController {
     
     var user: User?
     var photoFetchQueue: OperationQueue?
+    var cache: Cache<String, Data>?
     
     // MARK: - Lifecycle Methods
     

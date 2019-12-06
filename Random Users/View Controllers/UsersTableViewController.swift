@@ -19,6 +19,7 @@ class UsersTableViewController: UITableViewController {
         static let detailSegue = "ShowUserDetailSegue"
     }
     let userController = UserController()
+    var cache = Cache<String, Data>()
     private let photoFetchQueue = OperationQueue()
     private var fetchOperations: [String: FetchPhotoOperation] = [:]
     
@@ -66,19 +67,19 @@ class UsersTableViewController: UITableViewController {
         
         let photoString = userController.users[indexPath.row].thumbnail
         
-//        if let imageData = cache.retrieveValue(for: userController.users[indexPath.row].name),
-//            let image = UIImage(data: imageData) {
-//            cell.imageView.image = image
-//            return
-//        }
+        if let imageData = cache.retrieveValue(for: "\(userController.users[indexPath.row].name)-thumb"),
+            let image = UIImage(data: imageData) {
+            cell.imageView?.image = image
+            return
+        }
         
         let photoFetchOperation = FetchPhotoOperation(photoString: photoString)
         
-//        let storeData = BlockOperation {
-//            if let imageData = photoFetchOperation.imageData {
-//                self.cache.cache(value: imageData, for: userController.users[indexPath.row].name)
-//            }
-//        }
+        let storeData = BlockOperation {
+            if let imageData = photoFetchOperation.imageData {
+                self.cache.cache(value: imageData, for: "\(self.userController.users[indexPath.row].name)-thumb")
+            }
+        }
         
         let setImage = BlockOperation {
             defer { self.fetchOperations.removeValue(forKey: self.userController.users[indexPath.row].name) } // So we use less memory
@@ -88,14 +89,13 @@ class UsersTableViewController: UITableViewController {
                 guard let data = photoFetchOperation.imageData else { return }
                 let image = UIImage(data: data)
                 cell.imageView?.image = image
-//                self.tableView.reloadData()
             }
         }
         
         setImage.addDependency(photoFetchOperation)
-//        storeData.addDependency(photoFetchOperation)
+        storeData.addDependency(photoFetchOperation)
         
-        photoFetchQueue.addOperations([photoFetchOperation/*, storeData*/], waitUntilFinished: false)
+        photoFetchQueue.addOperations([photoFetchOperation, storeData], waitUntilFinished: false)
         OperationQueue.main.addOperation(setImage)
         
         fetchOperations[userController.users[indexPath.row].name] = photoFetchOperation
@@ -108,6 +108,7 @@ class UsersTableViewController: UITableViewController {
             let indexPath = tableView.indexPathForSelectedRow else { return }
         detailVC.user = userController.users[indexPath.row]
         detailVC.photoFetchQueue = photoFetchQueue
+        detailVC.cache = cache
     }
     
 

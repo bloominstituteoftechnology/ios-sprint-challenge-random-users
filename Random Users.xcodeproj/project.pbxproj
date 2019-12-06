@@ -18,6 +18,7 @@
 		C02FB04F239AB8A80009E774 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02FB04E239AB8A80009E774 /* UserController.swift */; };
 		C02FB052239ABD3F0009E774 /* FetchPhotosOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02FB051239ABD3F0009E774 /* FetchPhotosOperation.swift */; };
 		C02FB054239ABE520009E774 /* URL+Secure.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02FB053239ABE520009E774 /* URL+Secure.swift */; };
+		C02FB057239AC9DB0009E774 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02FB056239AC9DB0009E774 /* Cache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		C02FB04E239AB8A80009E774 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		C02FB051239ABD3F0009E774 /* FetchPhotosOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotosOperation.swift; sourceTree = "<group>"; };
 		C02FB053239ABE520009E774 /* URL+Secure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Secure.swift"; sourceTree = "<group>"; };
+		C02FB056239AC9DB0009E774 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,8 +70,8 @@
 			children = (
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				C02FB048239AB4180009E774 /* View Controllers */,
-				9D5CCA56214231E400224681 /* Operations */,
 				C02FB050239AB8B10009E774 /* Model Controllers */,
+				9D5CCA56214231E400224681 /* Operations */,
 				C02FB055239ABE590009E774 /* Utilities */,
 				C02FB04D239AB74D0009E774 /* Models */,
 				9D5CCA522142305600224681 /* Resources */,
@@ -125,6 +127,7 @@
 		C02FB055239ABE590009E774 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				C02FB056239AC9DB0009E774 /* Cache.swift */,
 				C02FB053239ABE520009E774 /* URL+Secure.swift */,
 			);
 			path = Utilities;
@@ -203,6 +206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C02FB054239ABE520009E774 /* URL+Secure.swift in Sources */,
+				C02FB057239AC9DB0009E774 /* Cache.swift in Sources */,
 				C02FB04F239AB8A80009E774 /* UserController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				C02FB052239ABD3F0009E774 /* FetchPhotosOperation.swift in Sources */,
