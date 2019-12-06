@@ -68,7 +68,7 @@ class UserDetailViewController: UIViewController {
         setImage.addDependency(photoFetchOperation)
         storeData.addDependency(photoFetchOperation)
         
-        photoFetchQueue?.addOperations([photoFetchOperation, storeData], waitUntilFinished: true)
+        photoFetchQueue?.addOperations([photoFetchOperation, storeData], waitUntilFinished: false)
         OperationQueue.main.addOperation(setImage)
     }
 }

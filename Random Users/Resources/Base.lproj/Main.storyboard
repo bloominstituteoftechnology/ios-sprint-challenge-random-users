@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ItE-c9-tQI">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -43,7 +42,18 @@
                             <outlet property="delegate" destination="zsc-2k-RCv" id="5wM-Eo-x7R"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Users" id="C7u-pW-9Nf"/>
+                    <navigationItem key="navigationItem" title="Users" id="C7u-pW-9Nf">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="DIo-Yq-qOI">
+                            <connections>
+                                <action selector="addTapped:" destination="zsc-2k-RCv" id="bq1-SW-a8q"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Bottom" id="kO2-ef-MP6">
+                            <connections>
+                                <action selector="bottomTapped:" destination="zsc-2k-RCv" id="l8c-hj-Oya"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t8C-3z-V0M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

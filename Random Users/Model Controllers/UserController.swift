@@ -17,16 +17,14 @@ class UserController {
     // MARK: - Methods
     
     func fetchUsers() {
-        let baseURL = URL(string: "https://randomuser.me/api/?format=json&results=1000&noinfo")!
+        let baseURL = URL(string: "https://randomuser.me/api/?format=json&results=5000&noinfo")!
         
         do {
             let data = try Data(contentsOf: baseURL)
             let people = try JSONDecoder().decode(Results.self, from: data)
-            users = people.results
+            users.append(contentsOf: people.results)
         } catch {
             print("Error fetching poeple: \(error)")
         }
     }
-    
-    
 }

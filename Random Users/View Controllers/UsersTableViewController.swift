@@ -61,6 +61,18 @@ class UsersTableViewController: UITableViewController {
         fetchOperations[userController.users[indexPath.row].name]?.cancel()
     }
     
+    // MARK: - Actions
+    
+    @IBAction func addTapped(_ sender: Any) {
+        userController.fetchUsers()
+        tableView.reloadData()
+    }
+    
+    @IBAction func bottomTapped(_ sender: Any) {
+        tableView.scrollToRow(at: IndexPath(item: userController.users.count - 1, section: 0), at: .bottom, animated: false)
+    }
+    
+    
     // MARK: - Private Methods
     
     private func fetchImage(for cell: UITableViewCell, indexPath: IndexPath) {
@@ -95,7 +107,7 @@ class UsersTableViewController: UITableViewController {
         setImage.addDependency(photoFetchOperation)
         storeData.addDependency(photoFetchOperation)
         
-        photoFetchQueue.addOperations([photoFetchOperation, storeData], waitUntilFinished: true)
+        photoFetchQueue.addOperations([photoFetchOperation, storeData], waitUntilFinished: false)
         OperationQueue.main.addOperation(setImage)
         
         fetchOperations[userController.users[indexPath.row].name] = photoFetchOperation
