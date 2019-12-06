@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PersonCell" rowHeight="75" id="QWC-5G-3OI" customClass="UserTableViewCell" customModule="Random_Users" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="75" id="QWC-5G-3OI" customClass="UserTableViewCell" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QWC-5G-3OI" id="U87-rG-jN1">
@@ -58,7 +58,13 @@
                             <outlet property="delegate" destination="vh0-Zk-KQZ" id="9hw-Lv-2qu"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="EWM-K9-ZE7"/>
+                    <navigationItem key="navigationItem" id="EWM-K9-ZE7">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="1sy-wP-hvf">
+                            <connections>
+                                <segue destination="H2D-8G-3in" kind="show" id="Yhc-xO-HLc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Of-Gk-vC8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -145,4 +151,7 @@
             <point key="canvasLocation" x="265.21739130434787" y="128.57142857142856"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Yhc-xO-HLc"/>
+    </inferredMetricsTieBreakers>
 </document>

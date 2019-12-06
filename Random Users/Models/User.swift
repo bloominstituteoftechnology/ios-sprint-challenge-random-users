@@ -64,6 +64,10 @@ struct Results: Codable {
     
     var results: [User]
     
+    init() {
+        self.results = []
+    }
+    
     init(from decoder: Decoder) throws {
         
         let container = try decoder.container(keyedBy: ResultKey.self)

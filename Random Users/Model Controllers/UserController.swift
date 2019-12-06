@@ -12,14 +12,17 @@ let baseURL = URL(string: "https://randomuser.me/api/")!
 
 class UserController {
     
-    //var results = Results()
+    var users = Results()
     
-    func fetchRandomUsers() {
+    func fetchRandomUsers(completion: @escaping (Error?) -> Void) {
         getRandomUsers(amount: 10) { (results: Results?, error) in
-            guard let _ = results else {
+            guard let results = results else {
+                completion(error)
                 return
             }
             print("Decoded complete")
+            self.users = results
+            completion(nil)
         }
     }
     
