@@ -36,10 +36,10 @@ class UserDetailViewController: UIViewController {
         nameLabel.text = user.name
         emailLabel.text = user.email
         phoneLabel.text = user.phone
-        loadImage()
+        setImage()
     }
     
-    private func loadImage() {
+    private func setImage() {
         
     }
     /*

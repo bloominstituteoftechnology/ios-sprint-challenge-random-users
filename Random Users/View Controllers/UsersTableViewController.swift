@@ -13,11 +13,13 @@ class UsersTableViewController: UITableViewController {
     // MARK: - Properties
     
     struct PropertyKeys {
+        
         static let cell = "UserCell"
         
         static let detailSegue = "ShowUserDetailSegue"
     }
     let userController = UserController()
+    private let photoFetchQueue = OperationQueue()
     
     // MARK: - Lifecycle Methods
 
@@ -43,8 +45,50 @@ class UsersTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: PropertyKeys.cell, for: indexPath)
 
         cell.textLabel?.text = userController.users[indexPath.row].name
+        fetchImage(for: cell, indexPath: indexPath)
 
         return cell
+    }
+    
+    // MARK: - Private Methods
+    
+    private func fetchImage(for cell: UITableViewCell, indexPath: IndexPath) {
+        
+        let photoString = userController.users[indexPath.row].thumbnail
+        
+//        if let imageData = cache.retrieveValue(for: photoReference.id),
+//            let image = UIImage(data: imageData) {
+//            cell.imageView.image = image
+//            return
+//        }
+        
+        let photoFetchOperation = FetchPhotoOperation(photoString: photoString)
+        
+//        let storeData = BlockOperation {
+//            if let imageData = photoFetchOperation.imageData {
+//                self.cache.cache(value: imageData, for: photoReference.id)
+//            }
+//        }
+        
+        let setImage = BlockOperation {
+//            defer { self.fetchOperations.removeValue(forKey: photoReference.id) } // So we use less memory
+            if self.tableView.indexPath(for: cell) != indexPath {
+                return
+            } else {
+                guard let data = photoFetchOperation.imageData else { return }
+                let image = UIImage(data: data)
+                cell.imageView?.image = image
+                self.tableView.reloadData()
+            }
+        }
+        
+        setImage.addDependency(photoFetchOperation)
+//        storeData.addDependency(photoFetchOperation)
+        
+        photoFetchQueue.addOperations([photoFetchOperation/*, storeData*/], waitUntilFinished: false)
+        OperationQueue.main.addOperation(setImage)
+        
+//        fetchOperations[photoReference.id] = photoFetchOperation
     }
     
     // MARK: - Navigation
