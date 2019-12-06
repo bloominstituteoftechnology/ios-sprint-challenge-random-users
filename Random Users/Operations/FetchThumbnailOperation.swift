@@ -10,19 +10,29 @@ import Foundation
 
 class FetchThumbnailOperation: ConcurrentOperation {
     var imageInfo: RandomUser.ImageInfo
+    var forFullImage: Bool = false
     
-    var thumbnailData: Data?
+    var imageData: Data?
     
     lazy private var dataTask: URLSessionDataTask? = {
-        guard let url = imageInfo.thumbnailURL else { return nil }
+        let url: URL
+        if forFullImage {
+            guard let imageURL = imageInfo.fullImageURL else { return nil }
+            url = imageURL
+        } else {
+            guard let thumbnailURL = imageInfo.thumbnailURL else { return nil }
+            url = thumbnailURL
+        }
+        
         let task = URLSession.shared.dataTask(
             with: url,
             completionHandler: dataTaskDidComplete(with:_:_:))
         return task
     }()
     
-    init(_ imageInfo: RandomUser.ImageInfo) {
+    init(_ imageInfo: RandomUser.ImageInfo, forFullImage: Bool = false) {
         self.imageInfo = imageInfo
+        self.forFullImage = forFullImage
     }
     
     override func start() {
@@ -53,6 +63,6 @@ class FetchThumbnailOperation: ConcurrentOperation {
             return
         }
         
-        self.thumbnailData = possibleData
+        self.imageData = possibleData
     }
 }
