@@ -12,8 +12,13 @@ class UsersTableViewController: UITableViewController {
     
     // MARK: - Properties
     
-    var users = [RandomUser]()
-    var apiController = APIController()
+    private var users = [RandomUser]()
+    private var apiController = APIController()
+    
+    lazy private var thumbnailCache = Cache<Int, Data>()
+    
+    lazy private var thumbnailFetchQueue = OperationQueue()
+    lazy private var thumbnailFetchOps = [Int: FetchThumbnailOperation]()
     
     // MARK: - View Lifecycle
     
@@ -34,6 +39,7 @@ class UsersTableViewController: UITableViewController {
             else { return UITableViewCell() }
         
         cell.user = users[indexPath.row]
+        loadThumbnail(forCell: cell, forItemAt: indexPath)
 
         return cell
     }
@@ -63,5 +69,41 @@ class UsersTableViewController: UITableViewController {
         } catch {
             print("Error fetching users: \(error)")
         }
+    }
+    
+    private func loadThumbnail(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
+        let imageInfo = users[indexPath.row].imageInfo
+        
+        // check first if image is already cached
+        if let imageData = thumbnailCache[indexPath.row] {
+            cell.userImageView.image = UIImage(data: imageData)
+            return
+        }
+        
+        // otherwise, fetch the image
+        let thumbnailFetchOp = FetchThumbnailOperation(imageInfo)
+        let storeImageToCacheOp = BlockOperation {
+            guard let imageData = thumbnailFetchOp.thumbnailData else {
+                return
+            }
+            self.thumbnailCache[indexPath.row] = imageData
+        }
+        let checkCellReuseOp = BlockOperation {
+            // if present, use cached image for cell & return
+            if let imageData = self.thumbnailCache[indexPath.row],
+                let image = UIImage(data: imageData)
+            {
+                thumbnailFetchOp.cancel()
+                cell.userImageView.image = image
+            }
+        }
+        
+        checkCellReuseOp.addDependency(storeImageToCacheOp)
+        storeImageToCacheOp.addDependency(thumbnailFetchOp)
+        
+        thumbnailFetchQueue.addOperations([thumbnailFetchOp, storeImageToCacheOp], waitUntilFinished: false)
+        OperationQueue.main.addOperation(checkCellReuseOp)
+        
+        thumbnailFetchOps[indexPath.row] = thumbnailFetchOp
     }
 }
