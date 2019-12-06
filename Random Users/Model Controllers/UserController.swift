@@ -9,7 +9,12 @@
 import Foundation
 
 class UserController {
+    
+    // MARK: - Properties
+    
     var users: [User] = []
+    
+    // MARK: - Methods
     
     func fetchUsers() {
         let baseURL = URL(string: "https://randomuser.me/api/?format=json&results=10&noinfo")!
@@ -22,4 +27,6 @@ class UserController {
             print("Error fetching poeple: \(error)")
         }
     }
+    
+    
 }
