@@ -8,3 +8,14 @@
 
 import Foundation
 
+
+
+struct User: Decodable {
+    let name: String
+    let phone: String
+    let email: String
+    let thumbnail: String
+    let photo: String
+    
+    
+}
