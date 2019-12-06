@@ -57,10 +57,11 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
+				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				99B12455239AB485000C59AF /* Models */,
 				99B12456239AB48D000C59AF /* Model Controllers */,
 				99B12453239AB43A000C59AF /* ViewControllers */,
-				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+				99B12459239AB50E000C59AF /* Views */,
 				9D5CCA56214231E400224681 /* Operations */,
 				99B12452239AB42F000C59AF /* Helpers */,
 				9D5CCA522142305600224681 /* Resources */,
@@ -96,6 +97,13 @@
 				99B12457239AB4AA000C59AF /* APIController.swift */,
 			);
 			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		99B12459239AB50E000C59AF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		9D5CCA522142305600224681 /* Resources */ = {
