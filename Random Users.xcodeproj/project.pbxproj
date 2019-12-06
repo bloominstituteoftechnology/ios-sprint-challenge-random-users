@@ -15,6 +15,12 @@
 		DD1E5A14239ABB8C00044104 /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E5A13239ABB8C00044104 /* PersonTableViewCell.swift */; };
 		DD1E5A16239ABB9B00044104 /* PersonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E5A15239ABB9B00044104 /* PersonTableViewController.swift */; };
 		DD1E5A18239ABBED00044104 /* PersonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E5A17239ABBED00044104 /* PersonDetailViewController.swift */; };
+		DD1E5A1A239ABDDD00044104 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E5A19239ABDDD00044104 /* Person.swift */; };
+		DD1E5A1E239AC18800044104 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E5A1D239AC18800044104 /* Cache.swift */; };
+		DD1E5A22239ACD1000044104 /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E5A21239ACD1000044104 /* FetchPhotoOperation.swift */; };
+		DD1E5A24239ACE1C00044104 /* URL+Secure.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E5A23239ACE1C00044104 /* URL+Secure.swift */; };
+		DD1E5A27239AD82200044104 /* PersonClientAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E5A26239AD82200044104 /* PersonClientAPI.swift */; };
+		DD1E5A29239AFCB900044104 /* PhotoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E5A28239AFCB900044104 /* PhotoType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +34,12 @@
 		DD1E5A13239ABB8C00044104 /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
 		DD1E5A15239ABB9B00044104 /* PersonTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewController.swift; sourceTree = "<group>"; };
 		DD1E5A17239ABBED00044104 /* PersonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailViewController.swift; sourceTree = "<group>"; };
+		DD1E5A19239ABDDD00044104 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		DD1E5A1D239AC18800044104 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		DD1E5A21239ACD1000044104 /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
+		DD1E5A23239ACE1C00044104 /* URL+Secure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Secure.swift"; sourceTree = "<group>"; };
+		DD1E5A26239AD82200044104 /* PersonClientAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonClientAPI.swift; sourceTree = "<group>"; };
+		DD1E5A28239AFCB900044104 /* PhotoType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +72,7 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
+				DD1E5A25239AD80500044104 /* Networking */,
 				DD1E5A12239AB59F00044104 /* Model */,
 				DD1E5A11239AB59600044104 /* View Controllers */,
 				9D5CCA56214231E400224681 /* Operations */,
@@ -76,6 +89,8 @@
 				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
 				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
 				8ED6A9932140178C00FC395A /* Info.plist */,
+				DD1E5A23239ACE1C00044104 /* URL+Secure.swift */,
+				DD1E5A28239AFCB900044104 /* PhotoType.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -84,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				DD1E5A21239ACD1000044104 /* FetchPhotoOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -101,8 +117,18 @@
 		DD1E5A12239AB59F00044104 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DD1E5A19239ABDDD00044104 /* Person.swift */,
+				DD1E5A1D239AC18800044104 /* Cache.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		DD1E5A25239AD80500044104 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				DD1E5A26239AD82200044104 /* PersonClientAPI.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,7 +202,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD1E5A27239AD82200044104 /* PersonClientAPI.swift in Sources */,
+				DD1E5A29239AFCB900044104 /* PhotoType.swift in Sources */,
+				DD1E5A24239ACE1C00044104 /* URL+Secure.swift in Sources */,
+				DD1E5A1A239ABDDD00044104 /* Person.swift in Sources */,
 				DD1E5A16239ABB9B00044104 /* PersonTableViewController.swift in Sources */,
+				DD1E5A22239ACD1000044104 /* FetchPhotoOperation.swift in Sources */,
+				DD1E5A1E239AC18800044104 /* Cache.swift in Sources */,
 				DD1E5A14239ABB8C00044104 /* PersonTableViewCell.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				DD1E5A18239ABBED00044104 /* PersonDetailViewController.swift in Sources */,
