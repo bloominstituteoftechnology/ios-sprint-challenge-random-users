@@ -15,6 +15,8 @@
 		99B1245B239AB56D000C59AF /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B1245A239AB56D000C59AF /* UserTableViewCell.swift */; };
 		99B1245D239AB57F000C59AF /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B1245C239AB57F000C59AF /* UsersTableViewController.swift */; };
 		99B1245F239AB5A3000C59AF /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B1245E239AB5A3000C59AF /* UserDetailViewController.swift */; };
+		99B12461239ABAEE000C59AF /* RandomUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B12460239ABAEE000C59AF /* RandomUser.swift */; };
+		99B12465239AC3C2000C59AF /* RandomUserAPIResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B12464239AC3C2000C59AF /* RandomUserAPIResults.swift */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +32,8 @@
 		99B1245A239AB56D000C59AF /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		99B1245C239AB57F000C59AF /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		99B1245E239AB5A3000C59AF /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		99B12460239ABAEE000C59AF /* RandomUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUser.swift; sourceTree = "<group>"; };
+		99B12464239AC3C2000C59AF /* RandomUserAPIResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserAPIResults.swift; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +99,8 @@
 		99B12455239AB485000C59AF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				99B12460239ABAEE000C59AF /* RandomUser.swift */,
+				99B12464239AC3C2000C59AF /* RandomUserAPIResults.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -206,6 +212,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99B12461239ABAEE000C59AF /* RandomUser.swift in Sources */,
+				99B12465239AC3C2000C59AF /* RandomUserAPIResults.swift in Sources */,
 				99B1245B239AB56D000C59AF /* UserTableViewCell.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				99B1245F239AB5A3000C59AF /* UserDetailViewController.swift in Sources */,
