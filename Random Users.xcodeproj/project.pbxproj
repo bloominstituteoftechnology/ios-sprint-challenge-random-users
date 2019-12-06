@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4B69AECA239ABEF30066D553 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B69AEC9239ABEF30066D553 /* UserController.swift */; };
-		4B69AECC239ABEFB0066D553 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B69AECB239ABEFB0066D553 /* User.swift */; };
+		4B69AECC239ABEFB0066D553 /* RandomUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B69AECB239ABEFB0066D553 /* RandomUser.swift */; };
 		4B69AECE239ABF180066D553 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B69AECD239ABF180066D553 /* UsersTableViewController.swift */; };
 		4B69AED0239ABF7C0066D553 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B69AECF239ABF7C0066D553 /* UserTableViewCell.swift */; };
 		4B69AED2239ABF910066D553 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B69AED1239ABF910066D553 /* UserDetailViewController.swift */; };
@@ -21,7 +21,7 @@
 
 /* Begin PBXFileReference section */
 		4B69AEC9239ABEF30066D553 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
-		4B69AECB239ABEFB0066D553 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4B69AECB239ABEFB0066D553 /* RandomUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUser.swift; sourceTree = "<group>"; };
 		4B69AECD239ABF180066D553 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		4B69AECF239ABF7C0066D553 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		4B69AED1239ABF910066D553 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +45,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B69AED3239AC0800066D553 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4B69AECD239ABF180066D553 /* UsersTableViewController.swift */,
+				4B69AED1239ABF910066D553 /* UserDetailViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4B69AED4239AC0900066D553 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4B69AECF239ABF7C0066D553 /* UserTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4B69AED5239AC0A40066D553 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4B69AECB239ABEFB0066D553 /* RandomUser.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4B69AED6239AC0CA0066D553 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4B69AEC9239ABEF30066D553 /* UserController.swift */,
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
@@ -65,11 +98,10 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
-				4B69AEC9239ABEF30066D553 /* UserController.swift */,
-				4B69AECB239ABEFB0066D553 /* User.swift */,
-				4B69AECD239ABF180066D553 /* UsersTableViewController.swift */,
-				4B69AECF239ABF7C0066D553 /* UserTableViewCell.swift */,
-				4B69AED1239ABF910066D553 /* UserDetailViewController.swift */,
+				4B69AED5239AC0A40066D553 /* Models */,
+				4B69AED3239AC0800066D553 /* ViewControllers */,
+				4B69AED4239AC0900066D553 /* Views */,
+				4B69AED6239AC0CA0066D553 /* Model Controllers */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
@@ -167,7 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B69AED2239ABF910066D553 /* UserDetailViewController.swift in Sources */,
-				4B69AECC239ABEFB0066D553 /* User.swift in Sources */,
+				4B69AECC239ABEFB0066D553 /* RandomUser.swift in Sources */,
 				4B69AECA239ABEF30066D553 /* UserController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				4B69AECE239ABF180066D553 /* UsersTableViewController.swift in Sources */,
