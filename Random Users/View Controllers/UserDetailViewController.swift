@@ -45,44 +45,30 @@ class UserDetailViewController: UIViewController {
         
         let photoString = user.photo
         
-        //        if let imageData = cache.retrieveValue(for: photoReference.id),
-        //            let image = UIImage(data: imageData) {
-        //            cell.imageView.image = image
-        //            return
-        //        }
+        if let imageData = cache?.retrieveValue(for: photoString),
+            let image = UIImage(data: imageData) {
+            imageView.image = image
+            return
+        }
         
         let photoFetchOperation = FetchPhotoOperation(photoString: photoString)
         
-        //        let storeData = BlockOperation {
-        //            if let imageData = photoFetchOperation.imageData {
-        //                self.cache.cache(value: imageData, for: photoReference.id)
-        //            }
-        //        }
+        let storeData = BlockOperation {
+            if let imageData = photoFetchOperation.imageData {
+                self.cache?.cache(value: imageData, for: photoString)
+            }
+        }
         
         let setImage = BlockOperation {
-            //            defer { self.fetchOperations.removeValue(forKey: photoReference.id) } // So we use less memory
-            print("hi")
             guard let data = photoFetchOperation.imageData else { return }
             let image = UIImage(data: data)
             self.imageView.image = image
         }
         
         setImage.addDependency(photoFetchOperation)
-        //        storeData.addDependency(photoFetchOperation)
+        storeData.addDependency(photoFetchOperation)
         
-        photoFetchQueue?.addOperations([photoFetchOperation/*, storeData*/], waitUntilFinished: false)
+        photoFetchQueue?.addOperations([photoFetchOperation, storeData], waitUntilFinished: true)
         OperationQueue.main.addOperation(setImage)
-        
-        //        fetchOperations[photoReference.id] = photoFetchOperation
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

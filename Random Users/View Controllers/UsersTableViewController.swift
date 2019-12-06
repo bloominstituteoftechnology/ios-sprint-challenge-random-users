@@ -67,7 +67,7 @@ class UsersTableViewController: UITableViewController {
         
         let photoString = userController.users[indexPath.row].thumbnail
         
-        if let imageData = cache.retrieveValue(for: "\(userController.users[indexPath.row].name)-thumb"),
+        if let imageData = cache.retrieveValue(for: photoString),
             let image = UIImage(data: imageData) {
             cell.imageView?.image = image
             return
@@ -77,7 +77,7 @@ class UsersTableViewController: UITableViewController {
         
         let storeData = BlockOperation {
             if let imageData = photoFetchOperation.imageData {
-                self.cache.cache(value: imageData, for: "\(self.userController.users[indexPath.row].name)-thumb")
+                self.cache.cache(value: imageData, for: photoString)
             }
         }
         
@@ -95,7 +95,7 @@ class UsersTableViewController: UITableViewController {
         setImage.addDependency(photoFetchOperation)
         storeData.addDependency(photoFetchOperation)
         
-        photoFetchQueue.addOperations([photoFetchOperation, storeData], waitUntilFinished: false)
+        photoFetchQueue.addOperations([photoFetchOperation, storeData], waitUntilFinished: true)
         OperationQueue.main.addOperation(setImage)
         
         fetchOperations[userController.users[indexPath.row].name] = photoFetchOperation
@@ -110,6 +110,4 @@ class UsersTableViewController: UITableViewController {
         detailVC.photoFetchQueue = photoFetchQueue
         detailVC.cache = cache
     }
-    
-
 }
