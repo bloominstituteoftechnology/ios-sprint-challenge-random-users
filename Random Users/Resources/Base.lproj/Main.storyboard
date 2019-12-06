@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="m9e-2g-1zq">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -59,7 +59,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Users" id="4AJ-sM-KNR">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="STb-v8-g4a"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="STb-v8-g4a">
+                            <connections>
+                                <action selector="addButtonTapped:" destination="iLT-vJ-U4d" id="Frm-2q-iu4"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dw0-AS-5NS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

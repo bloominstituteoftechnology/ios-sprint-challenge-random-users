@@ -10,6 +10,12 @@ import UIKit
 
 class UserTableViewCell: UITableViewCell {
     
+    weak var user: RandomUser? {
+        didSet {
+            userNameLabel.text = user?.name
+        }
+    }
+    
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     
