@@ -73,41 +73,6 @@ class UsersTableViewController: UITableViewController {
         
         self.operations[userReference] = thumbnailphotoFetchOperation
     }
-    
-    private func fetchImageData(forItemAt indexPath: IndexPath) -> Data? {
-        
-        let userReference = userController.users.results[indexPath.row]
-        var imageData: Data?
-        if let data = largePhotoCache.value(for: userReference) {
-            return data
-        }
-        
-        let photoFetchOperation = FetchPhotoOperation(photoReference: userReference.picture.large)
-        
-        let cacheOP = BlockOperation {
-            if let data = photoFetchOperation.imageData {
-                imageData = data
-            }
-        }
-        
-        let completionOP = BlockOperation {
-            defer { self.operations.removeValue(forKey: userReference) }
-            if let data = photoFetchOperation.imageData {
-                imageData = data
-            }
-        }
-        
-        cacheOP.addDependency(photoFetchOperation)
-        completionOP.addDependency(photoFetchOperation)
-        
-        photoFetchQueue.addOperation(photoFetchOperation)
-        photoFetchQueue.addOperation(cacheOP)
-        OperationQueue.main.addOperation(completionOP)
-        
-        self.operations[userReference] = photoFetchOperation
-        return imageData
-    }
-    
 
     // MARK: - Table view data source
 
