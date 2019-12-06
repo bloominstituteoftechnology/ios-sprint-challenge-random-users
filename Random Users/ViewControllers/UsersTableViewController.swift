@@ -57,6 +57,9 @@ class UsersTableViewController: UITableViewController {
     private func didFetchUsers(with result: Result<[RandomUser], Error>) {
         do {
             users = try result.get()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         } catch {
             print("Error fetching users: \(error)")
         }
