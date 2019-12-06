@@ -23,6 +23,7 @@ class UserController {
             let data = try Data(contentsOf: baseURL)
             let people = try JSONDecoder().decode(Results.self, from: data)
             users.append(contentsOf: people.results)
+            users.sort { $0.name < $1.name }
         } catch {
             print("Error fetching poeple: \(error)")
         }

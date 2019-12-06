@@ -72,7 +72,6 @@ class UsersTableViewController: UITableViewController {
         tableView.scrollToRow(at: IndexPath(item: userController.users.count - 1, section: 0), at: .bottom, animated: false)
     }
     
-    
     // MARK: - Private Methods
     
     private func fetchImage(for cell: UITableViewCell, indexPath: IndexPath) {
