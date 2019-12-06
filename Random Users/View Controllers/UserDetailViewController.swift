@@ -9,6 +9,17 @@
 import UIKit
 
 class UserDetailViewController: UIViewController {
+    
+    // MARK: - Outlets
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    
+    // MARK: - Properties
+    
+    // MARK: - Lifecycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,6 +27,7 @@ class UserDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    // MARK: - Private Methods
 
     /*
     // MARK: - Navigation
