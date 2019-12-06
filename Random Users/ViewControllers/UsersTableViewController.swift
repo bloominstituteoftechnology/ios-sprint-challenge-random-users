@@ -12,19 +12,15 @@ class UsersTableViewController: UITableViewController {
     
     // MARK: - Properties
     
+    typealias ThumbnailCache = Cache<Int, Data>
+    
     private var users = [RandomUser]()
     private var apiController = APIController()
     
-    lazy private var thumbnailCache = Cache<Int, Data>()
+    lazy private var thumbnailCache = ThumbnailCache()
     
     lazy private var thumbnailFetchQueue = OperationQueue()
     lazy private var thumbnailFetchOps = [Int: ImageFetchOperation]()
-    
-    // MARK: - View Lifecycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
     // MARK: - Table view data source
 
@@ -47,12 +43,32 @@ class UsersTableViewController: UITableViewController {
     // MARK: - Actions
     
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
+        users = []
+        thumbnailCache = ThumbnailCache()
+        tableView.reloadData()
         apiController.fetchUsers(completion: didFetchUsers(with:))
     }
 
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    fileprivate func fetchImage(forUser user: RandomUser, _ detailVC: UserDetailViewController) {
+        print("fetching full image for \(user.name)")
+        let imageFetchOp = ImageFetchOperation(user.imageInfo, forFullImage: true)
+        let imageSetOp = BlockOperation {
+            if let imageData = imageFetchOp.imageData {
+                user.imageInfo.fullImageData = imageData
+                DispatchQueue.main.async {
+                    detailVC.userImageView.image = UIImage(data: imageData)
+                }
+            }
+        }
+        imageSetOp.addDependency(imageFetchOp)
+        
+        detailVC.operationQueue.addOperations([imageFetchOp, imageSetOp], waitUntilFinished: false)
+        detailVC.imageFetchOp = imageFetchOp
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowUserDetailSegue" {
             guard let detailVC = segue.destination as? UserDetailViewController,
@@ -61,20 +77,7 @@ class UsersTableViewController: UITableViewController {
             
             let user = users[index]
             if user.imageInfo.fullImageData == nil && detailVC.imageFetchOp == nil {
-                print("fetching full image for \(user.name)")
-                let imageFetchOp = ImageFetchOperation(user.imageInfo, forFullImage: true)
-                let imageSetOp = BlockOperation {
-                    if let imageData = imageFetchOp.imageData {
-                        user.imageInfo.fullImageData = imageData
-                        DispatchQueue.main.async {
-                            detailVC.userImageView.image = UIImage(data: imageData)
-                        }
-                    }
-                }
-                imageSetOp.addDependency(imageFetchOp)
-                
-                detailVC.operationQueue.addOperations([imageFetchOp, imageSetOp], waitUntilFinished: false)
-                detailVC.imageFetchOp = imageFetchOp
+                fetchImage(forUser: user, detailVC)
             }
             detailVC.user = user
         }
