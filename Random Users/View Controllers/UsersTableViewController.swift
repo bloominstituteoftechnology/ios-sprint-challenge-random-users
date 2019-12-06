@@ -12,7 +12,7 @@ class UsersTableViewController: UITableViewController {
 
     let userController = UserController()
     private let cache = Cache<User, Data>()
-    
+    private let largePhotoCache = Cache<User, Data>()
     private let photoFetchQueue = OperationQueue()
     private var operations = [User: Operation]()
     
@@ -39,11 +39,14 @@ class UsersTableViewController: UITableViewController {
             return
         }
     
-        let photoFetchOperation = FetchPhotoOperation(photoReference: userReference.picture.thumbnail)
+        let thumbnailphotoFetchOperation = FetchPhotoOperation(photoReference: userReference.picture.thumbnail)
+        let largephotoFetchOperation = FetchPhotoOperation(photoReference: userReference.picture.large)
         
         let cacheOP = BlockOperation {
-            if let data = photoFetchOperation.imageData {
+            if let data = thumbnailphotoFetchOperation.imageData,
+                let largeData = largephotoFetchOperation.imageData {
                 self.cache.cache(value: data, key: userReference)
+                self.largePhotoCache.cache(value: largeData, key: userReference)
             }
         }
         
@@ -54,27 +57,28 @@ class UsersTableViewController: UITableViewController {
                 print("Reused Cell")
                 return
             }
-            if let data = photoFetchOperation.imageData {
+            if let data = thumbnailphotoFetchOperation.imageData {
                 cell.imageView?.image = UIImage(data: data)
             }
         }
         
-        cacheOP.addDependency(photoFetchOperation)
-        completionOP.addDependency(photoFetchOperation)
+        cacheOP.addDependency(thumbnailphotoFetchOperation)
+        cacheOP.addDependency(largephotoFetchOperation)
+        completionOP.addDependency(thumbnailphotoFetchOperation)
         
-        photoFetchQueue.addOperation(photoFetchOperation)
+        photoFetchQueue.addOperation(thumbnailphotoFetchOperation)
+        photoFetchQueue.addOperation(largephotoFetchOperation)
         photoFetchQueue.addOperation(cacheOP)
         OperationQueue.main.addOperation(completionOP)
         
-        self.operations[userReference] = photoFetchOperation
-        
+        self.operations[userReference] = thumbnailphotoFetchOperation
     }
     
     private func fetchImageData(forItemAt indexPath: IndexPath) -> Data? {
         
         let userReference = userController.users.results[indexPath.row]
         var imageData: Data?
-        if let data = cache.value(for: userReference) {
+        if let data = largePhotoCache.value(for: userReference) {
             return data
         }
         
@@ -140,7 +144,9 @@ class UsersTableViewController: UITableViewController {
             if segue.identifier == "ShowDetailUserSegue" {
                 if let indexPath = tableView.indexPathForSelectedRow {
                     detailVC.user = userController.users.results[indexPath.row]
-                    detailVC.imageData = fetchImageData(forItemAt: indexPath)
+                    if let data = largePhotoCache.value(for: userController.users.results[indexPath.row]) {
+                        detailVC.imageData = data
+                    }
                 }
             }
         }

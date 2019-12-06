@@ -31,7 +31,7 @@ class UserDetailViewController: UIViewController {
         if let imageData = imageData {
             pictureImageView.image = UIImage(data: imageData)
         }
-        nameLabel.text = user.name.first
+        nameLabel.text = "\(user.name.first) \(user.name.last)"
         phoneLabel.text = user.phone
         emailLabel.text = user.email
     }
