@@ -18,9 +18,4 @@ class UserTableViewCell: UITableViewCell {
     
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        imageView?.image = nil
-    }
 }

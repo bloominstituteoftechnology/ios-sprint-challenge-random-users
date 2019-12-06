@@ -21,3 +21,9 @@ class Cache<Key: Hashable, Value> {
         set { q.sync { _cache[key] = newValue } }
     }
 }
+
+extension Cache: Sequence {
+    __consuming func makeIterator() -> DictionaryIterator<Key, Value> {
+        return _cache.makeIterator()
+    }
+}

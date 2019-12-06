@@ -14,16 +14,14 @@ class ImageFetchOperation: ConcurrentOperation {
     
     var imageData: Data?
     
+    lazy private var lock = NSLock()
+    
+    private var url: URL? {
+        return forFullImage ? imageInfo.fullImageURL : imageInfo.thumbnailURL
+    }
+    
     lazy private var dataTask: URLSessionDataTask? = {
-        let url: URL
-        if forFullImage {
-            guard let imageURL = imageInfo.fullImageURL else { return nil }
-            url = imageURL
-        } else {
-            guard let thumbnailURL = imageInfo.thumbnailURL else { return nil }
-            url = thumbnailURL
-        }
-        
+        guard let url = url else { return nil }
         let task = URLSession.shared.dataTask(
             with: url,
             completionHandler: dataTaskDidComplete(with:_:_:))
@@ -50,7 +48,10 @@ class ImageFetchOperation: ConcurrentOperation {
         _ possibleResponse: URLResponse?,
         _ possibleError: Error?
     ) {
-        defer { self.state = .isFinished }
+        defer {
+            self.imageData = possibleData
+            self.state = .isFinished
+        }
         
         if let error = possibleError as NSError?,
             error.code == -999 {
@@ -62,7 +63,5 @@ class ImageFetchOperation: ConcurrentOperation {
             }
             return
         }
-        
-        self.imageData = possibleData
     }
 }

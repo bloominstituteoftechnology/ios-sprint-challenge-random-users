@@ -12,15 +12,16 @@ class UsersTableViewController: UITableViewController {
     
     // MARK: - Properties
     
-    typealias ThumbnailCache = Cache<Int, Data>
+    typealias ImageDataCache = Cache<Int, Data>
     
     private var users = [RandomUser]()
     private var apiController = APIController()
     
-    lazy private var thumbnailCache = ThumbnailCache()
+    lazy private var thumbnailCache = ImageDataCache()
+    lazy private var fullImageCache = ImageDataCache()
     
     lazy private var thumbnailFetchQueue = OperationQueue()
-    lazy private var thumbnailFetchOps = [Int: ImageFetchOperation]()
+    lazy private var thumbnailFetchOps = Cache<Int, ImageFetchOperation>()
     
     // MARK: - Table view data source
 
@@ -40,34 +41,27 @@ class UsersTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let cell = cell as? UserTableViewCell else { return }
+        cell.userImageView.image = nil
+        if !users.isEmpty {
+            thumbnailFetchOps[indexPath.row]?.cancel()
+        }
+    }
+    
     // MARK: - Actions
     
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
+        for (_, op) in thumbnailFetchOps {
+            op.cancel()
+        }
         users = []
-        thumbnailCache = ThumbnailCache()
+        thumbnailCache = ImageDataCache()
         tableView.reloadData()
         apiController.fetchUsers(completion: didFetchUsers(with:))
     }
 
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    fileprivate func fetchImage(forUser user: RandomUser, _ detailVC: UserDetailViewController) {
-        print("fetching full image for \(user.name)")
-        let imageFetchOp = ImageFetchOperation(user.imageInfo, forFullImage: true)
-        let imageSetOp = BlockOperation {
-            if let imageData = imageFetchOp.imageData {
-                user.imageInfo.fullImageData = imageData
-                DispatchQueue.main.async {
-                    detailVC.userImageView.image = UIImage(data: imageData)
-                }
-            }
-        }
-        imageSetOp.addDependency(imageFetchOp)
-        
-        detailVC.operationQueue.addOperations([imageFetchOp, imageSetOp], waitUntilFinished: false)
-        detailVC.imageFetchOp = imageFetchOp
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowUserDetailSegue" {
@@ -75,14 +69,13 @@ class UsersTableViewController: UITableViewController {
                 let index = tableView.indexPathForSelectedRow?.row
                 else { return }
             
-            let user = users[index]
-            if user.imageInfo.fullImageData == nil && detailVC.imageFetchOp == nil {
-                fetchImage(forUser: user, detailVC)
+            if users[index].imageInfo.fullImageData == nil && detailVC.imageFetchOp == nil {
+                fetchImage(forUserAtIndex: index, detailVC)
             }
-            detailVC.user = user
+            detailVC.user = users[index]
         }
     }
-
+    
     // MARK: - Private Methods
     
     private func didFetchUsers(with result: Result<[RandomUser], Error>) {
@@ -108,7 +101,8 @@ class UsersTableViewController: UITableViewController {
         // otherwise, fetch the image
         let thumbnailFetchOp = ImageFetchOperation(imageInfo)
         let storeImageToCacheOp = BlockOperation {
-            guard let imageData = thumbnailFetchOp.imageData else {
+            let fetchOp = self.thumbnailFetchOps[indexPath.row]
+            guard let imageData = fetchOp?.imageData else {
                 return
             }
             self.users[indexPath.row].imageInfo.thumbnailData = imageData
@@ -131,5 +125,21 @@ class UsersTableViewController: UITableViewController {
         OperationQueue.main.addOperation(checkCellReuseOp)
         
         thumbnailFetchOps[indexPath.row] = thumbnailFetchOp
+    }
+    
+    private func fetchImage(forUserAtIndex index: Int, _ detailVC: UserDetailViewController) {
+        let imageFetchOp = ImageFetchOperation(users[index].imageInfo, forFullImage: true)
+        let imageSetOp = BlockOperation {
+            if let imageData = imageFetchOp.imageData {
+                self.fullImageCache[index] = imageData
+                DispatchQueue.main.async {
+                    detailVC.userImageView.image = UIImage(data: imageData)
+                }
+            }
+        }
+        imageSetOp.addDependency(imageFetchOp)
+        
+        detailVC.operationQueue.addOperations([imageFetchOp, imageSetOp], waitUntilFinished: false)
+        detailVC.imageFetchOp = imageFetchOp
     }
 }
