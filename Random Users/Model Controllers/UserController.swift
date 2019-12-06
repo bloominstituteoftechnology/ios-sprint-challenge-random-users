@@ -32,6 +32,7 @@ class UserController {
     let baseURL = URL(string: "https://randomuser.me/api/?format=json&results=1000")!
     
     func fetchUsers(completion: @escaping (NetworkingError?) -> Void) {
+
         URLSession.shared.dataTask(with: baseURL) { (data, _, error) in
             if let error = error {
                 print("Error fetching users: \(error)")
