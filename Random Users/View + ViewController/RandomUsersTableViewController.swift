@@ -42,7 +42,7 @@ class RandomUsersTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "RandomUser", for: indexPath) as? RandomUserTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellReuseIdentifier", for: indexPath) as? RandomUserTableViewCell else { return UITableViewCell() }
         
         let user = client.savedUsers[indexPath.row]
         let name = "\(user.name.last),\(user.name.first)"
@@ -69,7 +69,36 @@ class RandomUsersTableViewController: UITableViewController {
             cell.randomUserThumbnailImage.image = image
             return
         }
-    
+        
+        let fetchPhotoOperation = FetchPhotoOperation(user: user)
+        
+        let storeDataInCache = BlockOperation {
+            guard let imageData = fetchPhotoOperation.imageData else { return }
+            self.cache.cache(value: imageData, for: url)
+        }
+        
+        let setImageAndName = BlockOperation {
+            defer {
+                self.fetchOperation.removeValue(forKey: user.picture.large)
+            }
+            
+            if let currentIndexPath = self.tableView.indexPath(for: cell),
+                currentIndexPath != indexPath {
+                return
+            }
+            
+            guard let imageData = fetchPhotoOperation.imageData else { return }
+            cell.randomUserThumbnailImage.image = UIImage(data: imageData)
+        }
+        
+        storeDataInCache.addDependency(fetchPhotoOperation)
+        setImageAndName.addDependency(fetchPhotoOperation)
+        
+        photoFetchQueue.addOperation(fetchPhotoOperation)
+        photoFetchQueue.addOperation(storeDataInCache)
+        OperationQueue.main.addOperation(setImageAndName)
+        
+        fetchOperation[user.picture.large] = fetchPhotoOperation
     }
     
     
