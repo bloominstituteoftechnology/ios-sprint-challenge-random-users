@@ -29,5 +29,22 @@ struct User: Decodable {
         case medium, thumbnail
     }
     
-    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: UserCodingKeys.self)
+        
+        self.phone = try container.decode(String.self, forKey: .phone)
+        self.email = try container.decode(String.self, forKey: .email)
+        
+        let nameContainer = try container.nestedContainer(keyedBy: NameCodingKeys.self, forKey: .name)
+        
+        let first = try nameContainer.decode(String.self, forKey: .first)
+        let last = try nameContainer.decode(String.self, forKey: .last)
+        
+        self.name = "\(first) \(last)"
+        
+        let photosContainer = try container.nestedContainer(keyedBy: PictureContainerCodingKeys.self, forKey: .picture)
+        
+        self.thumbnail = try photosContainer.decode(String.self, forKey: .thumbnail)
+        self.photo = try photosContainer.decode(String.self, forKey: .medium)
+    }
 }
