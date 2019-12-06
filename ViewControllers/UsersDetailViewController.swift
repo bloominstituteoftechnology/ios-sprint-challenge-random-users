@@ -10,21 +10,30 @@ import UIKit
 
 class UsersDetailViewController: UIViewController {
 
+    @IBOutlet weak var usersImageView: UIImageView!
+    @IBOutlet weak var usersNameLabel: UILabel!
+    @IBOutlet weak var usersPhoneNumberLabel: UILabel!
+    @IBOutlet weak var usersEmailLabel: UILabel!
+    
+    var person: Person?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setViews()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setViews() {
+        guard let person = person else { return }
+        
+        usersNameLabel.text = "\(person.name.first) \(person.name.last)"
+        usersPhoneNumberLabel.text = person.phone
+        usersEmailLabel.text = person.email
+        do {
+            let data = try Data(contentsOf: person.picture.large)
+            usersImageView.image = UIImage(data: data)
+        } catch {
+            NSLog("Error")
+        }
     }
-    */
 
 }
