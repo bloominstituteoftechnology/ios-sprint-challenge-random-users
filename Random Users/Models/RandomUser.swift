@@ -64,3 +64,9 @@ class RandomUser: Decodable {
         }
     }
 }
+
+extension RandomUser: Equatable {
+    static func == (lhs: RandomUser, rhs: RandomUser) -> Bool {
+        return lhs === rhs
+    }
+}

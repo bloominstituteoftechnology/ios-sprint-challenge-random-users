@@ -26,7 +26,6 @@ class UsersTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return users.count
     }
 
@@ -44,9 +43,8 @@ class UsersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let cell = cell as? UserTableViewCell else { return }
         cell.userImageView.image = nil
-        if !users.isEmpty {
-            thumbnailFetchOps[indexPath.row]?.cancel()
-        }
+        thumbnailFetchOps[indexPath.row]?.cancel()
+
     }
     
     // MARK: - Actions
@@ -55,8 +53,9 @@ class UsersTableViewController: UITableViewController {
         for (_, op) in thumbnailFetchOps {
             op.cancel()
         }
+        thumbnailFetchOps.clear()
+        thumbnailCache.clear()
         users = []
-        thumbnailCache = ImageDataCache()
         tableView.reloadData()
         apiController.fetchUsers(completion: didFetchUsers(with:))
     }
@@ -109,11 +108,14 @@ class UsersTableViewController: UITableViewController {
             self.thumbnailCache[indexPath.row] = imageData
         }
         let checkCellReuseOp = BlockOperation {
-            // if present, use cached image for cell & return
+            if cell.user != self.users[indexPath.row] {
+                return
+            }
             if let imageData = self.thumbnailCache[indexPath.row],
                 let image = UIImage(data: imageData)
             {
-                thumbnailFetchOp.cancel()
+                let fetchOp = self.thumbnailFetchOps[indexPath.row]
+                fetchOp?.cancel()
                 cell.userImageView.image = image
             }
         }

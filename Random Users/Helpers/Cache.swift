@@ -20,6 +20,10 @@ class Cache<Key: Hashable, Value> {
         get { q.sync { return _cache[key] } }
         set { q.sync { _cache[key] = newValue } }
     }
+    
+    func clear() {
+        _cache = [:]
+    }
 }
 
 extension Cache: Sequence {
