@@ -15,7 +15,11 @@ struct Results: Decodable {
         case results
     }
     
-    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: ResultsCodingKey.self)
+        
+        self.results = try container.decode([User].self, forKey: .results)
+    }
 }
 
 struct User: Decodable {
