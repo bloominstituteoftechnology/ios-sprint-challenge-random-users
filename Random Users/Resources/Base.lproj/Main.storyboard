@@ -63,10 +63,10 @@
             </objects>
             <point key="canvasLocation" x="1333.5999999999999" y="169.56521739130437"/>
         </scene>
-        <!--View Controller-->
+        <!--Random User Detail View Controller-->
         <scene sceneID="9Vz-EN-JiV">
             <objects>
-                <viewController id="XwQ-Fz-9D9" sceneMemberID="viewController">
+                <viewController id="XwQ-Fz-9D9" customClass="RandomUserDetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MHs-JK-lyr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,6 +108,12 @@
                         <viewLayoutGuide key="safeArea" id="Qos-f3-WvG"/>
                     </view>
                     <navigationItem key="navigationItem" id="Zz8-xE-hfX"/>
+                    <connections>
+                        <outlet property="userDOB" destination="Zth-hP-lEx" id="FAh-XE-qSg"/>
+                        <outlet property="userEmail" destination="uz0-bz-JxE" id="osV-vY-67C"/>
+                        <outlet property="userLargeImage" destination="eGT-6j-rKM" id="ULO-Is-l1u"/>
+                        <outlet property="userName" destination="sWe-Ja-Tch" id="MX1-Ax-34m"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c0o-0p-pgi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -1,5 +1,5 @@
 //
-//  RandomUser.swift
+//  RandomUsers.swift
 //  Random Users
 //
 //  Created by Rick Wolter on 12/6/19.
@@ -9,7 +9,7 @@
 import Foundation
 import Foundation
 
-struct RandomUser: Codable {
+struct RandomUsers: Codable {
     
     let results: [User]
 }
