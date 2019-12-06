@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CD97E82239ABACE00AFAD08 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD97E81239ABACE00AFAD08 /* Person.swift */; };
+		1CD97E85239ABB1200AFAD08 /* PersonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD97E84239ABB1200AFAD08 /* PersonController.swift */; };
+		1CD97E88239ABB6000AFAD08 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD97E87239ABB6000AFAD08 /* UsersTableViewController.swift */; };
+		1CD97E8A239ABB8A00AFAD08 /* UsersDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD97E89239ABB8A00AFAD08 /* UsersDetailViewController.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -15,6 +19,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1CD97E81239ABACE00AFAD08 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		1CD97E84239ABB1200AFAD08 /* PersonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonController.swift; sourceTree = "<group>"; };
+		1CD97E87239ABB6000AFAD08 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
+		1CD97E89239ABB8A00AFAD08 /* UsersDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDetailViewController.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -35,9 +43,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1CD97E83239ABAD500AFAD08 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1CD97E81239ABACE00AFAD08 /* Person.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1CD97E86239ABB1C00AFAD08 /* ModelController */ = {
+			isa = PBXGroup;
+			children = (
+				1CD97E84239ABB1200AFAD08 /* PersonController.swift */,
+			);
+			path = ModelController;
+			sourceTree = "<group>";
+		};
+		1CD97E8B239ABB9400AFAD08 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1CD97E89239ABB8A00AFAD08 /* UsersDetailViewController.swift */,
+				1CD97E87239ABB6000AFAD08 /* UsersTableViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
+				1CD97E8B239ABB9400AFAD08 /* ViewControllers */,
+				1CD97E86239ABB1C00AFAD08 /* ModelController */,
+				1CD97E83239ABAD500AFAD08 /* Model */,
 				8ED6A9862140178A00FC395A /* Random Users */,
 				8ED6A9852140178A00FC395A /* Products */,
 			);
@@ -151,7 +187,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CD97E8A239ABB8A00AFAD08 /* UsersDetailViewController.swift in Sources */,
+				1CD97E85239ABB1200AFAD08 /* PersonController.swift in Sources */,
+				1CD97E82239ABACE00AFAD08 /* Person.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				1CD97E88239ABB6000AFAD08 /* UsersTableViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
