@@ -59,7 +59,24 @@ class UsersTableViewController: UITableViewController {
                 let index = tableView.indexPathForSelectedRow?.row
                 else { return }
             
-            detailVC.user = users[index]
+            let user = users[index]
+            if user.imageInfo.fullImageData == nil && detailVC.imageFetchOp == nil {
+                print("fetching full image for \(user.name)")
+                let imageFetchOp = FetchThumbnailOperation(user.imageInfo, forFullImage: true)
+                let imageSetOp = BlockOperation {
+                    if let imageData = imageFetchOp.imageData {
+                        user.imageInfo.fullImageData = imageData
+                        DispatchQueue.main.async {
+                            detailVC.userImageView.image = UIImage(data: imageData)
+                        }
+                    }
+                }
+                imageSetOp.addDependency(imageFetchOp)
+                
+                detailVC.operationQueue.addOperations([imageFetchOp, imageSetOp], waitUntilFinished: false)
+                detailVC.imageFetchOp = imageFetchOp
+            }
+            detailVC.user = user
         }
     }
 

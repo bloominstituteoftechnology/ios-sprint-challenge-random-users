@@ -11,6 +11,9 @@ import UIKit
 class UserDetailViewController: UIViewController {
     
     weak var user: RandomUser?
+    
+    var operationQueue = OperationQueue()
+    weak var imageFetchOp: FetchThumbnailOperation?
 
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
