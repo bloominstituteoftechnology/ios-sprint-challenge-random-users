@@ -2,8 +2,8 @@
 //  DetailViewController.swift
 //  Random Users
 //
-//  Created by Jonalynn Masters on 11/1/19.
-//  Copyright © 2019 Erica Sadun. All rights reserved.
+//  Created by Jonalynn Masters on 12/6/19.
+//  Copyright © 2019 Jonalynn Masters. All rights reserved.
 //
 
 import UIKit
