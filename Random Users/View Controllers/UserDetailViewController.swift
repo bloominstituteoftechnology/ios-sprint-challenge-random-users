@@ -12,7 +12,7 @@ class UserDetailViewController: UIViewController {
 
     // MARK: - IBOutlets
     
-    @IBOutlet weak var pictureImageView: UIIMageView!
+    @IBOutlet weak var pictureImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!

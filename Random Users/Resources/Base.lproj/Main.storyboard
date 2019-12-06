@@ -40,6 +40,7 @@
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="i9n-dk-sPh" secondAttribute="bottom" id="EYT-7l-vAA"/>
                                         <constraint firstItem="i9n-dk-sPh" firstAttribute="top" secondItem="U87-rG-jN1" secondAttribute="topMargin" id="SD7-xr-loe"/>
+                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="ZPT-tu-TNX" secondAttribute="trailing" constant="20" id="eF8-Ac-SwX"/>
                                         <constraint firstItem="i9n-dk-sPh" firstAttribute="leading" secondItem="U87-rG-jN1" secondAttribute="leadingMargin" constant="20" id="ghi-et-sH2"/>
                                         <constraint firstItem="ZPT-tu-TNX" firstAttribute="centerY" secondItem="U87-rG-jN1" secondAttribute="centerY" id="mKz-B5-TLq"/>
                                         <constraint firstItem="ZPT-tu-TNX" firstAttribute="leading" secondItem="i9n-dk-sPh" secondAttribute="trailing" constant="20" id="qs8-Jn-VBu"/>
@@ -118,7 +119,7 @@
                         <outlet property="emailLabel" destination="24Z-dE-uvM" id="U3D-aA-U8d"/>
                         <outlet property="nameLabel" destination="pwK-0j-VNe" id="Sf8-D2-UBv"/>
                         <outlet property="phoneLabel" destination="cZO-Dd-fiE" id="pe4-DG-SCh"/>
-                        <outlet property="pictureImageView" destination="fcE-Xt-Z5O" id="Tgv-Fk-oYO"/>
+                        <outlet property="pictureImageView" destination="fcE-Xt-Z5O" id="UXk-Ub-iEH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iwf-FY-Q1T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
