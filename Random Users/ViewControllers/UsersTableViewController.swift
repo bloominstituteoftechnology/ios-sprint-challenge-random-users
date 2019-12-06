@@ -14,9 +14,10 @@ class UsersTableViewController: UITableViewController {
     // MARK: - Properties
     let userContoller = UserController()
     let cache = Cache<URL, Data>()
-    var operations = [URL: FetchPhotoOperation]()
+    var operations = [URL : FetchPhotoOperation]()
     let photoFetchQueue = OperationQueue()
-    let queue = DispatchQueue(label: "CancelOperation")
+    let cancelQueue = DispatchQueue(label: "CancelOperationQueue")
+
     
     
     override func viewDidLoad() {
@@ -51,6 +52,15 @@ class UsersTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let user = userContoller.users[indexPath.row]
+        let operation = operations[user.picture.large]
+        cancelQueue.sync {
+            operation?.cancel()
+        }
+        
+    }
+    
     // MARK: - Private
     private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
         let aUser = userContoller.users[indexPath.row]
@@ -68,7 +78,7 @@ class UsersTableViewController: UITableViewController {
         // Start our fetch operation:
         let cacheOp = BlockOperation {
             guard let imageData = fetchPhotoOp.imageData else { return }
-            self.cache.cache(key: imageURL, value: imageData)
+            self.cache.cache(value: imageData, key: imageURL)
         }
         
         let completionOp = BlockOperation {
@@ -103,9 +113,8 @@ class UsersTableViewController: UITableViewController {
         if segue.identifier == "DetailSegue" {
             guard let userDetailVC = segue.destination as? UserDetailViewController,
                 let indexPath = tableView.indexPathForSelectedRow else { return }
-                
-            let user = userContoller.users[indexPath.row]
-            userDetailVC.users = user
+            
+            userDetailVC.users = userContoller.users[indexPath.row]
         }
     }
     
