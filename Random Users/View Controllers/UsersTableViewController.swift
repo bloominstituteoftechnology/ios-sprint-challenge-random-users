@@ -98,6 +98,7 @@ class UsersTableViewController: UITableViewController {
         guard let detailVC = segue.destination as? UserDetailViewController,
             let indexPath = tableView.indexPathForSelectedRow else { return }
         detailVC.user = userController.users[indexPath.row]
+        detailVC.photoFetchQueue = photoFetchQueue
     }
     
 

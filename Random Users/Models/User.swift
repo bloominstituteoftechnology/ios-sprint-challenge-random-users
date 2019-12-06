@@ -38,7 +38,7 @@ struct User: Decodable {
     }
     
     enum PictureContainerCodingKeys: String, CodingKey {
-        case medium, thumbnail
+        case large, thumbnail
     }
     
     init(from decoder: Decoder) throws {
@@ -57,6 +57,6 @@ struct User: Decodable {
         let photosContainer = try container.nestedContainer(keyedBy: PictureContainerCodingKeys.self, forKey: .picture)
         
         self.thumbnail = try photosContainer.decode(String.self, forKey: .thumbnail)
-        self.photo = try photosContainer.decode(String.self, forKey: .medium)
+        self.photo = try photosContainer.decode(String.self, forKey: .large)
     }
 }
