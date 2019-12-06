@@ -18,7 +18,7 @@ class UsersTableViewController: UITableViewController {
     lazy private var thumbnailCache = Cache<Int, Data>()
     
     lazy private var thumbnailFetchQueue = OperationQueue()
-    lazy private var thumbnailFetchOps = [Int: FetchThumbnailOperation]()
+    lazy private var thumbnailFetchOps = [Int: ImageFetchOperation]()
     
     // MARK: - View Lifecycle
     
@@ -62,7 +62,7 @@ class UsersTableViewController: UITableViewController {
             let user = users[index]
             if user.imageInfo.fullImageData == nil && detailVC.imageFetchOp == nil {
                 print("fetching full image for \(user.name)")
-                let imageFetchOp = FetchThumbnailOperation(user.imageInfo, forFullImage: true)
+                let imageFetchOp = ImageFetchOperation(user.imageInfo, forFullImage: true)
                 let imageSetOp = BlockOperation {
                     if let imageData = imageFetchOp.imageData {
                         user.imageInfo.fullImageData = imageData
@@ -103,7 +103,7 @@ class UsersTableViewController: UITableViewController {
         }
         
         // otherwise, fetch the image
-        let thumbnailFetchOp = FetchThumbnailOperation(imageInfo)
+        let thumbnailFetchOp = ImageFetchOperation(imageInfo)
         let storeImageToCacheOp = BlockOperation {
             guard let imageData = thumbnailFetchOp.imageData else {
                 return

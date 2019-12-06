@@ -79,14 +79,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S20-RO-OCc">
-                                <rect key="frame" x="40" y="108" width="334" height="334"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S20-RO-OCc">
+                                <rect key="frame" x="138" y="108" width="138" height="138"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="S20-RO-OCc" secondAttribute="height" multiplier="1:1" id="Fry-jL-HuX"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="g97-Wh-xSi">
-                                <rect key="frame" x="40" y="450" width="334" height="85.666666666666629"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="g97-Wh-xSi">
+                                <rect key="frame" x="40" y="254.00000000000003" width="334" height="85.666666666666686"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4S5-wX-NfB">
                                         <rect key="frame" x="0.0" y="0.0" width="134.66666666666666" height="33.666666666666664"/>
@@ -95,13 +95,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(###) ###-####" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wdE-ul-0Yk">
-                                        <rect key="frame" x="0.0" y="41.666666666666686" width="114.66666666666667" height="18"/>
+                                        <rect key="frame" x="0.0" y="41.666666666666657" width="114.66666666666667" height="18"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name@website.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mCM-ZV-afp">
-                                        <rect key="frame" x="0.0" y="67.666666666666629" width="138" height="18"/>
+                                        <rect key="frame" x="0.0" y="67.666666666666657" width="138" height="18"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -112,13 +112,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="S20-RO-OCc" firstAttribute="top" secondItem="RFs-38-6aa" secondAttribute="top" constant="20" id="4lC-5E-Wqf"/>
-                            <constraint firstItem="g97-Wh-xSi" firstAttribute="leading" secondItem="S20-RO-OCc" secondAttribute="leading" id="EXU-49-1f0"/>
-                            <constraint firstItem="RFs-38-6aa" firstAttribute="trailing" secondItem="S20-RO-OCc" secondAttribute="trailing" constant="40" id="R9b-t8-5hk"/>
+                            <constraint firstItem="RFs-38-6aa" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="S20-RO-OCc" secondAttribute="trailing" constant="40" id="R9b-t8-5hk"/>
                             <constraint firstItem="RFs-38-6aa" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="g97-Wh-xSi" secondAttribute="bottom" constant="8" id="VE2-mE-LnT"/>
-                            <constraint firstItem="S20-RO-OCc" firstAttribute="leading" secondItem="RFs-38-6aa" secondAttribute="leading" constant="40" id="aCG-9e-8yh"/>
+                            <constraint firstItem="S20-RO-OCc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="RFs-38-6aa" secondAttribute="leading" constant="40" id="aCG-9e-8yh"/>
                             <constraint firstItem="g97-Wh-xSi" firstAttribute="top" secondItem="S20-RO-OCc" secondAttribute="bottom" constant="8" id="fzm-wU-Hzf"/>
+                            <constraint firstItem="RFs-38-6aa" firstAttribute="trailing" secondItem="g97-Wh-xSi" secondAttribute="trailing" constant="40" id="h6X-9u-OPP"/>
+                            <constraint firstItem="g97-Wh-xSi" firstAttribute="leading" secondItem="RFs-38-6aa" secondAttribute="leading" constant="40" id="ruR-TW-NFt"/>
                             <constraint firstItem="S20-RO-OCc" firstAttribute="centerX" secondItem="1Qy-Yo-ghs" secondAttribute="centerX" id="sOO-Yp-3bE"/>
-                            <constraint firstItem="g97-Wh-xSi" firstAttribute="trailing" secondItem="S20-RO-OCc" secondAttribute="trailing" id="wk8-Yx-8m1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RFs-38-6aa"/>
                     </view>

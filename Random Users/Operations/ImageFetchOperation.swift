@@ -1,5 +1,5 @@
 //
-//  FetchThumbnailOperation.swift
+//  ImageFetchOperation.swift
 //  Astronomy
 //
 //  Created by Jon Bash on 2019-12-05.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class FetchThumbnailOperation: ConcurrentOperation {
+class ImageFetchOperation: ConcurrentOperation {
     var imageInfo: RandomUser.ImageInfo
     var forFullImage: Bool = false
     
