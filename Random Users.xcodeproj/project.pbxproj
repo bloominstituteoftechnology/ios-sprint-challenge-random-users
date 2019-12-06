@@ -21,6 +21,7 @@
 		8ED6A98E2140178C00FC395A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8ED6A9912140178C00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ED6A9932140178C00FC395A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99B12454239AB44D000C59AF /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -54,11 +55,28 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
+				99B12453239AB43A000C59AF /* ViewControllers */,
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				9D5CCA56214231E400224681 /* Operations */,
+				99B12452239AB42F000C59AF /* Helpers */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
 			path = "Random Users";
+			sourceTree = "<group>";
+		};
+		99B12452239AB42F000C59AF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				99B12454239AB44D000C59AF /* Cache.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		99B12453239AB43A000C59AF /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		9D5CCA522142305600224681 /* Resources */ = {
