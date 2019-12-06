@@ -26,7 +26,7 @@ class UserController {
     
     var users: [User] = []
     
-    let baseURL = URL(string: "https://randomuser.me/api/?format=json&results=1000")!
+    private let baseURL = URL(string: "https://randomuser.me/api/?format=json&results=1000")!
     
     func fetchUsers(completion: @escaping (NetworkingError?) -> Void) {
 
@@ -52,7 +52,7 @@ class UserController {
                 completion(.badDecode)
             }
             completion(nil)
-        }
+        }.resume()
     }
     
     

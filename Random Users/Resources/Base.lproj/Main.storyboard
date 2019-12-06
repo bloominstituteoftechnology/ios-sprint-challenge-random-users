@@ -51,7 +51,7 @@
                                 <connections>
                                     <outlet property="iconImage" destination="33o-cG-sk3" id="p7F-9g-jLa"/>
                                     <outlet property="nameLabel" destination="wz6-lZ-ADg" id="5cj-Cx-1vJ"/>
-                                    <segue destination="b2x-OP-ym0" kind="show" id="eS3-nj-bSm"/>
+                                    <segue destination="b2x-OP-ym0" kind="show" identifier="DetailSegue" id="eS3-nj-bSm"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

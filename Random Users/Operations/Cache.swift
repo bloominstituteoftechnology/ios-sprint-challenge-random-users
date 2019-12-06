@@ -12,21 +12,21 @@ import Foundation
 class Cache<Key: Hashable , Value> {
     
     // a place for items to be cached
-    private var cache = [Key: Value]()
+    private var cacheStore = [Key: Value]()
     // serial queue so that everyoen can use shared resources without using NSLock
-    private var queue = DispatchQueue(label: "MyUsersCacheQueue")
+    private var queue = DispatchQueue(label: "CacheQueue")
     
     // have a function to add items to the cache
-    func cache(value: Value, key: Key) {
+    func cache(key: Key, value: Value) {
         queue.async {
-            self.cache[key] = value
+            self.cacheStore[key] = value
         }
     }
     
     // have a function to return items that are cache
     func value(key: Key) -> Value? {
         return queue.sync {
-            cache[key]
+            cacheStore[key]
         }
     }
     

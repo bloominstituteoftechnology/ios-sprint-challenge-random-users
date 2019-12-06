@@ -14,10 +14,14 @@ class UsersTableViewController: UITableViewController {
     // MARK: - Properties
     let userContoller = UserController()
     let cache = Cache<URL, Data>()
+    var operations = [URL: FetchPhotoOperation]()
+    let photoFetchQueue = OperationQueue()
+    let queue = DispatchQueue(label: "CancelOperation")
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         userContoller.fetchUsers { (error) in
             if let error = error {
                 print("Error loading users: \(error)")
@@ -33,30 +37,76 @@ class UsersTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return userContoller.users.count
     }
     
-     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserTableViewCell else { return UITableViewCell() }
         
+        let aUser = userContoller.users[indexPath.row]
+        let fullName = "\(aUser.name.first) \(aUser.name.last)"
+        cell.nameLabel.text = fullName
+        loadImage(forCell: cell, forItemAt: indexPath)
         
         return cell
-     }
+    }
     
     // MARK: - Private
     private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
-        let photoReference = 
+        let aUser = userContoller.users[indexPath.row]
+        let imageURL = aUser.picture.large
+        
+        // Check if there is cached data
+        if let cacheData = cache.value(key: imageURL),
+            let image = UIImage(data: cacheData) {
+            cell.iconImage.image = image
+            return
+        }
+        
+        let fetchPhotoOp = FetchPhotoOperation(user: aUser)
+        
+        // Start our fetch operation:
+        let cacheOp = BlockOperation {
+            guard let imageData = fetchPhotoOp.imageData else { return }
+            self.cache.cache(key: imageURL, value: imageData)
+        }
+        
+        let completionOp = BlockOperation {
+            defer {
+                self.operations.removeValue(forKey: imageURL)
+            }
+            
+            if let currentIndexPath = self.tableView.indexPath(for: cell),
+                currentIndexPath != indexPath {
+                return
+            }
+            
+            guard let imageData = fetchPhotoOp.imageData else { return }
+            cell.iconImage.image = UIImage(data: imageData)
+        }
+        
+        cacheOp.addDependency(fetchPhotoOp)
+        completionOp.addDependency(fetchPhotoOp)
+        
+        photoFetchQueue.addOperation(fetchPhotoOp)
+        photoFetchQueue.addOperation(fetchPhotoOp)
+        OperationQueue.main.addOperation(completionOp)
+        
+        operations[aUser.picture.large] = fetchPhotoOp
     }
-
-
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "DetailSegue" {
+            guard let userDetailVC = segue.destination as? UserDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow else { return }
+                
+            let user = userContoller.users[indexPath.row]
+            userDetailVC.users = user
+        }
+    }
     
 }
