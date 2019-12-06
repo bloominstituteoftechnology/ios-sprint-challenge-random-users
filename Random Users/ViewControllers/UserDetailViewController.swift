@@ -9,6 +9,8 @@
 import UIKit
 
 class UserDetailViewController: UIViewController {
+    
+    weak var user: RandomUser?
 
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
@@ -21,6 +23,15 @@ class UserDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        userNameLabel.text = user?.name
+        phoneNumberLabel.text = user?.phoneNumber
+        emailAddressLabel.text = user?.emailAddress
+        if let imageData = user?.imageInfo.fullImageData {
+            userImageView.image = UIImage(data: imageData)
+        }
+    }
 
     /*
     // MARK: - Navigation

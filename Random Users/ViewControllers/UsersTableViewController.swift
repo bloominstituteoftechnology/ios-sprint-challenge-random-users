@@ -54,8 +54,13 @@ class UsersTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ShowUserDetailSegue" {
+            guard let detailVC = segue.destination as? UserDetailViewController,
+                let index = tableView.indexPathForSelectedRow?.row
+                else { return }
+            
+            detailVC.user = users[index]
+        }
     }
 
     // MARK: - Private Methods
@@ -83,9 +88,10 @@ class UsersTableViewController: UITableViewController {
         // otherwise, fetch the image
         let thumbnailFetchOp = FetchThumbnailOperation(imageInfo)
         let storeImageToCacheOp = BlockOperation {
-            guard let imageData = thumbnailFetchOp.thumbnailData else {
+            guard let imageData = thumbnailFetchOp.imageData else {
                 return
             }
+            self.users[indexPath.row].imageInfo.thumbnailData = imageData
             self.thumbnailCache[indexPath.row] = imageData
         }
         let checkCellReuseOp = BlockOperation {
