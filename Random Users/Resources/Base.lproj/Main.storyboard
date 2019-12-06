@@ -8,16 +8,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Random Users Table View Controller-->
         <scene sceneID="i2i-Y0-2Ar">
             <objects>
-                <tableViewController id="17J-e2-ZBZ" sceneMemberID="viewController">
+                <tableViewController id="17J-e2-ZBZ" customClass="RandomUsersTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qt7-em-6x1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="111" id="VkJ-R1-CQc">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="111" id="VkJ-R1-CQc" customClass="RandomUserTableViewCell" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="111"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VkJ-R1-CQc" id="X3Z-pG-v4G">
@@ -48,6 +48,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="randomUserNameLabel" destination="PBu-4r-tcS" id="iNZ-5g-coH"/>
+                                    <outlet property="randomUserThumbnailImage" destination="EQT-OY-xZu" id="Pe3-T5-rBE"/>
                                     <segue destination="XwQ-Fz-9D9" kind="show" identifier="DetailSegue" id="fOX-SC-0T5"/>
                                 </connections>
                             </tableViewCell>

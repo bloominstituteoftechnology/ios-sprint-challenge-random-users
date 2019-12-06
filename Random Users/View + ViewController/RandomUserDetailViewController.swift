@@ -46,12 +46,20 @@ class RandomUserDetailViewController: UIViewController {
         
         
         
-        //Networking to fetch image
-        
-        
+         URLSession.shared.dataTask(with: (image)) { (data, _, error) in
+                   
+                   if let error = error {
+                       NSLog("Error fetching images: \(error)")
+                       return
+                   }
+                   
+                   guard let data = data else { return }
+                   DispatchQueue.main.async {
+                       self.userLargeImage.image = UIImage(data: data)
+                   }
+               }.resume()
     }
-    
-
+}
     /*
     // MARK: - Navigation
 
@@ -62,4 +70,4 @@ class RandomUserDetailViewController: UIViewController {
     }
     */
 
-}
+
