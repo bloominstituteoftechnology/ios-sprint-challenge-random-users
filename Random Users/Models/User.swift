@@ -11,6 +11,10 @@ import Foundation
 struct Results: Decodable {
     let results: [User]
     
+    enum ResultsCodingKey: String, CodingKey {
+        case results
+    }
+    
     
 }
 
