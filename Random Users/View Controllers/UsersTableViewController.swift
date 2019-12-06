@@ -20,6 +20,7 @@ class UsersTableViewController: UITableViewController {
     }
     let userController = UserController()
     private let photoFetchQueue = OperationQueue()
+    private var fetchOperations: [String: FetchPhotoOperation] = [:]
     
     // MARK: - Lifecycle Methods
 
@@ -27,6 +28,11 @@ class UsersTableViewController: UITableViewController {
         super.viewDidLoad()
         
         userController.fetchUsers()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -50,13 +56,17 @@ class UsersTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        fetchOperations[userController.users[indexPath.row].name]?.cancel()
+    }
+    
     // MARK: - Private Methods
     
     private func fetchImage(for cell: UITableViewCell, indexPath: IndexPath) {
         
         let photoString = userController.users[indexPath.row].thumbnail
         
-//        if let imageData = cache.retrieveValue(for: photoReference.id),
+//        if let imageData = cache.retrieveValue(for: userController.users[indexPath.row].name),
 //            let image = UIImage(data: imageData) {
 //            cell.imageView.image = image
 //            return
@@ -66,19 +76,19 @@ class UsersTableViewController: UITableViewController {
         
 //        let storeData = BlockOperation {
 //            if let imageData = photoFetchOperation.imageData {
-//                self.cache.cache(value: imageData, for: photoReference.id)
+//                self.cache.cache(value: imageData, for: userController.users[indexPath.row].name)
 //            }
 //        }
         
         let setImage = BlockOperation {
-//            defer { self.fetchOperations.removeValue(forKey: photoReference.id) } // So we use less memory
+            defer { self.fetchOperations.removeValue(forKey: self.userController.users[indexPath.row].name) } // So we use less memory
             if self.tableView.indexPath(for: cell) != indexPath {
                 return
             } else {
                 guard let data = photoFetchOperation.imageData else { return }
                 let image = UIImage(data: data)
                 cell.imageView?.image = image
-                self.tableView.reloadData()
+//                self.tableView.reloadData()
             }
         }
         
@@ -88,12 +98,11 @@ class UsersTableViewController: UITableViewController {
         photoFetchQueue.addOperations([photoFetchOperation/*, storeData*/], waitUntilFinished: false)
         OperationQueue.main.addOperation(setImage)
         
-//        fetchOperations[photoReference.id] = photoFetchOperation
+        fetchOperations[userController.users[indexPath.row].name] = photoFetchOperation
     }
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let detailVC = segue.destination as? UserDetailViewController,
             let indexPath = tableView.indexPathForSelectedRow else { return }
