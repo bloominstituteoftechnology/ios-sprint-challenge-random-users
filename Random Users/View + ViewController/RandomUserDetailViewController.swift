@@ -27,6 +27,7 @@ class RandomUserDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateViews()
 
         // Do any additional setup after loading the view.
     }
@@ -34,13 +35,16 @@ class RandomUserDetailViewController: UIViewController {
     
     func updateViews(){
         
+         print("Passed the assigning")
+        
         guard let firstName = user?.name.first,
             let lastName = user?.name.last,
             let age = user?.dob.age,
             let email = user?.email,
             let name = userName,
             let image = user?.picture.large else { return }
-        name.text = "\(firstName) \(lastName)"
+       
+       userName.text = "\(firstName) \(lastName)"
         userDOB.text = "\(age) years old"
         userEmail.text = "Email: \(email)"
         

@@ -105,7 +105,7 @@ class RandomUsersTableViewController: UITableViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowDetail" {
+        if segue.identifier == "DetailSegue" {
             guard let detailVC = segue.destination as? RandomUserDetailViewController,
                 let indexPath = tableView.indexPathForSelectedRow else { return }
             detailVC.user = client.savedUsers[indexPath.row]
