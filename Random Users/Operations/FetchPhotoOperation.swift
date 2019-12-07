@@ -11,7 +11,7 @@ import Foundation
 class FetchPhotoOperation: ConcurrentOperation {
     var user: User
     var imageData: Data?
-    private var session: URLSessionDataTask?
+    private var dataTask: URLSessionDataTask?
     
     init(user: User) {
         self.user = user
@@ -23,23 +23,22 @@ class FetchPhotoOperation: ConcurrentOperation {
         
         let url = user.picture.large
         
-        session = URLSession.shared.dataTask(with: url, completionHandler: { (data, _, error) in
+        dataTask = URLSession.shared.dataTask(with: url, completionHandler: { (data, _, error) in
             defer { self.state = .isFinished }
             
             if let error = error {
                 NSLog("Error fetching data for \(self.user): \(error)")
                 print("\(#file):L\(#line): Code failed inside \(#function)")
+                return
             }
-            
-            guard let data = data else { return }
-            
+                    
             self.imageData = data
         })
-        session?.resume()
+        dataTask?.resume()
     }
     
     override func cancel() {
-        session?.cancel()
+        dataTask?.cancel()
         super.cancel()
     }
     

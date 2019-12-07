@@ -16,9 +16,6 @@ class UserDetailViewController: UIViewController {
     @IBOutlet weak var emailLabel: UILabel!
     
     var user: User?
-    var imageData: Data?
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
