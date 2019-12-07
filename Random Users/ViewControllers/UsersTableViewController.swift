@@ -83,7 +83,7 @@ class UsersTableViewController: UITableViewController {
         
         let completionOp = BlockOperation {
             defer {
-                self.operations.removeValue(forKey: imageURL)
+                self.operations.removeValue(forKey: aUser.picture.large)
             }
             
             if let currentIndexPath = self.tableView.indexPath(for: cell),
@@ -99,7 +99,7 @@ class UsersTableViewController: UITableViewController {
         completionOp.addDependency(fetchPhotoOp)
         
         photoFetchQueue.addOperation(fetchPhotoOp)
-        photoFetchQueue.addOperation(fetchPhotoOp)
+        photoFetchQueue.addOperation(cacheOp)
         OperationQueue.main.addOperation(completionOp)
         
         operations[aUser.picture.large] = fetchPhotoOp
@@ -114,7 +114,7 @@ class UsersTableViewController: UITableViewController {
             guard let userDetailVC = segue.destination as? UserDetailViewController,
                 let indexPath = tableView.indexPathForSelectedRow else { return }
             
-            userDetailVC.users = userContoller.users[indexPath.row]
+            userDetailVC.user = userContoller.users[indexPath.row]
         }
     }
     
