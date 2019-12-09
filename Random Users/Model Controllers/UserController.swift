@@ -22,7 +22,7 @@ enum NetworkingError: Error {
     case fetchError
 }
 
-class UserController {
+class UserController { 
     
     var users: [User] = []
     
