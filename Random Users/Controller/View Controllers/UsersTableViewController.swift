@@ -12,6 +12,10 @@ import UIKit
 class UsersTableViewController: UITableViewController {
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Properties
+    let usersController = UsersController()
+    
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +27,12 @@ class UsersTableViewController: UITableViewController {
     // MARK: - Private
     private func updateViews() {
         title = "Users"
+        view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        usersController.fetchUsers {
+            self.tableView.reloadData()
+        }
     }
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
@@ -34,11 +42,12 @@ class UsersTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 30
+        return usersController.users.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Cells.usersCell, for: indexPath) as? UsersTableViewCell else { return UITableViewCell() }
+        cell.user = usersController.users[indexPath.row]
         return cell
     }
     

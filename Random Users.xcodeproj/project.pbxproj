@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		63482F4123D21781005C1683 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63482F4023D21781005C1683 /* Constants.swift */; };
+		63482F4323D21BF6005C1683 /* FetchUsersOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63482F4223D21BF6005C1683 /* FetchUsersOperation.swift */; };
 		63A1F3DE23D214C500512D14 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A1F3DD23D214C500512D14 /* UsersTableViewController.swift */; };
 		63A1F3E223D2150600512D14 /* UsersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A1F3E123D2150600512D14 /* UsersController.swift */; };
 		63A1F3E523D2152300512D14 /* UsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A1F3E423D2152300512D14 /* UsersTableViewCell.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		63482F4023D21781005C1683 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		63482F4223D21BF6005C1683 /* FetchUsersOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUsersOperation.swift; sourceTree = "<group>"; };
 		63A1F3DD23D214C500512D14 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		63A1F3E123D2150600512D14 /* UsersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersController.swift; sourceTree = "<group>"; };
 		63A1F3E423D2152300512D14 /* UsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewCell.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				63482F4223D21BF6005C1683 /* FetchUsersOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				63482F4323D21BF6005C1683 /* FetchUsersOperation.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				63A1F3E823D2154300512D14 /* User.swift in Sources */,
 				63A1F3E223D2150600512D14 /* UsersController.swift in Sources */,
