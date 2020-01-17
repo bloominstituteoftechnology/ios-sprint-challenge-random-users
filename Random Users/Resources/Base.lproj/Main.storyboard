@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,7 +11,7 @@
         <!--Users-->
         <scene sceneID="4jR-6X-tGS">
             <objects>
-                <tableViewController id="Ern-jb-G0H" sceneMemberID="viewController">
+                <tableViewController id="Ern-jb-G0H" customClass="RandomUsersTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="lkB-6l-tYW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,11 +21,11 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="55"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0yQ-C2-Lyf" id="lW4-uc-4Zt">
-                                    <rect key="frame" x="0.0" y="0.0" width="382.5" height="55"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="383" height="55"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Lambda_Logo_Full" translatesAutoresizingMaskIntoConstraints="NO" id="ELR-d3-PZE">
-                                            <rect key="frame" x="20" y="2.5" width="50" height="50.000000000000057"/>
+                                            <rect key="frame" x="20" y="2.5" width="50" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="ELR-d3-PZE" secondAttribute="height" multiplier="1:1" id="4Jx-rJ-mj3"/>
                                                 <constraint firstAttribute="height" constant="50" id="Mkm-1K-fWz"/>
@@ -71,15 +71,20 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="prefixLabel" destination="bdN-F9-hBZ" id="YTC-P4-d0C"/>
+                        <outlet property="thumbnailImageView" destination="ELR-d3-PZE" id="Gaj-dB-cYm"/>
+                        <outlet property="userNameLabel" destination="bs2-pW-uu6" id="GSw-6I-LRJ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IRC-KA-vld" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="955.07246376811599" y="-108.48214285714285"/>
         </scene>
-        <!--View Controller-->
+        <!--User Detail View Controller-->
         <scene sceneID="Cxb-CY-lRh">
             <objects>
-                <viewController id="Big-js-9eQ" sceneMemberID="viewController">
+                <viewController id="Big-js-9eQ" customClass="UserDetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sVT-7l-YEJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -124,6 +129,12 @@
                         <viewLayoutGuide key="safeArea" id="Xay-Sg-woX"/>
                     </view>
                     <navigationItem key="navigationItem" id="R7T-h7-V5m"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="qo6-ZC-1V7" id="S1N-mV-89d"/>
+                        <outlet property="largeImageView" destination="Ekp-VC-3bs" id="3q5-r0-rro"/>
+                        <outlet property="userNameLabel" destination="Tcu-Wo-4YG" id="gLa-k7-6RF"/>
+                        <outlet property="userPhoneNumberLabel" destination="Du3-mm-MIc" id="FaK-0X-DEa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dJL-a4-UVS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
