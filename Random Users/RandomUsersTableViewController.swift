@@ -10,20 +10,46 @@ import UIKit
 
 class RandomUsersTableViewController: UITableViewController {
     
-    @IBOutlet weak var thumbnailImageView: UIImageView!
-    @IBOutlet weak var prefixLabel: UILabel!
-    @IBOutlet weak var userNameLabel: UILabel!
-    
-    
+    let baseURL = URL(string: "https://randomuser.me/api/?results=1000")!
+    var users: [User] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    private func downloadUsers(at indexPath: IndexPath) {
+        var request = URLRequest(url: baseURL)
+        request.httpMethod = HTTPMethod.get.rawValue
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                NSLog("Error in fetchUsers dataTask: \(error)")
+            }
+            
+            if let response = response as? HTTPURLResponse,
+                response.statusCode != 200 {
+                NSLog("Response was NOT 200, response was \(response.statusCode)")
+            }
+            
+            guard let data = data else {
+                NSLog("No Data returned in dataTask")
+                return
+            }
+            
+            do {
+                self.users = try JSONDecoder().decode([User].self, from: data)
+            } catch {
+                NSLog("No Decode")
+                return
+            }
+            
+            DispatchQueue.main.async {
+                if let cell = self.tableView.cellForRow(at: indexPath) as? UserTableViewCell {
+                    cell.userNameLabel.text = self.users[indexPath.row].first + " " + self.users[indexPath.row].last
+                }
+            }
+        }.resume()
     }
 
     // MARK: - Table view data source
@@ -35,18 +61,18 @@ class RandomUsersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.users.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserTableViewCell else { return UITableViewCell() }
 
-        // Configure the cell...
+        downloadUsers(at: indexPath)
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

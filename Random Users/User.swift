@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct User {
+struct User: Decodable {
     var title, first, last, email, cell: String
     var picture: UserImage
 }

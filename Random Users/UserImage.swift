@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct UserImage {
+struct UserImage: Decodable {
     var large, medium, thumbnail: String
 }

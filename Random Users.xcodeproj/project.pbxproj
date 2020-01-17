@@ -16,6 +16,8 @@
 		A261B02423D21D8E0028FEAF /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A261B02323D21D8E0028FEAF /* UserDetailViewController.swift */; };
 		A261B02623D21E470028FEAF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A261B02523D21E470028FEAF /* User.swift */; };
 		A261B02823D21EDB0028FEAF /* UserImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A261B02723D21EDB0028FEAF /* UserImage.swift */; };
+		A261B02A23D21F900028FEAF /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A261B02923D21F900028FEAF /* NetworkController.swift */; };
+		A261B02C23D237FF0028FEAF /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A261B02B23D237FF0028FEAF /* UserTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		A261B02323D21D8E0028FEAF /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		A261B02523D21E470028FEAF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A261B02723D21EDB0028FEAF /* UserImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImage.swift; sourceTree = "<group>"; };
+		A261B02923D21F900028FEAF /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		A261B02B23D237FF0028FEAF /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserTableViewCell.swift; path = Resources/UserTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
+				A261B02B23D237FF0028FEAF /* UserTableViewCell.swift */,
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
@@ -69,6 +74,7 @@
 				A261B02323D21D8E0028FEAF /* UserDetailViewController.swift */,
 				A261B02523D21E470028FEAF /* User.swift */,
 				A261B02723D21EDB0028FEAF /* UserImage.swift */,
+				A261B02923D21F900028FEAF /* NetworkController.swift */,
 			);
 			path = "Random Users";
 			sourceTree = "<group>";
@@ -167,7 +173,9 @@
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				A261B02823D21EDB0028FEAF /* UserImage.swift in Sources */,
 				A261B02423D21D8E0028FEAF /* UserDetailViewController.swift in Sources */,
+				A261B02C23D237FF0028FEAF /* UserTableViewCell.swift in Sources */,
 				A261B02623D21E470028FEAF /* User.swift in Sources */,
+				A261B02A23D21F900028FEAF /* NetworkController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bso-gJ-tTo">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="55" id="0yQ-C2-Lyf">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="55" id="0yQ-C2-Lyf" customClass="UserTableViewCell" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="55"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0yQ-C2-Lyf" id="lW4-uc-4Zt">
@@ -25,7 +25,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Lambda_Logo_Full" translatesAutoresizingMaskIntoConstraints="NO" id="ELR-d3-PZE">
-                                            <rect key="frame" x="20" y="2.5" width="50" height="50"/>
+                                            <rect key="frame" x="20" y="2.5" width="50" height="50.000000000000057"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="ELR-d3-PZE" secondAttribute="height" multiplier="1:1" id="4Jx-rJ-mj3"/>
                                                 <constraint firstAttribute="height" constant="50" id="Mkm-1K-fWz"/>
@@ -57,6 +57,11 @@
                                         <constraint firstItem="bdN-F9-hBZ" firstAttribute="leading" secondItem="ELR-d3-PZE" secondAttribute="trailing" constant="8" id="tDQ-GZ-ewT"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="prefixLabel" destination="bdN-F9-hBZ" id="5VO-QL-Qb8"/>
+                                    <outlet property="thumbnailImageView" destination="ELR-d3-PZE" id="o0Z-9E-hrn"/>
+                                    <outlet property="userNameLabel" destination="bs2-pW-uu6" id="BbX-1R-AeO"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -71,11 +76,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="prefixLabel" destination="bdN-F9-hBZ" id="YTC-P4-d0C"/>
-                        <outlet property="thumbnailImageView" destination="ELR-d3-PZE" id="Gaj-dB-cYm"/>
-                        <outlet property="userNameLabel" destination="bs2-pW-uu6" id="GSw-6I-LRJ"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IRC-KA-vld" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
