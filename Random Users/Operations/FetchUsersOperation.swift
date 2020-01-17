@@ -9,8 +9,12 @@
 import Foundation
 
 class FetchUsersOperation: ConcurrentOperation {
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Properties
     var users: [User]?
     
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Operation Execution
     override func start() {
         self.state = .isExecuting
         

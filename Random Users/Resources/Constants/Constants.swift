@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - Table View Cell Constants
 struct Cells {
     static let usersCell = "UsersCell"
 }

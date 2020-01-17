@@ -6,7 +6,6 @@
 //  Copyright © 2020 Erica Sadun. All rights reserved.
 //
 
-import SwiftUI
 import UIKit
 
 class UsersTableViewController: UITableViewController {
@@ -92,6 +91,7 @@ class UsersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let userDetailVC = UsersDetailViewController(nibName: nil, bundle: nil)
         userDetailVC.user = usersController.users[indexPath.row]
+        userDetailVC.cache = cache
         navigationController?.pushViewController(userDetailVC, animated: true)
     }
     
@@ -101,23 +101,5 @@ class UsersTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         fetchOperations[usersController.users[indexPath.row].name]?.cancel()
-    }
-}
-
-// --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
-// MARK: - View Controller Previews
-struct UsersTableViewControllerPreview: PreviewProvider {
-    static var previews: some View {
-        ContainerView()
-    }
-    
-    struct ContainerView: UIViewControllerRepresentable {
-        func updateUIViewController(_ uiViewController: UsersTableViewControllerPreview.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<UsersTableViewControllerPreview.ContainerView>) {
-            
-        }
-        
-        func makeUIViewController(context: UIViewControllerRepresentableContext<UsersTableViewControllerPreview.ContainerView>) -> UIViewController {
-            return UINavigationController(rootViewController: UsersTableViewController())
-        }
     }
 }
