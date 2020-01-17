@@ -14,6 +14,9 @@ class UsersTableViewController: UITableViewController {
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Properties
     let usersController = UsersController()
+    let photoQueue = OperationQueue()
+    var cache = Cache<String, Data>()
+    var fetchOperations = [String : FetchPhotoOperation]()
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - View Controller Life Cycle
@@ -35,6 +38,40 @@ class UsersTableViewController: UITableViewController {
         }
     }
     
+    private func fetchImage(for cell: UsersTableViewCell, at indexPath: IndexPath) {
+        let imageURL = usersController.users[indexPath.row].thumbnail
+        
+        if cache.contains(imageURL), let imageData = cache.value(for: imageURL) {
+            cell.personImageView.image = UIImage(data: imageData)
+            return
+        }
+        
+        let photoFetchOperation = FetchPhotoOperation(imageURL: imageURL)
+        
+        let cacheOperation = BlockOperation {
+            if let imageData = photoFetchOperation.imageData {
+                self.cache.cache(value: imageData, for: imageURL)
+            }
+        }
+        
+        let updateUIOperation = BlockOperation {
+            defer { self.fetchOperations.removeValue(forKey: self.usersController.users[indexPath.row].name) }
+            if self.tableView.indexPath(for: cell) != indexPath {
+                return
+            } else {
+                guard let imageData = photoFetchOperation.imageData else { return }
+                cell.personImageView.image = UIImage(data: imageData)
+            }
+        }
+        
+        cacheOperation.addDependency(photoFetchOperation)
+        updateUIOperation.addDependency(photoFetchOperation)
+        
+        photoQueue.addOperations([photoFetchOperation, cacheOperation], waitUntilFinished: false)
+        OperationQueue.main.addOperation(updateUIOperation)
+        fetchOperations[usersController.users[indexPath.row].name] = photoFetchOperation
+    }
+    
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - TableView Delegate and DataSource
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -48,11 +85,14 @@ class UsersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Cells.usersCell, for: indexPath) as? UsersTableViewCell else { return UITableViewCell() }
         cell.user = usersController.users[indexPath.row]
+        fetchImage(for: cell, at: indexPath)
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let userDetailVC = UsersDetailViewController(nibName: nil, bundle: nil)
+        userDetailVC.user = usersController.users[indexPath.row]
+        navigationController?.pushViewController(userDetailVC, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -60,7 +100,7 @@ class UsersTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
+        fetchOperations[usersController.users[indexPath.row].name]?.cancel()
     }
 }
 
