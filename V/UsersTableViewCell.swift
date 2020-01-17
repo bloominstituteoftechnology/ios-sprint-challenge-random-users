@@ -9,16 +9,32 @@
 import UIKit
 
 class UsersTableViewCell: UITableViewCell {
+    
+    //Properties
+    @IBOutlet var userImage: UIImageView!
+    @IBOutlet var nameLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+   
+    
+    var user: User? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    func updateViews() {
+        
+        if let user = user {
+            let title: String = user.name["title"]!
+            let firstName: String = user.name["first"]!
+            let lastName: String = user.name["last"]!
+            let name: String = "\(title) \(firstName) \(lastName)"
+            nameLabel.text = name
+        }
     }
 
 }
