@@ -9,14 +9,21 @@
 import Foundation
 
 class FetchPhotoOperation: ConcurrentOperation {
+    
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Properties
     var imageData: Data?
     var imageURL: String
     var task: URLSessionDataTask?
     
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Initialization
     init(imageURL: String) {
         self.imageURL = imageURL
     }
     
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Operation Execution
     override func start() {
         self.state = .isExecuting
         
