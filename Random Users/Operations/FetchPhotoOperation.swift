@@ -1,0 +1,52 @@
+//
+//  FetchPhotoOperation.swift
+//  Random Users
+//
+//  Created by Chad Rutherford on 1/17/20.
+//  Copyright © 2020 Erica Sadun. All rights reserved.
+//
+
+import Foundation
+
+class FetchPhotoOperation: ConcurrentOperation {
+    
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Properties
+    var imageData: Data?
+    var imageURL: String
+    var task: URLSessionDataTask?
+    
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Initialization
+    init(imageURL: String) {
+        self.imageURL = imageURL
+    }
+    
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Operation Execution
+    override func start() {
+        self.state = .isExecuting
+        
+        guard let requestURL = URL(string: imageURL) else { return }
+        
+        task = URLSession.shared.dataTask(with: requestURL) { data, _, error in
+            defer { self.state = .isFinished }
+            
+            if let _ = error {
+                return
+            }
+            
+            guard let data = data else { return }
+            
+            self.imageData = data
+        }
+        
+        task?.resume()
+    }
+    
+    override func cancel() {
+        if let task = task {
+            task.cancel()
+        }
+    }
+}
