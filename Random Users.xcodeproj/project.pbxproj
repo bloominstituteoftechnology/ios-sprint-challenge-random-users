@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63482F4123D21781005C1683 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63482F4023D21781005C1683 /* Constants.swift */; };
 		63A1F3DE23D214C500512D14 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A1F3DD23D214C500512D14 /* UsersTableViewController.swift */; };
 		63A1F3E223D2150600512D14 /* UsersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A1F3E123D2150600512D14 /* UsersController.swift */; };
 		63A1F3E523D2152300512D14 /* UsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A1F3E423D2152300512D14 /* UsersTableViewCell.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		63482F4023D21781005C1683 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		63A1F3DD23D214C500512D14 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		63A1F3E123D2150600512D14 /* UsersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersController.swift; sourceTree = "<group>"; };
 		63A1F3E423D2152300512D14 /* UsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewCell.swift; sourceTree = "<group>"; };
@@ -43,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		63482F3F23D2176F005C1683 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				63482F4023D21781005C1683 /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		63A1F3DC23D214B300512D14 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +125,7 @@
 		9D5CCA522142305600224681 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				63482F3F23D2176F005C1683 /* Constants */,
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				8ED6A98B2140178A00FC395A /* Main.storyboard */,
 				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
@@ -208,6 +219,7 @@
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				63A1F3E823D2154300512D14 /* User.swift in Sources */,
 				63A1F3E223D2150600512D14 /* UsersController.swift in Sources */,
+				63482F4123D21781005C1683 /* Constants.swift in Sources */,
 				63A1F3DE23D214C500512D14 /* UsersTableViewController.swift in Sources */,
 				63A1F3E523D2152300512D14 /* UsersTableViewCell.swift in Sources */,
 			);
