@@ -28,8 +28,6 @@ class RandomUserDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
-
-        // Do any additional setup after loading the view.
     }
     
     
@@ -45,7 +43,7 @@ class RandomUserDetailViewController: UIViewController {
             let image = user?.picture.large else { return }
        
        userName.text = "\(firstName) \(lastName)"
-        userDOB.text = "\(age) years old"
+        userDOB.text = "\(age) yrs old"
         userEmail.text = "Email: \(email)"
         
         
@@ -64,14 +62,5 @@ class RandomUserDetailViewController: UIViewController {
                }.resume()
     }
 }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 
