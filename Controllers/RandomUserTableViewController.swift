@@ -31,8 +31,8 @@ class RandomUserTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RandomUserCell", for: indexPath)
         
         let user = apiController.users[indexPath.row]
-        let image = displayURLImage(url: user.thumbnail)
-        let name = "\(user.title) \(user.first) \(user.last)"
+        let image = displayURLImage(url: user.picture.thumbnail)
+        let name = "\(user.name.title) \(user.name.first) \(user.name.last)"
         cell.textLabel?.text = name
         cell.imageView?.image = image
     
