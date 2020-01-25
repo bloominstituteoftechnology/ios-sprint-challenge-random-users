@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="87" id="9wS-pL-C3N" customClass="UsersTableViewCell" customModule="Random_Users" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="87" id="9wS-pL-C3N" customClass="UsersTableViewCell" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="87"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9wS-pL-C3N" id="VEU-Ay-dOc">
@@ -49,7 +49,7 @@
                                 <connections>
                                     <outlet property="nameLabel" destination="Gas-cW-aHb" id="2Vl-GX-QUf"/>
                                     <outlet property="userImageView" destination="vpA-hB-en7" id="zu2-97-Qpb"/>
-                                    <segue destination="dLc-l4-9Br" kind="show" id="LUJ-wG-g6l"/>
+                                    <segue destination="dLc-l4-9Br" kind="show" identifier="toDetailView" id="LUJ-wG-g6l"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
