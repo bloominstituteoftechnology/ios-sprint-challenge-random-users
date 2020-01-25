@@ -9,7 +9,7 @@
 import Foundation
 
 
-
+//Model
 
 // trying to get in the file
 // Mapping in the API
@@ -56,6 +56,7 @@ struct User: Equatable, Decodable {
         // let nameContainer = container.nestedContainer(keyedBy: Keys.Name, forKey:)
         let nameContainer = try container.nestedContainer(keyedBy: Keys.NameKeys.self, forKey: .name)
         let firstName = try nameContainer.decode(String.self, forKey: .first)
+        //
         let lastName = try nameContainer.decode(String.self, forKey: .last)
         let thumbImageContainer = try container.nestedContainer(keyedBy: Keys.ImageKeys.self, forKey: .picture)
         let largeImageContainer = try container.nestedContainer(keyedBy: Keys.ImageKeys.self, forKey: .picture)
