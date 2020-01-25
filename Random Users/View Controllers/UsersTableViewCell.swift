@@ -19,6 +19,7 @@ class UsersTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        nameLabel.textColor = .clear
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

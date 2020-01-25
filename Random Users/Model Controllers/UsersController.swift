@@ -17,9 +17,9 @@ class UsersController {
     //Properties
     var users: [User] = []
     
+    
     // fetching data
     func fetchUsers(completion: @escaping (Error?) -> Void = { _ in }) {
-        
         
         let dataTask = URLSession.shared.dataTask(with: baseURL) { (data, _, error) in
             if let error = error {

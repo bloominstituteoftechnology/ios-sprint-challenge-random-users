@@ -27,9 +27,7 @@ class UsersTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        DispatchQueue.main.async {
-//            self.tableView.reloadData()
-//        }
+
     }
 
     // MARK: - Table view data source
@@ -92,7 +90,7 @@ class UsersTableViewController: UITableViewController {
                 guard let image = cellViewOperation.thumbNailImage else {return}
                 
                 if self.tableView.indexPath(for: cell) == indexPath {
-                    cell.userImageView.image = image
+//                    cell.userImageView.image = image
                     cell.imageView?.image = image
                     self.tableView.reloadData()
                 }

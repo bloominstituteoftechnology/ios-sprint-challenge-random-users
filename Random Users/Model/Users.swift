@@ -62,14 +62,6 @@ struct User: Equatable, Decodable {
         let largeImageContainer = try container.nestedContainer(keyedBy: Keys.ImageKeys.self, forKey: .picture)
         
         
-        
-        //
-        //
-        //
-        
-        
-        
-        
         self.phone = try container.decode(String.self, forKey: .phone)
         self.email = try container.decode(String.self, forKey: .email)
         self.name = "\(firstName.capitalized) \(lastName.capitalized)"
@@ -78,32 +70,6 @@ struct User: Equatable, Decodable {
     }
 }
 
-
-//struct User: Codable {
-//
-//    enum Keys: String, CodingKey {
-//        case name
-//        case phone
-//        case email
-//        case picture
-
-//        enum NameKeys: String, CodingKey {
-//        }
-//        enum ImageKeys: String, CodingKey {
-//
-//        }
-//    }
-//}
-
-
-
-//struct Users: Codable {
-//init(from decoder: Decoder) throws {
-//    let container = try decoder.container(keyedBy: UserKeys.self)
-//
-//    self.results = try container.decode([User].self, forKey: .results)
-//}
-//}
 
 struct Users: Decodable {
     let results: [User]
