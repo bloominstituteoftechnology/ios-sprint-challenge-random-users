@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Detail View
 class UsersDetailViewController: UIViewController {
 
     // Outlets

@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Cell
 class UsersTableViewCell: UITableViewCell {
 
     // Cell Outlets
