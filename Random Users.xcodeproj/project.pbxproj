@@ -17,6 +17,7 @@
 		E6FCA15423DBDE730002BB26 /* UsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FCA15323DBDE730002BB26 /* UsersTableViewCell.swift */; };
 		E6FCA15723DBE0DB0002BB26 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FCA15623DBE0DB0002BB26 /* Cache.swift */; };
 		E6FCA15923DBE12C0002BB26 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FCA15823DBE12C0002BB26 /* Users.swift */; };
+		E6FCA15C23DBE3E50002BB26 /* UsersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FCA15B23DBE3E50002BB26 /* UsersController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		E6FCA15323DBDE730002BB26 /* UsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewCell.swift; sourceTree = "<group>"; };
 		E6FCA15623DBE0DB0002BB26 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		E6FCA15823DBE12C0002BB26 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		E6FCA15B23DBE3E50002BB26 /* UsersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				E6FCA15523DBE0750002BB26 /* Model */,
+				E6FCA15A23DBE3B00002BB26 /* Model Controllers */,
 				E6FCA14E23DBDDE70002BB26 /* View Controllers */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
@@ -109,6 +112,14 @@
 				E6FCA15823DBE12C0002BB26 /* Users.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E6FCA15A23DBE3B00002BB26 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E6FCA15B23DBE3E50002BB26 /* UsersController.swift */,
+			);
+			path = "Model Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,6 +199,7 @@
 				E6FCA15023DBDE250002BB26 /* UsersTableViewController.swift in Sources */,
 				E6FCA15723DBE0DB0002BB26 /* Cache.swift in Sources */,
 				E6FCA15423DBDE730002BB26 /* UsersTableViewCell.swift in Sources */,
+				E6FCA15C23DBE3E50002BB26 /* UsersController.swift in Sources */,
 				E6FCA15923DBE12C0002BB26 /* Users.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
