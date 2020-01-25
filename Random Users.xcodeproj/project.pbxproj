@@ -16,6 +16,8 @@
 		93542BA123DCCE1200064575 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93542BA023DCCE1200064575 /* UserController.swift */; };
 		93542BA423DCD36600064575 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93542BA323DCD36600064575 /* UsersTableViewController.swift */; };
 		93542BA723DCD48D00064575 /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93542BA623DCD48D00064575 /* FetchPhotoOperation.swift */; };
+		93542BA923DCD9BF00064575 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93542BA823DCD9BF00064575 /* UserTableViewCell.swift */; };
+		93542BAB23DCE60300064575 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93542BAA23DCE60300064575 /* UserDetailViewController.swift */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +33,8 @@
 		93542BA023DCCE1200064575 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		93542BA323DCD36600064575 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		93542BA623DCD48D00064575 /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
+		93542BA823DCD9BF00064575 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		93542BAA23DCE60300064575 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -48,7 +52,6 @@
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
-				93542BA523DCD47300064575 /* Operations */,
 				93542BA223DCD30A00064575 /* ViewControllers */,
 				93542B9F23DCCDDC00064575 /* Controllers */,
 				93542B9A23DCC29700064575 /* Model */,
@@ -88,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				93542BA023DCCE1200064575 /* UserController.swift */,
+				93542BA823DCD9BF00064575 /* UserTableViewCell.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -96,16 +100,9 @@
 			isa = PBXGroup;
 			children = (
 				93542BA323DCD36600064575 /* UsersTableViewController.swift */,
+				93542BAA23DCE60300064575 /* UserDetailViewController.swift */,
 			);
 			name = ViewControllers;
-			sourceTree = "<group>";
-		};
-		93542BA523DCD47300064575 /* Operations */ = {
-			isa = PBXGroup;
-			children = (
-				93542BA623DCD48D00064575 /* FetchPhotoOperation.swift */,
-			);
-			name = Operations;
 			sourceTree = "<group>";
 		};
 		9D5CCA522142305600224681 /* Resources */ = {
@@ -122,6 +119,7 @@
 		9D5CCA56214231E400224681 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
+				93542BA623DCD48D00064575 /* FetchPhotoOperation.swift */,
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
 			);
 			path = Operations;
@@ -200,8 +198,10 @@
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				93542BAB23DCE60300064575 /* UserDetailViewController.swift in Sources */,
 				93542BA423DCD36600064575 /* UsersTableViewController.swift in Sources */,
 				93542BA123DCCE1200064575 /* UserController.swift in Sources */,
+				93542BA923DCD9BF00064575 /* UserTableViewCell.swift in Sources */,
 				93542BA723DCD48D00064575 /* FetchPhotoOperation.swift in Sources */,
 				93542B9E23DCCDB100064575 /* Cache.swift in Sources */,
 				93542B9C23DCC2B300064575 /* User.swift in Sources */,
