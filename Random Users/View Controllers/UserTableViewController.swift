@@ -11,6 +11,7 @@ import UIKit
 class UserTableViewController: UITableViewController {
     
     var userController = UserController()
+    var cache = Cache<Int, Friend>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,6 @@ class UserTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(userController.results.count)
         return userController.results.count
     }
 
@@ -36,18 +36,19 @@ class UserTableViewController: UITableViewController {
 
         let friend = userController.results[indexPath.row]
         cell.friend = friend
+        cell.userController = userController
 
         return cell
     }
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "UserDetailSegue" {
+            guard let userDetailVC = segue.destination as? UserViewController else { return }
+            if let indexPath = tableView.indexPathForSelectedRow {
+                userDetailVC.friend = userController.results[indexPath.row]
+            }
+        }
     }
-    */
 
 }

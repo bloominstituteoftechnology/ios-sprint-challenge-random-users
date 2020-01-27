@@ -30,7 +30,7 @@ class UserTableViewCell: UITableViewCell {
 
     func updateViews() {
         guard let friend = friend else { return }
-        userController?.fetchImage(at: friend.large, completion: { (image, error) in
+        userController?.fetchImage(at: friend.thumbnail, completion: { (image, error) in
             if let image = image {
                 DispatchQueue.main.async {
                     self.userThumbnailImage.image = image

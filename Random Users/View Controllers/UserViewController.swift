@@ -10,6 +10,14 @@ import UIKit
 
 class UserViewController: UIViewController {
     
+    // MARK: - Properties
+    var userController: UserController?
+    var friend: Friend? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     // MARK: - Outlets
     @IBOutlet weak var userLargeImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
@@ -23,15 +31,20 @@ class UserViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func updateViews() {
+        guard let friend = friend,
+        let userController = userController else { return }
+        userNameLabel.text = "\(friend.title) \(friend.first) \(friend.last)"
+        userPhoneLabel.text = friend.phone
+        userEmailLabel.text = friend.email
+        
+        userController.fetchImage(at: friend.large, completion: { (image, error) in
+            if let image = image {
+                DispatchQueue.main.async {
+                    self.userLargeImageView.image = image
+                }
+            }
+        })
     }
-    */
 
 }

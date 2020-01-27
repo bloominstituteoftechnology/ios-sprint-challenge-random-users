@@ -8,19 +8,19 @@
 
 import Foundation
 
-class Cache<Key: Hashable, Value> {
+class Cache<Key: Hashable, Friend> {
     
-    private var cacheDictionary: [Key: Value] = [:]
+    private var cacheDictionary: [Key: Friend] = [:]
     let backgroundQueue = DispatchQueue(label: "Cache Serial Queue")
     
-    func cache(value: Value, key: Key) {
+    func cache(value: Friend, key: Key) {
         backgroundQueue.async {
             self.cacheDictionary.updateValue(value, forKey: key)
         }
     }
     
-    func value(for key: Key) -> Value? {
-        return backgroundQueue.sync { () -> Value? in
+    func value(for key: Key) -> Friend? {
+        return backgroundQueue.sync { () -> Friend? in
             return cacheDictionary[key] ?? nil
         }
     }
