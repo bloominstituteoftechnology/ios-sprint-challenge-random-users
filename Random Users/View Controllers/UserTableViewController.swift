@@ -15,13 +15,19 @@ class UserTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        userController.fetchUsers()
-        tableView.reloadData()
+        userController.fetchUsers(completion: { (error) in
+            guard error == nil else { return }
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(userController.results.count)
         return userController.results.count
     }
 

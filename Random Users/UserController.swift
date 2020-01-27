@@ -15,7 +15,7 @@ class UserController {
     var results: [Friend] = []
     private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")
     
-    func fetchUsers() {
+    func fetchUsers(completion: @escaping (Error?) -> () = {_ in }) {
         var request = URLRequest(url: baseURL!)
         request.httpMethod = "GET"
         
@@ -35,8 +35,10 @@ class UserController {
             do {
                 let decodedUsers = try decoder.decode(Result.self, from: data)
                 self.results = decodedUsers.results
+                completion(nil)
             } catch {
                 print("Error decoding users: \(possibleError)")
+                completion(error)
                 return
             }
         }
