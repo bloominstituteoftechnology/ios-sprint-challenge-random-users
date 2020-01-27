@@ -9,26 +9,36 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    // MARK: Outlets
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userPhone: UILabel!
     @IBOutlet weak var userEmail: UILabel!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    // MARK:  Property
+    var user: User? {
+        didSet {
+            self.updateViews()
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: Views
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.updateViews()
     }
-    */
-
+    
+    private func updateViews() {
+        guard let user = self.user,
+            isViewLoaded else { return }
+        
+        self.userName.text = user.name
+        self.userEmail.text = user.email
+        self.userPhone.text = user.phone
+        
+        let url = user.largeImage
+        if let data = try? Data(contentsOf: url) {
+            self.userImage.image = UIImage(data: data)
+        }
+    }
 }
