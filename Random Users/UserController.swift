@@ -7,11 +7,12 @@
 //
 
 import Foundation
+import UIKit
 
 class UserController {
     
     // MARK: - Properties
-    var friends: [Friend] = []
+    var results: [Friend] = []
     private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")
     
     func fetchUsers() {
@@ -32,13 +33,35 @@ class UserController {
             }
             let decoder = JSONDecoder()
             do {
-                let decodedUsers = try decoder.decode([Friend].self, from: data)
-                self.friends = decodedUsers
+                let decodedUsers = try decoder.decode(Result.self, from: data)
+                self.results = decodedUsers.results
             } catch {
                 print("Error decoding users: \(possibleError)")
                 return
             }
         }
         fetchUsersTask.resume()
+    }
+    
+    func fetchImage(at url: URL, completion: @escaping (UIImage?, Error?) -> ()) {
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        URLSession.shared.dataTask(with: request) { data, _, error in
+            if let _ = error {
+                print("Error fetching image from URL: \(error!)")
+                return
+            }
+            
+            guard let data = data else {
+                print("Bad data in fetching image from URL: \(error!)")
+                return
+            }
+            
+            let image = UIImage(data: data)!
+            completion(image, nil)
+            return
+        }.resume()
     }
 }
