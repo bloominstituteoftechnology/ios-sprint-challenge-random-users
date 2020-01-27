@@ -15,6 +15,9 @@
 		BA21759C23DE69AE00E2F29F /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA21759B23DE69AE00E2F29F /* UserTableViewCell.swift */; };
 		BA21759E23DE69D200E2F29F /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA21759D23DE69D200E2F29F /* UsersTableViewController.swift */; };
 		BA2175A023DE69F400E2F29F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA21759F23DE69F400E2F29F /* DetailViewController.swift */; };
+		BA2175A323DE6BB000E2F29F /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2175A223DE6BB000E2F29F /* UserController.swift */; };
+		BA2175A623DE6BD800E2F29F /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2175A523DE6BD800E2F29F /* Cache.swift */; };
+		BA2175A823DE6BE200E2F29F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2175A723DE6BE200E2F29F /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		BA21759B23DE69AE00E2F29F /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		BA21759D23DE69D200E2F29F /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		BA21759F23DE69F400E2F29F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		BA2175A223DE6BB000E2F29F /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		BA2175A523DE6BD800E2F29F /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		BA2175A723DE6BE200E2F29F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,9 +67,9 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
-				BA21759B23DE69AE00E2F29F /* UserTableViewCell.swift */,
-				BA21759D23DE69D200E2F29F /* UsersTableViewController.swift */,
-				BA21759F23DE69F400E2F29F /* DetailViewController.swift */,
+				BA2175A923DE6BE800E2F29F /* Models */,
+				BA2175A423DE6BB400E2F29F /* Controller */,
+				BA2175A123DE6B6F00E2F29F /* Views */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
@@ -87,6 +93,33 @@
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
 			);
 			path = Operations;
+			sourceTree = "<group>";
+		};
+		BA2175A123DE6B6F00E2F29F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BA21759D23DE69D200E2F29F /* UsersTableViewController.swift */,
+				BA21759B23DE69AE00E2F29F /* UserTableViewCell.swift */,
+				BA21759F23DE69F400E2F29F /* DetailViewController.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		BA2175A423DE6BB400E2F29F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BA2175A223DE6BB000E2F29F /* UserController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		BA2175A923DE6BE800E2F29F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BA2175A523DE6BD800E2F29F /* Cache.swift */,
+				BA2175A723DE6BE200E2F29F /* User.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,8 +193,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA2175A623DE6BD800E2F29F /* Cache.swift in Sources */,
+				BA2175A323DE6BB000E2F29F /* UserController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				BA21759C23DE69AE00E2F29F /* UserTableViewCell.swift in Sources */,
+				BA2175A823DE6BE200E2F29F /* User.swift in Sources */,
 				BA2175A023DE69F400E2F29F /* DetailViewController.swift in Sources */,
 				BA21759E23DE69D200E2F29F /* UsersTableViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
