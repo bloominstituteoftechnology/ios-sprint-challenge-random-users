@@ -11,7 +11,9 @@ import UIKit
 class UserTableViewCell: UITableViewCell {
     
     // MARK: - Properties
-    var userController: UserController?
+//    var userController: UserController?
+//    var cache: Cache<String, UIImage>?
+    var friendThumbnail: UIImage?
     var friend: Friend? {
         didSet {
             updateViews()
@@ -29,16 +31,13 @@ class UserTableViewCell: UITableViewCell {
     }
 
     func updateViews() {
-        guard let friend = friend else { return }
-        userController?.fetchImage(at: friend.thumbnail, completion: { (image, error) in
-            if let image = image {
-                DispatchQueue.main.async {
-                    self.userThumbnailImage.image = image
-                }
-            }
-        })
+        guard let friend = friend,
+        let thumbnail = friendThumbnail else { return }
         
         userNameLabel.text = "\(friend.title) \(friend.first) \(friend.last)"
-    }
+        userThumbnailImage.image = thumbnail
+        
+        }
+    
 
 }

@@ -33,11 +33,11 @@ class UserController {
             }
             let decoder = JSONDecoder()
             do {
-                let decodedUsers = try decoder.decode(Result.self, from: data)
+                let decodedUsers = try decoder.decode(FriendArray.self, from: data)
                 self.results = decodedUsers.results
                 completion(nil)
             } catch {
-                print("Error decoding users: \(possibleError)")
+                print("Error decoding users: \(possibleError!)")
                 completion(error)
                 return
             }
@@ -45,24 +45,27 @@ class UserController {
         fetchUsersTask.resume()
     }
     
-    func fetchImage(at url: URL, completion: @escaping (UIImage?, Error?) -> ()) {
+    
+    func fetchImage(at url: URL, completion: @escaping (Result<UIImage, Error>) -> ()) {
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         
         URLSession.shared.dataTask(with: request) { data, _, error in
-            if let _ = error {
-                print("Error fetching image from URL: \(error!)")
+            if let error = error {
+                print("Error fetching image from URL: \(error)")
+                completion(.failure(error))
                 return
             }
             
             guard let data = data else {
                 print("Bad data in fetching image from URL: \(error!)")
+                completion(.failure(NSError()))
                 return
             }
             
             let image = UIImage(data: data)!
-            completion(image, nil)
+            completion(.success(image))
             return
         }.resume()
     }
