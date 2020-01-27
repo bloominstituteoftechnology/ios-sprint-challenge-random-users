@@ -47,6 +47,7 @@ class UserTableViewController: UITableViewController {
             guard let userDetailVC = segue.destination as? UserViewController else { return }
             if let indexPath = tableView.indexPathForSelectedRow {
                 userDetailVC.friend = userController.results[indexPath.row]
+                userDetailVC.userController = userController
             }
         }
     }

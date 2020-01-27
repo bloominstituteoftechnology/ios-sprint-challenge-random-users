@@ -23,7 +23,6 @@ class UserViewController: UIViewController {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userPhoneLabel: UILabel!
     @IBOutlet weak var userEmailLabel: UILabel!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,16 +31,17 @@ class UserViewController: UIViewController {
     }
     
     func updateViews() {
-        guard let friend = friend,
-        let userController = userController else { return }
-        userNameLabel.text = "\(friend.title) \(friend.first) \(friend.last)"
-        userPhoneLabel.text = friend.phone
-        userEmailLabel.text = friend.email
+        guard let friend = friend else { return }
+        print(friend.email)
+//        userNameLabel.text = "\(friend.title) \(friend.first) \(friend.last)"
+//        userPhoneLabel.text = friend.phone
+//        userEmailLabel.text = friend.email
         
-        userController.fetchImage(at: friend.large, completion: { (image, error) in
+        userController?.fetchImage(at: friend.large, completion: { (image, error) in
             if let image = image {
                 DispatchQueue.main.async {
                     self.userLargeImageView.image = image
+                    self.updateViews()
                 }
             }
         })
