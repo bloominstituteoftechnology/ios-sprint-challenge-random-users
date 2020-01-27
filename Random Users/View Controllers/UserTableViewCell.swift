@@ -11,8 +11,9 @@ import UIKit
 class UserTableViewCell: UITableViewCell {
     
     // MARK: - Properties
-    var userController: UserController?
-    var cache: Cache<String, UIImage>?
+//    var userController: UserController?
+//    var cache: Cache<String, UIImage>?
+    var friendThumbnail: UIImage?
     var friend: Friend? {
         didSet {
             updateViews()
@@ -30,23 +31,26 @@ class UserTableViewCell: UITableViewCell {
     }
 
     func updateViews() {
-        guard let friend = friend else { return }
-        userNameLabel.text = "\(friend.title) \(friend.first) \(friend.last)"
+        guard let friend = friend,
+        let thumbnail = friendThumbnail else { return }
         
-        guard let cache = cache else { return }
-        guard cache.value(for: friend.phone) == nil else {
-            guard let cachedImage = cache.value(for: friend.phone) else { return }
-            userThumbnailImage.image = cachedImage
-            return
-        }
-            
-        userController?.fetchImage(at: friend.thumbnail) { (result) in
-            if let image = try? result.get() {
-                DispatchQueue.main.async {
-                    self.userThumbnailImage.image = image
-                }
-            }
-        }
+        userNameLabel.text = "\(friend.title) \(friend.first) \(friend.last)"
+        userThumbnailImage.image = thumbnail
+        
+//        guard let cache = cache else { return }
+//        guard cache.value(for: friend.phone) == nil else {
+//            guard let cachedImage = cache.value(for: friend.phone) else { return }
+//            userThumbnailImage.image = cachedImage
+//            return
+//        }
+//
+//        userController?.fetchImage(at: friend.thumbnail) { (result) in
+//            if let image = try? result.get() {
+//                DispatchQueue.main.async {
+//                    self.userThumbnailImage.image = image
+//                }
+//            }
+//        }
         }
     
 

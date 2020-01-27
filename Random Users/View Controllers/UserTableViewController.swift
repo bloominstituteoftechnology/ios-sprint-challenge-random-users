@@ -12,6 +12,7 @@ class UserTableViewController: UITableViewController {
     
     var userController = UserController()
     var cache = Cache<String, UIImage>()
+    var photoFetchQueue = OperationQueue()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +35,11 @@ class UserTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserTableViewCell else { return UITableViewCell() }
 
-        let friend = userController.results[indexPath.row]
-        cell.friend = friend
-        cell.userController = userController
-        cell.cache = cache
+//        let friend = userController.results[indexPath.row]
+//        cell.friend = friend
+//        cell.userController = userController
+//        cell.cache = cache
+        loadImage(forCell: cell, forItemAt: indexPath)
 
         return cell
     }
@@ -51,6 +53,41 @@ class UserTableViewController: UITableViewController {
                 friendDetailVC.userController = userController
             }
         }
+    }
+    
+    private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
+        
+        let friend = userController.results[indexPath.row]
+        
+        guard cache.value(for: friend.phone) == nil else {
+            guard let cachedImage = cache.value(for: friend.phone) else { return }
+            cell.friendThumbnail = cachedImage
+            cell.friend = friend
+            return
+        }
+        
+        let fetchedFriendOperation = FetchFriendsOperation(friend: friend)
+        
+        let cacheNewImageOperation = BlockOperation {
+            guard let image = fetchedFriendOperation.image else { return }
+            self.cache.cache(value: image, key: friend.phone)
+        }
+        
+        let checkCellReuseOperation = BlockOperation {
+            DispatchQueue.main.async {
+                let visibleCell = self.tableView.indexPathsForVisibleRows
+                guard visibleCell!.contains(indexPath) else { return }
+                guard let image = self.cache.value(for: friend.phone) else { return }
+                cell.friendThumbnail = image
+                cell.friend = friend
+            }
+        }
+        
+        cacheNewImageOperation.addDependency(fetchedFriendOperation)
+        checkCellReuseOperation.addDependency(cacheNewImageOperation)
+        
+        photoFetchQueue.addOperations([fetchedFriendOperation, cacheNewImageOperation, checkCellReuseOperation], waitUntilFinished: false)
+        
     }
 
 }
