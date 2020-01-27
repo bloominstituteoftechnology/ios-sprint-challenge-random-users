@@ -10,6 +10,8 @@
 		4464173E23DE7DA9007FA91C /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4464173D23DE7DA9007FA91C /* UserTableViewCell.swift */; };
 		4464174023DE7DC2007FA91C /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4464173F23DE7DC2007FA91C /* UserTableViewController.swift */; };
 		4464174223DE7DD7007FA91C /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4464174123DE7DD7007FA91C /* UserViewController.swift */; };
+		4464174423DE8205007FA91C /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4464174323DE8205007FA91C /* Friend.swift */; };
+		4464174823DE83FB007FA91C /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4464174723DE83FB007FA91C /* UserController.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -21,6 +23,8 @@
 		4464173D23DE7DA9007FA91C /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		4464173F23DE7DC2007FA91C /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
 		4464174123DE7DD7007FA91C /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		4464174323DE8205007FA91C /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		4464174723DE83FB007FA91C /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -41,6 +45,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4464174523DE83CF007FA91C /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4464173D23DE7DA9007FA91C /* UserTableViewCell.swift */,
+				4464173F23DE7DC2007FA91C /* UserTableViewController.swift */,
+				4464174123DE7DD7007FA91C /* UserViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		4464174623DE83DF007FA91C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4464174323DE8205007FA91C /* Friend.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
@@ -61,9 +83,9 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
-				4464173D23DE7DA9007FA91C /* UserTableViewCell.swift */,
-				4464173F23DE7DC2007FA91C /* UserTableViewController.swift */,
-				4464174123DE7DD7007FA91C /* UserViewController.swift */,
+				4464174723DE83FB007FA91C /* UserController.swift */,
+				4464174523DE83CF007FA91C /* View Controllers */,
+				4464174623DE83DF007FA91C /* Model */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
@@ -163,6 +185,8 @@
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				4464174223DE7DD7007FA91C /* UserViewController.swift in Sources */,
 				4464173E23DE7DA9007FA91C /* UserTableViewCell.swift in Sources */,
+				4464174423DE8205007FA91C /* Friend.swift in Sources */,
+				4464174823DE83FB007FA91C /* UserController.swift in Sources */,
 				4464174023DE7DC2007FA91C /* UserTableViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 			);
