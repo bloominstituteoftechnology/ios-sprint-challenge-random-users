@@ -11,7 +11,7 @@ import UIKit
 class UserTableViewController: UITableViewController {
     
     var userController = UserController()
-    var cache = Cache<Int, Friend>()
+    var cache = Cache<String, UIImage>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +37,7 @@ class UserTableViewController: UITableViewController {
         let friend = userController.results[indexPath.row]
         cell.friend = friend
         cell.userController = userController
+        cell.cache = cache
 
         return cell
     }

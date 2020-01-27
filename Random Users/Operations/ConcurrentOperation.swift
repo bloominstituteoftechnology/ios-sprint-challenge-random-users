@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class ConcurrentOperation: Operation {
     
@@ -63,4 +64,41 @@ class ConcurrentOperation: Operation {
     
 }
 
-// MARK: - 
+// MARK: - FetchFriendsOperation Subclass
+class FetchFriendsOperation: ConcurrentOperation {
+    var image: UIImage?
+    var friend: Friend
+    
+    init(friend: Friend) {
+        self.friend = friend
+    }
+    
+    override func start() {
+        state = .isExecuting
+        if isCancelled {
+            state = .isFinished
+            return
+        }
+        
+        let thumbnailURL = friend.thumbnail
+        var requestURL = URLRequest(url: thumbnailURL)
+        requestURL.httpMethod = "GET"
+        
+        let networkImageTask = URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
+            defer {
+                self.state = .isFinished
+            }
+            if error != nil {
+                print("Error in retrieving image data from FetchFriendsOperation: \(error!)")
+                return
+            }
+            guard let imageData = data else {
+                print("Bad image returned in FetchFriendsOperation: \(error!)")
+                return
+            }
+            let image = UIImage(data: imageData)
+            self.image = image
+        }
+        networkImageTask.resume()
+    }
+}
