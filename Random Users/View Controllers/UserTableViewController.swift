@@ -43,11 +43,11 @@ class UserTableViewController: UITableViewController {
 
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "UserDetailSegue" {
-            guard let userDetailVC = segue.destination as? UserViewController else { return }
+        if segue.identifier == "FriendDetailSegue" {
+            guard let friendDetailVC = segue.destination as? FriendDetailViewController else { return }
             if let indexPath = tableView.indexPathForSelectedRow {
-                userDetailVC.friend = userController.results[indexPath.row]
-                userDetailVC.userController = userController
+                friendDetailVC.friend = userController.results[indexPath.row]
+                friendDetailVC.userController = userController
             }
         }
     }

@@ -30,13 +30,13 @@ class UserTableViewCell: UITableViewCell {
 
     func updateViews() {
         guard let friend = friend else { return }
-        userController?.fetchImage(at: friend.thumbnail, completion: { (image, error) in
-            if let image = image {
+        userController?.fetchImage(at: friend.thumbnail) { (result) in
+            if let image = try? result.get() {
                 DispatchQueue.main.async {
                     self.userThumbnailImage.image = image
                 }
             }
-        })
+        }
         
         userNameLabel.text = "\(friend.title) \(friend.first) \(friend.last)"
     }
