@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct Friend {
+struct Friend: Decodable {
     var title: String
         var first: String
         var last: String
