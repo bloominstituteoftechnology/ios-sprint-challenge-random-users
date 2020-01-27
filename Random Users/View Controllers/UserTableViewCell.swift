@@ -37,20 +37,6 @@ class UserTableViewCell: UITableViewCell {
         userNameLabel.text = "\(friend.title) \(friend.first) \(friend.last)"
         userThumbnailImage.image = thumbnail
         
-//        guard let cache = cache else { return }
-//        guard cache.value(for: friend.phone) == nil else {
-//            guard let cachedImage = cache.value(for: friend.phone) else { return }
-//            userThumbnailImage.image = cachedImage
-//            return
-//        }
-//
-//        userController?.fetchImage(at: friend.thumbnail) { (result) in
-//            if let image = try? result.get() {
-//                DispatchQueue.main.async {
-//                    self.userThumbnailImage.image = image
-//                }
-//            }
-//        }
         }
     
 

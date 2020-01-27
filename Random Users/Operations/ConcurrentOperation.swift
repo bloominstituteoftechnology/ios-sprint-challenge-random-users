@@ -80,6 +80,7 @@ class FetchFriendsOperation: ConcurrentOperation {
             return
         }
         
+        // Code to fetch the thumbnail image from the server.
         let thumbnailURL = friend.thumbnail
         var requestURL = URLRequest(url: thumbnailURL)
         requestURL.httpMethod = "GET"

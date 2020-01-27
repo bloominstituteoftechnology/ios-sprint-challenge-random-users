@@ -35,10 +35,6 @@ class UserTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserTableViewCell else { return UITableViewCell() }
 
-//        let friend = userController.results[indexPath.row]
-//        cell.friend = friend
-//        cell.userController = userController
-//        cell.cache = cache
         loadImage(forCell: cell, forItemAt: indexPath)
 
         return cell
@@ -55,6 +51,7 @@ class UserTableViewController: UITableViewController {
         }
     }
     
+    // The loadImage method is called from the cellForRowAt indexPath function. It takes the cell and index path provided and passes the current Friend to the table view cell. It also calls the FetchFriendsOperation to fetch the image and checks to see if the image has been cached or not. It cached, it retrieves it from cache, otherwise it fetches the image, puts it into cache, and passes the image to the table view cell.
     private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
         
         let friend = userController.results[indexPath.row]
