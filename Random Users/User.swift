@@ -7,35 +7,41 @@
 //
 
 import Foundation
+// MARK: Coding Keys
+enum CodingKeys: String, CodingKey {
+    case name
+    case phone
+    case email
+    case picture
+    
+    enum ImageKeys: String, CodingKey {
+        case large, thumbnail
+    }
+    
+    enum NameKeys: String, CodingKey {
+        case first, last
+    }
+}
+
+enum UserKeys: String, CodingKey  {
+    case results
+}
 
 struct User: Equatable, Decodable {
+    // MARK: Properties
     let name: String
     let phone: String
     let email: String
     let thumbnailImage: URL
     let largeImage: URL
     
+    // MARK: Initializers
     init(name: String, phone:String, email:String, thumbnailImage: URL, largeImage: URL) {
         self.name = name
         self.phone = phone
         self.email = email
         self.thumbnailImage = thumbnailImage
         self.largeImage = largeImage
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case name
-        case phone
-        case email
-        case picture
-        
-        enum ImageKeys: String, CodingKey {
-            case large, thumbnail
-        }
-        
-        enum NameKeys: String, CodingKey {
-            case first, last
-        }
     }
 
     init(from decoder: Decoder) throws {
@@ -58,12 +64,10 @@ struct User: Equatable, Decodable {
 }
 
 struct Users: Decodable {
+    // MARK: Property
     let results: [User]
     
-    enum UserKeys: String, CodingKey  {
-        case results
-    }
-    
+    // MARK: Initializer
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: UserKeys.self)
         self.results = try container.decode([User].self, forKey: .results)
