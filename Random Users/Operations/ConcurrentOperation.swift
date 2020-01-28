@@ -65,9 +65,12 @@ class ConcurrentOperation: Operation {
 }
 
 // MARK: - FetchFriendsOperation Subclass
+
+// Purpose of the subclass is to initiate a data task that we can put on separate queues and also cancel if needed.
 class FetchFriendsOperation: ConcurrentOperation {
     var image: UIImage?
     var friend: Friend
+    var networkImageTask: URLSessionTask?
     
     init(friend: Friend) {
         self.friend = friend
@@ -85,7 +88,7 @@ class FetchFriendsOperation: ConcurrentOperation {
         var requestURL = URLRequest(url: thumbnailURL)
         requestURL.httpMethod = "GET"
         
-        let networkImageTask = URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
+        networkImageTask = URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
             defer {
                 self.state = .isFinished
             }
@@ -100,6 +103,11 @@ class FetchFriendsOperation: ConcurrentOperation {
             let image = UIImage(data: imageData)
             self.image = image
         }
-        networkImageTask.resume()
+        networkImageTask!.resume()
+    }
+    
+    override func cancel() {
+        networkImageTask?.cancel()
+        super.cancel()
     }
 }

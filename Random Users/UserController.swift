@@ -15,6 +15,7 @@ class UserController {
     var results: [Friend] = []
     private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")
     
+    // fetchUsers is called on the tableview's viewDidLoad and populates the array for the data source
     func fetchUsers(completion: @escaping (Error?) -> () = {_ in }) {
         var request = URLRequest(url: baseURL!)
         request.httpMethod = "GET"
@@ -46,6 +47,7 @@ class UserController {
     }
     
     
+    // Method is used to fetch the large image from the URL
     func fetchImage(at url: URL, completion: @escaping (Result<UIImage, Error>) -> ()) {
         
         var request = URLRequest(url: url)

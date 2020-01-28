@@ -12,6 +12,7 @@ class UserTableViewController: UITableViewController {
     
     var userController = UserController()
     var cache = Cache<String, UIImage>()
+    var fetchOperationsReference: Dictionary<String, Operation> = [:]
     var photoFetchQueue = OperationQueue()
 
     override func viewDidLoad() {
@@ -39,6 +40,14 @@ class UserTableViewController: UITableViewController {
 
         return cell
     }
+    
+    // Method cancels a data task that is working to load an image that has already been scrolled off-screen
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let friend = userController.results[indexPath.row]
+        let dictionaryKey = friend.phone
+        let taskToCancel = fetchOperationsReference[dictionaryKey]
+        taskToCancel?.cancel()
+    }
 
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -51,6 +60,7 @@ class UserTableViewController: UITableViewController {
         }
     }
     
+    // MARK: - Private Methods
     // The loadImage method is called from the cellForRowAt indexPath function. It takes the cell and index path provided and passes the current Friend to the table view cell. It also calls the FetchFriendsOperation to fetch the image and checks to see if the image has been cached or not. It cached, it retrieves it from cache, otherwise it fetches the image, puts it into cache, and passes the image to the table view cell.
     private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
         
@@ -64,6 +74,7 @@ class UserTableViewController: UITableViewController {
         }
         
         let fetchedFriendOperation = FetchFriendsOperation(friend: friend)
+        fetchOperationsReference.updateValue(fetchedFriendOperation, forKey: friend.phone)
         
         let cacheNewImageOperation = BlockOperation {
             guard let image = fetchedFriendOperation.image else { return }
