@@ -32,8 +32,8 @@ class RandomUserTableViewController: UITableViewController {
         
         let user = apiController.users[indexPath.row]
         let image = displayURLImage(url: user.picture.thumbnail)
-        let name = "\(user.name.title) \(user.name.first) \(user.name.last)"
-        cell.textLabel?.text = name
+//        let name = "\(user.name.title) \(user.name.first) \(user.name.last)"
+//        cell.textLabel?.text = name
         cell.imageView?.image = image
     
         return cell

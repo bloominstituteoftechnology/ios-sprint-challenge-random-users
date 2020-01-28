@@ -10,42 +10,45 @@ import UIKit
 
 class APIController {
     
-    var users: [RandomUsers] = []
+    var users: [Person] = []
     
-    let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
+    let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1/")!
 
     func getRandomUsers(completion: @escaping () -> Void = { }) {
         
         var request = URLRequest(url: baseURL)
         request.httpMethod = "GET"
-        
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                print("Error during dataTask: \(error)")
-                completion()
+        DispatchQueue.main.async {
+              URLSession.shared.dataTask(with: request) { (data, response, error) in
                 
-                return
-            }
+                if let response = response as? HTTPURLResponse, response.statusCode != 200 {
+                    print(response.statusCode)
+                    completion()
+                    return
+                }
+                    if let error = error {
+                        print("Error during dataTask: \(error)")
+                        completion()
+                        
+                        return
+                    }
             
-            guard let data = data else {
-                print("There was an error retrieving data")
-                completion()
-                return
-            }
-            
-            let decoder = JSONDecoder()
-            do {
-            let users = try decoder.decode([RandomUsers].self, from: data)
-            self.users = users
-            completion()
-            } catch {
-                print("error completing task")
-            }
-            
-        }.resume()
-        
+                    guard let data = data else {
+                        print("There was an error retrieving data")
+                        completion()
+                        return
+                    }
+                    
+                    let decoder = JSONDecoder()
+                    do {
+                        let users = try decoder.decode(Result.self, from: data)
+                        self.users.append(contentsOf: users.results)
+                        completion()
+                    } catch {
+                        print("error completing task: \(error)")
+                    }
+                    
+                }.resume()
+        }
     }
-    
-    
-    
 }

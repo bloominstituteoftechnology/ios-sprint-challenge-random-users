@@ -8,51 +8,42 @@
 
 import Foundation
 
-struct RandomUsers: Codable {
+struct Result: Codable {
+    var results: [Person]
+    
+}
+
+struct Person: Codable {
     let name: Name
-    let phone: String
     let email: String
+    let phone: String
     let picture: Picture
-
     
-    init(name: Name, picture: Picture, phone: String, email: String) {
-        self.name = name
-        self.phone = phone
-        self.email = email
-        self.picture = picture
+    struct Name: Codable {
+        let title: String
+        let first: String
+        let last: String
     }
     
-
-    enum RandomUserKeys: String, CodingKey {
-        case name = "name"
-        case phone = "phone"
-        case email = "email"
-        case picture = "picture"
+    struct Picture: Codable {
+        let large: String
+        let medium: String
+        let thumbnail: String
     }
     
 }
 
-struct Name: Codable {
-    let title: String
-    let first: String
-    let last: String
-    
-    enum nameKeys: String, CodingKey {
-        case title = "title"
-        case first = "first"
-        case last = "last"
-    }
-}
 
-struct Picture: Codable {
-    let large: String
-    let medium: String
-    let thumbnail: String
-    
-    enum pictureKeys: String, CodingKey {
-        case thumbnail = "thumbnail"
-        case medium = "medium"
-        case large = "large"
-    }
-}
+
+             
+
+
+                    
+            
+        
+        
+
+
+
+
 
