@@ -10,20 +10,49 @@ import UIKit
 
 class RandomUserTableViewController: UITableViewController {
     
-    let apiController = APIController()
-
+    var apiController = APIController()
+        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+            updateViews()
+        }
+        
+    func updateViews() {
+        //To call or execute function after some time and update UI
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            self.apiController.getRandomUsers() {
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+            DispatchQueue.main.async(execute: {
+                //Update UI
+                self.tableView.reloadData()
+            })
+        }
+        
+        
+    }
 
-        apiController.getRandomUsers()
-
+    override func viewWillAppear(_ animated: Bool) {
+       
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+       
     }
 
     // MARK: - Table view data source
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-         return apiController.users.count
+        return apiController.users.count
     }
 
     
@@ -31,9 +60,10 @@ class RandomUserTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RandomUserCell", for: indexPath)
         
         let user = apiController.users[indexPath.row]
+
         let image = displayURLImage(url: user.picture.thumbnail)
-//        let name = "\(user.name.title) \(user.name.first) \(user.name.last)"
-//        cell.textLabel?.text = name
+        let name = "\(user.name.title) \(user.name.first) \(user.name.last)"
+        cell.textLabel?.text = name
         cell.imageView?.image = image
     
         return cell
@@ -80,8 +110,16 @@ class RandomUserTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ToDetail" {
+            guard let indexPath = tableView.indexPathForSelectedRow,
+                let detailVC = segue.destination as? UserDetailViewController else { return }
+            detailVC.personDelegate = apiController.users[indexPath.row]
+        } else if segue.identifier == "AddNew" {
+            let addVC = segue.destination as? UserDetailViewController
+        }
 
     }
     
+
 
 }

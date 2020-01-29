@@ -12,7 +12,7 @@ class APIController {
     
     var users: [Person] = []
     
-    let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1/")!
+    let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000/")!
 
     func getRandomUsers(completion: @escaping () -> Void = { }) {
         
