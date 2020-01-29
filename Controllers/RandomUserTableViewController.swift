@@ -20,7 +20,7 @@ class RandomUserTableViewController: UITableViewController {
         
     func updateViews() {
         //To call or execute function after some time and update UI
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.apiController.getRandomUsers() {
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
@@ -111,9 +111,10 @@ class RandomUserTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToDetail" {
-            guard let indexPath = tableView.indexPathForSelectedRow,
-                let detailVC = segue.destination as? UserDetailViewController else { return }
-            detailVC.personDelegate = apiController.users[indexPath.row]
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+              if let vc = segue.destination as? UserDetailViewController {
+                          vc.personDelegate = apiController.users[indexPath.row]
+                                     }
         } else if segue.identifier == "AddNew" {
             let addVC = segue.destination as? UserDetailViewController
         }

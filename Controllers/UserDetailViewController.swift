@@ -20,9 +20,23 @@ class UserDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        updateViews()
+    }
+    
+    func displayURLImage(url: String) -> UIImage {
+        let imageURL = URL(string: url)!
+        let data = try? Data(contentsOf: imageURL)
+        let image = UIImage(data: data!)
+        return image ?? UIImage(named: "notAvailable.jpg")!
     }
  
+    func updateViews() {
+        guard let user = personDelegate else { return }
+        nameLabel.text = "\(user.name.title) \(user.name.first) \(user.name.last)"
+        image.image = displayURLImage(url: user.picture.medium)
+        emailLabel.text = user.email
+        phoneLabel.text = user.phone
+    }
     
 
 

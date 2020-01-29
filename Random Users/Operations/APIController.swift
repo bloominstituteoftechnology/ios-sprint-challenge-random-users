@@ -12,7 +12,7 @@ class APIController {
     
     var users: [Person] = []
     
-    let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000/")!
+    let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=5/")!
 
     func getRandomUsers(completion: @escaping () -> Void = { }) {
         
@@ -41,8 +41,8 @@ class APIController {
                     
                     let decoder = JSONDecoder()
                     do {
-                        let users = try decoder.decode(Result.self, from: data)
-                        self.users.append(contentsOf: users.results)
+                        let users = try decoder.decode(Results.self, from: data)
+                        self.users = users.results
                         completion()
                     } catch {
                         print("error completing task: \(error)")

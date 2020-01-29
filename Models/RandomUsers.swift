@@ -8,30 +8,32 @@
 
 import Foundation
 
-struct Result: Codable {
+struct Results: Codable {
     var results: [Person]
-    
-}
+        
+    }
 
 struct Person: Codable {
-    let name: Name
-    let email: String
-    let phone: String
-    let picture: Picture
-    
-    struct Name: Codable {
-        let title: String
-        let first: String
-        let last: String
-    }
-    
-    struct Picture: Codable {
-        let large: String
-        let medium: String
-        let thumbnail: String
-    }
-    
+       let name: Name
+       let email: String
+       let phone: String
+       let picture: Picture
+       
+       struct Name: Codable {
+           let title: String
+           let first: String
+           let last: String
+       }
+       
+       struct Picture: Codable {
+           let large: String
+           let medium: String
+           let thumbnail: String
+        
+
+       }
 }
+
 
 
 
