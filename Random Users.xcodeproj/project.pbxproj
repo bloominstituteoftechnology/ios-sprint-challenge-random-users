@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33D840B322AAB905008B7069 /* RandomUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D840B222AAB905008B7069 /* RandomUser.swift */; };
+		33D840B622AABA1B008B7069 /* RandomUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D840B522AABA1B008B7069 /* RandomUserController.swift */; };
+		33D840B922AABA93008B7069 /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D840B722AABA93008B7069 /* NetworkHandler.swift */; };
+		33D840BA22AABA93008B7069 /* UIAlertController+NetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D840B822AABA93008B7069 /* UIAlertController+NetError.swift */; };
+		33D840BC22AABF0C008B7069 /* RandoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D840BB22AABF0C008B7069 /* RandoDetailViewController.swift */; };
+		33D840BE22AABF2B008B7069 /* RandoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D840BD22AABF2B008B7069 /* RandoTableViewController.swift */; };
+		33D840C022AAC208008B7069 /* RandomUserResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D840BF22AAC208008B7069 /* RandomUserResult.swift */; };
+		33D840C222AAC33C008B7069 /* RandoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D840C122AAC33C008B7069 /* RandoTableViewCell.swift */; };
+		33D840C422AAC7CB008B7069 /* PhotoFetchOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D840C322AAC7CB008B7069 /* PhotoFetchOperation.swift */; };
+		33D840C622AAC7D6008B7069 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D840C522AAC7D6008B7069 /* Cache.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -15,6 +25,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		33D840B222AAB905008B7069 /* RandomUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUser.swift; sourceTree = "<group>"; };
+		33D840B522AABA1B008B7069 /* RandomUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserController.swift; sourceTree = "<group>"; };
+		33D840B722AABA93008B7069 /* NetworkHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
+		33D840B822AABA93008B7069 /* UIAlertController+NetError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+NetError.swift"; sourceTree = "<group>"; };
+		33D840BB22AABF0C008B7069 /* RandoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandoDetailViewController.swift; sourceTree = "<group>"; };
+		33D840BD22AABF2B008B7069 /* RandoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandoTableViewController.swift; sourceTree = "<group>"; };
+		33D840BF22AAC208008B7069 /* RandomUserResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserResult.swift; sourceTree = "<group>"; };
+		33D840C122AAC33C008B7069 /* RandoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandoTableViewCell.swift; sourceTree = "<group>"; };
+		33D840C322AAC7CB008B7069 /* PhotoFetchOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFetchOperation.swift; sourceTree = "<group>"; };
+		33D840C522AAC7D6008B7069 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -35,6 +55,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		33D840AC22AAB679008B7069 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				33D840B722AABA93008B7069 /* NetworkHandler.swift */,
+				33D840B822AABA93008B7069 /* UIAlertController+NetError.swift */,
+				33D840C522AAC7D6008B7069 /* Cache.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		33D840AD22AAB680008B7069 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				33D840BB22AABF0C008B7069 /* RandoDetailViewController.swift */,
+				33D840BD22AABF2B008B7069 /* RandoTableViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		33D840AE22AAB686008B7069 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				33D840C122AAC33C008B7069 /* RandoTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		33D840AF22AAB68A008B7069 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				33D840B522AABA1B008B7069 /* RandomUserController.swift */,
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		33D840B022AAB692008B7069 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				33D840B222AAB905008B7069 /* RandomUser.swift */,
+				33D840BF22AAC208008B7069 /* RandomUserResult.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
@@ -55,6 +119,11 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+				33D840B022AAB692008B7069 /* Models */,
+				33D840AF22AAB68A008B7069 /* Model Controllers */,
+				33D840AE22AAB686008B7069 /* Views */,
+				33D840AD22AAB680008B7069 /* ViewControllers */,
+				33D840AC22AAB679008B7069 /* Helpers */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
@@ -76,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				33D840C322AAC7CB008B7069 /* PhotoFetchOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -152,7 +222,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				33D840B622AABA1B008B7069 /* RandomUserController.swift in Sources */,
+				33D840C422AAC7CB008B7069 /* PhotoFetchOperation.swift in Sources */,
+				33D840BA22AABA93008B7069 /* UIAlertController+NetError.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				33D840C222AAC33C008B7069 /* RandoTableViewCell.swift in Sources */,
+				33D840BE22AABF2B008B7069 /* RandoTableViewController.swift in Sources */,
+				33D840B922AABA93008B7069 /* NetworkHandler.swift in Sources */,
+				33D840B322AAB905008B7069 /* RandomUser.swift in Sources */,
+				33D840BC22AABF0C008B7069 /* RandoDetailViewController.swift in Sources */,
+				33D840C622AAC7D6008B7069 /* Cache.swift in Sources */,
+				33D840C022AAC208008B7069 /* RandomUserResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
