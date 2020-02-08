@@ -1,3 +1,4 @@
+}
 //
 //  NetworkController.swift
 //  Random Users
