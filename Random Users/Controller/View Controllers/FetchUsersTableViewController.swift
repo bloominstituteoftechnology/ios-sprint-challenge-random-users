@@ -17,7 +17,7 @@ class FetchUsersTableViewController: UITableViewController {
     
     //=======================
     // MARK: - Properties
-    
+    let users: [User]
     
     //=======================
     // MARK: - View Lifecycle
