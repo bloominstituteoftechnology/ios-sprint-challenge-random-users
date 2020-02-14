@@ -34,7 +34,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Jfo-nI-k9N" kind="show" trigger="accessoryAction" id="zWL-3c-MiQ"/>
+                                    <segue destination="Jfo-nI-k9N" kind="show" identifier="ShowUserSegue" id="tiy-1F-SNe"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

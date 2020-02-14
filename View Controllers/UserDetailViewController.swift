@@ -14,9 +14,11 @@ class UserDetailViewController: UIViewController {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userEmailLabel: UILabel!
     
+    var usercontroller: UserController?
+    
     var user: User? {
         didSet{
-            //updateViews()
+            updateViews()
         }
     }
 
@@ -24,9 +26,20 @@ class UserDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        updateViews()
     }
     
+    
+    func updateViews() {
+        guard isViewLoaded,
+        let user = user else {return}
+               
+        title = user.name.first.capitalized + " " + user.name.last.capitalized
+        userNameLabel.text = user.name.first
+        userEmailLabel.text = user.email
+        guard let imageData = try? Data(contentsOf: user.picture.large) else {fatalError()}
+        userImage.image = UIImage(data: imageData)
+    }
 
     /*
     // MARK: - Navigation
