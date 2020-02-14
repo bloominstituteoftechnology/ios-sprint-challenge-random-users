@@ -10,16 +10,45 @@ import UIKit
 
 class UserDetailViewController: UIViewController {
     //=======================
+    // MARK: - IBOutlets
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    
+    //=======================
     // MARK: - Properties
     var user: User?
-
+    
+    //=======================
+    // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
     }
     
     func setupViews() {
-        print(String(describing: user?.fname))
+        guard let user = user else { return }
+        nameLabel.text = "\(user.fname) \(user.lname)"
+        phoneLabel.text = user.phone
+        emailLabel.text = user.email
+        let photoOp = UserImageFetchOperation(user: user)
+        photoOp.fetchPhoto(imageType: .largeImage)
+        
+        let setImgOp = BlockOperation {
+            DispatchQueue.main.async {
+                if let imageData = photoOp.imageData {
+                    self.imageView?.image = UIImage(data: imageData)
+                }
+            }
+        }
+        setImgOp.addDependency(photoOp)
+        
+        OperationQueue.main.addOperations([
+            photoOp,
+            setImgOp
+        ], waitUntilFinished: false)
+        
     }
     
 }
