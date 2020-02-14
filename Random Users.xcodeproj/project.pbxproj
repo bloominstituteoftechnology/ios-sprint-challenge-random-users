@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1AADE1ED23F700AF0080BAE3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AADE1EC23F700AF0080BAE3 /* User.swift */; };
+		1AADE1EF23F7053F0080BAE3 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AADE1EE23F7053F0080BAE3 /* Cache.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1AADE1EC23F700AF0080BAE3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1AADE1EE23F7053F0080BAE3 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -43,6 +47,38 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		1AADE1E823F7005C0080BAE3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1AADE1EC23F700AF0080BAE3 /* User.swift */,
+				1AADE1EE23F7053F0080BAE3 /* Cache.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1AADE1E923F700650080BAE3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1AADE1EB23F700710080BAE3 /* Model Controllers */,
+				1AADE1EA23F7006A0080BAE3 /* View Controllers */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1AADE1EA23F7006A0080BAE3 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		1AADE1EB23F700710080BAE3 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +98,8 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
+				1AADE1E923F700650080BAE3 /* Controllers */,
+				1AADE1E823F7005C0080BAE3 /* Model */,
 				1AADE1E723F6FD300080BAE3 /* Views */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
@@ -161,6 +199,8 @@
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				1AADE1EF23F7053F0080BAE3 /* Cache.swift in Sources */,
+				1AADE1ED23F700AF0080BAE3 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
