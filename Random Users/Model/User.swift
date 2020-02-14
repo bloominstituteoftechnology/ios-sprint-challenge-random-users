@@ -31,6 +31,7 @@ struct User: Decodable {
     //=======================
     // MARK: - Types
     enum NameKeys: String, CodingKey {
+        case name
         case fname = "first"
         case lname = "last"
     }
@@ -59,12 +60,14 @@ struct User: Decodable {
     // MARK: - Init
     init(from decoder: Decoder) throws {
         let nameContainer = try decoder.container(keyedBy: NameKeys.self)
-        fname = try nameContainer.decode(String.self, forKey: .fname)
-        lname = try nameContainer.decode(String.self, forKey: .lname)
+        let nameDetailsContainer = try nameContainer.nestedContainer(keyedBy: NameKeys.self, forKey: .name)
+        fname = try nameDetailsContainer.decode(String.self, forKey: .fname)
+        lname = try nameDetailsContainer.decode(String.self, forKey: .lname)
         
         let pictureContainer = try decoder.container(keyedBy: ImageKeys.self)
-        thumbnailImage = try pictureContainer.decode(URL.self, forKey: .thumbnailImage)
-        largeImage = try pictureContainer.decode(URL.self, forKey: .largeImage)
+        let pictureDetailContainer = try pictureContainer.nestedContainer(keyedBy: ImageKeys.self, forKey: .picture)
+        thumbnailImage = try pictureDetailContainer.decode(URL.self, forKey: .thumbnailImage)
+        largeImage = try pictureDetailContainer.decode(URL.self, forKey: .largeImage)
         
         let phoneContainer = try decoder.container(keyedBy: PhoneKey.self)
         phone = try phoneContainer.decode(String.self, forKey: .phone)

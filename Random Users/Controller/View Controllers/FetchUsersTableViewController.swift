@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class FetchUsersTableViewController: UITableViewController {
     //=======================
@@ -17,13 +18,14 @@ class FetchUsersTableViewController: UITableViewController {
     
     //=======================
     // MARK: - Properties
-    let users = [User]()
+    var users = [User]()
+    private let queue = OperationQueue()
     
     //=======================
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        fetchUsers()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -61,5 +63,44 @@ class FetchUsersTableViewController: UITableViewController {
             destination.user = users[indexPath.row]
             
         }
+    }
+    
+    //=======================
+    // MARK: - Operations
+    func fetchUsers() {
+        guard let baseUrl = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000") else {return}
+        URLSession.shared.dataTask(with: baseUrl) { (data, _, error) in
+            if let error = error {
+                print(error)
+                return
+            }
+            guard let data = data else {return}
+            do {
+                let userResults = try JSONDecoder().decode(UserResults.self, from: data)
+                self.users = userResults.results
+                
+                //=======================
+                // MARK: - ##Test FetchOp##
+                let imageFetchOp = UserImageFetchOperation(user: self.users[0])
+                imageFetchOp.fetchPhoto(imageType: .thumbnail)
+                
+                let setImgOp = BlockOperation {
+                    DispatchQueue.main.async {
+                        if let imageData = imageFetchOp.imageData {
+                            print(imageData)
+                        }
+                    }
+                }
+                setImgOp.addDependency(imageFetchOp)
+                
+                self.queue.addOperations([
+                    imageFetchOp
+                    //queue
+                ], waitUntilFinished: false)
+                OperationQueue.main.addOperation(setImgOp)
+            } catch {
+                print(error)
+            }
+        }.resume()
     }
 }
