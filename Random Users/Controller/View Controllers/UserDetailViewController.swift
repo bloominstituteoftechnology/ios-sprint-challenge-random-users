@@ -19,7 +19,7 @@ class UserDetailViewController: UIViewController {
     }
     
     func setupViews() {
-        
+        print(String(describing: user?.fname))
     }
     
 }
