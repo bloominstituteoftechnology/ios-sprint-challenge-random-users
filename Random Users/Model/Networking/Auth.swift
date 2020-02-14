@@ -59,15 +59,17 @@ class Auth {
                 completion(NSError())
                 return
             }
-            
-            do {
-                let contactResults = try JSONDecoder().decode(Users.self, from: data)
-                self.users = contactResults.results
-                completion(nil)
-            } catch {
-                NSLog("Error decoding contacts: \(error)")
-                completion(error)
-                return
+            DispatchQueue.main.async {
+                do {
+                    let userResults = try JSONDecoder().decode(Users.self, from: data)
+                    let results = userResults.results.sorted(by: {$0.name < $1.name})
+                    self.users = results
+                    completion(nil)
+                } catch {
+                    NSLog("Error decoding contacts: \(error)")
+                    completion(error)
+                    return
+                }
             }
         }.resume()
     }

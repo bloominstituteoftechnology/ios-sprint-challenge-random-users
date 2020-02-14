@@ -11,10 +11,13 @@ import UIKit
 class RandomUsersTableViewController: UITableViewController {
     
     let auth = Auth()
+    var user = [User]()
     
     let cache = Cache<String, Data>()
     var operations = [String : Operation]()
     let fetchQueue = OperationQueue()
+    
+    @IBOutlet weak var sortSegment: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,11 +43,29 @@ class RandomUsersTableViewController: UITableViewController {
         let user = auth.users[indexPath.item]
         operations[user.name]?.cancel()
     }
-    
-    // WANTED TO ADD A SORT BY NAME! :D 
-//    @IBAction func sortUserList(_ sender: Any) {
-//        sortList()
+//    customObjects = customObjects.sorted(by: {
+//        $0.date.compare($1.date) == .orderedDescending
+//    })
+//    // The sorted customObjects collection is then printed out to display the objects sorted descending by date
+//    for obj in customObjects {
+//        print("Sorted Date: \(obj.date) with title: \(obj.title)")
 //    }
+     
+    @IBAction func segmentedControl(_ sender: UISegmentedControl) {
+        switch sortSegment.selectedSegmentIndex {
+        case 0:
+            user = user.sorted(by: {
+                $0.name < $1.name
+            })
+        case 1:
+            user = user.sorted(by: {
+                $0.name > $1.name
+            })
+        default:
+            break
+        }
+        tableView.reloadData()
+    }
     
     // MARK: - Helper Function
     private func loadImage(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) {
@@ -83,11 +104,6 @@ class RandomUsersTableViewController: UITableViewController {
         fetchQueue.addOperation(cachedOperation)
         OperationQueue.main.addOperation(checkOperation)
         self.operations[user.name] = fetchUserOperation
-    }
-    
-    func sortList() {
-        
-        tableView.reloadData();
     }
     
     // MARK: - Navigation
