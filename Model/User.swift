@@ -20,6 +20,32 @@ struct User: Decodable {
     var phone: String
     var picture: Picture
     
+    enum UserKeys: String, CodingKey {
+        case name
+        case email
+        case phone
+        case picture
+    }
+    
+    init(from decoder: Decoder) throws {
+        
+        // Set up the container
+        let container = try decoder.container(keyedBy: UserKeys.self)
+        
+        email = try container.decode(String.self, forKey: .email)
+        
+        phone = try container.decode(String.self, forKey: .phone)
+        
+     
+        name = try container.decode(Name.self, forKey: .name)
+        
+        picture = try container.decode(Picture.self, forKey: .picture)
+        
+        
+    }
+    
+    
+    
 }
 
 struct Name: Decodable {
@@ -31,3 +57,6 @@ struct Picture: Decodable {
     var thumbnail: URL
     var large: URL
 }
+
+
+
