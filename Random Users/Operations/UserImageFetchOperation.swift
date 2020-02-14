@@ -15,7 +15,7 @@ enum ImageType {
     case largeImage
 }
 
-class UserFetchOperation: ConcurrentOperation {
+class UserImageFetchOperation: ConcurrentOperation {
     //=======================
     // MARK: - Properties
     private var user: User

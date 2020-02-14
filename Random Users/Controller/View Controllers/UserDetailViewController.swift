@@ -9,7 +9,9 @@
 import UIKit
 
 class UserDetailViewController: UIViewController {
-    
+    //=======================
+    // MARK: - Properties
+    var user: User?
 
     override func viewDidLoad() {
         super.viewDidLoad()

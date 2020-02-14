@@ -11,13 +11,13 @@ import UIKit
 class FetchUsersTableViewController: UITableViewController {
     //=======================
     // MARK: - Types
-    enum identifiers: String {
+    enum Identifiers: String {
         case userDetail = "UserDetailViewControllerSegue"
     }
     
     //=======================
     // MARK: - Properties
-    let users: [User]
+    let users = [User]()
     
     //=======================
     // MARK: - View Lifecycle
@@ -53,6 +53,13 @@ class FetchUsersTableViewController: UITableViewController {
     //=======================
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == Identifiers.userDetail.rawValue {
+            guard let destination = segue.destination as? UserDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow,
+                users.count >= indexPath.row //could crash since I can't make users an optional
+            else { return }
+            destination.user = users[indexPath.row]
+            
+        }
     }
 }
