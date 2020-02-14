@@ -105,7 +105,7 @@ class FetchUsersTableViewController: UITableViewController {
             let setImgOp = BlockOperation {
                 DispatchQueue.main.async {
                     if let imageData = imageFetchOp.imageData {
-                        //print(imageData)
+                        cell.imageView?.image = UIImage(data: imageData)
                     }
                 }
             }
