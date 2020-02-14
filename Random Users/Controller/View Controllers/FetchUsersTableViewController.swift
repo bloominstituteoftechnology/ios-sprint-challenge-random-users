@@ -14,42 +14,41 @@ class FetchUsersTableViewController: UITableViewController {
     // MARK: - Types
     enum Identifiers: String {
         case userDetail = "UserDetailViewControllerSegue"
+        case userCell = "UserTableViewCell"
     }
     
     //=======================
     // MARK: - Properties
     var users = [User]()
     private let queue = OperationQueue()
+    private let cache = Cache<String, Data>()
+    private var operations = [String : Operation]()
     
     //=======================
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchUsers()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    
     //=======================
     // MARK: - TableView DataSource
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return users.count
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.userCell.rawValue) as? UserTableViewCell else { return UITableViewCell() }
+        cell.user = users[indexPath.row]
+        fetchThumbnailImgAndSet(forCell: cell, forItemAt: indexPath)
         return cell
+    }
+    
+    //=======================
+    // MARK: - TableView Delegate
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let user = users[indexPath.row]
+        operations[user.email]?.cancel()
     }
     
     //=======================
@@ -59,7 +58,7 @@ class FetchUsersTableViewController: UITableViewController {
             guard let destination = segue.destination as? UserDetailViewController,
                 let indexPath = tableView.indexPathForSelectedRow,
                 users.count >= indexPath.row //could crash since I can't make users an optional
-            else { return }
+                else { return }
             destination.user = users[indexPath.row]
             
         }
@@ -75,32 +74,50 @@ class FetchUsersTableViewController: UITableViewController {
                 return
             }
             guard let data = data else {return}
-            do {
-                let userResults = try JSONDecoder().decode(UserResults.self, from: data)
-                self.users = userResults.results
-                
-                //=======================
-                // MARK: - ##Test FetchOp##
-                let imageFetchOp = UserImageFetchOperation(user: self.users[0])
-                imageFetchOp.fetchPhoto(imageType: .thumbnail)
-                
-                let setImgOp = BlockOperation {
-                    DispatchQueue.main.async {
-                        if let imageData = imageFetchOp.imageData {
-                            print(imageData)
-                        }
-                    }
+            DispatchQueue.main.async {
+                do {
+                    let userResults = try JSONDecoder().decode(UserResults.self, from: data)
+                    self.users = userResults.results
+                    self.tableView.reloadData()
+                } catch {
+                    print(error)
                 }
-                setImgOp.addDependency(imageFetchOp)
-                
-                self.queue.addOperations([
-                    imageFetchOp
-                    //queue
-                ], waitUntilFinished: false)
-                OperationQueue.main.addOperation(setImgOp)
-            } catch {
-                print(error)
             }
         }.resume()
+        
+    }
+    
+    func fetchThumbnailImgAndSet(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
+        let user = users[indexPath.row]
+        if let imageData = cache.value(for: user.email),
+            let image = UIImage(data:imageData) {
+            cell.imageView?.image = image
+        } else {
+            let imageFetchOp = UserImageFetchOperation(user: user)
+            imageFetchOp.fetchPhoto(imageType: .thumbnail)
+            
+            let cacheOp = BlockOperation {
+                if let data = imageFetchOp.imageData {
+                    self.cache.cache(value: data, for: user.email)
+                }
+            }
+            
+            let setImgOp = BlockOperation {
+                DispatchQueue.main.async {
+                    if let imageData = imageFetchOp.imageData {
+                        //print(imageData)
+                    }
+                }
+            }
+            cacheOp.addDependency(imageFetchOp)
+            setImgOp.addDependency(imageFetchOp)
+            
+            queue.addOperations([
+                imageFetchOp,
+                cacheOp
+            ], waitUntilFinished: false)
+            OperationQueue.main.addOperation(setImgOp)
+            operations[user.email] = imageFetchOp
+        }
     }
 }

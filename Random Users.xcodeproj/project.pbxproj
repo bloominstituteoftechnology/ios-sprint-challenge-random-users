@@ -12,6 +12,7 @@
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
 		8ED6A9922140178C00FC395A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
+		B955A46A23F71FB40073F78B /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B955A46923F71FB40073F78B /* UserTableViewCell.swift */; };
 		B96E5B9623F7002C00FBF012 /* FetchUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96E5B9523F7002C00FBF012 /* FetchUsersTableViewController.swift */; };
 		B96E5B9823F7004700FBF012 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96E5B9723F7004600FBF012 /* UserDetailViewController.swift */; };
 		B96E5B9A23F7018800FBF012 /* Example.json in Resources */ = {isa = PBXBuildFile; fileRef = B96E5B9923F7018800FBF012 /* Example.json */; };
@@ -28,6 +29,7 @@
 		8ED6A9912140178C00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ED6A9932140178C00FC395A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
+		B955A46923F71FB40073F78B /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		B96E5B9523F7002C00FBF012 /* FetchUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUsersTableViewController.swift; sourceTree = "<group>"; };
 		B96E5B9723F7004600FBF012 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		B96E5B9923F7018800FBF012 /* Example.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Example.json; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				B96E5B9B23F702A500FBF012 /* Model */,
+				B955A46823F71F990073F78B /* View */,
 				B96E5B9323F7000100FBF012 /* Controller */,
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				9D5CCA56214231E400224681 /* Operations */,
@@ -93,6 +96,14 @@
 				B96E5BA023F7064100FBF012 /* UserImageFetchOperation.swift */,
 			);
 			path = Operations;
+			sourceTree = "<group>";
+		};
+		B955A46823F71F990073F78B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B955A46923F71FB40073F78B /* UserTableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		B96E5B9323F7000100FBF012 /* Controller */ = {
@@ -198,6 +209,7 @@
 				B96E5B9D23F702B200FBF012 /* Cache.swift in Sources */,
 				B96E5BA123F7064100FBF012 /* UserImageFetchOperation.swift in Sources */,
 				B96E5B9F23F7039500FBF012 /* User.swift in Sources */,
+				B955A46A23F71FB40073F78B /* UserTableViewCell.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				B96E5B9823F7004700FBF012 /* UserDetailViewController.swift in Sources */,
 				B96E5B9623F7002C00FBF012 /* FetchUsersTableViewController.swift in Sources */,
