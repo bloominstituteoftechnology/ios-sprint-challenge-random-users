@@ -15,7 +15,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
-    var user: User? {
+    var user: UserResults? {
         didSet {
             updateViews()
         }
@@ -25,10 +25,10 @@ class DetailViewController: UIViewController {
         print("updateViews() called")
         guard isViewLoaded else {return}
         
-        guard let user = user else {return}
-        nameLabel.text = user.name
-        phoneLabel.text = user.phone
-        emailLabel.text = user.email
+        //guard let user = UserResults else {return}
+        //nameLabel.text = user.name
+        //phoneLabel.text = user.phone
+        //emailLabel.text = user.email
         // imageView.image = UIImage(user.imageURL) // etc ...
     }
     

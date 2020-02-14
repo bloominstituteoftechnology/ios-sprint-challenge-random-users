@@ -12,10 +12,17 @@ import UIKit
 
 class UsersTableViewController: UITableViewController {
 
+    let userController = UserController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -23,15 +30,18 @@ class UsersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return self.userController.userArray.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        // Configure the cell...
-
+        let user = userController.userArray[indexPath.row]
+        print(user)
+        print(user.name.first)
+        cell.textLabel?.text = user.name.first
+        
         return cell
     }
     
