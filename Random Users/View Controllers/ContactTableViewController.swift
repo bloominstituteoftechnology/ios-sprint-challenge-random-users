@@ -36,7 +36,8 @@ class ContactTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath) as? ContactTableViewCell else { return UITableViewCell() }
-        
+        let contact = contactController.contacts[indexPath.row]
+        cell.contact = contact
         loadImages(forCell: cell, forItemAt: indexPath)
     
         return cell
@@ -76,7 +77,7 @@ class ContactTableViewController: UITableViewController {
             
             if let data = fetchImage.imageData {
                 cell.contactImageView.image = UIImage(data: data)
-                cell.contactNameLabel.text = selectedContact.name
+//                cell.contactNameLabel.text = selectedContact.name
             }
         }
             

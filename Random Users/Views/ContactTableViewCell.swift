@@ -10,7 +10,17 @@ import UIKit
 
 class ContactTableViewCell: UITableViewCell {
     
+    var contact: Contact? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     @IBOutlet weak var contactImageView: UIImageView!
     @IBOutlet weak var contactNameLabel: UILabel!
     
+    func updateViews() {
+        guard let contact = contact else { return }
+        contactNameLabel.text = contact.name
+    }
 }

@@ -23,7 +23,7 @@ class FetchPhotoOperation: ConcurrentOperation {
         state = .isExecuting
         let imageURL = contact.thumbnailImage
         let request = URLRequest(url: imageURL)
-        let task = session.dataTask(with: request) { data, _, error in
+        dataTask = session.dataTask(with: request) { data, _, error in
             defer { self.state = .isFinished }
             if self.isCancelled { return }
             if let error = error {
@@ -32,8 +32,7 @@ class FetchPhotoOperation: ConcurrentOperation {
             }
             self.imageData = data
         }
-        task.resume()
-        dataTask = task
+        dataTask?.resume()
     }
     
     override func cancel() {
