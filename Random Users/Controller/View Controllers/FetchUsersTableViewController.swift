@@ -19,7 +19,7 @@ class FetchUsersTableViewController: UITableViewController {
     
     //=======================
     // MARK: - Properties
-    var users = [User]()
+    var users : [User]?
     private let queue = OperationQueue()
     private let cache = Cache<String, Data>()
     private var operations = [String : Operation]()
@@ -34,12 +34,12 @@ class FetchUsersTableViewController: UITableViewController {
     //=======================
     // MARK: - TableView DataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count
+        return users?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.userCell.rawValue) as? UserTableViewCell else { return UITableViewCell() }
-        cell.user = users[indexPath.row]
+        cell.user = users?[indexPath.row]
         fetchThumbnailImgAndSet(forCell: cell, forItemAt: indexPath)
         return cell
     }
@@ -47,8 +47,8 @@ class FetchUsersTableViewController: UITableViewController {
     //=======================
     // MARK: - TableView Delegate
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let user = users[indexPath.row]
-        operations[user.email]?.cancel()
+        let user = users?[indexPath.row]
+        operations[user?.email ?? "No email given"]?.cancel()
     }
     
     //=======================
@@ -56,12 +56,12 @@ class FetchUsersTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Identifiers.userDetail.rawValue {
             guard let destination = segue.destination as? UserDetailViewController,
-                let indexPath = tableView.indexPathForSelectedRow,
-                users.count >= indexPath.row //could crash since I can't make users an optional
-                else { return }
-            destination.user = users[indexPath.row]
+                let indexPath = tableView.indexPathForSelectedRow
+            else { return }
+            let user = users?[indexPath.row]
+            destination.user = user
             destination.delegate = self
-            destination.cache = cache
+            destination.imageData = cache.value(for: user?.phone ?? "")
         }
     }
     
@@ -96,7 +96,7 @@ class FetchUsersTableViewController: UITableViewController {
     }
     
     func fetchThumbnailImgAndSet(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
-        let user = users[indexPath.row]
+        guard let user = users?[indexPath.row] else { return }
         if let imageData = cache.value(for: user.email),
             let image = UIImage(data:imageData) {
             cell.imageView?.image = image

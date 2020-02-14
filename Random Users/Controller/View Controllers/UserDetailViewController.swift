@@ -19,7 +19,7 @@ class UserDetailViewController: UIViewController {
     //=======================
     // MARK: - Properties
     var user: User?
-    var cache: Cache<String, Data>?
+    var imageData: Data?
     weak var delegate: FetchUsersTableViewController?
     
     //=======================
@@ -34,8 +34,8 @@ class UserDetailViewController: UIViewController {
         nameLabel.text = "\(user.fname) \(user.lname)"
         phoneLabel.text = user.phone
         emailLabel.text = user.email
-        if let data = cache?.value(for: user.phone) {
-            imageView.image = UIImage(data: data)
+        if let imageData = imageData {
+            imageView.image = UIImage(data: imageData)
         } else {
             let photoOp = UserImageFetchOperation(user: user)
             photoOp.fetchPhoto(imageType: .largeImage)
