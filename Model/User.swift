@@ -51,11 +51,43 @@ struct User: Decodable {
 struct Name: Decodable {
     let first: String
     let last: String
+    
+    
+    enum NameKeys: String, CodingKey {
+        case first
+        case last
+    }
+    
+    init(from decoder: Decoder) throws {
+        
+        let container = try decoder.container(keyedBy: NameKeys.self)
+        
+        first = try container.decode(String.self, forKey: .first)
+        
+        last = try container.decode(String.self, forKey: .last)
+        
+    }
+    
 }
 
 struct Picture: Decodable {
     var thumbnail: URL
     var large: URL
+    
+    enum PictureKeys: String, CodingKey {
+        case thumbnail
+        case large
+    }
+    
+    init(from decoder: Decoder) throws {
+        
+        let container = try decoder.container(keyedBy: PictureKeys.self)
+        
+        thumbnail = try container.decode(URL.self, forKey: .thumbnail)
+        
+        large = try container.decode(URL.self, forKey: .large)
+        
+    }
 }
 
 
