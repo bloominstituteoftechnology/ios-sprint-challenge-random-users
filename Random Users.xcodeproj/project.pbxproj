@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C1FAD9023F702F800684E6F /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1FAD8F23F702F800684E6F /* ContactDetailViewController.swift */; };
+		4C1FAD9223F7031900684E6F /* ContactTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1FAD9123F7031900684E6F /* ContactTableViewController.swift */; };
+		4C1FAD9523F703A300684E6F /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1FAD9423F703A300684E6F /* ContactTableViewCell.swift */; };
+		4C1FAD9723F7053900684E6F /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1FAD9623F7053900684E6F /* Contact.swift */; };
+		4C1FAD9A23F7091300684E6F /* ContactController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1FAD9923F7091300684E6F /* ContactController.swift */; };
+		4C1FAD9C23F711EE00684E6F /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1FAD9B23F711EE00684E6F /* Cache.swift */; };
+		4C1FAD9E23F7124E00684E6F /* PhotoFetchOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1FAD9D23F7124E00684E6F /* PhotoFetchOperation.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -15,6 +22,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C1FAD8F23F702F800684E6F /* ContactDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
+		4C1FAD9123F7031900684E6F /* ContactTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewController.swift; sourceTree = "<group>"; };
+		4C1FAD9423F703A300684E6F /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		4C1FAD9623F7053900684E6F /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		4C1FAD9923F7091300684E6F /* ContactController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactController.swift; sourceTree = "<group>"; };
+		4C1FAD9B23F711EE00684E6F /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		4C1FAD9D23F7124E00684E6F /* PhotoFetchOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFetchOperation.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -35,6 +49,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C1FAD8D23F6FE2A00684E6F /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4C1FAD8F23F702F800684E6F /* ContactDetailViewController.swift */,
+				4C1FAD9123F7031900684E6F /* ContactTableViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		4C1FAD8E23F6FE3A00684E6F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4C1FAD9623F7053900684E6F /* Contact.swift */,
+				4C1FAD9B23F711EE00684E6F /* Cache.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4C1FAD9323F7038F00684E6F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4C1FAD9423F703A300684E6F /* ContactTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4C1FAD9823F708FF00684E6F /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4C1FAD9923F7091300684E6F /* ContactController.swift */,
+			);
+			path = "Model Controller";
+			sourceTree = "<group>";
+		};
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +102,10 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
+				4C1FAD9823F708FF00684E6F /* Model Controller */,
+				4C1FAD9323F7038F00684E6F /* Views */,
+				4C1FAD8E23F6FE3A00684E6F /* Model */,
+				4C1FAD8D23F6FE2A00684E6F /* View Controllers */,
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
@@ -76,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				4C1FAD9D23F7124E00684E6F /* PhotoFetchOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -151,7 +204,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C1FAD9723F7053900684E6F /* Contact.swift in Sources */,
+				4C1FAD9223F7031900684E6F /* ContactTableViewController.swift in Sources */,
+				4C1FAD9E23F7124E00684E6F /* PhotoFetchOperation.swift in Sources */,
+				4C1FAD9C23F711EE00684E6F /* Cache.swift in Sources */,
+				4C1FAD9523F703A300684E6F /* ContactTableViewCell.swift in Sources */,
+				4C1FAD9A23F7091300684E6F /* ContactController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				4C1FAD9023F702F800684E6F /* ContactDetailViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
