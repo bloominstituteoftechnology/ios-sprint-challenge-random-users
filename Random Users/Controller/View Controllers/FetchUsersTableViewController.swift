@@ -60,8 +60,15 @@ class FetchUsersTableViewController: UITableViewController {
                 users.count >= indexPath.row //could crash since I can't make users an optional
                 else { return }
             destination.user = users[indexPath.row]
-            
+            destination.delegate = self
+            destination.cache = cache
         }
+    }
+    
+    //=======================
+    // MARK: - Delegate Methods
+    func saveToCache(value: Data, for key: String) {
+        cache.cache(value: value, for: key)
     }
     
     //=======================
@@ -77,7 +84,8 @@ class FetchUsersTableViewController: UITableViewController {
             DispatchQueue.main.async {
                 do {
                     let userResults = try JSONDecoder().decode(UserResults.self, from: data)
-                    self.users = userResults.results
+                    let results = userResults.results.sorted {$0.fname < $1.fname}
+                    self.users = results
                     self.tableView.reloadData()
                 } catch {
                     print(error)

@@ -19,6 +19,8 @@ class UserDetailViewController: UIViewController {
     //=======================
     // MARK: - Properties
     var user: User?
+    var cache: Cache<String, Data>?
+    weak var delegate: FetchUsersTableViewController?
     
     //=======================
     // MARK: - View Lifecycle
@@ -32,23 +34,26 @@ class UserDetailViewController: UIViewController {
         nameLabel.text = "\(user.fname) \(user.lname)"
         phoneLabel.text = user.phone
         emailLabel.text = user.email
-        let photoOp = UserImageFetchOperation(user: user)
-        photoOp.fetchPhoto(imageType: .largeImage)
-        
-        let setImgOp = BlockOperation {
-            DispatchQueue.main.async {
-                if let imageData = photoOp.imageData {
-                    self.imageView?.image = UIImage(data: imageData)
+        if let data = cache?.value(for: user.phone) {
+            imageView.image = UIImage(data: data)
+        } else {
+            let photoOp = UserImageFetchOperation(user: user)
+            photoOp.fetchPhoto(imageType: .largeImage)
+            let setImgOp = BlockOperation {
+                DispatchQueue.main.async {
+                    if let imageData = photoOp.imageData {
+                        self.delegate?.saveToCache(value: imageData, for: user.phone)
+                        self.imageView?.image = UIImage(data: imageData)
+                    }
                 }
             }
+            setImgOp.addDependency(photoOp)
+            
+            OperationQueue.main.addOperations([
+                photoOp,
+                setImgOp
+            ], waitUntilFinished: false)
         }
-        setImgOp.addDependency(photoOp)
-        
-        OperationQueue.main.addOperations([
-            photoOp,
-            setImgOp
-        ], waitUntilFinished: false)
-        
     }
     
 }
