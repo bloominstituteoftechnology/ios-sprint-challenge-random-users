@@ -10,37 +10,42 @@ import UIKit
 
 class UsersTableViewController: UITableViewController {
 
+    var userController = UserController()
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+       super.viewDidLoad()
+                   userController.getUsers { (error) in
+                       if let error = error {
+                           NSLog("Error getting users for TableView: \(error)")
+                       }
+                       
+                       DispatchQueue.main.async {
+                           self.tableView.reloadData()
+                       }
+                   }
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+         return userController.user.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
 
-        // Configure the cell...
+                let user = userController.user[indexPath.row]
+                cell.textLabel?.text = user.name.first.capitalized + " " + user.name.last.capitalized
+                
+                guard let imageData = try? Data(contentsOf: user.picture.thumbnail) else {fatalError()}
+                cell.imageView?.image = UIImage(data: imageData)
 
-        return cell
+                return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -77,14 +82,16 @@ class UsersTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+          if segue.identifier == "ShowUserSegue" {
+          guard let userDetailVC = segue.destination as? UserDetailViewController else {return}
+          guard let indexPath = tableView.indexPathForSelectedRow else {return}
+          let user = userController.user[indexPath.row]
+          userDetailVC.user = user
+            }
+        }
 }

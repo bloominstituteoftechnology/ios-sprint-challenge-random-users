@@ -14,6 +14,13 @@ class UserDetailViewController: UIViewController {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userEmailLabel: UILabel!
     
+    var user: User? {
+        didSet{
+            //updateViews()
+        }
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
