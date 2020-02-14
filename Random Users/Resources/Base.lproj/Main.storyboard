@@ -30,7 +30,7 @@
                                                 <constraint firstAttribute="width" constant="70" id="59h-ev-C0H"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tMa-vp-xCU">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tMa-vp-xCU">
                                             <rect key="frame" x="98" y="26" width="277" height="28"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
                                             <nil key="textColor"/>
@@ -51,7 +51,7 @@
                                 <connections>
                                     <outlet property="contactImageView" destination="Cfw-Mo-Zgt" id="D9c-Oc-lv1"/>
                                     <outlet property="contactNameLabel" destination="tMa-vp-xCU" id="ha8-jU-fao"/>
-                                    <segue destination="Riv-QD-yqz" kind="show" id="upV-Ew-Qkf"/>
+                                    <segue destination="Riv-QD-yqz" kind="show" identifier="ContactDetailSegue" id="upV-Ew-Qkf"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

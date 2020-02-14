@@ -17,6 +17,8 @@ struct Contact: Decodable {
     var email: String
     var phone: String
     var picture: [URL]
+    var thumbnailImage: URL
+    var largeImage: URL
     
     enum ContactKeys: String, CodingKey {
         case name
@@ -63,5 +65,7 @@ struct Contact: Decodable {
         email = try container.decode(String.self, forKey: .email)
         phone = try container.decode(String.self, forKey: .phone)
         picture = pictureURLs
+        thumbnailImage = URL(string: thumbnail)!
+        largeImage = URL(string: large)!
     }
 }

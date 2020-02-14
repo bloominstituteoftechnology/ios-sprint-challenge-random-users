@@ -17,11 +17,13 @@ enum HTTPMethod: String {
 
 class ContactController {
     
-    let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
+    let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=5000")!
     
     typealias CompletionHandler = (Error?) -> Void
     
     var contacts: [Contact] = []
+    
+    var largeImageData: Data?
     
     func fetchContacts(completion: @escaping CompletionHandler = { _ in }) {
         var request = URLRequest(url: baseURL)
@@ -58,6 +60,29 @@ class ContactController {
                 }
                 return
             }
+        }.resume()
+    }
+    
+    func fetchLargeImage(contact: Contact, completion: @escaping CompletionHandler = { _ in }) {
+        let largeURL = contact.largeImage
+        let request = URLRequest(url: largeURL)
+        
+        URLSession.shared.dataTask(with: request) { data, _, error in
+            if let error = error {
+                NSLog("Error fetching Large Image from server: \(error)")
+                DispatchQueue.main.async {
+                    completion(error)
+                }
+                return
+            }
+            guard let data = data else {
+                NSLog("No or Bad data for Large Image")
+                DispatchQueue.main.async {
+                    completion(error)
+                }
+                return
+            }
+            self.largeImageData = data
         }.resume()
     }
 }
