@@ -12,6 +12,11 @@ class UsersTableViewController: UITableViewController {
 
     var userController = UserController()
     
+    private var thumbnailCache = Cache<String, Data>()
+    private let imageFetchQueue = OperationQueue()
+    private var storedFetchOp = [String:FetchPhotoOperation]()
+    private let cancelQueue = DispatchQueue(label: "CancelOperation")
+    
     override func viewDidLoad() {
        super.viewDidLoad()
                    userController.getUsers { (error) in
@@ -35,14 +40,46 @@ class UsersTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserTVCell else {return UITableViewCell()}
 
                 let user = userController.user[indexPath.row]
-                cell.textLabel?.text = user.name.first.capitalized + " " + user.name.last.capitalized
+               // cell.textLabel?.text = user.name.first.capitalized + " " + user.name.last.capitalized
                 
-                guard let imageData = try? Data(contentsOf: user.picture.thumbnail) else {fatalError()}
-                cell.imageView?.image = UIImage(data: imageData)
-
+               let cacheKey = user.picture.thumbnail.absoluteString
+                
+               cell.user = user
+                
+                if let imageData = thumbnailCache.value(for: cacheKey) {
+                    cell.imageData = imageData
+                } else {
+                    let fetchPhotoOp = FetchPhotoOperation(user: user)
+                    
+                    let cacheOp = BlockOperation {
+                        
+                        if let imageData = fetchPhotoOp.imageData {
+                            
+                            self.thumbnailCache.cache(value: imageData, for: cacheKey)
+                        }
+                    }
+                    
+                    let cellCheckOp = BlockOperation {
+                        if let cellPath = tableView.indexPath(for: cell), cellPath != indexPath {
+                            return
+                        }
+                        if let imageData = fetchPhotoOp.imageData {
+                           cell.imageData = imageData
+                        }
+                    }
+                    
+                    cacheOp.addDependency(fetchPhotoOp)
+                    cellCheckOp.addDependency(fetchPhotoOp)
+                    imageFetchQueue.addOperations([fetchPhotoOp, cacheOp], waitUntilFinished: false)
+                    OperationQueue.main.addOperation(cellCheckOp)
+                    
+                    storedFetchOp.updateValue(fetchPhotoOp, forKey: user.name.first)
+                    
+                }
+                
                 return cell
     }
     
@@ -94,4 +131,14 @@ class UsersTableViewController: UITableViewController {
           userDetailVC.user = user
             }
         }
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let user = userController.user[indexPath.item]
+        guard let fetchOp = storedFetchOp[user.name.first] else { return }
+        
+        cancelQueue.sync {
+            fetchOp.cancel()
+        }
+    }
+    
 }
