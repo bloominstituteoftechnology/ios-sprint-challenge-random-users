@@ -17,12 +17,39 @@ class FetchUsersTableViewController: UITableViewController {
         case userCell = "UserTableViewCell"
     }
     
+    enum SortTypes {
+        case first
+        case last
+    }
+    
+    //=======================
+    // MARK: - IBOutlets
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
+    //=======================
+    // MARK: - IBActions
+    @IBAction func sortOrderChanged(_ sender: Any) {
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            self.sortType = .first
+            sortUsers()
+            tableView.reloadData()
+        case 1:
+            self.sortType = .last
+            sortUsers()
+            tableView.reloadData()
+        default:
+            print("error with segmented control - invalid index")
+        }
+    }
+    
     //=======================
     // MARK: - Properties
     var users : [User]?
     private let queue = OperationQueue()
     private let cache = Cache<String, Data>()
     private var operations = [String : Operation]()
+    private var sortType: SortTypes = .first
     
     //=======================
     // MARK: - View Lifecycle
@@ -40,7 +67,7 @@ class FetchUsersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.userCell.rawValue) as? UserTableViewCell else { return UITableViewCell() }
         cell.user = users?[indexPath.row]
-        fetchThumbnailImgAndSet(forCell: cell, forItemAt: indexPath)
+        fetchThumbnailImageAndSet(forCell: cell, forItemAt: indexPath)
         return cell
     }
     
@@ -84,8 +111,7 @@ class FetchUsersTableViewController: UITableViewController {
             DispatchQueue.main.async {
                 do {
                     let userResults = try JSONDecoder().decode(UserResults.self, from: data)
-                    let results = userResults.results.sorted {$0.fname < $1.fname}
-                    self.users = results
+                    self.users = userResults.results.sorted {$0.fname < $1.fname}
                     self.tableView.reloadData()
                 } catch {
                     print(error)
@@ -95,7 +121,7 @@ class FetchUsersTableViewController: UITableViewController {
         
     }
     
-    func fetchThumbnailImgAndSet(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
+    func fetchThumbnailImageAndSet(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
         guard let user = users?[indexPath.row] else { return }
         if let imageData = cache.value(for: user.email),
             let image = UIImage(data:imageData) {
@@ -126,6 +152,15 @@ class FetchUsersTableViewController: UITableViewController {
             ], waitUntilFinished: false)
             OperationQueue.main.addOperation(setImgOp)
             operations[user.email] = imageFetchOp
+        }
+    }
+    
+    func sortUsers() {
+        switch sortType {
+        case .first:
+            users = users?.sorted {$0.fname < $1.fname}
+        case .last:
+            users = users?.sorted {$0.lname < $1.lname}
         }
     }
 }

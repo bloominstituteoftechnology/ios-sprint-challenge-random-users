@@ -34,14 +34,21 @@ class UserDetailViewController: UIViewController {
         nameLabel.text = "\(user.fname) \(user.lname)"
         phoneLabel.text = user.phone
         emailLabel.text = user.email
+        fetchAndSetImage()
+    }
+    
+    //=======================
+    // MARK: - Helper Methods
+    func fetchAndSetImage() {
+        guard let user = user else { return }
         if let imageData = imageData {
             imageView.image = UIImage(data: imageData)
         } else {
             let photoOp = UserImageFetchOperation(user: user)
             photoOp.fetchPhoto(imageType: .largeImage)
             let setImgOp = BlockOperation {
-                DispatchQueue.main.async {
-                    if let imageData = photoOp.imageData {
+                if let imageData = photoOp.imageData {
+                    DispatchQueue.main.async {
                         self.delegate?.saveToCache(value: imageData, for: user.phone)
                         self.imageView?.image = UIImage(data: imageData)
                     }

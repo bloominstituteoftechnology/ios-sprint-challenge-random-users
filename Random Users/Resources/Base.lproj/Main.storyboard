@@ -71,7 +71,23 @@
                             <outlet property="delegate" destination="QND-QV-7I6" id="rdh-qM-0iz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="xS1-bM-HVx"/>
+                    <navigationItem key="navigationItem" id="xS1-bM-HVx">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="7lZ-6g-TH2">
+                            <rect key="frame" x="59" y="5.5" width="257" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="First Name"/>
+                                <segment title="Last Name"/>
+                            </segments>
+                            <connections>
+                                <action selector="sortOrderChanged:" destination="QND-QV-7I6" eventType="valueChanged" id="bdP-fV-Fza"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="segmentedControl" destination="7lZ-6g-TH2" id="cgm-zF-Hyh"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u13-uI-QzB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -153,6 +169,15 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9gv-RY-oG4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="O9H-S8-elx">
+                    <rect key="frame" x="0.0" y="0.0" width="257" height="33"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <segments>
+                        <segment title="First Name"/>
+                        <segment title="Last Name"/>
+                        <segment title="Email"/>
+                    </segments>
+                </segmentedControl>
             </objects>
             <point key="canvasLocation" x="268" y="-81.409295352323838"/>
         </scene>
