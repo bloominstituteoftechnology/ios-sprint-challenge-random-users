@@ -34,30 +34,68 @@ import Foundation
      "version": "1.3"
    }
  }
- // name: title, first, last -- email -- phone -- picture: medium
+ // name: title, first, last -- email -- phone -- picture: medium/thumbnail? same size
  */
 
-// MARK: - User
+struct UserResults: Codable {
+    let results: [User]
+    
+    enum UserResultsKeys: String, CodingKey {
+        case results
+    }
+    
+    init(from decoder: Decoder) throws {
+        
+        let container = try decoder.container(keyedBy: UserResultsKeys.self)
+        let resultsContainer = try container.decode([User].self, forKey: .results)
+        results = resultsContainer
+    }
+}
+
 struct User: Codable {
-    let results: [Result]
-}
-
-// MARK: - Result
-struct Result: Codable {
-    let name: Name
+    let name: String
     let email: String
-    let phone: String
-    let picture: Picture
-}
-
-// MARK: - Name
-struct Name: Codable {
-    let title, first, last: String
-}
-
-// MARK: - Picture
-struct Picture: Codable {
-    let medium: String
+    let phone: String // Int?
+    let imageUrl: URL // convert later
+    
+    enum UserKeys: String, CodingKey {
+        case name
+        case email
+        case phone
+        case imageUrl = "picture"
+    }
+    
+    /*
+     "title": "Miss",
+     "first": "Olivia",
+     "last": "Baker"
+     */
+    enum NameKeys: String, CodingKey {
+        case title
+        case first
+        case last
+    }
+    
+    enum PictureKeys: String, CodingKey {
+        case thumbnail
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: UserKeys.self)
+        
+        let namesContainer = try container.nestedContainer(keyedBy: NameKeys.self, forKey: .name)
+        let title = try namesContainer.decode(String.self, forKey: .title)
+        let first = try namesContainer.decode(String.self, forKey: .first)
+        let last = try namesContainer.decode(String.self, forKey: .last)
+        name = "\(title) \(first) \(last)" // Mr. Jim Jones
+        
+        email = try container.decode(String.self, forKey: .email)
+        
+        phone = try container.decode(String.self, forKey: .phone)
+        
+        let thumbnailContainer = try container.nestedContainer(keyedBy: PictureKeys.self, forKey: .imageUrl)
+        imageUrl = try thumbnailContainer.decode(URL.self, forKey: .thumbnail)
+    }
 }
 
 
