@@ -34,7 +34,7 @@ import Foundation
      "version": "1.3"
    }
  }
- // name: title, first, last -- email -- phone -- picture: medium/thumbnail? same size
+ // name: title, first, last -- email -- phone -- picture: medium/thumbnail? same size - large
  */
 
 struct UserResults: Codable {
@@ -57,6 +57,7 @@ struct User: Codable {
     let email: String
     let phone: String // Int?
     let imageUrl: URL // convert later
+    let largeUrl: URL
     
     enum UserKeys: String, CodingKey {
         case name
@@ -78,6 +79,7 @@ struct User: Codable {
     
     enum PictureKeys: String, CodingKey {
         case thumbnail
+        case large
     }
     
     init(from decoder: Decoder) throws {
@@ -95,6 +97,9 @@ struct User: Codable {
         
         let thumbnailContainer = try container.nestedContainer(keyedBy: PictureKeys.self, forKey: .imageUrl)
         imageUrl = try thumbnailContainer.decode(URL.self, forKey: .thumbnail)
+        
+        let largeContainer = try container.nestedContainer(keyedBy: PictureKeys.self, forKey: .imageUrl)
+        largeUrl = try largeContainer.decode(URL.self, forKey: .large)
     }
 }
 

@@ -19,7 +19,7 @@ class UsersTableViewController: UITableViewController {
     private var photoFetchQueue = OperationQueue()
     let userController = UserController()
     
-    private var photoReferences = [User]() {
+    private var userReferences = [User]() {
         didSet {
             DispatchQueue.main.async { self.tableView?.reloadData() }
         }
@@ -33,6 +33,7 @@ class UsersTableViewController: UITableViewController {
             } else {
                 DispatchQueue.main.async {
                     print("success")
+                    self.tableView.reloadData()
                     self.tableView.reloadData()
                 }
             }
