@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class FetchPhotoOperation: ConcurrentOperation {
+class FetchUserOperation: ConcurrentOperation {
     
     // MARK: Properties
     

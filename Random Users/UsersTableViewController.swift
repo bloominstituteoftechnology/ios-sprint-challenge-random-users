@@ -14,7 +14,7 @@ class UsersTableViewController: UITableViewController {
 
     // MARK: - Properties
     
-    private var operations = [String : Operation]()
+    private var operations = [String : FetchUserOperation]()
     private var cache = Cache<String, UIImage>()
     private var photoFetchQueue = OperationQueue()
     let userController = UserController()
@@ -74,7 +74,7 @@ class UsersTableViewController: UITableViewController {
         else {
             
             // Start an operation to fetch image data
-            let fetchOp = FetchPhotoOperation(user: user)
+            let fetchOp = FetchUserOperation(user: user)
             
             let cacheOp = BlockOperation {
                 if let image = fetchOp.image {
@@ -111,8 +111,14 @@ class UsersTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "DetailSegue" {
+            guard let detailVC = segue.destination as? DetailViewController, let indexPath = tableView.indexPathForSelectedRow else {return}
+            
+            let user = userController.users[indexPath.row]
+            detailVC.userController = userController
+            detailVC.user = user
+        }
     }
 
 }

@@ -15,26 +15,26 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
-//    var user: UserResults? {
-//        didSet {
-//            updateViews()
-//        }
-//    }
+    var userController: UserController?
+    var user: User? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateViews()
+    }
     
     func updateViews() {
         print("updateViews() called")
         guard isViewLoaded else {return}
         
-        //guard let user = UserResults else {return}
-        //nameLabel.text = user.name
-        //phoneLabel.text = user.phone
-        //emailLabel.text = user.email
-        // imageView.image = UIImage(user.imageURL) // etc ...
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-    }
+        guard let user = user else {return}
+        nameLabel.text = user.name
+        phoneLabel.text = user.phone
+        emailLabel.text = user.email
+        //imageView.image = UIImage(user.imageURL) // etc ...
+    }    
 }
