@@ -12,6 +12,18 @@ import UIKit
 
 class UsersTableViewController: UITableViewController {
 
+    // Key used to be Int
+    private var operations = [String : Operation]()
+    // Key used to be Int / photoReference.id -> photoReference.results[0].email
+    private let cache = Cache<String, Data>()
+    private let photoFetchQueue = OperationQueue()
+    
+    private var photoReferences = [User]() {
+        didSet {
+            DispatchQueue.main.async { self.tableView?.reloadData() }
+        }
+    }
+    
     let userController = UserController()
     
     override func viewDidLoad() {
@@ -30,7 +42,7 @@ class UsersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return photoReferences.count
         //return self.userController.userArray.count
     }
 
@@ -50,9 +62,9 @@ class UsersTableViewController: UITableViewController {
         let photoReference = photoReferences[indexPath.item]
         
         // Check for image in cache
-        if let cachedImageData = cache.value(for: photoReference.id),
+        if let cachedImageData = cache.value(for: photoReference.results[0].email),
             let image = UIImage(data: cachedImageData) {
-            cell.imageView.image = image
+            cell.imageView?.image = image
             return
         }
         
@@ -61,21 +73,21 @@ class UsersTableViewController: UITableViewController {
         
         let cacheOp = BlockOperation {
             if let data = fetchOp.imageData {
-                self.cache.cache(value: data, for: photoReference.id)
+                self.cache.cache(value: data, for: photoReference.results[0].email)
             }
         }
         
         let completionOp = BlockOperation {
-            defer { self.operations.removeValue(forKey: photoReference.id) }
+            defer { self.operations.removeValue(forKey: photoReference.results[0].email) }
             
-            if let currentIndexPath = self.collectionView?.indexPath(for: cell),
+            if let currentIndexPath = self.tableView?.indexPath(for: cell),
                 currentIndexPath != indexPath {
                 print("Got image for now-reused cell")
                 return // Cell has been reused
             }
             
             if let data = fetchOp.imageData {
-                cell.imageView.image = UIImage(data: data)
+                cell.imageView?.image = UIImage(data: data)
             }
         }
         
@@ -86,7 +98,7 @@ class UsersTableViewController: UITableViewController {
         photoFetchQueue.addOperation(cacheOp)
         OperationQueue.main.addOperation(completionOp)
         
-        operations[photoReference.id] = fetchOp
+        operations[photoReference.results[0].email] = fetchOp
     }
     
 

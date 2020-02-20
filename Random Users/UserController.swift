@@ -8,10 +8,10 @@
 
 import Foundation
 
+// should be 1000 instead of 1 !!!
+let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1")!
+
 class UserController {
-    
-    // should be 1000 instead of 1 !!!
-    let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1")!
     
     typealias CompletionHandler = (Error?) -> Void
     /// Array that stores users
@@ -20,6 +20,43 @@ class UserController {
     init() {
         print("init")
         getUsers()
+    }
+    
+    private func fetch<T: Codable>(from url: URL,
+                           using session: URLSession = URLSession.shared,
+                           completion: @escaping (T?, Error?) -> Void) {
+        session.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+            
+            guard let data = data else {
+                completion(nil, NSError(domain: "", code: -1, userInfo: nil))
+                return
+            }
+            
+            do {
+                let jsonDecoder = JSONDecoder()
+                let decodedObject = try jsonDecoder.decode(T.self, from: data)
+                completion(decodedObject, nil)
+            } catch {
+                completion(nil, error)
+            }
+        }.resume()
+    }
+    
+    func fetchPhotos(session: URLSession = URLSession.shared,
+                     completion: @escaping ([User]?, Error?) -> Void) {
+        
+        
+        fetch(from: baseURL, using: session) { (dictionary: [String : [User]]?, error: Error?) in
+            guard let photos = dictionary?["photos"] else {
+                completion(nil, error)
+                return
+            }
+            completion(photos, nil)
+        }
     }
     
     /// Fetches users from API (decoding them) and appends them to self.userArray
