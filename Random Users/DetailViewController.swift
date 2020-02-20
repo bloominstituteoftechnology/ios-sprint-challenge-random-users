@@ -15,11 +15,11 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
-    var user: UserResults? {
-        didSet {
-            updateViews()
-        }
-    }
+//    var user: UserResults? {
+//        didSet {
+//            updateViews()
+//        }
+//    }
     
     func updateViews() {
         print("updateViews() called")

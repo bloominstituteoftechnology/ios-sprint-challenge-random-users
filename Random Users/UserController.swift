@@ -10,12 +10,12 @@ import Foundation
 
 class UserController {
     
-    // should be 1000 instead of 1
+    // should be 1000 instead of 1 !!!
     let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1")!
     
     typealias CompletionHandler = (Error?) -> Void
     /// Array that stores users
-    var userArray: [User] = []
+    var user: User?
     
     init() {
         print("init")
@@ -49,9 +49,9 @@ class UserController {
             let decoder = JSONDecoder()
             
             do {
-                let userResults = try decoder.decode(UserResults.self, from: data)
-                self.userArray = userResults.results
-                print(self.userArray)
+                let userResults = try decoder.decode(User.self, from: data)
+                self.user = userResults
+                print(self.user)
                 //self.userArray.append(userResults)
                 DispatchQueue.main.async {
                     completion(nil)

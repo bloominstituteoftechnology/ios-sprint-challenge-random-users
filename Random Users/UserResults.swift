@@ -9,6 +9,7 @@
 import Foundation
 
 /*
+ 
  {
    "results": [
      {
@@ -33,29 +34,73 @@ import Foundation
      "version": "1.3"
    }
  }
+ // name: title, first, last -- email -- phone -- picture: medium
  */
+
+// MARK: - User
+struct User: Codable {
+    let results: [Result]
+}
+
+// MARK: - Result
+struct Result: Codable {
+    let name: Name
+    let email: String
+    let phone: String
+    let picture: Picture
+}
+
+// MARK: - Name
+struct Name: Codable {
+    let title, first, last: String
+}
+
+// MARK: - Picture
+struct Picture: Codable {
+    let medium: String
+}
+
+
+// Right way
+//struct UserResults: Decodable {
+//    let results: [String]
+//
+//    enum UserResultsKeys: String, CodingKey {
+//        case results
+//
+//    }
+//
+//    init(from decoder: Decoder) throws {
+//
+//        let container = try decoder.container(keyedBy: UserResultsKeys.self)
+//        // keyed instead?
+//        results = try container.decode([String].self, forKey: .results)
+//
+//    }
+//}
+
 // Wrong Way sort of
-struct UserResults: Decodable {
-    let results: [User]
-}
-
-struct User: Decodable {
-    var name: Name
-    var email: String
-    var phone: String
-    var picture: Picture
-
-}
-
-struct Name: Decodable {
-    let first: String
-    let last: String
-}
-
-struct Picture: Decodable {
-    var thumbnail: URL
-    var large: URL
-}
+//struct UserResults: Decodable {
+//    let results: [User]
+//}
+//
+//struct User: Decodable {
+//    var name: Name
+//    var email: String
+//    var phone: String
+//    var picture: Picture
+//
+//}
+//
+//struct Name: Decodable {
+//    let first: String
+//    let last: String
+//}
+//
+//struct Picture: Decodable {
+//    var thumbnail: URL
+//    var large: URL
+//}
 
 //struct UserResults: Codable {
 //    let results: [String]
@@ -74,3 +119,64 @@ struct Picture: Decodable {
 //
 //    }
 //}
+
+/*
+ WRONG
+ struct Person: Codable {
+     let name: String
+     let height: Int
+     let hairColor: String
+     
+     let films: [URL]
+     let vehicles: [URL]
+     let starships: [URL]
+
+     enum CodingKeys: String, CodingKey {
+         case name
+         case height
+         case hairColor = "hair_color"
+         case films
+         case vehicles
+         case starships
+     }
+ }
+ */
+
+/* RIGHT
+ struct Person: Codable {
+   let name: String
+   let height: Int
+   let hairColor: String
+   
+   let films: [URL] //[String]
+   let vehicles: [URL] //[String]
+   let starships: [URL] //[String]
+   
+   enum PersonKeys: String, CodingKey {
+     case name
+     case height
+     case hairColor = "hair_color"
+     case films
+     case vehicles
+     case starships
+   }
+   
+   init(from decoder: Decoder) throws {
+     let container = try decoder.container(keyedBy: PersonKeys.self)
+    
+     1
+     name = try container.decode(String.self, forKey: .name)
+     2
+     hairColor = try container.decode(String.self, forKey: .hairColor)
+     3
+     let heightString = try container.decode(String.self, forKey: .height)
+     height = Int(heightString) ?? 0
+     4
+     films = try container.decode([URL].self, forKey: .films)
+     5
+     vehicles = try container.decode([URL].self, forKey: .vehicles)
+     6
+     starships = try container.decode([URL].self, forKey: .starships)
+   }
+ }
+ */

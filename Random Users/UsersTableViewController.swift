@@ -30,19 +30,63 @@ class UsersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.userController.userArray.count
+        return 1
+        //return self.userController.userArray.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        let user = userController.userArray[indexPath.row]
-        print(user)
-        print(user.name.first)
-        cell.textLabel?.text = user.name.first
-        
+//        let user = userController.userArray[indexPath.row]
+//        print(user)
+//        print(user.name.first)
+//        cell.textLabel?.text = user.name.first
+        loadImage(forCell: cell, forItemAt: indexPath)
         return cell
+    }
+    
+    private func loadImage(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+        let photoReference = photoReferences[indexPath.item]
+        
+        // Check for image in cache
+        if let cachedImageData = cache.value(for: photoReference.id),
+            let image = UIImage(data: cachedImageData) {
+            cell.imageView.image = image
+            return
+        }
+        
+        // Start an operation to fetch image data
+        let fetchOp = FetchPhotoOperation(photoReference: photoReference)
+        
+        let cacheOp = BlockOperation {
+            if let data = fetchOp.imageData {
+                self.cache.cache(value: data, for: photoReference.id)
+            }
+        }
+        
+        let completionOp = BlockOperation {
+            defer { self.operations.removeValue(forKey: photoReference.id) }
+            
+            if let currentIndexPath = self.collectionView?.indexPath(for: cell),
+                currentIndexPath != indexPath {
+                print("Got image for now-reused cell")
+                return // Cell has been reused
+            }
+            
+            if let data = fetchOp.imageData {
+                cell.imageView.image = UIImage(data: data)
+            }
+        }
+        
+        cacheOp.addDependency(fetchOp)
+        completionOp.addDependency(fetchOp)
+        
+        photoFetchQueue.addOperation(fetchOp)
+        photoFetchQueue.addOperation(cacheOp)
+        OperationQueue.main.addOperation(completionOp)
+        
+        operations[photoReference.id] = fetchOp
     }
     
 
