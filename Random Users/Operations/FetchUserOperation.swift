@@ -32,9 +32,10 @@ class FetchUserOperation: ConcurrentOperation {
         state = .isExecuting
         
         var request = URLRequest(url: baseURL)
+        var requestUrl = user.imageUrl //.usingHTTPS! ?
         //request.httpMethod = "GET" //?
         
-        let task = session.dataTask(with: request) { (data, response, error) in
+        let task = session.dataTask(with: requestUrl) { (data, response, error) in
             defer { self.state = .isFinished }
             if self.isCancelled { return }
             if let error = error {
