@@ -7,39 +7,52 @@
 //
 
 import Foundation
+import UIKit
 
 class FetchPhotoOperation: ConcurrentOperation {
     
     // MARK: Properties
     
-    let photoReference: User
+    var user: User
     
     private let session: URLSession
 
-    private(set) var imageData: Data?
+    var image: UIImage?
     
     private var dataTask: URLSessionDataTask?
     
-    init(photoReference: User, session: URLSession = URLSession.shared) {
-        self.photoReference = photoReference
+    init(user: User, session: URLSession = URLSession.shared) {
+        self.user = user
         self.session = session
         super.init()
     }
  
     override func start() {
+        
         state = .isExecuting
+        
         var request = URLRequest(url: baseURL)
-        request.httpMethod = "GET"
+        //request.httpMethod = "GET" //?
         
         let task = session.dataTask(with: request) { (data, response, error) in
             defer { self.state = .isFinished }
             if self.isCancelled { return }
             if let error = error {
-                NSLog("Error fetching data for \(self.photoReference): \(error)")
+                NSLog("Error fetching data for \(self.user): \(error)")
                 return
             }
             
-            self.imageData = data
+            guard let data = data else {
+                print("No data")
+                return
+            }
+            
+            guard let imageFromData = UIImage(data: data) else {
+                print("No image from data")
+                return
+            }
+            
+            self.image = imageFromData
         }
         task.resume()
         dataTask = task

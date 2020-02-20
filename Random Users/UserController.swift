@@ -40,8 +40,8 @@ class UserController {
             
             let decoder = JSONDecoder()
             do {
-                let users = try decoder.decode(User.self, from: data)
-                self.users = users.results
+                let fetchedUsers = try decoder.decode(UserResults.self, from: data)
+                self.users = fetchedUsers.results
                 completion(nil)
             } catch {
                 print("Error decoding users: \(error)")
