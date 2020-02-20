@@ -22,5 +22,5 @@ class Cache<Key: Hashable, Value> {
     }
     
     private var cache = [Key : Value]()
-    private let queue = DispatchQueue(label: "CacheQueue")
+    private let queue = DispatchQueue(label: "com.LambdaSchool.RandomUsers.CacheQueue")
 }
