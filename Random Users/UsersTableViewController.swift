@@ -51,6 +51,10 @@ class UsersTableViewController: UITableViewController {
         return userController.users.count
     }
 
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let user = userController.users[indexPath.row]
+        operations[user.email]?.cancel()
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
@@ -72,40 +76,38 @@ class UsersTableViewController: UITableViewController {
             return
         }
         
-        else {
-            
-            // Start an operation to fetch image data
-            let fetchOp = FetchUserOperation(user: user)
-            
-            let cacheOp = BlockOperation {
-                if let image = fetchOp.image {
-                    self.cache.cache(value: image, for: user.email)
-                }
+        // Start an operation to fetch image data
+        let fetchOp = FetchUserOperation(user: user)
+        
+        let cacheOp = BlockOperation {
+            if let image = fetchOp.image {
+                self.cache.cache(value: image, for: user.email)
             }
-            
-            let completionOp = BlockOperation {
-                defer { self.operations.removeValue(forKey: user.email) }
-                
-                if let currentIndexPath = self.tableView?.indexPath(for: cell),
-                    currentIndexPath != indexPath {
-                    print("Got image for now-reused cell")
-                    return // Cell has been reused
-                }
-                
-                if let image = fetchOp.image {
-                    cell.imageView?.image = image
-                }
-            }
-            
-            cacheOp.addDependency(fetchOp)
-            completionOp.addDependency(fetchOp)
-            
-            photoFetchQueue.addOperation(fetchOp)
-            photoFetchQueue.addOperation(cacheOp)
-            OperationQueue.main.addOperation(completionOp)
-            
-            operations[user.email] = fetchOp
         }
+        
+        let completionOp = BlockOperation {
+            defer { self.operations.removeValue(forKey: user.email) }
+            
+            if let currentIndexPath = self.tableView?.indexPath(for: cell),
+                currentIndexPath != indexPath {
+                print("Got image for now-reused cell")
+                return // Cell has been reused
+            }
+            
+            if let image = fetchOp.image {
+                cell.imageView?.image = image
+            }
+        }
+        
+        cacheOp.addDependency(fetchOp)
+        completionOp.addDependency(fetchOp)
+        
+        photoFetchQueue.addOperation(fetchOp)
+        photoFetchQueue.addOperation(cacheOp)
+        OperationQueue.main.addOperation(completionOp)
+        
+        operations[user.email] = fetchOp
+        
     }
 
     // MARK: - Navigation
