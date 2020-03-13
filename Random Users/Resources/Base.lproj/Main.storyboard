@@ -50,6 +50,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="nameLabel" destination="DaV-2n-KUW" id="rAq-gT-zlU"/>
+                                            <outlet property="thumbnailIV" destination="6Iz-H9-B5p" id="pz0-Vs-dbZ"/>
                                             <segue destination="Mbq-fb-701" kind="showDetail" id="thQ-2E-o2j"/>
                                         </connections>
                                     </tableViewCell>
@@ -149,6 +151,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="I30-68-WQs"/>
                     </view>
+                    <connections>
+                        <outlet property="addressTV" destination="o5c-p4-MOn" id="dtm-Hq-RQ5"/>
+                        <outlet property="emailTV" destination="JbK-c8-rKD" id="tI7-2v-YEC"/>
+                        <outlet property="nameTV" destination="rO3-k0-WzV" id="vcZ-e4-cNU"/>
+                        <outlet property="phoneNumberTV" destination="Y0A-bq-uZT" id="cbh-a8-g0Y"/>
+                        <outlet property="userImage" destination="Z05-uz-1lB" id="FPJ-Ok-es1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MwF-4c-Am6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

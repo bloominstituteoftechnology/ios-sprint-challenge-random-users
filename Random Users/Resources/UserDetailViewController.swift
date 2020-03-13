@@ -15,8 +15,13 @@ class UserDetailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    @IBOutlet weak var nameTV: UITextView!
     
-
+    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var phoneNumberTV: UITextView!
+    
+    @IBOutlet weak var emailTV: UITextView!
+    @IBOutlet weak var addressTV: UITextView!
     /*
     // MARK: - Navigation
 
