@@ -59,13 +59,7 @@
                             <outlet property="delegate" destination="FTP-Rb-cQo" id="2Y4-Cu-9BA"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Users" id="hbB-Bg-m1R">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ju9-4e-tLf">
-                            <connections>
-                                <action selector="addUserButtonTapped:" destination="FTP-Rb-cQo" id="eWa-A2-CrL"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Users" id="hbB-Bg-m1R"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xax-qa-Vj2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
