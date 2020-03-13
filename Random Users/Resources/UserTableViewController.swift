@@ -37,7 +37,6 @@ class UserTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath)
 
         // Configure the cell...
-        cell.
         return cell
     }
     

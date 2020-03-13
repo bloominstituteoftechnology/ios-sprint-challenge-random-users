@@ -18,6 +18,7 @@
 		E3C55A39241BEB3400823225 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C55A38241BEB3400823225 /* Cache.swift */; };
 		E3C55A3B241BEE3000823225 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C55A3A241BEE3000823225 /* UserController.swift */; };
 		E3C55A3D241C1A7700823225 /* FetchUserOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C55A3C241C1A7700823225 /* FetchUserOperation.swift */; };
+		E3C55A3F241C1BD200823225 /* FetchImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C55A3E241C1BD200823225 /* FetchImageOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		E3C55A38241BEB3400823225 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		E3C55A3A241BEE3000823225 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		E3C55A3C241C1A7700823225 /* FetchUserOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUserOperation.swift; sourceTree = "<group>"; };
+		E3C55A3E241C1BD200823225 /* FetchImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImageOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				E3C55A34241BE69000823225 /* UserDetailViewController.swift */,
 				E3C55A3A241BEE3000823225 /* UserController.swift */,
 				E3C55A3C241C1A7700823225 /* FetchUserOperation.swift */,
+				E3C55A3E241C1BD200823225 /* FetchImageOperation.swift */,
 				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
 				E3C55A38241BEB3400823225 /* Cache.swift */,
 				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
@@ -178,6 +181,7 @@
 				E3C55A3D241C1A7700823225 /* FetchUserOperation.swift in Sources */,
 				E3C55A39241BEB3400823225 /* Cache.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				E3C55A3F241C1BD200823225 /* FetchImageOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
