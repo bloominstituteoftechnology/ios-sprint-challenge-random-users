@@ -20,7 +20,7 @@ class UserController {
         
         requestURL.httpMethod = "GET"
         
-        URLSession.shared.dataTask(with: requestURL) { (data, response, error) in
+        URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
             
             if let error = error {
              print(error)

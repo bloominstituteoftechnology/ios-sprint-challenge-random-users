@@ -62,7 +62,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="center" spacing="67" translatesAutoresizingMaskIntoConstraints="NO" id="9WC-fe-K7c">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="67" translatesAutoresizingMaskIntoConstraints="NO" id="9WC-fe-K7c">
                                 <rect key="frame" x="87" y="198" width="240" height="500"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WrH-LG-bcb">
@@ -73,23 +73,23 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="66" translatesAutoresizingMaskIntoConstraints="NO" id="Nt0-mU-M1N">
-                                        <rect key="frame" x="95.333333333333329" y="307" width="49.666666666666671" height="193"/>
+                                        <rect key="frame" x="86.666666666666657" y="307" width="67" height="193"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Eu-sz-Hkj">
-                                                <rect key="frame" x="0.0" y="0.0" width="49.666666666666664" height="20.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="67" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="66R-CK-55t">
-                                                <rect key="frame" x="0.33333333333334281" y="86.333333333333314" width="48.666666666666664" height="20.333333333333329"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.33333333333334281" y="86.333333333333371" width="66.333333333333329" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJ7-Yz-Aou">
-                                                <rect key="frame" x="4.3333333333333428" y="172.66666666666669" width="41" height="20.333333333333343"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="11.666666666666689" y="172.66666666666663" width="43.333333333333343" height="20.333333333333343"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -99,6 +99,12 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="n4b-Lc-sEk" firstAttribute="bottom" secondItem="9WC-fe-K7c" secondAttribute="bottom" constant="164" id="1gm-Xa-p65"/>
+                            <constraint firstItem="9WC-fe-K7c" firstAttribute="top" secondItem="n4b-Lc-sEk" secondAttribute="top" constant="110" id="9UQ-XF-Omc"/>
+                            <constraint firstItem="9WC-fe-K7c" firstAttribute="leading" secondItem="n4b-Lc-sEk" secondAttribute="leading" constant="87" id="9bJ-dN-QB7"/>
+                            <constraint firstItem="n4b-Lc-sEk" firstAttribute="trailing" secondItem="9WC-fe-K7c" secondAttribute="trailing" constant="87" id="vaB-gv-LmU"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="n4b-Lc-sEk"/>
                     </view>
                     <navigationItem key="navigationItem" id="9NQ-pq-6tw"/>

@@ -10,8 +10,13 @@ import UIKit
 
 class UserDetailViewController: UIViewController {
 
+    //MARK:- Properties
     
-    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var userImageView: UIImageView! {
+        didSet {
+            userImageView.layer.cornerRadius = userImageView.frame.width / 2
+        }
+    }
     
     @IBOutlet weak var userNameLabel: UILabel!
     
@@ -22,15 +27,24 @@ class UserDetailViewController: UIViewController {
  
     var user: User?
     
+  
+    //MARK:- View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationItem.title = "User Detail"
        
-        
-        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let user = user {
+            userNameLabel.text = user.name
+            userPhoneLabel.text = user.phoneNumber
+            userEmailLabel.text = user.email
+            userImageView.load(url: user.largeImage)
+        }
+    }
     
     
 
