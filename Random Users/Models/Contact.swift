@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  Contact.swift
 //  Random Users
 //
 //  Created by Tobi Kuyoro on 13/03/2020.
@@ -8,17 +8,17 @@
 
 import Foundation
 
-struct UserResults: Decodable {
-    let results: [User]
+struct ContactResults: Decodable {
+    var results: [Contact]
 }
 
-struct User: Decodable {
+struct Contact: Decodable {
     var name: String
     var email: String
     var phone: String
     var pictures: [URL]
     
-    enum UserKeys: String, CodingKey {
+    enum ContactKeys: String, CodingKey {
         case name
         case email
         case phone
@@ -37,7 +37,7 @@ struct User: Decodable {
     }
     
     init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: UserKeys.self)
+        let container = try decoder.container(keyedBy: ContactKeys.self)
         
         let nameContainer = try container.nestedContainer(keyedBy: NameKeys.self, forKey: .name)
         let title = try nameContainer.decode(String.self, forKey: .title)
