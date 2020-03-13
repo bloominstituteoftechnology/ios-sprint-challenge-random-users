@@ -16,6 +16,7 @@
 		D2255B9E241BDA1A0041E8CC /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2255B9D241BDA1A0041E8CC /* Contact.swift */; };
 		D2255BA0241BE9030041E8CC /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2255B9F241BE9030041E8CC /* ContactsTableViewController.swift */; };
 		D2255BA2241BF2750041E8CC /* fetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2255BA1241BF2750041E8CC /* fetchPhotoOperation.swift */; };
+		D2C56436241C00D500BB1414 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C56435241C00D500BB1414 /* Cache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		D2255B9D241BDA1A0041E8CC /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		D2255B9F241BE9030041E8CC /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		D2255BA1241BF2750041E8CC /* fetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fetchPhotoOperation.swift; sourceTree = "<group>"; };
+		D2C56435241C00D500BB1414 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 		D2255B9A241BD9520041E8CC /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				D2C56435241C00D500BB1414 /* Cache.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2C56436241C00D500BB1414 /* Cache.swift in Sources */,
 				D2255B9E241BDA1A0041E8CC /* Contact.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				D2255BA0241BE9030041E8CC /* ContactsTableViewController.swift in Sources */,

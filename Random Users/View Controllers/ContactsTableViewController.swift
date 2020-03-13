@@ -13,6 +13,8 @@ class ContactsTableViewController: UITableViewController {
     let apiController = ApiController()
     var contacts: [Contact] = []
     let photoFetchQueue = OperationQueue()
+    let cache = Cache<String, Data>()
+    var imageLoadOperations: [String: FetchPhotoOperation] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +51,18 @@ class ContactsTableViewController: UITableViewController {
     
     func loadImage(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         let contact = contacts[indexPath.row]
+        
+        if let data = self.cache.value(for: contact.thumbnailURL.absoluteString) {
+            cell.imageView?.image = UIImage(data: data)
+            return
+        }
+        
         let fetchOp = FetchPhotoOperation(contact: contact)
+        let updateCacheOperation = BlockOperation {
+            if let data = fetchOp.thumbnailData {
+                self.cache.cache(value: data, for: contact.thumbnailURL.absoluteString)
+            }
+        }
         let cellReuseOperation = BlockOperation {
             //            defer { self.imageLoadOperations.removeValue(forKey: photoReference.id) }
             if let currentIndexPath = self.tableView.indexPath(for: cell), currentIndexPath != indexPath {
@@ -59,22 +72,28 @@ class ContactsTableViewController: UITableViewController {
                 
             }
             
-            if let data = fetchOp.thumbnailData {
+            if let data = self.cache.value(for: contact.thumbnailURL.absoluteString) {
                 cell.imageView?.image = UIImage(data: data)
                 
             }
         }
-        
-        cellReuseOperation.addDependency(fetchOp)
-        photoFetchQueue.addOperations([fetchOp], waitUntilFinished: true)
+        updateCacheOperation.addDependency(fetchOp)
+        cellReuseOperation.addDependency(updateCacheOperation)
+        photoFetchQueue.addOperations([fetchOp, updateCacheOperation], waitUntilFinished: false)
         OperationQueue.main.addOperation(cellReuseOperation)
         
-        
+        imageLoadOperations[contact.thumbnailURL.absoluteString] = fetchOp
         
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
+    }
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let contact = contacts[indexPath.row]
+        let fetchOp = imageLoadOperations[contact.thumbnailURL.absoluteString]
+        fetchOp?.cancel()
     }
     
 }
