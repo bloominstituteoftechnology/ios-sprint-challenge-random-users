@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -37,6 +38,9 @@
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="4cV-FT-HyE" kind="show" identifier="ShowContactDetailSegue" id="gjC-ub-xXV"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -50,13 +54,74 @@
             </objects>
             <point key="canvasLocation" x="1079.2" y="143.3497536945813"/>
         </scene>
+        <!--Contact Detail View Controller-->
+        <scene sceneID="Ohu-qF-Uat">
+            <objects>
+                <viewController id="4cV-FT-HyE" customClass="ContactDetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iAh-KO-7Vc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M4q-LY-PTJ">
+                                <rect key="frame" x="20" y="180" width="335" height="335"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="M4q-LY-PTJ" secondAttribute="height" multiplier="1:1" id="1Sx-OM-M9F"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5Ao-nL-HhR">
+                                <rect key="frame" x="20" y="631.66666666666663" width="335" height="80.333333333333371"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3S-Eh-0Oo">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="28.666666666666668"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltj-ps-J2R">
+                                        <rect key="frame" x="0.0" y="36.666666666666742" width="335" height="18.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJo-Tk-P8b">
+                                        <rect key="frame" x="0.0" y="63.333333333333371" width="335" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="M4q-LY-PTJ" firstAttribute="leading" secondItem="Idt-ps-JUG" secondAttribute="leading" constant="20" id="2bj-Zb-e9U"/>
+                            <constraint firstItem="Idt-ps-JUG" firstAttribute="trailing" secondItem="M4q-LY-PTJ" secondAttribute="trailing" constant="20" id="6os-nk-Utb"/>
+                            <constraint firstItem="M4q-LY-PTJ" firstAttribute="top" secondItem="Idt-ps-JUG" secondAttribute="top" constant="40" id="CWX-K0-i82"/>
+                            <constraint firstItem="5Ao-nL-HhR" firstAttribute="leading" secondItem="Idt-ps-JUG" secondAttribute="leading" constant="20" id="f4n-36-NOu"/>
+                            <constraint firstItem="Idt-ps-JUG" firstAttribute="trailing" secondItem="5Ao-nL-HhR" secondAttribute="trailing" constant="20" id="lcg-17-ULC"/>
+                            <constraint firstItem="Idt-ps-JUG" firstAttribute="bottom" secondItem="5Ao-nL-HhR" secondAttribute="bottom" constant="66" id="zLX-Qn-GNO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Idt-ps-JUG"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="4F0-jR-4C7"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="XJo-Tk-P8b" id="byn-iA-5JZ"/>
+                        <outlet property="imageView" destination="M4q-LY-PTJ" id="Trb-9e-yYl"/>
+                        <outlet property="nameLabel" destination="f3S-Eh-0Oo" id="JoO-sx-2v6"/>
+                        <outlet property="phoneLabel" destination="ltj-ps-J2R" id="DFH-rt-VbL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PTs-hr-KOM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2045.5999999999999" y="142.61083743842366"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Mw4-cU-7od">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gnK-YY-FFA" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="l5G-N0-Zkd">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="l5G-N0-Zkd">
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

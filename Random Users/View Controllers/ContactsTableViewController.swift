@@ -96,4 +96,17 @@ class ContactsTableViewController: UITableViewController {
         fetchOp?.cancel()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowContactDetailSegue" {
+            if let detailVC = segue.destination as? ContactDetailViewController {
+                if let selectedIndex = tableView.indexPathForSelectedRow {
+                    let contact = contacts[selectedIndex.row]
+                    let cachedImageData = cache.value(for: contact.thumbnailURL.absoluteString)
+                    detailVC.contact = contact
+                    detailVC.imageData = cachedImageData
+                }
+            }
+        }
+    }
+    
 }
