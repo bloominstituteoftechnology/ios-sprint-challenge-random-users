@@ -50,6 +50,10 @@
                     <navigationItem key="navigationItem" title="Users" id="PMR-80-ma2">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="aeB-cZ-Hwc"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nameLabel" destination="Obk-GT-MK7" id="JWt-h5-6eH"/>
+                        <outlet property="thumbnailImage" destination="5mN-oZ-VmO" id="A0J-0G-TD1"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A0Q-PO-ryf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

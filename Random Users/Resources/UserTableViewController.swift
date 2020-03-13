@@ -18,6 +18,10 @@ class UserTableViewController: UITableViewController {
     let userClient = UserClient()
     var fetchResults: [UUID: FetchPhotoOperation] = [:]
     
+    @IBOutlet var thumbnailImage: UIImageView!
+    @IBOutlet var nameLabel: UILabel!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,16 +40,29 @@ class UserTableViewController: UITableViewController {
             return UITableViewCell()
         }
         let user = userController.users[indexPath.row]
-        cell.user = user
-        cell.userClient = userClient
         loadImage(forCell: cell,
                   forItemAt: indexPath)
+        let firstName = user.first.capitalized
+        let lastName = user.last.capitalized
+        let fullName = "\(firstName) \(lastName)"
+        
+        nameLabel.text = fullName
+        
+        userClient.fetchPictures(for: user.thumbnail) { (result) in
+            if let result = try? result.get() {
+                DispatchQueue.main.async {
+                    let image = UIImage(data: result)
+                    self.thumbnailImage.image = image
+                }
+            }
+        }
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         let user = userController.users[indexPath.row]
+        
         guard let userUUID = UUID(uuidString: fetchResults[user.id]),
             let fetchRestults = fetchResults[userUUID] else { return }
         fetchResults.cancel()
@@ -91,7 +108,6 @@ class UserTableViewController: UITableViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == Keys.userDetailSegue
     }
 }

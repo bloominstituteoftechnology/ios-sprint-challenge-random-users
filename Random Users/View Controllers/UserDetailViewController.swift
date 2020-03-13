@@ -9,7 +9,12 @@
 import UIKit
 
 class UserDetailViewController: UIViewController {
-
+    
+    // MARK: - Properties
+    
+    var userClient: UserClient?
+    var user: User?
+    
     // MARK: - Outlets
     
     @IBOutlet weak var userImage: UIImageView!
@@ -17,12 +22,29 @@ class UserDetailViewController: UIViewController {
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
-    
+    // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        guard let userClient = userClient,
+            let user = user else { return }
+        let firstName = user.first.capitalized
+        let lastName = user.last.capitalized
+        let fullName = "\(firstName) \(lastName)"
+        
+        nameLabel.text = fullName
+        phoneLabel.text = user.phoneNumber
+        emailLabel.text = user.emailAddress
+        
+        userClient.fetchPictures(for: user.largePhoto) { (result) in
+            if let result = try? result.get() {
+                DispatchQueue.main.async {
+                    let image = UIImage(data: result)
+                    self.userImage.image = image
+                }
+            }
+        }
     }
     
-
 }
