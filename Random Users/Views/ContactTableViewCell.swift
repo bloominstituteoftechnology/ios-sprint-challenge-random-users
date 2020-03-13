@@ -27,11 +27,12 @@ class ContactTableViewCell: UITableViewCell {
     
     func updateViews() {
         guard let contact = contact else { return }
-        let thumbnail = contact.pictures[1]
-        let request = URLRequest(url: thumbnail)
         
         contactNameLabel.text = contact.name
-        
+
+        let thumbnail = contact.pictures[1]
+        let request = URLRequest(url: thumbnail)
+                
         URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error {
                 NSLog("Error fetching thumbnail: \(error)")

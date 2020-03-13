@@ -23,19 +23,35 @@ class ContactDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
+        updateViews()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - Actions
+    
+    func updateViews() {
+        guard let contact = contact else { return }
+        
+        usernameLabel.text = contact.name
+        phoneNumberLabel.text = contact.phone
+        emailLabel.text = contact.email
+        
+        let largeImage = contact.pictures[0]
+        let request = URLRequest(url: largeImage)
+        
+        URLSession.shared.dataTask(with: request) { data, _, error in
+            if let error = error {
+                NSLog("Error fetching large image: \(error)")
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("No large image data")
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.userImage.image = UIImage(data: data)
+            }
+        }.resume()
     }
-    */
-
 }
