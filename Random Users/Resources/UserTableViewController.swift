@@ -16,7 +16,7 @@ class UserTableViewController: UITableViewController {
     private let cache: Cache<UUID, UIImage> = Cache()
     let userController = UserController()
     let userClient = UserClient()
-    var fetchResults: [UUID: FetchPhotoOperation] = [:]
+    var fetchResults: [UUID: Operation] = [:]
     
     @IBOutlet var thumbnailImage: UIImageView!
     @IBOutlet var nameLabel: UILabel!
@@ -25,7 +25,15 @@ class UserTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        userClient.fetchUsers { (error) in
+            if let error = error {
+                NSLog("Error fetching users: \(error)")
+                return
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
     
     // MARK: - Table view data source
@@ -108,6 +116,10 @@ class UserTableViewController: UITableViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Keys.userDetailSegue
+        if segue.identifier == Keys.userDetailSegue {
+            guard let detailVC = segue.destination as? UserDetailViewController else { return }
+            detailVC.userClient = userClient
+            detailVC.user = userController.users[tableView.indexPathForSelectedRow!]
+        }
     }
 }

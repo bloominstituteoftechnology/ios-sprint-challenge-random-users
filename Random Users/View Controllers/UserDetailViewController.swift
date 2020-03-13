@@ -13,7 +13,11 @@ class UserDetailViewController: UIViewController {
     // MARK: - Properties
     
     var userClient: UserClient?
-    var user: User?
+    var user: User? {
+        didSet{
+            updateViews()
+        }
+    }
     
     // MARK: - Outlets
     
@@ -24,9 +28,7 @@ class UserDetailViewController: UIViewController {
     
     // MARK: - View Lifecycle
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    private func updateViews(){
         guard let userClient = userClient,
             let user = user else { return }
         let firstName = user.first.capitalized
