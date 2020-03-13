@@ -7,21 +7,23 @@
 //
 
 import Foundation
+import UIKit
+// MARK: - JSON Decoder 
+public let decoder = JSONDecoder()
 
 // MARK: - UserResults
 struct UserResults: Codable {
     var results: [User]
     
-    enum resultKey: String, CodingKey {
+    enum ResultKey: String, CodingKey {
         case results
     }
     init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: resultKey.self)
+        let container = try decoder.container(keyedBy: ResultKey.self)
         let resultsContainer = try container.decode([User].self, forKey: .results)
         results = resultsContainer
     }
 }
-
 
 // MARK: - USER + ENUMS
 
@@ -74,23 +76,23 @@ struct User: Codable {
         // User Number
         number = try container.decode(String.self, forKey: .number)
         // Thumbnail URL Container
-        let thumbnailContainer = try decoder.nestedContainer(keyedBy: PictureKeys.self, forKey: .thumbnail)
+        let thumbnailContainer = try container.nestedContainer(keyedBy: PictureKeys.self, forKey: .thumbnail)
             // Thumbnail URL
             thumbnail = try thumbnailContainer.decode(URL.self, forKey: .thumbnail)
         // Large URL Container
-        let largeContainer = try decoder.nestedContainer(keyedBy: PictureKeys.self, forKey: .large)
+        let largeContainer = try container.nestedContainer(keyedBy: PictureKeys.self, forKey: .large)
             // Large URL
             large = try largeContainer.decode(URL.self, forKey: .large)
         // Address Container
-        let addressContainer = try decoder.nestedContainer(keyedBy: LocationKeys.self, forKey: .location)
+        let addressContainer = try container.nestedContainer(keyedBy: LocationKeys.self, forKey: .location)
             // User Street
             let street = try addressContainer.decode(String.self, forKey: .street)
             // User City
-            let city = addressContainer.decode(String.self, forKey: .city)
+            let city = try addressContainer.decode(String.self, forKey: .city)
             // User State
-            let state = addressContainer.decode(String.self, forKey: .state)
+            let state = try addressContainer.decode(String.self, forKey: .state)
             // User Postal Code
-            let postcode = addressContainer.decode(String.self, forKey: .postcode)
+            let postcode = try addressContainer.decode(String.self, forKey: .postcode)
         // Full Location
         location = "\(street) \(city), \(state) \(postcode)"
     }

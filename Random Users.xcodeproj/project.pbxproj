@@ -17,6 +17,7 @@
 		E3C55A35241BE69000823225 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C55A34241BE69000823225 /* UserDetailViewController.swift */; };
 		E3C55A39241BEB3400823225 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C55A38241BEB3400823225 /* Cache.swift */; };
 		E3C55A3B241BEE3000823225 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C55A3A241BEE3000823225 /* UserController.swift */; };
+		E3C55A3D241C1A7700823225 /* FetchUserOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C55A3C241C1A7700823225 /* FetchUserOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		E3C55A34241BE69000823225 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		E3C55A38241BEB3400823225 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		E3C55A3A241BEE3000823225 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		E3C55A3C241C1A7700823225 /* FetchUserOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUserOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				E3C55A32241BE59F00823225 /* UserTableViewController.swift */,
 				E3C55A34241BE69000823225 /* UserDetailViewController.swift */,
 				E3C55A3A241BEE3000823225 /* UserController.swift */,
+				E3C55A3C241C1A7700823225 /* FetchUserOperation.swift */,
 				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
 				E3C55A38241BEB3400823225 /* Cache.swift */,
 				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
@@ -127,6 +130,7 @@
 				TargetAttributes = {
 					8ED6A9832140178A00FC395A = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1130;
 					};
 				};
 			};
@@ -171,6 +175,7 @@
 				E3C55A3B241BEE3000823225 /* UserController.swift in Sources */,
 				E3C55A31241BE51F00823225 /* UserTableViewCell.swift in Sources */,
 				E3C55A33241BE59F00823225 /* UserTableViewController.swift in Sources */,
+				E3C55A3D241C1A7700823225 /* FetchUserOperation.swift in Sources */,
 				E3C55A39241BEB3400823225 /* Cache.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 			);
@@ -325,7 +330,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LambdaSchool.RandomUsers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -343,7 +348,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LambdaSchool.RandomUsers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
