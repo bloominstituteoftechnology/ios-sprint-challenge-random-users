@@ -10,6 +10,13 @@ import UIKit
 
 class UserTableViewController: UITableViewController {
     
+    // MARK: - Properties
+    
+    private let photoFetchQueue = OperationQueue()
+    private let cache: Cache<UUID, UIImage> = Cache()
+    let userController = UserController()
+    var fetchResults: [UUID: FetchPhotoOperation]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
