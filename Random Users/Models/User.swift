@@ -7,3 +7,28 @@
 //
 
 import Foundation
+
+struct Result: Decodable {
+    
+    let name: [String: String]
+    let email: String
+    let phone: String
+    let picture: [String: String]
+    
+    private enum CodingKeys: String, CodingKey {
+        case name
+        case email
+        case phone
+        case picture
+    }
+    
+    private enum NameCodingKeys: String, CodingKey {
+        case first
+        case last
+    }
+    
+    private enum PictureCodingKeys: String, CodingKey {
+        case thumbnail
+        case large
+    }
+}

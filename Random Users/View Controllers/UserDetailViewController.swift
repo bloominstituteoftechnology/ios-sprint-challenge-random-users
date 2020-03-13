@@ -10,6 +10,11 @@ import UIKit
 
 class UserDetailViewController: UIViewController {
 
+    @IBOutlet weak var userBigImage: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

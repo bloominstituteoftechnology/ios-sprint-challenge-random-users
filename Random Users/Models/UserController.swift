@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+class UserController {
+    
+    var users: [Result] = []
+    
+    var addUsers: Bool = false
+    
+    var baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")
+    
+    func getUsers() {
+        
+    }
+}
