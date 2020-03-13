@@ -47,9 +47,13 @@ class ContactsTableViewController: UITableViewController {
     
     // MARK: - Navigation
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "ShowContactDetailSegue" {
-//            if let destinationVC = segue.destination as? ContactDetailViewController
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowContactDetailSegue" {
+            if let destinationVC = segue.destination as? ContactDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow {
+                let contact = apiController.contacts[indexPath.row]
+                destinationVC.contact = contact
+            }
+        }
+    }
 }

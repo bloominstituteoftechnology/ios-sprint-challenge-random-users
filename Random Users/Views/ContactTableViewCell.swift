@@ -27,8 +27,25 @@ class ContactTableViewCell: UITableViewCell {
     
     func updateViews() {
         guard let contact = contact else { return }
-        guard let largeImageData = try? Data(contentsOf: contact.pictures[0]) else { fatalError() }
-        contactImage.image = UIImage(data: largeImageData)
+        let thumbnail = contact.pictures[1]
+        let request = URLRequest(url: thumbnail)
+        
         contactNameLabel.text = contact.name
+        
+        URLSession.shared.dataTask(with: request) { data, _, error in
+            if let error = error {
+                NSLog("Error fetching thumbnail: \(error)")
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("No thumbnail image data")
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.contactImage.image = UIImage(data: data)
+            }
+        }.resume()
     }
 }
