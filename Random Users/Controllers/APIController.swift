@@ -16,7 +16,7 @@ class APIController {
     
     typealias CompletionHandler = (Error?) -> Void
     
-    var contacts: [Contact]
+    var contacts: [Contact] = []
     
     // MARK: - Networking
     

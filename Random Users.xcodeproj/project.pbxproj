@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C83B3AE241C1B6A00B1E327 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83B3AD241C1B6A00B1E327 /* UsersTableViewController.swift */; };
-		2C83B3B0241C1B7B00B1E327 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83B3AF241C1B7B00B1E327 /* UserDetailViewController.swift */; };
-		2C83B3B2241C1B8800B1E327 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83B3B1241C1B8800B1E327 /* UserTableViewCell.swift */; };
+		2C83B3AE241C1B6A00B1E327 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83B3AD241C1B6A00B1E327 /* ContactsTableViewController.swift */; };
+		2C83B3B0241C1B7B00B1E327 /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83B3AF241C1B7B00B1E327 /* ContactDetailViewController.swift */; };
+		2C83B3B2241C1B8800B1E327 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83B3B1241C1B8800B1E327 /* ContactTableViewCell.swift */; };
 		2C83B3B5241C1D1900B1E327 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83B3B4241C1D1900B1E327 /* APIController.swift */; };
 		2C83B3B7241C1DBD00B1E327 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83B3B6241C1DBD00B1E327 /* Contact.swift */; };
 		2C83B3B9241C2B8200B1E327 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C83B3B8241C2B8200B1E327 /* Cache.swift */; };
@@ -21,9 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2C83B3AD241C1B6A00B1E327 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
-		2C83B3AF241C1B7B00B1E327 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
-		2C83B3B1241C1B8800B1E327 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		2C83B3AD241C1B6A00B1E327 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
+		2C83B3AF241C1B7B00B1E327 /* ContactDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
+		2C83B3B1241C1B8800B1E327 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		2C83B3B4241C1D1900B1E327 /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		2C83B3B6241C1DBD00B1E327 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		2C83B3B8241C2B8200B1E327 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
@@ -59,7 +59,7 @@
 		2C83B3AA241C1B0800B1E327 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2C83B3B1241C1B8800B1E327 /* UserTableViewCell.swift */,
+				2C83B3B1241C1B8800B1E327 /* ContactTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -67,27 +67,11 @@
 		2C83B3AB241C1B1200B1E327 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2C83B3B3241C1D0A00B1E327 /* Model Controller */,
-				2C83B3AC241C1B4200B1E327 /* View Controllers */,
+				2C83B3B4241C1D1900B1E327 /* APIController.swift */,
+				2C83B3AD241C1B6A00B1E327 /* ContactsTableViewController.swift */,
+				2C83B3AF241C1B7B00B1E327 /* ContactDetailViewController.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		2C83B3AC241C1B4200B1E327 /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				2C83B3AD241C1B6A00B1E327 /* UsersTableViewController.swift */,
-				2C83B3AF241C1B7B00B1E327 /* UserDetailViewController.swift */,
-			);
-			path = "View Controllers";
-			sourceTree = "<group>";
-		};
-		2C83B3B3241C1D0A00B1E327 /* Model Controller */ = {
-			isa = PBXGroup;
-			children = (
-				2C83B3B4241C1D1900B1E327 /* APIController.swift */,
-			);
-			path = "Model Controller";
 			sourceTree = "<group>";
 		};
 		8ED6A97B2140178A00FC395A = {
@@ -213,9 +197,9 @@
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				2C83B3B9241C2B8200B1E327 /* Cache.swift in Sources */,
 				2C83B3B5241C1D1900B1E327 /* APIController.swift in Sources */,
-				2C83B3B0241C1B7B00B1E327 /* UserDetailViewController.swift in Sources */,
-				2C83B3AE241C1B6A00B1E327 /* UsersTableViewController.swift in Sources */,
-				2C83B3B2241C1B8800B1E327 /* UserTableViewCell.swift in Sources */,
+				2C83B3B0241C1B7B00B1E327 /* ContactDetailViewController.swift in Sources */,
+				2C83B3AE241C1B6A00B1E327 /* ContactsTableViewController.swift in Sources */,
+				2C83B3B2241C1B8800B1E327 /* ContactTableViewCell.swift in Sources */,
 				2C83B3B7241C1DBD00B1E327 /* Contact.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

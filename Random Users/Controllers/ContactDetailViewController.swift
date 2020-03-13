@@ -1,5 +1,5 @@
 //
-//  UserDetailViewController.swift
+//  ContactDetailViewController.swift
 //  Random Users
 //
 //  Created by Tobi Kuyoro on 13/03/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserDetailViewController: UIViewController {
+class ContactDetailViewController: UIViewController {
     
     // MARK: - Outlets
     
