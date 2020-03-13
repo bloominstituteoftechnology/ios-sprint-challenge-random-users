@@ -16,7 +16,7 @@ class UserController {
     
     var baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")
     
-    func getUsers() {
+    func getUsers(completion: @escaping (Error?) -> Void) {
         
     }
 }

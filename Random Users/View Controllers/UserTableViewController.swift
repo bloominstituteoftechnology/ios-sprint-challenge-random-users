@@ -9,20 +9,35 @@
 import UIKit
 
 class UserTableViewController: UITableViewController {
-
+    let userController = UserController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-
+       
+       userController.getUsers(completion: { (error) in
+        if let error = error {
+            print(error)
+        }
+        DispatchQueue.main.async {
+          self.tableView.reloadData()
+        }
+    })
+  }
+    
+     let photoFetchQueue = OperationQueue()
+     let cache = Cache<String, Data>()
+    
     @IBAction func AddTapped(_ sender: UIBarButtonItem) {
-        
-    }
+        userController.addUsers = true
+        userController.getUsers(completion: { (error) in
+            if let error = error {
+                print(error)
+            }
+            DispatchQueue.main.async {
+            self.tableView.reloadData()
+          }
+      })
+   }
     
     // MARK: - Table view data source
 
