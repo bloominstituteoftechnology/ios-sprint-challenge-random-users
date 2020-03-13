@@ -7,7 +7,7 @@
 //
 
 import Foundation
-// MARK: Coding Keys
+
 enum CodingKeys: String, CodingKey {
     case name
     case phone
