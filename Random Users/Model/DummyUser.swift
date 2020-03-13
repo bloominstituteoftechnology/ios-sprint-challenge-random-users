@@ -14,13 +14,13 @@ enum CodingKeys: String, CodingKey {
     case email
     case picture
     
+      enum NameKeys: String, CodingKey {
+          case first, last
+      }
     enum ImageKeys: String, CodingKey {
         case large, thumbnail
     }
-    
-    enum NameKeys: String, CodingKey {
-        case first, last
-    }
+  
 }
 
 enum UserKeys: String, CodingKey  {
@@ -35,7 +35,7 @@ struct User: Equatable, Decodable {
     let thumbnailImage: URL
     let largeImage: URL
     
-    // MARK: Initializers
+    
     init(name: String, phone:String, email:String, thumbnailImage: URL, largeImage: URL) {
         self.name = name
         self.phone = phone
@@ -64,10 +64,10 @@ struct User: Equatable, Decodable {
 }
 
 struct Users: Decodable {
-    // MARK: Property
+
     let results: [User]
     
-    // MARK: Initializer
+
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: UserKeys.self)
         self.results = try container.decode([User].self, forKey: .results)
