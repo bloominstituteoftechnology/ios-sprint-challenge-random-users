@@ -16,7 +16,7 @@
 		E3C55A33241BE59F00823225 /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C55A32241BE59F00823225 /* UserTableViewController.swift */; };
 		E3C55A35241BE69000823225 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C55A34241BE69000823225 /* UserDetailViewController.swift */; };
 		E3C55A39241BEB3400823225 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C55A38241BEB3400823225 /* Cache.swift */; };
-		E3C55A3B241BEE3000823225 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C55A3A241BEE3000823225 /* File.swift */; };
+		E3C55A3B241BEE3000823225 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C55A3A241BEE3000823225 /* UserController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +31,7 @@
 		E3C55A32241BE59F00823225 /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
 		E3C55A34241BE69000823225 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		E3C55A38241BEB3400823225 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
-		E3C55A3A241BEE3000823225 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		E3C55A3A241BEE3000823225 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +78,7 @@
 				E3C55A30241BE51F00823225 /* UserTableViewCell.swift */,
 				E3C55A32241BE59F00823225 /* UserTableViewController.swift */,
 				E3C55A34241BE69000823225 /* UserDetailViewController.swift */,
-				E3C55A3A241BEE3000823225 /* File.swift */,
+				E3C55A3A241BEE3000823225 /* UserController.swift */,
 				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
 				E3C55A38241BEB3400823225 /* Cache.swift */,
 				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
@@ -168,7 +168,7 @@
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				E3C55A35241BE69000823225 /* UserDetailViewController.swift in Sources */,
-				E3C55A3B241BEE3000823225 /* File.swift in Sources */,
+				E3C55A3B241BEE3000823225 /* UserController.swift in Sources */,
 				E3C55A31241BE51F00823225 /* UserTableViewCell.swift in Sources */,
 				E3C55A33241BE59F00823225 /* UserTableViewController.swift in Sources */,
 				E3C55A39241BEB3400823225 /* Cache.swift in Sources */,
