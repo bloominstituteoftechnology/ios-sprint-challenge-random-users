@@ -11,34 +11,57 @@ import UIKit
 
 class UserClient {
     
-    func fetchUsers(completion: @escaping ((Result<User, Error>) -> Void)){
+    var users: [User] = []
+    
+    func fetchUsers(completion: @escaping ((Error?) -> Void)){
+        
         var request = URLRequest(url: Keys.requestURL)
         request.httpMethod = "GET"
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             if let error = error {
-                completion(.failure(error))
+                completion(error)
                 NSLog("Error fetching Users: \(error)")
                 return
             }
             guard let data = data else {
                 NSLog("Bad data")
-                completion(.failure(NSError()))
+                completion(NSError())
                 return
             }
             
             do{
-                let newUser = try JSONDecoder().decode(User.self,
+                let usersData = try JSONDecoder().decode(Users.self,
                                                    from: data)
-                completion(.success(newUser))
+                self.users = usersData.results
             } catch {
                 NSLog("\(error)")
             }
         }.resume()
     }
     
-    func fetchThumbnail(for user: User, completion: @escaping (Result<UIImage?, Error>) -> Void) {
+    func fetchPictures(for URLString: String, completion: @escaping (Result<Data, Error>) -> Void) {
+      
+        guard let imageURL = URL(string: URLString) else { return }
         
+        var request = URLRequest(url: imageURL)
+        request.httpMethod = "GET"
+        
+        URLSession.shared.dataTask(with: request) { (data, _, error) in
+            if let error = error {
+                NSLog("Error fetching data: \(error)")
+                completion(.failure(error))
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("Error fetching data")
+                completion(.failure(NSError()))
+                return
+            }
+            
+            completion(.success(data))
+        }.resume()
     }
     
 }
