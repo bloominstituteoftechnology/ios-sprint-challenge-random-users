@@ -9,23 +9,23 @@
 import Foundation
 
 class FetchContactOperation: ConcurrentOperation {
-    // MARK: Properties
+
     private (set) var imageData: Data?
     private var dataTask: URLSessionTask?
-    let contact: User
+    let dummyContact: User
     
-    // MARK: Initializer
+   
     init(user: User) {
-        self.contact = user
+        self.dummyContact = user
         super.init()
     }
     
-    // MARK: Methods
+   
     override func start() {
         super.start()
         state = .isExecuting
         
-        let url = self.contact.thumbnailImage
+        let url = self.dummyContact.thumbnailImage
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             defer { self.state = .isFinished }
             
