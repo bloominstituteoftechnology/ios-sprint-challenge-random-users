@@ -40,8 +40,7 @@ class ContactsTableViewController: UITableViewController {
         
         let contact = contacts[indexPath.row]
         
-        cell.textLabel?.text = contact.firstName
-        cell.detailTextLabel?.text = contact.lastName
+        cell.textLabel?.text = "\(contact.title) \(contact.firstName) \(contact.lastName)"
         
         loadImage(forCell: cell, forItemAt: indexPath)
         
@@ -62,9 +61,13 @@ class ContactsTableViewController: UITableViewController {
             if let data = fetchOp.thumbnailData {
                 self.cache.cache(value: data, for: contact.thumbnailURL.absoluteString)
             }
+            
+            if let data = fetchOp.imageData {
+                self.cache.cache(value: data, for: contact.imageURL.absoluteString)
+            }
         }
         let cellReuseOperation = BlockOperation {
-            //            defer { self.imageLoadOperations.removeValue(forKey: photoReference.id) }
+            defer { self.imageLoadOperations.removeValue(forKey: contact.thumbnailURL.absoluteString) }
             if let currentIndexPath = self.tableView.indexPath(for: cell), currentIndexPath != indexPath {
                 print("Got image for now-reused cell")
                 return // Cell has been reused
@@ -101,7 +104,7 @@ class ContactsTableViewController: UITableViewController {
             if let detailVC = segue.destination as? ContactDetailViewController {
                 if let selectedIndex = tableView.indexPathForSelectedRow {
                     let contact = contacts[selectedIndex.row]
-                    let cachedImageData = cache.value(for: contact.thumbnailURL.absoluteString)
+                    let cachedImageData = cache.value(for: contact.imageURL.absoluteString)
                     detailVC.contact = contact
                     detailVC.imageData = cachedImageData
                 }

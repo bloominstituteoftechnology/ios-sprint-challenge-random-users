@@ -35,7 +35,7 @@ struct Contact: Codable {
             case picture
             
             enum PictureKeys: String, CodingKey {
-                case medium
+                case large
                 case thumbnail
             }
         }
@@ -65,7 +65,7 @@ struct Contact: Codable {
         let pictureContainerKeys = try decoder.container(keyedBy: CodingKeys.PictureContainerKeys.self)
         let pictureContainer = try pictureContainerKeys.nestedContainer(keyedBy: CodingKeys.PictureContainerKeys.PictureKeys.self, forKey: .picture)
         thumbnailURL = try pictureContainer.decode(URL.self, forKey: .thumbnail)
-        imageURL = try pictureContainer.decode(URL.self, forKey: .medium)
+        imageURL = try pictureContainer.decode(URL.self, forKey: .large)
         
     }
     

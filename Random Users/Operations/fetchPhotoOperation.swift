@@ -13,19 +13,28 @@ class FetchPhotoOperation: ConcurrentOperation {
     var imageData: Data?
     var thumbnailData: Data?
     
-    private var dataTask: URLSessionDataTask?
+    private var thumbnailDataTask: URLSessionDataTask?
+    private var imageDataTask: URLSessionDataTask?
     
     init(contact: Contact) {
         self.contact = contact
     }
     
     override func start() {
+        getThumbNail()
+        getFullImage()
+    }
+    
+    override func cancel() {
+        thumbnailDataTask?.cancel()
+        imageDataTask?.cancel()
+        
+    }
+    
+    func getThumbNail() {
         state = .isExecuting
-         
-        dataTask = URLSession.shared.dataTask(with: contact.thumbnailURL, completionHandler: { (data, response, error) in
-            defer {
-                self.state = .isFinished
-            }
+        
+        thumbnailDataTask = URLSession.shared.dataTask(with: contact.thumbnailURL, completionHandler: { (data, response, error) in
             
             if let error = error {
                 NSLog("Error received from network: \(error)")
@@ -45,11 +54,38 @@ class FetchPhotoOperation: ConcurrentOperation {
             self.thumbnailData = data
         })
         
-        dataTask?.resume()
+        thumbnailDataTask?.resume()
+        
     }
     
-    override func cancel() {
-        dataTask?.cancel()
+    func getFullImage() {
+        state = .isExecuting
+        
+        imageDataTask = URLSession.shared.dataTask(with: contact.imageURL, completionHandler: { (data, response, error) in
+            defer {
+                self.state = .isFinished
+            }
+            
+            if let error = error {
+                NSLog("Error received from network: \(error)")
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse, response.statusCode != 200 {
+                NSLog("Unsuccessful status code received, status code was: \(response.statusCode)")
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("No data received")
+                return
+            }
+            
+            self.imageData = data
+        })
+        
+        imageDataTask?.resume()
+        
     }
     
 }
