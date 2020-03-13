@@ -10,7 +10,7 @@ import UIKit
 
 struct User: Codable {
     var name: String
-    var picture: URL
+    var picture: [URL]
     var email: String
     var phone: String
     
@@ -33,6 +33,7 @@ struct User: Codable {
     }
     
     init(from decoder: Decoder) throws {
+        
         let container = try decoder.container(keyedBy: UserKeys.self)
         let nameContainer = try container.nestedContainer(keyedBy: NameKeys.self, forKey: .name)
         let picContainer = try container.nestedContainer(keyedBy: PictureKeys.self, forKey: .picture)
@@ -41,10 +42,22 @@ struct User: Codable {
         let first = try nameContainer.decode(String.self, forKey: .first)
         let last = try nameContainer.decode(String.self, forKey: .last)
         
+        var picArr: [URL] = []
+        
+        let thumbnail = try picContainer.decode(String.self, forKey: .thumbnail)
+        let largePic = try picContainer.decode(String.self, forKey: .large)
+        
+        if let thumbnailURL = URL(string: thumbnail), let largePicURL = URL(string: largePic) {
+            
+            picArr.append(thumbnailURL)
+            picArr.append(largePicURL)
+        }
+        
         name = "\(title) \(first) \(last)"
-        picture = try picContainer.decode(URL.self, forKey: .thumbnail)
         email = try container.decode(String.self, forKey: .email)
         phone = try container.decode(String.self, forKey: .phone)
+        picture = picArr
+        
     }
 }
 

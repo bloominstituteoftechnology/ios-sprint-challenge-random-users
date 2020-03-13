@@ -15,26 +15,45 @@ class UserDetailViewController: UIViewController {
     @IBOutlet weak var telLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
-    var user: User? {
-        didSet{
-            updateViews()
-        }
-    }
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         updateViews()
+        
     }
     
     private func updateViews() {
         guard let user = user else { return }
-        guard let picture = try? Data(contentsOf: user.picture) else { return }
-        
-        profilePicIV?.image = UIImage(data: picture)
+
         nameLabel?.text = user.name
         telLabel?.text = user.phone
         emailLabel?.text = user.email
+        loadLargePic(user: user)
+    }
+    
+    func loadLargePic(user: User) {
+        
+        let largePicURL = user.picture[1]
+        var request = URLRequest(url: largePicURL)
+        request.httpMethod = HTTPMethod.get.rawValue
+        
+        URLSession.shared.dataTask(with: request) { data, _, error in
+
+            if let error = error {
+                NSLog("Error: \(error)")
+            }
+
+            guard let data = data else {
+                NSLog("Error loading Image")
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.profilePicIV?.image = UIImage(data: data)
+            }
+
+        }.resume()
     }
     
 
