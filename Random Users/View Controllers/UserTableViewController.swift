@@ -23,7 +23,7 @@ class UserTableViewController: UITableViewController {
         }
     })
   }
-    
+
      let photoFetchQueue = OperationQueue()
      let cache = Cache<String, Data>()
     
@@ -41,69 +41,95 @@ class UserTableViewController: UITableViewController {
     
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return userController.users.count
     }
-
-    /*
+    
+   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+         if indexPath.row == 0 {
+             return 60
+         } else {
+             return 60
+         }
+     }
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let user = userController.users[indexPath.row]
+        let name: String = (user.name["first"]!) + " " + (user.name["last"]!)
+        
+        if let operation = fetchOperations[name] {
+            operation.cancel()
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
 
         // Configure the cell...
+        let user = userController.users[indexPath.row]
+        
+        cell.user = user
+        
+        loadImage(forCell: cell, forItemAt: indexPath)
+        
+        let name: String = user.name["first"]!.capitalized + " " + user.name["last"]!.capitalized
+        
+        cell.nameLabel.text = name
 
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
+    
+     var fetchOperations: [String: FetchPhotoOperation] = [:]
+    private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
+        // TODO: Implement image loading here
+        let photoReference = userController.users[indexPath.row]
+        let name: String = (photoReference.name["first"]!) + " " + (photoReference.name["last"]!)
+        
+        if let cacheImage = cache.valueSmall(for: name){
+            
+            cell.imageThumbnail.image = UIImage(data: cacheImage)
+            
+        } else {
+            
+            let fetchPhotoOp = FetchPhotoOperation(user: photoReference)
+            
+            fetchOperations[name] = fetchPhotoOp
+            
+            let storeDataOp = BlockOperation {
+                guard let data = fetchPhotoOp.imageData else { return }
+                self.cache.cacheSmall(value: data, for: name)
+            }
+            
+            let reuseOp = BlockOperation {
+                guard let currentIndex = self.tableView.indexPath(for: cell), let data = fetchPhotoOp.imageData else { return }
+                
+                
+                if currentIndex == indexPath {
+                    
+                    cell.imageThumbnail.image = UIImage(data: data)
+                    
+                } else {
+                    return
+                }
+            }
+            
+            storeDataOp.addDependency(fetchPhotoOp)
+            reuseOp.addDependency(fetchPhotoOp)
+            
+            photoFetchQueue.addOperation(fetchPhotoOp)
+            photoFetchQueue.addOperation(storeDataOp)
+            OperationQueue.main.addOperation(reuseOp)
+      }
+}
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "UserDetail" {
+        guard let cellDetailController = segue.destination as? UserDetailViewController, let cell = sender as? UserTableViewCell else { return }
+             
+          cellDetailController.userController = userController
+          cellDetailController.user = cell.user
+        }
     }
-    */
-
 }
