@@ -7,93 +7,100 @@
 //
 
 import Foundation
-import UIKit
-// MARK: - JSON Decoder 
-public let decoder = JSONDecoder()
 
-// MARK: - UserResults
-struct UserResults: Codable {
-    var results: [User]
+
+class UserController {
+    var users: [User] = []
+    let fetchUserOperation = FetchUserOperation()
     
-    enum ResultKey: String, CodingKey {
-        case results
-    }
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: ResultKey.self)
-        let resultsContainer = try container.decode([User].self, forKey: .results)
-        results = resultsContainer
+    func fetchUsers(completion: @escaping () -> Void) {
+    DispatchQueue.main.async {
+        self.fetchUserOperation.start()
+        self.users = self.fetchUserOperation.users ?? []
+        } 
     }
 }
 
-// MARK: - USER + ENUMS
+/*
+ class MarsRoverClient {
+     
+     func fetchMarsRover(named name: String,
+                         using session: URLSession = URLSession.shared,
+                         completion: @escaping (MarsRover?, Error?) -> Void) {
+         
+         let url = self.url(forInfoForRover: name)
+         fetch(from: url, using: session) { (dictionary: [String : MarsRover]?, error: Error?) in
+             guard let rover = dictionary?["photo_manifest"] else {
+                 completion(nil, error)
+                 return
+             }
+             completion(rover, nil)
+         }
+     }
+     
+     func fetchPhotos(from rover: MarsRover,
+                      onSol sol: Int,
+                      using session: URLSession = URLSession.shared,
+                      completion: @escaping ([MarsPhotoReference]?, Error?) -> Void) {
+         
+         let url = self.url(forPhotosfromRover: rover.name, on: sol)
+         fetch(from: url, using: session) { (dictionary: [String : [MarsPhotoReference]]?, error: Error?) in
+             guard let photos = dictionary?["photos"] else {
+                 completion(nil, error)
+                 return
+             }
+             completion(photos, nil)
+         }
+     }
+     
+     // MARK: - Private
+     
+     private func fetch<T: Codable>(from url: URL,
+                            using session: URLSession = URLSession.shared,
+                            completion: @escaping (T?, Error?) -> Void) {
+         session.dataTask(with: url) { (data, response, error) in
+             if let error = error {
+                 completion(nil, error)
+                 return
+             }
+             
+             guard let data = data else {
+                 completion(nil, NSError(domain: "com.LambdaSchool.Astronomy.ErrorDomain", code: -1, userInfo: nil))
+                 return
+             }
+             
+             do {
+                 let jsonDecoder = MarsPhotoReference.jsonDecoder
+                 let decodedObject = try jsonDecoder.decode(T.self, from: data)
+                 completion(decodedObject, nil)
+             } catch {
+                 completion(nil, error)
+             }
+         }.resume()
+     }
+     
+     private let baseURL = URL(string: "https://api.nasa.gov/mars-photos/api/v1")!
+     private let apiKey = "qzGsj0zsKk6CA9JZP1UjAbpQHabBfaPg2M5dGMB7"
 
-struct User: Codable {
-    // MARK: - Properties
-    var name: String
-    var number: String
-    var thumbnail: URL
-    var large: URL
-    var email: String
-    var location: String
-    // MARK: - Enums
-    enum UserKeys: String, CodingKey{
-        case name
-        case number
-        case thumbnail
-        case large
-        case email
-        case location
-    }
-    enum NameKeys: String, CodingKey {
-        case title
-        case first
-        case last
-    }
-    enum PictureKeys: String, CodingKey {
-        case large
-        case thumbnail
-        case medium
-    }
-    enum LocationKeys: String, CodingKey {
-        case street
-        case city
-        case state
-        case postcode
-    }
-    // MARK: - INIT
-    init(from decoder: Decoder) throws {
-        // User Container
-        let container = try decoder.container(keyedBy: UserKeys.self)
-        // Name Container
-        let nameContainer = try container.nestedContainer(keyedBy: NameKeys.self, forKey: .name)
-            let title = try nameContainer.decode(String.self, forKey: .title)
-            let first = try nameContainer.decode(String.self, forKey: .first)
-            let last = try nameContainer.decode(String.self, forKey: .last)
-        // User Name
-        name = "\(title) \(first) \(last)"
-        // User Email
-        email = try container.decode(String.self, forKey: .email)
-        // User Number
-        number = try container.decode(String.self, forKey: .number)
-        // Thumbnail URL Container
-        let thumbnailContainer = try container.nestedContainer(keyedBy: PictureKeys.self, forKey: .thumbnail)
-            // Thumbnail URL
-            thumbnail = try thumbnailContainer.decode(URL.self, forKey: .thumbnail)
-        // Large URL Container
-        let largeContainer = try container.nestedContainer(keyedBy: PictureKeys.self, forKey: .large)
-            // Large URL
-            large = try largeContainer.decode(URL.self, forKey: .large)
-        // Address Container
-        let addressContainer = try container.nestedContainer(keyedBy: LocationKeys.self, forKey: .location)
-            // User Street
-            let street = try addressContainer.decode(String.self, forKey: .street)
-            // User City
-            let city = try addressContainer.decode(String.self, forKey: .city)
-            // User State
-            let state = try addressContainer.decode(String.self, forKey: .state)
-            // User Postal Code
-            let postcode = try addressContainer.decode(String.self, forKey: .postcode)
-        // Full Location
-        location = "\(street) \(city), \(state) \(postcode)"
-    }
-}
+     private func url(forInfoForRover roverName: String) -> URL {
+         var url = baseURL
+         url.appendPathComponent("manifests")
+         url.appendPathComponent(roverName)
+         let urlComponents = NSURLComponents(url: url, resolvingAgainstBaseURL: true)!
+         urlComponents.queryItems = [URLQueryItem(name: "api_key", value: apiKey)]
+         return urlComponents.url!
+     }
+     
+     private func url(forPhotosfromRover roverName: String, on sol: Int) -> URL {
+         var url = baseURL
+         url.appendPathComponent("rovers")
+         url.appendPathComponent(roverName)
+         url.appendPathComponent("photos")
+         let urlComponents = NSURLComponents(url: url, resolvingAgainstBaseURL: true)!
+         urlComponents.queryItems = [URLQueryItem(name: "sol", value: String(sol)),
+                                     URLQueryItem(name: "api_key", value: apiKey)]
+         return urlComponents.url!
+     }
+ }
+
+ */

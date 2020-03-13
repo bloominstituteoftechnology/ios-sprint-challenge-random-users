@@ -10,17 +10,17 @@ import Foundation
 
 
 class Cache<Key: Hashable, Value> {
-    private var cache: [Key: Value] = [:]
+    private var dict: [Key: Value] = [:]
     private var queue = DispatchQueue(label: "Cache Queue")
     
     func cache(value: Value, for key: Key) {
         queue.sync {
-            self.cache[key] = value
+            self.dict[key] = value
         }
     }
         func value(for key: Key) -> Value?  {
             queue.sync {
-            return cache[key] ?? nil
+            return dict[key] ?? nil
             }
         }
         

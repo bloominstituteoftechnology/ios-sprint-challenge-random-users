@@ -9,6 +9,8 @@
 import UIKit
 
 class UserDetailViewController: UIViewController {
+    
+    var cache = Cache <String, Data> ()
 
     override func viewDidLoad() {
         super.viewDidLoad()
