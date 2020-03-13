@@ -18,7 +18,7 @@ enum NetworkError: Error {
 
 
 class ApiController {
-    let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
+    let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=5000")!
     
     func fetchContacts(completion: @escaping (Result<[Contact], NetworkError>) -> Void) {
         let request = URLRequest(url: baseURL)
