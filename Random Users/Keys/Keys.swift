@@ -11,4 +11,7 @@ import Foundation
 struct Keys {
     
     static let userDetailSegue: String = "UserDetailSegue"
+    
+    static let requestURL: URL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
+    
 }
