@@ -8,86 +8,81 @@
 
 import Foundation
 
+struct Results: Decodable {
+    
+    let users: [User]
+    
+    enum CodingKeys: String,CodingKey {
+        case users = "results"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.users = try container.decode([User].self, forKey: .users)
+    }
+    
+}
+
+
 struct User : Decodable  {
     
     enum CodingKeys: String, CodingKey {
-        case results
+        case name
+        case email
+        case phone
+        case picture
         
-        enum ResultsCodingKeys: String, CodingKey {
-            case name
-            
-            enum NameCodingKeys: String, CodingKey {
-                case title
-                case first
-                case last
-            }
-            
-            enum EmailCodingKeys: String,CodingKey {
-                case email
-            }
-            enum PhoneCodingKeys: String,CodingKey {
-                case phone
-            }
-            
-            enum PicturesCodingKeys: String,CodingKey {
-                case picture
-                
-                enum PictureCodingKeys: String, CodingKey {
-                    case thumbnail
-                    case large
-                }
-            }
+        enum NameCodingKeys: String,CodingKey {
+            case title
+            case first
+            case last
+        }
+        enum PictureCodingKeys: String,CodingKey {
+            case large
+            case thumbnail
         }
         
     }
     
     
-    var name : String?
-    var email: String?
-    var phoneNumber : String?
-    var picture : URL?
-    var cellImage: URL?
+    let name : String
+    let email: String
+    let phoneNumber : String
+    let largeImage : URL
+    let thumbNailImage: URL
     
-    init(name: String, email: String , phoneNumber: String , picture: URL, cellImage: URL) {
+    init(name: String, email: String , phoneNumber: String , largeImage: URL, thumbNailImage: URL) {
         self.name = name
         self.email = email
         self.phoneNumber = phoneNumber
-        self.picture = picture
-        self.cellImage = cellImage
+        self.largeImage = largeImage
+        self.thumbNailImage = thumbNailImage
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        var arrayContainer = try container.nestedUnkeyedContainer(forKey: CodingKeys.results)
+        let nameContainer = try container.nestedContainer(keyedBy: CodingKeys.NameCodingKeys.self, forKey: .name)
         
-        while  !arrayContainer.isAtEnd {
-            let nameContainer = try arrayContainer.nestedContainer(keyedBy: CodingKeys.ResultsCodingKeys.NameCodingKeys.self)
-            
-            let title = try nameContainer.decode(String.self, forKey: .title)
-            let firstName = try nameContainer.decode(String.self, forKey: .first)
-            let lastName = try nameContainer.decode(String.self, forKey: .last)
-            
-            name = title + " " + firstName + " " + lastName
-            
-            let emailContainer = try arrayContainer.nestedContainer(keyedBy: CodingKeys.ResultsCodingKeys.EmailCodingKeys.self)
-            
-            email = try emailContainer.decode(String.self, forKey: .email)
-            
-            let phoneContainer = try arrayContainer.nestedContainer(keyedBy: CodingKeys.ResultsCodingKeys.PhoneCodingKeys.self)
-            
-            phoneNumber = try phoneContainer.decode(String.self, forKey: .phone)
-            
-            let picturesContainer = try arrayContainer.nestedContainer(keyedBy: CodingKeys.ResultsCodingKeys.PicturesCodingKeys.PictureCodingKeys.self)
-            
-            let pictureString = try picturesContainer.decode(String.self, forKey: .large)
-            
-            picture = URL(string: pictureString)
-            
-            let cellImageString = try picturesContainer.decode(String.self, forKey: .thumbnail)
-            
-            cellImage = URL(string: cellImageString)
-        }
+        let title = try nameContainer.decode(String.self, forKey: .title)
+        let firstName = try nameContainer.decode(String.self, forKey: .first)
+        let lastName = try nameContainer.decode(String.self, forKey: .last)
+        
+        self.name = title + " " + firstName + " " + lastName
+        
+        self.email = try container.decode(String.self, forKey: .email)
+        self.phoneNumber = try container.decode(String.self, forKey: .phone)
+        
+        let pictureContainer = try container.nestedContainer(keyedBy: CodingKeys.PictureCodingKeys.self, forKey: .picture)
+        
+         let largeImageString = try pictureContainer.decode(String.self, forKey: .large)
+        self.largeImage = URL(string: largeImageString)!
+        
+        
+        let thumbNailImageString = try pictureContainer.decode(String.self, forKey: .thumbnail)
+        self.thumbNailImage = URL(string: thumbNailImageString)!
+   
+        
 }
     
 }

@@ -19,14 +19,19 @@ class UserDetailViewController: UIViewController {
     
     @IBOutlet weak var userEmailLabel: UILabel!
     
-    
+ 
+    var user: User?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+       
+        
+        
     }
+    
+    
     
 
 

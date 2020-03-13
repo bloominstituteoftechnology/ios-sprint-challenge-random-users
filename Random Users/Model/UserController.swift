@@ -14,7 +14,8 @@ class UserController {
     
     private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
     
-    func fetchUsers(completion: @escaping ([User]?,Error?) -> Void ) {
+    
+    func fetchUsers(completion: @escaping ( [User]?,Error?) -> Void ) {
         var requestURL = URLRequest(url: baseURL)
         
         requestURL.httpMethod = "GET"
@@ -22,7 +23,7 @@ class UserController {
         URLSession.shared.dataTask(with: requestURL) { (data, response, error) in
             
             if let error = error {
-                print(error.localizedDescription)
+             print(error)
                 completion(nil,error)
                 return
             }
@@ -33,16 +34,18 @@ class UserController {
                 return
             }
             
-            
-            
-            
-            
-            
+            do {
+                let jsonDecoder = JSONDecoder()
+                let decodedUsers = try jsonDecoder.decode(Results.self, from: data)
+                self.users = decodedUsers.users
+                completion(self.users,nil)
+            } catch  let err as NSError {
+            print(err)
+                return
+            }
+     
         }.resume()
-        
-        
-        
-        
+
         
     }
     
