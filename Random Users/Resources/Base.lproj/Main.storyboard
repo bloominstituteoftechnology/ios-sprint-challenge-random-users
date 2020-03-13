@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dTQ-7R-aaj">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -11,13 +11,13 @@
         <!--Users-->
         <scene sceneID="SN2-zc-TnN">
             <objects>
-                <tableViewController id="FTP-Rb-cQo" sceneMemberID="viewController">
+                <tableViewController id="FTP-Rb-cQo" customClass="UsersTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4Rv-YY-pf6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="80" id="0F5-qK-bpu">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="80" id="0F5-qK-bpu" customClass="UserTableViewCell" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0F5-qK-bpu" id="dDP-na-XEg">
@@ -48,6 +48,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="userImage" destination="Ie7-td-heV" id="yUH-Km-LFb"/>
+                                    <outlet property="usernameLabel" destination="cRC-EX-sLi" id="5jT-ph-Nhf"/>
                                     <segue destination="W2U-yV-rJF" kind="show" id="9ay-lv-ibf"/>
                                 </connections>
                             </tableViewCell>
@@ -58,17 +60,21 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Users" id="hbB-Bg-m1R">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ju9-4e-tLf"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ju9-4e-tLf">
+                            <connections>
+                                <action selector="addUserButtonTapped:" destination="FTP-Rb-cQo" id="eWa-A2-CrL"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xax-qa-Vj2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-46.376811594202906" y="134.59821428571428"/>
         </scene>
-        <!--View Controller-->
+        <!--User Detail View Controller-->
         <scene sceneID="ZM1-Xm-oyW">
             <objects>
-                <viewController id="W2U-yV-rJF" sceneMemberID="viewController">
+                <viewController id="W2U-yV-rJF" customClass="UserDetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lry-lI-P2v">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -92,7 +98,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpF-UN-eSL">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpF-UN-eSL">
                                 <rect key="frame" x="20" y="609" width="374" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
@@ -117,6 +123,12 @@
                         <viewLayoutGuide key="safeArea" id="Dfi-7K-Vx4"/>
                     </view>
                     <navigationItem key="navigationItem" id="xW7-0k-ZFA"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="kpF-UN-eSL" id="oQr-Hc-rVv"/>
+                        <outlet property="phoneNumberLabel" destination="Zxr-HE-c1r" id="p6H-jM-5Qm"/>
+                        <outlet property="userImage" destination="eqp-Wj-0mB" id="ebS-wz-0sY"/>
+                        <outlet property="usernameLabel" destination="EHu-FW-Ykl" id="Zvs-b6-e2M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d4G-yv-faN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
