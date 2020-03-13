@@ -28,8 +28,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIq-Bm-ty0">
-                                            <rect key="frame" x="266" y="12" width="42" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIq-Bm-ty0">
+                                            <rect key="frame" x="266" y="12" width="43" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -38,6 +38,8 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="imageThumbnail" destination="o8C-Z0-fGr" id="2l6-pu-czG"/>
+                                    <outlet property="nameLabel" destination="rIq-Bm-ty0" id="JBd-aM-j2z"/>
                                     <segue destination="S38-fG-F5E" kind="show" id="uXg-Bu-1lg"/>
                                 </connections>
                             </tableViewCell>
@@ -48,7 +50,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="USERS" id="Nq7-NQ-bow">
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="EPf-Wm-4Vr"/>
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="EPf-Wm-4Vr">
+                            <connections>
+                                <action selector="AddTapped:" destination="XCo-qP-oWO" id="TTf-Vw-Pyq"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lXk-LP-HqV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -93,6 +99,12 @@
                         <viewLayoutGuide key="safeArea" id="3ex-d1-akR"/>
                     </view>
                     <navigationItem key="navigationItem" id="7e8-cd-ng5"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="df5-uL-wcu" id="8Mo-Bf-qTV"/>
+                        <outlet property="nameLabel" destination="fYH-G7-do4" id="Icq-l6-9jR"/>
+                        <outlet property="phoneNumberLabel" destination="B9B-4s-E3u" id="l73-0d-JLU"/>
+                        <outlet property="userBigImage" destination="HcD-Dd-txR" id="2oy-eT-zO2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dmn-mg-Hly" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
