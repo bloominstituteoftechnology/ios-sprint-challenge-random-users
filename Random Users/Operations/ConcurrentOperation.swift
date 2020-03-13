@@ -10,17 +10,17 @@ import Foundation
 
 class ConcurrentOperation: Operation {
     
-    // MARK: Types
+
     
     enum State: String {
-        case isReady, isExecuting, isFinished
+        case ready, isExecuting, isFinished
     }
     
     // MARK: Properties
     
-    private var _state = State.isReady
+    private var _state = State.ready
     
-    private let stateQueue = DispatchQueue(label: "com.LambdaSchool.Astronomy.ConcurrentOperationStateQueue")
+    private let stateQueue = DispatchQueue(label: "com.EzraBlack.Astronomy.ConcurrentOperationStateQueue")
     var state: State {
         get {
             var result: State?
@@ -43,10 +43,10 @@ class ConcurrentOperation: Operation {
         }
     }
     
-    // MARK: NSOperation
+ 
     
     override dynamic var isReady: Bool {
-        return super.isReady && state == .isReady
+        return super.isReady && state == .ready
     }
     
     override dynamic var isExecuting: Bool {
