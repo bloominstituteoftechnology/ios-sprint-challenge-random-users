@@ -15,6 +15,7 @@
 		726F5219241BF41700C2A3BA /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726F5218241BF41700C2A3BA /* Cache.swift */; };
 		726F521C241BFD0500C2A3BA /* UserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726F521B241BFD0500C2A3BA /* UserClient.swift */; };
 		726F521E241C21B300C2A3BA /* FetchOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726F521D241C21B300C2A3BA /* FetchOperation.swift */; };
+		726F5223241C2EF600C2A3BA /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726F5222241C2EF600C2A3BA /* UserTableViewCell.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 		726F5218241BF41700C2A3BA /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		726F521B241BFD0500C2A3BA /* UserClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClient.swift; sourceTree = "<group>"; };
 		726F521D241C21B300C2A3BA /* FetchOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchOperation.swift; sourceTree = "<group>"; };
+		726F5222241C2EF600C2A3BA /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			children = (
 				726F520E241BDC0F00C2A3BA /* UserTableViewController.swift */,
 				726F5210241BDC2600C2A3BA /* UserDetailViewController.swift */,
+				726F521F241C2EBD00C2A3BA /* Custom Cells */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -91,6 +94,14 @@
 				726F521B241BFD0500C2A3BA /* UserClient.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		726F521F241C2EBD00C2A3BA /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				726F5222241C2EF600C2A3BA /* UserTableViewCell.swift */,
+			);
+			path = "Custom Cells";
 			sourceTree = "<group>";
 		};
 		8ED6A97B2140178A00FC395A = {
@@ -217,6 +228,7 @@
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				726F520F241BDC0F00C2A3BA /* UserTableViewController.swift in Sources */,
+				726F5223241C2EF600C2A3BA /* UserTableViewCell.swift in Sources */,
 				726F5219241BF41700C2A3BA /* Cache.swift in Sources */,
 				726F5215241BDF7100C2A3BA /* User.swift in Sources */,
 				726F521E241C21B300C2A3BA /* FetchOperation.swift in Sources */,

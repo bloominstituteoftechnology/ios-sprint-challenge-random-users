@@ -12,14 +12,14 @@ class FetchPhotoOperation: ConcurrentOperation {
     
     // MARK: - Properties
     
-    var user: User
+    var photoString: String
     var imageData: Data?
     private var dataTask: URLSessionDataTask?
     
     // MARK: - Initializer
     
-    init(user: User) {
-        self.user = user
+    init(photoString: String) {
+        self.photoString = photoString
     }
     
     // MARK: - Methods
@@ -27,7 +27,6 @@ class FetchPhotoOperation: ConcurrentOperation {
     override func start() {
         state = .isExecuting
         
-        let photoString = user.largePhoto
         guard let photoURL = URL(string: photoString) else {return}
         
         dataTask = URLSession.shared.dataTask(with: photoURL) { (data, _, error) in

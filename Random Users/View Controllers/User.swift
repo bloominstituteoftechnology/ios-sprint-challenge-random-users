@@ -35,16 +35,21 @@ class User: Decodable {
     var largePhoto: String
     var phoneNumber: String
     var emailAddress: String
+    var id: String
     
     enum UserKeys: String, CodingKey {
         case name
         case picture
         case email
         case phone
+        case login
         
         enum NameKeys: String, CodingKey {
             case first
             case last
+        }
+        enum IDKeys: String, CodingKey {
+            case uuid
         }
         enum PictureKeys: String, CodingKey {
             case large
@@ -55,13 +60,14 @@ class User: Decodable {
     // MARK: - Initializers
     
     init(firstName: String, lastName: String,
-         email: String, phoneNumber: String, thumbnail: String, largePhoto: String) {
+         email: String, phoneNumber: String, thumbnail: String, largePhoto: String, id: String) {
         self.first = firstName
         self.last = lastName
         self.emailAddress = email
         self.phoneNumber = phoneNumber
         self.thumbnail = thumbnail
         self.largePhoto = largePhoto
+        self.id = id
     }
     
     enum ResultsKey: String, CodingKey {
@@ -82,6 +88,11 @@ class User: Decodable {
                                                forKey: .first)
         self.last = try nameContatiner.decode(String.self,
                                               forKey: .last)
+        
+        let idContainer = try container.nestedContainer(keyedBy: UserKeys.IDKeys.self,
+                                                        forKey: .login)
+        self.id = try idContainer.decode(String.self,
+                                         forKey: .uuid)
         
         let pictureContainer = try container.nestedContainer(keyedBy: UserKeys.PictureKeys.self, forKey: .picture)
         self.thumbnail = try pictureContainer.decode(String.self,

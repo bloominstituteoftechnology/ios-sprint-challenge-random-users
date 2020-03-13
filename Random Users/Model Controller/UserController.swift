@@ -25,14 +25,16 @@ class UserController {
                     thumbnail: String,
                     largePhoto: String,
                     phoneNumber: String,
-                    emailAddress: String) {
+                    emailAddress: String,
+                    id: String) {
         
-        let newUser = User(firstName: firstName,
-                           lastName: lastName,
-                           email: emailAddress,
-                           phoneNumber: phoneNumber,
-                           thumbnail: thumbnail,
-                           largePhoto: largePhoto)
+       let newUser = User(firstName: firstName,
+                          lastName: lastName,
+                          email: emailAddress,
+                          phoneNumber: phoneNumber,
+                          thumbnail: thumbnail,
+                          largePhoto: largePhoto,
+                          id: id)
         users.append(newUser)
     }
     
