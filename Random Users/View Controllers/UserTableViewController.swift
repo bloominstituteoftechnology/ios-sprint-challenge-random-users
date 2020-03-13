@@ -82,7 +82,6 @@ class UserTableViewController: UITableViewController {
         operations[key] = fetchImage
     }
     
-    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "UserDetailSegue" {
@@ -91,5 +90,4 @@ class UserTableViewController: UITableViewController {
             userDetailVC.user = user
         }
     }
-    
 }

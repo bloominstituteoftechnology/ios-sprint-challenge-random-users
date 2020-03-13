@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - HTTP Enum
 enum HTTPMethod: String {
     case get = "GET"
 }
@@ -21,6 +22,7 @@ class UserController {
     
     typealias CompletionHandler = (Error?) -> Void
     
+    // MARK: - Fetch Functions
     func fetchUser(completion: @escaping CompletionHandler = { _ in }) {
         var request = URLRequest(url: baseURL)
         request.httpMethod = HTTPMethod.get.rawValue
