@@ -9,47 +9,39 @@
 import Foundation
 
 class PhotoFetchOperation: ConcurrentOperation {
-    
-    let photoReference: String
-    private(set) var imageData: Data?
-    private let session: URLSession
+
+    var user: User
+    var imageData: Data?
     private var dataTask: URLSessionDataTask?
-    
-    init(photoReference: String, session: URLSession = URLSession.shared)
-     {
-        self.photoReference = photoReference
-        self.session = session
-        super.init()
+
+    init(user: User) {
+        self.user = user
+       
     }
-    
+
     override func start() {
         state = .isExecuting
+        fetchThumbNailPhoto()
+    }
+
+    private func fetchThumbNailPhoto() {
         
-        guard let photoURL = URL(string: photoReference) else { return }
-        guard let securePhotoURL = photoURL.usingHTTPS else { return }
-        
-        let task = session.dataTask(with: securePhotoURL) { (data, _, error) in
+        let url = user.thumbNailImage
+
+        dataTask = URLSession.shared.dataTask(with: url, completionHandler: { (data, _, error) in
+            defer { self.state = .isFinished }
+
             if let error = error {
-                print(error.localizedDescription)
+                print("Error fetching large photo: \(error)")
                 return
             }
-            
-            defer { self.state = .isFinished }
-            
-            if let data = data {
-                self.imageData = data
-            }
-            
-        }
-        
-        
-        task.resume()
-        dataTask = task
+            self.imageData = data
+        })
+        dataTask?.resume()
     }
-    
+
     override func cancel() {
         dataTask?.cancel()
-        super.cancel()
     }
-    
 }
+

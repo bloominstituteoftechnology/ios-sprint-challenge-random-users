@@ -16,9 +16,8 @@ class UserController {
     
     
     func fetchUsers(completion: @escaping ( [User]?,Error?) -> Void ) {
-        var requestURL = URLRequest(url: baseURL)
+        let requestURL = URLRequest(url: baseURL)
         
-        requestURL.httpMethod = "GET"
         
         URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
             

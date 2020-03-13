@@ -16,7 +16,7 @@ class UsersTableViewController: UITableViewController {
     private let cache = Cache<String,Data>()
     private var photoFetchQueue = OperationQueue()
     private var fetchOperations = [String:Operation]()
-    
+    let queue = DispatchQueue(label: "CancelOperationQueue")
     private enum ID :String {
         case reuseCellID = "UserCell"
         case segueID = "CellSegueToDetail"
@@ -26,6 +26,7 @@ class UsersTableViewController: UITableViewController {
     
     
     @IBAction func addTapped(_ sender: UIBarButtonItem) {
+        
         userController.fetchUsers { (users, error) in
             //
             DispatchQueue.main.async {
@@ -34,22 +35,17 @@ class UsersTableViewController: UITableViewController {
         }
     }
     
-    
-    
-    
     //MARK:- View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+     
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-     
+      
+       
     }
 //MARK:- Table View Data Source
     
@@ -63,11 +59,17 @@ class UsersTableViewController: UITableViewController {
         
         let currentUser = userController.users[indexPath.row]
         cell.textLabel?.text = currentUser.name
-        
+      
         loadImage(forCell: cell, forItemAt: indexPath)
         
         return cell
     }
+    
+//    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        let contact =  userController.users[indexPath.row]
+//        fetchOperations[contact.name]?.cancel()
+//
+//    }
    
     //MARK:- Segue
     
@@ -80,54 +82,65 @@ class UsersTableViewController: UITableViewController {
         }
     }
     
-    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let user = userController.users[indexPath.row]
+        let operation = fetchOperations[user.largeImage.absoluteString]
+        queue.sync {
+            operation?.cancel()
+        }
+    }
     
     private func loadImage(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+
+
+        let user = userController.users[indexPath.row]
         
-        let photoReference = userController.users[indexPath.row].thumbNailImage
-        let currenUser = userController.users[indexPath.row]
-        
-        if let imageData = cache.value(for: photoReference.absoluteString) {
-            cell.imageView?.image = UIImage(data: imageData)
+        if let cachedValue = self.cache.value(for: user.name) {
+            let image = UIImage(data: cachedValue)
+            cell.imageView?.image = image
             return
         }
         
         
-        let photoFetchOp  = PhotoFetchOperation(photoReference: photoReference.absoluteString)
+        let fetchOp = PhotoFetchOperation(user: user)
         
-        let cacheOp = BlockOperation {
-            if let data = photoFetchOp.imageData {
-                self.cache.cache(value: data, for: photoReference.absoluteString)
-            }
+        let cacheOperation = BlockOperation {
+            guard let image = fetchOp.imageData else { return }
+            self.cache.cache(value: image, for: user.name)
         }
         
-        let completionOp = BlockOperation {
-            defer { self.fetchOperations.removeValue(forKey: currenUser.name)}
-            
-            if let currentIndexPath = self.tableView.indexPath(for: cell), currentIndexPath != indexPath {
-            return
+        let addImageOperation = BlockOperation {
+            if let currentIndexPath = self.tableView.indexPath(for: cell),currentIndexPath != indexPath {
+                return
             }
             
-            if let data = photoFetchOp.imageData {
-                cell.imageView?.image = UIImage(data: data)
+            
+            if let image = fetchOp.imageData {
+                cell.imageView?.image = UIImage(data: image)
+                self.tableView.reloadRows(at: [indexPath], with: .automatic)
             }
+            
+            
         }
         
-        cacheOp.addDependency(photoFetchOp)
-        completionOp.addDependency(photoFetchOp)
+        cacheOperation.addDependency(fetchOp)
+        addImageOperation.addDependency(fetchOp)
         
-        photoFetchQueue.addOperation(photoFetchOp)
-        photoFetchQueue.addOperation(cacheOp)
-        OperationQueue.main.addOperation(completionOp)
+        photoFetchQueue.addOperation(fetchOp)
+        photoFetchQueue.addOperation(cacheOperation)
         
-        fetchOperations[currenUser.name] = photoFetchOp
+        OperationQueue.main.addOperation(addImageOperation)
+        
+        fetchOperations[user.name] = fetchOp
+        
         
         
         
         
         
     }
-    
+   
+
 }
 
 
