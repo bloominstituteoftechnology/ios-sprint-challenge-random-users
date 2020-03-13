@@ -9,7 +9,7 @@
 import UIKit
 
 class UserTableViewController: UITableViewController {
-
+    
     // MARK: - Variables
     let userController = UserController()
     let photoFetchQueue = OperationQueue()
@@ -25,7 +25,7 @@ class UserTableViewController: UITableViewController {
             }
         }
     }
-
+    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userController.users.count
@@ -34,7 +34,8 @@ class UserTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserTableViewCell else { return UITableViewCell() }
         let user = userController.users[indexPath.row]
-        // more goes here
+        cell.user = user
+        loadImages(cell: cell, indexPath: indexPath)
         return cell
     }
     
@@ -45,7 +46,41 @@ class UserTableViewController: UITableViewController {
     }
     
     // MARK: - Functions
-    
+    func loadImages(cell: UserTableViewCell, indexPath: IndexPath) {
+        let selectedUser = userController.users[indexPath.row]
+        let key = selectedUser.name
+        
+        if let cachedData = cache.thumbnailValue(for: key) {
+            let image = UIImage(data: cachedData)
+            cell.userImageView.image = image
+            return
+        }
+        
+        let fetchImage = FetchPhotoOperation(user: selectedUser)
+        let storeCacheData = BlockOperation {
+            if let data = fetchImage.imageData {
+                self.cache.thumbnailCache(value: data, for: key)
+            }
+        }
+        
+        let completionOperation = BlockOperation {
+            defer { self.operations.removeValue(forKey: key) }
+            if let currentIndexPath = self.tableView.indexPath(for: cell), currentIndexPath != indexPath {
+                NSLog("Image received for cell")
+                return
+            }
+            
+            if let data = fetchImage.imageData {
+                cell.userImageView.image = UIImage(data: data)
+            }
+        }
+        
+        storeCacheData.addDependency(fetchImage)
+        completionOperation.addDependency(fetchImage)
+        photoFetchQueue.addOperations([fetchImage, storeCacheData], waitUntilFinished: false)
+        OperationQueue.main.addOperation(completionOperation)
+        operations[key] = fetchImage
+    }
     
     
     // MARK: - Navigation
@@ -53,7 +88,7 @@ class UserTableViewController: UITableViewController {
         if segue.identifier == "UserDetailSegue" {
             guard let userDetailVC = segue.destination as? UserDetailViewController, let indexPath = tableView.indexPathForSelectedRow else { return }
             let user = userController.users[indexPath.row]
-            // final line goes here
+            userDetailVC.user = user
         }
     }
     
