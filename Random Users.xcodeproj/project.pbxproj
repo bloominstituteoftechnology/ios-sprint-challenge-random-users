@@ -14,6 +14,8 @@
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
 		B6CC4DA3241BD90E00D47718 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CC4DA2241BD90E00D47718 /* UsersTableViewController.swift */; };
 		B6CC4DA6241BD92900D47718 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CC4DA5241BD92900D47718 /* UserDetailViewController.swift */; };
+		B6CC4DA8241BDB7400D47718 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CC4DA7241BDB7400D47718 /* User.swift */; };
+		B6CC4DAB241BE47100D47718 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CC4DAA241BE47100D47718 /* UserController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 		B6CC4DA2241BD90E00D47718 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		B6CC4DA5241BD92900D47718 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		B6CC4DA7241BDB7400D47718 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B6CC4DAA241BE47100D47718 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+				B6CC4DA9241BDB7700D47718 /* Model */,
 				9D5CCA56214231E400224681 /* Operations */,
 				B6CC4DA4241BD91800D47718 /* View Controllers */,
 				9D5CCA522142305600224681 /* Resources */,
@@ -92,6 +97,15 @@
 				B6CC4DA5241BD92900D47718 /* UserDetailViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		B6CC4DA9241BDB7700D47718 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B6CC4DA7241BDB7400D47718 /* User.swift */,
+				B6CC4DAA241BE47100D47718 /* UserController.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,9 +179,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6CC4DAB241BE47100D47718 /* UserController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				B6CC4DA6241BD92900D47718 /* UserDetailViewController.swift in Sources */,
+				B6CC4DA8241BDB7400D47718 /* User.swift in Sources */,
 				B6CC4DA3241BD90E00D47718 /* UsersTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -315,6 +331,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VXUQXR6S56;
 				INFOPLIST_FILE = "$(SRCROOT)/Random Users/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -333,6 +350,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VXUQXR6S56;
 				INFOPLIST_FILE = "$(SRCROOT)/Random Users/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

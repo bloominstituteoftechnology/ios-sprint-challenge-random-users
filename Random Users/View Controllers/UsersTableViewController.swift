@@ -9,8 +9,7 @@
 import UIKit
 
 class UsersTableViewController: UITableViewController {
-
-    
+    static let reuseCellID = "UserCell"
     
     
     
