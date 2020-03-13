@@ -11,7 +11,7 @@
         <!--Users-->
         <scene sceneID="HW8-wp-GbC">
             <objects>
-                <tableViewController id="BrU-dI-YTh" sceneMemberID="viewController">
+                <tableViewController id="BrU-dI-YTh" customClass="UserTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ic0-hE-LoS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,7 +38,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="gcz-Op-Yg8" kind="show" trigger="accessoryAction" id="138-c6-00t"/>
+                                    <segue destination="gcz-Op-Yg8" kind="show" identifier="UserDetailSegue" trigger="accessoryAction" id="138-c6-00t"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -55,10 +55,10 @@
             </objects>
             <point key="canvasLocation" x="1000.8" y="104.7976011994003"/>
         </scene>
-        <!--View Controller-->
+        <!--User Detail View Controller-->
         <scene sceneID="W7Q-cx-aNU">
             <objects>
-                <viewController id="gcz-Op-Yg8" sceneMemberID="viewController">
+                <viewController id="gcz-Op-Yg8" customClass="UserDetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rq7-KO-g7B">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -132,6 +132,12 @@
                     <navigationItem key="navigationItem" id="feg-iW-Qi9">
                         <barButtonItem key="backBarButtonItem" title="Users" id="v73-YE-Z4d"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="emailLabel" destination="gxe-2v-VlD" id="AGH-et-JSX"/>
+                        <outlet property="nameLabel" destination="joB-1t-CsF" id="5ce-8s-jwY"/>
+                        <outlet property="phoneLabel" destination="hU3-al-esF" id="KQC-iW-ouj"/>
+                        <outlet property="userImage" destination="mUG-k3-jTb" id="2zX-eQ-7jo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="suI-4n-U3j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
