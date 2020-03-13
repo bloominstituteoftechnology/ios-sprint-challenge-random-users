@@ -12,11 +12,7 @@ class UserDetailViewController: UIViewController {
     
     // MARK: - Variables
     var cache = Cache<String, Data>()
-    var user: User? {
-        didSet {
-            updateViews()
-        }
-    }
+    var user: User?
     
     // MARK: - IBOutlets
     @IBOutlet weak var userImageView: UIImageView!

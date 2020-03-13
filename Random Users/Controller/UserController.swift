@@ -10,13 +10,11 @@ import Foundation
 
 enum HTTPMethod: String {
     case get = "GET"
-    case put = "PUT"
-    case post = "POST"
-    case delete = "DELETE"
 }
 
 class UserController {
     
+    // MARK: - Variables
     let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=5000")!
     var users: [User] = []
     var largeImageData: Data?
@@ -45,7 +43,9 @@ class UserController {
                 for result in fetchedUsers.results {
                     self.users.append(result)
                 }
-                completion(nil)
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
             } catch {
                 NSLog("Error decoding users from server: \(error)")
                 completion(error)

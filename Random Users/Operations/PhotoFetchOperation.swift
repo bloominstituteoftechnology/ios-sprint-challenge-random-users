@@ -13,7 +13,7 @@ class FetchPhotoOperation: ConcurrentOperation {
     // MARK: - Variables
     let user: User
     private let session: URLSession
-    private (set) var imageData: Data?
+    private(set) var imageData: Data?
     private var dataTask: URLSessionDataTask?
     
     // MARK: - Functions
