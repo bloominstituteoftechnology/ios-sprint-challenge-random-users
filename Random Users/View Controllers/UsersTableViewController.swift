@@ -15,8 +15,17 @@ class UsersTableViewController: UITableViewController {
     private let userController = UserController()
     private let cache = Cache<String,Data>()
     private var photoFetchQueue = OperationQueue()
-    private var fetchOperations = [String:Operation]()
+    var user = [User]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    private var fetchOperations = [String:PhotoFetchOperation]()
+    
     let queue = DispatchQueue(label: "CancelOperationQueue")
+    
     private enum ID :String {
         case reuseCellID = "UserCell"
         case segueID = "CellSegueToDetail"
@@ -26,20 +35,21 @@ class UsersTableViewController: UITableViewController {
     
     
     @IBAction func addTapped(_ sender: UIBarButtonItem) {
-        
-        userController.fetchUsers { (users, error) in
+        userController.fetchUsers { (_, _) in
             //
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
+        
+        
     }
     
     //MARK:- View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+ 
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -65,12 +75,14 @@ class UsersTableViewController: UITableViewController {
         return cell
     }
     
-//    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        let contact =  userController.users[indexPath.row]
-//        fetchOperations[contact.name]?.cancel()
-//
-//    }
-   
+override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+ 
+    let photoReference = userController.users[indexPath.row]
+    fetchOperations[photoReference.thumbNailImage.absoluteString]?.cancel()
+    print("Cancelling.")
+    
+     
+  }
     //MARK:- Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -82,13 +94,6 @@ class UsersTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let user = userController.users[indexPath.row]
-        let operation = fetchOperations[user.largeImage.absoluteString]
-        queue.sync {
-            operation?.cancel()
-        }
-    }
     
     private func loadImage(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) {
 
@@ -116,11 +121,11 @@ class UsersTableViewController: UITableViewController {
             
             
             if let image = fetchOp.imageData {
+
                 cell.imageView?.image = UIImage(data: image)
-                self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                cell.setNeedsLayout()
             }
-            
-            
+          
         }
         
         cacheOperation.addDependency(fetchOp)
@@ -132,12 +137,7 @@ class UsersTableViewController: UITableViewController {
         OperationQueue.main.addOperation(addImageOperation)
         
         fetchOperations[user.name] = fetchOp
-        
-        
-        
-        
-        
-        
+    
     }
    
 
