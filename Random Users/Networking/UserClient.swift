@@ -17,7 +17,7 @@ class UserClient {
         
         var request = URLRequest(url: Keys.requestURL)
         request.httpMethod = "GET"
-        
+
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             if let error = error {
                 completion(error)

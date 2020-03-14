@@ -16,12 +16,10 @@ class UserTableViewController: UITableViewController {
     private let cache: Cache<UUID, UIImage> = Cache()
     let userController = UserController()
     let userClient = UserClient()
-    var fetchResults: [UUID: Operation] = [:]
+    var fetchResults: [String: Operation] = [:]
     
     @IBOutlet var thumbnailImage: UIImageView!
     @IBOutlet var nameLabel: UILabel!
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,36 +42,15 @@ class UserTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Keys.userCellID, for: indexPath) as? UserTableViewCell else {
-            return UITableViewCell()
-        }
-        let user = userController.users[indexPath.row]
-        loadImage(forCell: cell,
-                  forItemAt: indexPath)
-        let firstName = user.first.capitalized
-        let lastName = user.last.capitalized
-        let fullName = "\(firstName) \(lastName)"
-        
-        nameLabel.text = fullName
-        
-        userClient.fetchPictures(for: user.thumbnail) { (result) in
-            if let result = try? result.get() {
-                DispatchQueue.main.async {
-                    let image = UIImage(data: result)
-                    self.thumbnailImage.image = image
-                }
-            }
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: Keys.userCellID,
+                                                 for: indexPath)
+        loadCell(for: cell, forUserAt: indexPath)
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
         let user = userController.users[indexPath.row]
-        
-        guard let userUUID = UUID(uuidString: fetchResults[user.id]),
-            let fetchRestults = fetchResults[userUUID] else { return }
-        fetchResults.cancel()
+        fetchResults[user.id]?.cancel()
     }
     
     // MARK: - Private Methods
@@ -108,18 +85,41 @@ class UserTableViewController: UITableViewController {
                                           waitUntilFinished: false)
             OperationQueue.main.addOperation(checkResuseOperation)
             
-            fetchResults[userUUID] = fetchPhotoOperation
+            fetchResults[user.id] = fetchPhotoOperation
         }
     }
     
+    private func loadCell(for cell: UITableViewCell, forUserAt indexPath: IndexPath) {
+        
+        let user = userController.users[indexPath.row]
+        
+        loadImage(forCell: cell,
+                  forItemAt: indexPath)
+        
+        let firstName = user.first.capitalized
+        let lastName = user.last.capitalized
+        let fullName = "\(firstName) \(lastName)"
+        
+        nameLabel.text = fullName
+        
+        userClient.fetchPictures(for: user.thumbnail) { (result) in
+            if let result = try? result.get() {
+                DispatchQueue.main.async {
+                    let image = UIImage(data: result)
+                    self.thumbnailImage.image = image
+                }
+            }
+        }
+    }
     
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Keys.userDetailSegue {
-            guard let detailVC = segue.destination as? UserDetailViewController else { return }
+            guard let detailVC = segue.destination as? UserDetailViewController,
+                let index = tableView.indexPathForSelectedRow else { return }
             detailVC.userClient = userClient
-            detailVC.user = userController.users[tableView.indexPathForSelectedRow!]
+            detailVC.user = userController.users[index.row]
         }
     }
 }
