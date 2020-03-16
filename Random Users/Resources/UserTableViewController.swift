@@ -45,6 +45,10 @@ class UserTableViewController: UITableViewController {
         return cell
     }
     
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        <#code#>
+//    }
+    
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let user = userClient.users[indexPath.row]
         fetchResults[user.thumbnail]?.cancel()
@@ -102,7 +106,7 @@ class UserTableViewController: UITableViewController {
             if let result = try? result.get() {
                 DispatchQueue.main.async {
                     let image = UIImage(data: result)
-                    
+                    cell.imageView?.translatesAutoresizingMaskIntoConstraints = false
                     cell.imageView?.topAnchor.constraint(equalTo: cell.topAnchor).isActive = true
                     cell.imageView?.bottomAnchor.constraint(equalTo: cell.bottomAnchor).isActive = true
                     

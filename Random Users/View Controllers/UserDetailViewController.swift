@@ -28,6 +28,11 @@ class UserDetailViewController: UIViewController {
     
     // MARK: - View Lifecycle
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateViews()
+    }
+    
     private func updateViews(){
         guard let userClient = userClient,
             let user = user else { return }
@@ -35,9 +40,9 @@ class UserDetailViewController: UIViewController {
         let lastName = user.last.capitalized
         let fullName = "\(firstName) \(lastName)"
         
-        nameLabel.text = fullName
-        phoneLabel.text = user.phoneNumber
-        emailLabel.text = user.emailAddress
+        nameLabel?.text = fullName
+        phoneLabel?.text = user.phoneNumber
+        emailLabel?.text = user.emailAddress
         
         userClient.fetchPictures(for: user.largePhoto) { (result) in
             if let result = try? result.get() {

@@ -38,7 +38,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="gcz-Op-Yg8" kind="show" identifier="UserDetailSegue" trigger="accessoryAction" id="138-c6-00t"/>
+                                    <segue destination="gcz-Op-Yg8" kind="show" identifier="UserDetailSegue" id="AAS-iV-8vz"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
