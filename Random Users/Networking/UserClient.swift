@@ -34,17 +34,16 @@ class UserClient {
                 let usersData = try JSONDecoder().decode(Users.self,
                                                    from: data)
                 self.users = usersData.results
+                completion(error)
             } catch {
                 NSLog("\(error)")
             }
         }.resume()
     }
     
-    func fetchPictures(for URLString: String, completion: @escaping (Result<Data, Error>) -> Void) {
+    func fetchPictures(for URLString: URL, completion: @escaping (Result<Data, Error>) -> Void) {
       
-        guard let imageURL = URL(string: URLString) else { return }
-        
-        var request = URLRequest(url: imageURL)
+        var request = URLRequest(url: URLString)
         request.httpMethod = "GET"
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in

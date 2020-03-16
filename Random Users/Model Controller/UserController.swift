@@ -22,19 +22,17 @@ class UserController {
     
     func createUser(firstName: String,
                     lastName: String,
-                    thumbnail: String,
-                    largePhoto: String,
+                    thumbnail: URL,
+                    largePhoto: URL,
                     phoneNumber: String,
-                    emailAddress: String,
-                    id: String) {
+                    emailAddress: String) {
         
        let newUser = User(firstName: firstName,
                           lastName: lastName,
                           email: emailAddress,
                           phoneNumber: phoneNumber,
                           thumbnail: thumbnail,
-                          largePhoto: largePhoto,
-                          id: id)
+                          largePhoto: largePhoto)
         users.append(newUser)
     }
     

@@ -12,13 +12,13 @@ class FetchPhotoOperation: ConcurrentOperation {
     
     // MARK: - Properties
     
-    var photoString: String
+    var photoString: URL
     var imageData: Data?
     private var dataTask: URLSessionDataTask?
     
     // MARK: - Initializer
     
-    init(photoString: String) {
+    init(photoString: URL) {
         self.photoString = photoString
     }
     
@@ -27,9 +27,7 @@ class FetchPhotoOperation: ConcurrentOperation {
     override func start() {
         state = .isExecuting
         
-        guard let photoURL = URL(string: photoString) else {return}
-        
-        dataTask = URLSession.shared.dataTask(with: photoURL) { (data, _, error) in
+        dataTask = URLSession.shared.dataTask(with: photoString) { (data, _, error) in
             defer { self.state = .isFinished}
             if let error = error {
                            NSLog("Error loading image URL: \(error)")

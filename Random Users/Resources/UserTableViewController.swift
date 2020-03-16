@@ -13,14 +13,11 @@ class UserTableViewController: UITableViewController {
     // MARK: - Properties
     
     private let photoFetchQueue = OperationQueue()
-    private let cache: Cache<UUID, UIImage> = Cache()
+    private let cache: Cache<URL, UIImage> = Cache()
     let userController = UserController()
     let userClient = UserClient()
-    var fetchResults: [String: Operation] = [:]
-    
-    @IBOutlet var thumbnailImage: UIImageView!
-    @IBOutlet var nameLabel: UILabel!
-    
+    var fetchResults: [URL: Operation] = [:]
+
     override func viewDidLoad() {
         super.viewDidLoad()
         userClient.fetchUsers { (error) in
@@ -38,7 +35,7 @@ class UserTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userController.users.count
+        return userClient.users.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -49,18 +46,17 @@ class UserTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let user = userController.users[indexPath.row]
-        fetchResults[user.id]?.cancel()
+        let user = userClient.users[indexPath.row]
+        fetchResults[user.thumbnail]?.cancel()
     }
     
     // MARK: - Private Methods
     
     private func loadImage(forCell cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         
-        let user = userController.users[indexPath.row]
+        let user = userClient.users[indexPath.row]
         
-        guard let userUUID = UUID(uuidString: user.id) else { return }
-        if let image = cache.value(for: userUUID) {
+        if let image = cache.value(for: user.thumbnail) {
             cell.imageView?.image = image
         } else {
             let fetchPhotoOperation = FetchPhotoOperation(photoString: user.thumbnail)
@@ -68,7 +64,7 @@ class UserTableViewController: UITableViewController {
                 guard let imageData = fetchPhotoOperation.imageData else { return }
                 guard let image = UIImage(data: imageData) else { return }
                 self.cache.cache(value: image,
-                                 for: userUUID)
+                                 for: user.thumbnail)
             }
             let checkResuseOperation = BlockOperation {
                 if indexPath == self.tableView.indexPath(for: cell){
@@ -85,13 +81,13 @@ class UserTableViewController: UITableViewController {
                                           waitUntilFinished: false)
             OperationQueue.main.addOperation(checkResuseOperation)
             
-            fetchResults[user.id] = fetchPhotoOperation
+            fetchResults[user.thumbnail] = fetchPhotoOperation
         }
     }
     
     private func loadCell(for cell: UITableViewCell, forUserAt indexPath: IndexPath) {
         
-        let user = userController.users[indexPath.row]
+        let user = userClient.users[indexPath.row]
         
         loadImage(forCell: cell,
                   forItemAt: indexPath)
@@ -100,13 +96,19 @@ class UserTableViewController: UITableViewController {
         let lastName = user.last.capitalized
         let fullName = "\(firstName) \(lastName)"
         
-        nameLabel.text = fullName
+        cell.textLabel?.text = fullName
         
         userClient.fetchPictures(for: user.thumbnail) { (result) in
             if let result = try? result.get() {
                 DispatchQueue.main.async {
                     let image = UIImage(data: result)
-                    self.thumbnailImage.image = image
+                    
+                    cell.imageView?.topAnchor.constraint(equalTo: cell.topAnchor).isActive = true
+                    cell.imageView?.bottomAnchor.constraint(equalTo: cell.bottomAnchor).isActive = true
+                    
+                    cell.imageView?.widthAnchor.constraint(equalToConstant: 40).isActive = true
+                    
+                    cell.imageView?.image = image
                 }
             }
         }
@@ -119,7 +121,7 @@ class UserTableViewController: UITableViewController {
             guard let detailVC = segue.destination as? UserDetailViewController,
                 let index = tableView.indexPathForSelectedRow else { return }
             detailVC.userClient = userClient
-            detailVC.user = userController.users[index.row]
+            detailVC.user = userClient.users[index.row]
         }
     }
 }
