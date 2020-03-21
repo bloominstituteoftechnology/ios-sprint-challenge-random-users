@@ -28,7 +28,8 @@ class UserDetailViewController: UIViewController {
     }
     
     func updateViews() {
-        userImageView.image = UIImage(data: (user?.picture.dataRepresentation)!)
+        let pic = UIImage(data: (user?.picture.dataRepresentation)!)
+        userImageView.image = pic
         
         nameLabel.text = user?.name
         phoneLabel.text = user?.phone

@@ -44,11 +44,11 @@ class UserController {
             }
             
             do {
-                let decodedUser: User = try JSONDecoder().decode(User.self, from: data)
-                self.userResults.append(decodedUser)
+                self.userResults = try JSONDecoder().decode([User].self, from: data)
+//                self.userResults.append(decodedUser)
                 completion(nil)
             } catch {
-                print("Unable to decode data into SearchResults object: \(error)")
+                print("Unable to decode data into user objects: \(error)")
                 completion(error)
             }
         }.resume()
