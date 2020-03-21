@@ -56,7 +56,13 @@
                             <outlet property="delegate" destination="jTg-Wu-o42" id="SdN-s7-PLx"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Users" id="52n-UM-2sj"/>
+                    <navigationItem key="navigationItem" title="Users" id="52n-UM-2sj">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="F8n-cQ-SgY">
+                            <connections>
+                                <segue destination="Bj8-CR-7sL" kind="show" id="DLu-dR-SgW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WKC-ut-fxd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -78,22 +84,22 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YLJ-qx-B6p">
-                                <rect key="frame" x="89" y="528" width="93" height="77"/>
+                                <rect key="frame" x="37" y="615" width="300" height="77"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S6L-fc-OaJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="93" height="20.333333333333332"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S6L-fc-OaJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCz-hB-XyN">
-                                        <rect key="frame" x="0.0" y="28.333333333333371" width="93" height="20.333333333333329"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCz-hB-XyN">
+                                        <rect key="frame" x="0.0" y="28.333333333333371" width="300" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQW-fE-AdQ">
-                                        <rect key="frame" x="0.0" y="56.666666666666636" width="93" height="20.333333333333336"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQW-fE-AdQ">
+                                        <rect key="frame" x="0.0" y="56.666666666666636" width="300" height="20.333333333333336"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -107,7 +113,7 @@
                             <constraint firstItem="2FM-Za-SYP" firstAttribute="centerY" secondItem="Mwy-Lg-Qec" secondAttribute="centerY" id="8qJ-bo-5ZB"/>
                             <constraint firstItem="2FM-Za-SYP" firstAttribute="centerX" secondItem="Mwy-Lg-Qec" secondAttribute="centerX" id="dyf-fM-Ima"/>
                             <constraint firstItem="YLJ-qx-B6p" firstAttribute="leading" secondItem="2FM-Za-SYP" secondAttribute="leading" id="tsk-xR-GR8"/>
-                            <constraint firstItem="XFA-xJ-Szd" firstAttribute="trailing" secondItem="YLJ-qx-B6p" secondAttribute="trailing" constant="244.33333333333331" id="xlK-Sn-4kJ"/>
+                            <constraint firstItem="YLJ-qx-B6p" firstAttribute="trailing" secondItem="2FM-Za-SYP" secondAttribute="trailing" id="x6v-vZ-UhD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XFA-xJ-Szd"/>
                     </view>
@@ -134,4 +140,7 @@
             <point key="canvasLocation" x="-249" y="-70"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="uGH-ez-hFu"/>
+    </inferredMetricsTieBreakers>
 </document>
