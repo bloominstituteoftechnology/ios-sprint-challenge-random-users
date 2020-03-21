@@ -29,9 +29,9 @@ class DetailsViewController: UIViewController {
 
     func updateViews() {
         guard let contacts = contacts else { return }
-        nameLabel.text = contacts.name
-        phoneLabel.text = contacts.phone
-        emailLabel.text = contacts.email
+        nameLabel.text = "Name: \(contacts.name)"
+        phoneLabel.text = "Phone: \(contacts.phone)"
+        emailLabel.text = "Email: \(contacts.email)"
         
         // image
         let largeImage = contacts.picture[0]

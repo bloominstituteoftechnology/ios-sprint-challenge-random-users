@@ -17,6 +17,7 @@
 		A61D7ECC2425ABF300E64133 /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61D7ECB2425ABF300E64133 /* ContactsTableViewCell.swift */; };
 		A61D7ECE2425AD7800E64133 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61D7ECD2425AD7800E64133 /* APIController.swift */; };
 		A61D7ED02425AFB000E64133 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61D7ECF2425AFB000E64133 /* Contact.swift */; };
+		A61D7ED22425E86600E64133 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61D7ED12425E86600E64133 /* Cache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		A61D7ECB2425ABF300E64133 /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
 		A61D7ECD2425AD7800E64133 /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		A61D7ECF2425AFB000E64133 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		A61D7ED12425E86600E64133 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				A61D7ED12425E86600E64133 /* Cache.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 			files = (
 				A61D7ECE2425AD7800E64133 /* APIController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				A61D7ED22425E86600E64133 /* Cache.swift in Sources */,
 				A61D7ECC2425ABF300E64133 /* ContactsTableViewCell.swift in Sources */,
 				A61D7ED02425AFB000E64133 /* Contact.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
