@@ -10,6 +10,9 @@ import UIKit
 
 class DetailsViewController: UIViewController {
 
+     var contacts: Result?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
