@@ -47,6 +47,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="thumbnailImageView" destination="oal-44-dHp" id="db7-Ao-oEq"/>
+                                    <outlet property="userNameLabel" destination="V9w-7n-fyS" id="oCi-PN-EBI"/>
                                     <segue destination="Bj8-CR-7sL" kind="show" id="uGH-ez-hFu"/>
                                 </connections>
                             </tableViewCell>
@@ -118,6 +120,12 @@
                         <viewLayoutGuide key="safeArea" id="XFA-xJ-Szd"/>
                     </view>
                     <navigationItem key="navigationItem" id="EvX-3W-lx6"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="QQW-fE-AdQ" id="1jR-mh-AJ3"/>
+                        <outlet property="nameLabel" destination="S6L-fc-OaJ" id="DUL-qk-py5"/>
+                        <outlet property="phoneLabel" destination="pCz-hB-XyN" id="Oh5-v1-Iqb"/>
+                        <outlet property="userImageView" destination="2FM-Za-SYP" id="9Si-GP-Wsf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BXt-5d-4yJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
