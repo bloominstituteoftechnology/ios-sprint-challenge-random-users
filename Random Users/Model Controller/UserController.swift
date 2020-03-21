@@ -10,9 +10,9 @@ import Foundation
 
 class UserController {
     var users: [User] = []
+    let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
     
     func fetchUsers() {
-        let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
         
         let decoder = JSONDecoder()
         do {

@@ -66,7 +66,7 @@ struct User: Codable {
     let email: String
     let phone: String
     let pictureThumbnail: URL
-    let pictureMedium: URL
+    let pictureLarge: URL
     
     enum UserCodingKeys: String, CodingKey {
         case name
@@ -80,7 +80,7 @@ struct User: Codable {
         case picture
         enum PictureCodingKey: String, CodingKey {
             case thumbnail
-            case medium
+            case large
         }
     }
     
@@ -95,7 +95,7 @@ struct User: Codable {
         self.phone = try contianer.decode(String.self, forKey: .phone)
         let pictureContainer = try contianer.nestedContainer(keyedBy: UserCodingKeys.PictureCodingKey.self, forKey: .picture)
         self.pictureThumbnail = try pictureContainer.decode(URL.self, forKey: .thumbnail)
-        self.pictureMedium = try pictureContainer.decode(URL.self, forKey: .medium)
+        self.pictureLarge = try pictureContainer.decode(URL.self, forKey: .large)
         
     }
     

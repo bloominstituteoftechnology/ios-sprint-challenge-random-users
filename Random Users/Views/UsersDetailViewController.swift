@@ -10,8 +10,9 @@ import UIKit
 
 class UsersDetailViewController: UIViewController {
     var user: User?
+    var fetchQueue: OperationQueue?
     
-    @IBOutlet weak var imageView: UIView!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
@@ -26,6 +27,19 @@ class UsersDetailViewController: UIViewController {
         nameLabel.text = user.name
         phoneLabel.text = user.phone
         emailLabel.text = user.email
+        fetchImage(for: user)
+    }
+    
+    func fetchImage(for user: User) {
+        let photoOperation = FetchPhotoOperation(userPhotoRefernce: user)
+        let getImage = BlockOperation {
+            guard let image = photoOperation.largeImage else { return }
+            self.imageView.image = image
+        }
+        
+        getImage.addDependency(photoOperation)
+        fetchQueue?.addOperations([photoOperation], waitUntilFinished: false)
+        OperationQueue.main.addOperation(getImage)
     }
 
 }

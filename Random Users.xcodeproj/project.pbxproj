@@ -13,6 +13,7 @@
 		127D83802425B856006CB10F /* UsersDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127D837F2425B856006CB10F /* UsersDetailViewController.swift */; };
 		127D83872425BF08006CB10F /* cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127D83862425BF08006CB10F /* cache.swift */; };
 		127D8389242661DE006CB10F /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127D8388242661DE006CB10F /* FetchPhotoOperation.swift */; };
+		127D838D24269B91006CB10F /* UsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127D838C24269B91006CB10F /* UsersTableViewCell.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 		127D837F2425B856006CB10F /* UsersDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDetailViewController.swift; sourceTree = "<group>"; };
 		127D83862425BF08006CB10F /* cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cache.swift; sourceTree = "<group>"; };
 		127D8388242661DE006CB10F /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
+		127D838C24269B91006CB10F /* UsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewCell.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 			children = (
 				127D837D2425B80D006CB10F /* UsersTableViewController.swift */,
 				127D837F2425B856006CB10F /* UsersDetailViewController.swift */,
+				127D838C24269B91006CB10F /* UsersTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -154,6 +157,7 @@
 				TargetAttributes = {
 					8ED6A9832140178A00FC395A = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1130;
 					};
 				};
 			};
@@ -200,6 +204,7 @@
 				127D837A2425AA76006CB10F /* Users.swift in Sources */,
 				127D837C2425B64C006CB10F /* UserController.swift in Sources */,
 				127D837E2425B80D006CB10F /* UsersTableViewController.swift in Sources */,
+				127D838D24269B91006CB10F /* UsersTableViewCell.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,7 +358,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LambdaSchool.RandomUsers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -371,7 +376,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LambdaSchool.RandomUsers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
