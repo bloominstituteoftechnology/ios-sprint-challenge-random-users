@@ -9,16 +9,37 @@
 import UIKit
 
 class ContactsTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    // IB Outlets
+    @IBOutlet weak var thumbnailImage: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    var contact: Result? {
+        didSet {
+            updateViews()
+        }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    // update views
+    func updateViews() {
+        guard let contact = contact else { return }
+        nameLabel.text = contact.name
+        let thumbnail = contact.picture[1]
+        let request = URLRequest(url: thumbnail)
+        
+        URLSession.shared.dataTask(with: request) { data, _, error in
+            if let error = error {
+                print("error fetching thumbnail: \(error)")
+                return
+            }
+            guard let data = data else {
+                print("No Thumbnail data avail")
+                return
+            }
+            DispatchQueue.main.async {
+                self.thumbnailImage.image = UIImage(data: data)
+            }
+        }.resume()
     }
 
 }
