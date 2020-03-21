@@ -25,7 +25,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="hkn-Po-2H0" kind="show" identifier="ShowDetail" id="x3J-7X-Ywb"/>
+                                    <segue destination="hkn-Po-2H0" kind="show" identifier="ToDetail" id="x3J-7X-Ywb"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -34,13 +34,7 @@
                             <outlet property="delegate" destination="KWG-DM-Ky6" id="uZD-bB-ANp"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="PLB-Qw-cDe">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="axw-aq-4Tr">
-                            <connections>
-                                <segue destination="hkn-Po-2H0" kind="show" identifier="AddNew" id="aNd-kF-yS1"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="PLB-Qw-cDe"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C08-Mb-TBN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -120,7 +114,4 @@
             <point key="canvasLocation" x="2006" y="119"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="x3J-7X-Ywb"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -11,6 +11,7 @@ import UIKit
 class RandomUserTableViewController: UITableViewController {
     
     var apiController = APIController()
+
         
     
     override func viewDidLoad() {
@@ -58,13 +59,14 @@ class RandomUserTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RandomUserCell", for: indexPath)
-        
-        let user = apiController.users[indexPath.row]
-
-        let image = displayURLImage(url: user.picture.thumbnail)
-        let name = "\(user.name.title) \(user.name.first) \(user.name.last)"
-        cell.textLabel?.text = name
-        cell.imageView?.image = image
+        DispatchQueue.main.async {
+                        let user = self.apiController.users[indexPath.row]
+      
+            let image = self.displayURLImage(url: user.picture.thumbnail)
+                   let name = "\(user.name.title) \(user.name.first) \(user.name.last)"
+                   cell.textLabel?.text = name
+                   cell.imageView?.image = image
+        }
     
         return cell
     }
@@ -112,13 +114,11 @@ class RandomUserTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToDetail" {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-              if let vc = segue.destination as? UserDetailViewController {
-                          vc.personDelegate = apiController.users[indexPath.row]
-                                     }
-        } else if segue.identifier == "AddNew" {
-            let addVC = segue.destination as? UserDetailViewController
+            if let vc = segue.destination as? UserDetailViewController {
+                vc.personDelegate = apiController.users[indexPath.row]
+            }
         }
-
+        
     }
     
 
