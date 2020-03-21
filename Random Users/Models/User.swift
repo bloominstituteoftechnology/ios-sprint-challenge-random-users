@@ -52,7 +52,9 @@ struct User: Codable {
         self.email = try topLevelContainer.decode(String.self, forKey: .email)
         self.phone = try topLevelContainer.decode(String.self, forKey: .phone)
         
-        
+        let pictureLevelContainer = try topLevelContainer.nestedContainer(keyedBy:
+            UserResultLevelKeys.UserTopLevelKeys.PictureLevelKeys.self, forKey: .picture)
+        self.picture = try pictureLevelContainer.decode(URL.self, forKey: .large)
     }
 }
 /*
