@@ -37,10 +37,18 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MJo-qf-t0Q">
+                                            <rect key="frame" x="346" y="24" width="11" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="whr-M1-xJl" firstAttribute="leading" secondItem="QeO-ys-AzJ" secondAttribute="trailing" constant="50" id="1WS-QN-3c3"/>
                                         <constraint firstItem="QeO-ys-AzJ" firstAttribute="leading" secondItem="dYT-Lo-xgb" secondAttribute="leading" constant="10" id="IRo-BB-oSG"/>
+                                        <constraint firstItem="MJo-qf-t0Q" firstAttribute="centerY" secondItem="whr-M1-xJl" secondAttribute="centerY" id="KJT-3t-dzR"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="MJo-qf-t0Q" secondAttribute="trailing" constant="2" id="Yme-Jn-48K"/>
                                         <constraint firstAttribute="bottom" secondItem="QeO-ys-AzJ" secondAttribute="bottom" constant="8" id="c04-TB-v2K"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="whr-M1-xJl" secondAttribute="trailing" constant="50" id="r8k-iE-9WQ"/>
                                         <constraint firstItem="QeO-ys-AzJ" firstAttribute="top" secondItem="dYT-Lo-xgb" secondAttribute="top" constant="8" id="vCa-jG-Und"/>
@@ -75,15 +83,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QMg-OD-cS0">
-                                <rect key="frame" x="62" y="80" width="250" height="250"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QMg-OD-cS0">
+                                <rect key="frame" x="62" y="84" width="251" height="254.5"/>
                             </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Qhk-1e-x9K">
+                                <rect key="frame" x="40" y="468.5" width="295" height="98.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lRY-1p-OCg">
+                                        <rect key="frame" x="0.0" y="0.0" width="295" height="27.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3u-mZ-3kn">
+                                        <rect key="frame" x="0.0" y="35.5" width="295" height="27.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fw3-Rf-YzS">
+                                        <rect key="frame" x="0.0" y="71" width="295" height="27.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="QMg-OD-cS0" firstAttribute="centerX" secondItem="Kau-tH-xba" secondAttribute="centerX" id="48C-cT-Hey"/>
+                            <constraint firstItem="sln-Mp-Qa3" firstAttribute="bottom" secondItem="Qhk-1e-x9K" secondAttribute="bottom" constant="100" id="67B-bl-WbZ"/>
+                            <constraint firstItem="QMg-OD-cS0" firstAttribute="leading" secondItem="sln-Mp-Qa3" secondAttribute="leading" constant="62" id="DXN-S9-5CE"/>
+                            <constraint firstItem="Qhk-1e-x9K" firstAttribute="top" secondItem="QMg-OD-cS0" secondAttribute="bottom" constant="130" id="HKA-RU-hZj"/>
+                            <constraint firstItem="sln-Mp-Qa3" firstAttribute="trailing" secondItem="Qhk-1e-x9K" secondAttribute="trailing" constant="40" id="RpY-G8-7lc"/>
+                            <constraint firstItem="Qhk-1e-x9K" firstAttribute="leading" secondItem="sln-Mp-Qa3" secondAttribute="leading" constant="40" id="U9W-45-R9z"/>
+                            <constraint firstItem="QMg-OD-cS0" firstAttribute="top" secondItem="sln-Mp-Qa3" secondAttribute="top" constant="40" id="s9s-sH-Arx"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="sln-Mp-Qa3"/>
                     </view>
                     <navigationItem key="navigationItem" id="f2f-Id-qlG"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="Fw3-Rf-YzS" id="acE-gC-tPj"/>
+                        <outlet property="largeImage" destination="QMg-OD-cS0" id="gtS-oI-zGE"/>
+                        <outlet property="nameLabel" destination="lRY-1p-OCg" id="gRF-pv-bJm"/>
+                        <outlet property="phoneLabel" destination="z3u-mZ-3kn" id="7us-1k-W2X"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bUV-Wq-uJA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

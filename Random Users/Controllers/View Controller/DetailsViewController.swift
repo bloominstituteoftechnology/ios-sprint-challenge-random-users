@@ -10,24 +10,48 @@ import UIKit
 
 class DetailsViewController: UIViewController {
 
-     var contacts: Result?
+    var contacts: Result?
+    
+    
+    // IBOutlets
+    @IBOutlet weak var largeImage: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        updateViews()
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func updateViews() {
+        guard let contacts = contacts else { return }
+        nameLabel.text = contacts.name
+        phoneLabel.text = contacts.phone
+        emailLabel.text = contacts.email
+        
+        // image
+        let largeImage = contacts.picture[0]
+        let request = URLRequest(url: largeImage)
+        
+        URLSession.shared.dataTask(with: request) { data, _, error in
+            if let error = error {
+                print("error fetching large image: \(error)")
+                return
+            }
+            guard let data = data else {
+                print("error with image data: \(error)")
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.largeImage.image = UIImage(data: data)
+            }
+        }.resume()
+        
     }
-    */
 
 }

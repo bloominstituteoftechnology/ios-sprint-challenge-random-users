@@ -22,7 +22,6 @@ class APIController {
     typealias CompletionHandler = (Error?) -> Void
     
     var contacts: [Result] = []
-    
     var largeImageInfo: Data?
     
     // Fetch results from API
