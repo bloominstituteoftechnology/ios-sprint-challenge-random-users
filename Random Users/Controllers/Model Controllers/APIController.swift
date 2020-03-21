@@ -17,7 +17,7 @@ enum HTTPMethod: String {
 
 class APIController {
     
-    let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=10")!
+    let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
     
     typealias CompletionHandler = (Error?) -> Void
     

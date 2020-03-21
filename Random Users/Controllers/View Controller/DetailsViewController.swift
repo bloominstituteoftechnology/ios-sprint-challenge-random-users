@@ -12,6 +12,8 @@ class DetailsViewController: UIViewController {
 
     var contacts: Result?
     
+    var cache = Cache<String, Data>()
+    
     
     // IBOutlets
     @IBOutlet weak var largeImage: UIImageView!
@@ -36,6 +38,8 @@ class DetailsViewController: UIViewController {
         // image
         let largeImage = contacts.picture[0]
         let request = URLRequest(url: largeImage)
+        
+        // Try cached data
         
         URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error {

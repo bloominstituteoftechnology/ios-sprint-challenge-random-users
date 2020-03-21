@@ -12,6 +12,9 @@ class ContactsMainTableViewController: UITableViewController {
     
     let apiController = APIController()
     
+    var cache = Cache<String, Data>()
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
