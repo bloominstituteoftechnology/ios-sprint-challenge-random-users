@@ -13,7 +13,7 @@ struct User: Codable {
     var email: String
     var phone: String
     var picture: URL // nested keyed container for large, medium, and thumbnail images
-    
+        
     enum UserResultLevelKeys: String, CodingKey {
         case results
         

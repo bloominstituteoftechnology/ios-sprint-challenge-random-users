@@ -11,11 +11,13 @@ import UIKit
 class UserTableViewController: UITableViewController {
 
     let userController = UserController()
-    let randomUsers: [User] = []
+//    let randomUsers: [User] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        userController.fetchRandomUsers { (error) in
+            print("Error fetching users: \(error)")
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -26,14 +28,14 @@ class UserTableViewController: UITableViewController {
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return randomUsers.count
+        return userController.userResults.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
             as? UserTableViewCell else { return UITableViewCell() }
         
-        let user = randomUsers[indexPath.row]
+        let user = userController.userResults[indexPath.row]
         cell.user = user
         cell.userController = userController
 
