@@ -12,7 +12,7 @@ class UserController {
     
     // MARK: - Properties
 
-    var users: [User] = []
+    var users = [User]()
     
     // MARK: - Methods
 

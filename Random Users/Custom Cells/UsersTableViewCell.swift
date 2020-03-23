@@ -26,7 +26,7 @@ class UsersTableViewCell: UITableViewCell {
     // MARK: - Private Methods
     
     private func updateViews() {
-        nameLabel.text = user.name
+        nameLabel.text = user.name.full
         
 //        let imageURL = user.picture.large
 //        let image = fetchImage(at: imageURL)
@@ -35,7 +35,7 @@ class UsersTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        thumbnailImageView.image = nil
+        thumbnailImageView.image = #imageLiteral(resourceName: "Lambda_Logo_Full")
         nameLabel.text = nil
     }
 

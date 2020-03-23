@@ -27,15 +27,15 @@ class UserDetailViewController: UIViewController {
     
     // MARK: - View Controller Lifecycle
     
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+    }
     
     // MARK: - Private Methods
 
     private func updateViews() {
-        nameTextField.text = user.name
+        nameTextField.text = user.name.full
         phoneTextField.text = user.phone
         emailTextField.text = user.email
         
