@@ -38,6 +38,8 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="nameLabel" destination="VDj-MP-wKd" id="pog-5i-tyT"/>
+                                    <outlet property="userPhotoImageView" destination="eY5-iE-oP1" id="vLC-vV-qZR"/>
                                     <segue destination="b5F-Jz-oB4" kind="show" identifier="UserSegue" id="oGc-S4-vmg"/>
                                 </connections>
                             </tableViewCell>
@@ -93,6 +95,12 @@
                         <viewLayoutGuide key="safeArea" id="GKy-Dp-m0S"/>
                     </view>
                     <navigationItem key="navigationItem" id="dui-8S-Jgk"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="Cti-rp-oHb" id="Rlg-Iw-NQe"/>
+                        <outlet property="nameLabel" destination="ftk-6A-vK0" id="puF-qU-e2o"/>
+                        <outlet property="phoneNumberLabel" destination="SST-qh-gaE" id="g6S-dx-aUc"/>
+                        <outlet property="userPhoto" destination="ACg-og-X2G" id="jB1-wy-5Oq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fEV-Ua-xzf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
