@@ -29,18 +29,19 @@ class UserDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateViews()
     }
     
     // MARK: - Private Methods
 
     private func updateViews() {
-        nameTextField.text = user.name.full
-        phoneTextField.text = user.phone
-        emailTextField.text = user.email
-        
+        if isViewLoaded {
+            nameTextField.text = user.name.full
+            phoneTextField.text = user.phone
+            emailTextField.text = user.email
 //        let imageURL = user.picture.large
 //        let image = fetchImage(at: imageURL)
 //        imageView.image = image
+        }
     }
 }
