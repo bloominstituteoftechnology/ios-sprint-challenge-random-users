@@ -36,6 +36,8 @@ class UsersTableViewController: UITableViewController {
             
             if let data = cache.value(for: userReference) {
                 cell.imageView?.image = UIImage(data: data)
+                cell.imageView?.layer.cornerRadius = (cell.imageView?.frame.width)! / 2
+                cell.imageView?.clipsToBounds = true
                 return
             }
         
@@ -87,7 +89,7 @@ class UsersTableViewController: UITableViewController {
         override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UsersTableViewCell else { return UITableViewCell() }
 
-            // Configure the cell...
+
             loadImage(forCell: cell, forItemAt: indexPath)
             cell.user = usersController.users.results[indexPath.row]
             return cell
