@@ -17,25 +17,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="78" id="jE7-gc-GOH" customClass="UsersTableViewCell" customModule="Random_Users" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="78"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="84" id="jE7-gc-GOH" customClass="UsersTableViewCell" customModule="Random_Users" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="84"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jE7-gc-GOH" id="5BJ-nF-xom">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="78"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eY5-iE-oP1">
-                                            <rect key="frame" x="16" y="7" width="65" height="65"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eY5-iE-oP1">
+                                            <rect key="frame" x="20" y="8" width="65" height="68"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="65" id="FGW-hF-K8A"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VDj-MP-wKd">
-                                            <rect key="frame" x="106" y="29" width="253" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VDj-MP-wKd">
+                                            <rect key="frame" x="105" y="31" width="254" height="22"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="VDj-MP-wKd" secondAttribute="bottom" constant="20" id="2E9-Eb-6E3"/>
+                                        <constraint firstItem="VDj-MP-wKd" firstAttribute="leading" secondItem="eY5-iE-oP1" secondAttribute="trailing" constant="20" id="9Wq-jj-Qut"/>
+                                        <constraint firstItem="VDj-MP-wKd" firstAttribute="leading" secondItem="eY5-iE-oP1" secondAttribute="trailing" constant="20" id="EQH-Qk-Vbj"/>
+                                        <constraint firstItem="VDj-MP-wKd" firstAttribute="trailing" secondItem="5BJ-nF-xom" secondAttribute="trailingMargin" id="Nua-5r-80l"/>
+                                        <constraint firstItem="eY5-iE-oP1" firstAttribute="top" secondItem="5BJ-nF-xom" secondAttribute="top" constant="8" id="anA-kt-y1o"/>
+                                        <constraint firstAttribute="bottom" secondItem="eY5-iE-oP1" secondAttribute="bottom" constant="8" id="c4L-OJ-Fll"/>
+                                        <constraint firstItem="VDj-MP-wKd" firstAttribute="top" secondItem="5BJ-nF-xom" secondAttribute="topMargin" constant="20" id="qQb-f9-BfF"/>
+                                        <constraint firstItem="eY5-iE-oP1" firstAttribute="leading" secondItem="5BJ-nF-xom" secondAttribute="leading" constant="20" id="vFa-bV-E3E"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="nameLabel" destination="VDj-MP-wKd" id="pog-5i-tyT"/>
@@ -63,12 +74,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ACg-og-X2G">
-                                <rect key="frame" x="16" y="83" width="343" height="304"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ACg-og-X2G">
+                                <rect key="frame" x="60" y="104" width="255" height="267"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="kr2-md-XPJ">
-                                <rect key="frame" x="16" y="445" width="115" height="103.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="kr2-md-XPJ">
+                                <rect key="frame" x="60" y="418" width="115" height="103.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ftk-6A-vK0">
                                         <rect key="frame" x="0.0" y="0.0" width="45" height="20.5"/>
@@ -92,6 +102,16 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="kr2-md-XPJ" firstAttribute="top" secondItem="ACg-og-X2G" secondAttribute="bottom" constant="47" id="0FD-JD-M0a"/>
+                            <constraint firstItem="kr2-md-XPJ" firstAttribute="leading" secondItem="ACg-og-X2G" secondAttribute="leading" id="6ng-xX-lPp"/>
+                            <constraint firstItem="GKy-Dp-m0S" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="kr2-md-XPJ" secondAttribute="trailing" constant="200" id="HRf-U5-mf4"/>
+                            <constraint firstItem="kr2-md-XPJ" firstAttribute="leading" secondItem="GKy-Dp-m0S" secondAttribute="leading" constant="60" id="WyE-vu-8BH"/>
+                            <constraint firstItem="GKy-Dp-m0S" firstAttribute="trailing" secondItem="ACg-og-X2G" secondAttribute="trailing" constant="60" id="jfP-Rp-Rcz"/>
+                            <constraint firstItem="ACg-og-X2G" firstAttribute="leading" secondItem="GKy-Dp-m0S" secondAttribute="leading" constant="60" id="nmm-ij-eql"/>
+                            <constraint firstItem="ACg-og-X2G" firstAttribute="top" secondItem="GKy-Dp-m0S" secondAttribute="top" constant="60" id="q2f-uj-h2g"/>
+                            <constraint firstItem="GKy-Dp-m0S" firstAttribute="bottom" secondItem="kr2-md-XPJ" secondAttribute="bottom" constant="145.5" id="qaS-Dt-DIw"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="GKy-Dp-m0S"/>
                     </view>
                     <navigationItem key="navigationItem" id="dui-8S-Jgk"/>

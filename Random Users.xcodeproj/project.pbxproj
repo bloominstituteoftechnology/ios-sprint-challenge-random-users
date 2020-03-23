@@ -12,6 +12,7 @@
 		423CAA892428445500EABC4A /* UsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423CAA882428445500EABC4A /* UsersTableViewCell.swift */; };
 		423CAA8C2428459600EABC4A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423CAA8B2428459600EABC4A /* User.swift */; };
 		423CAA8E2428480A00EABC4A /* UsersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423CAA8D2428480A00EABC4A /* UsersController.swift */; };
+		423CAA9124284CA000EABC4A /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423CAA9024284CA000EABC4A /* Cache.swift */; };
 		4296550B2428421300F050D5 /* FetchOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4296550A2428421300F050D5 /* FetchOperation.swift */; };
 		4296550E2428422600F050D5 /* URL+Secure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4296550D2428422500F050D5 /* URL+Secure.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
@@ -27,6 +28,7 @@
 		423CAA882428445500EABC4A /* UsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewCell.swift; sourceTree = "<group>"; };
 		423CAA8B2428459600EABC4A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		423CAA8D2428480A00EABC4A /* UsersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersController.swift; sourceTree = "<group>"; };
+		423CAA9024284CA000EABC4A /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		4296550A2428421300F050D5 /* FetchOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchOperation.swift; sourceTree = "<group>"; };
 		4296550D2428422500F050D5 /* URL+Secure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Secure.swift"; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				423CAA8B2428459600EABC4A /* User.swift */,
+				423CAA9024284CA000EABC4A /* Cache.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				423CAA892428445500EABC4A /* UsersTableViewCell.swift in Sources */,
 				423CAA8C2428459600EABC4A /* User.swift in Sources */,
 				4296550B2428421300F050D5 /* FetchOperation.swift in Sources */,
+				423CAA9124284CA000EABC4A /* Cache.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				423CAA8E2428480A00EABC4A /* UsersController.swift in Sources */,
