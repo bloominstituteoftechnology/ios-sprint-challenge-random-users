@@ -10,6 +10,8 @@
 		423CAA842428442100EABC4A /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423CAA832428442100EABC4A /* UserDetailViewController.swift */; };
 		423CAA862428443400EABC4A /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423CAA852428443400EABC4A /* UsersTableViewController.swift */; };
 		423CAA892428445500EABC4A /* UsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423CAA882428445500EABC4A /* UsersTableViewCell.swift */; };
+		423CAA8C2428459600EABC4A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423CAA8B2428459600EABC4A /* User.swift */; };
+		423CAA8E2428480A00EABC4A /* UsersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423CAA8D2428480A00EABC4A /* UsersController.swift */; };
 		4296550B2428421300F050D5 /* FetchOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4296550A2428421300F050D5 /* FetchOperation.swift */; };
 		4296550E2428422600F050D5 /* URL+Secure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4296550D2428422500F050D5 /* URL+Secure.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
@@ -23,6 +25,8 @@
 		423CAA832428442100EABC4A /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		423CAA852428443400EABC4A /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		423CAA882428445500EABC4A /* UsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewCell.swift; sourceTree = "<group>"; };
+		423CAA8B2428459600EABC4A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		423CAA8D2428480A00EABC4A /* UsersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersController.swift; sourceTree = "<group>"; };
 		4296550A2428421300F050D5 /* FetchOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchOperation.swift; sourceTree = "<group>"; };
 		4296550D2428422500F050D5 /* URL+Secure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Secure.swift"; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +66,22 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		423CAA8A2428456800EABC4A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				423CAA8B2428459600EABC4A /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		423CAA8F242848BE00EABC4A /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				423CAA8D2428480A00EABC4A /* UsersController.swift */,
+			);
+			path = "Model Controller";
+			sourceTree = "<group>";
+		};
 		4296550C2428422500F050D5 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +109,8 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
+				423CAA8F242848BE00EABC4A /* Model Controller */,
+				423CAA8A2428456800EABC4A /* Models */,
 				423CAA872428443D00EABC4A /* Views */,
 				423CAA822428440A00EABC4A /* View Controllers */,
 				4296550C2428422500F050D5 /* Utilities */,
@@ -194,9 +216,11 @@
 				423CAA842428442100EABC4A /* UserDetailViewController.swift in Sources */,
 				423CAA862428443400EABC4A /* UsersTableViewController.swift in Sources */,
 				423CAA892428445500EABC4A /* UsersTableViewCell.swift in Sources */,
+				423CAA8C2428459600EABC4A /* User.swift in Sources */,
 				4296550B2428421300F050D5 /* FetchOperation.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				423CAA8E2428480A00EABC4A /* UsersController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
