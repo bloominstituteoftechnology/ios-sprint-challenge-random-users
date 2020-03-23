@@ -47,41 +47,11 @@ class RandomUserClient {
         }
     }
     
-//    func fetchPictures(for users: [User],
-//                       using session: URLSession = URLSession.shared,
-//                       completion: @escaping ([URL: UIImage]?, Error?) -> Void) {
-//
-//        let thumbnailURLs = users.compactMap { $0.picture.thumbnail }
-//        let fullSizePictureURLs = users.compactMap { $0.picture.large }
-//        let pictureURLs = thumbnailURLs + fullSizePictureURLs
-//
-//        var picturesDictionary = [URL: UIImage]()
-//        for url in pictureURLs {
-//            fetchPicture(at: url, completion: { (picture, error) in
-//                guard error == nil else {
-//                    completion(nil, error!)
-//                    return
-//                }
-//                guard let picture = picture else {
-//                    completion(nil, NSError())
-//                    return
-//                }
-//                picturesDictionary[url] = picture
-//            })
-//        }
-//        completion(picturesDictionary, nil)
-//    }
-    
-    // MARK: - Private Properties
-    
-    private var baseURL = URL(string: "https://randomuser.me/api")!
-    
     // MARK: - Private Methods
     
     private func fetch<T: Codable>(from url: URL,
                                    using session: URLSession = URLSession.shared,
                                    completion: @escaping (T?, Error?) -> Void) {
-        print(T.self)
         session.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 completion(nil, error)

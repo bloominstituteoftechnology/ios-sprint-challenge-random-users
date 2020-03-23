@@ -27,10 +27,6 @@ class UsersTableViewCell: UITableViewCell {
     
     private func updateViews() {
         nameLabel.text = user.name.full
-        
-//        let imageURL = user.picture.large
-//        let image = fetchImage(at: imageURL)
-//        thumbnailImageView.image = image
     }
     
     override func prepareForReuse() {

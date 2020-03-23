@@ -39,9 +39,6 @@ class UserDetailViewController: UIViewController {
             nameTextField.text = user.name.full
             phoneTextField.text = user.phone
             emailTextField.text = user.email
-//        let imageURL = user.picture.large
-//        let image = fetchImage(at: imageURL)
-//        imageView.image = image
         }
     }
 }

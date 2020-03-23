@@ -12,8 +12,6 @@ class UsersTableViewController: UITableViewController {
 
     // MARK: - Properties
 
-    //let userController = UserController()
-    
     var users = [User]() {
         didSet {
             DispatchQueue.main.async { self.tableView?.reloadData() }
