@@ -33,7 +33,7 @@ class UserController {
         
         let jsonQueryItem = URLQueryItem(name: "format", value: "json")
         let includeQuery = URLQueryItem(name: "inc", value: "name, email, phone, picture")
-        let resultsQuery = URLQueryItem(name: "results", value: "5000")
+        let resultsQuery = URLQueryItem(name: "results", value: "1000")
         
         urlComponents?.queryItems = [jsonQueryItem, includeQuery, resultsQuery]
         
