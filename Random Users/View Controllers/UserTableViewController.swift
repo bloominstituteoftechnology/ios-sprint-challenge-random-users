@@ -13,6 +13,7 @@ class UserTableViewController: UITableViewController {
     let userController = UserController()
     var randomUsers = [User]()
     var userQueue = OperationQueue()
+    var imageLoadOperations: [IndexPath : Operation] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,14 +41,26 @@ class UserTableViewController: UITableViewController {
         cell.user = user
 
         let imageFetch = ImageFetchOperation(userController: userController, url: user.thumbnail)
-        let completionOperation = BlockOperation {
+        let updateImagesOp = BlockOperation {
             guard let image = imageFetch.image else { return }
             cell.thumbnailImageView.image = image
+            //let _ = self.imageLoadOperations.removeValue[forKey: indexPath]
         }
-        completionOperation.addDependency(imageFetch)
+        updateImagesOp.addDependency(imageFetch)
         userQueue.addOperation(imageFetch)
-        OperationQueue.main.addOperation(completionOperation)
+        OperationQueue.main.addOperation(updateImagesOp)
+        
+        imageLoadOperations[indexPath] = imageFetch
+        
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        if let operation = imageLoadOperations[indexPath] {
+            print("Operation cancelled")
+            operation.cancel()
+        }
     }
 
     // MARK: - Navigation

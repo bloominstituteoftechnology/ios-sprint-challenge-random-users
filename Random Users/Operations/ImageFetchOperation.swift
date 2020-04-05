@@ -22,8 +22,11 @@ class ImageFetchOperation: ConcurrentOperation {
     override func start() {
         self.state = .isExecuting
         userController.fetchImage(for: url) { [weak self] result in
+            
             guard let self = self else { return }
+            
             defer { self.state = .isFinished }
+            
             switch result {
             case .success(let image):
                 self.image = image
