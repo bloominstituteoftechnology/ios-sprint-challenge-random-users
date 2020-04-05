@@ -11,6 +11,7 @@ import UIKit
 class UserController {
     
     var randomUserAPIURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")
+    let imageCache = NSCache<NSString, UIImage>()
 
     func fetchRandomUsers(completion: @escaping (Result<[User], NetworkError>) -> Void) {
         guard let requestUrl = randomUserAPIURL else {
@@ -95,38 +96,46 @@ class UserController {
     }
     
     func fetchImage(for url: URL, completion: @escaping (Result<UIImage, NetworkError>) -> ()) {
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard error == nil else {
-                DispatchQueue.main.async {
-                    completion(.failure(.unableToComplete))
+        
+        if let cachedImage = imageCache.object(forKey: url.absoluteString as NSString) {
+            print("cached image")
+            completion(.success(cachedImage))
+        } else {
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                guard error == nil else {
+                    DispatchQueue.main.async {
+                        completion(.failure(.unableToComplete))
+                    }
+                    return
                 }
-                return
-            }
-            
-            if let response = response as? HTTPURLResponse, response.statusCode != 200 {
-                DispatchQueue.main.async {
-                    completion(.failure(.invalidResponse))
+                
+                if let response = response as? HTTPURLResponse, response.statusCode != 200 {
+                    DispatchQueue.main.async {
+                        completion(.failure(.invalidResponse))
+                    }
+                    return
                 }
-                return
-            }
-            
-            guard let data = data else {
-                DispatchQueue.main.async {
-                    completion(.failure(.noData))
+                
+                guard let data = data else {
+                    DispatchQueue.main.async {
+                        completion(.failure(.noData))
+                    }
+                    return
                 }
-                return
-            }
-            
-            guard let image = UIImage(data: data) else {
-                DispatchQueue.main.async {
-                    completion(.failure(.noImage))
+                
+                guard let image = UIImage(data: data) else {
+                    DispatchQueue.main.async {
+                        completion(.failure(.noImage))
+                    }
+                    return
                 }
-                return
-            }
-            
-            DispatchQueue.main.async {
-                completion(.success(image))
-            }
-        }.resume()
+                
+                DispatchQueue.main.async {
+                    self.imageCache.setObject(image, forKey: url.absoluteString as NSString)
+                    print("session image")
+                    completion(.success(image))
+                }
+            }.resume()
+        }
     }
 }
