@@ -17,6 +17,8 @@ class UserDetailViewController: UIViewController {
         }
     }
     
+    var userQueue = OperationQueue()
+    
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
@@ -24,34 +26,22 @@ class UserDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateViews()
     }
     
     func updateViews() {
-        
         guard let user = user, let userController = userController else { return }
         
         let imageFetch = ImageFetchOperation(userController: userController, url: user.largePicture)
-        guard let image = imageFetch.image else { return }
+        let completionOperation = BlockOperation {
+            guard let image = imageFetch.image else { return }
+            self.userImageView.image = image
+            self.nameLabel.text = user.name
+            self.phoneLabel.text = user.phone
+            self.emailLabel.text = user.email
+        }
         
-        userImageView.image = image
-        
-        nameLabel.text = user.name
-        phoneLabel.text = user.phone
-        emailLabel.text = user.email
+        completionOperation.addDependency(imageFetch)
+        userQueue.addOperation(imageFetch)
+        OperationQueue.main.addOperation(completionOperation)
     }
-    
-//    private func fetchDetails() {
-//        guard let user = user, let userController = userController else { return }
-//        userController.fetchUser(for: user) { [weak self] result in
-//            guard let self = self else { return }
-//            switch result {
-//            case .success(let user):
-//                self.updateViews(with: user)
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-//    }
-
 }

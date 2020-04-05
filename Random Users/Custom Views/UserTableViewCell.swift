@@ -13,20 +13,26 @@ class UserTableViewCell: UITableViewCell {
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     
-    var userController: UserController?
+//    var userController: UserController?
     var user: User? {
         didSet {
             updateViews()
         }
     }
+//    var userQueue = OperationQueue()
 
     func updateViews() {
-        guard let user = user, let userController = userController else { return }
-               
-        let imageFetch = ImageFetchOperation(userController: userController, url: user.thumbnail)
-        guard let image = imageFetch.image else { return }
-                            
-        thumbnailImageView.image = image
-        userNameLabel.text = user.name
+        guard let user = user else { return }
+        
+ //       let imageFetch = ImageFetchOperation(userController: userController, url: user.thumbnail)
+ //       let completionOperation = BlockOperation {
+ //           guard let image = imageFetch.image else { return }
+ //           self.thumbnailImageView.image = image
+            self.userNameLabel.text = user.name
+ //       }
+        
+ //       completionOperation.addDependency(imageFetch)
+ //       userQueue.addOperation(imageFetch)
+ //       OperationQueue.main.addOperation(completionOperation)
     }
 }

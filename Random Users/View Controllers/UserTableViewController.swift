@@ -12,6 +12,7 @@ class UserTableViewController: UITableViewController {
 
     let userController = UserController()
     var randomUsers = [User]()
+    var userQueue = OperationQueue()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,6 @@ class UserTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return randomUsers.count
     }
 
@@ -38,6 +38,15 @@ class UserTableViewController: UITableViewController {
         
         let user = randomUsers[indexPath.row]
         cell.user = user
+
+        let imageFetch = ImageFetchOperation(userController: userController, url: user.thumbnail)
+        let completionOperation = BlockOperation {
+            guard let image = imageFetch.image else { return }
+            cell.thumbnailImageView.image = image
+        }
+        completionOperation.addDependency(imageFetch)
+        userQueue.addOperation(imageFetch)
+        OperationQueue.main.addOperation(completionOperation)
         return cell
     }
 
@@ -53,5 +62,4 @@ class UserTableViewController: UITableViewController {
             break
         }
     }
-
 }

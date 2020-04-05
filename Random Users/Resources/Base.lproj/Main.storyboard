@@ -25,25 +25,27 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oal-44-dHp">
-                                            <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                            <rect key="frame" x="12" y="0.0" width="70" height="70"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" secondItem="oal-44-dHp" secondAttribute="height" multiplier="1:1" id="127-76-pJ4"/>
+                                                <constraint firstAttribute="height" constant="70" id="kXT-No-akm"/>
+                                                <constraint firstAttribute="width" secondItem="oal-44-dHp" secondAttribute="height" multiplier="1:1" id="uxg-E5-oJP"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9w-7n-fyS">
-                                            <rect key="frame" x="82" y="24.666666666666671" width="265" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="94" y="23" width="277" height="24"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="oal-44-dHp" secondAttribute="bottom" id="1DH-bX-Eyo"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="V9w-7n-fyS" secondAttribute="trailing" constant="12" id="GJY-C0-Tc9"/>
-                                        <constraint firstItem="oal-44-dHp" firstAttribute="top" secondItem="LVp-N1-36J" secondAttribute="top" id="aeJ-2N-RLo"/>
-                                        <constraint firstItem="V9w-7n-fyS" firstAttribute="leading" secondItem="oal-44-dHp" secondAttribute="trailing" constant="12" id="bj0-ds-TS3"/>
-                                        <constraint firstItem="V9w-7n-fyS" firstAttribute="centerY" secondItem="LVp-N1-36J" secondAttribute="centerY" id="pzf-Ts-eQ5"/>
-                                        <constraint firstItem="oal-44-dHp" firstAttribute="leading" secondItem="LVp-N1-36J" secondAttribute="leading" id="yb0-ME-Y2N"/>
+                                        <constraint firstItem="V9w-7n-fyS" firstAttribute="leading" secondItem="oal-44-dHp" secondAttribute="trailing" constant="12" id="HtO-TV-j2k"/>
+                                        <constraint firstItem="V9w-7n-fyS" firstAttribute="top" secondItem="LVp-N1-36J" secondAttribute="topMargin" constant="12" id="bTt-Ds-ibg"/>
+                                        <constraint firstItem="oal-44-dHp" firstAttribute="top" secondItem="LVp-N1-36J" secondAttribute="top" id="cTD-WR-kkM"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="V9w-7n-fyS" secondAttribute="bottom" constant="12" id="cxN-Vh-t2u"/>
+                                        <constraint firstItem="oal-44-dHp" firstAttribute="leading" secondItem="LVp-N1-36J" secondAttribute="leading" constant="12" id="gEU-IK-Dhi"/>
+                                        <constraint firstItem="V9w-7n-fyS" firstAttribute="trailing" secondItem="LVp-N1-36J" secondAttribute="trailingMargin" constant="12" id="nfe-Xe-nqw"/>
+                                        <constraint firstAttribute="bottom" secondItem="oal-44-dHp" secondAttribute="bottom" id="xD2-GJ-CtS"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -58,13 +60,7 @@
                             <outlet property="delegate" destination="jTg-Wu-o42" id="SdN-s7-PLx"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Users" id="52n-UM-2sj">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="F8n-cQ-SgY">
-                            <connections>
-                                <segue destination="Bj8-CR-7sL" kind="show" id="DLu-dR-SgW"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Users" id="52n-UM-2sj"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WKC-ut-fxd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -148,7 +144,4 @@
             <point key="canvasLocation" x="-249" y="-70"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="DLu-dR-SgW"/>
-    </inferredMetricsTieBreakers>
 </document>
