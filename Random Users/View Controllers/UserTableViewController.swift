@@ -37,8 +37,6 @@ class UserTableViewController: UITableViewController {
         
         let user = randomUsers[indexPath.row]
         cell.user = user
-        cell.userController = userController
-
         return cell
     }
 

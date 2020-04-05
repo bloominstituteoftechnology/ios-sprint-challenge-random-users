@@ -13,7 +13,6 @@ class UserTableViewCell: UITableViewCell {
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     
-    var userController: UserController?
     var user: User? {
         didSet {
             updateViews()
@@ -21,8 +20,9 @@ class UserTableViewCell: UITableViewCell {
     }
 
     func updateViews() {
-        let pic = UIImage(data: (user?.picture.dataRepresentation)!)
+        guard let user = user else { return }
+        let pic = UIImage(data: (user.picture.dataRepresentation))
         thumbnailImageView.image = pic
-        userNameLabel.text = user?.name
+        userNameLabel.text = user.name
     }
 }
