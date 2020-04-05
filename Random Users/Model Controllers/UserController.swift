@@ -22,7 +22,7 @@ class UserController {
 //    let entityItem = URLQueryItem(name: "entity", value: resultType.rawValue)
 //    urlComponents.queryItems = [searchTermQueryItem, entityItem]
 //    print(urlComponents)
-    func fetchRandomUsers(completion: @escaping (Error?) -> Void) {
+    func fetchRandomUsers(completion: @escaping (Result<[User], NetworkError>) -> Void) {
         guard let requestUrl = randomUserAPIURL else {
             print("Request URL is nil.")
             return
@@ -31,7 +31,7 @@ class UserController {
         request.httpMethod = "GET"
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
-            if let error = error {
+            guard error == nil {
                 print("Error fetching data: \(error)")
                 completion(error)
                 return
