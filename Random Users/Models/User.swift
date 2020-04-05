@@ -16,21 +16,22 @@ struct User: Codable {
     var name: String = ""// nested keyed container
     var email: String
     var phone: String
-    var picture: URL // nested keyed container for large, medium, and thumbnail images
+    var largePicture: URL // nested keyed container for large, medium, and thumbnail images
+    var thumbnail: URL
          
-    enum UserTopLevelKeys: String, CodingKey {
+    enum UserKeys: String, CodingKey {
         case name
         case email
         case phone
         case picture
         
-        enum UserNameLevelKeys: String, CodingKey {
+        enum NameKeys: String, CodingKey {
             case title
             case first
             case last
         }
         
-        enum PictureLevelKeys: String, CodingKey {
+        enum PictureKeys: String, CodingKey {
             case large
             case medium
             case thumbnail
@@ -38,24 +39,22 @@ struct User: Codable {
     }
     
     init(from decoder: Decoder) throws {
-        let jsonContainer = try decoder.container(keyedBy: UserTopLevelKeys.self)
+        let container = try decoder.container(keyedBy: UserKeys.self)
             
-        let nameLevelContainer = try jsonContainer.nestedContainer(keyedBy: UserTopLevelKeys.UserNameLevelKeys.self, forKey: .name)
+        let nameContainer = try container.nestedContainer(keyedBy: UserKeys.NameKeys.self, forKey: .name)
         
-//        let topLevelContainer = try jsonContainer.nestedContainer(keyedBy: UserResultLevelKeys.UserTopLevelKeys.self, forKey: .results)
-//        let nameLevelContainer = try topLevelContainer.nestedContainer(keyedBy: UserResultLevelKeys.UserTopLevelKeys.UserNameLevelKeys.self, forKey: .name)
-        let title = try nameLevelContainer.decode(String.self, forKey: .title)
-        let first = try nameLevelContainer.decode(String.self, forKey: .first)
-        let last = try nameLevelContainer.decode(String.self, forKey: .last)
+        let title = try nameContainer.decode(String.self, forKey: .title)
+        let first = try nameContainer.decode(String.self, forKey: .first)
+        let last = try nameContainer.decode(String.self, forKey: .last)
         
-        self.name = "\(title) \(first) \(last)"
+        name = "\(title). \(first) \(last)"
         
-        self.email = try jsonContainer.decode(String.self, forKey: .email)
-        self.phone = try jsonContainer.decode(String.self, forKey: .phone)
+        email = try container.decode(String.self, forKey: .email)
+        phone = try container.decode(String.self, forKey: .phone)
         
-        let pictureLevelContainer = try jsonContainer.nestedContainer(keyedBy:
-            UserTopLevelKeys.PictureLevelKeys.self, forKey: .picture)
-        self.picture = try pictureLevelContainer.decode(URL.self, forKey: .large)
+        let pictureContainer = try container.nestedContainer(keyedBy: UserKeys.PictureKeys.self, forKey: .picture)
+        largePicture = try pictureContainer.decode(URL.self, forKey: .large)
+        thumbnail = try pictureContainer.decode(URL.self, forKey: .thumbnail)
     }
 }
 /*

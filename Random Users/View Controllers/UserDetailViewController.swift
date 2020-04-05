@@ -28,11 +28,30 @@ class UserDetailViewController: UIViewController {
     }
     
     func updateViews() {
-        let pic = UIImage(data: (user?.picture.dataRepresentation)!)
-        userImageView.image = pic
         
-        nameLabel.text = user?.name
-        phoneLabel.text = user?.phone
-        emailLabel.text = user?.email
+        guard let user = user, let userController = userController else { return }
+        
+        let imageFetch = ImageFetchOperation(userController: userController, url: user.largePicture)
+        guard let image = imageFetch.image else { return }
+        
+        userImageView.image = image
+        
+        nameLabel.text = user.name
+        phoneLabel.text = user.phone
+        emailLabel.text = user.email
     }
+    
+//    private func fetchDetails() {
+//        guard let user = user, let userController = userController else { return }
+//        userController.fetchUser(for: user) { [weak self] result in
+//            guard let self = self else { return }
+//            switch result {
+//            case .success(let user):
+//                self.updateViews(with: user)
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+//    }
+
 }
