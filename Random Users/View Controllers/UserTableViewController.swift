@@ -11,7 +11,7 @@ import UIKit
 class UserTableViewController: UITableViewController {
 
     let userController = UserController()
-//    let randomUsers: [User] = []
+    let randomUsers = [User]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,14 +28,14 @@ class UserTableViewController: UITableViewController {
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return userController.userResults.count
+        return randomUsers.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
             as? UserTableViewCell else { return UITableViewCell() }
         
-        let user = userController.userResults[indexPath.row]
+        let user = randomUsers[indexPath.row]
         cell.user = user
         cell.userController = userController
 

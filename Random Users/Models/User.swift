@@ -8,6 +8,10 @@
 
 import Foundation
 
+struct UserResults: Codable {
+    let results: [User]
+}
+
 struct User: Codable {
     var name: String = ""// nested keyed container
     var email: String
