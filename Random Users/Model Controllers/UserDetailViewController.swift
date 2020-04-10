@@ -39,7 +39,11 @@ class UserDetailViewController: UIViewController {
         
         let setImage = BlockOperation {
             DispatchQueue.main.async {
-                self.profileImage.image = UIImage(data: fetchPhotoOperation.imageData!)
+                if let imageData = fetchPhotoOperation.imageData {
+                    self.profileImage.image = UIImage(data: imageData)
+                } else {
+                    return
+                }
             }
         }
         

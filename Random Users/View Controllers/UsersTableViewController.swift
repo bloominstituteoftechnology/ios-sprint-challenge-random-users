@@ -67,13 +67,21 @@ class UsersTableViewController: UITableViewController {
             let fetchPhotoOperation = FetchPhotoOperation(user: user, imageType: .thumbnail)
             
             let cacheImageData = BlockOperation {
-                self.cache.cache(value: fetchPhotoOperation.imageData!, for: user.id!)
+                if let imageData = fetchPhotoOperation.imageData {
+                    self.cache.cache(value: imageData, for: user.id!)
+                } else {
+                    return
+                }
             }
 
             let setCellImage = BlockOperation {
                 DispatchQueue.main.async {
                     if self.tableView.indexPath(for: cell) == indexPath {
-                        cell.profileImage.image = UIImage(data: fetchPhotoOperation.imageData!)
+                        if let imageData = fetchPhotoOperation.imageData {
+                            cell.profileImage.image = UIImage(data: imageData)
+                        } else {
+                            return
+                        }
                     } else {
                         return
                     }
