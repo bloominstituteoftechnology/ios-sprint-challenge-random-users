@@ -22,7 +22,7 @@ class PeopleController {
                 print("got data.")
                 return
             }
-        }
+        }.resume()
     }
     
 }

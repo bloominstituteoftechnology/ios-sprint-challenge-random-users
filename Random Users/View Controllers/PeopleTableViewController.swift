@@ -9,9 +9,14 @@
 import UIKit
 
 class PeopleTableViewController: UITableViewController {
+    
+    // MARK: - Properties
+    
+    let peopleController = PeopleController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        peopleController.fetchPeople()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
