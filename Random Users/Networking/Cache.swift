@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias Bytes = Int
+
 class Cache<Key: Hashable, Value> {
     
     // MARK: - Public
@@ -18,7 +20,7 @@ class Cache<Key: Hashable, Value> {
             self.chronologicalKeys.append(key)
             
             self.storeSize += bytes
-            if self.storeSize > 10_000 {
+            if self.storeSize > self.limit {
                 self.evictOldEntries()
             }
         }
@@ -28,15 +30,22 @@ class Cache<Key: Hashable, Value> {
         queue.sync { store[key]?.value }
     }
     
+    // MARK: - Init
+    
+    init(size: Bytes) {
+        self.limit = size
+    }
+    
     // MARK: - Private
     
     private var store: [Key: (value: Value, size: Int)] = [:]
     private var chronologicalKeys: [Key] = []
     private let queue = DispatchQueue(label: "Cache Queue")
-    private var storeSize = 0 // Bytes
+    private var storeSize: Bytes = 0
+    private var limit: Bytes = 0
     
     private func evictOldEntries() {
-        while storeSize > 5_000 {
+        while storeSize > limit / 2 {
             guard !chronologicalKeys.isEmpty else { break }
             let key = chronologicalKeys.removeFirst()
             guard let value = store.removeValue(forKey: key) else { continue }

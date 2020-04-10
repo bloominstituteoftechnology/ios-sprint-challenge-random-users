@@ -20,8 +20,8 @@ class UsersTableViewController: UITableViewController {
     // MARK: - Private
     
     private var users: [User] = [] { didSet { tableView.reloadData() }}
-    private var thumbnailCache = Cache<URL, Data>()
-    private var imageCache = Cache<URL, Data>()
+    private var thumbnailCache = Cache<URL, Data>(size: 10_000)
+    private var imageCache = Cache<URL, Data>(size: 10_000)
     
     private func fetchUsers() {
         randomUserClient.fetchUsers { (result) in

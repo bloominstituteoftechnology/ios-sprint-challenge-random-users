@@ -8,38 +8,6 @@
 
 import Foundation
 
-struct UsersWrapper: Decodable {
-    let results: [User]
-}
-
-struct User: Decodable {
-    let name: Name
-    let email: String
-    let phone: String
-    let picture: Picture
-}
-
-struct Name: Decodable {
-    let title: String
-    let first: String
-    let last: String
-}
-
-struct Picture: Decodable {
-    let large: URL
-    let medium: URL
-    let thumbnail: URL
-}
-
-enum NetworkError: Error {
-    case clientError(Error)
-    case invalidResponseCode(Int)
-    case noData
-    case decodingError(Error)
-    case encodingError(Error)
-    case invalidData
-}
-
 class RandomUserClient {
     let url = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
     
