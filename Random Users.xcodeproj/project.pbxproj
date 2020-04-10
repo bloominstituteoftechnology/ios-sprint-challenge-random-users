@@ -17,6 +17,7 @@
 		9CBB07332440CDF400C8D51E /* PeopleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB07322440CDF400C8D51E /* PeopleController.swift */; };
 		9CBB07352440CF2B00C8D51E /* PeopleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB07342440CF2B00C8D51E /* PeopleTableViewController.swift */; };
 		9CBB07372440D24600C8D51E /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB07362440D24600C8D51E /* PersonTableViewCell.swift */; };
+		9CBB07392440D40800C8D51E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB07382440D40800C8D51E /* DetailViewController.swift */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		9CBB07322440CDF400C8D51E /* PeopleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleController.swift; sourceTree = "<group>"; };
 		9CBB07342440CF2B00C8D51E /* PeopleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewController.swift; sourceTree = "<group>"; };
 		9CBB07362440D24600C8D51E /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
+		9CBB07382440D40800C8D51E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				9CBB07342440CF2B00C8D51E /* PeopleTableViewController.swift */,
+				9CBB07382440D40800C8D51E /* DetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CBB07392440D40800C8D51E /* DetailViewController.swift in Sources */,
 				9CBB072B2440CB3A00C8D51E /* Person.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9CBB07332440CDF400C8D51E /* PeopleController.swift in Sources */,

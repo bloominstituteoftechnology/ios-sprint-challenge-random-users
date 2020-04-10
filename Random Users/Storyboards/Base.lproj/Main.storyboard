@@ -73,10 +73,10 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="106.47321428571428"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="9gT-JV-9me">
             <objects>
-                <viewController id="as8-qP-2lf" sceneMemberID="viewController">
+                <viewController id="as8-qP-2lf" customClass="DetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Iaw-Tc-OdR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -122,6 +122,12 @@
                         <viewLayoutGuide key="safeArea" id="feF-P0-X1P"/>
                     </view>
                     <navigationItem key="navigationItem" id="Fi0-7h-vDv"/>
+                    <connections>
+                        <outlet property="personEmail" destination="fqH-YL-f1K" id="IEU-eZ-mXU"/>
+                        <outlet property="personImage" destination="96D-0w-YTQ" id="ld8-gb-2AZ"/>
+                        <outlet property="personName" destination="BLb-Ae-RqN" id="YR0-Uq-b7F"/>
+                        <outlet property="personPhone" destination="oey-24-JYf" id="rdG-20-PHR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fVV-0L-hb0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
