@@ -1,5 +1,5 @@
 //
-//  RandomUsersTableViewController.swift
+//  UsersTableViewController.swift
 //  Random Users
 //
 //  Created by Shawn Gee on 4/10/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RandomUsersTableViewController: UITableViewController {
+class UsersTableViewController: UITableViewController {
 
     let randomUserClient = RandomUserClient()
     
@@ -43,8 +43,8 @@ class RandomUsersTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? RandomUserTableViewCell else {
-            fatalError("Could not cast cell as \(RandomUserTableViewCell.self)")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserTableViewCell else {
+            fatalError("Could not cast cell as \(UserTableViewCell.self)")
         }
         cell.cache = thumbnailCache
         cell.user = users[indexPath.row]

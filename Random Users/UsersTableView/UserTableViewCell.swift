@@ -1,5 +1,5 @@
 //
-//  RandomUserTableViewCell.swift
+//  UserTableViewCell.swift
 //  Random Users
 //
 //  Created by Shawn Gee on 4/10/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RandomUserTableViewCell: UITableViewCell {
+class UserTableViewCell: UITableViewCell {
     
     // MARK: - Public Properties
     

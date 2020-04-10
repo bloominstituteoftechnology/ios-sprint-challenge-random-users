@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		047947852440C35D0071A1B9 /* RandomUserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047947842440C35D0071A1B9 /* RandomUserClient.swift */; };
-		047947882440C7700071A1B9 /* RandomUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047947872440C7700071A1B9 /* RandomUsersTableViewController.swift */; };
+		047947882440C7700071A1B9 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047947872440C7700071A1B9 /* UsersTableViewController.swift */; };
 		0479478A2440CC420071A1B9 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047947892440CC420071A1B9 /* Cache.swift */; };
 		0479478C2440CC6D0071A1B9 /* FetchImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479478B2440CC6D0071A1B9 /* FetchImageOperation.swift */; };
-		0479478E2440CD550071A1B9 /* RandomUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479478D2440CD550071A1B9 /* RandomUserTableViewCell.swift */; };
+		0479478E2440CD550071A1B9 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479478D2440CD550071A1B9 /* UserTableViewCell.swift */; };
 		04F531BB2440D1B6005AF412 /* LoadImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F531BA2440D1B6005AF412 /* LoadImageOperation.swift */; };
+		04F531BD2440D965005AF412 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F531BC2440D965005AF412 /* UserDetailViewController.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -22,11 +23,12 @@
 
 /* Begin PBXFileReference section */
 		047947842440C35D0071A1B9 /* RandomUserClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserClient.swift; sourceTree = "<group>"; };
-		047947872440C7700071A1B9 /* RandomUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersTableViewController.swift; sourceTree = "<group>"; };
+		047947872440C7700071A1B9 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		047947892440CC420071A1B9 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		0479478B2440CC6D0071A1B9 /* FetchImageOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchImageOperation.swift; sourceTree = "<group>"; };
-		0479478D2440CD550071A1B9 /* RandomUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserTableViewCell.swift; sourceTree = "<group>"; };
+		0479478D2440CD550071A1B9 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		04F531BA2440D1B6005AF412 /* LoadImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImageOperation.swift; sourceTree = "<group>"; };
+		04F531BC2440D965005AF412 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -56,13 +58,13 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		04F531B92440CF70005AF412 /* RandomUsersTableView */ = {
+		04F531B92440CF70005AF412 /* UsersTableView */ = {
 			isa = PBXGroup;
 			children = (
-				047947872440C7700071A1B9 /* RandomUsersTableViewController.swift */,
-				0479478D2440CD550071A1B9 /* RandomUserTableViewCell.swift */,
+				047947872440C7700071A1B9 /* UsersTableViewController.swift */,
+				0479478D2440CD550071A1B9 /* UserTableViewCell.swift */,
 			);
-			path = RandomUsersTableView;
+			path = UsersTableView;
 			sourceTree = "<group>";
 		};
 		8ED6A97B2140178A00FC395A = {
@@ -85,7 +87,8 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A98B2140178A00FC395A /* Main.storyboard */,
-				04F531B92440CF70005AF412 /* RandomUsersTableView */,
+				04F531BC2440D965005AF412 /* UserDetailViewController.swift */,
+				04F531B92440CF70005AF412 /* UsersTableView */,
 				047947862440C3610071A1B9 /* Networking */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
@@ -187,10 +190,11 @@
 			files = (
 				047947852440C35D0071A1B9 /* RandomUserClient.swift in Sources */,
 				0479478A2440CC420071A1B9 /* Cache.swift in Sources */,
-				047947882440C7700071A1B9 /* RandomUsersTableViewController.swift in Sources */,
+				04F531BD2440D965005AF412 /* UserDetailViewController.swift in Sources */,
+				047947882440C7700071A1B9 /* UsersTableViewController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
-				0479478E2440CD550071A1B9 /* RandomUserTableViewCell.swift in Sources */,
+				0479478E2440CD550071A1B9 /* UserTableViewCell.swift in Sources */,
 				04F531BB2440D1B6005AF412 /* LoadImageOperation.swift in Sources */,
 				0479478C2440CC6D0071A1B9 /* FetchImageOperation.swift in Sources */,
 			);
