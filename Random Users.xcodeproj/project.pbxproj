@@ -18,6 +18,7 @@
 		9CBB07352440CF2B00C8D51E /* PeopleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB07342440CF2B00C8D51E /* PeopleTableViewController.swift */; };
 		9CBB07372440D24600C8D51E /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB07362440D24600C8D51E /* PersonTableViewCell.swift */; };
 		9CBB07392440D40800C8D51E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB07382440D40800C8D51E /* DetailViewController.swift */; };
+		9CBB073B2440DBDA00C8D51E /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB073A2440DBDA00C8D51E /* Cache.swift */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		9CBB07342440CF2B00C8D51E /* PeopleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewController.swift; sourceTree = "<group>"; };
 		9CBB07362440D24600C8D51E /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
 		9CBB07382440D40800C8D51E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		9CBB073A2440DBDA00C8D51E /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +96,7 @@
 			children = (
 				9CBB072A2440CB3A00C8D51E /* Person.swift */,
 				9CBB072F2440CD6100C8D51E /* Results.swift */,
+				9CBB073A2440DBDA00C8D51E /* Cache.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				9CBB07332440CDF400C8D51E /* PeopleController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				9CBB072E2440CC6500C8D51E /* Extensions.swift in Sources */,
+				9CBB073B2440DBDA00C8D51E /* Cache.swift in Sources */,
 				9CBB07352440CF2B00C8D51E /* PeopleTableViewController.swift in Sources */,
 				9CBB07372440D24600C8D51E /* PersonTableViewCell.swift in Sources */,
 				9CBB07302440CD6100C8D51E /* Results.swift in Sources */,
