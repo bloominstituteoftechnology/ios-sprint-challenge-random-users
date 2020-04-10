@@ -10,7 +10,7 @@ import Foundation
 
 class PeopleController {
     var people: [Person] = []
-    let baseURL: URL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=30")!
+    let baseURL: URL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=5000")!
     func fetchPeople(completion: @escaping (Error?) -> ()) {
         URLSession.shared.dataTask(with: baseURL) { d, r, e in
             if let error = e {

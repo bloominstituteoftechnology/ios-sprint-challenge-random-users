@@ -16,7 +16,9 @@ class PeopleTableViewController: UITableViewController {
     let photoFetchQueue = OperationQueue()
     let thumbCache = Cache<UUID, Data>()
     let largeCache = Cache<UUID, Data>()
-    private var fetchCache: [UUID : FetchPhotoOperation] = [ : ]
+    private var fetchThumbCache: [UUID : FetchPhotoOperation] = [ : ]
+    // Was only going to cache the fetchThumb ops but, just for safety
+    private var fetchLargeCache: [UUID : FetchPhotoOperation] = [ : ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,59 +53,26 @@ class PeopleTableViewController: UITableViewController {
         cell.id = person.id
         loadImage(forCell: cell, forItemAt: indexPath)
         
-
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let person = peopleController.people[indexPath.row]
-        fetchCache[person.id]?.cancel()
+        fetchThumbCache[person.id]?.cancel()
+        fetchLargeCache[person.id]?.cancel()
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
     
     // MARK: - Methods
     
     private func loadImage(forCell cell: PersonTableViewCell, forItemAt indexPath: IndexPath) {
             
         let person = peopleController.people[indexPath.item]
-    //         TODO: Implement image loading here
         
-        if let data = thumbCache.value(for: person.id),
-            let _ = largeCache.value(for: person.id){
+        
+        // Changed from checking person.id to cell.id
+        if let data = thumbCache.value(for: cell.id!),
+            let _ = largeCache.value(for: cell.id!){
             cell.personImage.image = UIImage(data: data)
             return
         }
@@ -139,8 +108,10 @@ class PeopleTableViewController: UITableViewController {
         OperationQueue.main.addOperation(lastOp)
             
             // Given that all other operations depend on fetching thumb, I'll only cancel this operation
-            if fetchCache[person.id] == nil {
-                fetchCache[person.id] = fetchThumbOp
+            if fetchThumbCache[person.id] == nil,
+                fetchLargeCache[person.id] == nil {
+                fetchThumbCache[person.id] = fetchThumbOp
+                fetchLargeCache[person.id] = fetchLargeOp
                 print("created a dictionary entry for id \(person.id)")
             }
             
