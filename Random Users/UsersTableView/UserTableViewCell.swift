@@ -34,6 +34,8 @@ class UserTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         loadImageOperation?.cancel()
         loadImageOperation = nil
+        
         user = nil
+        thumbnailCache = nil
     }
 }
