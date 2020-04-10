@@ -14,7 +14,8 @@ class PeopleTableViewController: UITableViewController {
     
     let peopleController = PeopleController()
     let photoFetchQueue = OperationQueue()
-    let cache = Cache<UUID, Data>()
+    let thumbCache = Cache<UUID, Data>()
+    let largeCache = Cache<UUID, Data>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,33 +96,39 @@ class PeopleTableViewController: UITableViewController {
         let person = peopleController.people[indexPath.item]
     //         TODO: Implement image loading here
         
-        if let data = cache.value(for: person.id) {
+        if let data = thumbCache.value(for: person.id),
+            let _ = largeCache.value(for: person.id){
             cell.personImage.image = UIImage(data: data)
             return
         }
         
-        let fetchOp = FetchPhotoOperation(personReference: person, requestType: .thumbnail)
+        let fetchThumbOp = FetchPhotoOperation(personReference: person, requestType: .thumbnail)
+        let fetchLargeOp = FetchPhotoOperation(personReference: person, requestType: .large)
         let storeCache = BlockOperation {
-            if let data = fetchOp.imageData {
+            if let thumbData = fetchThumbOp.imageData,
+                let largeData = fetchLargeOp.imageData {
                 print("Was able to get image data from fetch operation")
-                self.cache.cache(value: data, for: person.id)
+                self.thumbCache.cache(value: thumbData, for: person.id)
+                self.largeCache.cache(value: largeData, for: person.id)
             } else {
                 print("NO DATA TO STORE IN STORECAHCE OP")
             }
         }
-        storeCache.addDependency(fetchOp)
+        storeCache.addDependency(fetchThumbOp)
+        storeCache.addDependency(fetchLargeOp)
             
         let lastOp = BlockOperation {
             print("Last OP called.")
-            guard let data = fetchOp.imageData,
+            guard let data = fetchThumbOp.imageData,
                 cell.id == person.id else {
                     print("Couldn't cast cell and/or get data")
                     return
                 }
             cell.personImage.image = UIImage(data: data)
         }
-        lastOp.addDependency(fetchOp)
-        photoFetchQueue.addOperations([fetchOp, storeCache], waitUntilFinished: false)
+        lastOp.addDependency(fetchThumbOp)
+        lastOp.addDependency(fetchLargeOp)
+        photoFetchQueue.addOperations([fetchThumbOp, fetchLargeOp, storeCache], waitUntilFinished: false)
         OperationQueue.main.addOperation(lastOp)
             
             
