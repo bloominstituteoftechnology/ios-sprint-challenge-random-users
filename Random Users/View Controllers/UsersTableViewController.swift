@@ -59,7 +59,7 @@ class UsersTableViewController: UITableViewController {
     // MARK: - Private
     private func loadThumbnail(forCell cell: UserTableViewCell, forRowAt indexPath: IndexPath) {
         let user = users[indexPath.row]
-        let thumbReference = URL(string: user.picture.thumbnail)
+        //let thumbReference = URL(string: user.picture.thumbnail)
         
         if cache.value(forKey: user.email) != nil, let image = cache.value(forKey: user.email)?[0] {
             
@@ -84,6 +84,13 @@ class UsersTableViewController: UITableViewController {
                 let image = UIImage(data: data) {
             
                 cell.imageView?.image = image
+                
+                let name = user.name
+                let title = name.title
+                let first = name.first
+                let last = name.last
+                let fullName = "\(title.capitalized). \(first.capitalized) \(last.capitalized)"
+                cell.userNameLabel.text = fullName
                 return
             }
         }

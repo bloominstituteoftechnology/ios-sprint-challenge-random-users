@@ -33,7 +33,9 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7jl-hd-VNs">
                                             <rect key="frame" x="8" y="4.5" width="52" height="52"/>
                                             <constraints>
+                                                <constraint firstAttribute="height" constant="52" id="mu9-HB-VZl"/>
                                                 <constraint firstAttribute="width" secondItem="7jl-hd-VNs" secondAttribute="height" multiplier="1:1" id="nse-mP-pEh"/>
+                                                <constraint firstAttribute="width" constant="52" id="qUM-wg-b8c"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>

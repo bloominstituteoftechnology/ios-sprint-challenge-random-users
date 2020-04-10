@@ -11,11 +11,11 @@ import UIKit
 class UserTableViewCell: UITableViewCell {
     
     // MARK: - Properties
-    var user: User? {
-        didSet {
-            updateViews()
-        }
-    }
+    var user: User? //{
+//        didSet {
+//            updateViews()
+//        }
+//    }
     
     // MARK: - IBOutlets
     @IBOutlet weak var userThumbImageView: UIImageView!
@@ -23,18 +23,18 @@ class UserTableViewCell: UITableViewCell {
     
     // MARK: - Reuse
     override func prepareForReuse() {
-        userThumbImageView.image = #imageLiteral(resourceName: "MarsPlaceholder")
-        userNameLabel.text = ""
+        //userThumbImageView.image = #imageLiteral(resourceName: "Lambda_Logo_Full")
+        //userNameLabel.text = ""
         super.prepareForReuse()
     }
     
     // MARK: - View Lifecycle
-    func updateViews() {
-        guard let name = user?.name else { return }
-        let title = name.title
-        let first = name.first
-        let last = name.last
-        let fullName = "\(title.capitalized). \(first.capitalized) \(last.capitalized)"
-        userNameLabel.text = fullName
-    }
+//    func updateViews() {
+//        guard let name = user?.name else { return }
+//        let title = name.title
+//        let first = name.first
+//        let last = name.last
+//        let fullName = "\(title.capitalized). \(first.capitalized) \(last.capitalized)"
+//        userNameLabel.text = fullName
+//    }
 }
