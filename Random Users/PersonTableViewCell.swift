@@ -16,6 +16,8 @@ class PersonTableViewCell: UITableViewCell {
         }
     }
     
+    var originalIndexPath = IndexPath()
+
     // MARK: - Outlets
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!

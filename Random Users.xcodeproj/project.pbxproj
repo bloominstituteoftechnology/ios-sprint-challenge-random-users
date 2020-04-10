@@ -18,6 +18,8 @@
 		925BC1EF2440CE5E0066E6EE /* FetchRandomUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925BC1EE2440CE5E0066E6EE /* FetchRandomUser.swift */; };
 		925BC1F22440CFD60066E6EE /* RandomUserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925BC1F12440CFD60066E6EE /* RandomUserClient.swift */; };
 		925BC1F42440DC340066E6EE /* RandomUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925BC1F32440DC340066E6EE /* RandomUserController.swift */; };
+		925BC1F62440E6860066E6EE /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925BC1F52440E6860066E6EE /* Cache.swift */; };
+		925BC1F82440E6F20066E6EE /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925BC1F72440E6F20066E6EE /* FetchPhotoOperation.swift */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +37,8 @@
 		925BC1EE2440CE5E0066E6EE /* FetchRandomUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRandomUser.swift; sourceTree = "<group>"; };
 		925BC1F12440CFD60066E6EE /* RandomUserClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserClient.swift; sourceTree = "<group>"; };
 		925BC1F32440DC340066E6EE /* RandomUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserController.swift; sourceTree = "<group>"; };
+		925BC1F52440E6860066E6EE /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		925BC1F72440E6F20066E6EE /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,14 +73,15 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+				925BC1F52440E6860066E6EE /* Cache.swift */,
 				925BC1EB2440C5550066E6EE /* Controllers */,
 				925BC1F02440CFBF0066E6EE /* Networking */,
 				9D5CCA56214231E400224681 /* Operations */,
 				925BC1E52440C5110066E6EE /* PersonTableViewCell.swift */,
-				925BC1EC2440C9BA0066E6EE /* User.swift */,
+				925BC1F32440DC340066E6EE /* RandomUserController.swift */,
 				9D5CCA522142305600224681 /* Resources */,
 				925BC1E42440C3F10066E6EE /* Storyboards */,
-				925BC1F32440DC340066E6EE /* RandomUserController.swift */,
+				925BC1EC2440C9BA0066E6EE /* User.swift */,
 			);
 			path = "Random Users";
 			sourceTree = "<group>";
@@ -120,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				925BC1F72440E6F20066E6EE /* FetchPhotoOperation.swift */,
 				925BC1EE2440CE5E0066E6EE /* FetchRandomUser.swift */,
 			);
 			path = Operations;
@@ -203,6 +209,8 @@
 				925BC1E62440C5110066E6EE /* PersonTableViewCell.swift in Sources */,
 				925BC1EF2440CE5E0066E6EE /* FetchRandomUser.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				925BC1F62440E6860066E6EE /* Cache.swift in Sources */,
+				925BC1F82440E6F20066E6EE /* FetchPhotoOperation.swift in Sources */,
 				925BC1E82440C5300066E6EE /* ContactsTableViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				925BC1ED2440C9BA0066E6EE /* User.swift in Sources */,

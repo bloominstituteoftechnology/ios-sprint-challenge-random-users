@@ -31,8 +31,8 @@
                                                 <constraint firstAttribute="width" secondItem="Oms-9z-iqI" secondAttribute="height" multiplier="1:1" id="GcB-0P-I5a"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHb-68-1L6">
-                                            <rect key="frame" x="68" y="11.5" width="285" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHb-68-1L6">
+                                            <rect key="frame" x="68" y="11.5" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -40,6 +40,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Oms-9z-iqI" firstAttribute="leading" secondItem="fRx-88-eiC" secondAttribute="leading" constant="16" id="0qp-NT-13W"/>
+                                        <constraint firstItem="yHb-68-1L6" firstAttribute="leading" secondItem="Oms-9z-iqI" secondAttribute="trailing" constant="8.5" id="3yI-Ql-gN2"/>
                                         <constraint firstAttribute="bottom" secondItem="Oms-9z-iqI" secondAttribute="bottom" id="mHS-4G-ZL9"/>
                                         <constraint firstItem="yHb-68-1L6" firstAttribute="centerY" secondItem="fRx-88-eiC" secondAttribute="centerY" id="sjk-9X-uVt"/>
                                         <constraint firstItem="Oms-9z-iqI" firstAttribute="top" secondItem="fRx-88-eiC" secondAttribute="top" id="tOa-JH-lkg"/>

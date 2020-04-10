@@ -20,6 +20,10 @@ class ContactsTableViewController: UITableViewController {
         }
     }
 
+    private var thumbnailCache = Cache<Int, UIImage>()
+    private let photoFetchQueue = OperationQueue()
+    private var fetchOperations: [Int: FetchPhotoOperation] = [:]
+
     // MARK: - Outlets
     
     // MARK: - Actions
@@ -67,7 +71,7 @@ class ContactsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PersonCell", for: indexPath) as? PersonTableViewCell ?? PersonTableViewCell()
         
         cell.user = users[indexPath.item]
-//        loadImage(forCell: cell, forItemAt: indexPath) // FIXME:
+        loadImage(forCell: cell, forItemAt: indexPath) // FIXME:
         
         return cell
     }
@@ -86,4 +90,101 @@ class ContactsTableViewController: UITableViewController {
             }
         }
     }
-}
+
+    // MARK: - Private
+    
+    private func loadImage(forCell cell: PersonTableViewCell, forItemAt indexPath: IndexPath) {
+        
+        // Cache the indexPath for fetchImage completion to know whether cell has moved
+        cell.originalIndexPath = indexPath
+        let cachedIndexPath = cell.originalIndexPath
+        
+        // Which photo information do we need to load?
+        let thumbnailURL = users[cachedIndexPath.item].picture.thumbnail
+
+        // Is the image cached? ... avoiding a network lookup.
+        if let image = thumbnailCache.value(for: cachedIndexPath.item) {
+            print("thumbnail Cached Image: \(cachedIndexPath.item)")
+            cell.thumbnailImageView.image = image
+            return
+        }
+        
+        // Don't have image. Need to retrieve it.
+        // ---- Operation to grab photo ---------------------------
+        let fetchPhotoOp = FetchPhotoOperation(imageURL: URL(string: thumbnailURL)!)
+        fetchOperations[cachedIndexPath.item] = fetchPhotoOp
+        
+        // ---- Operation to cache photo --------------------------
+        let cachePhotoOp = BlockOperation {
+            if let image = fetchPhotoOp.imageData {
+                // TODO: ? Is this tread safe? Yes, because we're not going to a different thread.
+                self.thumbnailCache.cache(value: image, for: cachedIndexPath.item)
+            }
+        }
+        
+        // ---- Operation to place photo in cell ------------------
+        let setImageOp = BlockOperation {
+            if cachedIndexPath != cell.originalIndexPath {
+                // Cell was reused before image finished loading
+                // print("\(cachedIndexPath) != \(cell.indexPath)")
+                return
+            }
+                
+            if let image = fetchPhotoOp.imageData {
+                DispatchQueue.main.async {
+                    cell.thumbnailImageView.image = image
+                }
+            }
+        }
+        
+        /// TODO: ? Do I need have an operation that removes FetchPhotoOperation from fetchOperations? And have 2 dependancies? setImageOp and cachePhotoOp. Or does overwriting it at a later time cause it to be garbage collected?
+        
+        cachePhotoOp.addDependency(fetchPhotoOp)
+        setImageOp.addDependency(fetchPhotoOp)
+        
+        photoFetchQueue.addOperations([fetchPhotoOp, cachePhotoOp, setImageOp], waitUntilFinished: false)
+    }
+
+    /// Fetch an image from the Internet via a URL
+    /// - Parameters:
+    ///   - imageUrl: A secure URL to the image you want to load
+    ///   - completion: What do you want done with the downloaded image?
+    private func fetchImage(of imageUrl: URL, completion: @escaping (Result<UIImage, NetworkError>) -> Void) {
+        
+        var request = URLRequest(url: imageUrl)
+        request.httpMethod = HTTPMethod.get.rawValue
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                NSLog("Error receiving mars image data: \(error)")
+                completion(.failure(.otherNetworkError))
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("nasa.gov responded with no image data.")
+                completion(.failure(.badData))
+                return
+            }
+            
+            guard let image = UIImage(data: data) else {
+                NSLog("Image data is incomplete or corrupt.")
+                completion(.failure(.badData))
+                return
+            }
+
+            completion(.success(image))
+
+        }.resume()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        // What photo were we trying to load
+// FIXME: Is this an issue I'm just using indexPath.item?      let photoReference = photoReferences[indexPath.item]
+
+        if let fetchPhotoOperation = fetchOperations[indexPath.item] {
+            // A photo is trying to be loaded.
+            fetchPhotoOperation.cancel()
+        }
+    }}
