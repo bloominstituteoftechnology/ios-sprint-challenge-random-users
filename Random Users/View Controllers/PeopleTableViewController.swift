@@ -44,9 +44,11 @@ class PeopleTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "personCell", for: indexPath) as? PersonTableViewCell else { fatalError() }
 
         // Configure the cell...
-        
-        cell.nameLabel.text = peopleController.people[indexPath.row].fullName()
+        let person = peopleController.people[indexPath.row]
+        cell.nameLabel.text = person.fullName()
+        cell.id = person.id
         loadImage(forCell: cell, forItemAt: indexPath)
+        
 
         return cell
     }
@@ -92,7 +94,12 @@ class PeopleTableViewController: UITableViewController {
             
         let person = peopleController.people[indexPath.item]
     //         TODO: Implement image loading here
-            
+        
+        if let data = cache.value(for: person.id) {
+            cell.personImage.image = UIImage(data: data)
+            return
+        }
+        
         let fetchOp = FetchPhotoOperation(personReference: person, requestType: .thumbnail)
         let storeCache = BlockOperation {
             if let data = fetchOp.imageData {
@@ -106,17 +113,14 @@ class PeopleTableViewController: UITableViewController {
             
         let lastOp = BlockOperation {
             print("Last OP called.")
-            guard let data = fetchOp.imageData else {
+            guard let data = fetchOp.imageData,
+                cell.id == person.id else {
                     print("Couldn't cast cell and/or get data")
                     return
                 }
-//                cell.imageView.image = UIImage(data: data)
             cell.personImage.image = UIImage(data: data)
         }
         lastOp.addDependency(fetchOp)
-        
-        
-        
         photoFetchQueue.addOperations([fetchOp, storeCache], waitUntilFinished: false)
         OperationQueue.main.addOperation(lastOp)
             

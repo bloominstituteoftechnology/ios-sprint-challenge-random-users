@@ -15,6 +15,8 @@ class PersonTableViewCell: UITableViewCell {
     @IBOutlet weak var personImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
+    var id: UUID?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
