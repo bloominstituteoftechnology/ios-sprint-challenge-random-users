@@ -30,7 +30,5 @@ class PersonTableViewCell: UITableViewCell {
         guard let user = user else { return }
         
         nameLabel.text = user.name.fullName
-        
-        // FIXME: thumbnailImageView
     }
 }

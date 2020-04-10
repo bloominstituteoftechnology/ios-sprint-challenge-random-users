@@ -17,6 +17,12 @@ class PersonViewController: UIViewController {
         }
     }
     
+    var largeImage: UIImage? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     // MARK: - Outlets
     @IBOutlet weak var portraitImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -37,7 +43,8 @@ class PersonViewController: UIViewController {
             nameLabel?.text = person.name.fullName
             phoneLabel?.text = person.phone
             emailLabel?.text = person.email
-            // FIXME: Photo 
+
+            portraitImageView?.image = largeImage
         }
     }
 }

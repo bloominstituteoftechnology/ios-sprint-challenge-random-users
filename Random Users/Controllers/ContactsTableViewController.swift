@@ -24,6 +24,10 @@ class ContactsTableViewController: UITableViewController {
     private let photoFetchQueue = OperationQueue()
     private var fetchOperations: [Int: FetchPhotoOperation] = [:]
 
+    private var largePhotoCache = Cache<Int, UIImage>()
+    private let largePhotoFetchQueue = OperationQueue()
+    private var largePhotoFetchOperations: [Int: FetchPhotoOperation] = [:]
+
     // MARK: - Outlets
     
     // MARK: - Actions
@@ -71,7 +75,7 @@ class ContactsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PersonCell", for: indexPath) as? PersonTableViewCell ?? PersonTableViewCell()
         
         cell.user = users[indexPath.item]
-        loadImage(forCell: cell, forItemAt: indexPath) // FIXME:
+        loadImage(forCell: cell, forItemAt: indexPath)
         
         return cell
     }
@@ -86,6 +90,7 @@ class ContactsTableViewController: UITableViewController {
             if let personVC = segue.destination as? PersonViewController {
                 if let indexPath = tableView.indexPathForSelectedRow {
                     personVC.person = users[indexPath.row]
+                    loadImage(forPersonViewController: personVC, forItemAt: indexPath)
                 }
             }
         }
@@ -93,6 +98,7 @@ class ContactsTableViewController: UITableViewController {
 
     // MARK: - Private
     
+    // For the thumbnail
     private func loadImage(forCell cell: PersonTableViewCell, forItemAt indexPath: IndexPath) {
         
         // Cache the indexPath for fetchImage completion to know whether cell has moved
@@ -143,6 +149,47 @@ class ContactsTableViewController: UITableViewController {
         setImageOp.addDependency(fetchPhotoOp)
         
         photoFetchQueue.addOperations([fetchPhotoOp, cachePhotoOp, setImageOp], waitUntilFinished: false)
+    }
+    
+    // For the large photo
+    private func loadImage(forPersonViewController vc: PersonViewController, forItemAt indexPath: IndexPath) {
+        
+        // Which photo information do we need to load?
+        let largePhotoURL = users[indexPath.item].picture.large
+
+        // Is the image cached? ... avoiding a network lookup.
+        if let image = largePhotoCache.value(for: indexPath.item) {
+            print("large image Cached Image: \(indexPath.item)")
+            vc.largeImage = image
+            return
+        }
+        
+        // Don't have image. Need to retrieve it.
+        // ---- Operation to grab photo ---------------------------
+        let fetchPhotoOp = FetchPhotoOperation(imageURL: URL(string: largePhotoURL)!)
+        largePhotoFetchOperations[indexPath.item] = fetchPhotoOp
+        
+        // ---- Operation to cache photo --------------------------
+        let cachePhotoOp = BlockOperation {
+            if let image = fetchPhotoOp.imageData {
+                // TODO: ? Is this tread safe? Yes, because we're not going to a different thread.
+                self.largePhotoCache.cache(value: image, for: indexPath.item)
+            }
+        }
+        
+        // ---- Operation to place photo in cell ------------------
+        let setImageOp = BlockOperation {
+            if let image = fetchPhotoOp.imageData {
+                DispatchQueue.main.async {
+                    vc.largeImage = image
+                }
+            }
+        }
+        
+        cachePhotoOp.addDependency(fetchPhotoOp)
+        setImageOp.addDependency(fetchPhotoOp)
+        
+        largePhotoFetchQueue.addOperations([fetchPhotoOp, cachePhotoOp, setImageOp], waitUntilFinished: false)
     }
 
     /// Fetch an image from the Internet via a URL
