@@ -19,7 +19,15 @@ class PeopleController {
             }
             
             if let data = d {
-                print("got data.")
+                let decoder = JSONDecoder()
+                do {
+                    let results = try decoder.decode(Results.self, from: data)
+                    self.people = results.results
+                } catch {
+                    NSLog("Couldn't decode received data.")
+                    return
+                }
+                print("Got to end of data task.")
                 return
             }
         }.resume()
