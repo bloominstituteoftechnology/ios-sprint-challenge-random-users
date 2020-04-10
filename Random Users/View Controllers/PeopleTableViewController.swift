@@ -14,6 +14,7 @@ class PeopleTableViewController: UITableViewController {
     
     let peopleController = PeopleController()
     let photoFetchQueue = OperationQueue()
+    let cache = Cache<UUID, Data>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,22 +97,21 @@ class PeopleTableViewController: UITableViewController {
         let storeCache = BlockOperation {
             if let data = fetchOp.imageData {
                 print("Was able to get image data from fetch operation")
-//                self.cache.cache(value: data, for: photoReference.id)
+                self.cache.cache(value: data, for: person.id)
             } else {
                 print("NO DATA TO STORE IN STORECAHCE OP")
             }
-                
         }
         storeCache.addDependency(fetchOp)
             
         let lastOp = BlockOperation {
             print("Last OP called.")
-//            guard let data = fetchOp.imageData,
-//                    cell.photoId == photoReference.id else {
-//                    print("Couldn't cast cell and/or get data")
-//                    return
-//                }
+            guard let data = fetchOp.imageData else {
+                    print("Couldn't cast cell and/or get data")
+                    return
+                }
 //                cell.imageView.image = UIImage(data: data)
+            cell.personImage.image = UIImage(data: data)
         }
         lastOp.addDependency(fetchOp)
         
