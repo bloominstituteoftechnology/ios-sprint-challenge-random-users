@@ -25,6 +25,7 @@ class FetchPhotoOperation: ConcurrentOperation {
     }
     
     override func cancel() {
+        loadImage()
         dataTask?.cancel()
     }
     

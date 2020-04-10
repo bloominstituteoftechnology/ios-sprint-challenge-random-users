@@ -27,8 +27,7 @@ class ContactTableViewCell: UITableViewCell {
     
     func updateViews() {
         guard let contact = contact else { return }
-        guard let largeImageData = try? Data(contentsOf: contact.largePicture) else { fatalError() }
-        contactImage.image = UIImage(data: largeImageData)
         contactName.text = contact.name
+        contactImage.layer.cornerRadius = self.contactImage.frame.size.width / 2
     }
 }

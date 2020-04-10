@@ -45,7 +45,7 @@ class ContactsTableViewController: UITableViewController {
         if let data = cache.value(for: contact.name) {
             DispatchQueue.main.async {
                 if let image = UIImage(data: data) {
-                    cell.imageView?.image = image
+                    cell.contactImage.image = image
                 }
             }
         }
@@ -61,7 +61,7 @@ class ContactsTableViewController: UITableViewController {
         let completionOperation = BlockOperation {
             if let _ = self.tableView.indexPath(for: cell) {
                 if let data = fetchPhotoOperation.imageData {
-                    cell.imageView?.image = UIImage(data: data)
+                    cell.contactImage.image = UIImage(data: data)
                 } else {
                     return
                 }
