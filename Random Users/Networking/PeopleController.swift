@@ -11,10 +11,11 @@ import Foundation
 class PeopleController {
     var people: [Person] = []
     let baseURL: URL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=10")!
-    func fetchPeople() {
+    func fetchPeople(completion: @escaping (Error?) -> ()) {
         URLSession.shared.dataTask(with: baseURL) { d, r, e in
             if let error = e {
                 NSLog("Error fetching people : \(error)")
+                completion(error)
                 return
             }
             
@@ -25,9 +26,11 @@ class PeopleController {
                     self.people = results.results
                 } catch {
                     NSLog("Couldn't decode received data.")
+                    completion(error)
                     return
                 }
-                print("Got to end of data task.")
+                print("Got to end of data unwrapping.")
+                completion(nil)
                 return
             }
         }.resume()
