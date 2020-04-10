@@ -10,20 +10,32 @@ import UIKit
 
 class UsersTableViewController: UITableViewController {
 
-    let randomUserClient = RandomUserClient()
+    // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchUsers()
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+    }
+    
+    // MARK: - Actions
+    
+    @objc private func refresh() {
+        fetchUsers {
+            self.refreshControl?.endRefreshing()
+        }
     }
     
     // MARK: - Private
     
+    private let randomUserClient = RandomUserClient()
     private var users: [User] = [] { didSet { tableView.reloadData() }}
+    
     private var thumbnailCache = Cache<URL, Data>(size: 10_000)
     private var imageCache = Cache<URL, Data>(size: 10_000)
     
-    private func fetchUsers() {
+    private func fetchUsers(completion: @escaping () -> Void = {}) {
         randomUserClient.fetchUsers { (result) in
             DispatchQueue.main.async {
                 switch result {
@@ -32,6 +44,7 @@ class UsersTableViewController: UITableViewController {
                 case .failure(let error):
                     print(error)
                 }
+                completion()
             }
         }
     }
