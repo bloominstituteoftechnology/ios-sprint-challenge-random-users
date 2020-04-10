@@ -8,20 +8,24 @@
 
 import Foundation
 
-struct User: Codable {
-//    let name: Name
-    let email: String
-//    let phone: String
-//    let picture: Picture
+struct Wrapper: Decodable {
+    let results: [User]
 }
 
-struct Name: Codable {
+struct User: Decodable {
+    let name: Name
+    let email: String
+    let phone: String
+    let picture: Picture
+}
+
+struct Name: Decodable {
     let title: String
     let first: String
     let last: String
 }
 
-struct Picture: Codable {
+struct Picture: Decodable {
     let large: URL
     let medium: URL
     let thumbnail: URL
@@ -57,8 +61,8 @@ class RandomUserClient {
             }
             
             do {
-                let json = try JSONDecoder().decode([String: [User]].self, from: data)
-                guard let users = json["results"] else { throw NSError(domain: "No value in json dict for results key", code: 1) }
+                let wrapper = try JSONDecoder().decode(Wrapper.self, from: data)
+                let users = wrapper.results
                 completion(.success(users))
             } catch {
                 completion(.failure(.decodingError(error)))
