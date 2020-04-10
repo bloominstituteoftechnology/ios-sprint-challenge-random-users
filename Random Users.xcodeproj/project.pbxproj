@@ -17,6 +17,9 @@
 		BB8A71E42440C700009466B4 /* UsersDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8A71E32440C700009466B4 /* UsersDetailViewController.swift */; };
 		BB8A71E62440C75B009466B4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8A71E52440C75B009466B4 /* User.swift */; };
 		BB8A71E82440C7BF009466B4 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8A71E72440C7BF009466B4 /* UserController.swift */; };
+		BB8A71EA2440CA98009466B4 /* FetchUsersOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8A71E92440CA98009466B4 /* FetchUsersOperation.swift */; };
+		BB8A71EC2440CC1B009466B4 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8A71EB2440CC1B009466B4 /* Name.swift */; };
+		BB8A71EE2440CCD3009466B4 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8A71ED2440CCD3009466B4 /* Picture.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		BB8A71E32440C700009466B4 /* UsersDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDetailViewController.swift; sourceTree = "<group>"; };
 		BB8A71E52440C75B009466B4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BB8A71E72440C7BF009466B4 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		BB8A71E92440CA98009466B4 /* FetchUsersOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUsersOperation.swift; sourceTree = "<group>"; };
+		BB8A71EB2440CC1B009466B4 /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Name.swift; sourceTree = "<group>"; };
+		BB8A71ED2440CCD3009466B4 /* Picture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				BB8A71E92440CA98009466B4 /* FetchUsersOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -123,6 +130,8 @@
 			isa = PBXGroup;
 			children = (
 				BB8A71E52440C75B009466B4 /* User.swift */,
+				BB8A71EB2440CC1B009466B4 /* Name.swift */,
+				BB8A71ED2440CCD3009466B4 /* Picture.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -199,10 +208,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				BB8A71EA2440CA98009466B4 /* FetchUsersOperation.swift in Sources */,
 				BB8A71E02440C6D2009466B4 /* UserTableViewCell.swift in Sources */,
 				BB8A71E62440C75B009466B4 /* User.swift in Sources */,
 				BB8A71E22440C6ED009466B4 /* UsersTableViewController.swift in Sources */,
 				BB8A71E82440C7BF009466B4 /* UserController.swift in Sources */,
+				BB8A71EE2440CCD3009466B4 /* Picture.swift in Sources */,
+				BB8A71EC2440CC1B009466B4 /* Name.swift in Sources */,
 				BB8A71E42440C700009466B4 /* UsersDetailViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 			);

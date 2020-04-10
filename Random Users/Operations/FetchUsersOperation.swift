@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  FetchUsersOperation.swift
 //  Random Users
 //
 //  Created by Lambda_School_Loaner_259 on 4/10/20.
@@ -8,9 +8,6 @@
 
 import Foundation
 
-struct User: Codable {
-    let name: Name
-    let picture: Picture
-    let phone: String
-    let email: String
+class FetchUsersOperation: ConcurrentOperation {
+    
 }
