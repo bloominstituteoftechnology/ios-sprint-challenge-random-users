@@ -32,8 +32,8 @@ class ContactController {
             }
             
             do {
-                let contact = try JSONDecoder().decode(Contact.self, from: data)
-                self.contacts.append(contact)
+                let contacts = try JSONDecoder().decode(ContactResults.self, from: data)
+                self.contacts = contacts.results
             } catch {
                 NSLog("Error decoding contact JSON: \(error)")
                 completion(error)

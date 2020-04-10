@@ -9,7 +9,7 @@
 import UIKit
 
 class ContactTableViewCell: UITableViewCell {
-
+    
     // MARK: Outlets
     
     @IBOutlet weak var contactImage: UIImageView!
@@ -17,5 +17,18 @@ class ContactTableViewCell: UITableViewCell {
     
     // MARK: Properties
     
-    var contact: Contact?
+    var contact: Contact? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    // MARK: - Actions
+    
+    func updateViews() {
+        guard let contact = contact else { return }
+        guard let largeImageData = try? Data(contentsOf: contact.largePicture) else { fatalError() }
+        contactImage.image = UIImage(data: largeImageData)
+        contactName.text = contact.name
+    }
 }
