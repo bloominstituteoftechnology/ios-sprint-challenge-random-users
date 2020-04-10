@@ -17,6 +17,10 @@ class ContactDetailViewController: UIViewController {
     @IBOutlet weak var contactNumber: UILabel!
     @IBOutlet weak var conctactEmail: UILabel!
     
+    // MARK: Properties
+    
+    var contact: Contact?
+    
     // MARK: View Lifecycle
 
     override func viewDidLoad() {

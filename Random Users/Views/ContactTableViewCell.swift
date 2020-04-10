@@ -14,4 +14,8 @@ class ContactTableViewCell: UITableViewCell {
     
     @IBOutlet weak var contactImage: UIImageView!
     @IBOutlet weak var contactName: UILabel!
+    
+    // MARK: Properties
+    
+    var contact: Contact?
 }
