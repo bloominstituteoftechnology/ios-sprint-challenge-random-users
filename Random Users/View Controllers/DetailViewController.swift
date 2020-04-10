@@ -15,10 +15,17 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var personName: UILabel!
     @IBOutlet weak var personPhone: UILabel!
     @IBOutlet weak var personEmail: UILabel!
+    
+    // MARK: - Properties
+    var person: Person? {
+        didSet {
+            updateViews()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateViews()
         // Do any additional setup after loading the view.
     }
     
@@ -33,4 +40,15 @@ class DetailViewController: UIViewController {
     }
     */
 
+    // MARK: - Methods
+    
+    private func updateViews() {
+        if isViewLoaded {
+            guard let person = person else { return }
+            personName.text = person.fullName()
+            personEmail.text = person.email
+            personPhone.text = person.phone
+        }
+    }
+    
 }

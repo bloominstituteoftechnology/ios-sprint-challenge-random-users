@@ -89,6 +89,12 @@ class PeopleTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "ViewUserShowSegue" {
+            guard let detailVC = segue.destination as? DetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow else { fatalError() }
+            detailVC.person = peopleController.people[indexPath.row]
+        }
+        
     }
 
 }
