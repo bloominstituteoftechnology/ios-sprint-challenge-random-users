@@ -24,7 +24,7 @@
 		047947872440C7700071A1B9 /* RandomUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersTableViewController.swift; sourceTree = "<group>"; };
 		047947892440CC420071A1B9 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		0479478B2440CC6D0071A1B9 /* FetchImageOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchImageOperation.swift; sourceTree = "<group>"; };
-		0479478D2440CD550071A1B9 /* RandomUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RandomUserTableViewCell.swift; path = Networking/RandomUserTableViewCell.swift; sourceTree = "<group>"; };
+		0479478D2440CD550071A1B9 /* RandomUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserTableViewCell.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -54,6 +54,15 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+		04F531B92440CF70005AF412 /* RandomUsersTableView */ = {
+			isa = PBXGroup;
+			children = (
+				047947872440C7700071A1B9 /* RandomUsersTableViewController.swift */,
+				0479478D2440CD550071A1B9 /* RandomUserTableViewCell.swift */,
+			);
+			path = RandomUsersTableView;
+			sourceTree = "<group>";
+		};
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
@@ -73,9 +82,8 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
-				0479478D2440CD550071A1B9 /* RandomUserTableViewCell.swift */,
 				8ED6A98B2140178A00FC395A /* Main.storyboard */,
-				047947872440C7700071A1B9 /* RandomUsersTableViewController.swift */,
+				04F531B92440CF70005AF412 /* RandomUsersTableView */,
 				047947862440C3610071A1B9 /* Networking */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,

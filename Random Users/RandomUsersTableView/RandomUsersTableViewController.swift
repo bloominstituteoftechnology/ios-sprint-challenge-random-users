@@ -14,6 +14,14 @@ class RandomUsersTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchUsers()
+    }
+    
+    // MARK: - Private
+    
+    private var users: [User] = []
+    
+    private func fetchUsers() {
         randomUserClient.fetchUsers { (result) in
             switch result {
             case .success(let users):
@@ -22,34 +30,25 @@ class RandomUsersTableViewController: UITableViewController {
                 print(error)
             }
         }
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return users.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? RandomUserTableViewCell else {
+            fatalError("Could not cast cell as \(RandomUserTableViewCell.self)")
+        }
 
-        // Configure the cell...
+        cell.user = users[indexPath.row]
 
         return cell
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.
