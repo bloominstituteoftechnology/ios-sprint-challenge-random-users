@@ -12,7 +12,7 @@ class UserController {
     
     // MARK: - Properties
     let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
-    var users: [User] = []
+    //var users: [User] = []
     
     
     // MARK: - CRUD
@@ -38,9 +38,12 @@ class UserController {
             
             do {
                 let decoder = JSONDecoder()
-                let decodedData = try decoder.decode([User].self, from: data)
-                self.users = decodedData
-                completion(decodedData, nil)
+                let decodedData = try decoder.decode(Result.self, from: data)
+                //self.users = decodedData
+                //let values = Array(decodedData.values).first
+                let values = decodedData.results
+                
+                completion(values, nil)
             } catch {
                 completion(nil, error)
             }

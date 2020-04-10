@@ -21,9 +21,20 @@ class UserTableViewCell: UITableViewCell {
     @IBOutlet weak var userThumbImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     
+    // MARK: - Reuse
+    override func prepareForReuse() {
+        userThumbImageView.image = #imageLiteral(resourceName: "MarsPlaceholder")
+        userNameLabel.text = ""
+        super.prepareForReuse()
+    }
     
     // MARK: - View Lifecycle
     func updateViews() {
-        
+        guard let name = user?.name else { return }
+        let title = name.title
+        let first = name.first
+        let last = name.last
+        let fullName = "\(title.capitalized). \(first.capitalized) \(last.capitalized)"
+        userNameLabel.text = fullName
     }
 }

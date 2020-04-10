@@ -20,6 +20,8 @@
 		BB8A71EA2440CA98009466B4 /* FetchUsersOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8A71E92440CA98009466B4 /* FetchUsersOperation.swift */; };
 		BB8A71EC2440CC1B009466B4 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8A71EB2440CC1B009466B4 /* Name.swift */; };
 		BB8A71EE2440CCD3009466B4 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8A71ED2440CCD3009466B4 /* Picture.swift */; };
+		BB8A71F02440DCA5009466B4 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8A71EF2440DCA5009466B4 /* Result.swift */; };
+		BB8A71F22440E262009466B4 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8A71F12440E262009466B4 /* Cache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		BB8A71E92440CA98009466B4 /* FetchUsersOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUsersOperation.swift; sourceTree = "<group>"; };
 		BB8A71EB2440CC1B009466B4 /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Name.swift; sourceTree = "<group>"; };
 		BB8A71ED2440CCD3009466B4 /* Picture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
+		BB8A71EF2440DCA5009466B4 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		BB8A71F12440E262009466B4 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,7 @@
 				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
 				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
 				8ED6A9932140178C00FC395A /* Info.plist */,
+				BB8A71F12440E262009466B4 /* Cache.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -132,6 +137,7 @@
 				BB8A71E52440C75B009466B4 /* User.swift */,
 				BB8A71EB2440CC1B009466B4 /* Name.swift */,
 				BB8A71ED2440CCD3009466B4 /* Picture.swift */,
+				BB8A71EF2440DCA5009466B4 /* Result.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -217,6 +223,8 @@
 				BB8A71EC2440CC1B009466B4 /* Name.swift in Sources */,
 				BB8A71E42440C700009466B4 /* UsersDetailViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				BB8A71F22440E262009466B4 /* Cache.swift in Sources */,
+				BB8A71F02440DCA5009466B4 /* Result.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
