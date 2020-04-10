@@ -37,5 +37,7 @@ class UserTableViewCell: UITableViewCell {
         
         user = nil
         thumbnailCache = nil
+        thumbnailImageView.image = nil
+        nameLabel.text = nil
     }
 }
