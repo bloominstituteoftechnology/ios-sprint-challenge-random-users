@@ -14,7 +14,7 @@ class Cache<Key: Hashable, Value> {
     
     // MARK: - Public
 
-    func cache(_ value: Value, ofSize bytes: Int, for key: Key) {
+    func cache(_ value: Value, ofSize bytes: Bytes, for key: Key) {
         queue.async {
             self.store[key] = (value, bytes)
             self.chronologicalKeys.append(key)
@@ -38,7 +38,7 @@ class Cache<Key: Hashable, Value> {
     
     // MARK: - Private
     
-    private var store: [Key: (value: Value, size: Int)] = [:]
+    private var store: [Key: (value: Value, size: Bytes)] = [:]
     private var chronologicalKeys: [Key] = []
     private let queue = DispatchQueue(label: "Cache Queue")
     private var storeSize: Bytes = 0

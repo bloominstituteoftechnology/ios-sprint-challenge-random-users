@@ -32,8 +32,8 @@ class UsersTableViewController: UITableViewController {
     private let randomUserClient = RandomUserClient()
     private var users: [User] = [] { didSet { tableView.reloadData() }}
     
-    private var thumbnailCache = Cache<URL, Data>(size: 10_000)
-    private var imageCache = Cache<URL, Data>(size: 10_000)
+    private var thumbnailCache = Cache<URL, Data>(size: 1_000_000)
+    private var imageCache = Cache<URL, Data>(size: 1_000_000)
     
     private func fetchUsers(completion: @escaping () -> Void = {}) {
         randomUserClient.fetchUsers { (result) in
