@@ -16,6 +16,7 @@ class UserDetailViewController: UIViewController {
     @IBOutlet weak var phoneLabel: UILabel!
     
     var user: Result?
+    var photoFetchQueue: OperationQueue?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,25 @@ class UserDetailViewController: UIViewController {
         nameLabel.text = name
         emailLabel.text = user.email
         phoneLabel.text = user.phone
+        
+        loadImage(user: user)
     }
+    
+    private func loadImage(user: Result) {
+        
+        let fetchPhotoOperation = FetchPhotoOperation(user: user, imageType: .large)
+        
+        let setImage = BlockOperation {
+            DispatchQueue.main.async {
+                self.profileImage.image = UIImage(data: fetchPhotoOperation.imageData!)
+            }
+        }
+        
+        setImage.addDependency(fetchPhotoOperation)
+        
+        photoFetchQueue!.addOperations([fetchPhotoOperation, setImage], waitUntilFinished: false)
+    }
+    
+
 
 }

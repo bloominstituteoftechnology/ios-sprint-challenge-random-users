@@ -64,7 +64,7 @@ class UsersTableViewController: UITableViewController {
             return
         } else {
             
-            let fetchPhotoOperation = FetchPhotoOperation(user: user)
+            let fetchPhotoOperation = FetchPhotoOperation(user: user, imageType: .thumbnail)
             
             let cacheImageData = BlockOperation {
                 self.cache.cache(value: fetchPhotoOperation.imageData!, for: user.id!)
@@ -98,6 +98,7 @@ class UsersTableViewController: UITableViewController {
             guard let UserDetailVC = segue.destination as? UserDetailViewController else { return }
             
             UserDetailVC.user = userController.users[selected.row]
+            UserDetailVC.photoFetchQueue = photoFetchQueue
         }
     }
 }
