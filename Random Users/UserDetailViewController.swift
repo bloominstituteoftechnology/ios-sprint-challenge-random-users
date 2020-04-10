@@ -39,9 +39,10 @@ class UserDetailViewController: UIViewController {
     
     private func updateViews() {
         guard let user = user, let cache = imageCache else { return }
-        self.nameLabel.text = user.name.fullName
-        self.phoneNumberLabel.text = user.phone
-        self.emailLabel.text = user.email
+        imageView.image = Images.placeholder
+        nameLabel.text = user.name.fullName
+        phoneNumberLabel.text = user.phone
+        emailLabel.text = user.email
         
         loadImageOperation = LoadImageOperation(url: user.picture.large, imageView: imageView, cache: cache)
         OperationQueue.main.addOperation(loadImageOperation!)

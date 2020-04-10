@@ -18,6 +18,7 @@
 		04F531C22440DCFC005AF412 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F531C12440DCFC005AF412 /* Name.swift */; };
 		04F531C42440DD05005AF412 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F531C32440DD05005AF412 /* Picture.swift */; };
 		04F531C62440DD13005AF412 /* NetworkingEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F531C52440DD13005AF412 /* NetworkingEnums.swift */; };
+		04F531C82440E7EC005AF412 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F531C72440E7EC005AF412 /* Constants.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 		04F531C12440DCFC005AF412 /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Name.swift; sourceTree = "<group>"; };
 		04F531C32440DD05005AF412 /* Picture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
 		04F531C52440DD13005AF412 /* NetworkingEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingEnums.swift; sourceTree = "<group>"; };
+		04F531C72440E7EC005AF412 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -106,8 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A98B2140178A00FC395A /* Main.storyboard */,
-				04F531BC2440D965005AF412 /* UserDetailViewController.swift */,
 				04F531B92440CF70005AF412 /* UsersTableView */,
+				04F531BC2440D965005AF412 /* UserDetailViewController.swift */,
 				04F531C02440DCEB005AF412 /* Model */,
 				047947862440C3610071A1B9 /* Networking */,
 				9D5CCA56214231E400224681 /* Operations */,
@@ -123,6 +125,7 @@
 				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
 				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
 				8ED6A9932140178C00FC395A /* Info.plist */,
+				04F531C72440E7EC005AF412 /* Constants.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 				0479478E2440CD550071A1B9 /* UserTableViewCell.swift in Sources */,
 				04F531BB2440D1B6005AF412 /* LoadImageOperation.swift in Sources */,
 				04F531BF2440DCE7005AF412 /* User.swift in Sources */,
+				04F531C82440E7EC005AF412 /* Constants.swift in Sources */,
 				04F531C22440DCFC005AF412 /* Name.swift in Sources */,
 				0479478C2440CC6D0071A1B9 /* FetchImageOperation.swift in Sources */,
 			);
