@@ -10,4 +10,40 @@ import Foundation
 
 class UserController {
     
+    // MARK: - Properties
+    let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
+    var users: [User] = []
+    
+    
+    // MARK: - CRUD
+    // none needed in this app
+    
+    
+    // MARK: - Fetch methods
+    
+    func fetchUsers(completion: @escaping ([User]?, Error?) -> Void) {
+        //let urlRequest = URLRequest(url: baseURL)
+        URLSession.shared.dataTask(with: baseURL) { (data, _, error) in
+            if let error = error {
+                NSLog("Error fetching all users: \(error)")
+                completion(nil, error)
+                return
+            }
+            
+            guard let data = data else {
+                completion(nil, error)
+                NSLog("Fetch resulted in no data")
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let decodedData = try decoder.decode([User].self, from: data)
+                self.users = decodedData
+                completion(decodedData, nil)
+            } catch {
+                completion(nil, error)
+            }
+        }.resume()
+    }
 }
