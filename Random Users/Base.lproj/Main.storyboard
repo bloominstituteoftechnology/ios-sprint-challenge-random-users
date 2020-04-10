@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="Ilu-hj-MLT">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="Ilu-hj-MLT" customClass="RandomUserTableViewCell" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ilu-hj-MLT" id="c29-kC-00d">
@@ -45,6 +45,10 @@
                                         <constraint firstAttribute="trailing" secondItem="OTR-op-4FA" secondAttribute="trailing" constant="8" id="xTS-sQ-Igy"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="OTR-op-4FA" id="ZrB-e6-tOL"/>
+                                    <outlet property="thumbnailImageView" destination="1wk-pJ-Yq8" id="fpR-at-reK"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
