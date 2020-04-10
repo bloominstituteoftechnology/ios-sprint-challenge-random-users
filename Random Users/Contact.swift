@@ -16,7 +16,8 @@ struct Contact: Decodable {
     var name: String
     var email: String
     var phone: String
-    var pictures: [URL]
+    var largePicture: URL
+    var thumbnail: URL
     
     enum ContactKeys: String, CodingKey {
         case name, email, phone
@@ -40,22 +41,13 @@ struct Contact: Decodable {
         let firstName = try nameContainer.decode(String.self, forKey: .first)
         let lastName = try nameContainer.decode(String.self, forKey: .last)
         
-        let largeImage = try pictureContainer.decode(String.self, forKey: .large)
-        let mediumImage = try pictureContainer.decode(String.self, forKey: .medium)
-        let thumbnailImage = try pictureContainer.decode(String.self, forKey: .thumbnail)
-        
-        var pictures: [URL] = []
-        if let largeImageURL = URL(string: largeImage),
-            let mediumImageURL = URL(string: mediumImage),
-            let thumbnailImageURL = URL(string: thumbnailImage) {
-            pictures.append(largeImageURL)
-            pictures.append(mediumImageURL)
-            pictures.append(thumbnailImageURL)
-        }
+        let largeImageString = try pictureContainer.decode(String.self, forKey: .large)
+        let thumbnailString = try pictureContainer.decode(String.self, forKey: .thumbnail)
         
         self.name = "\(title) \(firstName) \(lastName)"
         self.email = try container.decode(String.self, forKey: .email)
         self.phone = try container.decode(String.self, forKey: .phone)
-        self.pictures = pictures
+        self.largePicture = URL(string: largeImageString)!
+        self.thumbnail = URL(string: thumbnailString)!
     }
 }
