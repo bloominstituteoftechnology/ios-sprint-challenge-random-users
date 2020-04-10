@@ -14,6 +14,7 @@
 		925BC1E62440C5110066E6EE /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925BC1E52440C5110066E6EE /* PersonTableViewCell.swift */; };
 		925BC1E82440C5300066E6EE /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925BC1E72440C5300066E6EE /* ContactsTableViewController.swift */; };
 		925BC1EA2440C54B0066E6EE /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925BC1E92440C54B0066E6EE /* PersonViewController.swift */; };
+		925BC1ED2440C9BA0066E6EE /* RandomUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925BC1EC2440C9BA0066E6EE /* RandomUser.swift */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		925BC1E52440C5110066E6EE /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
 		925BC1E72440C5300066E6EE /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		925BC1E92440C54B0066E6EE /* PersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
+		925BC1EC2440C9BA0066E6EE /* RandomUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUser.swift; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,6 +68,7 @@
 				925BC1E52440C5110066E6EE /* PersonTableViewCell.swift */,
 				9D5CCA522142305600224681 /* Resources */,
 				925BC1E42440C3F10066E6EE /* Storyboards */,
+				925BC1EC2440C9BA0066E6EE /* RandomUser.swift */,
 			);
 			path = "Random Users";
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				925BC1E82440C5300066E6EE /* ContactsTableViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				925BC1ED2440C9BA0066E6EE /* RandomUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
