@@ -36,7 +36,7 @@ class DetailViewController: UIViewController {
     }
     
     func loadPicture(_ face: Face) {
-        let url = URL(string: face.thumbnail)!
+        let url = URL(string: face.picture)!
 
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let error = error {

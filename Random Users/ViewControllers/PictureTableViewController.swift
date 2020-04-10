@@ -16,14 +16,21 @@ class PictureTableViewController: UITableViewController {
     private var photoFetchQueue = OperationQueue()
     private var operations = [Int : Operation]()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        faceController.getYourFace { (_) in
+             DispatchQueue.main.async {
+                 self.tableView.reloadData()
+             }
+         }
+        
+    }
+    
         override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        faceController.getYourFace { (_) in
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
+ 
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -94,7 +101,7 @@ class PictureTableViewController: UITableViewController {
             
             guard let vc = segue.destination as? DetailViewController, let theRow = tableView.indexPathForSelectedRow?.row else { return }
             
-            cache.clearData()
+         //   cache.clearData()
             
             let newFace = faceController.results?.results[theRow]
             vc.face = newFace
