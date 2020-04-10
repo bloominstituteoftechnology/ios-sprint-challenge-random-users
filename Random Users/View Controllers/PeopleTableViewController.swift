@@ -60,6 +60,7 @@ class PeopleTableViewController: UITableViewController {
         let person = peopleController.people[indexPath.row]
         fetchThumbCache[person.id]?.cancel()
         fetchLargeCache[person.id]?.cancel()
+        print("CANCELLING FETCHES")
     }
 
     
