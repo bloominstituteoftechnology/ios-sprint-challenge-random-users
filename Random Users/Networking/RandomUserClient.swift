@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Wrapper: Decodable {
+struct UsersWrapper: Decodable {
     let results: [User]
 }
 
@@ -61,7 +61,7 @@ class RandomUserClient {
             }
             
             do {
-                let wrapper = try JSONDecoder().decode(Wrapper.self, from: data)
+                let wrapper = try JSONDecoder().decode(UsersWrapper.self, from: data)
                 let users = wrapper.results
                 completion(.success(users))
             } catch {
