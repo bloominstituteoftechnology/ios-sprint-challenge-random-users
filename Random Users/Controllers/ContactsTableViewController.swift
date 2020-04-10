@@ -11,7 +11,6 @@ import UIKit
 class ContactsTableViewController: UITableViewController {
 
     // MARK: - Properties
-    private let client = RandomUserClient()
     private let controller = RandomUserController()
 
     private var users = [User]() {

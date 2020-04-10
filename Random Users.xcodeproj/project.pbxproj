@@ -15,8 +15,6 @@
 		925BC1E82440C5300066E6EE /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925BC1E72440C5300066E6EE /* ContactsTableViewController.swift */; };
 		925BC1EA2440C54B0066E6EE /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925BC1E92440C54B0066E6EE /* PersonViewController.swift */; };
 		925BC1ED2440C9BA0066E6EE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925BC1EC2440C9BA0066E6EE /* User.swift */; };
-		925BC1EF2440CE5E0066E6EE /* FetchRandomUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925BC1EE2440CE5E0066E6EE /* FetchRandomUser.swift */; };
-		925BC1F22440CFD60066E6EE /* RandomUserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925BC1F12440CFD60066E6EE /* RandomUserClient.swift */; };
 		925BC1F42440DC340066E6EE /* RandomUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925BC1F32440DC340066E6EE /* RandomUserController.swift */; };
 		925BC1F62440E6860066E6EE /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925BC1F52440E6860066E6EE /* Cache.swift */; };
 		925BC1F82440E6F20066E6EE /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925BC1F72440E6F20066E6EE /* FetchPhotoOperation.swift */; };
@@ -34,8 +32,6 @@
 		925BC1E72440C5300066E6EE /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		925BC1E92440C54B0066E6EE /* PersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
 		925BC1EC2440C9BA0066E6EE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		925BC1EE2440CE5E0066E6EE /* FetchRandomUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRandomUser.swift; sourceTree = "<group>"; };
-		925BC1F12440CFD60066E6EE /* RandomUserClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserClient.swift; sourceTree = "<group>"; };
 		925BC1F32440DC340066E6EE /* RandomUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserController.swift; sourceTree = "<group>"; };
 		925BC1F52440E6860066E6EE /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		925BC1F72440E6F20066E6EE /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
@@ -106,7 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				925BC1F32440DC340066E6EE /* RandomUserController.swift */,
-				925BC1F12440CFD60066E6EE /* RandomUserClient.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -126,7 +121,6 @@
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
 				925BC1F72440E6F20066E6EE /* FetchPhotoOperation.swift */,
-				925BC1EE2440CE5E0066E6EE /* FetchRandomUser.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -203,11 +197,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				925BC1F22440CFD60066E6EE /* RandomUserClient.swift in Sources */,
 				925BC1EA2440C54B0066E6EE /* PersonViewController.swift in Sources */,
 				925BC1F42440DC340066E6EE /* RandomUserController.swift in Sources */,
 				925BC1E62440C5110066E6EE /* PersonTableViewCell.swift in Sources */,
-				925BC1EF2440CE5E0066E6EE /* FetchRandomUser.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				925BC1F62440E6860066E6EE /* Cache.swift in Sources */,
 				925BC1F82440E6F20066E6EE /* FetchPhotoOperation.swift in Sources */,
