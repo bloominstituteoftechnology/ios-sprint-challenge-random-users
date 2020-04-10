@@ -33,4 +33,8 @@ class DetailViewController: UIViewController {
         
     }
     
+    func loadPicture() {
+        
+    }
+    
 }

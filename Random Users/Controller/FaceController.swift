@@ -10,14 +10,16 @@ import Foundation
 
 class FaceController {
     
-    let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
+    private let baseUrl = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
     
     var results: Results?
-  //  var faces: [Face] = []
     
     func getYourFace(completion: @escaping ((Error?) -> Void) = { _ in}) {
         
-        URLSession.shared.dataTask(with: baseURL.appendingPathExtension("json")) { (data, result, error) in
+        var request = URLRequest(url: baseUrl)
+         request.httpMethod = "GET"
+         
+         URLSession.shared.dataTask(with: request) { data, response, error in
         
             if let error = error {
                 print(error)
@@ -32,16 +34,12 @@ class FaceController {
             }
             
             do {
-                print("JSON about to happen")
-                print(data)
-           //     let faceTime = Array(try JSONDecoder().decode([String: Results].self, from: data).values)
                 let faceTime = try JSONDecoder().decode(Results.self, from: data)
-                print("JSON HAPPENED")
                 self.results = faceTime
-              //  self.faces = faceTime
                 completion(nil)
             } catch {
                 print(error)
+                NSLog("Error decoding: \(error)")
                 completion(error)
             }
             

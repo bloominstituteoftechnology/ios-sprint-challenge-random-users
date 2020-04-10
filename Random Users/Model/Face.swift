@@ -25,6 +25,7 @@ struct Results: Codable {
 
 struct Face: Codable {
     
+    var id: Int
     var name: String
     var phone: String
     var email: String
@@ -65,30 +66,8 @@ struct Face: Codable {
         picture = try picContainer.decode(String.self, forKey: .medium)
         thumbnail = try picContainer.decode(String.self, forKey: .thumbnail)
         
+        id = 0
     }
-   /*
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: FaceKeys.self)
-        
-        try container.encode(name, forKey: .name)
-        try container.encode(artist, forKey: .artist)
-        try container.encode(identifier, forKey: .id)
-        
-        var coverArtContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
-        
-        var urlContainer = coverArtContainer.nestedContainer(keyedBy: CodingKeys.CoverArtKeys.self)
-        
-        for url in coverArt {
-            try urlContainer.encode(url, forKey: .url)
-        }
-        
-        try container.encode(genres, forKey: .genres)
-        
-        var songsContainer = container.nestedUnkeyedContainer(forKey: .songs)
-        
-        for song in songs {
-            try songsContainer.encode(song)
-        }
-    }
-    */
+    
 }
+    

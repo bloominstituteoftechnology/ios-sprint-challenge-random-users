@@ -12,6 +12,10 @@ class PictureTableViewController: UITableViewController {
 
     let faceController = FaceController()
     
+    private var cache = Cache<Int, Data>()
+    private var photoFetchQueue = OperationQueue()
+    private var operations = [Int : Operation]()
+    
         override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -31,10 +35,52 @@ class PictureTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? PictureTableViewCell else {return UITableViewCell()}
 
         let face = faceController.results?.results[indexPath.row]
+        faceController.results?.results[indexPath.row].id = indexPath.row
         
         cell.nameLabel.text = face?.name
+        loadImage(forCell: cell, forItemAt: indexPath)
 
         return cell
+    }
+    
+     private func loadImage(forCell cell: PictureTableViewCell, forItemAt indexPath: IndexPath) {
+        guard let face = faceController.results?.results[indexPath.row] else {return}
+        
+        // Check for image in cache
+        if let cachedImageData = cache.value(for: indexPath.row),
+            let image = UIImage(data: cachedImageData) {
+            cell.facePic.image = image
+            return
+        }
+        
+        // Start an operation to fetch image data
+        let fetchOp = FetchPhotoOperation(face: face)
+        let cacheOp = BlockOperation {
+            if let data = fetchOp.imageData {
+                self.cache.cache(value: data, for: indexPath.row)
+            }
+        }
+        let completionOp = BlockOperation {
+            
+            if let currentIndexPath = self.tableView.indexPath(for: cell),
+                currentIndexPath != indexPath {
+                return
+            }
+            
+            if let data = fetchOp.imageData {
+                cell.facePic.image = UIImage(data: data)
+            }
+            self.operations.removeValue(forKey: indexPath.row)
+        }
+        
+        cacheOp.addDependency(fetchOp)
+        completionOp.addDependency(fetchOp)
+        
+        photoFetchQueue.addOperation(fetchOp)
+        photoFetchQueue.addOperation(cacheOp)
+        OperationQueue.main.addOperation(completionOp)
+        
+        operations[face.id] = fetchOp
     }
   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
