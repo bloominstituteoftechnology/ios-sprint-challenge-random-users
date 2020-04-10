@@ -74,9 +74,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h7u-ug-v8I">
-                                <rect key="frame" x="12" y="63" width="350" height="350"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h7u-ug-v8I">
+                                <rect key="frame" x="10" y="54" width="355" height="355"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="h7u-ug-v8I" secondAttribute="height" multiplier="1:1" id="UdQ-KU-db9"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdv-Tx-5va">
                                 <rect key="frame" x="12" y="549" width="350" height="40"/>
@@ -101,6 +103,11 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="h7u-ug-v8I" firstAttribute="top" secondItem="nF9-HW-dZu" secondAttribute="top" constant="10" id="XHk-eD-a1L"/>
+                            <constraint firstItem="nF9-HW-dZu" firstAttribute="trailing" secondItem="h7u-ug-v8I" secondAttribute="trailing" constant="10" id="mnm-rv-Ees"/>
+                            <constraint firstItem="h7u-ug-v8I" firstAttribute="leading" secondItem="nF9-HW-dZu" secondAttribute="leading" constant="10" id="rVE-Fl-0qH"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="nF9-HW-dZu"/>
                     </view>
                     <navigationItem key="navigationItem" id="FzA-hH-iQG"/>

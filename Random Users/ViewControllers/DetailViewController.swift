@@ -31,10 +31,26 @@ class DetailViewController: UIViewController {
             self.emailFace.text = face.email
         }
         
+        loadPicture(face)
+        
     }
     
-    func loadPicture() {
-        
+    func loadPicture(_ face: Face) {
+        let url = URL(string: face.thumbnail)!
+
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                NSLog("There was an error: \(error)")
+                return
+            }
+            if let data = data, let theImage = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    self.faceBig.image = theImage
+                }
+            }
+            
+        }
+        task.resume()
     }
     
 }

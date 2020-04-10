@@ -43,6 +43,12 @@ class PictureTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let operation = operations[indexPath.row] {
+            operation.cancel()
+        }
+    }
+    
      private func loadImage(forCell cell: PictureTableViewCell, forItemAt indexPath: IndexPath) {
         guard let face = faceController.results?.results[indexPath.row] else {return}
         

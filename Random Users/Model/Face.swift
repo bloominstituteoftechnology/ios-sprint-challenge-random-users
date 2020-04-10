@@ -45,7 +45,7 @@ struct Face: Codable {
         }
         
         enum PictureKeys: String, CodingKey {
-            case medium
+            case large
             case thumbnail
         }
     }
@@ -63,7 +63,7 @@ struct Face: Codable {
         email = try container.decode(String.self, forKey: .email)
         
         let picContainer = try container.nestedContainer(keyedBy: FaceKeys.PictureKeys.self, forKey: .picture)
-        picture = try picContainer.decode(String.self, forKey: .medium)
+        picture = try picContainer.decode(String.self, forKey: .large)
         thumbnail = try picContainer.decode(String.self, forKey: .thumbnail)
         
         id = 0
