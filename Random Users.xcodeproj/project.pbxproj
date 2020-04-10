@@ -11,6 +11,7 @@
 		2CCE033D2440C690003437D3 /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE033C2440C690003437D3 /* ContactDetailViewController.swift */; };
 		2CCE033F2440C6A2003437D3 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE033E2440C6A2003437D3 /* ContactTableViewCell.swift */; };
 		2CCE03412440C8BC003437D3 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE03402440C8BC003437D3 /* Contact.swift */; };
+		2CCE03442440CEA9003437D3 /* ContactController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE03432440CEA9003437D3 /* ContactController.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 		2CCE033C2440C690003437D3 /* ContactDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
 		2CCE033E2440C6A2003437D3 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		2CCE03402440C8BC003437D3 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		2CCE03432440CEA9003437D3 /* ContactController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactController.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -85,6 +87,14 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		2CCE03422440CE1A003437D3 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				2CCE03432440CEA9003437D3 /* ContactController.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
@@ -105,11 +115,12 @@
 			isa = PBXGroup;
 			children = (
 				2CCE03352440C568003437D3 /* Application */,
-				9D5CCA56214231E400224681 /* Operations */,
 				2CCE03362440C57C003437D3 /* Storyboards */,
 				2CCE03392440C644003437D3 /* Models */,
 				2CCE03382440C5FD003437D3 /* Views */,
 				2CCE03372440C5DB003437D3 /* View Controllers */,
+				2CCE03422440CE1A003437D3 /* Networking */,
+				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
 			path = "Random Users";
@@ -206,6 +217,7 @@
 				2CCE03412440C8BC003437D3 /* Contact.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				2CCE033F2440C6A2003437D3 /* ContactTableViewCell.swift in Sources */,
+				2CCE03442440CEA9003437D3 /* ContactController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				2CCE033D2440C690003437D3 /* ContactDetailViewController.swift in Sources */,
 				2CCE033B2440C67A003437D3 /* ContactsTableViewController.swift in Sources */,
