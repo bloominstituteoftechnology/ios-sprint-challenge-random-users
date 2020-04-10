@@ -8,56 +8,87 @@
 
 import Foundation
 
-class Face: Codable {
+struct Results: Codable {
+    var results: [Face]
+    
+    enum ResultsKeys: String, CodingKey {
+        case results
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: ResultsKeys.self)
+        
+        results = try container.decode([Face].self, forKey: .results)
+    }
+    
+}
 
+struct Face: Codable {
+    
     var name: String
     var phone: String
     var email: String
     var picture: String
     var thumbnail: String
     
-    enum ResultsKeys: String, CodingKey {
+    enum FaceKeys: String, CodingKey {
+        case name
+        case email
+        case phone
+        case picture
         
-        case results
+        enum NameKeys: String, CodingKey {
+            case title
+            case first
+            case last
+        }
         
-        enum FaceKeys: String, CodingKey {
-            case name
-            case email
-            case phone
-            case picture
-            
-            enum NameKeys: String, CodingKey {
-                case title
-                case first
-                case last
-            }
-            
-            enum PictureKeys: String, CodingKey {
-                case medium
-                case thumbnail
-            }
+        enum PictureKeys: String, CodingKey {
+            case medium
+            case thumbnail
         }
     }
-
     
-    required init(from decoder: Decoder) throws {
-        let bigContainer = try decoder.container(keyedBy: ResultsKeys.self)
-        
-        var resultsContainer = try bigContainer.nestedUnkeyedContainer(forKey: .results)
-        
-        while !resultsContainer.isAtEnd {
-            let nameContainer = try container.nestedContainer(keyedBy: ResultsKeys.FaceKeys.NameKeys.self, forKey: .name)
-            let first = try nameContainer.decode(String.self, forKey: .first)
-            let last = try nameContainer.decode(String.self, forKey: .last)
-            name = "\(first) \(last)"
-            
-            phone = try container.decode(String.self, forKey: .phone)
-            email = try container.decode(String.self, forKey: .email)
-            
-            let picContainer = try container.nestedContainer(keyedBy: FaceKeys.PictureKeys.self, forKey: .picture)
-            picture = try picContainer.decode(String.self, forKey: .medium)
-            thumbnail = try picContainer.decode(String.self, forKey: .thumbnail)
-        }
     
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: FaceKeys.self)
+        
+        let nameContainer = try container.nestedContainer(keyedBy: FaceKeys.NameKeys.self, forKey: .name)
+        let first = try nameContainer.decode(String.self, forKey: .first)
+        let last = try nameContainer.decode(String.self, forKey: .last)
+        name = "\(first) \(last)"
+        
+        phone = try container.decode(String.self, forKey: .phone)
+        email = try container.decode(String.self, forKey: .email)
+        
+        let picContainer = try container.nestedContainer(keyedBy: FaceKeys.PictureKeys.self, forKey: .picture)
+        picture = try picContainer.decode(String.self, forKey: .medium)
+        thumbnail = try picContainer.decode(String.self, forKey: .thumbnail)
+        
     }
+   /*
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: FaceKeys.self)
+        
+        try container.encode(name, forKey: .name)
+        try container.encode(artist, forKey: .artist)
+        try container.encode(identifier, forKey: .id)
+        
+        var coverArtContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
+        
+        var urlContainer = coverArtContainer.nestedContainer(keyedBy: CodingKeys.CoverArtKeys.self)
+        
+        for url in coverArt {
+            try urlContainer.encode(url, forKey: .url)
+        }
+        
+        try container.encode(genres, forKey: .genres)
+        
+        var songsContainer = container.nestedUnkeyedContainer(forKey: .songs)
+        
+        for song in songs {
+            try songsContainer.encode(song)
+        }
+    }
+    */
 }

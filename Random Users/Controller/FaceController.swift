@@ -12,7 +12,8 @@ class FaceController {
     
     let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
     
-    var faces: [Face] = []
+    var results: Results?
+  //  var faces: [Face] = []
     
     func getYourFace(completion: @escaping ((Error?) -> Void) = { _ in}) {
         
@@ -33,10 +34,11 @@ class FaceController {
             do {
                 print("JSON about to happen")
                 print(data)
-                let faceTime = Array(try JSONDecoder().decode([String: Face].self, from: data).values)
-          //      let faceTime = try JSONDecoder().decode([Face].self, from: data)
+           //     let faceTime = Array(try JSONDecoder().decode([String: Results].self, from: data).values)
+                let faceTime = try JSONDecoder().decode(Results.self, from: data)
                 print("JSON HAPPENED")
-                self.faces = faceTime
+                self.results = faceTime
+              //  self.faces = faceTime
                 completion(nil)
             } catch {
                 print(error)

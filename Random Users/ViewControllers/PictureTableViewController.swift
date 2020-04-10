@@ -23,15 +23,16 @@ class PictureTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return faceController.faces.count
+        guard let count = faceController.results?.results.count else {return 0}
+        return count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? PictureTableViewCell else {return UITableViewCell()}
 
-        let face = faceController.faces[indexPath.row]
+        let face = faceController.results?.results[indexPath.row]
         
-        cell.nameLabel.text = face.name
+        cell.nameLabel.text = face?.name
 
         return cell
     }
@@ -41,7 +42,7 @@ class PictureTableViewController: UITableViewController {
             
             guard let vc = segue.destination as? DetailViewController, let theRow = tableView.indexPathForSelectedRow?.row else { return }
             
-            let newFace = faceController.faces[theRow]
+            let newFace = faceController.results?.results[theRow]
             vc.face = newFace
             
         }
