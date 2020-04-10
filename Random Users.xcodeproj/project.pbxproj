@@ -11,6 +11,14 @@
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
 		8ED6A9922140178C00FC395A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */; };
+		9CBB072B2440CB3A00C8D51E /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB072A2440CB3A00C8D51E /* Person.swift */; };
+		9CBB072E2440CC6500C8D51E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB072D2440CC6500C8D51E /* Extensions.swift */; };
+		9CBB07302440CD6100C8D51E /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB072F2440CD6100C8D51E /* Results.swift */; };
+		9CBB07332440CDF400C8D51E /* PeopleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB07322440CDF400C8D51E /* PeopleController.swift */; };
+		9CBB07352440CF2B00C8D51E /* PeopleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB07342440CF2B00C8D51E /* PeopleTableViewController.swift */; };
+		9CBB07372440D24600C8D51E /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB07362440D24600C8D51E /* PersonTableViewCell.swift */; };
+		9CBB07392440D40800C8D51E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB07382440D40800C8D51E /* DetailViewController.swift */; };
+		9CBB073B2440DBDA00C8D51E /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB073A2440DBDA00C8D51E /* Cache.swift */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
 /* End PBXBuildFile section */
 
@@ -21,6 +29,14 @@
 		8ED6A98E2140178C00FC395A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8ED6A9912140178C00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ED6A9932140178C00FC395A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9CBB072A2440CB3A00C8D51E /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		9CBB072D2440CC6500C8D51E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		9CBB072F2440CD6100C8D51E /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
+		9CBB07322440CDF400C8D51E /* PeopleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleController.swift; sourceTree = "<group>"; };
+		9CBB07342440CF2B00C8D51E /* PeopleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewController.swift; sourceTree = "<group>"; };
+		9CBB07362440D24600C8D51E /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
+		9CBB07382440D40800C8D51E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		9CBB073A2440DBDA00C8D51E /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -54,19 +70,75 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
-				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+				9CBB07312440CDE400C8D51E /* Networking */,
+				9CBB072C2440CC5600C8D51E /* Helpers */,
+				9CBB07292440C68B00C8D51E /* View Controllers */,
+				9CBB07282440C68500C8D51E /* Views */,
+				9CBB07272440C67E00C8D51E /* Models */,
+				9CBB07262440C66D00C8D51E /* Storyboards */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
 			path = "Random Users";
 			sourceTree = "<group>";
 		};
-		9D5CCA522142305600224681 /* Resources */ = {
+		9CBB07262440C66D00C8D51E /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
 				8ED6A98B2140178A00FC395A /* Main.storyboard */,
-				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
 				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		9CBB07272440C67E00C8D51E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9CBB072A2440CB3A00C8D51E /* Person.swift */,
+				9CBB072F2440CD6100C8D51E /* Results.swift */,
+				9CBB073A2440DBDA00C8D51E /* Cache.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9CBB07282440C68500C8D51E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9CBB07362440D24600C8D51E /* PersonTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9CBB07292440C68B00C8D51E /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9CBB07342440CF2B00C8D51E /* PeopleTableViewController.swift */,
+				9CBB07382440D40800C8D51E /* DetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		9CBB072C2440CC5600C8D51E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9CBB072D2440CC6500C8D51E /* Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		9CBB07312440CDE400C8D51E /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				9CBB07322440CDF400C8D51E /* PeopleController.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		9D5CCA522142305600224681 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
+				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				8ED6A9932140178C00FC395A /* Info.plist */,
 			);
 			path = Resources;
@@ -151,8 +223,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CBB07392440D40800C8D51E /* DetailViewController.swift in Sources */,
+				9CBB072B2440CB3A00C8D51E /* Person.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				9CBB07332440CDF400C8D51E /* PeopleController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				9CBB072E2440CC6500C8D51E /* Extensions.swift in Sources */,
+				9CBB073B2440DBDA00C8D51E /* Cache.swift in Sources */,
+				9CBB07352440CF2B00C8D51E /* PeopleTableViewController.swift in Sources */,
+				9CBB07372440D24600C8D51E /* PersonTableViewCell.swift in Sources */,
+				9CBB07302440CD6100C8D51E /* Results.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,13 +377,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = 34RR9VTTTP;
 				INFOPLIST_FILE = "$(SRCROOT)/Random Users/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.LambdaSchool.RandomUsers;
+				PRODUCT_BUNDLE_IDENTIFIER = lambdaStudent.HectorLedesma;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -315,13 +395,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = 34RR9VTTTP;
 				INFOPLIST_FILE = "$(SRCROOT)/Random Users/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.LambdaSchool.RandomUsers;
+				PRODUCT_BUNDLE_IDENTIFIER = lambdaStudent.HectorLedesma;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

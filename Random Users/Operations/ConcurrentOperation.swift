@@ -62,3 +62,55 @@ class ConcurrentOperation: Operation {
     }
     
 }
+
+class FetchPhotoOperation: ConcurrentOperation {
+    var personReference: Person
+    var imageData: Data?
+    var requestURL: URL?
+    var requestType: ImgType
+    
+    private var sesh = URLSession(configuration: .default)
+    private var task = URLSessionDataTask()
+    
+    init(personReference: Person, requestType: ImgType) {
+        self.personReference = personReference
+        self.requestType = requestType
+    }
+    
+    
+    
+    override func start() {
+        
+//        print("Starting fetch for marsReference id: \(marsReference.id)")
+        switch requestType {
+        case .large:
+            requestURL = personReference.picture.large.getUrl()
+        case .thumbnail:
+            requestURL = personReference.picture.thumbnail.getUrl()
+        }
+        self.state = .isExecuting
+        task = sesh.dataTask(with: requestURL!) {d,_,e in
+            defer { self.state = .isFinished}
+            if let error = e {
+                NSLog("Error  RECEIVING    DATA    FROM    MARS: \(error)")
+                return
+            }
+            
+            if let data = d {
+                self.imageData = data
+                return
+            }
+        }
+        task.resume()
+    }
+    override func cancel() {
+        task.cancel()
+    }
+    
+    // MARK: - Enum
+    
+    enum ImgType {
+        case large
+        case thumbnail
+    }
+}
