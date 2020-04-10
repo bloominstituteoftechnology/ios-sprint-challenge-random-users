@@ -39,10 +39,11 @@ class PeopleTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "personCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "personCell", for: indexPath) as? PersonTableViewCell else { fatalError() }
 
         // Configure the cell...
-        cell.textLabel?.text = peopleController.people[indexPath.row].name.first
+        
+        cell.nameLabel.text = peopleController.people[indexPath.row].fullName()
 
         return cell
     }
