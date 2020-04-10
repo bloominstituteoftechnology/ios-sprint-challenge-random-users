@@ -24,7 +24,40 @@ class UsersDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let user = user else { return }
+        loadImage()
         
+        let name = user.name
+        let title = name.title
+        let first = name.first
+        let last = name.last
+        let fullName = "\(title.capitalized). \(first.capitalized) \(last.capitalized)"
+        userNameLabel.text = fullName
+        
+        phoneNumberLabel.text = user.phone
+        
+        emailAddressLabel.text = user.email
+    }
+    
+    func loadImage() {
+        let url = URL(string: (user?.picture.large)!)!
+        
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
+            if let error = error {
+                NSLog("Error fetching Large image data: \(error)")
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("No valid Data from Large image fetch")
+                return
+            }
+            
+            let image = UIImage(data: data)
+            DispatchQueue.main.async {
+                self.userImageView.image = image
+            }
+        }
     }
 
 }

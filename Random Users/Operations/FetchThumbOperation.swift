@@ -1,5 +1,5 @@
 //
-//  FetchUsersOperation.swift
+//  FetchThumbOperation.swift
 //  Random Users
 //
 //  Created by Lambda_School_Loaner_259 on 4/10/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class FetchUsersOperation: ConcurrentOperation {
+class FetchThumbOperation: ConcurrentOperation {
     let user: User
     var imageData: Data?
     

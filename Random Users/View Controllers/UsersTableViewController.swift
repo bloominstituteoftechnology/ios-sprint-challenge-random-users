@@ -67,7 +67,7 @@ class UsersTableViewController: UITableViewController {
             return
         }
         
-        let fetchThumb = FetchUsersOperation(user: user)
+        let fetchThumb = FetchThumbOperation(user: user)
         
         let storeDataOperation = BlockOperation {
             guard let data = fetchThumb.imageData else {
@@ -106,14 +106,14 @@ class UsersTableViewController: UITableViewController {
         
     }
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "UserDetailSegue" {
+            let usersDetailVC = segue.destination as! UsersDetailViewController
+            guard let index = tableView.indexPathForSelectedRow?.row else { return }
+            usersDetailVC.user = users[index]
+        }
     }
-    */
 
 }
