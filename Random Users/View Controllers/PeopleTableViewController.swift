@@ -13,6 +13,7 @@ class PeopleTableViewController: UITableViewController {
     // MARK: - Properties
     
     let peopleController = PeopleController()
+    let photoFetchQueue = OperationQueue()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,7 @@ class PeopleTableViewController: UITableViewController {
         // Configure the cell...
         
         cell.nameLabel.text = peopleController.people[indexPath.row].fullName()
+        loadImage(forCell: cell, forItemAt: indexPath)
 
         return cell
     }
@@ -82,6 +84,49 @@ class PeopleTableViewController: UITableViewController {
         return true
     }
     */
+    
+    // MARK: - Methods
+    
+    private func loadImage(forCell cell: PersonTableViewCell, forItemAt indexPath: IndexPath) {
+            
+        let person = peopleController.people[indexPath.item]
+    //         TODO: Implement image loading here
+            
+        let fetchOp = FetchPhotoOperation(personReference: person, requestType: .thumbnail)
+        let storeCache = BlockOperation {
+            if let data = fetchOp.imageData {
+                print("Was able to get image data from fetch operation")
+//                self.cache.cache(value: data, for: photoReference.id)
+            } else {
+                print("NO DATA TO STORE IN STORECAHCE OP")
+            }
+                
+        }
+        storeCache.addDependency(fetchOp)
+            
+        let lastOp = BlockOperation {
+            print("Last OP called.")
+//            guard let data = fetchOp.imageData,
+//                    cell.photoId == photoReference.id else {
+//                    print("Couldn't cast cell and/or get data")
+//                    return
+//                }
+//                cell.imageView.image = UIImage(data: data)
+        }
+        lastOp.addDependency(fetchOp)
+        
+        
+        
+        photoFetchQueue.addOperations([fetchOp, storeCache], waitUntilFinished: false)
+        OperationQueue.main.addOperation(lastOp)
+            
+            
+//            if opDic[photoReference.id] == nil {
+//                opDic[photoReference.id] = fetchOp
+//                print("created a dictionary entry for id \(photoReference.id)")
+//            }
+            
+        }
 
     // MARK: - Navigation
 
