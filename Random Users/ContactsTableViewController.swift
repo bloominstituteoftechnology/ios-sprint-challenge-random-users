@@ -14,6 +14,8 @@ class ContactsTableViewController: UITableViewController {
     
     let contactController = ContactController()
     
+    var cache = Cache<String, Data>()
+    
     // MARK: - View Lifecycle
 
     override func viewDidLoad() {
@@ -27,6 +29,20 @@ class ContactsTableViewController: UITableViewController {
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+            }
+        }
+    }
+    
+    // MARK: - Actions
+    
+    private func loadImage(forCell cell: ContactTableViewCell, forItemAt indexPath: IndexPath) {
+        let contact = contactController.contacts[indexPath.row]
+        
+        if let data = cache.value(for: contact.name) {
+            DispatchQueue.main.async {
+                if let image = UIImage(data: data) {
+                    cell.imageView?.image = image
+                }
             }
         }
     }
