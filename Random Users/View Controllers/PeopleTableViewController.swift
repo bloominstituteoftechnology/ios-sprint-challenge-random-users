@@ -104,6 +104,7 @@ class PeopleTableViewController: UITableViewController {
         
         let fetchThumbOp = FetchPhotoOperation(personReference: person, requestType: .thumbnail)
         let fetchLargeOp = FetchPhotoOperation(personReference: person, requestType: .large)
+        fetchLargeOp.addDependency(fetchThumbOp)
         let storeCache = BlockOperation {
             if let thumbData = fetchThumbOp.imageData,
                 let largeData = fetchLargeOp.imageData {
@@ -148,7 +149,9 @@ class PeopleTableViewController: UITableViewController {
         if segue.identifier == "ViewUserShowSegue" {
             guard let detailVC = segue.destination as? DetailViewController,
                 let indexPath = tableView.indexPathForSelectedRow else { fatalError() }
-            detailVC.person = peopleController.people[indexPath.row]
+            let person = peopleController.people[indexPath.row]
+            detailVC.person = person
+            detailVC.imageData = largeCache.value(for: person.id)
         }
         
     }

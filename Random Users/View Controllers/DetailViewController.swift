@@ -22,6 +22,7 @@ class DetailViewController: UIViewController {
             updateViews()
         }
     }
+    var imageData: Data?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,10 +45,12 @@ class DetailViewController: UIViewController {
     
     private func updateViews() {
         if isViewLoaded {
-            guard let person = person else { return }
+            guard let person = person ,
+            let data = imageData else { return }
             personName.text = person.fullName()
             personEmail.text = person.email
             personPhone.text = person.phone
+            personImage.image = UIImage(data: data)
         }
     }
     
