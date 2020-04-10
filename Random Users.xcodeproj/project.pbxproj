@@ -12,6 +12,12 @@
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
 		8ED6A9922140178C00FC395A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
+		AE5225032440ADD500B5D298 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5225022440ADD500B5D298 /* UserTableViewCell.swift */; };
+		AE5225062440AE0400B5D298 /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5225052440AE0400B5D298 /* UserTableViewController.swift */; };
+		AE5225092440AE2D00B5D298 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5225082440AE2D00B5D298 /* DetailViewController.swift */; };
+		AE52250B2440AF3000B5D298 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE52250A2440AF3000B5D298 /* User.swift */; };
+		AE52250E2440B3B100B5D298 /* UserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE52250D2440B3B100B5D298 /* UserClient.swift */; };
+		AE5225112440C4B100B5D298 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5225102440C4B100B5D298 /* Cache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +28,12 @@
 		8ED6A9912140178C00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ED6A9932140178C00FC395A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
+		AE5225022440ADD500B5D298 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		AE5225052440AE0400B5D298 /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
+		AE5225082440AE2D00B5D298 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		AE52250A2440AF3000B5D298 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AE52250D2440B3B100B5D298 /* UserClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClient.swift; sourceTree = "<group>"; };
+		AE5225102440C4B100B5D298 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +66,10 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
+				AE52250F2440B3B800B5D298 /* Networking */,
+				AE52250C2440AF3900B5D298 /* Model */,
+				AE5225072440AE0C00B5D298 /* controller */,
+				AE5225042440ADDF00B5D298 /* Cell */,
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
@@ -78,6 +94,40 @@
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
 			);
 			path = Operations;
+			sourceTree = "<group>";
+		};
+		AE5225042440ADDF00B5D298 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				AE5225022440ADD500B5D298 /* UserTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		AE5225072440AE0C00B5D298 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				AE5225082440AE2D00B5D298 /* DetailViewController.swift */,
+				AE5225052440AE0400B5D298 /* UserTableViewController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		AE52250C2440AF3900B5D298 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AE52250A2440AF3000B5D298 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AE52250F2440B3B800B5D298 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				AE52250D2440B3B100B5D298 /* UserClient.swift */,
+				AE5225102440C4B100B5D298 /* Cache.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +202,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				AE5225032440ADD500B5D298 /* UserTableViewCell.swift in Sources */,
+				AE5225112440C4B100B5D298 /* Cache.swift in Sources */,
+				AE52250B2440AF3000B5D298 /* User.swift in Sources */,
+				AE5225092440AE2D00B5D298 /* DetailViewController.swift in Sources */,
+				AE52250E2440B3B100B5D298 /* UserClient.swift in Sources */,
+				AE5225062440AE0400B5D298 /* UserTableViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
