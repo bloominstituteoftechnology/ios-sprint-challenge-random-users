@@ -94,6 +94,8 @@ class PictureTableViewController: UITableViewController {
             
             guard let vc = segue.destination as? DetailViewController, let theRow = tableView.indexPathForSelectedRow?.row else { return }
             
+            cache.clearData()
+            
             let newFace = faceController.results?.results[theRow]
             vc.face = newFace
             
