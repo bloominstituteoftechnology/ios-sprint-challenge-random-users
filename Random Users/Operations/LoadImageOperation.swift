@@ -34,9 +34,22 @@ class LoadImageOperation: ConcurrentOperation {
     
     private lazy var fetchOperation = FetchImageOperation(imageURL: url)
     
+    private lazy var  cacheOperation = BlockOperation {
+        guard !self.isCancelled, let imageData = self.fetchOperation.imageData else { return }
+        let size = imageData.count
+        self.cache.cache(imageData, ofSize: size, for: self.url)
+    }
+    
+    private lazy var updateCellOperation = BlockOperation {
+        guard !self.isCancelled, let imageData = self.fetchOperation.imageData,
+            let image = UIImage(data: imageData) else { return }
+        self.imageView.image = image
+    }
+    
     override func start() {
         state = .isExecuting
         
+        // Check for cached data
         let cachedData = cache.value(for: url)
         if let cachedData = cachedData, let image = UIImage(data: cachedData) {
             DispatchQueue.main.async {
@@ -46,20 +59,7 @@ class LoadImageOperation: ConcurrentOperation {
             return
         }
 
-        let cacheOperation = BlockOperation {
-            guard let imageData = self.fetchOperation.imageData else { return }
-            let size = imageData.count
-            self.cache.cache(imageData, ofSize: size, for: self.url)
-        }
-        
         cacheOperation.addDependency(fetchOperation)
-        
-        let updateCellOperation = BlockOperation {
-            guard let imageData = self.fetchOperation.imageData,
-                let image = UIImage(data: imageData) else { return }
-            self.imageView.image = image
-        }
-        
         updateCellOperation.addDependency(fetchOperation)
         
         OperationQueue.main.addOperation(updateCellOperation)
@@ -70,6 +70,8 @@ class LoadImageOperation: ConcurrentOperation {
     
     override func cancel() {
         fetchOperation.cancel()
+        cacheOperation.cancel()
+        updateCellOperation.cancel()
     }
     
 }
