@@ -13,7 +13,7 @@ class UserTableViewCell: UITableViewCell {
     // MARK: - Public Properties
     
     var user: User? { didSet { updateViews() }}
-    var cache: Cache<URL, Data>?
+    var thumbnailCache: Cache<URL, Data>? { didSet { updateViews() }}
     
     // MARK: - IBOutlets
     
@@ -24,7 +24,7 @@ class UserTableViewCell: UITableViewCell {
     var loadImageOperation: LoadImageOperation?
     
     func updateViews() {
-        guard let user = user, let cache = cache else { return }
+        guard let user = user, let cache = thumbnailCache else { return }
         self.nameLabel.text = user.name.title + " " + user.name.first + " " + user.name.last
         loadImageOperation = LoadImageOperation(url: user.picture.thumbnail, imageView: thumbnailImageView, cache: cache)
         OperationQueue.main.addOperation(loadImageOperation!)
