@@ -72,13 +72,11 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
-				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				925BC1F52440E6860066E6EE /* Cache.swift */,
 				925BC1EB2440C5550066E6EE /* Controllers */,
 				925BC1F02440CFBF0066E6EE /* Networking */,
 				9D5CCA56214231E400224681 /* Operations */,
 				925BC1E52440C5110066E6EE /* PersonTableViewCell.swift */,
-				925BC1F32440DC340066E6EE /* RandomUserController.swift */,
 				9D5CCA522142305600224681 /* Resources */,
 				925BC1E42440C3F10066E6EE /* Storyboards */,
 				925BC1EC2440C9BA0066E6EE /* User.swift */,
@@ -107,6 +105,7 @@
 		925BC1F02440CFBF0066E6EE /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				925BC1F32440DC340066E6EE /* RandomUserController.swift */,
 				925BC1F12440CFD60066E6EE /* RandomUserClient.swift */,
 			);
 			path = Networking;
@@ -115,6 +114,7 @@
 		9D5CCA522142305600224681 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
 				8ED6A9932140178C00FC395A /* Info.plist */,
 			);
@@ -358,7 +358,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = 4ZDYKHFRDV;
 				INFOPLIST_FILE = "$(SRCROOT)/Random Users/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -376,7 +376,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = 4ZDYKHFRDV;
 				INFOPLIST_FILE = "$(SRCROOT)/Random Users/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

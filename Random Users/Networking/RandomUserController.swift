@@ -25,7 +25,7 @@ enum NetworkError: Error {
 
 class RandomUserController {
 
-    private let baseUrl = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=10")! // FIXME: Count
+    private let baseUrl = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")! // FIXME: Count
 
     func fetchRandomUsers(completion: @escaping (Result<[User], NetworkError>) -> Void) {
 
