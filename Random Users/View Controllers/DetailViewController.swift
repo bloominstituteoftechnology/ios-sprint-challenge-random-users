@@ -45,11 +45,12 @@ class DetailViewController: UIViewController {
     
     private func updateViews() {
         if isViewLoaded {
-            guard let person = person ,
-            let data = imageData else { return }
+            guard let person = person else { return }
             personName.text = person.fullName()
             personEmail.text = person.email
             personPhone.text = person.phone
+            
+            guard let data = imageData else { return }
             personImage.image = UIImage(data: data)
         }
     }

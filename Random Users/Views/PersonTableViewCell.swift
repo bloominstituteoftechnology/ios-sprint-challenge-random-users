@@ -22,6 +22,12 @@ class PersonTableViewCell: UITableViewCell {
         // Initialization code
     }
 
+    override func prepareForReuse() {
+        personImage.image = nil
+        nameLabel.text = "Loading ..."
+        super.prepareForReuse()
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
