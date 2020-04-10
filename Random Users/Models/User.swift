@@ -11,6 +11,52 @@ import Foundation
 
 
 
+// MARK: - Users
+struct Users: Codable {
+    var results: [Result]
+    
+    enum UserKeys: String, CodingKey {
+        case results
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: UserKeys.self)
+        var resultsContainer = try container.nestedUnkeyedContainer(forKey: .results)
+        
+        results = try container.decode([Result].self, forKey: .results)
+        //results = try resultsContainer.decode([Result].self)
+    
+    }
+    
+}
+
+// MARK: - Result
+struct Result: Codable {
+    //let name: Name
+    let email, phone: String
+    //let picture: Picture
+    
+    enum ResultKeys: String, CodingKey {
+        case email
+        case phone
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: ResultKeys.self)
+        email = try container.decode(String.self, forKey: .email)
+        phone = try container.decode(String.self, forKey: .phone)
+    }
+    
+    
+}
+
+struct Name: Codable {
+    let title, first, last: String
+}
+
+struct Picture: Codable {
+    let large, medium, thumbnail: String
+}
 
 
 
