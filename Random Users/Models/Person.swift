@@ -18,6 +18,8 @@ struct Picture: Codable {
     let large: String
     let medium: String
     let thumbnail: String
+    
+   
 }
 
 struct Person: Codable {
@@ -25,4 +27,8 @@ struct Person: Codable {
     let email: String
     let phone: String
     let picture: Picture
+    
+    func fullName() -> String {
+        return name.first + " " + name.last
+       }
 }
