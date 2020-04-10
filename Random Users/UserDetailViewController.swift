@@ -39,7 +39,7 @@ class UserDetailViewController: UIViewController {
     
     private func updateViews() {
         guard let user = user, let cache = imageCache else { return }
-        self.nameLabel.text = user.name.title + " " + user.name.first + " " + user.name.last
+        self.nameLabel.text = user.name.fullName
         self.phoneNumberLabel.text = user.phone
         self.emailLabel.text = user.email
         

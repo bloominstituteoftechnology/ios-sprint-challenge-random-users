@@ -21,17 +21,19 @@ class UserTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     
     // MARK: - Private
+    
     var loadImageOperation: LoadImageOperation?
     
     func updateViews() {
         guard let user = user, let cache = thumbnailCache else { return }
-        self.nameLabel.text = user.name.title + " " + user.name.first + " " + user.name.last
+        self.nameLabel.text = user.name.fullName
         loadImageOperation = LoadImageOperation(url: user.picture.thumbnail, imageView: thumbnailImageView, cache: cache)
         OperationQueue.main.addOperation(loadImageOperation!)
     }
     
     override func prepareForReuse() {
         loadImageOperation?.cancel()
+        loadImageOperation = nil
         user = nil
     }
 }
