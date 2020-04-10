@@ -36,23 +36,21 @@ struct Picture: Codable {
     let thumbnail: String // https://randomuser.me/api/portraits/thumb/men/75.jpg
 }
 
-struct User: Equatable, Codable {
+struct User: Codable {
 
     enum CodingKeys: String, CodingKey {
-//        case name
+        case name
         case email
         case phone
-        case cell
-//        case picture
+        case picture
     }
 
-//    let name: Name
+    let name: Name
 
     let email: String // brad.gibson@example.com
     let phone: String // 011-962-7516
-    let cell: String // 081-454-0666
 
-//    let picture: Picture
+    let picture: Picture
 }
 
 struct UsersFromServer: Codable {

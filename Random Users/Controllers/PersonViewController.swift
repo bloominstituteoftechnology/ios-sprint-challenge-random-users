@@ -10,6 +10,13 @@ import UIKit
 
 class PersonViewController: UIViewController {
 
+    // MARK: - Properties
+    var person: User? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     // MARK: - Outlets
     @IBOutlet weak var portraitImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -21,18 +28,16 @@ class PersonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        updateViews()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - Private
+    private func updateViews() {
+        if let person = person {
+            nameLabel?.text = person.name.fullName
+            phoneLabel?.text = person.phone
+            emailLabel?.text = person.email
+            // FIXME: Photo 
+        }
     }
-    */
-
 }

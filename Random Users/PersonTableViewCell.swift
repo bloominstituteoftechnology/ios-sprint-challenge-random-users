@@ -10,21 +10,25 @@ import UIKit
 
 class PersonTableViewCell: UITableViewCell {
 
+    var user: User? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     // MARK: - Outlets
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
     // MARK: - Actions
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    // MARK: - Private
+    
+    private func updateViews() {
+        guard let user = user else { return }
+        
+        nameLabel.text = user.name.fullName
+        
+        // FIXME: thumbnailImageView
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
