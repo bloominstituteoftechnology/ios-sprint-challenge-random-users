@@ -57,16 +57,24 @@
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
+				925BC1E42440C3F10066E6EE /* Storyboards */,
 			);
 			path = "Random Users";
+			sourceTree = "<group>";
+		};
+		925BC1E42440C3F10066E6EE /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
+				8ED6A98B2140178A00FC395A /* Main.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		9D5CCA522142305600224681 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8ED6A98B2140178A00FC395A /* Main.storyboard */,
 				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
-				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
 				8ED6A9932140178C00FC395A /* Info.plist */,
 			);
 			path = Resources;
