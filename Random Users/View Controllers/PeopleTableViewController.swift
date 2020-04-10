@@ -16,6 +16,7 @@ class PeopleTableViewController: UITableViewController {
     let photoFetchQueue = OperationQueue()
     let thumbCache = Cache<UUID, Data>()
     let largeCache = Cache<UUID, Data>()
+    private var fetchCache: [UUID : FetchPhotoOperation] = [ : ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +53,11 @@ class PeopleTableViewController: UITableViewController {
         
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let person = peopleController.people[indexPath.row]
+        fetchCache[person.id]?.cancel()
     }
 
     /*
@@ -132,11 +138,11 @@ class PeopleTableViewController: UITableViewController {
         photoFetchQueue.addOperations([fetchThumbOp, fetchLargeOp, storeCache], waitUntilFinished: false)
         OperationQueue.main.addOperation(lastOp)
             
-            
-//            if opDic[photoReference.id] == nil {
-//                opDic[photoReference.id] = fetchOp
-//                print("created a dictionary entry for id \(photoReference.id)")
-//            }
+            // Given that all other operations depend on fetching thumb, I'll only cancel this operation
+            if fetchCache[person.id] == nil {
+                fetchCache[person.id] = fetchThumbOp
+                print("created a dictionary entry for id \(person.id)")
+            }
             
         }
 
