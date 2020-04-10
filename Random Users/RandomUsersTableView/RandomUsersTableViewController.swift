@@ -19,15 +19,17 @@ class RandomUsersTableViewController: UITableViewController {
     
     // MARK: - Private
     
-    private var users: [User] = []
+    private var users: [User] = [] { didSet { tableView.reloadData() }}
     
     private func fetchUsers() {
         randomUserClient.fetchUsers { (result) in
-            switch result {
-            case .success(let users):
-                print(users)
-            case .failure(let error):
-                print(error)
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let users):
+                    self.users = users
+                case .failure(let error):
+                    print(error)
+                }
             }
         }
     }

@@ -12,7 +12,7 @@ class RandomUserTableViewCell: UITableViewCell {
     
     // MARK: - Public Properties
     
-    var user: User?
+    var user: User? { didSet { updateViews() }}
     
     // MARK: - IBOutlets
     
@@ -20,6 +20,11 @@ class RandomUserTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     
     // MARK: - Private
+    
+    func updateViews() {
+        guard let user = user else { return }
+        self.nameLabel.text = user.name.title + " " + user.name.first + " " + user.name.last
+    }
     
     override func prepareForReuse() {
         user = nil
