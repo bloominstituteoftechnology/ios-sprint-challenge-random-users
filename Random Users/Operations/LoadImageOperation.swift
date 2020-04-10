@@ -9,6 +9,7 @@
 import UIKit
 
 class LoadImageOperation: ConcurrentOperation {
+    
     // MARK: - Properties
     
     let url: URL
