@@ -20,6 +20,7 @@ class RandomUsersTableViewController: UITableViewController {
     // MARK: - Private
     
     private var users: [User] = [] { didSet { tableView.reloadData() }}
+    private var thumbnailCache = Cache<URL, Data>()
     
     private func fetchUsers() {
         randomUserClient.fetchUsers { (result) in
@@ -45,7 +46,7 @@ class RandomUsersTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? RandomUserTableViewCell else {
             fatalError("Could not cast cell as \(RandomUserTableViewCell.self)")
         }
-
+        cell.cache = thumbnailCache
         cell.user = users[indexPath.row]
 
         return cell
