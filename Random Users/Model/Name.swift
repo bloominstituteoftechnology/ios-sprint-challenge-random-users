@@ -12,4 +12,8 @@ struct Name: Decodable {
     let title: String
     let first: String
     let last: String
+    
+    var fullName: String {
+        title + " " + first + " " + last
+    }
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 class RandomUserClient {
-    let url = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
+    private let url = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
     
     func fetchUsers(completion: @escaping (Result<[User], NetworkError>) -> Void) {
         URLSession.shared.dataTask(with: url) { data, response, error in
