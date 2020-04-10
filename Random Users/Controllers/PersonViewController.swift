@@ -10,6 +10,14 @@ import UIKit
 
 class PersonViewController: UIViewController {
 
+    // MARK: - Outlets
+    @IBOutlet weak var portraitImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    
+    // MARK: - Actions
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

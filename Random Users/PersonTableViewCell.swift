@@ -10,6 +10,12 @@ import UIKit
 
 class PersonTableViewCell: UITableViewCell {
 
+    // MARK: - Outlets
+    @IBOutlet weak var thumbnailImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    // MARK: - Actions
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

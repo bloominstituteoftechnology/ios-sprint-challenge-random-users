@@ -46,6 +46,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="nameLabel" destination="yHb-68-1L6" id="tjy-nf-r2D"/>
+                                    <outlet property="thumbnailImageView" destination="Oms-9z-iqI" id="oCJ-P9-Ic1"/>
                                     <segue destination="E2i-iS-RcS" kind="show" identifier="ViewSegue" id="aAe-El-gCy"/>
                                 </connections>
                             </tableViewCell>
@@ -56,7 +58,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Users" id="Dno-Uc-YLe">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="qDO-6s-hKG"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="qDO-6s-hKG">
+                            <connections>
+                                <action selector="loadButton:" destination="H7M-kh-AlB" id="1Nq-2J-hrr"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wp1-0D-TDx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -110,6 +116,12 @@
                         <viewLayoutGuide key="safeArea" id="eqH-9A-a9Q"/>
                     </view>
                     <navigationItem key="navigationItem" id="Zoa-0K-rEu"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="TWb-1C-qYE" id="3zE-GO-XHO"/>
+                        <outlet property="nameLabel" destination="nUE-bR-OLP" id="W5X-HM-Mlh"/>
+                        <outlet property="phoneLabel" destination="Pyg-vI-u14" id="Fx4-Gc-mnS"/>
+                        <outlet property="portraitImageView" destination="QIY-i1-eda" id="LGY-ai-4Mj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NbV-tW-Agk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

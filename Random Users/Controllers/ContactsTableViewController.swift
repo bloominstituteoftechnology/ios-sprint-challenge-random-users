@@ -10,6 +10,12 @@ import UIKit
 
 class ContactsTableViewController: UITableViewController {
 
+    // MARK: - Outlets
+    
+    // MARK: - Actions
+    @IBAction func loadButton(_ sender: UIBarButtonItem) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
