@@ -227,8 +227,6 @@ class ContactsTableViewController: UITableViewController {
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
         // What photo were we trying to load
-// FIXME: Is this an issue I'm just using indexPath.item?      let photoReference = photoReferences[indexPath.item]
-
         if let fetchPhotoOperation = fetchOperations[indexPath.item] {
             // A photo is trying to be loaded.
             fetchPhotoOperation.cancel()
