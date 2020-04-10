@@ -15,6 +15,12 @@ class PeopleController {
         URLSession.shared.dataTask(with: baseURL) { d, r, e in
             if let error = e {
                 NSLog("Error fetching people : \(error)")
+                return
+            }
+            
+            if let data = d {
+                print("got data.")
+                return
             }
         }
     }
