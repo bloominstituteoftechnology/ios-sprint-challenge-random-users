@@ -27,6 +27,7 @@ struct Person: Codable {
     let email: String
     let phone: String
     let picture: Picture
+    let id = UUID()
     
     func fullName() -> String {
         return name.first + " " + name.last
