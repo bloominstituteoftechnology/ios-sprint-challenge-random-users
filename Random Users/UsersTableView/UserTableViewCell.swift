@@ -22,13 +22,14 @@ class UserTableViewCell: UITableViewCell {
     
     // MARK: - Private
     
-    var loadImageOperation: LoadImageOperation?
+    private weak var loadImageOperation: LoadImageOperation?
     
-    func updateViews() {
+    private func updateViews() {
         guard let user = user, let cache = thumbnailCache else { return }
         self.nameLabel.text = user.name.fullName
-        loadImageOperation = LoadImageOperation(url: user.picture.thumbnail, imageView: thumbnailImageView, cache: cache)
-        OperationQueue.main.addOperation(loadImageOperation!)
+        let loadImageOperation = LoadImageOperation(url: user.picture.thumbnail, imageView: thumbnailImageView, cache: cache)
+        OperationQueue.main.addOperation(loadImageOperation)
+        self.loadImageOperation = loadImageOperation
     }
     
     override func prepareForReuse() {

@@ -35,7 +35,7 @@ class UserDetailViewController: UIViewController {
     
     // MARK: - Private
     
-    private var loadImageOperation: LoadImageOperation?
+    private weak var loadImageOperation: LoadImageOperation?
     
     private func updateViews() {
         guard let user = user, let cache = imageCache else { return }
@@ -44,7 +44,8 @@ class UserDetailViewController: UIViewController {
         phoneNumberLabel.text = user.phone
         emailLabel.text = user.email
         
-        loadImageOperation = LoadImageOperation(url: user.picture.large, imageView: imageView, cache: cache)
-        OperationQueue.main.addOperation(loadImageOperation!)
+        let loadImageOperation = LoadImageOperation(url: user.picture.large, imageView: imageView, cache: cache)
+        OperationQueue.main.addOperation(loadImageOperation)
+        self.loadImageOperation = loadImageOperation
     }
 }
