@@ -10,10 +10,12 @@ import Foundation
 
 class FetchThumbOperation: ConcurrentOperation {
     let user: User
+    let imageURLString: String
     var imageData: Data?
     
     private var dataTask: URLSessionDataTask {
-        let imageURL: URL = URL(string: user.picture.thumbnail)!
+        let imageURL: URL = URL(string: imageURLString)!
+        
         return URLSession.shared.dataTask(with: imageURL) { (data, _, error) in
             if let error = error {
                 NSLog("Error fetching image data: \(error)")
@@ -24,8 +26,9 @@ class FetchThumbOperation: ConcurrentOperation {
         }
     }
     
-    init(user: User) {
+    init(user: User, imageURL: String) {
         self.user = user
+        self.imageURLString = imageURL
     }
     
     override func start() {

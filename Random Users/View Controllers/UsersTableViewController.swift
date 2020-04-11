@@ -67,7 +67,7 @@ class UsersTableViewController: UITableViewController {
             return
         }
         
-        let fetchThumb = FetchThumbOperation(user: user)
+        let fetchThumb = FetchThumbOperation(user: user, imageURL: user.picture.thumbnail)
         
         let storeDataOperation = BlockOperation {
             guard let data = fetchThumb.imageData else {
@@ -112,7 +112,9 @@ class UsersTableViewController: UITableViewController {
         if segue.identifier == "UserDetailSegue" {
             let usersDetailVC = segue.destination as! UsersDetailViewController
             guard let index = tableView.indexPathForSelectedRow?.row else { return }
-            usersDetailVC.user = users[index]
+            let user = users[index]
+            usersDetailVC.user = user
+            usersDetailVC.cache = cache
         }
     }
 
