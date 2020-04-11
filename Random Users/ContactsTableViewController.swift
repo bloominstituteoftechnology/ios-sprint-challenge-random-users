@@ -21,7 +21,7 @@ class ContactsTableViewController: UITableViewController {
     let photoFetchQueue = OperationQueue()
     
     // MARK: - View Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,12 +59,11 @@ class ContactsTableViewController: UITableViewController {
         }
         
         let completionOperation = BlockOperation {
-            if let _ = self.tableView.indexPath(for: cell) {
-                if let data = fetchPhotoOperation.imageData {
-                    cell.contactImage.image = UIImage(data: data)
-                } else {
-                    return
-                }
+            guard let cellIndexPath = self.tableView.indexPath(for: cell),
+                cellIndexPath != indexPath else { return }
+            
+            if let data = fetchPhotoOperation.imageData {
+                cell.contactImage.image = UIImage(data: data)
             }
         }
         
@@ -76,9 +75,9 @@ class ContactsTableViewController: UITableViewController {
         
         operations[contact.name] = fetchPhotoOperation
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contactController.contacts.count
     }
@@ -87,7 +86,7 @@ class ContactsTableViewController: UITableViewController {
         let contact = contactController.contacts[indexPath.row]
         operations[contact.name]?.cancel()
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath) as? ContactTableViewCell else {
             return UITableViewCell()
@@ -96,12 +95,12 @@ class ContactsTableViewController: UITableViewController {
         loadImage(forCell: cell, forItemAt: indexPath)
         let contact = contactController.contacts[indexPath.row]
         cell.contact = contact
-
+        
         return cell
     }
-
+    
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowContactDetailSegue" {
             if let contactDetailVC = segue.destination as? ContactDetailViewController,
