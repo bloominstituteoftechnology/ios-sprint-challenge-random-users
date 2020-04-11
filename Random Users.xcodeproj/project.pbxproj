@@ -12,7 +12,6 @@
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
 		8ED6A9922140178C00FC395A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
-		BB8A71E02440C6D2009466B4 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8A71DF2440C6D2009466B4 /* UserTableViewCell.swift */; };
 		BB8A71E22440C6ED009466B4 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8A71E12440C6ED009466B4 /* UsersTableViewController.swift */; };
 		BB8A71E42440C700009466B4 /* UsersDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8A71E32440C700009466B4 /* UsersDetailViewController.swift */; };
 		BB8A71E62440C75B009466B4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8A71E52440C75B009466B4 /* User.swift */; };
@@ -32,7 +31,6 @@
 		8ED6A9912140178C00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ED6A9932140178C00FC395A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
-		BB8A71DF2440C6D2009466B4 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		BB8A71E12440C6ED009466B4 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		BB8A71E32440C700009466B4 /* UsersDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDetailViewController.swift; sourceTree = "<group>"; };
 		BB8A71E52440C75B009466B4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -116,7 +114,6 @@
 		BB8A71DC2440C67A009466B4 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BB8A71DF2440C6D2009466B4 /* UserTableViewCell.swift */,
 				BB8A71E12440C6ED009466B4 /* UsersTableViewController.swift */,
 				BB8A71E32440C700009466B4 /* UsersDetailViewController.swift */,
 			);
@@ -215,7 +212,6 @@
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				BB8A71EA2440CA98009466B4 /* FetchThumbOperation.swift in Sources */,
-				BB8A71E02440C6D2009466B4 /* UserTableViewCell.swift in Sources */,
 				BB8A71E62440C75B009466B4 /* User.swift in Sources */,
 				BB8A71E22440C6ED009466B4 /* UsersTableViewController.swift in Sources */,
 				BB8A71E82440C7BF009466B4 /* UserController.swift in Sources */,

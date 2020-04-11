@@ -45,25 +45,35 @@ class UsersTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") else { return UITableViewCell() }
         
         let user = users[indexPath.row]
         
-        
-        cell.user = user
+        let name = user.name
+        let title = name.title
+        let first = name.first
+        let last = name.last
+        let fullName: String
+        if title.isEmpty {
+            fullName = "\(first.capitalized) \(last.capitalized)"
+        } else {
+            fullName = "\(title.capitalized). \(first.capitalized) \(last.capitalized)"
+        }
+        cell.textLabel?.text = fullName
+        cell.imageView?.image = UIImage(named: "Lambda_Logo_Full")!
         loadThumbnail(forCell: cell, forRowAt: indexPath)
 
         return cell
     }
     
     // MARK: - Private
-    private func loadThumbnail(forCell cell: UserTableViewCell, forRowAt indexPath: IndexPath) {
+    private func loadThumbnail(forCell cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let user = users[indexPath.row]
         //let thumbReference = URL(string: user.picture.thumbnail)
         
         if cache.value(forKey: user.email) != nil, let image = cache.value(forKey: user.email)?[0] {
             
-            cell.userThumbImageView.image = image
+            cell.imageView?.image = image
             return
         }
         
@@ -90,7 +100,7 @@ class UsersTableViewController: UITableViewController {
                 let first = name.first
                 let last = name.last
                 let fullName = "\(title.capitalized). \(first.capitalized) \(last.capitalized)"
-                cell.userNameLabel.text = fullName
+                cell.textLabel?.text = fullName
                 return
             }
         }
