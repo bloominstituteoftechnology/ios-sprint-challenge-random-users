@@ -10,6 +10,12 @@ import UIKit
 
 class LoadImageOperation: ConcurrentOperation {
     
+    static let loadImageQueue: OperationQueue = {
+        let liq = OperationQueue()
+        liq.name = "Load Image Queue"
+        return liq
+    }()
+    
     // MARK: - Properties
     
     let url: URL
@@ -22,15 +28,11 @@ class LoadImageOperation: ConcurrentOperation {
         self.url = url
         self.imageView = imageView
         self.cache = cache
+        super.init()
+        LoadImageOperation.loadImageQueue.addOperation(self)
     }
     
     // MARK: - Private
-    
-    private let loadImageQueue: OperationQueue = {
-        let liq = OperationQueue()
-        liq.name = "Load Image Queue"
-        return liq
-    }()
     
     private lazy var fetchOperation = FetchImageOperation(imageURL: url)
     
@@ -62,10 +64,10 @@ class LoadImageOperation: ConcurrentOperation {
         cacheOperation.addDependency(fetchOperation)
         updateCellOperation.addDependency(fetchOperation)
         
-        OperationQueue.main.addOperation(updateCellOperation)
-        loadImageQueue.addOperations([fetchOperation, cacheOperation], waitUntilFinished: false)
+        OperationQueue.current?.addOperations([fetchOperation, cacheOperation], waitUntilFinished: false)
+        OperationQueue.main.addOperations([updateCellOperation], waitUntilFinished: true)
         
-        state = .isFinished
+        self.state = .isFinished
     }
     
     override func cancel() {

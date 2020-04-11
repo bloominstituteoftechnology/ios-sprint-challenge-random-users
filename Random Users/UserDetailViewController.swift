@@ -45,7 +45,6 @@ class UserDetailViewController: UIViewController {
         emailLabel.text = user.email
         
         let loadImageOperation = LoadImageOperation(url: user.picture.large, imageView: imageView, cache: cache)
-        OperationQueue.main.addOperation(loadImageOperation)
         self.loadImageOperation = loadImageOperation
     }
 }

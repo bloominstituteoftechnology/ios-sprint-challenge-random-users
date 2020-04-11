@@ -19,6 +19,7 @@ class FetchImageOperation: ConcurrentOperation {
     
     init(imageURL: URL) {
         self.imageURL = imageURL
+        super.init()
     }
     
     // MARK: - Private

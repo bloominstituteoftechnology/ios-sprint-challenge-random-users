@@ -28,13 +28,11 @@ class UserTableViewCell: UITableViewCell {
         guard let user = user, let cache = thumbnailCache else { return }
         self.nameLabel.text = user.name.fullName
         let loadImageOperation = LoadImageOperation(url: user.picture.thumbnail, imageView: thumbnailImageView, cache: cache)
-        OperationQueue.main.addOperation(loadImageOperation)
         self.loadImageOperation = loadImageOperation
     }
     
     override func prepareForReuse() {
         loadImageOperation?.cancel()
-        loadImageOperation = nil
         
         user = nil
         thumbnailCache = nil
