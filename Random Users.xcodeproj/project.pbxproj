@@ -14,6 +14,8 @@
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
 		DDA6C8232465ACDF0094FD88 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6C8222465ACDF0094FD88 /* Person.swift */; };
 		DDA6C8262465AF720094FD88 /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6C8252465AF720094FD88 /* PersonTableViewCell.swift */; };
+		DDA6C82A2465AFD40094FD88 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6C8292465AFD40094FD88 /* TableViewController.swift */; };
+		DDA6C82C2465AFE70094FD88 /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6C82B2465AFE70094FD88 /* PersonViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 		DDA6C8222465ACDF0094FD88 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		DDA6C8252465AF720094FD88 /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PersonTableViewCell.swift; path = "Random Users/Views/PersonTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
+		DDA6C8292465AFD40094FD88 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		DDA6C82B2465AFE70094FD88 /* PersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+				DDA6C8282465AFB50094FD88 /* View Controllers */,
 				DDA6C8272465AF770094FD88 /* Views */,
 				DDA6C8242465ADB60094FD88 /* Model */,
 				9D5CCA56214231E400224681 /* Operations */,
@@ -100,6 +105,15 @@
 				DDA6C8252465AF720094FD88 /* PersonTableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		DDA6C8282465AFB50094FD88 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DDA6C8292465AFD40094FD88 /* TableViewController.swift */,
+				DDA6C82B2465AFE70094FD88 /* PersonViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,8 +188,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDA6C8232465ACDF0094FD88 /* Person.swift in Sources */,
+				DDA6C82C2465AFE70094FD88 /* PersonViewController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				DDA6C8262465AF720094FD88 /* PersonTableViewCell.swift in Sources */,
+				DDA6C82A2465AFD40094FD88 /* TableViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
