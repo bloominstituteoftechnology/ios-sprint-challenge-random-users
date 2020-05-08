@@ -22,6 +22,8 @@ class TableViewController: UITableViewController {
     //MARK: - Properties
     let networkController = NetworkController()
     let cache = Cache<IndexPath, Data>()
+    let fetchPhoto = OperationQueue()
+    var operations = [Int: Operation]()
     
     //MARK: - Custom Functions
     func updateViews() {
@@ -99,6 +101,10 @@ class TableViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        //let photo = networkController.users?.results[indexPath.item]
+        //operations[photo.indexPath]?.cancel()
+    }
 
     /*
     // Override to support conditional editing of the table view.
