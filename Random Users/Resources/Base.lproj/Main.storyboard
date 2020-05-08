@@ -8,16 +8,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Random Users Table View Controller-->
         <scene sceneID="zxg-ny-cJQ">
             <objects>
-                <tableViewController id="6ON-fd-DDv" sceneMemberID="viewController">
+                <tableViewController id="6ON-fd-DDv" customClass="RandomUsersTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Sbj-bU-vC3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="79" id="ke5-L5-X2F">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="79" id="ke5-L5-X2F" customClass="UsersTableViewCell" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="79"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ke5-L5-X2F" id="Ncm-Mx-D0f">
@@ -49,6 +49,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="userImage" destination="AMq-uk-0Hr" id="pF4-bt-zEi"/>
+                                    <outlet property="userNameLabel" destination="Beb-yo-99G" id="naq-cp-rQ7"/>
                                     <segue destination="O9D-GA-Xgr" kind="show" id="Y1J-uv-f6y"/>
                                 </connections>
                             </tableViewCell>
@@ -64,10 +66,10 @@
             </objects>
             <point key="canvasLocation" x="801" y="153"/>
         </scene>
-        <!--View Controller-->
+        <!--Users Detail View Controller-->
         <scene sceneID="daO-RU-3ev">
             <objects>
-                <viewController id="O9D-GA-Xgr" sceneMemberID="viewController">
+                <viewController id="O9D-GA-Xgr" customClass="UsersDetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tXq-42-mEF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
