@@ -21,7 +21,7 @@ class NetworkController {
     //MARK: - Functions
     
     //Requests 100 Users
-    func getUsers() {
+    func getUsers(completion: @escaping () -> Void) {
         
         guard let url = url else {
             return
@@ -35,17 +35,20 @@ class NetworkController {
             //Error Checking
             if let error = error {
                 print("Error Getting Users in \(#function): \(error)")
+                completion()
                 return
             }
             
             guard let tempData = data else {
                 print("Bad data in \(#function)")
+                completion()
                 return
             }
             
             //Decode Data
             do {
                 self.users = try JSONDecoder().decode(Results.self, from: tempData)
+                completion()
             } catch {
                 print("Error Decoding JSON in \(#function)")
             }

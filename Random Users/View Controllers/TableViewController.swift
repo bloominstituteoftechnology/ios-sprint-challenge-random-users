@@ -12,7 +12,11 @@ class TableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        networkController.getUsers() //Fetch Users 
+        networkController.getUsers {
+            DispatchQueue.main.async {
+                print(self.networkController.users?.results[0].name)
+            }
+        } //Fetch Users
     }
     
     //MARK: - Properties
@@ -22,8 +26,7 @@ class TableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
