@@ -11,13 +11,13 @@
         <!--Root View Controller-->
         <scene sceneID="mNI-x4-5Y5">
             <objects>
-                <tableViewController id="9iV-Gz-I3l" sceneMemberID="viewController">
+                <tableViewController id="9iV-Gz-I3l" customClass="PictureTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Vfd-Xf-A1O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="50" id="5dg-Ua-7jW">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="50" id="5dg-Ua-7jW" customClass="PictureTableViewCell" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5dg-Ua-7jW" id="NRp-7e-CBa">
@@ -38,6 +38,8 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="facePic" destination="ekG-to-xhX" id="xyC-ME-1Sr"/>
+                                    <outlet property="nameLabel" destination="257-vm-rae" id="Fqk-N3-VVA"/>
                                     <segue destination="TCD-FL-vA8" kind="show" identifier="detailSegue" id="2Bj-Vp-AHV"/>
                                 </connections>
                             </tableViewCell>
@@ -53,10 +55,10 @@
             </objects>
             <point key="canvasLocation" x="-2858.4000000000001" y="-957.57121439280365"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="hHS-F4-ldd">
             <objects>
-                <viewController id="TCD-FL-vA8" sceneMemberID="viewController">
+                <viewController id="TCD-FL-vA8" customClass="DetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cyj-I4-EfV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -104,6 +106,12 @@
                         <viewLayoutGuide key="safeArea" id="HPt-lA-MVF"/>
                     </view>
                     <navigationItem key="navigationItem" id="llE-gu-LMy"/>
+                    <connections>
+                        <outlet property="emailFace" destination="wlb-mg-Eke" id="7Be-zW-9jk"/>
+                        <outlet property="faceBig" destination="i7D-Vd-K3e" id="MQF-ig-xcH"/>
+                        <outlet property="nameFace" destination="ub7-yc-dL3" id="Es1-Z8-A8y"/>
+                        <outlet property="phoneFace" destination="NdO-QE-79y" id="2Ic-3p-9I1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mth-XO-Mt5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

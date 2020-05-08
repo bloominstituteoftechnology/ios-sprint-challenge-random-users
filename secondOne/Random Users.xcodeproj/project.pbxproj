@@ -13,6 +13,10 @@
 		8ED6A9922140178C00FC395A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
 		C47B0FF42465B0F9006C86F0 /* Face.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47B0FF32465B0F9006C86F0 /* Face.swift */; };
+		C47B0FF72465B1C4006C86F0 /* FaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47B0FF62465B1C4006C86F0 /* FaceController.swift */; };
+		C47B0FFA2465B25E006C86F0 /* FaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47B0FF92465B25E006C86F0 /* FaceTableViewCell.swift */; };
+		C47B0FFD2465B346006C86F0 /* PictureTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47B0FFC2465B346006C86F0 /* PictureTableViewController.swift */; };
+		C47B0FFF2465B390006C86F0 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47B0FFE2465B390006C86F0 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		8ED6A9932140178C00FC395A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 		C47B0FF32465B0F9006C86F0 /* Face.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Face.swift; sourceTree = "<group>"; };
+		C47B0FF62465B1C4006C86F0 /* FaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceController.swift; sourceTree = "<group>"; };
+		C47B0FF92465B25E006C86F0 /* FaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceTableViewCell.swift; sourceTree = "<group>"; };
+		C47B0FFC2465B346006C86F0 /* PictureTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureTableViewController.swift; sourceTree = "<group>"; };
+		C47B0FFE2465B390006C86F0 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,9 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
+				C47B0FFB2465B321006C86F0 /* ViewControllers */,
+				C47B0FF82465B22E006C86F0 /* Views */,
+				C47B0FF52465B1AF006C86F0 /* Controller */,
 				C47B0FF22465AF42006C86F0 /* Model */,
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				9D5CCA56214231E400224681 /* Operations */,
@@ -89,6 +100,31 @@
 				C47B0FF32465B0F9006C86F0 /* Face.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		C47B0FF52465B1AF006C86F0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C47B0FF62465B1C4006C86F0 /* FaceController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C47B0FF82465B22E006C86F0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C47B0FF92465B25E006C86F0 /* FaceTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C47B0FFB2465B321006C86F0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C47B0FFC2465B346006C86F0 /* PictureTableViewController.swift */,
+				C47B0FFE2465B390006C86F0 /* DetailViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,7 +200,11 @@
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				C47B0FF42465B0F9006C86F0 /* Face.swift in Sources */,
+				C47B0FFD2465B346006C86F0 /* PictureTableViewController.swift in Sources */,
+				C47B0FFA2465B25E006C86F0 /* FaceTableViewCell.swift in Sources */,
+				C47B0FF72465B1C4006C86F0 /* FaceController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				C47B0FFF2465B390006C86F0 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
