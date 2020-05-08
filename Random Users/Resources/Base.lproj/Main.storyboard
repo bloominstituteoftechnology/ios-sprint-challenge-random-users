@@ -11,13 +11,13 @@
         <!--Root View Controller-->
         <scene sceneID="w7T-cI-rXi">
             <objects>
-                <tableViewController id="67Q-ng-vk6" sceneMemberID="viewController">
+                <tableViewController id="67Q-ng-vk6" customClass="TableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4Ya-mw-gqd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="zIz-qP-wva">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="zIz-qP-wva" customClass="PersonTableViewCell" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="60.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zIz-qP-wva" id="7Mp-4s-IW0">
@@ -47,6 +47,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="nameLabel" destination="naR-pp-D9M" id="R8T-uY-ehO"/>
+                                    <outlet property="personImageView" destination="D9w-qB-zpE" id="yav-7H-ma8"/>
                                     <segue destination="U47-AA-lki" kind="show" id="h8K-UT-wfC"/>
                                 </connections>
                             </tableViewCell>
@@ -62,10 +64,10 @@
             </objects>
             <point key="canvasLocation" x="186" y="171"/>
         </scene>
-        <!--View Controller-->
+        <!--Person View Controller-->
         <scene sceneID="gMV-oX-rS6">
             <objects>
-                <viewController id="U47-AA-lki" sceneMemberID="viewController">
+                <viewController id="U47-AA-lki" customClass="PersonViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xSx-Py-Gcj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,6 +111,12 @@
                         <viewLayoutGuide key="safeArea" id="iod-Ct-cvT"/>
                     </view>
                     <navigationItem key="navigationItem" id="esD-3K-Euh"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="Okr-Rm-dfx" id="MYw-z2-EsO"/>
+                        <outlet property="nameLabel" destination="rXO-kg-eLn" id="QP0-Wr-aaF"/>
+                        <outlet property="personImageView" destination="cEc-M5-RvM" id="ypH-pH-zcz"/>
+                        <outlet property="phoneLabel" destination="uBC-r0-i4U" id="EuU-TS-b5e"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rqB-1g-kdM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

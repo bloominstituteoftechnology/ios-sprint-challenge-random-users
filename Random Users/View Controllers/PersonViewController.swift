@@ -16,7 +16,14 @@ class PersonViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    //MARK: - Outlets
+    @IBOutlet weak var personImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    
+    
+    
     /*
     // MARK: - Navigation
 

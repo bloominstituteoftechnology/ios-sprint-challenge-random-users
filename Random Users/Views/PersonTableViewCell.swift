@@ -20,5 +20,10 @@ class PersonTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    //MARK: - Outlets
+    @IBOutlet weak var personImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    
 
 }
