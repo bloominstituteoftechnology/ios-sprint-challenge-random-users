@@ -58,7 +58,6 @@ extension User: Decodable {
 
         let name = "\(title) \(first) \(last)"
 
-
         let phoneNumber = try container.decode(String.self, forKey: .phone)
         let emailAddress = try container.decode(String.self, forKey: .email)
 

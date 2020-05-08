@@ -29,20 +29,20 @@ class UsersTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        userClient.fetchUsers { (error) in
+        userClient.fetchUsers { (users, error) in
             if let error = error {
                 print("Error performing data task: \(error)")
+                return
             }
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+            self.users = users
             }
         }
-    }
+    
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users?.count ?? 0
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

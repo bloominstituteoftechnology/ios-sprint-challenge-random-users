@@ -13,11 +13,10 @@ class FetchImageOperation: ConcurrentOperation {
     // MARK: - Properties
 
     var user: User
-    private (set) var imageData: Data?  // made this a setter.
+    private (set) var imageData: Data?
 
-    // set these up to simplify the start and cancel functions.
-    private let session: URLSession  // get the URL for that pic
-    private var dataTask: URLSessionDataTask? // look for some data
+    private let session: URLSession
+    private var dataTask: URLSessionDataTask?
 
     init(userRandom: User, session: URLSession = URLSession.shared) {
         self.user = userRandom

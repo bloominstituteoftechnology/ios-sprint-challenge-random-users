@@ -90,6 +90,7 @@
 			children = (
 				8ED6A9862140178A00FC395A /* Random Users */,
 				8ED6A9852140178A00FC395A /* Products */,
+				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,7 +111,6 @@
 				187799462465AD5B0098BBBD /* View Controllers */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
-				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 			);
 			path = "Random Users";
 			sourceTree = "<group>";

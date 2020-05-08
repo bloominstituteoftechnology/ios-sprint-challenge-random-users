@@ -12,10 +12,9 @@ import Foundation
 class UserClient {
 
     let baseURL = URL(string: "https:randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
-    
-    typealias CompletionHandler = (Error?) -> Void
 
-    func fetchUsers(completion: @escaping CompletionHandler = { _ in }) {
+
+    func fetchUsers(completion: @escaping ([User]?, Error?) -> Void) {
         URLSession.shared.dataTask(with: baseURL) { (data, _, error) in
             if let error = error {
                 print("error")
@@ -24,18 +23,20 @@ class UserClient {
             guard let data = data else {
                 print("error")
                 NSLog("No data returned from data task.")
-                completion(nil)
+                completion(nil, error)
                 return
             }
 
             do {
                 let newUsers = try JSONDecoder().decode(UserResult.self, from: data)
                 let users = newUsers.users
+                completion(users, nil)
+                return
             } catch {
                 NSLog("Error decoding users: \(error)")
-                completion(error)
+                completion(nil, error)
+                return
             }
-            completion(nil)
         }.resume()
     }
 
