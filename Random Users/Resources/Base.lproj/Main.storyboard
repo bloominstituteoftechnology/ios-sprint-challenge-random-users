@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UserCell" id="cqy-9W-dhM">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UserCell" id="cqy-9W-dhM" customClass="UserTableViewCell" customModule="Random_Users" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="52.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cqy-9W-dhM" id="w34-7B-dle">
@@ -51,6 +51,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="thumbnailImageView" destination="4r6-39-0QZ" id="JJ8-cl-fSu"/>
+                                            <outlet property="userLabel" destination="Lcz-12-Bhh" id="LHy-Hh-MoI"/>
                                             <segue destination="ajh-Q2-1I2" kind="show" id="eE4-7k-tVX"/>
                                         </connections>
                                     </tableViewCell>

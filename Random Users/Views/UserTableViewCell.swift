@@ -12,20 +12,19 @@ class UserTableViewCell: UITableViewCell {
     
     // MARK: - Outlets
     
-    
+    @IBOutlet weak var thumbnailImageView: UIImageView!
+    @IBOutlet weak var userLabel: UILabel!
     
     // MARK: - Properties
     
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    var user: User? {
+        didSet {
+            update()
+        }
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    private func update() {
+        guard let user = user else { return }
+        userLabel.text = user.name.fullName
     }
-
 }

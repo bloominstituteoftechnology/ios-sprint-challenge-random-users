@@ -8,6 +8,10 @@
 
 import Foundation
 
+struct Results: Codable {
+    let results: [User]
+}
+
 struct User: Codable {
     let name: Name
     let email: String
@@ -19,6 +23,10 @@ struct Name: Codable {
     let title: String
     let first: String
     let last: String
+    
+    var fullName: String {
+        return "\(title) \(first) \(last)"
+    }
 }
 
 struct Picture: Codable {
