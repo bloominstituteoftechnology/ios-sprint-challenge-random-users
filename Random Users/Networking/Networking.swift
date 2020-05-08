@@ -20,7 +20,6 @@ class Networking {
                 do {
                     let fetchedUsers = try JSONDecoder().decode(User.self, from: data)
                     self.users.append(contentsOf: fetchedUsers.results)
-                    print(fetchedUsers)
                     completion()
                 } catch {
                     print(error)
