@@ -16,10 +16,10 @@ struct User: Codable {
         case picture
     }
     
-    let name: String
+    let name: Name
     let email: String
     let phone: String
-    let picture: String
+    let picture: Picture
     
 }
 
@@ -49,4 +49,8 @@ struct Picture: Codable {
     let medium: String
     let thumbnail: String
     
+}
+
+struct Result: Codable {
+let results: [User]
 }
