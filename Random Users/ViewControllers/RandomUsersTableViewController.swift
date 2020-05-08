@@ -12,6 +12,7 @@ class RandomUsersTableViewController: UITableViewController {
     
     private let userController = UserController()
     private let imageCache = Cache<Int, UIImage>()
+   private let photoFetchQueue = OperationQueue()
     private var fetchOperations: [Int: FetchPhotoOperation] = [:]
     private var largePhotoCache = Cache<Int, UIImage>()
     private let largePhotoFetchQueue = OperationQueue()
@@ -59,6 +60,7 @@ class RandomUsersTableViewController: UITableViewController {
         guard  let cell = tableView.dequeueReusableCell(withIdentifier: "RandomUserCell", for: indexPath) as? UsersTableViewCell else { return UITableViewCell() }
         // Configure the cell...
         cell.user = users[indexPath.item]
+        loadImage(forCell: cell, forItemAt: indexPath)
         return cell
     }
     
@@ -81,34 +83,34 @@ class RandomUsersTableViewController: UITableViewController {
         let cacheIndex = cell.cellIndexPath
         let imageThumbNail = users[cacheIndex.item].picture.thumbnail
         
-        if let cache = cache.value(for: cacheIndex.item) {
-            cell.imageView.image = UIImage(data: cache)
+        if let cacheImage = imageCache.value(for: cacheIndex.item) {
+            cell.userImage.image = cacheImage
             return
         } else {
-            let fetchedPhoto = PhotoFetchOperation(photoReference: photoReference)
+            let fetchedPhoto = FetchPhotoOperation(imageURL: URL(string: imageThumbNail)!)
             
             let cachePhotoData = BlockOperation {
                 if let imageData = fetchedPhoto.imageData {
-                    self.cache.cache(value: imageData, for: photoReference.id)
+                    self.imageCache.cache(value: imageData, for: cacheIndex.item)
                 }
             }
             
             let cellPhotoData = BlockOperation {
-                guard let imageData = fetchedPhoto.imageData else { return }
-                DispatchQueue.main.async {
-                    if self.collectionView.indexPath(for: cell) == indexPath {
-                        cell.imageView.image = UIImage(data: imageData)
-                    } else {
-                        return
+                if cacheIndex != cell.cellIndexPath {
+                    return
+                }
+                if let image = fetchedPhoto.imageData {
+                    DispatchQueue.main.async {
+                        cell.userImage.image = image
                     }
                 }
+                    
             }
             
             cachePhotoData.addDependency(fetchedPhoto)
             cellPhotoData.addDependency(fetchedPhoto)
             
             photoFetchQueue.addOperations([cachePhotoData, cellPhotoData, fetchedPhoto], waitUntilFinished: false)
-            photoDictionary[photoReference.id] = fetchedPhoto
             // TODO: Implement image loading here
         }
     }
