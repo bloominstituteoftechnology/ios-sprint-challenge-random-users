@@ -32,6 +32,7 @@ class FetchImageOperation: ConcurrentOperation {
 
         let task = session.dataTask(with: imageURL) { (data, _, error) in
             defer { self.state = .isFinished }
+
             if let error = error {
                 NSLog("Error fetching data for: \(error)")
                 return

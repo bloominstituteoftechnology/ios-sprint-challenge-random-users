@@ -38,11 +38,10 @@ class UsersTableViewController: UITableViewController {
             }
         }
     
-
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return users?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,8 +78,8 @@ class UsersTableViewController: UITableViewController {
         guard let user = users?[indexPath.row],
         let email = user.email else { return }
 
-        if let image = cache.value(key: email) {
-            cell.userImageView?.image = UIImage(data: image)
+        if let data = cache.value(key: email) {
+            cell.userImageView?.image = UIImage(data: data)
 
         } else {
             let fetchOperation = FetchImageOperation(userRandom: user)
