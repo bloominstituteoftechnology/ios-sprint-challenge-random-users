@@ -22,3 +22,19 @@ struct User: Codable {
     let picture: String
     
 }
+
+struct Name: Codable {
+    enum CodingKeys: String, CodingKey {
+        case title
+        case first
+        case last
+    }
+    
+    var title: String
+    var first: String
+    var last: String
+    
+    var fullName: String {
+        return ("\(title) \(first) \(last)").trimmingCharacters(in: CharacterSet.whitespaces)
+    }
+}
