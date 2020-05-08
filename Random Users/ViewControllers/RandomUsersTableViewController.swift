@@ -12,7 +12,7 @@ class RandomUsersTableViewController: UITableViewController {
 
     private let userController = UserController()
     
-    private var user = [User]() {
+    private var users = [User]() {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -24,21 +24,36 @@ class RandomUsersTableViewController: UITableViewController {
         super.viewDidLoad()
    
     }
-
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        userController.fetchRandomUsers { result in
+            do {
+                let users = try result.get()
+                DispatchQueue.main.async {
+                    self.users = users
+                }
+            } catch {
+                if let error = error as? NetworkError {
+                    NSLog("Error in getting users: \(error)")
+                    return 
+                }
+            }
+        }
+    }
+    
     // MARK: - Table view data source
 
     
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return user.count
+        return users.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard  let cell = tableView.dequeueReusableCell(withIdentifier: "RandomUserCell", for: indexPath) as? UsersTableViewCell else { return UITableViewCell() }
         // Configure the cell...
-
+        cell.user = users[indexPath.item]
         return cell
     }
     
