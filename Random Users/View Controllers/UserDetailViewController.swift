@@ -32,7 +32,7 @@ class UserDetailViewController: UIViewController {
         title = user.name.first.capitalized + " " + user.name.last.capitalized
         emailLabel.text = user.email
         phoneLabel.text = user.phone
-        guard let imageData = try? Data(contentsOf: user.picture.large) else { fatalError() }
+        guard let imageData = try? Data(contentsOf: user.large) else { fatalError() }
         imageView.image = UIImage(data: imageData)
     }
 

@@ -16,7 +16,8 @@ struct User: Codable {
     var name: Name
     var email: String
     var phone: String
-    var picture: Picture
+    var thumbnail: URL
+    var large: URL
 
     static var jsonDecoder: JSONDecoder {
         let result = JSONDecoder()
@@ -30,7 +31,3 @@ struct Name: Codable {
     var last: String
 }
 
-struct Picture: Codable {
-    var thumbnail: URL
-    var large: URL
-}
