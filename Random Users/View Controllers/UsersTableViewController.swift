@@ -19,6 +19,7 @@ class UsersTableViewController: UIViewController {
     let apiController = APIController()
     var cachedItems = Cache<String, UIImage>()
     var fetchOperations = Cache<Int, FetchPhotoOperation>()
+    var isFetching = false
     
     let photoFetchQueue = OperationQueue()
 
@@ -43,9 +44,18 @@ class UsersTableViewController: UIViewController {
         }
     }
     
+    // MARK: - Actions
+    
+    @IBAction func reset(_ sender: Any) {
+        apiController.users = []
+        getUsersFromAPI()
+    }
+    
     // MARK: - Private Functions
     
     private func getUsersFromAPI() {
+        if isFetching { return }
+        isFetching = true
         apiController.getUsers { result in
             switch result {
             case .success(_):
@@ -56,6 +66,7 @@ class UsersTableViewController: UIViewController {
             case .failure(_):
                 NSLog("Failed to fetch users.")
             }
+            self.isFetching = false
         }
     }
 }

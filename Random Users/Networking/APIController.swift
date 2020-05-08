@@ -20,7 +20,7 @@ class APIController {
     
     var users = [User]()
     let lockForUsers = NSLock()
-    let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=20")!
+    let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=50")!
     
     func getUsers(completion: @escaping CompletionHandler = { _ in }) {
         URLSession.shared.dataTask(with: baseURL) { data, _, error in

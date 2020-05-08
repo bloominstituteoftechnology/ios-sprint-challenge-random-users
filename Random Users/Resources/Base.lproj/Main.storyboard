@@ -69,7 +69,11 @@
                         <viewLayoutGuide key="safeArea" id="bjP-P3-xaq"/>
                     </view>
                     <navigationItem key="navigationItem" title="Users" id="ZFF-OD-Wak">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Wlg-QK-WgP"/>
+                        <barButtonItem key="rightBarButtonItem" title="Reset" id="Wlg-QK-WgP">
+                            <connections>
+                                <action selector="reset:" destination="1Cm-O8-Can" id="hx3-L4-tOo"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="or5-eO-0x7" id="acW-hu-kuR"/>
