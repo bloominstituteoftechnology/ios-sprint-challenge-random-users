@@ -53,7 +53,7 @@
                                         <connections>
                                             <outlet property="thumbnailImageView" destination="4r6-39-0QZ" id="JJ8-cl-fSu"/>
                                             <outlet property="userLabel" destination="Lcz-12-Bhh" id="LHy-Hh-MoI"/>
-                                            <segue destination="ajh-Q2-1I2" kind="show" id="eE4-7k-tVX"/>
+                                            <segue destination="ajh-Q2-1I2" kind="show" identifier="ShowDetailSegue" id="eE4-7k-tVX"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -130,6 +130,12 @@
                         <viewLayoutGuide key="safeArea" id="35V-jK-Ob8"/>
                     </view>
                     <navigationItem key="navigationItem" id="rcV-Mf-VPz"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="MAM-iu-Hbt" id="4Cs-D3-sV3"/>
+                        <outlet property="largeImageView" destination="nch-qj-7ed" id="S47-Ny-obh"/>
+                        <outlet property="phonenumberLabel" destination="DNQ-TL-T8z" id="oCS-ZS-BaK"/>
+                        <outlet property="userLabel" destination="t1k-rq-KwV" id="d3F-yt-OuO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SH0-a3-77K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

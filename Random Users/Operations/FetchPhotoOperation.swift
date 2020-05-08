@@ -24,7 +24,6 @@ class FetchPhotoOperation: ConcurrentOperation {
     
     override func cancel() {
         loadImageDataTask.cancel()
-        print("Canceled fetching \(user.name.fullName)'s photo")
     }
     
     private lazy var loadImageDataTask = BlockOperation {
