@@ -30,7 +30,6 @@ class PictureTableViewController: UITableViewController {
         override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
- 
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
