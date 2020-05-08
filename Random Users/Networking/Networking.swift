@@ -10,7 +10,7 @@ import Foundation
 
 class Networking {
     
-    let usersURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=3")! // FIXME: - update this to 1000 after it works
+    let usersURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
     var users = [Result]()
     
     func fetchUsers(completion: @escaping () -> Void) {
