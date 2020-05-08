@@ -23,7 +23,6 @@ class TableViewController: UITableViewController {
     let networkController = NetworkController()
     let cache = Cache<IndexPath, Data>()
     
-    
     //MARK: - Custom Functions
     func updateViews() {
         tableView.reloadData()
@@ -164,6 +163,7 @@ class TableViewController: UITableViewController {
             }
             
             destination.user = user
+            destination.networkController = networkController
         }
     }
     

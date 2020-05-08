@@ -17,6 +17,7 @@ class PersonViewController: UIViewController {
     
     //MARK: - Properties
     var user: Result?
+    var networkController: NetworkController?
     static let identifier = "userSegue"
     
     //MARK: - Outlets
@@ -28,6 +29,27 @@ class PersonViewController: UIViewController {
     
     //MARK: - Custom Functions
     func updateViews() {
+        guard let tempUser = user else {
+            print("Bad User in \(#function)")
+            return
+        }
+        
+        let url = URL(string: tempUser.picture.large)
+        guard let tempURL = url else {
+            print("Bad URL in \(#function)")
+            return
+        }
+        
+        networkController?.fetchImageLarge(imageURL: tempURL, completion: { (data) in
+            DispatchQueue.main.async {
+                guard let imageData = data else {
+                    print("Bad image Data \(#function)")
+                    return
+                }
+                
+                self.personImageView.image = UIImage(data: imageData)
+            }
+        })
         
         if let name = user?.name {
             nameLabel.text = "\(name.first) \(name.last)"

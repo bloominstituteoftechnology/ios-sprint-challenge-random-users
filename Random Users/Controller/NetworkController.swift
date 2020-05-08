@@ -90,4 +90,33 @@ class NetworkController {
                 
         }.resume()
     }
+    
+    func fetchImageLarge(imageURL: URL?, completion: @escaping (Data?) -> Void) {
+        guard let tempImageURL = imageURL else {
+            return
+        }
+        
+        URLSession.shared.dataTask(with: tempImageURL) { (data, response, error) in
+            
+            //Error Checking
+            if let error = error {
+                print("Error Getting Users in \(#function): \(error)")
+                completion(nil)
+                return
+            }
+            
+            guard let tempData = data else {
+                print("Bad data in \(#function)")
+                completion(nil)
+                return
+            }
+            
+            //Store Image in Cache
+            completion(tempData)
+            //self.images[indexPath] = UIImage(data: tempData)
+            
+            print("Got image!")
+            
+        }.resume()
+    }
 }
