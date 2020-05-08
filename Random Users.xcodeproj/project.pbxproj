@@ -12,6 +12,13 @@
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
 		8ED6A9922140178C00FC395A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
+		DDA6C8232465ACDF0094FD88 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6C8222465ACDF0094FD88 /* Person.swift */; };
+		DDA6C8262465AF720094FD88 /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6C8252465AF720094FD88 /* PersonTableViewCell.swift */; };
+		DDA6C82A2465AFD40094FD88 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6C8292465AFD40094FD88 /* TableViewController.swift */; };
+		DDA6C82C2465AFE70094FD88 /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6C82B2465AFE70094FD88 /* PersonViewController.swift */; };
+		DDA6C82E2465B1440094FD88 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6C82D2465B1440094FD88 /* Cache.swift */; };
+		DDA6C8312465B1A00094FD88 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6C8302465B1A00094FD88 /* NetworkController.swift */; };
+		DDA6C8332465CCB20094FD88 /* FetchImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6C8322465CCB20094FD88 /* FetchImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +29,13 @@
 		8ED6A9912140178C00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ED6A9932140178C00FC395A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
+		DDA6C8222465ACDF0094FD88 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		DDA6C8252465AF720094FD88 /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PersonTableViewCell.swift; path = "Random Users/Views/PersonTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
+		DDA6C8292465AFD40094FD88 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		DDA6C82B2465AFE70094FD88 /* PersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
+		DDA6C82D2465B1440094FD88 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		DDA6C8302465B1A00094FD88 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		DDA6C8322465CCB20094FD88 /* FetchImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +68,11 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
+				DDA6C82F2465B1930094FD88 /* Controller */,
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+				DDA6C8282465AFB50094FD88 /* View Controllers */,
+				DDA6C8272465AF770094FD88 /* Views */,
+				DDA6C8242465ADB60094FD88 /* Model */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
@@ -78,6 +96,41 @@
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
 			);
 			path = Operations;
+			sourceTree = "<group>";
+		};
+		DDA6C8242465ADB60094FD88 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DDA6C82D2465B1440094FD88 /* Cache.swift */,
+				DDA6C8222465ACDF0094FD88 /* Person.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DDA6C8272465AF770094FD88 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DDA6C8252465AF720094FD88 /* PersonTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DDA6C8282465AFB50094FD88 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DDA6C8292465AFD40094FD88 /* TableViewController.swift */,
+				DDA6C82B2465AFE70094FD88 /* PersonViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		DDA6C82F2465B1930094FD88 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DDA6C8302465B1A00094FD88 /* NetworkController.swift */,
+				DDA6C8322465CCB20094FD88 /* FetchImage.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,8 +204,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDA6C8312465B1A00094FD88 /* NetworkController.swift in Sources */,
+				DDA6C82E2465B1440094FD88 /* Cache.swift in Sources */,
+				DDA6C8232465ACDF0094FD88 /* Person.swift in Sources */,
+				DDA6C82C2465AFE70094FD88 /* PersonViewController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				DDA6C8262465AF720094FD88 /* PersonTableViewCell.swift in Sources */,
+				DDA6C82A2465AFD40094FD88 /* TableViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				DDA6C8332465CCB20094FD88 /* FetchImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
