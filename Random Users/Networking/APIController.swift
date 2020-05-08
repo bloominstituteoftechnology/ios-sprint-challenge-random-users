@@ -19,7 +19,8 @@ class APIController {
     typealias CompletionHandler = (Result<Bool, NetworkError>) -> Void
     
     var users = [User]()
-    let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
+    let lockForUsers = NSLock()
+    let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=20")!
     
     func getUsers(completion: @escaping CompletionHandler = { _ in }) {
         URLSession.shared.dataTask(with: baseURL) { data, _, error in
@@ -35,8 +36,10 @@ class APIController {
             
             do {
                 let users = try JSONDecoder().decode(Results.self, from: data)
-                self.users = users.results
+                self.lockForUsers.lock()
+                self.users.append(contentsOf: users.results)
                 completion(.success(true))
+                self.lockForUsers.unlock()
             } catch {
                 NSLog("Failed to decode data.")
                 return completion(.failure(.otherError))

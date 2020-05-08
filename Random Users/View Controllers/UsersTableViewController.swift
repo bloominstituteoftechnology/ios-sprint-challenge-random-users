@@ -30,6 +30,22 @@ class UsersTableViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        getUsersFromAPI()
+    }
+
+    // MARK: - Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetailSegue" {
+            guard let detailVC = segue.destination as? UserDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow else { return }
+            detailVC.user = apiController.users[indexPath.row]
+        }
+    }
+    
+    // MARK: - Private Functions
+    
+    private func getUsersFromAPI() {
         apiController.getUsers { result in
             switch result {
             case .success(_):
@@ -42,16 +58,6 @@ class UsersTableViewController: UIViewController {
             }
         }
     }
-
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowDetailSegue" {
-            guard let detailVC = segue.destination as? UserDetailViewController,
-                let indexPath = tableView.indexPathForSelectedRow else { return }
-            detailVC.user = apiController.users[indexPath.row]
-        }
-    }
 }
 
 extension UsersTableViewController: UITableViewDelegate, UITableViewDataSource {
@@ -61,15 +67,24 @@ extension UsersTableViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserTableViewCell ?? UserTableViewCell()
-        
+        apiController.lockForUsers.lock()
         cell.user = apiController.users[indexPath.row]
         loadImage(forCell: cell, forItemAt: indexPath)
-        
+        apiController.lockForUsers.unlock()
         return cell
     }
     
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         fetchOperations[indexPath.row]?.cancel()
+    }
+    
+     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let height = scrollView.frame.size.height
+        let contentYoffset = scrollView.contentOffset.y
+        let distanceFromBottom = scrollView.contentSize.height - contentYoffset
+        if distanceFromBottom < height {
+            getUsersFromAPI()
+        }
     }
     
     private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
