@@ -114,6 +114,12 @@
                         <viewLayoutGuide key="safeArea" id="PN5-RI-Wb1"/>
                     </view>
                     <navigationItem key="navigationItem" id="Uyi-iY-Czw"/>
+                    <connections>
+                        <outlet property="emailAddressLabel" destination="Rek-2k-4pm" id="JzM-yy-Ym1"/>
+                        <outlet property="phoneNumberLabel" destination="CwN-pw-BhS" id="T5s-ih-HXn"/>
+                        <outlet property="userImage" destination="fYb-DK-VyL" id="g0A-rX-eP5"/>
+                        <outlet property="userNameLabel" destination="D37-wW-Afv" id="Hep-Gl-fVE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZqV-y7-mSw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
