@@ -15,6 +15,8 @@ class UsersTableViewCell: UITableViewCell {
             updateViews()
         }
     }
+
+    var cellIndexPath = IndexPath()
     
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
