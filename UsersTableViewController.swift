@@ -14,9 +14,9 @@ class UsersTableViewController: UITableViewController {
 
     let userClient = UserClient()
 
-    let cache = Cache<String, Data>() // Name and related photo data.
-    private let queue = OperationQueue() // OperationQueue for fetch in background.
-    private var operations = [String : Operation]()  // holding each Operation in a dictionary.
+    let cache = Cache<String, Data>()
+    private let queue = OperationQueue()
+    private var operations = [String : Operation]()
 
     var users: [User]? {
         didSet {
@@ -29,7 +29,7 @@ class UsersTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        userClient.fetchUsers() { (error) in
+        userClient.fetchUsers { (error) in
             if let error = error {
                 print("Error performing data task: \(error)")
             }
@@ -47,8 +47,8 @@ class UsersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
-        let user = users?[indexPath.row]
-        cell.nameLabel.text = user?.name.last
+        guard let user = users?[indexPath.row] else { return cell }
+        cell.nameLabel.text = user.name
 
         loadImage(forCell: cell, forItemAt: indexPath)
 
@@ -56,9 +56,10 @@ class UsersTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard let user = users?[indexPath.row] else { return }
+        guard let user = users?[indexPath.row],
+            let email = user.email else { return }
 
-        operations[user.email]?.cancel()
+        operations[email]?.cancel()
     }
 
     // MARK: - Navigation
@@ -67,8 +68,7 @@ class UsersTableViewController: UITableViewController {
         if segue.identifier == "UserDetail" {
             guard let userDetailVC = segue.destination as? UserDetailViewController else { return }
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            let user = userClient.users[indexPath.row]
-            userDetailVC.user = user
+            userDetailVC.user = users?[indexPath.row]
         }
     }
 
@@ -76,34 +76,33 @@ class UsersTableViewController: UITableViewController {
 
     private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
 
-        guard let user = users?[indexPath.row] else { return }
-        let email = user.email
+        guard let user = users?[indexPath.row],
+        let email = user.email else { return }
 
         if let image = cache.value(key: email) {
-            cell.imageView?.image = UIImage(data: image)
+            cell.userImageView?.image = UIImage(data: image)
 
         } else {
             let fetchOperation = FetchImageOperation(userRandom: user)
             let cacheOperation = BlockOperation {
-                if let data = fetchOperation.imageData {
-                    self.cache.cache(key: user.email, value: data)
-                }
+                guard let data = fetchOperation.imageData else { return }
+                    self.cache.cache(key: email, value: data)
             }
 
             let displayImageOperation = BlockOperation {
-                defer {self.operations.removeValue(forKey: user.email)}
+                defer {self.operations.removeValue(forKey: email)}
             }
             if let data = fetchOperation.imageData {
                 cell.imageView?.image = UIImage(data: data)
-                cell.nameLabel?.text = user.name.first.capitalized + " " + user.name.last.capitalized
+                cell.nameLabel?.text = user.name
             }
-            queue.addOperation(fetchOperation) // fetching operation
+            queue.addOperation(fetchOperation)
             queue.addOperation(cacheOperation)
-            cacheOperation.addDependency(fetchOperation) // can't cache until we have an image to cache
+            cacheOperation.addDependency(fetchOperation)
             displayImageOperation.addDependency(fetchOperation)
-            OperationQueue.main.addOperation(displayImageOperation) // moving our finished images to the main queue
+            OperationQueue.main.addOperation(displayImageOperation)
 
-            operations[user.email] = fetchOperation
+            operations[email] = fetchOperation
         }
     }
 }

@@ -10,10 +10,13 @@ import UIKit
 
 class UserDetailViewController: UIViewController {
 
+    // MARK: - Outlets
 
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+
+    // MARK: - Properties
 
     var user: User? {
         didSet {
@@ -26,13 +29,15 @@ class UserDetailViewController: UIViewController {
         updateViews()
     }
 
+    // MARK: - Methods
+    
     func updateViews() {
         guard isViewLoaded,
             let user = user else { return }
-        title = user.name.first.capitalized + " " + user.name.last.capitalized
+        title = user.name
         emailLabel.text = user.email
         phoneLabel.text = user.phone
-        guard let imageData = try? Data(contentsOf: user.large) else { fatalError() }
+        guard let imageData = try? Data(contentsOf: user.large!) else { fatalError() }
         imageView.image = UIImage(data: imageData)
     }
 

@@ -11,9 +11,7 @@ import Foundation
 
 class UserClient {
 
-    var users: [User] = []
-
-    let baseURL = URL(string: "https://randomuser.me/api/?format=json&results=1000")!
+    let baseURL = URL(string: "https:randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
     
     typealias CompletionHandler = (Error?) -> Void
 
@@ -32,7 +30,7 @@ class UserClient {
 
             do {
                 let newUsers = try JSONDecoder().decode(UserResult.self, from: data)
-                self.users = newUsers.results
+                let users = newUsers.users
             } catch {
                 NSLog("Error decoding users: \(error)")
                 completion(error)

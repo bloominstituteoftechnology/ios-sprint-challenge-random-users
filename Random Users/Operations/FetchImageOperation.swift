@@ -10,6 +10,8 @@ import Foundation
 
 class FetchImageOperation: ConcurrentOperation {
 
+    // MARK: - Properties
+
     var user: User
     private (set) var imageData: Data?  // made this a setter.
 
@@ -23,13 +25,16 @@ class FetchImageOperation: ConcurrentOperation {
         super.init()
     }
 
+    // MARK: - Methods
+    
     override func start() {
         state = .isExecuting
-        guard let imageURL = user.thumbnail.usingHTTPS else { return }
+        guard let imageURL = user.thumbnail else { return }
+
         let task = session.dataTask(with: imageURL) { (data, _, error) in
             defer { self.state = .isFinished }
             if let error = error {
-                NSLog("Error fetching data for \(self.imageData), \(error)")
+                NSLog("Error fetching data for: \(error)")
                 return
             }
             guard let data = data else { return }
