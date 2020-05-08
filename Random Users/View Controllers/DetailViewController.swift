@@ -11,10 +11,10 @@ import UIKit
 class DetailViewController: UIViewController {
     
     // MARK: - Outlets
-       @IBOutlet weak var userImage: UIImageView!
-       @IBOutlet weak var userName: UILabel!
-       @IBOutlet weak var userPhone: UILabel!
-       @IBOutlet weak var userEmail: UILabel!
+       @IBOutlet weak var userImageView: UIImageView!
+       @IBOutlet weak var userNameLabel: UILabel!
+       @IBOutlet weak var phoneNumberLabel: UILabel!
+       @IBOutlet weak var userEmailLabel: UILabel!
     
     
     

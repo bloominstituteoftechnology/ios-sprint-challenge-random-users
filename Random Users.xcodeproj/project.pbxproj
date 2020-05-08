@@ -69,12 +69,9 @@
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
-				FEA253B92465AFD50080226D /* UserController.swift */,
-				FEA253BF2465BA890080226D /* Cache.swift */,
-				FEA253C12465BB9C0080226D /* User.swift */,
-				FEA253C32465CE7A0080226D /* RandomUsersTableViewController.swift */,
-				FEA253C52465CE8E0080226D /* DetailViewController.swift */,
-				FEA253C72465D0E90080226D /* UserTableViewCell.swift */,
+				FEA253C92465D15F0080226D /* Model */,
+				FEA253CC2465D1850080226D /* Controller */,
+				FEA253CA2465D16D0080226D /* View Controllers */,
 			);
 			path = "Random Users";
 			sourceTree = "<group>";
@@ -96,6 +93,41 @@
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
 			);
 			path = Operations;
+			sourceTree = "<group>";
+		};
+		FEA253C92465D15F0080226D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FEA253C12465BB9C0080226D /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FEA253CA2465D16D0080226D /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FEA253C32465CE7A0080226D /* RandomUsersTableViewController.swift */,
+				FEA253C52465CE8E0080226D /* DetailViewController.swift */,
+				FEA253CB2465D1770080226D /* Views */,
+				FEA253BF2465BA890080226D /* Cache.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		FEA253CB2465D1770080226D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FEA253C72465D0E90080226D /* UserTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FEA253CC2465D1850080226D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FEA253B92465AFD50080226D /* UserController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
