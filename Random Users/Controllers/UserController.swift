@@ -10,7 +10,7 @@ import Foundation
 
 let randomUserURL = URL(string: "https://randomuser.me/api/")!
 
-class UserClient {
+class UserController {
     
     var users: [User] = []
     

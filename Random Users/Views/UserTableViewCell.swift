@@ -15,7 +15,7 @@ class UserTableViewCell: UITableViewCell {
   @IBOutlet weak var userName: UILabel!
 
   override func prepareForReuse() {
-    userImage.image = #imageLiteral(resourceName: "Lambda_Logo_Full")
+    userImage.image = #imageLiteral(resourceName: "Lambda_Logo_Full") //
       userName.text = "User Name"
       super.prepareForReuse()
   }
