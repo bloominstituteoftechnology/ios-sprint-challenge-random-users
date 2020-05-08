@@ -21,6 +21,7 @@ class TableViewController: UITableViewController {
     
     //MARK: - Properties
     let networkController = NetworkController()
+    let cache = Cache<IndexPath, Data>()
     
     
     //MARK: - Custom Functions
@@ -54,11 +55,40 @@ class TableViewController: UITableViewController {
             return cell
         }
         
+        loadImage(cell: myCell, indexPath: indexPath) //Assign Cell their Image
+        
         //Assigning Properties to Cell
         myCell.nameLabel.text = "\(user.name.first) \(user.name.last)"
         
         return myCell
     }
+    
+    //Loads Image Using NetworkController Methods and Stores them in the Cache for later use
+    func loadImage(cell: PersonTableViewCell, indexPath: IndexPath) {
+        
+        //Unwrap User
+        let tempUser = networkController.users?.results[indexPath.row]
+        guard let user = tempUser else {
+            print("Bad user in \(#function)")
+            return
+        }
+    
+        //Load Image
+        networkController.fetchImage(imageURL: URL(string: user.picture.thumbnail), indexPath: indexPath, cache: cache) {
+            DispatchQueue.main.async {
+                
+                guard let imageData = self.cache.value(for: indexPath) else {
+                    print("Bad imageData in \(#function)")
+                    return
+                }
+                
+                let image = UIImage(data: imageData)
+                cell.imageView?.image = image
+                print("ReloadData")
+            }
+        }
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -124,7 +154,6 @@ class TableViewController: UITableViewController {
             
             destination.user = user
         }
-        
     }
     
 

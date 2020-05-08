@@ -73,7 +73,6 @@
 				DDA6C8242465ADB60094FD88 /* Model */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
-				DDA6C82D2465B1440094FD88 /* Cache.swift */,
 			);
 			path = "Random Users";
 			sourceTree = "<group>";
@@ -100,6 +99,7 @@
 		DDA6C8242465ADB60094FD88 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DDA6C82D2465B1440094FD88 /* Cache.swift */,
 				DDA6C8222465ACDF0094FD88 /* Person.swift */,
 			);
 			path = Model;

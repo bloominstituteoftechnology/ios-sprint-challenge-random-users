@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 /* Call this URL: https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000
     Get and Store 1000 Users
@@ -15,6 +16,7 @@ class NetworkController {
     
     //MARK: - Properties
     var users: Results?
+    var images: [IndexPath: UIImage] = [:]
     var url = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")
     
     
@@ -58,4 +60,34 @@ class NetworkController {
         }.resume()
     }
     
+    func fetchImage(imageURL: URL?, indexPath: IndexPath, cache: Cache<IndexPath, Data>, completion: @escaping () -> Void) {
+            guard let tempImageURL = imageURL else {
+                return
+            }
+
+        
+        URLSession.shared.dataTask(with: tempImageURL) { (data, response, error) in
+            
+            //Error Checking
+            if let error = error {
+                print("Error Getting Users in \(#function): \(error)")
+                completion()
+                return
+            }
+            
+            guard let tempData = data else {
+                print("Bad data in \(#function)")
+                completion()
+                return
+            }
+            
+            //Store Image in Cache
+            cache.cache(value: tempData, for: indexPath)
+            completion()
+            //self.images[indexPath] = UIImage(data: tempData)
+            
+            print("Got image!")
+                
+        }.resume()
+    }
 }
