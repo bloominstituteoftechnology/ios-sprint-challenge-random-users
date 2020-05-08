@@ -12,6 +12,9 @@ class TableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        networking.fetchUsers {
+//            self.tableView.reloadData()
+        }
     }
 
     // MARK: - Table view data source
@@ -31,9 +34,11 @@ class TableViewController: UITableViewController {
         if segue.identifier == "DetailSeg" {
             let detailViewController = segue.destination as! DetailViewController
             let indexPath = tableView.indexPathForSelectedRow!
-            let user = //[indexPath.row]
-            detailViewController.// = //
+//            let user = //[indexPath.row]
+//            detailViewController.// = //
         }
     }
 
+    let networking = Networking()
+    
 }
