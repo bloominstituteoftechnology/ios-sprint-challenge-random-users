@@ -62,3 +62,8 @@ class ConcurrentOperation: Operation {
     }
     
 }
+
+class FetchUsersOperation: ConcurrentOperation {
+    private(set) var imageData: Data?
+    
+}
