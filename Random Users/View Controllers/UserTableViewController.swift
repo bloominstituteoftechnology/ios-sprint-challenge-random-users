@@ -13,7 +13,8 @@ class UserTableViewController: UITableViewController {
     var userController = UserController()
     var cache = Cache<String, Data>()
     private var photoFetchQueue = OperationQueue()
-    var operation = [String: Operation]()
+    var operation = [UUID: Operation]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,58 +28,59 @@ class UserTableViewController: UITableViewController {
             }
         }
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userController.users.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserTableViewCell ?? UserTableViewCell()
-
+        
+        
         loadImages(for: cell, forItemAt: indexPath)
-
-
+       
         return cell
     }
     
     private func loadImages(for cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
-        let user = userController.users[indexPath.item]
-        if let cacheData = cache.value(for: user.name) {
-            cell.userImage.image = UIImage(data: cacheData)
-            cell.userName.text = user.name
+        let user = userController.users[indexPath.row]
+        if let cache = cache.value(for: user.id.uuidString) {
+            cell.thumbnail.image = UIImage(data: cache)
+            return
+        } else {
+            let fetchPhotoOperation = FetchPhotoOperation(user: user, imageIsThumbnail: true)
+            let cacheImageData = BlockOperation {
+                if let imageData = fetchPhotoOperation.imageData {
+                    self.cache.cache(value: imageData, for: user.id.uuidString)
+                } else { return }
+            }
+            let setCellThumbnail = BlockOperation {
+                DispatchQueue.main.async {
+                    if self.tableView.indexPath(for: cell) == indexPath {
+                        if let imageData = fetchPhotoOperation.imageData {
+                            cell.thumbnail.image = UIImage(data: imageData)
+                        } else { return }
+                    } else { return }
+                }
+            }
+            cacheImageData.addDependency(fetchPhotoOperation)
+            setCellThumbnail.addDependency(fetchPhotoOperation)
+            photoFetchQueue.addOperations([fetchPhotoOperation, cacheImageData, setCellThumbnail], waitUntilFinished: false)
+            operation[user.id] = fetchPhotoOperation
         }
-        let fetchOperation = FetchUsersOperation(user: user)
-        let cacheOperation = BlockOperation {
-            guard let data = fetchOperation.imageData else { return }
-            self.cache.cache(value: data, for: user.name)
-        }
-        cacheOperation.addDependency(fetchOperation)
-        photoFetchQueue.addOperation(cacheOperation)
-        
-        let checkReuse = BlockOperation {
-            let currentIndex = self.tableView.indexPath(for: cell)
-            guard currentIndex == indexPath, let data = fetchOperation.imageData else { return }
-            cell.userImage.image = UIImage(data: data)
-            cell.userName.text = user.name
-        }
-        checkReuse.addDependency(fetchOperation)
-        OperationQueue.main.addOperation(checkReuse)
-        
-        photoFetchQueue.addOperation(fetchOperation)
-        operation[user.name] = fetchOperation
     }
-        
- 
-
+    
+    
+    
     
     // MARK: - Navigation
-
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetailSegue" {

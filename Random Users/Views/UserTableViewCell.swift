@@ -9,15 +9,27 @@
 import UIKit
 
 class UserTableViewCell: UITableViewCell {
-
+    
     // MARK: - Outlets
-  @IBOutlet weak var userImage: UIImageView!
-  @IBOutlet weak var userName: UILabel!
-
-  override func prepareForReuse() {
-    userImage.image = #imageLiteral(resourceName: "Lambda_Logo_Full") //
-      userName.text = "User Name"
-      super.prepareForReuse()
-  }
-
+    @IBOutlet weak var thumbnail: UIImageView!
+    @IBOutlet weak var userName: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }
+    
+    var user: User? {
+        didSet {
+            updateViews()
+        }
+    }
+    func updateViews() {
+        guard let user = user else { return }
+        userName.text = user.name
+    }
+    
 }

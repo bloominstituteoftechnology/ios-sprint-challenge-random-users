@@ -8,11 +8,12 @@
 
 import Foundation
 
-struct User: Codable, Equatable {
+struct User: Codable {
     let name: String
     let email: String
     let phone: String
-    let picture: URL
+    let picture: Picture
+    var id: UUID
     
     enum ResultKey: String, CodingKey {
         case name, email, phone, picture
@@ -20,16 +21,10 @@ struct User: Codable, Equatable {
     enum NameKey: String, CodingKey {
         case first, last
         }
-    enum PictureKey: String, CodingKey {
-        case large, medium, thumbnail
     }
-        }
     
-    init(name: String, email: String, phone: String, picture: URL) {
-        self.name = name
-        self.email = email
-        self.phone = phone
-        self.picture = picture
+    struct Picture: Codable {
+        let large, thumbnail: String
     }
     
     init(from decoder: Decoder) throws {
@@ -42,11 +37,8 @@ struct User: Codable, Equatable {
         self.name = "\(firstName) \(lastName)"
         self.email = try container.decode(String.self, forKey: .email)
         self.phone = try container.decode(String.self, forKey: .phone)
-        
-        let imageContainer = try container.nestedContainer(keyedBy: ResultKey.PictureKey.self, forKey: .picture)
-        self.picture = try imageContainer.decode(URL.self, forKey: .large)
-        
-        
+        self.picture = try container.decode(Picture.self, forKey: .picture)
+        id = UUID()
     }
 }
 

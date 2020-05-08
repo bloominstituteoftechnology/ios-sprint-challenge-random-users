@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		271D2EA72465F40C00A85F00 /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271D2EA62465F40C00A85F00 /* FetchPhotoOperation.swift */; };
 		27F5C47A2465ACB000D3F4C3 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F5C4792465ACB000D3F4C3 /* Cache.swift */; };
 		27F5C47C2465ADEA00D3F4C3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F5C47B2465ADEA00D3F4C3 /* User.swift */; };
 		27F5C47F2465B28700D3F4C3 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F5C47E2465B28700D3F4C3 /* UserTableViewCell.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		271D2EA62465F40C00A85F00 /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
 		27F5C4792465ACB000D3F4C3 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		27F5C47B2465ADEA00D3F4C3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		27F5C47E2465B28700D3F4C3 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				271D2EA62465F40C00A85F00 /* FetchPhotoOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 			files = (
 				27F5C47C2465ADEA00D3F4C3 /* User.swift in Sources */,
 				27F5C4862465BA1D00D3F4C3 /* UserController.swift in Sources */,
+				271D2EA72465F40C00A85F00 /* FetchPhotoOperation.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				27F5C47A2465ACB000D3F4C3 /* Cache.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,

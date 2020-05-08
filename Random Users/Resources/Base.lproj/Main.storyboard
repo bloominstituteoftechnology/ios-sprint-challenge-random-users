@@ -50,8 +50,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="userImage" destination="MvJ-BQ-Ihc" id="woo-5v-K4k"/>
-                                    <outlet property="userName" destination="JT6-XK-Opj" id="Aba-XQ-k7M"/>
+                                    <outlet property="thumbnail" destination="MvJ-BQ-Ihc" id="489-RR-sgZ"/>
+                                    <outlet property="userName" destination="JT6-XK-Opj" id="Ya0-nN-XfY"/>
                                     <segue destination="ICW-5T-ggX" kind="show" identifier="ShowDetailSegue" id="rbJ-wU-Fa8"/>
                                 </connections>
                             </tableViewCell>
@@ -119,10 +119,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="2Yb-rw-FhP"/>
                     <connections>
+                        <outlet property="largeImage" destination="US7-Sd-kcj" id="0Qb-DP-0DG"/>
                         <outlet property="userEmail" destination="p5r-tY-uDm" id="7y4-hq-brg"/>
-                        <outlet property="userImage" destination="US7-Sd-kcj" id="dnP-Ff-rdy"/>
                         <outlet property="userName" destination="cLz-ao-0XV" id="U6L-OS-Gco"/>
-                        <outlet property="userPhone" destination="lYR-lS-hx6" id="MhE-4u-ySq"/>
+                        <outlet property="userPhone" destination="lYR-lS-hx6" id="r9V-SJ-CNe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cma-a3-tSu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

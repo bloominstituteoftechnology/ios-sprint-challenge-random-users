@@ -11,32 +11,34 @@ import UIKit
 class DetailViewController: UIViewController {
     
     // MARK: - Outlets
-    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var largeImage: UIImageView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userPhone: UILabel!
     @IBOutlet weak var userEmail: UILabel!
     
     // MARK: - Properties
-    var user: User? {
-        didSet {
-            updateViews()
+    var user: User?
+    
+    // MARK: - Methods
+    func updateViews(){
+        guard let user = user else { return }
+        loadImage(user: user)
+        userName.text = user.name
+        userEmail.text = user.email
+        userPhone.text = user.phone
+    }
+    
+    private func loadImage(user: User) {
+        guard let imageURL = URL(string: user.picture.large) else { return }
+        DispatchQueue.global().async {
+            guard let imageData = try? Data(contentsOf: imageURL) else { return }
+            let image = UIImage(data: imageData)
+            DispatchQueue.main.async {
+                self.largeImage.image = image
+            }
         }
     }
     
-   // MARK: - Methods
-    func updateViews(){
-        guard let user = user, isViewLoaded else {return}
-
-        do {
-            userImage.image = UIImage(data: try Data(contentsOf: user.picture))
-        } catch {
-            NSLog("Image Data call failed")
-        }
-        userName.text = user.name
-        userPhone.text = user.phone
-        userEmail.text = user.email
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
