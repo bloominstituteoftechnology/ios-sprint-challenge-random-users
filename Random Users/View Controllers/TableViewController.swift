@@ -10,6 +10,8 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         networking.fetchUsers {
@@ -43,6 +45,10 @@ class TableViewController: UITableViewController {
         }
     }
     
+    // MARK: - Properties
+    
     let networking = Networking()
+    private let photoFetchQueue = OperationQueue()
+    
     
 }

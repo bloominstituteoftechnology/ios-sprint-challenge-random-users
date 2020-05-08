@@ -16,9 +16,7 @@ class TableViewCell: UITableViewCell {
     }
     
     var user: Result? {
-        didSet {
-            updateViews()
-        }
+        didSet { updateViews() }
     }
     
     private func updateViews() {
