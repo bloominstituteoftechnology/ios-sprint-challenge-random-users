@@ -21,7 +21,6 @@ class TableViewCell: UITableViewCell {
     
     private func updateViews() {
         guard let user = user else { return }
-        // TODO: add thumbnail
         nameLabel.text = "\(user.name.title.rawValue) \(user.name.first) \(user.name.last)"
     }
     
