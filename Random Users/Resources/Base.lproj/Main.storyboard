@@ -52,7 +52,7 @@
                                 <connections>
                                     <outlet property="userImage" destination="MvJ-BQ-Ihc" id="woo-5v-K4k"/>
                                     <outlet property="userName" destination="JT6-XK-Opj" id="Aba-XQ-k7M"/>
-                                    <segue destination="ICW-5T-ggX" kind="show" id="rbJ-wU-Fa8"/>
+                                    <segue destination="ICW-5T-ggX" kind="show" identifier="ShowDetailSegue" id="rbJ-wU-Fa8"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

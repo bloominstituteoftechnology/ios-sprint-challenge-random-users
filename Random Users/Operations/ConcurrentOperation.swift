@@ -66,4 +66,41 @@ class ConcurrentOperation: Operation {
 class FetchUsersOperation: ConcurrentOperation {
     private(set) var imageData: Data?
     
+    let user: User
+
+       init(user: User) {
+           self.user = user
+       }
+
+       private var dataTask: URLSessionDataTask?
+       override func start() {
+           super.start()
+
+           state = .isExecuting
+           let url = user.picture
+           let task = URLSession.shared.dataTask(with: url) {(data,_,error) in
+
+               defer {self.state = .isFinished}
+               if let error = error {
+                   NSLog("fetch operation error: \(error)")
+                   return
+               }
+               if let data = data {
+                   self.imageData = data
+               }
+
+           }
+           task.resume()
+           dataTask = task
+       }
+
+       override func cancel() {
+           super.cancel()
+
+           if self.isCancelled {
+               if let task = dataTask {
+                   task.cancel()
+               }
+           }
+       }
 }
