@@ -35,10 +35,10 @@ class UsersDetailViewController: UIViewController {
     
     func updateViews() {
         guard let user = user else { return }
-        userNameLabel.text = user.name.fullName
-        phoneNumberLabel.text = user.phone
-        emailAddressLabel.text = user.email
-        userImage.image = profileImage
+        userNameLabel?.text = user.name.fullName
+        phoneNumberLabel?.text = user.phone
+        emailAddressLabel?.text = user.email
+        userImage?.image = profileImage
     }
     /*
      // MARK: - Navigation

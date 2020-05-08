@@ -66,15 +66,23 @@ class RandomUsersTableViewController: UITableViewController {
     }
     
     
-    /*
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+     if segue.identifier == "DetailSegue" {
+                if let userVC = segue.destination as? UsersDetailViewController {
+                    if let indexPath = tableView.indexPathForSelectedRow {
+                        userVC.user  = users[indexPath.row]
+                        loadImage(UserDetailController: userVC, forItemAt: indexPath)
+                        
+                    }
+                }
+            }
+        
+    }
+     
     
     
     private func loadImage(forCell cell: UsersTableViewCell, forItemAt indexPath: IndexPath) {
@@ -115,6 +123,42 @@ class RandomUsersTableViewController: UITableViewController {
             photoFetchQueue.addOperations([cachePhotoData, cellPhotoData, fetchedPhoto], waitUntilFinished: false)
       
         }
+    }
+    
+    private func loadImage(UserDetailController vc: UsersDetailViewController, forItemAt indexPath: IndexPath) {
+        
+     
+        let largePhotoURL = users[indexPath.item].picture.large
+
+        if let image = largePhotoCache.value(for: indexPath.item) {
+            vc.userImage?.image = image
+            return
+        }
+        
+    
+        let fetchOperation = FetchPhotoOperation(imageURL: URL(string: largePhotoURL)!)
+        largePhotoFetchOperations[indexPath.item] = fetchOperation
+        
+
+        let cachePhoto = BlockOperation {
+            if let image = fetchOperation.imageData {
+                
+                self.largePhotoCache.cache(value: image, for: indexPath.item)
+            }
+        }
+        
+        let setImageOperation = BlockOperation {
+            if let image = fetchOperation.imageData {
+                DispatchQueue.main.async {
+                    vc.userImage.image = image
+                }
+            }
+        }
+        
+        cachePhoto.addDependency(fetchOperation)
+        setImageOperation.addDependency(fetchOperation)
+        
+        largePhotoFetchQueue.addOperations([fetchOperation, cachePhoto, setImageOperation], waitUntilFinished: false)
     }
     
     
