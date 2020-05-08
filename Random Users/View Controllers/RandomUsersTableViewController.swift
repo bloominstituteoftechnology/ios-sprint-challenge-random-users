@@ -10,6 +10,8 @@ import UIKit
 
 class RandomUsersTableViewController: UITableViewController {
 
+    var users: [User] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,8 +25,7 @@ class RandomUsersTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -77,14 +78,16 @@ class RandomUsersTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+          if segue.identifier == "UserDetailSegue" {
+              let usersDetailVC = segue.destination as! DetailViewController
+              guard let index = tableView.indexPathForSelectedRow?.row else { return }
+              let user = users[index]
+              
+          }
+      }
 
 }

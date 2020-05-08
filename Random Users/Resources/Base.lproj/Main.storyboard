@@ -24,7 +24,7 @@
                             </items>
                         </navigationBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="307-zh-Guz" customClass="UserTableViewCell" customModule="Random_Users" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" id="307-zh-Guz" customClass="UserTableViewCell" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="375" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="307-zh-Guz" id="wak-su-aTo">
@@ -47,7 +47,7 @@
                                 <connections>
                                     <outlet property="userImage" destination="Z9P-mZ-jPw" id="w8h-yS-nIz"/>
                                     <outlet property="userName" destination="nmh-ja-q1a" id="k1u-iV-VaH"/>
-                                    <segue destination="6tJ-4H-DDa" kind="show" id="Yx0-bY-vTK"/>
+                                    <segue destination="6tJ-4H-DDa" kind="show" identifier="UserDetailSegue" id="Yx0-bY-vTK"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
