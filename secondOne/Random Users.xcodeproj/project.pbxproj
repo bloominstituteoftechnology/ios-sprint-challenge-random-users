@@ -17,6 +17,8 @@
 		C47B0FFA2465B25E006C86F0 /* FaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47B0FF92465B25E006C86F0 /* FaceTableViewCell.swift */; };
 		C47B0FFD2465B346006C86F0 /* PictureTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47B0FFC2465B346006C86F0 /* PictureTableViewController.swift */; };
 		C47B0FFF2465B390006C86F0 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47B0FFE2465B390006C86F0 /* DetailViewController.swift */; };
+		C47B10012465BD5C006C86F0 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47B10002465BD5C006C86F0 /* Cache.swift */; };
+		C47B10032465BE1E006C86F0 /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47B10022465BE1E006C86F0 /* FetchPhotoOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		C47B0FF92465B25E006C86F0 /* FaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceTableViewCell.swift; sourceTree = "<group>"; };
 		C47B0FFC2465B346006C86F0 /* PictureTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureTableViewController.swift; sourceTree = "<group>"; };
 		C47B0FFE2465B390006C86F0 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C47B10002465BD5C006C86F0 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		C47B10022465BE1E006C86F0 /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				C47B10022465BE1E006C86F0 /* FetchPhotoOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -98,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				C47B0FF32465B0F9006C86F0 /* Face.swift */,
+				C47B10002465BD5C006C86F0 /* Cache.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -200,6 +206,8 @@
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				C47B0FF42465B0F9006C86F0 /* Face.swift in Sources */,
+				C47B10032465BE1E006C86F0 /* FetchPhotoOperation.swift in Sources */,
+				C47B10012465BD5C006C86F0 /* Cache.swift in Sources */,
 				C47B0FFD2465B346006C86F0 /* PictureTableViewController.swift in Sources */,
 				C47B0FFA2465B25E006C86F0 /* FaceTableViewCell.swift in Sources */,
 				C47B0FF72465B1C4006C86F0 /* FaceController.swift in Sources */,
