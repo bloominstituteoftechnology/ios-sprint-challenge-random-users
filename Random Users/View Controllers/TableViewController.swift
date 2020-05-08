@@ -67,7 +67,7 @@ class TableViewController: UITableViewController {
         guard let cell = cell as? TableViewCell else { return }
         let user = networking.users[indexPath.row]
         if let cache = cache.value(for: user.id) {
-            cell.thumbnail.image = UIImage(data: cache)
+            cell.thumbnail.image = UIImage(data: cache)?.circle
             return
         } else {
             let fetchPhotoOperation = FetchPhotoOperation(user: user, imageIsThumbnail: true)
@@ -80,7 +80,7 @@ class TableViewController: UITableViewController {
                 DispatchQueue.main.async {
                     if self.tableView.indexPath(for: cell) == indexPath {
                         if let imageData = fetchPhotoOperation.imageData {
-                            cell.thumbnail.image = UIImage(data: imageData)
+                            cell.thumbnail.image = UIImage(data: imageData)?.circle
                         } else { return }
                     } else { return }
                 }
