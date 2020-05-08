@@ -17,6 +17,12 @@ struct User: Codable {
     var email: String
     var phone: String
     var picture: Picture
+
+    static var jsonDecoder: JSONDecoder {
+        let result = JSONDecoder()
+        result.keyDecodingStrategy = .convertFromSnakeCase
+        return result
+    }
 }
 
 struct Name: Codable {
