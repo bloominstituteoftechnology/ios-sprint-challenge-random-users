@@ -19,6 +19,7 @@ class DetailViewController: UIViewController {
     
     private func updateViews() {
         guard let user = user else { return }
+        // TODO: add large image
         nameLabel.text = "\(user.name.title.rawValue) \(user.name.first) \(user.name.last)"
         phoneLabel.text = user.phone
         emailLabel.text = user.email

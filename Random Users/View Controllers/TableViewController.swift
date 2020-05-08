@@ -33,7 +33,7 @@ class TableViewController: UITableViewController {
     }
     
     // MARK: - Navigation
-    // FIXME: - implement segue
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DetailSeg" {
             let detailViewController = segue.destination as! DetailViewController
