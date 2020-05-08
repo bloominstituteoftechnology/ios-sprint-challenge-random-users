@@ -71,14 +71,51 @@
                     <view key="view" contentMode="scaleToFill" id="tXq-42-mEF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fYb-DK-VyL">
+                                <rect key="frame" x="15" y="144" width="345" height="288"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7hj-ob-IW5">
+                                <rect key="frame" x="8" y="528.5" width="359" height="88.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mr Bharat Kumar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D37-wW-Afv">
+                                        <rect key="frame" x="0.0" y="0.0" width="169" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="619-788-505" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CwN-pw-BhS">
+                                        <rect key="frame" x="0.0" y="34.5" width="116.5" height="23"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bharatchulavista@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rek-2k-4pm">
+                                        <rect key="frame" x="0.0" y="65.5" width="246" height="23"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="7hj-ob-IW5" firstAttribute="leading" secondItem="PN5-RI-Wb1" secondAttribute="leading" constant="8" id="Bxs-cW-EdF"/>
+                            <constraint firstItem="PN5-RI-Wb1" firstAttribute="trailing" secondItem="7hj-ob-IW5" secondAttribute="trailing" constant="8" id="FpH-7j-X2J"/>
+                            <constraint firstItem="fYb-DK-VyL" firstAttribute="leading" secondItem="PN5-RI-Wb1" secondAttribute="leading" constant="15" id="Mxl-Yh-WM8"/>
+                            <constraint firstItem="PN5-RI-Wb1" firstAttribute="bottom" secondItem="7hj-ob-IW5" secondAttribute="bottom" constant="50" id="UVf-N6-NwU"/>
+                            <constraint firstItem="7hj-ob-IW5" firstAttribute="top" secondItem="fYb-DK-VyL" secondAttribute="bottom" constant="96.5" id="XCU-XQ-rXy"/>
+                            <constraint firstItem="PN5-RI-Wb1" firstAttribute="trailing" secondItem="fYb-DK-VyL" secondAttribute="trailing" constant="15" id="ZnJ-Bq-K6o"/>
+                            <constraint firstItem="fYb-DK-VyL" firstAttribute="top" secondItem="PN5-RI-Wb1" secondAttribute="top" constant="100" id="mYG-PO-f23"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PN5-RI-Wb1"/>
                     </view>
                     <navigationItem key="navigationItem" id="Uyi-iY-Czw"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZqV-y7-mSw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1652" y="152"/>
+            <point key="canvasLocation" x="1652" y="151.57421289355324"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ooL-a2-jbi">
