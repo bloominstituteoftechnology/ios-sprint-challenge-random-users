@@ -21,15 +21,19 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
         return cell
     }
 
     // MARK: - Navigation
-    
+    // FIXME: - implement segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "DetailSeg" {
+            let detailViewController = segue.destination as! DetailViewController
+            let indexPath = tableView.indexPathForSelectedRow!
+            let user = //[indexPath.row]
+            detailViewController.// = //
+        }
     }
 
 }
