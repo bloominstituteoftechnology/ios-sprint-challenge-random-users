@@ -12,13 +12,12 @@ class TableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        networkController.getUsers() //Fetch Users 
     }
+    
+    //MARK: - Properties
+    let networkController = NetworkController()
+    
 
     // MARK: - Table view data source
 

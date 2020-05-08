@@ -7,8 +7,21 @@
 //
 
 import Foundation
-// MARK: - Person
-struct Person: Codable {
+
+struct Results: Codable {
+    let results: [Result]
+    let info: Info
+}
+
+// MARK: - Info
+struct Info: Codable {
+    let seed: String
+    let results, page: Int
+    let version: String
+}
+
+// MARK: - Result
+struct Result: Codable {
     let name: Name
     let email, phone: String
     let picture: Picture
