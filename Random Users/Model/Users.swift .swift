@@ -51,6 +51,6 @@ struct Picture: Codable {
     
 }
 
-struct Result: Codable {
+struct UserResult: Codable {
 let results: [User]
 }
