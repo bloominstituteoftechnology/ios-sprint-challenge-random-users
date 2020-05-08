@@ -20,7 +20,6 @@ struct User: Codable {
     let email: String
 }
 
-
 struct Name: Codable {
     let title: String
     let first: String

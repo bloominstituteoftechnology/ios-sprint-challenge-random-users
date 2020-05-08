@@ -15,6 +15,9 @@
 		FEA253BA2465AFD50080226D /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA253B92465AFD50080226D /* UserController.swift */; };
 		FEA253C02465BA890080226D /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA253BF2465BA890080226D /* Cache.swift */; };
 		FEA253C22465BB9D0080226D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA253C12465BB9C0080226D /* User.swift */; };
+		FEA253C42465CE7A0080226D /* RandomUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA253C32465CE7A0080226D /* RandomUsersTableViewController.swift */; };
+		FEA253C62465CE8E0080226D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA253C52465CE8E0080226D /* DetailViewController.swift */; };
+		FEA253C82465D0E90080226D /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA253C72465D0E90080226D /* UserTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		FEA253B92465AFD50080226D /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		FEA253BF2465BA890080226D /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		FEA253C12465BB9C0080226D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FEA253C32465CE7A0080226D /* RandomUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersTableViewController.swift; sourceTree = "<group>"; };
+		FEA253C52465CE8E0080226D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		FEA253C72465D0E90080226D /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,9 @@
 				FEA253B92465AFD50080226D /* UserController.swift */,
 				FEA253BF2465BA890080226D /* Cache.swift */,
 				FEA253C12465BB9C0080226D /* User.swift */,
+				FEA253C32465CE7A0080226D /* RandomUsersTableViewController.swift */,
+				FEA253C52465CE8E0080226D /* DetailViewController.swift */,
+				FEA253C72465D0E90080226D /* UserTableViewCell.swift */,
 			);
 			path = "Random Users";
 			sourceTree = "<group>";
@@ -163,8 +172,11 @@
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				FEA253C02465BA890080226D /* Cache.swift in Sources */,
+				FEA253C42465CE7A0080226D /* RandomUsersTableViewController.swift in Sources */,
+				FEA253C82465D0E90080226D /* UserTableViewCell.swift in Sources */,
 				FEA253C22465BB9D0080226D /* User.swift in Sources */,
 				FEA253BA2465AFD50080226D /* UserController.swift in Sources */,
+				FEA253C62465CE8E0080226D /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
