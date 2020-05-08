@@ -56,4 +56,8 @@ class FetchPhotoOperation: ConcurrentOperation {
             })
         dataTask.resume()
     }
+    
+    override func cancel() {
+        dataTask.cancel()
+    }
 }
