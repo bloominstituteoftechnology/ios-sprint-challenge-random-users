@@ -10,6 +10,12 @@ import UIKit
 
 class UsersTableViewCell: UITableViewCell {
     
+    var user: User? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     
@@ -23,5 +29,9 @@ class UsersTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    func updateViews() {
+        guard let user = user else { return }
+        userNameLabel.text = user.name.fullName
+}
 }

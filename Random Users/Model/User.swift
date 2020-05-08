@@ -1,5 +1,5 @@
 //
-//  Users.swift .swift
+//  User.swift .swift
 //  Random Users
 //
 //  Created by Bhawnish Kumar on 5/8/20.
