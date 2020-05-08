@@ -18,6 +18,7 @@
 		FEA253C42465CE7A0080226D /* RandomUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA253C32465CE7A0080226D /* RandomUsersTableViewController.swift */; };
 		FEA253C62465CE8E0080226D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA253C52465CE8E0080226D /* DetailViewController.swift */; };
 		FEA253C82465D0E90080226D /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA253C72465D0E90080226D /* UserTableViewCell.swift */; };
+		FEA253CE2465DF560080226D /* FetchUserOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA253CD2465DF560080226D /* FetchUserOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		FEA253C32465CE7A0080226D /* RandomUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersTableViewController.swift; sourceTree = "<group>"; };
 		FEA253C52465CE8E0080226D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FEA253C72465D0E90080226D /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		FEA253CD2465DF560080226D /* FetchUserOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUserOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				FEA253CD2465DF560080226D /* FetchUserOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				FEA253CE2465DF560080226D /* FetchUserOperation.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				FEA253C02465BA890080226D /* Cache.swift in Sources */,
 				FEA253C42465CE7A0080226D /* RandomUsersTableViewController.swift in Sources */,
