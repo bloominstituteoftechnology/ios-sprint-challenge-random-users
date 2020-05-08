@@ -12,6 +12,19 @@ class TableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        updateViews()
+    }
+    
+    var user: Result? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    private func updateViews() {
+        guard let user = user else { return }
+        // TODO: add thumbnail
+        nameLabel.text = "\(user.name.title.rawValue) \(user.name.first) \(user.name.last)"
     }
     
     @IBOutlet weak var thumbnail: UIImageView!

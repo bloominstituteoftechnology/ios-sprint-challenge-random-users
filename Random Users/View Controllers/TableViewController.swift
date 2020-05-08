@@ -28,7 +28,7 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
         let user = networking.users[indexPath.row]
-        cell.user = user // FIXME: - add user to TVCell
+        cell.user = user
         return cell
     }
     
@@ -39,7 +39,7 @@ class TableViewController: UITableViewController {
             let detailViewController = segue.destination as! DetailViewController
             let indexPath = tableView.indexPathForSelectedRow!
             let user = networking.users[indexPath.row]
-            detailViewController.user = user // FIXME: - add user to detailVC
+            detailViewController.user = user
         }
     }
     

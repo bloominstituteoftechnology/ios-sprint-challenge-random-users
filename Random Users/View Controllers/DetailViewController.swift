@@ -12,6 +12,16 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateViews()
+    }
+    
+    var user: Result?
+    
+    private func updateViews() {
+        guard let user = user else { return }
+        nameLabel.text = "\(user.name.title.rawValue) \(user.name.first) \(user.name.last)"
+        phoneLabel.text = user.phone
+        emailLabel.text = user.email
     }
     
     @IBOutlet weak var largeImage: UIImageView!
