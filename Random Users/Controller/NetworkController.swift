@@ -60,7 +60,7 @@ class NetworkController {
         }.resume()
     }
     
-    func fetchImage(imageURL: URL?, indexPath: IndexPath, cache: Cache<IndexPath, Data>, completion: @escaping () -> Void) {
+    /*func fetchImage(imageURL: URL?, indexPath: IndexPath, cache: Cache<IndexPath, [Data]>, completion: @escaping () -> Void) {
             guard let tempImageURL = imageURL else {
                 return
             }
@@ -82,14 +82,14 @@ class NetworkController {
             }
             
             //Store Image in Cache
-            cache.cache(value: tempData, for: indexPath)
+            cache.cache(value: [tempData], for: indexPath)
             completion()
             //self.images[indexPath] = UIImage(data: tempData)
             
             print("Got image!")
                 
         }.resume()
-    }
+    }*/
     
     func fetchImageLarge(imageURL: URL?, completion: @escaping (Data?) -> Void) {
         guard let tempImageURL = imageURL else {
@@ -114,8 +114,6 @@ class NetworkController {
             //Store Image in Cache
             completion(tempData)
             //self.images[indexPath] = UIImage(data: tempData)
-            
-            print("Got image!")
             
         }.resume()
     }

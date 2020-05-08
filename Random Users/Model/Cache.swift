@@ -11,18 +11,21 @@ import Foundation
 class Cache <Key: Hashable, Value> {
 
     //MARK: - Properties
-    private var items: [Key: Value] = [:]
-
-    //MARK: - Methods
+    private var items: [Key: [Value]] = [:]
+    private let cacheQueue = DispatchQueue(label: "com.org.app.cacheQueue")
     
+    
+    //MARK: - Methods
     //Add Items
-    func cache(value: Value, for key: Key) {
-        items[key] = value
+    func cache(value: [Value], for key: Key) {
+        cacheQueue.async {
+            self.items[key]?.append(contentsOf: value)
+        }
     }
 
     //Get Value: Returns an optional Value
-    func value(for key: Key) -> Value? {
-        return items[key]
+    func value(for key: Key) -> [Value]? {
+        return cacheQueue.sync { items[key] }
     }
 
 }

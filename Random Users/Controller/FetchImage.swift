@@ -8,30 +8,27 @@
 
 import Foundation
 
-class FetchImage: ConcurrentOperation {
+class FetchImage {
     
     //MARK: - Properties
-    private var task: URLSessionDataTask?
+    private var dataTask: URLSessionDataTask?
     var imageData: Data?
     var large: String?
     var medium: String?
     var thumbnail: String?
-    
-    //TODO: Need an ID
+    var indexPath: IndexPath? //Acts as the ID
     
     //MARK: - Initializer
-    init(picture: Picture) {
+    init(picture: Picture, indexPath: IndexPath) {
         self.large = picture.large
         self.medium = picture.medium
         self.thumbnail = picture.thumbnail
+        self.indexPath = indexPath
     }
     
-    
-    //MARK: - Override Functions
-    override func start() {
-        super.start()
-        state = .isExecuting
-        
+    //MARK: - Custom Functions
+    func start(completion: @escaping (Data?) -> Void) {
+
         //Fetch Image
         guard let stringURL = thumbnail else {
             return
@@ -42,33 +39,33 @@ class FetchImage: ConcurrentOperation {
             return
         }
         
-        task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
             //Error Checking
             if let error = error {
                 print("Error Getting Users in \(#function): \(error)")
+                completion(nil)
                 return
             }
             
             guard let tempData = data else {
                 print("Bad data in \(#function)")
+                completion(nil)
                 return
             }
             
             //Store Image in Cache
             self.imageData = tempData
-            self.state = .isFinished
-            print("Got image!")
+            completion(tempData)
         }
         
-        task?.resume()
+        task.resume()
+        dataTask = task
     }
     
     //Canceling Data Task
-    override func cancel() {
-        super.cancel()
-        if self.isCancelled {
-            task?.cancel()
-        }
+    func cancel() {
+        print("Task Canceled")
+        dataTask?.cancel()
     }
 }

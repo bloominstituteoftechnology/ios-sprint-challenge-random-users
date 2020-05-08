@@ -17,6 +17,9 @@ class PersonViewController: UIViewController {
     
     //MARK: - Properties
     var user: Result?
+    var indexPath: IndexPath?
+    var cache: Cache<IndexPath, Data>?
+    
     var networkController: NetworkController?
     static let identifier = "userSegue"
     
@@ -48,6 +51,13 @@ class PersonViewController: UIViewController {
                 }
                 
                 self.personImageView.image = UIImage(data: imageData)
+                
+                guard let indexPath = self.indexPath else {
+                    print("Bad IndexPath in \(#function)")
+                    return
+                }
+                
+                self.cache?.cache(value: [imageData], for: indexPath)
             }
         })
         

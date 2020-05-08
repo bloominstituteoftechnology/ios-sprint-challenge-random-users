@@ -22,8 +22,7 @@ class TableViewController: UITableViewController {
     //MARK: - Properties
     let networkController = NetworkController()
     let cache = Cache<IndexPath, Data>()
-    let fetchPhoto = OperationQueue()
-    var operations = [Int: Operation]()
+    var fetchImage: [FetchImage] = []
     
     //MARK: - Custom Functions
     func updateViews() {
@@ -31,7 +30,6 @@ class TableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -77,6 +75,21 @@ class TableViewController: UITableViewController {
         //Image wasn't stored
         if cache.value(for: indexPath) == nil {
             //Load Image
+            let fetchedImage = FetchImage(picture: user.picture, indexPath: indexPath)
+            fetchedImage.start { (data) in
+                DispatchQueue.main.async {
+                    guard let imageData = data else {
+                        print("Bad ImageData in \(#function)")
+                        return
+                    }
+                    self.cache.cache(value: [imageData], for: indexPath)
+                    let image = UIImage(data: imageData)
+                    cell.imageView?.image = image
+                }
+            }
+            fetchImage.append(fetchedImage)
+            
+            /*
             networkController.fetchImage(imageURL: URL(string: user.picture.thumbnail), indexPath: indexPath, cache: cache) {
                 DispatchQueue.main.async {
                     
@@ -88,7 +101,7 @@ class TableViewController: UITableViewController {
                     let image = UIImage(data: imageData)
                     cell.imageView?.image = image
                 }
-            }
+            }*/
         } else {
             //We already have the image stored
             guard let imageData = self.cache.value(for: indexPath) else {
@@ -96,14 +109,19 @@ class TableViewController: UITableViewController {
                 return
             }
             
-            let image = UIImage(data: imageData)
+            let image = UIImage(data: imageData[0])
             cell.imageView?.image = image
         }
     }
     
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        //let photo = networkController.users?.results[indexPath.item]
-        //operations[photo.indexPath]?.cancel()
+        
+        for i in fetchImage {
+            if i.indexPath == indexPath {
+                print("Canceling task")
+                i.cancel()
+            }
+        }
     }
 
     /*
@@ -170,6 +188,8 @@ class TableViewController: UITableViewController {
             
             destination.user = user
             destination.networkController = networkController
+            destination.indexPath = tableView.indexPathForSelectedRow
+            destination.cache = cache
         }
     }
     
