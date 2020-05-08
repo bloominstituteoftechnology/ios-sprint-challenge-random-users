@@ -32,7 +32,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bharat Kumar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Beb-yo-99G">
-                                            <rect key="frame" x="80" y="29" width="260" height="21"/>
+                                            <rect key="frame" x="92" y="29" width="248" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -44,14 +44,14 @@
                                         <constraint firstItem="AMq-uk-0Hr" firstAttribute="top" secondItem="Ncm-Mx-D0f" secondAttribute="top" constant="8" id="jAX-25-wnI"/>
                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Beb-yo-99G" secondAttribute="bottom" constant="29" id="kc9-1u-lJG"/>
                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="AMq-uk-0Hr" secondAttribute="bottom" constant="8" id="q8F-lg-3pE"/>
-                                        <constraint firstItem="Beb-yo-99G" firstAttribute="leading" secondItem="AMq-uk-0Hr" secondAttribute="trailing" constant="8" id="r7J-7P-1ZR"/>
+                                        <constraint firstItem="Beb-yo-99G" firstAttribute="leading" secondItem="AMq-uk-0Hr" secondAttribute="trailing" constant="20" id="r7J-7P-1ZR"/>
                                         <constraint firstItem="AMq-uk-0Hr" firstAttribute="leading" secondItem="Ncm-Mx-D0f" secondAttribute="leading" constant="8" id="z37-vg-94B"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="userImage" destination="AMq-uk-0Hr" id="pF4-bt-zEi"/>
                                     <outlet property="userNameLabel" destination="Beb-yo-99G" id="naq-cp-rQ7"/>
-                                    <segue destination="O9D-GA-Xgr" kind="show" id="Y1J-uv-f6y"/>
+                                    <segue destination="O9D-GA-Xgr" kind="show" identifier="DetailSegue" id="Y1J-uv-f6y"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

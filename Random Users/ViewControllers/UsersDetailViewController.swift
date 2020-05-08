@@ -9,6 +9,19 @@
 import UIKit
 
 class UsersDetailViewController: UIViewController {
+    
+    var user: User? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    
+    var profileImage: UIImage? {
+        didSet {
+            updateViews()
+        }
+    }
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
@@ -16,19 +29,25 @@ class UsersDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        updateViews()
+        // Do any additielse onal setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func updateViews() {
+        guard let user = user else { return }
+        userNameLabel.text = user.name.fullName
+        phoneNumberLabel.text = user.phone
+        emailAddressLabel.text = user.email
+        userImage.image = profileImage
     }
-    */
-
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

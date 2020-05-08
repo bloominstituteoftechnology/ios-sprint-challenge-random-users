@@ -18,6 +18,16 @@ class FetchPhotoOperation: ConcurrentOperation {
         self.imageData = imageData
     }
     
+    override func start() {
+        state = .isExecuting
+        
+        fetchImage(to: imageURL) { result in
+            if let image = try? result.get() {
+                self.imageData = image
+                self.state = .isFinished
+            }
+        }
+    }
     
     func fetchImage(to imageURL: URL, completion: @escaping CompletionHandler) {
         

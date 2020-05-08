@@ -57,10 +57,11 @@ class RandomUsersTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard  let cell = tableView.dequeueReusableCell(withIdentifier: "RandomUserCell", for: indexPath) as? UsersTableViewCell else { return UITableViewCell() }
-        // Configure the cell...
+         let cell = tableView.dequeueReusableCell(withIdentifier: "RandomUserCell", for: indexPath) as? UsersTableViewCell ?? UsersTableViewCell()
+    
         cell.user = users[indexPath.item]
         loadImage(forCell: cell, forItemAt: indexPath)
+        
         return cell
     }
     
@@ -103,6 +104,7 @@ class RandomUsersTableViewController: UITableViewController {
                     DispatchQueue.main.async {
                         cell.userImage.image = image
                     }
+                  
                 }
                     
             }
@@ -111,7 +113,7 @@ class RandomUsersTableViewController: UITableViewController {
             cellPhotoData.addDependency(fetchedPhoto)
             
             photoFetchQueue.addOperations([cachePhotoData, cellPhotoData, fetchedPhoto], waitUntilFinished: false)
-            // TODO: Implement image loading here
+      
         }
     }
     
