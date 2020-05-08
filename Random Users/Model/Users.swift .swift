@@ -30,11 +30,23 @@ struct Name: Codable {
         case last
     }
     
-    var title: String
-    var first: String
-    var last: String
+    let title: String
+    let first: String
+    let last: String
     
     var fullName: String {
         return ("\(title) \(first) \(last)").trimmingCharacters(in: CharacterSet.whitespaces)
     }
+}
+
+struct Picture: Codable {
+    enum CodingKeys: String, CodingKey {
+        case large
+        case medium
+        case thumbnail
+    }
+    let large: String
+    let medium: String
+    let thumbnail: String
+    
 }
