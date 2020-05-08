@@ -12,9 +12,12 @@ class PersonViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        updateViews()
     }
+    
+    //MARK: - Properties
+    var user: Result?
+    static let identifier = "userSegue"
     
     //MARK: - Outlets
     @IBOutlet weak var personImageView: UIImageView!
@@ -23,6 +26,16 @@ class PersonViewController: UIViewController {
     @IBOutlet weak var emailLabel: UILabel!
     
     
+    //MARK: - Custom Functions
+    func updateViews() {
+        
+        if let name = user?.name {
+            nameLabel.text = "\(name.first) \(name.last)"
+        }
+        
+        phoneLabel.text = user?.phone
+        emailLabel.text = user?.email
+    }
     
     /*
     // MARK: - Navigation

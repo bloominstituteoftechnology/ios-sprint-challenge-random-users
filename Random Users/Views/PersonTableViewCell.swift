@@ -27,6 +27,4 @@ class PersonTableViewCell: UITableViewCell {
     //MARK: - Outlets
     @IBOutlet weak var personImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    
-
 }

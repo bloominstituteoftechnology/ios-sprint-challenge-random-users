@@ -95,14 +95,37 @@ class TableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
+        //Go to PersonViewController and assign it a user
+        guard let identifier = segue.identifier else {
+            print("No identifier \(#function)")
+            return
+        }
+        
+        //Selected Cell
+        guard let row = tableView.indexPathForSelectedRow?.row else {
+            return
+        }
+        
+        let user = networkController.users?.results[row]
+        
+        //Assign User
+        if identifier == PersonViewController.identifier {
+            //DownCast
+            guard let destination = segue.destination as? PersonViewController else {
+                print("Not PersonViewController \(#function)")
+                return
+            }
+            
+            destination.user = user
+        }
+        
     }
-    */
+    
 
 }
