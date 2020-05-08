@@ -73,19 +73,30 @@ class TableViewController: UITableViewController {
             return
         }
     
-        //Load Image
-        networkController.fetchImage(imageURL: URL(string: user.picture.thumbnail), indexPath: indexPath, cache: cache) {
-            DispatchQueue.main.async {
-                
-                guard let imageData = self.cache.value(for: indexPath) else {
-                    print("Bad imageData in \(#function)")
-                    return
+        //Image wasn't stored
+        if cache.value(for: indexPath) == nil {
+            //Load Image
+            networkController.fetchImage(imageURL: URL(string: user.picture.thumbnail), indexPath: indexPath, cache: cache) {
+                DispatchQueue.main.async {
+                    
+                    guard let imageData = self.cache.value(for: indexPath) else {
+                        print("Bad imageData in \(#function)")
+                        return
+                    }
+                    
+                    let image = UIImage(data: imageData)
+                    cell.imageView?.image = image
                 }
-                
-                let image = UIImage(data: imageData)
-                cell.imageView?.image = image
-                print("ReloadData")
             }
+        } else {
+            //We already have the image stored
+            guard let imageData = self.cache.value(for: indexPath) else {
+                print("Bad imageData in \(#function)")
+                return
+            }
+            
+            let image = UIImage(data: imageData)
+            cell.imageView?.image = image
         }
     }
     
