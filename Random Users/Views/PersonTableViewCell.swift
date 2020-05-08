@@ -21,6 +21,9 @@ class PersonTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    //MARK: - Properties
+    static let identifier = "userIdentifier"
+    
     //MARK: - Outlets
     @IBOutlet weak var personImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!

@@ -14,7 +14,7 @@ class TableViewController: UITableViewController {
         super.viewDidLoad()
         networkController.getUsers {
             DispatchQueue.main.async {
-                print(self.networkController.users?.results[0].name)
+                self.updateViews()
             }
         } //Fetch Users
     }
@@ -22,6 +22,11 @@ class TableViewController: UITableViewController {
     //MARK: - Properties
     let networkController = NetworkController()
     
+    
+    //MARK: - Custom Functions
+    func updateViews() {
+        tableView.reloadData()
+    }
 
     // MARK: - Table view data source
 
@@ -30,19 +35,30 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return networkController.users?.results.count ?? 0
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: PersonTableViewCell.identifier , for: indexPath)
 
-        // Configure the cell...
-
-        return cell
+        //Get User
+        let tempUser = networkController.users?.results[indexPath.row]
+        guard let user = tempUser else {
+            print("Bad user in \(#function)")
+            return cell
+        }
+        
+        //DownCasting Cell
+        guard let myCell = cell as? PersonTableViewCell else {
+            return cell
+        }
+        
+        //Assigning Properties to Cell
+        myCell.nameLabel.text = "\(user.name.first) \(user.name.last)"
+        
+        return myCell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
