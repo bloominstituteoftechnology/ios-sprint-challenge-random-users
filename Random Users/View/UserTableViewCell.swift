@@ -13,7 +13,6 @@ class UserTableViewCell: UITableViewCell {
      override func prepareForReuse() {
            super.prepareForReuse()
         
-           userImageView.image = #imageLiteral(resourceName: "Lambda_Logo_Full")
            nameLabel.text = "Lambda Placeholder"
        }
 

@@ -35,8 +35,8 @@ class UsersTableViewController: UITableViewController {
                 return
             }
             self.users = users
-            }
         }
+    }
     
     // MARK: - Table view data source
 
@@ -76,7 +76,7 @@ class UsersTableViewController: UITableViewController {
     private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
 
         guard let user = users?[indexPath.row],
-        let email = user.email else { return }
+            let email = user.email else { return }
 
         if let data = cache.value(key: email) {
             cell.userImageView?.image = UIImage(data: data)
@@ -85,21 +85,24 @@ class UsersTableViewController: UITableViewController {
             let fetchOperation = FetchImageOperation(userRandom: user)
             let cacheOperation = BlockOperation {
                 guard let data = fetchOperation.imageData else { return }
-                    self.cache.cache(key: email, value: data)
+                self.cache.cache(key: email, value: data)
             }
 
             let displayImageOperation = BlockOperation {
                 defer {self.operations.removeValue(forKey: email)}
-            }
-            if let data = fetchOperation.imageData {
-                cell.imageView?.image = UIImage(data: data)
-                cell.nameLabel?.text = user.name
+
+                if let data = fetchOperation.imageData {
+                    cell.imageView?.image = UIImage(data: data)
+                    cell.nameLabel?.text = user.name
+                }
             }
             queue.addOperation(fetchOperation)
             queue.addOperation(cacheOperation)
             cacheOperation.addDependency(fetchOperation)
             displayImageOperation.addDependency(fetchOperation)
             OperationQueue.main.addOperation(displayImageOperation)
+
+
 
             operations[email] = fetchOperation
         }
