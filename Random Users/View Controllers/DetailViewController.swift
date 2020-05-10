@@ -11,20 +11,32 @@ import UIKit
 class DetailViewController: UIViewController {
     
     // MARK: - Outlets
-       @IBOutlet weak var userImageView: UIImageView!
-       @IBOutlet weak var userNameLabel: UILabel!
-       @IBOutlet weak var phoneNumberLabel: UILabel!
-       @IBOutlet weak var userEmailLabel: UILabel!
+    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet weak var userEmailLabel: UILabel!
     
-    
-    
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    var user: User? {
+        didSet {
+            updateViews()
+        }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateViews()
+        
+    }
+    
+    func updateViews() {
+        guard isViewLoaded,
+            let user = user else { return }
+        //title = user.name
+        userEmailLabel.text = user.email
+        phoneNumberLabel.text = user.phone
+        guard let imageData = try? Data(contentsOf: user.picture.large) else { fatalError() }
+        userImageView.image = UIImage(data: imageData)
+    }
 
     
 }

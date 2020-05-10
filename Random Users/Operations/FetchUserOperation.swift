@@ -7,15 +7,17 @@
 //
 
 import Foundation
+import UIKit
 
 class FetchUserOperation: ConcurrentOperation {
     var result: Result<Data, Error>?
-    private (set) var imageData: Data?
+    var imageURL: URL
+    private (set) var imageData: UIImage?
     private var dataTask = URLSessionDataTask()
-    var url: URL
+  
     
-    init(url: URL, imageData: Data) {
-        self.url = url
+    init(imageURL: URL, imageData: UIImage? = nil) {
+        self.imageURL = imageURL
         self.imageData = imageData
     }
     
@@ -25,7 +27,7 @@ class FetchUserOperation: ConcurrentOperation {
         
         state = .isExecuting
         
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: imageURL) { (data, response, error) in
             defer { self.state = .isFinished }
             
             if let error = error {

@@ -10,7 +10,17 @@ import UIKit
 
 class RandomUsersTableViewController: UITableViewController {
 
-    var users: [User] = []
+    var users: [User]? {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    private let queue = OperationQueue()
+    private var operations = [String : Operation]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +33,7 @@ class RandomUsersTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return users?.count ?? 0
     }
 
     
@@ -45,8 +54,8 @@ class RandomUsersTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
           if segue.identifier == "UserDetailSegue" {
               let usersDetailVC = segue.destination as! DetailViewController
-              guard let index = tableView.indexPathForSelectedRow?.row else { return }
-              let user = users[index]
+              guard let indexPath = tableView.indexPathForSelectedRow?.row else { return }
+                //usersDetailVC.user = users?[indexPath.row]
               
           }
       }
