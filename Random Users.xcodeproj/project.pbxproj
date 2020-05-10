@@ -12,6 +12,13 @@
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
 		8ED6A9922140178C00FC395A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
+		D1AF269C22B3F0D1001EDE88 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AF269B22B3F0D1001EDE88 /* UsersTableViewController.swift */; };
+		D1AF269E22B3F10D001EDE88 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AF269D22B3F10D001EDE88 /* UserDetailViewController.swift */; };
+		D1AF26A022B3F138001EDE88 /* FetchImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AF269F22B3F138001EDE88 /* FetchImageOperation.swift */; };
+		D1AF26A222B3F187001EDE88 /* RandomUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AF26A122B3F187001EDE88 /* RandomUsers.swift */; };
+		D1AF26A422B3F1BF001EDE88 /* RandomUsersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AF26A322B3F1BF001EDE88 /* RandomUsersController.swift */; };
+		D1AF26A622B3F1DA001EDE88 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AF26A522B3F1DA001EDE88 /* Cache.swift */; };
+		D1AF26A822B40AC9001EDE88 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AF26A722B40AC9001EDE88 /* StringExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +29,13 @@
 		8ED6A9912140178C00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ED6A9932140178C00FC395A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
+		D1AF269B22B3F0D1001EDE88 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
+		D1AF269D22B3F10D001EDE88 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		D1AF269F22B3F138001EDE88 /* FetchImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImageOperation.swift; sourceTree = "<group>"; };
+		D1AF26A122B3F187001EDE88 /* RandomUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsers.swift; sourceTree = "<group>"; };
+		D1AF26A322B3F1BF001EDE88 /* RandomUsersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersController.swift; sourceTree = "<group>"; };
+		D1AF26A522B3F1DA001EDE88 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		D1AF26A722B40AC9001EDE88 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +71,10 @@
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
+				D1AF26A922B41C7A001EDE88 /* ViewControllers */,
+				D1AF26AB22B41CA4001EDE88 /* Utilities */,
+				D1AF26AA22B41C87001EDE88 /* Model */,
+				D1AF26AC22B41CB0001EDE88 /* Model Controller */,
 			);
 			path = "Random Users";
 			sourceTree = "<group>";
@@ -76,8 +94,43 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				D1AF269F22B3F138001EDE88 /* FetchImageOperation.swift */,
 			);
 			path = Operations;
+			sourceTree = "<group>";
+		};
+		D1AF26A922B41C7A001EDE88 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D1AF269B22B3F0D1001EDE88 /* UsersTableViewController.swift */,
+				D1AF269D22B3F10D001EDE88 /* UserDetailViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D1AF26AA22B41C87001EDE88 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D1AF26A122B3F187001EDE88 /* RandomUsers.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D1AF26AB22B41CA4001EDE88 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				D1AF26A722B40AC9001EDE88 /* StringExtension.swift */,
+				D1AF26A522B3F1DA001EDE88 /* Cache.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		D1AF26AC22B41CB0001EDE88 /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D1AF26A322B3F1BF001EDE88 /* RandomUsersController.swift */,
+			);
+			path = "Model Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -112,6 +165,7 @@
 				TargetAttributes = {
 					8ED6A9832140178A00FC395A = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -151,8 +205,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1AF26A422B3F1BF001EDE88 /* RandomUsersController.swift in Sources */,
+				D1AF26A022B3F138001EDE88 /* FetchImageOperation.swift in Sources */,
+				D1AF26A622B3F1DA001EDE88 /* Cache.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				D1AF26A822B40AC9001EDE88 /* StringExtension.swift in Sources */,
+				D1AF269E22B3F10D001EDE88 /* UserDetailViewController.swift in Sources */,
+				D1AF269C22B3F0D1001EDE88 /* UsersTableViewController.swift in Sources */,
+				D1AF26A222B3F187001EDE88 /* RandomUsers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,7 +366,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LambdaSchool.RandomUsers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -323,7 +384,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LambdaSchool.RandomUsers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
