@@ -10,19 +10,21 @@ import UIKit
 
 class RandomUsersTableViewController: UITableViewController {
 
-    var users: [User]? {
+    var user: [User]? {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
     }
-    
+    var userController = UserController()
+    let cache = Cache<String, Data>() 
     private let queue = OperationQueue()
     private var operations = [String : Operation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
 
     // MARK: - Table view data source
@@ -32,14 +34,14 @@ class RandomUsersTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users?.count ?? 0
+        return user?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserTableViewCell ?? UserTableViewCell()
+        
+        cell.user = userController.user[indexPath.row]
+        
         return cell
     }
     
@@ -52,4 +54,5 @@ class RandomUsersTableViewController: UITableViewController {
                 //usersDetailVC.user = users?[indexPath.row]
         }
     }
+    
 }
