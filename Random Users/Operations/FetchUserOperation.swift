@@ -15,12 +15,10 @@ class FetchUserOperation: ConcurrentOperation {
     private (set) var imageData: UIImage?
     private var dataTask = URLSessionDataTask()
   
-    
     init(imageURL: URL, imageData: UIImage? = nil) {
         self.imageURL = imageURL
         self.imageData = imageData
     }
-    
     
     override func start() {
         if isCancelled { return }
@@ -41,17 +39,13 @@ class FetchUserOperation: ConcurrentOperation {
             }
             
             self.result = .success(data)
-            
         }
+        
         task.resume()
         dataTask = task
-        
     }
-    
     
     override func cancel() {
         dataTask.cancel()
     }
-    
-    
 }

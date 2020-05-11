@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 struct Results: Codable {
     var results: [User]
 }

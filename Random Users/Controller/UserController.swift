@@ -47,4 +47,3 @@ class UserController {
         }.resume()
     }
 }
-

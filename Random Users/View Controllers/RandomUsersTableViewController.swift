@@ -21,7 +21,6 @@ class RandomUsersTableViewController: UITableViewController {
     private let queue = OperationQueue()
     private var operations = [String : Operation]()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -36,7 +35,6 @@ class RandomUsersTableViewController: UITableViewController {
         return users?.count ?? 0
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
 
@@ -45,10 +43,6 @@ class RandomUsersTableViewController: UITableViewController {
         return cell
     }
     
-
-
-
-    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -56,8 +50,6 @@ class RandomUsersTableViewController: UITableViewController {
               let usersDetailVC = segue.destination as! DetailViewController
               guard let indexPath = tableView.indexPathForSelectedRow?.row else { return }
                 //usersDetailVC.user = users?[indexPath.row]
-              
-          }
-      }
-
+        }
+    }
 }
