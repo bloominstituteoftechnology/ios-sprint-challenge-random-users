@@ -10,6 +10,12 @@ import Foundation
 
 struct Results: Codable {
     var results: [User]
+    
+    static var jsonDecoder: JSONDecoder {
+        let result = JSONDecoder()
+        result.keyDecodingStrategy = .convertFromSnakeCase
+        return result
+    }
 }
 
 struct User: Codable {
@@ -26,6 +32,6 @@ struct Name: Codable {
 }
 
 struct Picture: Codable {
-    let large: URL
-    let thumbnail: URL
+    let large: String
+    let thumbnail: String
 }

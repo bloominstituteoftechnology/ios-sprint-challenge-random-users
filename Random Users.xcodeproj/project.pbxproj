@@ -72,6 +72,7 @@
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
 				FEA253C92465D15F0080226D /* Model */,
+				FEA253CB2465D1770080226D /* Views */,
 				FEA253CC2465D1850080226D /* Controller */,
 				FEA253CA2465D16D0080226D /* View Controllers */,
 			);
@@ -102,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				FEA253C12465BB9C0080226D /* User.swift */,
+				FEA253BF2465BA890080226D /* Cache.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -111,8 +113,6 @@
 			children = (
 				FEA253C32465CE7A0080226D /* RandomUsersTableViewController.swift */,
 				FEA253C52465CE8E0080226D /* DetailViewController.swift */,
-				FEA253CB2465D1770080226D /* Views */,
-				FEA253BF2465BA890080226D /* Cache.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
