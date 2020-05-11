@@ -10,35 +10,36 @@ import Foundation
 import UIKit
 
 class FetchUserOperation: ConcurrentOperation {
+    
+    // MARK: - Properties
     var result: Result<Data, Error>?
-    var imageURL: URL
-    private (set) var imageData: UIImage?
+    let picture: Picture
+    private (set) var imageData: Data?
     private var dataTask = URLSessionDataTask()
+    private let session: URLSession
   
-    init(imageURL: URL, imageData: UIImage? = nil) {
-        self.imageURL = imageURL
-        self.imageData = imageData
+    init(picture: Picture, session: URLSession = URLSession.shared)  {
+        self.picture = picture
+        self.session = session
+        super.init()
     }
     
     override func start() {
         if isCancelled { return }
         
         state = .isExecuting
+        let url = picture.imageURL
         
-        let task = URLSession.shared.dataTask(with: imageURL) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             defer { self.state = .isFinished }
             
             if let error = error {
                 self.result = .failure(error)
                 return
             }
-            
-            guard let data = data else {
-                self.result = .success(Data())
-                return
-            }
-            
-            self.result = .success(data)
+        
+            self.imageData = data
+    
         }
         
         task.resume()
