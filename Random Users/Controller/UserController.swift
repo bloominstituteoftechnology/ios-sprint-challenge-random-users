@@ -12,8 +12,7 @@ class UserController {
     
     private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
     
-    var results: Results?
-    var user: User?
+    var results: Result?
     
     // GET
     
@@ -37,7 +36,7 @@ class UserController {
             }
             
             do {
-                let decoder = try JSONDecoder().decode(Results.self, from: data)
+                let decoder = try JSONDecoder().decode(Result.self, from: data)
                 self.results = decoder
                 completion(nil)
             } catch {

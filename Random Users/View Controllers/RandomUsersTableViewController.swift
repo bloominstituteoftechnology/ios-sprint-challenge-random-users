@@ -17,14 +17,17 @@ class RandomUsersTableViewController: UITableViewController {
             }
         }
     }
+    
     var userController = UserController()
-    let cache = Cache<String, Data>() 
+    let cache = Cache<User, UIImage>()
     private let queue = OperationQueue()
-    private var operations = [String : Operation]()
+    private var operations = [User : Operation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // fetch random user // or init
+        // download user data
+        userController.fetchRandomUser() 
     }
 
     // MARK: - Table view data source
@@ -44,8 +47,12 @@ class RandomUsersTableViewController: UITableViewController {
     
     private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
         
+        guard let user = user?[indexPath.row] else { return }
         
+        if let cachedImageData = cache.value(for: user) {
         
+            cell.userImage.image = cachedImageData
+        }
         
     }
     
@@ -56,7 +63,7 @@ class RandomUsersTableViewController: UITableViewController {
           if segue.identifier == "UserDetailSegue" {
               let usersDetailVC = segue.destination as! DetailViewController
               guard let indexPath = tableView.indexPathForSelectedRow?.row else { return }
-                usersDetailVC.user = user?[indexPath.row]
+            usersDetailVC.user = user![indexPath]
         }
     }
     

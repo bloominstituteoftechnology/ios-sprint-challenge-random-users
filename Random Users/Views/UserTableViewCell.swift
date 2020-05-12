@@ -23,7 +23,7 @@ class UserTableViewCell: UITableViewCell {
     
     func updateViews() {
         guard let user = user else { return }
-        self.userName.text = user.name 
+        self.userName.text = user.name.title
     }
     
 }

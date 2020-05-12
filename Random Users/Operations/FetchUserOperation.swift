@@ -13,7 +13,7 @@ class FetchUserOperation: ConcurrentOperation {
     
     // MARK: - Properties
     
-    var result: Result<Data, Error>?
+    var result: Result?
     let picture: Picture
     private (set) var imageData: Data?
     private var dataTask = URLSessionDataTask()
@@ -35,7 +35,7 @@ class FetchUserOperation: ConcurrentOperation {
             defer { self.state = .isFinished }
             
             if let error = error {
-                self.result = .failure(error)
+                NSLog("Error fetching data for: \(error)")
                 return
             }
         

@@ -34,7 +34,7 @@ class DetailViewController: UIViewController {
         userNameLabel.text = user.name.title
         userEmailLabel.text = user.email
         phoneNumberLabel.text = user.phone
-        guard let imageURL = try? Data(contentsOf: user.picture.large) else { fatalError() }
+        guard let imageURL = try? Data(contentsOf: user.picture.imageURL) else { fatalError() }
         userImageView.image = UIImage(data: imageURL)
     }
 

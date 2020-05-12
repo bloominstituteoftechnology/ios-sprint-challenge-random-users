@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Results: Codable {
+struct Result: Codable {
     var results: [User]
     
     static var jsonDecoder: JSONDecoder {
@@ -18,20 +18,20 @@ struct Results: Codable {
     }
 }
 
-struct User: Codable {
+struct User: Codable, Hashable {
     let name: Name
     let picture: Picture
     let phone: String
     let email: String
 }
 
-struct Name: Codable {
+struct Name: Codable, Hashable {
     let title: String
     let first: String
     let last: String
 }
 
-struct Picture: Codable {
+struct Picture: Codable, Hashable {
     let large: String
     let thumbnail: String
     let imageURL : URL 
