@@ -31,8 +31,7 @@ class FetchUserOperation: ConcurrentOperation {
         if isCancelled { return }
         
         state = .isExecuting
-        let imageURL = user.picture.thumbnail
-        
+        let imageURL: URL = URL(string: "imageURL")!
         let task = session.dataTask(with: imageURL) { (data, response, error) in 
             defer { self.state = .isFinished }
             

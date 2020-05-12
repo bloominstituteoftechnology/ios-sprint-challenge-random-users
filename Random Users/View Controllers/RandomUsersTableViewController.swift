@@ -85,8 +85,6 @@ class RandomUsersTableViewController: UITableViewController {
         completionOperation.addDependency(fetchOperation)
         queue.addOperation(fetchOperation)
         queue.addOperation(cacheOperation)
-        
-        
     }
     
     
