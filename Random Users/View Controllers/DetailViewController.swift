@@ -31,11 +31,11 @@ class DetailViewController: UIViewController {
     func updateViews() {
         guard isViewLoaded,
             let user = user else { return }
-        //title = user.name
+        userNameLabel.text = user.name.title
         userEmailLabel.text = user.email
         phoneNumberLabel.text = user.phone
-        guard let imageData = try? Data(contentsOf: user.picture.large) else { fatalError() }
-        userImageView.image = UIImage(data: imageData)
+        guard let imageURL = try? Data(contentsOf: user.picture.large) else { fatalError() }
+        userImageView.image = UIImage(data: imageURL)
     }
 
     

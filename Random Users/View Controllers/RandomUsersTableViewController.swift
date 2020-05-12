@@ -29,10 +29,6 @@ class RandomUsersTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return user?.count ?? 0
     }
@@ -40,10 +36,19 @@ class RandomUsersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserTableViewCell ?? UserTableViewCell()
         
-        cell.user = userController.user[indexPath.row]
+        cell.user = user![indexPath.row]
+            
         
         return cell
     }
+    
+    private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
+        
+        
+        
+        
+    }
+    
     
     // MARK: - Navigation
 
@@ -51,8 +56,9 @@ class RandomUsersTableViewController: UITableViewController {
           if segue.identifier == "UserDetailSegue" {
               let usersDetailVC = segue.destination as! DetailViewController
               guard let indexPath = tableView.indexPathForSelectedRow?.row else { return }
-                //usersDetailVC.user = users?[indexPath.row]
+                usersDetailVC.user = user?[indexPath.row]
         }
     }
     
+
 }

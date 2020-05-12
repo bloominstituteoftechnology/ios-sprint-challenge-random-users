@@ -14,4 +14,16 @@ class UserTableViewCell: UITableViewCell {
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userName: UILabel!
 
+    
+    var user: User? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    func updateViews() {
+        guard let user = user else { return }
+        self.userName.text = user.name 
+    }
+    
 }

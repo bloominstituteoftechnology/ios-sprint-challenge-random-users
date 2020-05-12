@@ -12,6 +12,7 @@ import UIKit
 class FetchUserOperation: ConcurrentOperation {
     
     // MARK: - Properties
+    
     var result: Result<Data, Error>?
     let picture: Picture
     private (set) var imageData: Data?
@@ -38,6 +39,7 @@ class FetchUserOperation: ConcurrentOperation {
                 return
             }
         
+            guard let data = data else { return }
             self.imageData = data
     
         }

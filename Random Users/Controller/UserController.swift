@@ -13,10 +13,11 @@ class UserController {
     private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
     
     var results: Results?
+    var user: User?
     
     // GET
     
-    func getRandomUser(completion: @escaping ((Error?) -> Void) = { _ in}) {
+    func fetchRandomUser(completion: @escaping ((Error?) -> Void) = { _ in}) {
         
         var request = URLRequest(url: baseURL)
         request.httpMethod = "GET"
