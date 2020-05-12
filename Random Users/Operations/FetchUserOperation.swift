@@ -13,25 +13,27 @@ class FetchUserOperation: ConcurrentOperation {
     
     // MARK: - Properties
     
-    var result: Result?
-    let picture: Picture
+    var user: User
+    // var result: Result?
     private (set) var imageData: Data?
     private var dataTask = URLSessionDataTask()
     private let session: URLSession
   
-    init(picture: Picture, session: URLSession = URLSession.shared)  {
-        self.picture = picture
+    init(user: User, session: URLSession = URLSession.shared)  {
+        self.user = user
         self.session = session
         super.init()
     }
+    
+    // MARK: - Methods
     
     override func start() {
         if isCancelled { return }
         
         state = .isExecuting
-        let url = picture.imageURL
+        let imageURL = user.picture.thumbnail
         
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+        let task = session.dataTask(with: imageURL) { (data, response, error) in 
             defer { self.state = .isFinished }
             
             if let error = error {

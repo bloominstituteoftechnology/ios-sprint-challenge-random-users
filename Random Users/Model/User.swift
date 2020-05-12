@@ -36,3 +36,5 @@ struct Picture: Codable, Hashable {
     let thumbnail: String
     let imageURL : URL 
 }
+
+let thumbnailCoverted = URL(string: "thumbnail")
