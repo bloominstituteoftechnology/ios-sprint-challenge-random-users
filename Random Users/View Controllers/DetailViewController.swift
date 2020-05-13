@@ -12,31 +12,30 @@ class DetailViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var userImageView: UIImageView!
-    @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var userEmailLabel: UILabel!
     
+    // MARK: - Properties
     var user: User? {
         didSet {
             updateViews()
         }
     }
     
+    // MARK: - Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
-        
     }
     
     func updateViews() {
         guard isViewLoaded,
             let user = user else { return }
-        userNameLabel.text = user.name.title
+        title = user.name
         userEmailLabel.text = user.email
         phoneNumberLabel.text = user.phone
-        guard let imageURL = try? Data(contentsOf: user.picture.imageURL) else { fatalError() }
-        userImageView.image = UIImage(data: imageURL)
+        guard let imageData = try? Data(contentsOf: user.large!) else { fatalError() }
+        userImageView.image = UIImage(data: imageData)
     }
-
-    
 }

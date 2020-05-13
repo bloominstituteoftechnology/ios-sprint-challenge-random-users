@@ -9,12 +9,11 @@
 import Foundation
 import UIKit
 
-class FetchUserOperation: ConcurrentOperation {
+class FetchImageOperation: ConcurrentOperation {
     
     // MARK: - Properties
     
     var user: User
-    // var result: Result?
     private (set) var imageData: Data?
     private var dataTask = URLSessionDataTask()
     private let session: URLSession
@@ -31,9 +30,10 @@ class FetchUserOperation: ConcurrentOperation {
         if isCancelled { return }
         
         state = .isExecuting
-        guard let imageURL = user.picture.thumbnail else { return }
+        guard let imageURL = user.thumbnail else { return }
         
-        let task = session.dataTask(with: imageURL) { (data, response, error) in 
+        let task = session.dataTask(with: imageURL) { (data, _, error) in
+            
             defer { self.state = .isFinished }
             
             if let error = error {

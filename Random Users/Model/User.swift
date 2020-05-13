@@ -8,33 +8,66 @@
 
 import Foundation
 
-struct Result: Codable {
-    var results: [User]
+struct Results: Decodable {
+    let results: [User]
+}
+
+struct User: Equatable {
+    var name: String
+    var email: String?
+    var phone: String
+    var thumbnail: URL?
+    var large: URL?
+}
+
+extension User: Decodable {
+    enum Images: String {
+        case thumbnail
+        case large
+    }
     
-    static var jsonDecoder: JSONDecoder {
-        let result = JSONDecoder()
-        result.keyDecodingStrategy = .convertFromSnakeCase
-        return result
+    enum UserCodingKeys: String, CodingKey {
+        case name
+        case phone
+        case email
+        case picture
+        
+        enum NameCodingKeys: String, CodingKey {
+            case title
+            case first
+            case last
+        }
+        
+        enum ImageCodingKeys: String, CodingKey {
+            case thumbnail
+            case large
+        }
+    }
+    
+    init(from decoder: Decoder) throws {
+        
+        // UserCodingKeys
+        let container = try decoder.container(keyedBy: UserCodingKeys.self)
+        
+        //NameCodingKeys
+        let nameContainer = try container.nestedContainer(keyedBy: UserCodingKeys.NameCodingKeys.self, forKey: .name)
+        let title = try nameContainer.decode(String.self, forKey: .title)
+        let first = try nameContainer.decode(String.self, forKey: .first)
+        let last = try nameContainer.decode(String.self, forKey: .last)
+        
+        //ImageCodingKeys
+        let imageContainer = try container.nestedContainer(keyedBy: UserCodingKeys.ImageCodingKeys.self, forKey: .picture)
+        let thumbnailImageString = try imageContainer.decode(String.self, forKey: .thumbnail)
+        let largeImageString = try imageContainer.decode(String.self, forKey: .large)
+        let thumbnailImage = URL(string: thumbnailImageString)
+        let largeImage = URL(string: largeImageString)
+        
+        self.name = "\(title) \(first) \(last)"
+        self.phone = try container.decode(String.self, forKey: .phone)
+        self.email = try container.decode(String.self, forKey: .email)
+        self.thumbnail = thumbnailImage
+        self.large = largeImage
     }
 }
 
-struct User: Codable, Hashable {
-    let name: Name
-    let picture: Picture
-    let phone: String
-    let email: String
-}
 
-struct Name: Codable, Hashable {
-    let title: String
-    let first: String
-    let last: String
-}
-
-struct Picture: Codable, Hashable {
-    let large: URL?
-    let thumbnail: URL?
-    let imageURL : URL 
-}
-
-let thumbnailCoverted = URL(string: "thumbnail")

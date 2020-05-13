@@ -10,7 +10,7 @@ import UIKit
 
 class RandomUsersTableViewController: UITableViewController {
     
-    var user: [User]? {
+    var users: [User]? {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -21,14 +21,24 @@ class RandomUsersTableViewController: UITableViewController {
     var userController = UserController()
     let cache = Cache<String, Data>()
     private let queue = OperationQueue()
-    private var operations = [User : Operation]()
+    private var operations = [String : Operation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userController.fetchRandomUser { (error) in
-            if let error = error {
-                NSLog("Error fetching info for user: \(error)")
-                return
+        userController.fetchRandomUser { users in
+            
+            do {
+                let users = try users.get()
+                DispatchQueue.main.async {
+                    self.users = users
+                }
+                
+            } catch {
+                
+                if let error = error as? NetworkError {
+                    NSLog("Error in retrieving users: \(error)")
+                    return
+                }
             }
         }
     }
@@ -36,68 +46,69 @@ class RandomUsersTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return user?.count ?? 0
+        return users?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserTableViewCell ?? UserTableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
+        
+        guard let user = users?[indexPath.row] else { return cell }
+        cell.userNameLabel.text = user.name
         
         loadImage(forCell: cell, forItemAt: indexPath)
-        
-        cell.user = user![indexPath.row]
-        
         
         return cell
     }
     
-    private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let user = users?[indexPath.row],
+            let email = user.email else { return }
         
-        guard let user = user?[indexPath.row] else { return }
-        
-        // Check for an image in cache
-        if let cachedImageData = cache.value(for: user),
-            let image = UIImage(data: cachedImageData) {
-            cell.userImage.image = image
-            return
-        }
-        
-        // Start an operation to fetch image data
-        let fetchOperation = FetchUserOperation(user: user)
-        let cacheOperation = BlockOperation {
-            if let image = fetchOperation.imageData {
-                self.cache.cache(key: image, value: user.email)
-            }
-        }
-        
-        let completionOperation = BlockOperation {
-            defer { self.operations.removeValue(forKey: user) }
-            
-            if let currentIndexPath = self.tableView.indexPath(for: cell),
-                currentIndexPath == indexPath {
-                return
-            }
-            
-            if let data = fetchOperation.imageData {
-                cell.userImage.image = UIImage(data: data)
-            }
-        }
-        
-        cacheOperation.addDependency(fetchOperation)
-        completionOperation.addDependency(fetchOperation)
-        queue.addOperation(fetchOperation)
-        queue.addOperation(cacheOperation)
+        operations[email]?.cancel()
     }
     
-    
+    private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
+        
+        guard let user = users?[indexPath.row],
+            let email = user.email else { return }
+        
+        // Check for an image in cache
+        if let cachedImageData = cache.value(key: email) {
+            cell.userImageView.image = UIImage(data: cachedImageData)
+        } else {
+            let fetchOperation = FetchImageOperation(user: user)
+            let cacheOperation = BlockOperation {
+                guard let data = fetchOperation.imageData else { return }
+                self.cache.cache(key: email, value: data)
+            }
+            
+            // Download Image/Information
+            let completionOperation = BlockOperation {
+                defer { self.operations.removeValue(forKey: email) }
+                
+                if let data = fetchOperation.imageData {
+                    cell.imageView?.image = UIImage(data: data)
+                    cell.userNameLabel.text = user.name
+                }
+            }
+            
+            queue.addOperation(fetchOperation)
+            queue.addOperation(cacheOperation)
+            cacheOperation.addDependency(fetchOperation)
+            completionOperation.addDependency(fetchOperation)
+            OperationQueue.main.addOperation(completionOperation)
+            
+            operations[email] = fetchOperation
+            
+        }
+    }
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "UserDetailSegue" {
             let usersDetailVC = segue.destination as! DetailViewController
             guard let indexPath = tableView.indexPathForSelectedRow?.row else { return }
-            usersDetailVC.user = user![indexPath]
+            usersDetailVC.user = users![indexPath]
         }
     }
-    
-    
 }
