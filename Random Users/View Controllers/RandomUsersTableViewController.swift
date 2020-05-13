@@ -19,7 +19,7 @@ class RandomUsersTableViewController: UITableViewController {
     }
     
     var userController = UserController()
-    let cache = Cache<User, UIImage>()
+    let cache = Cache<String, Data>()
     private let queue = OperationQueue()
     private var operations = [User : Operation]()
     
@@ -55,16 +55,17 @@ class RandomUsersTableViewController: UITableViewController {
         guard let user = user?[indexPath.row] else { return }
         
         // Check for an image in cache
-        if let cachedImageData = cache.value(for: user) {
-            cell.userImage.image = cachedImageData
+        if let cachedImageData = cache.value(for: user),
+            let image = UIImage(data: cachedImageData) {
+            cell.userImage.image = image
             return
         }
         
         // Start an operation to fetch image data
         let fetchOperation = FetchUserOperation(user: user)
         let cacheOperation = BlockOperation {
-            if let data = fetchOperation.imageData {
-                self.cache.cache(value: data, for: user)
+            if let image = fetchOperation.imageData {
+                self.cache.cache(key: image, value: user.email)
             }
         }
         

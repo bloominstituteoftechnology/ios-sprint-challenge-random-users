@@ -32,8 +32,8 @@ struct Name: Codable, Hashable {
 }
 
 struct Picture: Codable, Hashable {
-    let large: String
-    let thumbnail: String
+    let large: URL?
+    let thumbnail: URL?
     let imageURL : URL 
 }
 
