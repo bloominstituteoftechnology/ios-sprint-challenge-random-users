@@ -55,7 +55,10 @@ class RandomUsersTableViewController: UITableViewController {
         guard let user = users?[indexPath.row] else { return cell }
         cell.userNameLabel.text = user.name
         
-        loadImage(forCell: cell, forItemAt: indexPath)
+        
+            self.loadImage(forCell: cell, forItemAt: indexPath)
+       
+        
         
         return cell
     }
@@ -87,16 +90,16 @@ class RandomUsersTableViewController: UITableViewController {
                 defer { self.operations.removeValue(forKey: email) }
                 
                 if let data = fetchOperation.imageData {
-                    cell.imageView?.image = UIImage(data: data)
-                    cell.userNameLabel.text = user.name
+                    DispatchQueue.main.async {
+                        cell.imageView?.image = UIImage(data: data)
+                         cell.userNameLabel.text = user.name
+                    }
                 }
             }
             
-            queue.addOperation(fetchOperation)
-            queue.addOperation(cacheOperation)
             cacheOperation.addDependency(fetchOperation)
             completionOperation.addDependency(fetchOperation)
-            OperationQueue.main.addOperation(completionOperation)
+            queue.addOperations([cacheOperation, completionOperation, fetchOperation], waitUntilFinished: false)
             
             operations[email] = fetchOperation
             
