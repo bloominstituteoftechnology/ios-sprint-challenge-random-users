@@ -12,6 +12,8 @@
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
 		8ED6A9922140178C00FC395A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
+		FE0850F0246C4896001A2D6E /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0850EF246C4896001A2D6E /* URL.swift */; };
+		FE0850F2246C4CD1001A2D6E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE0850F1246C4CD1001A2D6E /* Default-568h@2x.png */; };
 		FEA253BA2465AFD50080226D /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA253B92465AFD50080226D /* UserController.swift */; };
 		FEA253C02465BA890080226D /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA253BF2465BA890080226D /* Cache.swift */; };
 		FEA253C22465BB9D0080226D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA253C12465BB9C0080226D /* User.swift */; };
@@ -29,6 +31,8 @@
 		8ED6A9912140178C00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ED6A9932140178C00FC395A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
+		FE0850EF246C4896001A2D6E /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		FE0850F1246C4CD1001A2D6E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		FEA253B92465AFD50080226D /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		FEA253BF2465BA890080226D /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		FEA253C12465BB9C0080226D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -52,7 +56,10 @@
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
+				FE0850F1246C4CD1001A2D6E /* Default-568h@2x.png */,
+				8ED6A9932140178C00FC395A /* Info.plist */,
 				8ED6A9862140178A00FC395A /* Random Users */,
+				9D5CCA522142305600224681 /* Resources */,
 				8ED6A9852140178A00FC395A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,12 +76,10 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
-				9D5CCA56214231E400224681 /* Operations */,
-				9D5CCA522142305600224681 /* Resources */,
 				FEA253C92465D15F0080226D /* Model */,
-				FEA253CB2465D1770080226D /* Views */,
 				FEA253CC2465D1850080226D /* Controller */,
 				FEA253CA2465D16D0080226D /* View Controllers */,
+				9D5CCA56214231E400224681 /* Operations */,
 			);
 			path = "Random Users";
 			sourceTree = "<group>";
@@ -85,7 +90,7 @@
 				8ED6A98B2140178A00FC395A /* Main.storyboard */,
 				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
 				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
-				8ED6A9932140178C00FC395A /* Info.plist */,
+				FE0850EF246C4896001A2D6E /* URL.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -113,6 +118,7 @@
 			children = (
 				FEA253C32465CE7A0080226D /* RandomUsersTableViewController.swift */,
 				FEA253C52465CE8E0080226D /* DetailViewController.swift */,
+				FEA253CB2465D1770080226D /* Views */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -192,6 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ED6A9922140178C00FC395A /* LaunchScreen.storyboard in Resources */,
+				FE0850F2246C4CD1001A2D6E /* Default-568h@2x.png in Resources */,
 				8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */,
 				8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */,
 			);
@@ -209,6 +216,7 @@
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				FEA253C02465BA890080226D /* Cache.swift in Sources */,
 				FEA253C42465CE7A0080226D /* RandomUsersTableViewController.swift in Sources */,
+				FE0850F0246C4896001A2D6E /* URL.swift in Sources */,
 				FEA253C82465D0E90080226D /* UserTableViewCell.swift in Sources */,
 				FEA253C22465BB9D0080226D /* User.swift in Sources */,
 				FEA253BA2465AFD50080226D /* UserController.swift in Sources */,
@@ -358,7 +366,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VXUQXR6S56;
-				INFOPLIST_FILE = "$(SRCROOT)/Random Users/Resources/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -376,7 +384,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VXUQXR6S56;
-				INFOPLIST_FILE = "$(SRCROOT)/Random Users/Resources/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
