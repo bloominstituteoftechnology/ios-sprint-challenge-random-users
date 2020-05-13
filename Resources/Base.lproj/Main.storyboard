@@ -55,7 +55,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="userImageView" destination="Z9P-mZ-jPw" id="jMO-4B-P6a"/>
+                                    <outlet property="userImageView1" destination="Z9P-mZ-jPw" id="j2Q-dq-WdO"/>
                                     <outlet property="userNameLabel" destination="nmh-ja-q1a" id="GGI-5z-54U"/>
                                     <segue destination="6tJ-4H-DDa" kind="show" identifier="UserDetailSegue" id="Yx0-bY-vTK"/>
                                 </connections>

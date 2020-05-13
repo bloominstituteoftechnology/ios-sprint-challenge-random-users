@@ -45,6 +45,8 @@ class RandomUsersTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
+   
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users?.count ?? 0
     }
@@ -58,7 +60,6 @@ class RandomUsersTableViewController: UITableViewController {
         
             self.loadImage(forCell: cell, forItemAt: indexPath)
        
-        
         
         return cell
     }
@@ -77,7 +78,7 @@ class RandomUsersTableViewController: UITableViewController {
         
         // Check for an image in cache
         if let cachedImageData = cache.value(key: email) {
-            cell.userImageView.image = UIImage(data: cachedImageData)
+            cell.userImageView1.image = UIImage(data: cachedImageData)
         } else {
             let fetchOperation = FetchImageOperation(user: user)
             let cacheOperation = BlockOperation {
@@ -110,8 +111,8 @@ class RandomUsersTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "UserDetailSegue" {
             let usersDetailVC = segue.destination as! DetailViewController
-            guard let indexPath = tableView.indexPathForSelectedRow?.row else { return }
-            usersDetailVC.user = users![indexPath]
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            usersDetailVC.user = users?[indexPath.row]
         }
     }
 }

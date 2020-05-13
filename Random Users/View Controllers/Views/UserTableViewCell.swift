@@ -11,7 +11,7 @@ import UIKit
 class UserTableViewCell: UITableViewCell {
     
      // MARK: - Outlets
-    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var userImageView1: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     
 }
