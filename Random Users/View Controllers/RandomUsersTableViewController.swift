@@ -58,25 +58,14 @@ class RandomUsersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
         
-//        indexPath = UserTableViewCell.indexPath(for: self)
-//        var indexPath2 = indexPath.count
-//
-//        var indexPath = tableView.indexPath(for: UserTableViewCell)
-        
         self.loadImage(forCell: cell, forItemAt: indexPath)
         
         guard let user = users?[indexPath.row] else { return cell }
         cell.userNameLabel.text = user.name
         
-        
-        
         return cell
     }
-//    func tableView.indexPath(for: cell) {
-//    var indexPath = indexPath.count
-//
-//
-//    }
+
     
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let user = users?[indexPath.row],
@@ -86,6 +75,9 @@ class RandomUsersTableViewController: UITableViewController {
     }
     
     private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
+        
+        tableView.indexPath(for: UserTableViewCell)
+        
         
         guard let user = users?[indexPath.row],
             let email = user.email else { return }
