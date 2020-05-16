@@ -13,19 +13,22 @@ class UserTableViewController: UITableViewController {
     private let userController = UserController()
     private var users: [User] = [] {
         didSet {
-            tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userController.fetchUsers { (result) in
-            guard let users = try? result.get() else { return }
-            
-            DispatchQueue.main.async {
-                self.users = users
+        
+        userController.fetchUsers { (users, error) in
+            guard error == nil, let users = users else {
+                print("Error fetching users: \(error)")
+                return
             }
+            self.users = users
         }
     }
 
@@ -37,19 +40,11 @@ class UserTableViewController: UITableViewController {
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
+        
         let user = users[indexPath.row]
+        cell.user = user
         
-        cell.textLabel?.text = "\(user.name.title). \(user.name.first) \(user.name.last)"
-        
-        userController.fetchImage(at: user.picture.thumbnail) { (result) in
-            guard let image = try? result.get() else { return }
-            
-            DispatchQueue.main.async {
-                cell.imageView?.image = image
-            }
-        }
         return cell
     }
 
@@ -58,9 +53,9 @@ class UserTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "UserDetailSegue", let userDetailVC = segue.destination as? UserDetailViewController, let selectedIndexPath = tableView.indexPathForSelectedRow {
-                userDetailVC.userController = userController
-            userDetailVC.user = userController.results[selectedIndexPath.row]
+        if segue.identifier == "UserDetailSegue", let userDetailVC = segue.destination as? UserDetailViewController, let indexPath = tableView.indexPathForSelectedRow {
+            let user = users[indexPath.row]
+            userDetailVC.user = user
         }
     }
 }

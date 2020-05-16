@@ -15,19 +15,29 @@ class UserTableViewCell: UITableViewCell {
     @IBOutlet var nameLabel: UILabel!
     
     // MARK: - Properties
-    var user: User? {
+    var userController: UserController?
+    var user: User! {
         didSet {
             updateViews()
         }
     }
 
     private func updateViews(){
+        let imageURL = (user?.picture.thumbnail)!
+        userController?.fetchImage(at: imageURL) { (image, error) in
+            guard error == nil, let image = image else {
+                print("Error fetching image: \(error)")
+                return
+            }
+            self.userImageView.image = image
+        }
         nameLabel.text = user?.name.fullName
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        // Do something here
+        imageView?.image = #imageLiteral(resourceName: "Lambda_Logo_Full")
+        nameLabel.text = ""
     }
 
 }

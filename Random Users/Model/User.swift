@@ -25,7 +25,7 @@ struct User : Codable {
     struct Thumbnail : Codable {
         let large: URL
         let medium: URL
-        let thumnail: URL
+        let thumbnail: URL
     }
 }
 

@@ -15,7 +15,7 @@ class UserController {
     
     private let baseURL = URL(string: "https://randomuser.me/api/?results=5000")!
     
-    func fetchUsers(numberOfUsers: Int, using session: URLSession = URLSession.shared,completion: @escaping ([User]?, Error?) -> Void) {
+    func fetchUsers(numberOfUsers: Int = 1000, using session: URLSession = URLSession.shared,completion: @escaping ([User]?, Error?) -> Void) {
         
         let userURL = URL(string: "https://randomuser.me/api/?results=\(numberOfUsers)&inc=name,email,phone,picture&format=json")!
         

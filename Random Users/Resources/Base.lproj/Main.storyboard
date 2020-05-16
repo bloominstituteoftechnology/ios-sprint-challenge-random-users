@@ -66,10 +66,10 @@
             </objects>
             <point key="canvasLocation" x="901.44927536231887" y="99.776785714285708"/>
         </scene>
-        <!--View Controller-->
+        <!--User Detail View Controller-->
         <scene sceneID="J9H-2k-ohY">
             <objects>
-                <viewController id="zas-eY-XwH" sceneMemberID="viewController">
+                <viewController id="zas-eY-XwH" customClass="UserDetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iZl-ms-tpe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -121,6 +121,12 @@
                         <viewLayoutGuide key="safeArea" id="CQD-Ys-7KX"/>
                     </view>
                     <navigationItem key="navigationItem" id="Rml-bJ-pia"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="K9b-9l-igN" id="Q0U-7x-0Nb"/>
+                        <outlet property="nameLabel" destination="phZ-xt-EP7" id="NZf-7b-KLi"/>
+                        <outlet property="phoneNumerLabel" destination="Hdi-VP-jnX" id="yCx-EV-ISM"/>
+                        <outlet property="userDetailImageView" destination="9WV-jB-JkR" id="ENn-tb-ugj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jNI-zO-Zfr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
