@@ -22,7 +22,9 @@ struct Name: Codable {
 }
 
 struct Picture: Codable {
+    let large: String
     let medium: String
+    let thumbnail: String
 }
 
 struct RandomUsersResults: Codable {

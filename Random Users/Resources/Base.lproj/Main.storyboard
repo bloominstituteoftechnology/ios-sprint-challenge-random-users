@@ -85,8 +85,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zDz-9t-KKt">
-                                <rect key="frame" x="67.5" y="75" width="240" height="300"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zDz-9t-KKt">
+                                <rect key="frame" x="67.5" y="183.5" width="240" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="hjB-mP-wq5"/>
                                     <constraint firstAttribute="width" constant="240" id="rT5-NF-I3w"/>
@@ -118,10 +118,10 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="zDz-9t-KKt" firstAttribute="centerY" secondItem="gF1-bb-zcB" secondAttribute="centerY" id="GTr-5N-OB9"/>
                             <constraint firstItem="Dd0-36-v63" firstAttribute="trailing" secondItem="tdS-ks-XoG" secondAttribute="trailing" constant="10" id="XTC-DM-PIc"/>
                             <constraint firstItem="tdS-ks-XoG" firstAttribute="leading" secondItem="Dd0-36-v63" secondAttribute="leading" constant="10" id="dYe-Zi-CJd"/>
                             <constraint firstItem="zDz-9t-KKt" firstAttribute="centerX" secondItem="gF1-bb-zcB" secondAttribute="centerX" id="iO5-Bh-hJy"/>
-                            <constraint firstItem="zDz-9t-KKt" firstAttribute="top" secondItem="gF1-bb-zcB" secondAttribute="top" constant="75" id="ybP-nt-Dr6"/>
                             <constraint firstItem="Dd0-36-v63" firstAttribute="bottom" secondItem="tdS-ks-XoG" secondAttribute="bottom" constant="10" id="zlx-je-9fp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Dd0-36-v63"/>
