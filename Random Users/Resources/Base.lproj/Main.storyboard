@@ -47,7 +47,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="UserImage" destination="dsj-s0-26q" id="tSU-Vf-JPF"/>
-                                    <outlet property="UserName" destination="TNA-5T-r4S" id="ebe-wL-xsf"/>
+                                    <outlet property="UserName" destination="qry-eQ-Ozz" id="w67-RO-mt9"/>
                                     <segue destination="0q5-VC-2QM" kind="show" id="6Bx-gE-3b7"/>
                                 </connections>
                             </tableViewCell>

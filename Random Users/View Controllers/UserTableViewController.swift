@@ -12,6 +12,8 @@ class UserTableViewController: UITableViewController {
     
     // MARK: - Propertires
     
+    private var user: User?
+    
     private let fetch = Networking()
     
     private var users = [User]()
@@ -19,19 +21,15 @@ class UserTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-          fetch.fetchUsers { (result) in
-                do {
-                    let user = try result.get()
-                    DispatchQueue.main.async {
-                        self.users = user
-                    }
-                } catch {
-                    if let error = error as? NetworkError {
-                        print("Error")
-                    }
-                }
+        fetch.fetchUsers(named: "results") { (user, error) in
+            if let error = error {
+                NSLog("Failure to fetch users: \(error)")
+                return
             }
+            
+            self.user = user
         }
+    }
 
     // MARK: - Table view data source
 
@@ -52,7 +50,7 @@ class UserTableViewController: UITableViewController {
         
          let user = users[indexPath.item]
         
-        let imageURL = URL(string: "\(user.imageURL)")
+        let imageURL = URL(string: "\(user.results)")
         
 //        if let cacheData = cache.value(for: photoReference.id),
 //            let image = UIImage(data:cacheData) {
