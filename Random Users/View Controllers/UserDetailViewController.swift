@@ -31,5 +31,9 @@ class UserDetailViewController: UIViewController {
         nameLabel.text = user.fullName
         phoneLabel.text = user.phone
         emailLabel.text = user.email
+        
+        guard let imageData = try? Data(contentsOf: user.picture.large) else { return }
+        imageView.image = UIImage(data: imageData)
+        
     }
 }

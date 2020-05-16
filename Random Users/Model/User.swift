@@ -22,9 +22,9 @@ struct User: Codable {
     
     let picture: Picture
     struct Picture: Codable {
-        let large: String
-        let medium: String
-        let thumbnail: String
+        let large: URL
+        let medium: URL
+        let thumbnail: URL
     }
     
     var fullName: String {

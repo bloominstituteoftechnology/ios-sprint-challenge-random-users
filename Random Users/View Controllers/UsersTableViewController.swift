@@ -12,21 +12,68 @@ class UsersTableViewController: UITableViewController {
     
     private var users: [User] = [] {
         didSet {
+            print(users.count)
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
     }
+    private let thumbnailCache = Cache<URL, UIImage>()
+    private let thumbnailFetchQueue = OperationQueue()
+    private var thumbnailFetchOperations: [URL: FetchImageOperation] = [:]
     private let userAPIController = UserAPIController()
 
     @IBAction func addUsers(_ sender: UIBarButtonItem) {
         userAPIController.getUsers { result in
             switch result {
             case .success(let users):
-                self.users = users
+                self.users.append(contentsOf: users)
             case .failure(let networkError):
                 print("NetworkError: \(networkError)")
             }
+        }
+    }
+    
+    private func loadThumbnail(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
+        
+        let user = users[indexPath.row]
+        let url = user.picture.thumbnail
+        
+        if let cachedImage = thumbnailCache.value(for: url) {
+            DispatchQueue.main.async {
+                cell.userImageView.image = cachedImage
+            }
+        } else {
+            let fetchThumbnailOperation = FetchImageOperation(url: url)
+            
+            let cacheThumbnailOperation = BlockOperation {
+                guard let image = fetchThumbnailOperation.uiImage else {
+                    print("noImage")
+                    return
+                }//fatalError() }
+                self.thumbnailCache.cache(value: image, for: url)
+            }
+            cacheThumbnailOperation.addDependency(fetchThumbnailOperation)
+            
+            let setImageIfCellNotReused = BlockOperation {
+                DispatchQueue.main.async {
+                    if let currentIndexPath = self.tableView.indexPath(for: cell),
+                        currentIndexPath != indexPath {
+                        return
+                    }
+                    guard let image = fetchThumbnailOperation.uiImage else { return }//fatalError() }
+                    cell.userImageView.image = image
+                }
+            }
+            setImageIfCellNotReused.addDependency(fetchThumbnailOperation)
+            
+            thumbnailFetchQueue.addOperations([
+                fetchThumbnailOperation,
+                cacheThumbnailOperation,
+                setImageIfCellNotReused,
+            ], waitUntilFinished: false)
+            
+            thumbnailFetchOperations[url] = fetchThumbnailOperation
         }
     }
     
@@ -37,12 +84,17 @@ class UsersTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
 
         let user = users[indexPath.row]
-        cell.textLabel?.text = user.fullName
+        loadThumbnail(forCell: cell, forItemAt: indexPath)
+        cell.userNameLabel.text = user.fullName
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        50
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -17,14 +17,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" id="SSP-gk-9TQ">
-                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="58" id="SSP-gk-9TQ" customClass="UserTableViewCell" customModule="Random_Users" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="58"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SSP-gk-9TQ" id="arH-Q0-7cW">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="58"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="254" translatesAutoresizingMaskIntoConstraints="NO" id="rUk-Z0-M5i">
+                                            <rect key="frame" x="6" y="6" width="46" height="46"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="rUk-Z0-M5i" secondAttribute="height" id="5YP-b3-3fh"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="735" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="asy-IT-Uge">
+                                            <rect key="frame" x="62" y="0.0" width="303" height="58"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="asy-IT-Uge" firstAttribute="top" secondItem="arH-Q0-7cW" secondAttribute="top" id="0rq-x5-huv"/>
+                                        <constraint firstAttribute="trailing" secondItem="asy-IT-Uge" secondAttribute="trailing" constant="10" id="TCY-gw-wmN"/>
+                                        <constraint firstItem="rUk-Z0-M5i" firstAttribute="leading" secondItem="arH-Q0-7cW" secondAttribute="leading" constant="6" id="ckZ-3U-t30"/>
+                                        <constraint firstAttribute="bottom" secondItem="rUk-Z0-M5i" secondAttribute="bottom" constant="6" id="gp5-HC-041"/>
+                                        <constraint firstItem="asy-IT-Uge" firstAttribute="leading" secondItem="rUk-Z0-M5i" secondAttribute="trailing" constant="10" id="qhp-yT-Awg"/>
+                                        <constraint firstAttribute="bottom" secondItem="asy-IT-Uge" secondAttribute="bottom" id="zNI-Rj-ayC"/>
+                                        <constraint firstItem="rUk-Z0-M5i" firstAttribute="top" secondItem="arH-Q0-7cW" secondAttribute="top" constant="6" id="zW9-lD-79P"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="userImageView" destination="rUk-Z0-M5i" id="d1C-8e-tJM"/>
+                                    <outlet property="userNameLabel" destination="asy-IT-Uge" id="dcv-84-4DX"/>
                                     <segue destination="sXc-Q5-Ehl" kind="show" identifier="" id="ry1-Ir-vIE"/>
                                 </connections>
                             </tableViewCell>
