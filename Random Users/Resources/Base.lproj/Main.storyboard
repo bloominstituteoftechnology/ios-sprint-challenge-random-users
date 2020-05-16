@@ -65,7 +65,13 @@
                             <outlet property="delegate" destination="hrO-dm-7ET" id="tmX-Vk-9ho"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Users" id="ExN-XY-sLM"/>
+                    <navigationItem key="navigationItem" title="Users" id="ExN-XY-sLM">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="VpS-Qu-H8Y">
+                            <connections>
+                                <action selector="addUsersButtonPressed:" destination="hrO-dm-7ET" id="tri-Af-3AT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1zB-Ta-usk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

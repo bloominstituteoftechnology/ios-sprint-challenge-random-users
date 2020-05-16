@@ -10,26 +10,26 @@ import UIKit
 
 class UserTableViewController: UITableViewController {
 
+    // MARK: - Properties
+    var randomUsersController = RandomUsersController()
+    var users: [RandomUsersResults] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return users.count
     }
 
     /*
@@ -86,5 +86,22 @@ class UserTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    // MARK: - IBAction
+    
+    @IBAction func addUsersButtonPressed(_ sender: Any) {
+        randomUsersController.getUsers { (results) in
+            do {
+                let users = try results.get()
+                DispatchQueue.main.async {
+                    //self.users = users.user
+                    print(users)
+                }
+            } catch {
+                print(results)
+                
+            }
+        }
+        
+    }
+    
 }

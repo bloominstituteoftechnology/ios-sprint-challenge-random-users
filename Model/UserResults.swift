@@ -26,5 +26,5 @@ struct Picture: Codable {
 }
 
 struct RandomUsersResults: Codable {
-    let user: [UserResults]
+    let results: [UserResults]
 }
