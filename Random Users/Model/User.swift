@@ -19,12 +19,16 @@ struct User : Codable {
         let title: String
         let first: String
         let last: String
+        var fullName: String { "\(title). \(first) \(last)" }
     }
     
     struct Thumbnail : Codable {
-        let thumbnail: String
+        let large: URL
+        let medium: URL
+        let thumnail: URL
     }
-    
-    
-    
+}
+
+struct UserResults: Codable {
+    var results: [User]
 }

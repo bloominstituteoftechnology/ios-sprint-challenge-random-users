@@ -17,6 +17,17 @@ class UserTableViewController: UITableViewController {
         }
     }
     var user: User?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        userController.fetchUsers { (result) in
+            guard let users = try? result.get() else { return }
+            
+            DispatchQueue.main.async {
+                self.users = users
+            }
+        }
+    }
 
     // MARK: - Table view data source
 

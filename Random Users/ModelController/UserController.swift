@@ -9,72 +9,60 @@
 import Foundation
 import UIKit
 
-enum NetworkError: Error {
-    case loadFailed
-    case decodeFailed
-    case noData
-    case noImage
-}
-
 class UserController {
     
     var results: [User] = []
     
     private let baseURL = URL(string: "https://randomuser.me/api/?results=5000")!
     
-    func fetchUsers(completion: @escaping (Result<[String], NetworkError>) -> Void) {
+    func fetchUsers(numberOfUsers: Int, using session: URLSession = URLSession.shared,completion: @escaping ([User]?, Error?) -> Void) {
         
-        var request = URLRequest(url: baseURL)
-        request.httpMethod = "GET"
+        let userURL = URL(string: "https://randomuser.me/api/?results=\(numberOfUsers)&inc=name,email,phone,picture&format=json")!
         
-        let task = URLSession.shared.dataTask(with: request) { (data, _, error) in
+        fetch(from: userURL) { (users: UserResults?, error: Error?) in
             guard error == nil else {
-                print("Error fetching users: \(error)")
-                completion(.failure(.loadFailed))
+                completion(nil, error)
                 return
             }
             
-            guard let data = data else {
-                print("Error with data: \(error)")
-                completion(.failure(.noData))
+            guard let users = users?.results else {
+                completion(nil, error)
                 return
             }
-            
-            let jsonDecoder = JSONDecoder()
-            do {
-                let user = try jsonDecoder.decode([String].self, from: data)
-                completion(.success(user))
-            } catch {
-                print("Error decoding user object: \(error)")
-                completion(.failure(.decodeFailed))
-            }
+            completion(users, nil)
         }
-        task.resume()
     }
     
-    func fetchImage(at urlString: String, completion: @escaping (Result<UIImage, NetworkError>) -> Void) {
+    func fetchImage(at imageURL: URL, using session: URLSession = URLSession.shared, completion: @escaping (UIImage?, Error?) -> Void) {
 
-        let imageURL = URL(string: urlString)!
-
-        var request = URLRequest(url: imageURL)
-        request.httpMethod = "GET"
-
-        let task = URLSession.shared.dataTask(with: request) { (data, _, error) in
-            guard error == nil else {
-                print("Error fetching image: \(error)")
-                completion(.failure(.noImage))
+        fetch(from: imageURL) { (data: Data?, error: Error?) in
+            guard let data = data, let image = UIImage(data: data) else {
+                completion(nil, error)
                 return
             }
-
-            guard let data = data else {
-                print("Error with data: \(error)")
-                completion(.failure(.noData))
-                return
-            }
-
-            let image = UIImage(data: data)!
-            completion(.success(image))
+            completion(image, nil)
         }
-        task.resume()
+    }
+    
+    private func fetch<T: Codable>(from url: URL, using session: URLSession = URLSession.shared, completion: @escaping (T?, Error?) -> Void) {
+        session.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+            
+            guard let data = data else {
+                completion(nil, NSError(domain: "com.LambdaSchool.RandomUsers.ErrorDomain", code: -1, userInfo: nil))
+                return
+            }
+            
+            do {
+                let jsonDecoder = JSONDecoder()
+                let decodedObject = try jsonDecoder.decode(T.self, from: data)
+                completion(decodedObject, nil)
+            } catch {
+                completion(nil, error)
+            }
+        }.resume()
     }
 }

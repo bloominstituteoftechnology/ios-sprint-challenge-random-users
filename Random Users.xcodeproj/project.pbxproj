@@ -97,10 +97,10 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
+				68C07B2A246F74AD00D758E3 /* Model */,
 				68C07B33246F7A2800D758E3 /* ModelController */,
 				68C07B2E246F782300D758E3 /* Views */,
 				68C07B2D246F781800D758E3 /* ViewControllers */,
-				68C07B2A246F74AD00D758E3 /* Model */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
