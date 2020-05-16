@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,6 +24,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="sXc-Q5-Ehl" kind="show" identifier="" id="ry1-Ir-vIE"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -41,6 +45,74 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="acu-fQ-aTP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="560.79999999999995" y="-98.50074962518741"/>
+        </scene>
+        <!--User Detail View Controller-->
+        <scene sceneID="xf0-ao-NSR">
+            <objects>
+                <viewController id="sXc-Q5-Ehl" customClass="UserDetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Cqk-SJ-OhB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="C62-ER-pnF">
+                                <rect key="frame" x="20" y="116" width="335" height="416.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k4W-nZ-gOg">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="k4W-nZ-gOg" secondAttribute="height" id="HUM-jq-bbM"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Nci-Ww-0xi">
+                                        <rect key="frame" x="0.0" y="343" width="335" height="73.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chad Parker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEp-bl-1y9">
+                                                <rect key="frame" x="0.0" y="0.0" width="98.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="A8l-sf-w2B">
+                                                <rect key="frame" x="0.0" y="32.5" width="158" height="41"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(541) 525-2946" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gB0-S0-eP1">
+                                                        <rect key="frame" x="0.0" y="0.0" width="111" height="18"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="chad@chadparker.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLb-Cl-apH">
+                                                        <rect key="frame" x="0.0" y="23" width="158" height="18"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="C62-ER-pnF" firstAttribute="top" secondItem="VkB-LL-Dee" secondAttribute="top" constant="20" id="4fj-6w-KiM"/>
+                            <constraint firstItem="C62-ER-pnF" firstAttribute="leading" secondItem="VkB-LL-Dee" secondAttribute="leading" constant="20" id="728-r7-Tfv"/>
+                            <constraint firstItem="VkB-LL-Dee" firstAttribute="trailing" secondItem="C62-ER-pnF" secondAttribute="trailing" constant="20" id="pv0-ys-4ac"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VkB-LL-Dee"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="6Ls-mb-VxR"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="yLb-Cl-apH" id="aWg-kf-UWy"/>
+                        <outlet property="imageView" destination="k4W-nZ-gOg" id="xiO-7p-vvD"/>
+                        <outlet property="nameLabel" destination="tEp-bl-1y9" id="pmf-Ui-vUs"/>
+                        <outlet property="phoneLabel" destination="gB0-S0-eP1" id="ZG8-hp-9bD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WV2-xB-vEc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1406" y="-99"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XAJ-qC-sn9">
