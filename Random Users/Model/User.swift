@@ -26,6 +26,10 @@ struct User: Codable {
         let medium: String
         let thumbnail: String
     }
+    
+    var fullName: String {
+        "\(name.title) \(name.first) \(name.last)"
+    }
 }
 
 struct UserResult: Codable {

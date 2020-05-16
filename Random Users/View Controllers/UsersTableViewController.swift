@@ -40,7 +40,7 @@ class UsersTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
 
         let user = users[indexPath.row]
-        cell.textLabel?.text = "\(user.name.title) \(user.name.first) \(user.name.last)"
+        cell.textLabel?.text = user.fullName
 
         return cell
     }
