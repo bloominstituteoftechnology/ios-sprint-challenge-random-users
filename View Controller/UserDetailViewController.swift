@@ -19,6 +19,7 @@ class UserDetailViewController: UIViewController {
     // MARK: - Properties
     var randomUser: UserResults?
     var randomUsersController = RandomUsersController()
+    private let cache = Cache<String, Data>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,12 @@ class UserDetailViewController: UIViewController {
         userPhoneNumberLabel.text = randomUser.phone
         userEmailLabel.text = randomUser.email
         
+        //check the cache before calling function
+        if let cacheData = cache.value(for: randomUser.email),
+            let image = UIImage(data: cacheData) {
+            userImageView.image = image
+            return
+        }
         // get the image
         getImage(with: randomUser)
         
@@ -42,6 +49,10 @@ class UserDetailViewController: UIViewController {
         randomUsersController.downloadUserImage(path: imagePath) { (result) in
             guard let imageString = try? result.get() else { return }
             let image = UIImage(data: imageString)
+            
+            // Save it to the cache
+            self.cache.cache(value: imageString, for: user.email)
+            
             DispatchQueue.main.async {
                 self.userImageView.image = image
             }
