@@ -59,7 +59,7 @@ class UserController {
                             self.contactList.append(result)
                     }
                 } catch {
-                    NSLog("Error decoding movie representations: \(error)")
+                    NSLog("Error decoding user representations: \(error)")
                     DispatchQueue.main.async {
                         completion(.noDecode)
                     }

@@ -9,22 +9,30 @@
 import UIKit
 
 class UserDetailViewController: UIViewController {
+    
+    var userController: UserController?
+    var user: User? {
+        didSet {
+            updateViews()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        updateViews()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - Outlets
+    @IBOutlet var largeImageView: UIImageView!
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var phoneNumberLabel: UILabel!
+    @IBOutlet var emailLabel: UILabel!
+    
+    // MARK: - Methods
+    func updateViews() {
+        guard let user = user else { return }
+        nameLabel.text = user.name
+        phoneNumberLabel.text = user.phone
+        emailLabel.text = user.email
     }
-    */
-
 }
