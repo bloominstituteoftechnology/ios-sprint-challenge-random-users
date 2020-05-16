@@ -12,7 +12,7 @@ class UserTableViewController: UITableViewController {
 
     // MARK: - Properties
     var randomUsersController = RandomUsersController()
-    var users: [RandomUsersResults] = [] {
+    var users: [UserResults] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -32,15 +32,15 @@ class UserTableViewController: UITableViewController {
         return users.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "personCell", for: indexPath) as? UserTableViewCell else { return UITableViewCell()}
 
-        // Configure the cell...
+        let user = users[indexPath.row]
+        cell.user = user
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -93,8 +93,7 @@ class UserTableViewController: UITableViewController {
             do {
                 let users = try results.get()
                 DispatchQueue.main.async {
-                    //self.users = users.user
-                    print(users)
+                    self.users = users.results
                 }
             } catch {
                 print(results)

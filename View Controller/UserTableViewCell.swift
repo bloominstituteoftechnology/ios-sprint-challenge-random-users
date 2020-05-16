@@ -14,10 +14,16 @@ class UserTableViewCell: UITableViewCell {
     @IBOutlet var userNameLabel: UILabel!
     @IBOutlet var userImageView: UIImageView!
     
+    var user: UserResults? {
+        didSet {
+            self.updateViews()
+        }
+    }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    func updateViews() {
+        guard let user = user else { return }
+        
+        userNameLabel.text = "\(user.name.title) \(user.name.first) \(user.name.last)"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
