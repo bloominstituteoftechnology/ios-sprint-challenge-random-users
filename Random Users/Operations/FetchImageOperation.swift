@@ -22,12 +22,9 @@ class FetchImageOperation: ConcurrentOperation {
     override func start() {
         
         state = .isExecuting
-        defer {
-            state = .isFinished
-        }
         
-        print(url)
         dataTask = URLSession.shared.dataTask(with: url) { data, _, error in
+            defer { self.state = .isFinished }
             guard error == nil else {
                 print("Error: \(error!)")
                 return
@@ -36,7 +33,6 @@ class FetchImageOperation: ConcurrentOperation {
                 print("No data")
                 return
             }
-            print(data)
             guard let image = UIImage(data: data) else { fatalError() }
             self.uiImage = image
         }

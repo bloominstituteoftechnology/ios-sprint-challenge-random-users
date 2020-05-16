@@ -12,7 +12,7 @@ class UsersTableViewController: UITableViewController {
     
     private var users: [User] = [] {
         didSet {
-            print(users.count)
+            print("\(users.count) users")
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -47,11 +47,10 @@ class UsersTableViewController: UITableViewController {
             let fetchThumbnailOperation = FetchImageOperation(url: url)
             
             let cacheThumbnailOperation = BlockOperation {
-                guard let image = fetchThumbnailOperation.uiImage else {
-                    print("noImage")
-                    return
-                }//fatalError() }
-                self.thumbnailCache.cache(value: image, for: url)
+                DispatchQueue.main.async {
+                    guard let image = fetchThumbnailOperation.uiImage else { return }
+                    self.thumbnailCache.cache(value: image, for: url)
+                }
             }
             cacheThumbnailOperation.addDependency(fetchThumbnailOperation)
             
@@ -61,7 +60,7 @@ class UsersTableViewController: UITableViewController {
                         currentIndexPath != indexPath {
                         return
                     }
-                    guard let image = fetchThumbnailOperation.uiImage else { return }//fatalError() }
+                    guard let image = fetchThumbnailOperation.uiImage else { return }
                     cell.userImageView.image = image
                 }
             }
@@ -91,6 +90,14 @@ class UsersTableViewController: UITableViewController {
         cell.userNameLabel.text = user.fullName
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let user = users[indexPath.row]
+        let url = user.picture.thumbnail
+        if let fetchOperation = thumbnailFetchOperations[url] {
+            fetchOperation.cancel()
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
