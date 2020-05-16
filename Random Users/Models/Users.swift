@@ -37,18 +37,19 @@ struct User: Equatable, Decodable {
         self.thumbnailImage = thumbnailImage
         self.largeImage = largeImage
     }
+}
+
+struct Users: Decodable {
+    let results: [User]
     
-    struct Users: Decodable {
-        let results: [User]
+    enum UserKeys: String, CodingKey {
+        case results
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: UserKeys.self)
         
-        enum UserKeys: String, CodingKey {
-            case results
-        }
-        
-        init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: UserKeys.self)
-            
-            self.results = try container.decode([User].self, forKey: .results)
-        }
+        self.results = try container.decode([User].self, forKey: .results)
     }
 }
+
