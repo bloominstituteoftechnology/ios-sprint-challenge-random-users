@@ -48,7 +48,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Users" id="gE9-cb-A3X">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="DI3-hu-KyM"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="DI3-hu-KyM">
+                            <connections>
+                                <action selector="addUsersButton:" destination="oWQ-U1-qEG" id="zhB-VL-vZA"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GK3-2x-kCj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

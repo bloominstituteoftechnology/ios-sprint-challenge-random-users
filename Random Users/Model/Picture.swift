@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  Picture.swift
 //  Random Users
 //
 //  Created by Jarren Campos on 5/15/20.
@@ -8,9 +8,8 @@
 
 import Foundation
 
-struct User: Codable {
-    let picture: Picture
-    let name: Name
-    let phone: String
-    let email: String
+struct Picture: Codable {
+    let large: String
+    let medium: String
+    let thumbnail: String
 }

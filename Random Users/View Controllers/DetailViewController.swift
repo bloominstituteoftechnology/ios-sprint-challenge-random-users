@@ -16,6 +16,11 @@ class DetailViewController: UIViewController {
         }
     }
     
+    var cache: Cache<String, [UIImage]>?
+    private let photoFetchQueue = OperationQueue()
+    let queue = OperationQueue.main
+    var storedOperations: [String : Operation] = [:]
+    
     @IBOutlet var userImage: UIImageView!
     @IBOutlet var userName: UILabel!
     @IBOutlet var userPhoneNumber: UILabel!
@@ -37,6 +42,44 @@ class DetailViewController: UIViewController {
         userName.text = fullName
         userPhoneNumber.text = user.phone
         userEmail.text = user.email
+    }
+    private func loadImage() {
+        guard let user = user else { return }
+        
+        if let images = cache?.value(forKey: user.email), images.count == 2, let image = cache?.value(forKey: user.email)?[1] {
+            
+            userImage.image = image
+            return
+        }
+        
+        let fetchImage = FetchThumbnailOperation(user: user, imageURL: user.picture.large)
+        
+        let storeDataOperation = BlockOperation {
+            guard let data = fetchImage.imageData else {
+                NSLog("fetchThumb.imageData does not have valid data for large image")
+                return
+            }
+            let largeImage = UIImage(data: data) ?? #imageLiteral(resourceName: "MarsPlaceholder")
+            let thumbImage = self.cache?.value(forKey: user.email)![0] ?? #imageLiteral(resourceName: "MarsPlaceholder")
+            self.cache?.cache(value: [thumbImage, largeImage], forKey: user.email)
+        }
+        
+        let setImageViewOperation = BlockOperation {
+            if let data = fetchImage.imageData,
+                let image = UIImage(data: data) {
+            
+                self.userImage.image = image
+                
+                return
+            }
+        }
+        
+        storeDataOperation.addDependency(fetchImage)
+        setImageViewOperation.addDependency(fetchImage)
+        photoFetchQueue.addOperations([fetchImage, storeDataOperation], waitUntilFinished: true)
+        queue.addOperation(setImageViewOperation)
+        storedOperations[user.email] = fetchImage
+        
     }
     
 }
