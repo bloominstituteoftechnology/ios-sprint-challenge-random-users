@@ -17,16 +17,13 @@ class UserDetailViewController: UIViewController {
     
     
     var userController: UserController?
-    var user: User? {
-        didSet {
-            updateViews()
-        }
-    }
+    var user: User?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
     }
+
     
     func updateViews() {
         let imageURL = (user?.picture.large)!
