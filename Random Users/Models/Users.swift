@@ -37,7 +37,20 @@ struct User: Equatable, Decodable {
         self.thumbnailImage = thumbnailImage
         self.largeImage = largeImage
     }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: Keys.self)
+        
+        self.phone = try container.decode(String.self, forKey: .phone)
+        self.email = try container.decode(String.self, forKey:  .email)
+        
+        let nameContainer = try container.nestedContainer(keyedBy: Keys.NameKeys.self, forKey: .name)
+        let firstName = try nameContainer.decode(String.self, forKey: .first)
+        let lastName = try nameContainer.decode(String.self, forKey: .last)
+        self.name = "\(firstName.capitalized) \(lastName.capitalized)"
+    }
 }
+
 
 struct Users: Decodable {
     let results: [User]
