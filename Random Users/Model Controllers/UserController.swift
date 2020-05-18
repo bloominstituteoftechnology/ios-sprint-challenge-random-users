@@ -6,7 +6,7 @@
 //  Copyright © 2020 Erica Sadun. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum NetworkError: Error {
     case noIdentifier
@@ -22,14 +22,26 @@ class UserController {
     //MARK: - Properties -
     
     typealias CompletionHandler = (Result<Bool, NetworkError>) -> Void
-    let baseURL: URL = URL(string: "https://randomuser.me/api/?inc=name,email,phone")!
+    var baseURL: URL? = nil
     var users: [User] = []
     
     //MARK: - Methods -
     
-    func getUser(completion: @escaping CompletionHandler) {
+    func urlForFetching(numberOfUsers: Int) -> URL {
         
-        let dataTask = URLSession.shared.dataTask(with: baseURL) { (data, _, error) in
+        let endPoint = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture")!
+        var components = URLComponents(url: endPoint, resolvingAgainstBaseURL: true)!
+        components.queryItems = [URLQueryItem(name: "format", value: "json"),
+                                 URLQueryItem(name: "inc", value: "name,email,phone,picture"),
+                                 URLQueryItem(name: "results", value: String(numberOfUsers))]
+        baseURL = components.url!
+        return components.url!
+        
+    }
+    
+    func getUser(row: Int, completion: @escaping (Result<User, NetworkError>) -> Void) {
+        
+        let dataTask = URLSession.shared.dataTask(with: baseURL!) { (data, _, error) in
             
             if let error = error {
                 completion(.failure(.otherError))
@@ -45,16 +57,41 @@ class UserController {
             
             do {
                 let randomUser = try JSONDecoder().decode(User.self, from: data)
-                self.users.append(randomUser)
+                self.users.insert(randomUser, at: row)
+                completion(.success(randomUser))
             } catch {
                 completion(.failure(.noDecode))
                 NSLog("Could not decode generated user data: \(error)")
                 return
             }
-            completion(.success(true))
         }
         dataTask.resume()
     }
     
+    func getUserImage(imageURLString: String, completion: @escaping (Result<UIImage, NetworkError>) -> Void) {
+        
+        let imageURL = URL(string: imageURLString)!
+        
+        let dataTask = URLSession.shared.dataTask(with: imageURL) { (data, _, error) in
+            
+            if let error = error {
+                completion(.failure(.otherError))
+                NSLog("URLSession failed: \(error)")
+                return
+            }
+            
+            guard let data = data else {
+                completion(.failure(.otherError))
+                NSLog("Could not get data: \(String(describing: error))")
+                return
+            }
+            
+            let image = UIImage(data: data)!
+            
+            completion(.success(image))
+            
+        }
+        dataTask.resume()
+    }
     
 }

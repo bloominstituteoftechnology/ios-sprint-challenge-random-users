@@ -13,5 +13,6 @@ struct User: Codable {
     let email: String
     let name: Name
     let picture: Picture
+    let phone: String
     
 }

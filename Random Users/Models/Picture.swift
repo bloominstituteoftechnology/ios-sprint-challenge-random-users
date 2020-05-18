@@ -9,7 +9,7 @@
 import Foundation
 
 struct Picture: Codable {
-    let large: URL
-    let medium: URL
-    let thumbnail: URL
+    let large: String
+    let medium: String
+    let thumbnail: String
 }
