@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Picture {
+struct Picture: Codable {
     let large: URL
     let medium: URL
     let thumbnail: URL
