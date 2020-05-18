@@ -12,6 +12,11 @@
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
 		8ED6A9922140178C00FC395A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
+		B7BEBA52247222A200D1FA32 /* RandomUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEBA51247222A200D1FA32 /* RandomUserController.swift */; };
+		B7BEBA54247223E100D1FA32 /* JSON Decoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEBA53247223E100D1FA32 /* JSON Decoding.swift */; };
+		B7BEBA58247229C300D1FA32 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEBA57247229C300D1FA32 /* ContactsTableViewController.swift */; };
+		B7BEBA5A24722AD700D1FA32 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEBA5924722AD600D1FA32 /* DetailViewController.swift */; };
+		B7BEBA5D24722BD400D1FA32 /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEBA5C24722BD400D1FA32 /* PersonTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,11 @@
 		8ED6A9912140178C00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ED6A9932140178C00FC395A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
+		B7BEBA51247222A200D1FA32 /* RandomUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserController.swift; sourceTree = "<group>"; };
+		B7BEBA53247223E100D1FA32 /* JSON Decoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSON Decoding.swift"; sourceTree = "<group>"; };
+		B7BEBA57247229C300D1FA32 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
+		B7BEBA5924722AD600D1FA32 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		B7BEBA5C24722BD400D1FA32 /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +64,11 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
-				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+				8ED6A98B2140178A00FC395A /* Main.storyboard */,
+				B7BEBA552472296700D1FA32 /* Models */,
+				B7BEBA5B24722BBA00D1FA32 /* Views */,
+				B7BEBA562472299100D1FA32 /* Controllers */,
+				B7BEBA502472229000D1FA32 /* Networking */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
@@ -64,7 +78,7 @@
 		9D5CCA522142305600224681 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8ED6A98B2140178A00FC395A /* Main.storyboard */,
+				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
 				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
 				8ED6A9932140178C00FC395A /* Info.plist */,
@@ -78,6 +92,39 @@
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
 			);
 			path = Operations;
+			sourceTree = "<group>";
+		};
+		B7BEBA502472229000D1FA32 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				B7BEBA51247222A200D1FA32 /* RandomUserController.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		B7BEBA552472296700D1FA32 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B7BEBA53247223E100D1FA32 /* JSON Decoding.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B7BEBA562472299100D1FA32 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B7BEBA57247229C300D1FA32 /* ContactsTableViewController.swift */,
+				B7BEBA5924722AD600D1FA32 /* DetailViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B7BEBA5B24722BBA00D1FA32 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B7BEBA5C24722BD400D1FA32 /* PersonTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -112,6 +159,7 @@
 				TargetAttributes = {
 					8ED6A9832140178A00FC395A = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1140;
 					};
 				};
 			};
@@ -152,7 +200,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				B7BEBA54247223E100D1FA32 /* JSON Decoding.swift in Sources */,
+				B7BEBA58247229C300D1FA32 /* ContactsTableViewController.swift in Sources */,
+				B7BEBA5A24722AD700D1FA32 /* DetailViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				B7BEBA5D24722BD400D1FA32 /* PersonTableViewCell.swift in Sources */,
+				B7BEBA52247222A200D1FA32 /* RandomUserController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,7 +358,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LambdaSchool.RandomUsers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -323,7 +376,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LambdaSchool.RandomUsers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
