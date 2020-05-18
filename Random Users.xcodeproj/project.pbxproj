@@ -17,6 +17,7 @@
 		B7BEBA58247229C300D1FA32 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEBA57247229C300D1FA32 /* ContactsTableViewController.swift */; };
 		B7BEBA5A24722AD700D1FA32 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEBA5924722AD600D1FA32 /* DetailViewController.swift */; };
 		B7BEBA5D24722BD400D1FA32 /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEBA5C24722BD400D1FA32 /* PersonTableViewCell.swift */; };
+		B7BEBA5F2472307500D1FA32 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEBA5E2472307500D1FA32 /* Cache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		B7BEBA57247229C300D1FA32 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		B7BEBA5924722AD600D1FA32 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		B7BEBA5C24722BD400D1FA32 /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
+		B7BEBA5E2472307500D1FA32 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,10 +67,10 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A98B2140178A00FC395A /* Main.storyboard */,
+				B7BEBA502472229000D1FA32 /* Networking */,
 				B7BEBA552472296700D1FA32 /* Models */,
 				B7BEBA5B24722BBA00D1FA32 /* Views */,
 				B7BEBA562472299100D1FA32 /* Controllers */,
-				B7BEBA502472229000D1FA32 /* Networking */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				B7BEBA51247222A200D1FA32 /* RandomUserController.swift */,
+				B7BEBA5E2472307500D1FA32 /* Cache.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				B7BEBA54247223E100D1FA32 /* JSON Decoding.swift in Sources */,
+				B7BEBA5F2472307500D1FA32 /* Cache.swift in Sources */,
 				B7BEBA58247229C300D1FA32 /* ContactsTableViewController.swift in Sources */,
 				B7BEBA5A24722AD700D1FA32 /* DetailViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,

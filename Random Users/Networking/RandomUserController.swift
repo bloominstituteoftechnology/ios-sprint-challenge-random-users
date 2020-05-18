@@ -1,13 +1,13 @@
 import Foundation
 import UIKit
 
-// HTTP Request Methods
+/// HTTP Request Methods
 enum HTTPMethod: String {
     case get = "GET"
     case post = "POST"
 }
 
-// API Response Errors
+/// API Response Errors
 enum NetworkError: Error {
     case noAuth
     case badAuth
@@ -20,7 +20,7 @@ enum NetworkError: Error {
 // Fetch, Decode, and Handle Errors from API Reponse
 class RandomUserController {
     
-    // Prepare URL
+    /// Request URL
     private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
     
     func fetchRandomUsers(completion: @escaping (Result<[User], NetworkError>) -> Void) {
@@ -30,7 +30,7 @@ class RandomUserController {
         var request = URLRequest(url: randomUserURL)
         request.httpMethod = HTTPMethod.get.rawValue
         
-        // Actual API Request
+        /// Actual API Request
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
                 print("Error with API call... \(error)")
