@@ -12,6 +12,7 @@
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
 		8ED6A9922140178C00FC395A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
+		C91D488A24721C3A00CC62E5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D488924721C3A00CC62E5 /* User.swift */; };
 		C958558C2472174800EA2A46 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C958558B2472174800EA2A46 /* UsersTableViewController.swift */; };
 		C958558F2472178F00EA2A46 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C958558E2472178F00EA2A46 /* DetailViewController.swift */; };
 		C95855922472188900EA2A46 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95855912472188900EA2A46 /* UserTableViewCell.swift */; };
@@ -25,6 +26,7 @@
 		8ED6A9912140178C00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ED6A9932140178C00FC395A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
+		C91D488924721C3A00CC62E5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C958558B2472174800EA2A46 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		C958558E2472178F00EA2A46 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C95855912472188900EA2A46 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+				C91D488824721C2500CC62E5 /* Models */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
 				C9585590247217A300EA2A46 /* Storyboards */,
@@ -86,6 +89,14 @@
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
 			);
 			path = Operations;
+			sourceTree = "<group>";
+		};
+		C91D488824721C2500CC62E5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C91D488924721C3A00CC62E5 /* User.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		C958558D2472176800EA2A46 /* View Controllers */ = {
@@ -186,6 +197,7 @@
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				C91D488A24721C3A00CC62E5 /* User.swift in Sources */,
 				C958558C2472174800EA2A46 /* UsersTableViewController.swift in Sources */,
 				C958558F2472178F00EA2A46 /* DetailViewController.swift in Sources */,
 				C95855922472188900EA2A46 /* UserTableViewCell.swift in Sources */,
