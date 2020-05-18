@@ -16,33 +16,41 @@ class UserController {
         case delete = "DELETE"
     }
     
-    let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
+    enum NetworkError: Error {
+        case noIdentifier
+        case otherError
+        case noData
+        case noDecode
+        case noEncode
+        case noRep
+    }
     
-    var results: [User] = []
+    let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=10")!
     
-    func fetchUsers(completion: @escaping () -> Void) {
+    var results: Results?
+    
+    func fetchUsers(completion: @escaping (Result<Results, NetworkError>) -> Void) {
         var request = URLRequest(url: baseURL)
         request.httpMethod = HTTPMethod.get.rawValue
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             if let error = error {
                 NSLog("Error completing dataTask: \(error)")
-                completion()
+                completion(.failure(.otherError))
                 return
             }
             
             guard let data = data else {
                 NSLog("Error returning data")
-                completion()
+                completion(.failure(.noData))
                 return
             }
             
             let jsonDecoder = JSONDecoder()
             
             do {
-                self.results = []
-                let userFetchResults = try jsonDecoder.decode(Results.self, from: data)
-                self.results = userFetchResults.results
+                self.results = try jsonDecoder.decode(Results.self, from: data)
+                completion(.success(self.results!))
             } catch {
                 NSLog("Error: unable to decode data: \(error)")
             }

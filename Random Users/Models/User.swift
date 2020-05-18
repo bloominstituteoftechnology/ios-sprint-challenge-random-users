@@ -9,31 +9,23 @@
 import Foundation
 
 struct Results: Codable {
-    var results: [User]
+    let results: [User]
 }
 
 struct User: Codable {
-    var name: Name
-    var email: String
-    var phone: String
-    var picture: Picture
+    let name: Name
+    let email: String
+    let phone: String
+    let picture: Picture
 }
 
 struct Name: Codable {
-    var fullName: String
-    var title: String
-    var first: String
-    var last: String
-    
-    init(fullName: String, title: String, first: String, last: String) {
-        self.title = title
-        self.first = first
-        self.last = last
-        self.fullName = "\(title) \(first) \(last)"
-    }
+    let title: String
+    let first: String
+    let last: String
 }
 
 struct Picture: Codable {
-    var large: String
-    var thumbnail: String
+    let large: String
+    let thumbnail: String
 }

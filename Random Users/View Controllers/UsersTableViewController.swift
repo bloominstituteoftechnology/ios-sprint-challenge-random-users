@@ -11,22 +11,37 @@ import UIKit
 class UsersTableViewController: UITableViewController {
     
     let userController = UserController()
+    var users: [User] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        userController.fetchUsers { (results) in
+            do {
+                let users = try results.get()
+                DispatchQueue.main.async {
+                    self.users = users.results
+                }
+            } catch {
+                NSLog("Error fetching results")
+            }
+        }
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return userController.results.count
+        return users.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
-        let user = userController.results[indexPath.row]
-        cell.
+        let user = users[indexPath.row]
+        cell.user = user
         return cell
     }
 

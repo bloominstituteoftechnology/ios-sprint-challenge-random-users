@@ -15,17 +15,28 @@ class UserTableViewCell: UITableViewCell {
             updateView()
         }
     }
+    var fullName: String {
+        return "\(user!.name.title) \(user!.name.first) \(user!.name.last)"
+    }
 
     @IBOutlet weak var userThumbnailImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
     func updateView() {
-        nameLabel.text = user?.name.fullName
+        nameLabel.text = fullName
         getUserImage()
     }
     
     func getUserImage() {
-        
+        guard let image = user?.picture.thumbnail else { return }
+        if let url = URL(string: image) {
+            do {
+                let data = try Data(contentsOf: url)
+                self.userThumbnailImage.image = UIImage(data: data)
+            } catch {
+                NSLog("Error getting user Thumbnail image")
+            }
+        }
     }
     
 }
