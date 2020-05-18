@@ -22,7 +22,6 @@ class PersonTableViewCell: UITableViewCell {
     // MARK: - Functions
     
     func updateViews() {
-        #warning("Never Added Image")
         
         userName.text = user?.name.fullName
     }

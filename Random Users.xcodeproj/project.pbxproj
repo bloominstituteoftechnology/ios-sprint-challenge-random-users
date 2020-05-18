@@ -18,6 +18,7 @@
 		B7BEBA5A24722AD700D1FA32 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEBA5924722AD600D1FA32 /* DetailViewController.swift */; };
 		B7BEBA5D24722BD400D1FA32 /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEBA5C24722BD400D1FA32 /* PersonTableViewCell.swift */; };
 		B7BEBA5F2472307500D1FA32 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEBA5E2472307500D1FA32 /* Cache.swift */; };
+		B7BEBA63247246AB00D1FA32 /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEBA62247246AB00D1FA32 /* FetchPhotoOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		B7BEBA5924722AD600D1FA32 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		B7BEBA5C24722BD400D1FA32 /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
 		B7BEBA5E2472307500D1FA32 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		B7BEBA62247246AB00D1FA32 /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				B7BEBA62247246AB00D1FA32 /* FetchPhotoOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				B7BEBA54247223E100D1FA32 /* JSON Decoding.swift in Sources */,
+				B7BEBA63247246AB00D1FA32 /* FetchPhotoOperation.swift in Sources */,
 				B7BEBA5F2472307500D1FA32 /* Cache.swift in Sources */,
 				B7BEBA58247229C300D1FA32 /* ContactsTableViewController.swift in Sources */,
 				B7BEBA5A24722AD700D1FA32 /* DetailViewController.swift in Sources */,
