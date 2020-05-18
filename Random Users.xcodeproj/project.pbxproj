@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B43710024721ABA00B25545 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4370FF24721ABA00B25545 /* UsersTableViewController.swift */; };
+		7B43710224721ADB00B25545 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43710124721ADB00B25545 /* UserDetailViewController.swift */; };
+		7B43710424721AEF00B25545 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43710324721AEF00B25545 /* User.swift */; };
+		7B43710624721AFA00B25545 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43710524721AFA00B25545 /* UserController.swift */; };
+		7B43710824721B6700B25545 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43710724721B6700B25545 /* UserTableViewCell.swift */; };
+		7B43710B247221D100B25545 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43710A247221D100B25545 /* Name.swift */; };
+		7B43710D247221D900B25545 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43710C247221D900B25545 /* Picture.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -15,6 +22,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7B4370FF24721ABA00B25545 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
+		7B43710124721ADB00B25545 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		7B43710324721AEF00B25545 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7B43710524721AFA00B25545 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		7B43710724721B6700B25545 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		7B43710A247221D100B25545 /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Name.swift; sourceTree = "<group>"; };
+		7B43710C247221D900B25545 /* Picture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -35,11 +49,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B4370FC24721A6800B25545 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7B43710324721AEF00B25545 /* User.swift */,
+				7B43710A247221D100B25545 /* Name.swift */,
+				7B43710C247221D900B25545 /* Picture.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7B4370FD24721A7200B25545 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7B43710524721AFA00B25545 /* UserController.swift */,
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		7B4370FE24721A7C00B25545 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7B4370FF24721ABA00B25545 /* UsersTableViewController.swift */,
+				7B43710124721ADB00B25545 /* UserDetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		7B43710924721B6B00B25545 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7B43710724721B6700B25545 /* UserTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
-				8ED6A9862140178A00FC395A /* Random Users */,
 				8ED6A9852140178A00FC395A /* Products */,
+				8ED6A9862140178A00FC395A /* Random Users */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,9 +103,13 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
-				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
-				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
+				7B4370FC24721A6800B25545 /* Models */,
+				7B4370FD24721A7200B25545 /* Model Controllers */,
+				9D5CCA56214231E400224681 /* Operations */,
+				7B43710924721B6B00B25545 /* Views */,
+				7B4370FE24721A7C00B25545 /* View Controllers */,
+				8ED6A98B2140178A00FC395A /* Main.storyboard */,
 			);
 			path = "Random Users";
 			sourceTree = "<group>";
@@ -64,7 +117,7 @@
 		9D5CCA522142305600224681 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8ED6A98B2140178A00FC395A /* Main.storyboard */,
+				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
 				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
 				8ED6A9932140178C00FC395A /* Info.plist */,
@@ -151,8 +204,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B43710D247221D900B25545 /* Picture.swift in Sources */,
+				7B43710624721AFA00B25545 /* UserController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				7B43710824721B6700B25545 /* UserTableViewCell.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				7B43710224721ADB00B25545 /* UserDetailViewController.swift in Sources */,
+				7B43710424721AEF00B25545 /* User.swift in Sources */,
+				7B43710B247221D100B25545 /* Name.swift in Sources */,
+				7B43710024721ABA00B25545 /* UsersTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
