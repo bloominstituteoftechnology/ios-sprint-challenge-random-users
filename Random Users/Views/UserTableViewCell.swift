@@ -9,9 +9,23 @@
 import UIKit
 
 class UserTableViewCell: UITableViewCell {
+    
+    var user: User? {
+        didSet {
+            updateView()
+        }
+    }
 
     @IBOutlet weak var userThumbnailImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
-
+    func updateView() {
+        nameLabel.text = user?.name.fullName
+        getUserImage()
+    }
+    
+    func getUserImage() {
+        
+    }
+    
 }

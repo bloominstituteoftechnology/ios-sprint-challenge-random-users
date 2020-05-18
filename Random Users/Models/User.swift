@@ -8,6 +8,10 @@
 
 import Foundation
 
+struct Results: Codable {
+    var results: [User]
+}
+
 struct User: Codable {
     var name: Name
     var email: String
