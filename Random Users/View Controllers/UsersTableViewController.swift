@@ -48,6 +48,11 @@ class UsersTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let userReference = users[indexPath.row]
+        dictionaryFetchOperations[userReference.email]?.cancel()
+    }
+    
     private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
         
          let userReference = users[indexPath.item]
