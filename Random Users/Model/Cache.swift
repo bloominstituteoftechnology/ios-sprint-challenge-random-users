@@ -2,7 +2,7 @@
 //  Cache.swift
 //  Random Users
 //
-//  Created by Marc Jacques on 10/4/19.
+//  Created by Marc Jacques on 5/17/20.
 //  Copyright © 2019 Erica Sadun. All rights reserved.
 //
 
@@ -10,16 +10,20 @@ import Foundation
 
 class Cache<Key: Hashable, Value> {
     
-    var cacheStorage = [Key : Value]()
-    let dispatchQueue = DispatchQueue(label: "com.LambdaSchool.RandomUsers.CacheQueue")
+    private var cache = [Key : Value]()
     
-    func cache(value: Value, for key: Key) {
-        dispatchQueue.async {
-            self.cacheStorage[key] = value
+    private var queue = DispatchQueue(label: "CacheQueue")
+        
+    func add(value: Value, key: Key) {
+        queue.async {
+            self.cache[key] = value
         }
     }
     
-    func value(for key: Key) -> Value? {
-        return dispatchQueue.sync { cacheStorage[key] }
+    
+    func value(key: Key) -> Value? {
+        return queue.sync {
+            cache[key]
+        }
     }
 }
