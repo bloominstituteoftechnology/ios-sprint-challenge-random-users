@@ -133,10 +133,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="Sdp-JQ-eI9"/>
                     <connections>
-                        <outlet property="userEmail" destination="nju-X8-OA2" id="T4B-PT-piU"/>
-                        <outlet property="userImage" destination="yj4-jP-bhU" id="Xs8-be-Hzv"/>
-                        <outlet property="userName" destination="ZjX-K7-e9C" id="m27-bD-fOB"/>
-                        <outlet property="userPhone" destination="XLZ-Bu-Oax" id="Uqc-Zk-Myp"/>
+                        <outlet property="personEmailLabel" destination="nju-X8-OA2" id="Jse-R4-SAf"/>
+                        <outlet property="personImage" destination="yj4-jP-bhU" id="jxV-QD-pLU"/>
+                        <outlet property="personNameLabel" destination="ZjX-K7-e9C" id="fOB-Kt-kBc"/>
+                        <outlet property="personPhoneLabel" destination="XLZ-Bu-Oax" id="Kad-Zf-ChA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pau-6E-K3f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

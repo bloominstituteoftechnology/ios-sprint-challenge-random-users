@@ -3,14 +3,6 @@ import UIKit
 class DetailViewController: UIViewController {
     
     
-    // MARK: - IBOutlets
-    
-    @IBOutlet weak var userImage: UIImageView!
-    @IBOutlet weak var userName: UILabel!
-    @IBOutlet weak var userPhone: UILabel!
-    @IBOutlet weak var userEmail: UILabel!
-    
-    
     // MARK: - Properties
     
     var person: User? {
@@ -20,26 +12,31 @@ class DetailViewController: UIViewController {
     }
     
     
+    // MARK: - IBOutlets
+    @IBOutlet weak var personImage: UIImageView!
+    @IBOutlet weak var personNameLabel: UILabel!
+    @IBOutlet weak var personPhoneLabel: UILabel!
+    @IBOutlet weak var personEmailLabel: UILabel!
+    
+    
     // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        updateViews()
     }
     
     
     // MARK: - Functions
     
     private func updateViews() {
-        guard let user = person else {
-            print("No Person Data")
-            return
+        if let person = person {
+            print("Person Found \(person.name.fullName)")
+            
+            personNameLabel?.text = person.name.fullName
+            personPhoneLabel?.text = person.phone
+            personEmailLabel?.text = person.email
         }
-
-        print("Person Found \(user.name.fullName)")
-        #warning("Didn't add photos")
-
-        userName.text = "Hello"
-//        userPhone.text = user.phone
-//        userEmail.text = user.email
     }
 }
