@@ -12,8 +12,7 @@ class UsersTableViewController: UITableViewController {
     
     private let cache = Cache<Int, UIImage>()
     let userController = UserController()
-    private var userList: [User] = []
-    var photoReferences = [UserPhoto]() {
+    var photoReferences = [User]() {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -28,13 +27,13 @@ class UsersTableViewController: UITableViewController {
             do {
                 let users = try result.get()
                 DispatchQueue.main.async {
-                    self.userList = users
+                    self.userController.userList = users
                 }
             } catch {
                 if let error = error as? NetworkError {
                     switch error {
                     case .decodeFailed:
-                        print("Error: The data could not be decoded.")
+                        print("Error: Theee data could not be decoded. \(error)")
                     case .noData:
                         print("Error: The response had no Data.")
                     case .otherError(let otherError):
@@ -57,7 +56,7 @@ class UsersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return userList.count
+        return userController.userList.count
     }
 
     
@@ -66,56 +65,56 @@ class UsersTableViewController: UITableViewController {
             fatalError("Can't deqeue cell of type 'UsersCell' ")
         }
 
-        let user = userList[indexPath.row]
-        cell.userNameLabel?.text = "\(user.name.title) \(user.name.firstName) \(user.name.lastName)"
-        loadImage(forCell: cell, forItemAt: indexPath)
+        let user = userController.userList[indexPath.row]
+        cell.userNameLabel?.text = "\(user.name.title) \(user.name.first) \(user.name.last)"
+        //loadImage(forCell: cell, forItemAt: indexPath)
 
         return cell
     }
 
-    private func loadImage(forCell cell: UsersTableViewCell, forItemAt indexPath: IndexPath) {
-        let photoReference = photoReferences[indexPath.item]
-        
-        guard let photoURL = photoReference.thumbnailImageURL.usingHTTPS else {
-            NSLog("Error getting image URL")
-            return
-        }
-        
-        if let cacheImage = cache.value(for: photoReference.id) {
-            cell.userImageView.image = cacheImage
-            return
-        }
-        
-        URLSession.shared.dataTask(with: photoURL) { (data, _, error) in
-            if let error = error {
-                NSLog("Error loading image: \(error)")
-                return
-            }
-            
-            guard let data = data else {
-                NSLog("Error: No image data returned")
-                return
-            }
-            DispatchQueue.main.async {
-                
-                guard self.tableView.indexPath(for: cell) == indexPath else { return }
-                cell.userImageView.image = UIImage(data: data)
-            }
-            
-        }.resume()
-    }
+//    private func loadImage(forCell cell: UsersTableViewCell, forItemAt indexPath: IndexPath) {
+//        let photoReference = photoReferences[indexPath.item]
+//
+//        guard let photoURL = photoReference.picture.thumbnail else {
+//            NSLog("Error getting image URL")
+//            return
+//        }
+//
+//        if let cacheImage = cache.value(for: photoReference.id) {
+//            cell.userImageView.image = cacheImage
+//            return
+//        }
+//
+//        URLSession.shared.dataTask(with: photoURL) { (data, _, error) in
+//            if let error = error {
+//                NSLog("Error loading image: \(error)")
+//                return
+//            }
+//
+//            guard let data = data else {
+//                NSLog("Error: No image data returned")
+//                return
+//            }
+//            DispatchQueue.main.async {
+//
+//                guard self.tableView.indexPath(for: cell) == indexPath else { return }
+//                cell.userImageView.image = UIImage(data: data)
+//            }
+//
+//        }.resume()
+//    }
 
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "UserDetailSegue",
-            let detailVC = segue.destination as? UsersDetailViewController,
-            let selectedIndexPath = tableView.indexPathForSelectedRow {
-            detailVC.userController = userController
-            detailVC.
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "UserDetailSegue",
+//            let detailVC = segue.destination as? UsersDetailViewController,
+//            let selectedIndexPath = tableView.indexPathForSelectedRow {
+//            detailVC.userController = userController
+//            detailVC.
+//        }
+//    }
 
 }

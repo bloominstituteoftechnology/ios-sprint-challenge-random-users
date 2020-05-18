@@ -8,17 +8,27 @@
 
 import Foundation
 
-struct User: Codable, Equatable {
+struct User: Codable, Hashable,Equatable {
+    
+    struct Name: Codable, Hashable, Equatable {
+        let title : String
+        let first : String
+        let last : String
+    }
+    
+    struct Picture: Codable, Hashable, Equatable {
+        let large: String
+        let medium: String
+        let thumbnail: String
+    }
+    
     let name : Name
     let email : String
     let phone : String
+    let picture : Picture
 }
 
-struct Name: Codable, Equatable {
-    let title : String
-    let firstName : String
-    let lastName : String
-}
+
 
 //struct UserResults: Decodable {
 //    let results: [User]
