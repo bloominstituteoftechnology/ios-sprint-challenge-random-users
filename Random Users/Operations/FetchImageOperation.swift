@@ -33,9 +33,7 @@ class FetchImageOperation: ConcurrentOperation {
                 NSLog("Error fetching data")
                 return
             }
-            
             self.imageData = data
-            
         }
         fetchImageDataTask?.resume()
     }

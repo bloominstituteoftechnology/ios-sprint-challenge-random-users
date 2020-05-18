@@ -18,7 +18,7 @@ class UsersTableViewController: UITableViewController {
             tableView.reloadData()
         }
     }
-    let imageCache = Cache<String, UIImage>()
+    let imageCache = Cache<String, Data>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,34 +43,40 @@ class UsersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
-        let user = users[indexPath.row]
-        cell.user = user
+        loadImage(forCell: cell, forItemAt: indexPath)
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let userReference = users[indexPath.row]
-        dictionaryFetchOperations[userReference.email]?.cancel()
+        guard let currentOperation = dictionaryFetchOperations[userReference.email] else { return }
+        currentOperation.cancel()
     }
     
     private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
         
-         let userReference = users[indexPath.item]
+         let user = users[indexPath.row]
+        
+        cell.nameLabel.text = "\(user.name.title) \(user.name.first) \(user.name.last)"
         
         // Checking if image is already in cache
-        if let cache = imageCache.value(for: userReference.email) {
-            cell.userThumbnailImage.image = cache
+        if let cache = imageCache.value(for: user.email),
+            let image = UIImage(data: cache) {
+            cell.userThumbnailImage.image = image
             return
         } else {
             
             // TODO: Implement image loading here
-            let fetchPhotoOperation = FetchImageOperation(user: userReference)
+            let fetchPhotoOperation = FetchImageOperation(user: user)
             
             let photoDataCacheOperation = BlockOperation {
-                if let imageData = fetchPhotoOperation.imageData {
-                    guard let image: UIImage = UIImage(data: imageData) else { return }
-                    self.imageCache.cache(value: image, for: userReference.email)
-                }
+                guard let data = fetchPhotoOperation.imageData else { return }
+                self.imageCache.cache(value: data, for: user.email)
+            }
+            
+            let isCellReused = BlockOperation {
+                guard let data = fetchPhotoOperation.imageData else { return }
+                cell.userThumbnailImage.image = UIImage(data: data)
             }
             
             let cellStatus = BlockOperation {
@@ -86,10 +92,10 @@ class UsersTableViewController: UITableViewController {
             
             photoDataCacheOperation.addDependency(fetchPhotoOperation)
             cellStatus.addDependency(fetchPhotoOperation)
+            isCellReused.addDependency(fetchPhotoOperation)
             
-            photoFetchQueue.addOperations([fetchPhotoOperation, photoDataCacheOperation, cellStatus], waitUntilFinished: false)
-            
-            dictionaryFetchOperations[userReference.email] = fetchPhotoOperation
+            photoFetchQueue.addOperations([fetchPhotoOperation, photoDataCacheOperation, isCellReused, cellStatus], waitUntilFinished: false)
+            dictionaryFetchOperations[user.email] = fetchPhotoOperation
         }
         
     }
