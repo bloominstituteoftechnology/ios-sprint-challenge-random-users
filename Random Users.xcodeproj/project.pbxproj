@@ -12,6 +12,15 @@
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
 		8ED6A9922140178C00FC395A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
+		C38F750B246F7630001FCC8F /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38F750A246F7630001FCC8F /* UserTableViewController.swift */; };
+		C38F750E246F79E6001FCC8F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38F750D246F79E6001FCC8F /* DetailViewController.swift */; };
+		C38F7510246F7B45001FCC8F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38F750F246F7B45001FCC8F /* User.swift */; };
+		C38F7513246F7BEB001FCC8F /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38F7512246F7BEB001FCC8F /* Name.swift */; };
+		C38F7515246F85EE001FCC8F /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38F7514246F85EE001FCC8F /* UserController.swift */; };
+		C38F7518246F89FD001FCC8F /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38F7517246F89FD001FCC8F /* Result.swift */; };
+		C38F751A246F8C4E001FCC8F /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38F7519246F8C4E001FCC8F /* Picture.swift */; };
+		C38F751C246F8F00001FCC8F /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38F751B246F8F00001FCC8F /* Cache.swift */; };
+		C38F751E246F8F37001FCC8F /* FetchThumbnailOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38F751D246F8F37001FCC8F /* FetchThumbnailOperations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +31,15 @@
 		8ED6A9912140178C00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ED6A9932140178C00FC395A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
+		C38F750A246F7630001FCC8F /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
+		C38F750D246F79E6001FCC8F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C38F750F246F7B45001FCC8F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C38F7512246F7BEB001FCC8F /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Name.swift; sourceTree = "<group>"; };
+		C38F7514246F85EE001FCC8F /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		C38F7517246F89FD001FCC8F /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		C38F7519246F8C4E001FCC8F /* Picture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
+		C38F751B246F8F00001FCC8F /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Cache.swift; path = "Random Users/Resources/Cache.swift"; sourceTree = SOURCE_ROOT; };
+		C38F751D246F8F37001FCC8F /* FetchThumbnailOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchThumbnailOperations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +72,10 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
+				C38F7511246F7B4B001FCC8F /* Model */,
+				C38F750C246F7640001FCC8F /* View Controllers */,
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+				C38F7516246F85F3001FCC8F /* Controller */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
@@ -68,6 +89,7 @@
 				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
 				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
 				8ED6A9932140178C00FC395A /* Info.plist */,
+				C38F751B246F8F00001FCC8F /* Cache.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -76,8 +98,37 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				C38F751D246F8F37001FCC8F /* FetchThumbnailOperations.swift */,
 			);
 			path = Operations;
+			sourceTree = "<group>";
+		};
+		C38F750C246F7640001FCC8F /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C38F750A246F7630001FCC8F /* UserTableViewController.swift */,
+				C38F750D246F79E6001FCC8F /* DetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		C38F7511246F7B4B001FCC8F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C38F750F246F7B45001FCC8F /* User.swift */,
+				C38F7512246F7BEB001FCC8F /* Name.swift */,
+				C38F7517246F89FD001FCC8F /* Result.swift */,
+				C38F7519246F8C4E001FCC8F /* Picture.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C38F7516246F85F3001FCC8F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C38F7514246F85EE001FCC8F /* UserController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,8 +202,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C38F751A246F8C4E001FCC8F /* Picture.swift in Sources */,
+				C38F7513246F7BEB001FCC8F /* Name.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				C38F751E246F8F37001FCC8F /* FetchThumbnailOperations.swift in Sources */,
+				C38F750B246F7630001FCC8F /* UserTableViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				C38F7515246F85EE001FCC8F /* UserController.swift in Sources */,
+				C38F751C246F8F00001FCC8F /* Cache.swift in Sources */,
+				C38F7510246F7B45001FCC8F /* User.swift in Sources */,
+				C38F7518246F89FD001FCC8F /* Result.swift in Sources */,
+				C38F750E246F79E6001FCC8F /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
