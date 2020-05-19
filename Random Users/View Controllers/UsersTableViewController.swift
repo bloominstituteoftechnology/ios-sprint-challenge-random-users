@@ -63,6 +63,27 @@ class UsersTableViewController: UITableViewController {
                 self.cache.cache(value: data, for: userReference.name)
             }
         }
+        
+        let checkReuseOperation = BlockOperation {
+            defer { self.operations.removeValue(forKey: userReference.name) }
+            
+            if let currentIndexPath = self.tableView.indexPath(for: cell), currentIndexPath != indexPath {
+                return
+            }
+            if let imageData = fetchUserOperation.imageData {
+                cell.imageView?.image = UIImage(data: imageData)
+                cell.textLabel?.text = userReference.name
+            }
+        }
+        
+        cachedOperation.addDependency(fetchUserOperation)
+        checkReuseOperation.addDependency(fetchUserOperation)
+        
+        userFetchQueue.addOperation(fetchUserOperation)
+        userFetchQueue.addOperation(cachedOperation)
+        OperationQueue.main.addOperation(checkReuseOperation)
+        
+        self.operations[userReference.name] = fetchUserOperation
     }
 
     
