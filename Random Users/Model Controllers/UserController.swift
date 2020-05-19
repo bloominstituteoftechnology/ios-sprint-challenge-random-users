@@ -22,26 +22,18 @@ class UserController {
     //MARK: - Properties -
     
     typealias CompletionHandler = (Result<Bool, NetworkError>) -> Void
-    var baseURL: URL? = nil
+    var baseURL: URL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
     var users: [User] = []
     
     //MARK: - Methods -
     
-    func urlForFetching(numberOfUsers: Int) -> URL {
-        
-        let endPoint = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture")!
-        var components = URLComponents(url: endPoint, resolvingAgainstBaseURL: true)!
-        components.queryItems = [URLQueryItem(name: "format", value: "json"),
-                                 URLQueryItem(name: "inc", value: "name,email,phone,picture"),
-                                 URLQueryItem(name: "results", value: String(numberOfUsers))]
-        baseURL = components.url!
-        return components.url!
-        
-    }
+//    init() {
+//        getUser(completion: { _ in } )
+//    }
     
-    func getUser(row: Int, completion: @escaping (Result<User, NetworkError>) -> Void) {
+    func getUser(completion: @escaping (Result<Bool, NetworkError>) -> Void) {
         
-        let dataTask = URLSession.shared.dataTask(with: baseURL!) { (data, _, error) in
+        let dataTask = URLSession.shared.dataTask(with: baseURL) { (data, _, error) in
             
             if let error = error {
                 completion(.failure(.otherError))
@@ -56,9 +48,9 @@ class UserController {
             }
             
             do {
-                let randomUser = try JSONDecoder().decode(User.self, from: data)
-                self.users.insert(randomUser, at: row)
-                completion(.success(randomUser))
+                let randomUser = try JSONDecoder().decode(RandomUsers.self, from: data)
+                self.users = randomUser.results
+                completion(.success(true))
             } catch {
                 completion(.failure(.noDecode))
                 NSLog("Could not decode generated user data: \(error)")

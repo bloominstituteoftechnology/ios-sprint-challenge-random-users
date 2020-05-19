@@ -24,7 +24,9 @@ class UserTableViewCell: UITableViewCell {
     
     func updateViews() {
         
-        nameLabel.text = "\(randomUser?.name.title) \(randomUser?.name.first) \(randomUser?.name.last)"
+        guard let randomUser = randomUser else { return }
+        
+        nameLabel.text = "\(randomUser.name.title) \(randomUser.name.first) \(randomUser.name.last)"
         
         
     }
