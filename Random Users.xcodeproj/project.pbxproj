@@ -20,7 +20,7 @@
 		C38F7518246F89FD001FCC8F /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38F7517246F89FD001FCC8F /* Result.swift */; };
 		C38F751A246F8C4E001FCC8F /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38F7519246F8C4E001FCC8F /* Picture.swift */; };
 		C38F751C246F8F00001FCC8F /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38F751B246F8F00001FCC8F /* Cache.swift */; };
-		C38F751E246F8F37001FCC8F /* FetchThumbOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38F751D246F8F37001FCC8F /* FetchThumbOperations.swift */; };
+		C38F751E246F8F37001FCC8F /* FetchThumbnailOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38F751D246F8F37001FCC8F /* FetchThumbnailOperations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +39,7 @@
 		C38F7517246F89FD001FCC8F /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		C38F7519246F8C4E001FCC8F /* Picture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
 		C38F751B246F8F00001FCC8F /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Cache.swift; path = "Random Users/Resources/Cache.swift"; sourceTree = SOURCE_ROOT; };
-		C38F751D246F8F37001FCC8F /* FetchThumbOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchThumbOperations.swift; sourceTree = "<group>"; };
+		C38F751D246F8F37001FCC8F /* FetchThumbnailOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchThumbnailOperations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
-				C38F751D246F8F37001FCC8F /* FetchThumbOperations.swift */,
+				C38F751D246F8F37001FCC8F /* FetchThumbnailOperations.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -205,7 +205,7 @@
 				C38F751A246F8C4E001FCC8F /* Picture.swift in Sources */,
 				C38F7513246F7BEB001FCC8F /* Name.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
-				C38F751E246F8F37001FCC8F /* FetchThumbOperations.swift in Sources */,
+				C38F751E246F8F37001FCC8F /* FetchThumbnailOperations.swift in Sources */,
 				C38F750B246F7630001FCC8F /* UserTableViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				C38F7515246F85EE001FCC8F /* UserController.swift in Sources */,
