@@ -47,7 +47,7 @@
                                 <connections>
                                     <outlet property="nameLabel" destination="pn6-GZ-flU" id="fAF-5e-NO1"/>
                                     <outlet property="personImageView" destination="6Vr-fh-gVs" id="9xW-zo-Tfh"/>
-                                    <segue destination="yZY-b9-9a2" kind="show" identifier="UserDetail" id="C8L-Ra-FAv"/>
+                                    <segue destination="yZY-b9-9a2" kind="show" identifier="PersonDetailSegue" id="C8L-Ra-FAv"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -56,9 +56,7 @@
                             <outlet property="delegate" destination="ReI-Ze-GBu" id="UBB-rT-jHA"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Users" id="FgN-ub-a7a">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="SEv-pA-rM4"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Users" id="FgN-ub-a7a"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ftd-cr-O5b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -76,13 +74,25 @@
                                 <rect key="frame" x="16" y="190" width="343" height="455.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y6M-JU-wLb">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="330"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="278"/>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="O3e-CA-mWG">
-                                        <rect key="frame" x="0.0" y="378" width="45" height="77.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="O3e-CA-mWG">
+                                        <rect key="frame" x="0.0" y="326" width="49" height="129.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4W6-kA-QIp">
-                                                <rect key="frame" x="0.0" y="0.0" width="45" height="77.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="49" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wB7-Nk-n4N">
+                                                <rect key="frame" x="0.0" y="54.5" width="49" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lP9-eI-Hee">
+                                                <rect key="frame" x="0.0" y="109" width="49" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -106,8 +116,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="VKL-s8-QNH"/>
                     <connections>
+                        <outlet property="emailLabel" destination="lP9-eI-Hee" id="fuk-rU-5TP"/>
                         <outlet property="imageView" destination="y6M-JU-wLb" id="r4v-bX-cAV"/>
                         <outlet property="nameLabel" destination="4W6-kA-QIp" id="BIj-2N-xF4"/>
+                        <outlet property="phoneLabel" destination="wB7-Nk-n4N" id="es9-gC-FiQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lT5-Dn-sSx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
