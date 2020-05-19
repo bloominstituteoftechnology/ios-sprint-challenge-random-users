@@ -56,6 +56,13 @@ class UsersTableViewController: UITableViewController {
             cell.textLabel?.text = userReference.name
             return
         }
+        
+        let fetchUserOperation = FetchUserOperation(user: userReference)
+        let cachedOperation = BlockOperation {
+            if let data = fetchUserOperation.imageData {
+                self.cache.cache(value: data, for: userReference.name)
+            }
+        }
     }
 
     
