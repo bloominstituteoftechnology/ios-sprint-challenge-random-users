@@ -22,15 +22,15 @@ class UsersTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        userController.fetchUsers { (result) in
-            do {
-                let users = try result.get()
+        
+        userController.fetchUsers { (error) in
+            
+//                let users = try result.get()
                 DispatchQueue.main.async {
-                    self.userController.userList = users
+//                    self.userController.userList.append(users)
+                    self.tableView.reloadData()
                 }
-            } catch {
-                if let error = error as? NetworkError {
+            if let error = error {
                     switch error {
                     case .decodeFailed:
                         print("Error: Theee data could not be decoded. \(error)")
@@ -44,10 +44,9 @@ class UsersTableViewController: UITableViewController {
                         print("Error: Not Authorized")
                     case .encodedFailed:
                         print("Error: Encoded Failed")
-                    }
-                } else {
-                    print("Error: \(error)")
                 }
+            } else {
+                print("Error: \(String(describing: error))")
             }
         }
     }
@@ -64,9 +63,11 @@ class UsersTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "UsersCell", for: indexPath) as? UsersTableViewCell else {
             fatalError("Can't deqeue cell of type 'UsersCell' ")
         }
-
+        
         let user = userController.userList[indexPath.row]
+        
         cell.userNameLabel?.text = "\(user.name.title) \(user.name.first) \(user.name.last)"
+        cell.userImageView.image = UIImage(named: user.picture.thumbnail)
         //loadImage(forCell: cell, forItemAt: indexPath)
 
         return cell

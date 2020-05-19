@@ -28,28 +28,28 @@ class UserController {
     
     private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
     
-    func fetchUsers(completion: @escaping (Result <[User], NetworkError>) -> Void) {
+    func fetchUsers(completion: @escaping (NetworkError?) -> Void) {
         var request = URLRequest(url: baseURL)
         request.httpMethod = HTTPMethod.get.rawValue
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             guard error == nil else {
-                completion(.failure(.otherError(error!)))
+                completion((.otherError(error!)))
                 return
             }
             
             guard let data = data else {
-                completion(.failure(.noData))
+                completion((.noData))
                 return
             }
             
             let decoder = JSONDecoder()
             do {
-                let userNames = try decoder.decode([User].self, from: data)
-                //self.userList.append(contentsOf: userNames.results)
-                completion(.success(userNames))
+                let userNames = try decoder.decode(UserResults.self, from: data)
+                self.userList.append(contentsOf: userNames.results)
+                completion(nil)
             } catch {
-                completion(.failure(.decodeFailed))
+                completion((.decodeFailed))
             }
         }.resume()
     }

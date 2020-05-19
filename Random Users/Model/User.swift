@@ -10,10 +10,15 @@ import Foundation
 
 struct User: Codable, Hashable,Equatable {
     
+    let name: Name
+    let email: String
+    let phone: String
+    let picture: Picture
+    
     struct Name: Codable, Hashable, Equatable {
-        let title : String
-        let first : String
-        let last : String
+        let title: String
+        let first: String
+        let last: String
     }
     
     struct Picture: Codable, Hashable, Equatable {
@@ -22,14 +27,8 @@ struct User: Codable, Hashable,Equatable {
         let thumbnail: String
     }
     
-    let name : Name
-    let email : String
-    let phone : String
-    let picture : Picture
 }
 
-
-
-//struct UserResults: Decodable {
-//    let results: [User]
-//}
+struct UserResults: Decodable {
+    let results: [User]
+}
