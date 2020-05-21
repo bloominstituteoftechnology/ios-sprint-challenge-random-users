@@ -12,6 +12,7 @@ class UserTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     var userController: UserController?
+    var indexPath = IndexPath()
     var user: User? {
         didSet {
             updateViews()
@@ -26,10 +27,10 @@ class UserTableViewCell: UITableViewCell {
     
     func updateViews() {
         guard let user = user else { return }
-        userNameLabel.text = user.name
-        let thumbnailPicture = user.picture[1]
+        userNameLabel.text = user.name.fullName
+        let thumbnailPicture = user.picture.thumbnail
         let request = URLRequest(url: thumbnailPicture)
-        
+
         URLSession.shared.dataTask(with: request) {data, _, error in
             guard let data = data else {
                 NSLog("Did not find thumbnail from data")

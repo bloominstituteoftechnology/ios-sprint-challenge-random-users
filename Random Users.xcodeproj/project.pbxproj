@@ -13,6 +13,8 @@
 		110A873F246F75AB0037E681 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110A873E246F75AB0037E681 /* User.swift */; };
 		110A8741246F8B920037E681 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110A8740246F8B920037E681 /* UserTableViewCell.swift */; };
 		110A8743246F966B0037E681 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110A8742246F966B0037E681 /* CoreDataStack.swift */; };
+		110A8745247485550037E681 /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110A8744247485550037E681 /* FetchPhotoOperation.swift */; };
+		110A874724760A600037E681 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110A874624760A600037E681 /* Cache.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -27,6 +29,8 @@
 		110A873E246F75AB0037E681 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		110A8740246F8B920037E681 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		110A8742246F966B0037E681 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		110A8744247485550037E681 /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
+		110A874624760A600037E681 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -61,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				110A873C246F75A10037E681 /* UserController.swift */,
+				110A8744247485550037E681 /* FetchPhotoOperation.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -70,6 +75,7 @@
 			children = (
 				110A873E246F75AB0037E681 /* User.swift */,
 				110A8742246F966B0037E681 /* CoreDataStack.swift */,
+				110A874624760A600037E681 /* Cache.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -195,9 +201,11 @@
 			files = (
 				110A873D246F75A10037E681 /* UserController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				110A8745247485550037E681 /* FetchPhotoOperation.swift in Sources */,
 				110A8741246F8B920037E681 /* UserTableViewCell.swift in Sources */,
 				110A8737246F756A0037E681 /* UserTableViewController.swift in Sources */,
 				110A8739246F757C0037E681 /* UserDetailViewController.swift in Sources */,
+				110A874724760A600037E681 /* Cache.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				110A873F246F75AB0037E681 /* User.swift in Sources */,
 				110A8743246F966B0037E681 /* CoreDataStack.swift in Sources */,

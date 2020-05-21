@@ -30,9 +30,28 @@ class UserDetailViewController: UIViewController {
     
     // MARK: - Methods
     func updateViews() {
+        guard isViewLoaded else { return }
         guard let user = user else { return }
-        nameLabel.text = user.name
+        print(user)
+        nameLabel.text = user.name.fullName
         phoneNumberLabel.text = user.phone
         emailLabel.text = user.email
-    }
-}
+        
+         let largePicture = user.picture.large
+                let request = URLRequest(url: largePicture)
+
+                URLSession.shared.dataTask(with: request) {data, _, error in
+                    guard let data = data else {
+                        NSLog("Did not find large picture from data")
+                        return
+                    }
+                    if let error = error {
+                        NSLog("Error fetching large picture: \(error)")
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        self.largeImageView.image = UIImage(data: data)
+                    }
+                }.resume()
+            }
+        }
