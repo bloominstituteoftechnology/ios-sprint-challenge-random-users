@@ -63,7 +63,7 @@ class LoadImageOperation: ConcurrentOperation {
         }
 
         cacheOp.addDependency(fetchOp)
-        updateCellOp.addDependency(updateCellOp)
+        updateCellOp.addDependency(fetchOp)
 
         OperationQueue.main.addOperation(updateCellOp)
         loadImageQueue.addOperations([fetchOp, cacheOp], waitUntilFinished: false)
