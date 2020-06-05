@@ -29,7 +29,7 @@ class FetchImageOperation: ConcurrentOperation {
         if isCancelled { return }
 
         state = .isExecuting
-        guard let imageURL = user.thumbnail else { return }
+        guard let imageURL = user.thumbnail?.usingHTTPS else { return }
 
         let task = session.dataTask(with: imageURL) { (data, _, error) in
 
