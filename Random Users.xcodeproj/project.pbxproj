@@ -35,6 +35,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5EAB0355248AF1C800C511F2 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+			);
+			name = Delegates;
+			sourceTree = "<group>";
+		};
+		5EAB0356248AF1E300C511F2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5EAB0357248AF1EB00C511F2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5EAB0359248AF21600C511F2 /* Storyboards */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5EAB0358248AF1F600C511F2 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		5EAB0359248AF21600C511F2 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				8ED6A98B2140178A00FC395A /* Main.storyboard */,
+				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
@@ -54,9 +93,12 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
-				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+				5EAB0356248AF1E300C511F2 /* Models */,
+				5EAB0357248AF1EB00C511F2 /* Views */,
+				5EAB0358248AF1F600C511F2 /* View Controllers */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
+				5EAB0355248AF1C800C511F2 /* Delegates */,
 			);
 			path = "Random Users";
 			sourceTree = "<group>";
@@ -64,9 +106,7 @@
 		9D5CCA522142305600224681 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8ED6A98B2140178A00FC395A /* Main.storyboard */,
 				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
-				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
 				8ED6A9932140178C00FC395A /* Info.plist */,
 			);
 			path = Resources;
