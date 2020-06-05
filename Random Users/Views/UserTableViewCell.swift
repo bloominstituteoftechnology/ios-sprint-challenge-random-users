@@ -13,5 +13,7 @@ class UserTableViewCell: UITableViewCell {
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     
-
+    static let reuseIdentifier = "UserCell"
+    
+    
 }
