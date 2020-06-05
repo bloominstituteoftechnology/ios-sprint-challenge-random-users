@@ -18,13 +18,38 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" id="G8z-Xa-Z60" customClass="UserTableViewCell" customModule="Random_Users" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="59.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="G8z-Xa-Z60" id="Aup-0f-uJA">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Here:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JrZ-H2-TfG">
+                                            <rect key="frame" x="88.5" y="19" width="262.5" height="21.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uOg-Xw-sUl">
+                                            <rect key="frame" x="8" y="0.0" width="59.5" height="59.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="uOg-Xw-sUl" secondAttribute="height" multiplier="1:1" id="wRW-zY-9zc"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="uOg-Xw-sUl" secondAttribute="bottom" id="00a-td-sE4"/>
+                                        <constraint firstItem="uOg-Xw-sUl" firstAttribute="top" secondItem="Aup-0f-uJA" secondAttribute="top" id="4vH-FC-gpb"/>
+                                        <constraint firstItem="uOg-Xw-sUl" firstAttribute="leading" secondItem="Aup-0f-uJA" secondAttribute="leading" constant="8" id="TbZ-HL-u9P"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="JrZ-H2-TfG" secondAttribute="bottom" constant="8" id="X9X-em-g0r"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="JrZ-H2-TfG" secondAttribute="trailing" constant="8" id="pdU-sV-rUr"/>
+                                        <constraint firstItem="JrZ-H2-TfG" firstAttribute="leading" secondItem="uOg-Xw-sUl" secondAttribute="trailing" constant="21" id="tfX-4Z-X1a"/>
+                                        <constraint firstItem="JrZ-H2-TfG" firstAttribute="top" secondItem="Aup-0f-uJA" secondAttribute="topMargin" constant="8" id="vdZ-gP-AhY"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="imageView" destination="uOg-Xw-sUl" id="OMU-u8-eyd"/>
+                                    <outlet property="nameLabel" destination="JrZ-H2-TfG" id="q5w-s7-vsS"/>
                                     <segue destination="EsD-jG-0Ff" kind="show" id="fjM-Tp-95V"/>
                                 </connections>
                             </tableViewCell>
@@ -38,7 +63,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YcZ-60-a4c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="775" y="99"/>
+            <point key="canvasLocation" x="773.60000000000002" y="98.50074962518741"/>
         </scene>
         <!--User Detail View Controller-->
         <scene sceneID="0Lv-T6-iuZ">
@@ -82,6 +107,11 @@
                         <viewLayoutGuide key="safeArea" id="5dS-qU-Itg"/>
                     </view>
                     <navigationItem key="navigationItem" id="ubT-PZ-hd9"/>
+                    <connections>
+                        <outlet property="detailUserImageView" destination="MwC-eK-t6W" id="uB5-RB-gWS"/>
+                        <outlet property="emailLabel" destination="fu1-88-tEp" id="BX1-iS-zZq"/>
+                        <outlet property="phoneNumberLabel" destination="u2u-6I-7ug" id="mjz-8c-Qw8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2z2-6N-plz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
