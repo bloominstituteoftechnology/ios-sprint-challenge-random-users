@@ -28,12 +28,12 @@ class Cache<Key: Hashable, Value> {
                 self.evictOldEntries()
             }
         }
-
-        func value(for key: Key) -> Value? {
-            queue.sync { store[key]?.value }
-        }
     }
 
+    func value(for key: Key) -> Value? {
+        queue.sync { store[key]?.value }
+    }
+    
     //MARK: - Private
 
     private var store: [Key: (value: Value, size: Bytes)] = [:]
