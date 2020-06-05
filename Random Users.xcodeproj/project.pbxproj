@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5EAB035B248AFD6400C511F2 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAB035A248AFD6400C511F2 /* UserTableViewCell.swift */; };
 		5EAB035D248B009E00C511F2 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAB035C248B009E00C511F2 /* UsersTableViewController.swift */; };
+		5EAB035F248B0B6900C511F2 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAB035E248B0B6900C511F2 /* UserDetailViewController.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		5EAB035A248AFD6400C511F2 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		5EAB035C248B009E00C511F2 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
+		5EAB035E248B0B6900C511F2 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				5EAB035C248B009E00C511F2 /* UsersTableViewController.swift */,
+				5EAB035E248B0B6900C511F2 /* UserDetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				5EAB035F248B0B6900C511F2 /* UserDetailViewController.swift in Sources */,
 				5EAB035B248AFD6400C511F2 /* UserTableViewCell.swift in Sources */,
 				5EAB035D248B009E00C511F2 /* UsersTableViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
