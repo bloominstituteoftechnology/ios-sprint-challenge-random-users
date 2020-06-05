@@ -2,7 +2,7 @@
 //  Users.swift
 //  Random Users
 //
-//  Created by Marissa Gonzales on 6/5/20.
+//  Created by Joe Veverka on 6/5/20.
 //  Copyright © 2020 Erica Sadun. All rights reserved.
 //
 
@@ -11,8 +11,8 @@ import Foundation
 struct Users: Decodable {
     let name: Names
     let email: String
-    let phoneNumber: String
-    let image: Images
+    let phone: String
+    let picture: Images
 }
 
 struct UserWrapper: Decodable {

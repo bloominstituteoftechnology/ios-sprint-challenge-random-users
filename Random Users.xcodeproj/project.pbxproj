@@ -22,6 +22,7 @@
 		8EE2762E248A94C600105131 /* HelperEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE2762D248A94C600105131 /* HelperEnums.swift */; };
 		8EE27630248A992200105131 /* LoadImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE2762F248A992200105131 /* LoadImageOperation.swift */; };
 		8EE27632248A992B00105131 /* FetchImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE27631248A992B00105131 /* FetchImageOperation.swift */; };
+		8EE27634248AA1C100105131 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE27633248AA1C100105131 /* ImageHelper.swift */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		8EE2762D248A94C600105131 /* HelperEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperEnums.swift; sourceTree = "<group>"; };
 		8EE2762F248A992200105131 /* LoadImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImageOperation.swift; sourceTree = "<group>"; };
 		8EE27631248A992B00105131 /* FetchImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImageOperation.swift; sourceTree = "<group>"; };
+		8EE27633248AA1C100105131 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,10 +80,10 @@
 			children = (
 				8EE27621248A8F5500105131 /* Model */,
 				8EE2761D248A8A0600105131 /* View Controllers */,
-				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				8EE27622248A8F5E00105131 /* Networking */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
+				8EE27633248AA1C100105131 /* ImageHelper.swift */,
 			);
 			path = "Random Users";
 			sourceTree = "<group>";
@@ -127,6 +129,7 @@
 		9D5CCA522142305600224681 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				8ED6A98B2140178A00FC395A /* Main.storyboard */,
 				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
 				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
@@ -229,6 +232,7 @@
 				8EE2762A248A94B500105131 /* UserClient.swift in Sources */,
 				8EE27620248A8F2700105131 /* UserTableViewCell.swift in Sources */,
 				8EE2762E248A94C600105131 /* HelperEnums.swift in Sources */,
+				8EE27634248AA1C100105131 /* ImageHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,8 +377,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = ZLCFP6QUVG;
 				INFOPLIST_FILE = "$(SRCROOT)/Random Users/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -391,8 +396,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = ZLCFP6QUVG;
 				INFOPLIST_FILE = "$(SRCROOT)/Random Users/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -36,6 +36,6 @@ class UserClient {
             } catch {
                 completion(.failure(.failedDecode(error)))
             }
-        }
+        }.resume()
     }
 }
