@@ -47,6 +47,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="imageView" destination="PHW-9g-xey" id="ZO9-8p-imc"/>
+                                    <outlet property="nameLabel" destination="Xsu-df-tAo" id="F9T-1I-UMu"/>
                                     <segue destination="CZW-st-9cM" kind="presentation" identifier="UserDetailModalSegue" id="EPw-3q-O7Y"/>
                                 </connections>
                             </tableViewCell>
@@ -59,10 +61,6 @@
                     <navigationItem key="navigationItem" title="Users" id="uSZ-bx-W9T">
                         <barButtonItem key="backBarButtonItem" title="Back" id="E0M-yS-iZ8"/>
                     </navigationItem>
-                    <connections>
-                        <outlet property="imageView" destination="PHW-9g-xey" id="B8a-2Z-Y5C"/>
-                        <outlet property="nameLabel" destination="Xsu-df-tAo" id="Y7f-SW-7rw"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ymc-N7-42M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
