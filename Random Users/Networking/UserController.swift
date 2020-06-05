@@ -22,8 +22,9 @@ enum NetworkError: Error {
 class UserController {
 
     private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
+    typealias CompetionHandler = (Result<[User], NetworkError>) -> Void
 
-    func fetchRandomUser(completion: @escaping (Result<[User], NetworkError>) -> Void) {
+    func fetchRandomUser(completion: @escaping CompetionHandler) {
 
         var request = URLRequest(url: baseURL)
         request.httpMethod = HTTPMethod.get.rawValue
