@@ -9,7 +9,10 @@
 import Foundation
 
 struct Results: Decodable {
-    let results: [User]
+    enum CodingKeys: String, CodingKey{
+        case users = "results"
+    }
+    var users: [User]
 }
 
 struct User: Equatable {
@@ -30,7 +33,7 @@ extension User: Decodable {
         case name
         case phone
         case email
-        case picture
+        case imageURLS = "picture"
 
         enum NameCodingKeys: String, CodingKey {
             case title
@@ -56,7 +59,7 @@ extension User: Decodable {
         let last = try nameContainer.decode(String.self, forKey: .last)
 
         //ImageCodingKeys
-        let imageContainer = try container.nestedContainer(keyedBy: UserCodingKeys.ImageCodingKeys.self, forKey: .picture)
+        let imageContainer = try container.nestedContainer(keyedBy: UserCodingKeys.ImageCodingKeys.self, forKey: .imageURLS)
         let thumbnailImageString = try imageContainer.decode(String.self, forKey: .thumbnail)
         let largeImageString = try imageContainer.decode(String.self, forKey: .large)
         let thumbnailImage = URL(string: thumbnailImageString)

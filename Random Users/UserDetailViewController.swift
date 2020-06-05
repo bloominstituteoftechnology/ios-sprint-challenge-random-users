@@ -16,17 +16,28 @@ class UserDetailViewController: UIViewController {
     @IBOutlet var emailLabel: UILabel!
 
     // MARK: - Properties
-
+    var user: User? {
+        didSet {
+            updateViews()
+        }
+    }
 
     // MARK: - Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
+        updateViews()
     }
     
-
+    func updateViews() {
+        guard isViewLoaded,
+            let user = user else { return }
+        title = user.name
+        emailLabel.text = user.email
+        phoneNumberLabel.text = user.phone
+        guard let imageData = try? Data(contentsOf: user.large!) else { fatalError() }
+        detailUserImageView.image = UIImage(data: imageData)
+    }
 
 
 }

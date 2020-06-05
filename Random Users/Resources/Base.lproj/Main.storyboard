@@ -48,9 +48,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="imageView" destination="uOg-Xw-sUl" id="OMU-u8-eyd"/>
                                     <outlet property="nameLabel" destination="JrZ-H2-TfG" id="q5w-s7-vsS"/>
-                                    <segue destination="EsD-jG-0Ff" kind="show" id="fjM-Tp-95V"/>
+                                    <outlet property="userImageView" destination="uOg-Xw-sUl" id="Tb3-qh-8tF"/>
+                                    <segue destination="EsD-jG-0Ff" kind="show" identifier="UserDetailSegue" id="fjM-Tp-95V"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
