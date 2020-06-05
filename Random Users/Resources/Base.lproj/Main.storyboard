@@ -47,8 +47,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="imageView" destination="PHW-9g-xey" id="ZO9-8p-imc"/>
-                                    <outlet property="nameLabel" destination="Xsu-df-tAo" id="F9T-1I-UMu"/>
+                                    <outlet property="nameLabel" destination="Xsu-df-tAo" id="nz9-tz-Fdz"/>
+                                    <outlet property="thumbnailImageView" destination="PHW-9g-xey" id="MnX-4k-i8E"/>
                                     <segue destination="CZW-st-9cM" kind="presentation" identifier="UserDetailModalSegue" id="EPw-3q-O7Y"/>
                                 </connections>
                             </tableViewCell>

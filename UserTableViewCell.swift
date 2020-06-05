@@ -10,6 +10,22 @@ import UIKit
 
 class UserTableViewCell: UITableViewCell {
 
+    //MARK: - IBOutlets
+
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var thumbnailImageView: UIImageView!
+
+    //MARK: -Public
+
+//    var user: User? {
+//        didSet {
+//            updateViews()
+//        }
+//    }
+
+    
+
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
