@@ -10,6 +10,11 @@ import UIKit
 
 class PeopleCell: UITableViewCell {
 
+    // MARK: - OUTLETS
+    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var userLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -8,11 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--User Table View Controller-->
         <scene sceneID="46S-Tz-xsl">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rOb-U3-CyQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tableViewController id="3Tk-gO-MJN" sceneMemberID="viewController">
+                <tableViewController id="3Tk-gO-MJN" customClass="UserTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="FAk-7Q-6L5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -43,7 +42,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="8lB-A2-Xug" kind="show" id="yTT-A5-ghO"/>
+                                    <outlet property="userImageView" destination="6N4-Mk-cud" id="GHJ-Gh-tK0"/>
+                                    <outlet property="userLabel" destination="INO-hR-7zN" id="tbo-zu-yj9"/>
+                                    <segue destination="8lB-A2-Xug" kind="show" identifier="DetailSegue" id="yTT-A5-ghO"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -56,6 +57,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="czn-mG-Jpy"/>
                     </navigationItem>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rOb-U3-CyQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2089.8550724637685" y="2036.3839285714284"/>
         </scene>
@@ -97,6 +99,12 @@
                         <viewLayoutGuide key="safeArea" id="ZM0-co-Dpx"/>
                     </view>
                     <navigationItem key="navigationItem" id="IS3-9R-wzg"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="OLr-vG-bBM" id="lan-fK-U7N"/>
+                        <outlet property="nameLabel" destination="dKs-Ts-Sh1" id="Vju-dn-i6y"/>
+                        <outlet property="phoneLabel" destination="k7a-Iz-gxS" id="zRE-BZ-bQH"/>
+                        <outlet property="userImageView" destination="RDt-gY-7oY" id="uci-hm-RAG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oMe-tx-dKD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
