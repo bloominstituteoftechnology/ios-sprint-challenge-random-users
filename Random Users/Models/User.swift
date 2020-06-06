@@ -30,11 +30,12 @@ struct User: Decodable {
     
     
     //MARK: - Properties -
+    let title: String
     let name: String
     let email: String
     let phoneNumber: String
-    let image: String
-    let thumbnail: String
+    let image: URL
+    let thumbnail: URL
     
     
     //MARK: - Initializers -
@@ -48,10 +49,11 @@ struct User: Decodable {
         let first = try nameContainer.decode(String.self, forKey: .first)
         let last = try nameContainer.decode(String.self, forKey: .last)
         self.name = "\(first) \(last)"
+        self.title = try nameContainer.decode(String.self, forKey: .title)
         
         let imageContainer = try container.nestedContainer(keyedBy: CodingKeys.ImageKeys.self, forKey: .picture)
-        self.thumbnail = try imageContainer.decode(String.self, forKey: .thumbnail)
-        self.image = try imageContainer.decode(String.self, forKey: .image)
+        self.thumbnail = try imageContainer.decode(URL.self, forKey: .thumbnail)
+        self.image = try imageContainer.decode(URL.self, forKey: .image)
     }
     
     

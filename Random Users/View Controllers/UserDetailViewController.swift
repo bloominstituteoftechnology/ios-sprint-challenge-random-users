@@ -30,10 +30,24 @@ class UserDetailViewController: UIViewController {
     
     //MARK: - Methods -
     private func updateViews() {
-        if let imageData = user?.imageData {
-            detailImageView.image = UIImage(data: imageData)
+        if let photoURL = user?.image {
+            URLSession.shared.dataTask(with: photoURL) { (data, _, error) in
+                if let error = error {
+                    NSLog("An error occured fetching this photo. \(error) \(error.localizedDescription)")
+                    return
+                }
+                
+                guard let imageData = data else {
+                    NSLog("No photo data returned")
+                    return
+                }
+                self.detailImageView.image = UIImage(data: imageData)
+            }.resume()
         }
-        nameLabel.text = user?.name
+        
+        
+        
+        nameLabel.text = "\(user?.title ?? "NO") \(user?.name ?? "USER")"
         phoneNumberLabel.text = user?.phoneNumber
         emailLabel.text = user?.email
     }

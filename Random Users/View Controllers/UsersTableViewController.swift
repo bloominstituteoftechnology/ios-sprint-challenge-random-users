@@ -11,15 +11,24 @@ import UIKit
 class UsersTableViewController: UITableViewController {
     //MARK: - Properties -
     let segueID = "UserDetailSegue"
-    var fetchedUsers: [User] = []
+    var fetchedUsers: [User]?
+    let apiController = APIController()
+    let thumbnailCache = Cache<Int, Data>()
     
     
     //MARK: - Life Cycles -
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        apiController.getUsers { result in
+            do {
+                let fetchedUsers = try result.get()
+                self.fetchedUsers = fetchedUsers
+            } catch {
+                NSLog("There was an error retrieving user profiles: \(error) \(error.localizedDescription)")
+                return
+            }
+        }
     }
-
     
     
     // MARK: - Table View Datasource -
@@ -30,7 +39,7 @@ class UsersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return fetchedUsers.count
+        return fetchedUsers?.count ?? 0
     }
 
     
@@ -38,7 +47,7 @@ class UsersTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: UserTableViewCell.reuseIdentifier,
                                                        for: indexPath) as? UserTableViewCell else { return UserTableViewCell() }
         
-        cell.user = fetchedUsers[indexPath.row]
+        cell.user = fetchedUsers?[indexPath.row]
         cell.userNameLabel.text = cell.user?.name
         loadImage(forCell: cell, forItemAt: indexPath)
         
@@ -55,13 +64,14 @@ class UsersTableViewController: UITableViewController {
         if segue.identifier == segueID {
             guard let detailVC = segue.destination as? UserDetailViewController,
                 let index = tableView.indexPathForSelectedRow else { return }
-            detailVC.user = fetchedUsers[index.row]
+            detailVC.user = fetchedUsers?[index.row]
         }
     }
     
     
     //MARK: - Methods -
     private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
+        
         
     }
     
