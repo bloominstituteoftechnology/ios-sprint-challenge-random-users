@@ -11,16 +11,13 @@ import UIKit
 class UsersTableViewController: UITableViewController {
     //MARK: - Properties -
     let segueID = "UserDetailSegue"
+    var fetchedUsers: [User] = []
+    
     
     //MARK: - Life Cycles -
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
     }
 
     
@@ -28,12 +25,12 @@ class UsersTableViewController: UITableViewController {
     // MARK: - Table View Datasource -
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return fetchedUsers.count
     }
 
     
@@ -41,7 +38,9 @@ class UsersTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: UserTableViewCell.reuseIdentifier,
                                                        for: indexPath) as? UserTableViewCell else { return UserTableViewCell() }
         
-        // Configure the cell...
+        cell.user = fetchedUsers[indexPath.row]
+        cell.userNameLabel.text = cell.user?.name
+        loadImage(forCell: cell, forItemAt: indexPath)
         
         return cell
     }
@@ -54,10 +53,16 @@ class UsersTableViewController: UITableViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if segue.identifier == segueID {
-            if let detailVC = segue.destination as? UserDetailViewController {
-                
-            }
+            guard let detailVC = segue.destination as? UserDetailViewController,
+                let index = tableView.indexPathForSelectedRow else { return }
+            detailVC.user = fetchedUsers[index.row]
         }
+    }
+    
+    
+    //MARK: - Methods -
+    private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
+        
     }
     
 

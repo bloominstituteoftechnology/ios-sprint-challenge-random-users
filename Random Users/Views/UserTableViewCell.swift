@@ -14,6 +14,9 @@ class UserTableViewCell: UITableViewCell {
     @IBOutlet weak var userNameLabel: UILabel!
     
     static let reuseIdentifier = "UserCell"
+    var user: User?
     
+    
+    //MARK: - Methods -
     
 }
