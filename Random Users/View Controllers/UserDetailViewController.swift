@@ -12,7 +12,7 @@ class UserDetailViewController: UIViewController {
     //MARK: - Properties -
     @IBOutlet weak var detailImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var idLabel: UILabel!
+    @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
     var user: User? {
@@ -34,7 +34,7 @@ class UserDetailViewController: UIViewController {
             detailImageView.image = UIImage(data: imageData)
         }
         nameLabel.text = user?.name
-        idLabel.text = user?.userID.uuidString
+        phoneNumberLabel.text = user?.phoneNumber
         emailLabel.text = user?.email
     }
     
