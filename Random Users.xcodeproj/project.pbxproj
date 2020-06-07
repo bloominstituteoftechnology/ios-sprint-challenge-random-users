@@ -18,6 +18,7 @@
 		BEC57CA9248CAA7800DCE6CA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC57CA8248CAA7800DCE6CA /* User.swift */; };
 		BEC57CAB248CACDC00DCE6CA /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC57CAA248CACDC00DCE6CA /* UserDetailViewController.swift */; };
 		BEC57CAD248CBF1F00DCE6CA /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC57CAC248CBF1F00DCE6CA /* Cache.swift */; };
+		BEC57CAF248CE30700DCE6CA /* ImageFetchOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC57CAE248CE30700DCE6CA /* ImageFetchOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		BEC57CA8248CAA7800DCE6CA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BEC57CAA248CACDC00DCE6CA /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		BEC57CAC248CBF1F00DCE6CA /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		BEC57CAE248CE30700DCE6CA /* ImageFetchOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetchOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				BEC57CAE248CE30700DCE6CA /* ImageFetchOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				BEC57CA9248CAA7800DCE6CA /* User.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				BEC57CA5248CAA2C00DCE6CA /* UsersTableViewController.swift in Sources */,
+				BEC57CAF248CE30700DCE6CA /* ImageFetchOperation.swift in Sources */,
 				BEC57CA0248CA82200DCE6CA /* APIController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

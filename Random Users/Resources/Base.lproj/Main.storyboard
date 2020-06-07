@@ -48,7 +48,7 @@
                                 <connections>
                                     <outlet property="userImageView" destination="00U-C8-IW8" id="NX8-ZP-mio"/>
                                     <outlet property="userNameLabel" destination="aTa-D0-sUJ" id="PWh-9j-L7j"/>
-                                    <segue destination="Msp-PI-bg7" kind="show" id="idm-VT-df1"/>
+                                    <segue destination="Msp-PI-bg7" kind="show" identifier="showUserDetail" id="idm-VT-df1"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

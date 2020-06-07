@@ -33,5 +33,5 @@ struct Picture: Codable {
 }
 
 struct UserResults: Codable {
-    let results: [User]
+    let users: [User]
 }
