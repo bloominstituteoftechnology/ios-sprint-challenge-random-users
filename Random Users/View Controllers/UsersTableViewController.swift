@@ -10,6 +10,11 @@ import UIKit
 
 class UsersTableViewController: UITableViewController {
 
+    // MARK: - Properties -
+    private let photoFetchQueue = OperationQueue()
+    private let cache = Cache<Int, Data>() //pay attention to data type that is pulled in, must be hashable and used as the key (where Int is)
+    private var operations = [Int : Operation]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,6 +37,42 @@ class UsersTableViewController: UITableViewController {
         return 0
     }
 
+    private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
+        let user = photoReferences[indexPath.row] // change to model name
+        
+        // Check if there is cached data
+        if let cachedData = cache.value(key: photoReference.id), // change to phone number or email. both need to be the same
+        let image = UIImage(data: cachedData) {
+            cell.imageView.image = image
+            return
+        }
+        
+        // Start our fetch operations
+        let fetchOp = FetchPhotoOperation(photoReference: photoReference) // change to the 
+        
+        // saving
+        let cacheOp = BlockOperation {
+            if let data = fetchOp.imageData {
+                self.cache.cache(key: photoReference.id, value: data) // can change id to phonenumber or email
+            }
+        }
+        
+        // populating the image
+        let completionOp = BlockOperation {
+            defer { self.operations.removeValue(forKey: photoReference.id) } //switch id to email or phone numbers same as funcs above
+            if let currentIndexPath = self.tableView.indexPath(for: cell),
+                // refering to the for item at indexpath that is passed in above, not in the line of code below
+                currentIndexPath != indexPath {
+                print("Got image for reused cell")
+                return
+            }
+            
+            if let data = fetchOp.imageData {
+                cell.imageView.image = UIImage(data: data)
+            }
+        }
+    
+    
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
