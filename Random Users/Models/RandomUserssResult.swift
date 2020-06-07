@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+struct RandomUserResult: Codable {
+    var results: [User]
+}
