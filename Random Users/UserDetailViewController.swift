@@ -9,13 +9,37 @@
 import UIKit
 
 class UserDetailViewController: UIViewController {
-
+    
+    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var userNumber: UILabel!
+    @IBOutlet weak var userEmail: UILabel!
+    
+    var networkClient: Client?
+    var user: User?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        updateViews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateViews()
+    }
+    
+    
+    func updateViews() {
+        guard let user = user else { return }
+        userName.text = "\(user.title). \(user.first) \(user.last)"
+        userNumber.text = user.phone
+        userEmail.text = user.email
+        
+        
+        
+        
+    }
 
     /*
     // MARK: - Navigation

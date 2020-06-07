@@ -9,6 +9,11 @@
 import UIKit
 
 class UserCustomTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var userImageInCell: UIImageView!
+    @IBOutlet weak var userNameInCell: UILabel!
+    
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
