@@ -52,9 +52,9 @@ class UsersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: UserTableViewCell.reuseIdentifier,
                                                        for: indexPath) as? UserTableViewCell else { fatalError("Couldn't Dequeue cell of type \(UserTableViewCell.reuseIdentifier)") }
-        
-        cell.user = fetchedUsers[indexPath.row]
-        cell.userNameLabel.text = cell.user?.name
+        let user = fetchedUsers[indexPath.row]
+        cell.user = user
+        cell.userNameLabel.text = user.name
         loadImage(forCell: cell, forItemAt: indexPath)
         
         return cell
@@ -83,7 +83,7 @@ class UsersTableViewController: UITableViewController {
         let user = fetchedUsers[indexPath.row]
         
         if let cachedData = thumbnailCache.value(for: user.phoneNumber) {
-            cell.imageView?.image = UIImage(data: cachedData)
+            cell.userImageView.image = UIImage(data: cachedData)
             return
         }
         
@@ -100,7 +100,7 @@ class UsersTableViewController: UITableViewController {
                 return
             }
             if let fetchedThumbnail = fetchThumbnail.imageData {
-                cell.imageView?.image = UIImage(data: fetchedThumbnail)
+                cell.userImageView.image = UIImage(data: fetchedThumbnail)
             }
         }
         cacheThumbnail.addDependency(fetchThumbnail)
