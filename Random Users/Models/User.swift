@@ -52,9 +52,13 @@ struct User: Decodable {
         self.title = try nameContainer.decode(String.self, forKey: .title)
         
         let imageContainer = try container.nestedContainer(keyedBy: CodingKeys.ImageKeys.self, forKey: .picture)
-        self.thumbnail = try imageContainer.decode(URL.self, forKey: .thumbnail)
-        self.image = try imageContainer.decode(URL.self, forKey: .image)
+        let thumbnailString = try imageContainer.decode(String.self, forKey: .thumbnail)
+        let imageString = try imageContainer.decode(String.self, forKey: .image)
+        self.thumbnail = URL(string: thumbnailString)!
+        self.image = URL(string: imageString)!
     }
     
     
 }
+
+

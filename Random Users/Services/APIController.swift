@@ -25,8 +25,8 @@ class APIController {
     
     
     //MARK: - Properties -
-    private let baseURL = URL(string: "https://randomuser.me/api/")!
-    private lazy var fetchURL: URL = baseURL.appendingPathComponent("?format=json&inc=name,email,phone,picture&results=1000")
+    private let fetchURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
+    
     lazy var decoder = JSONDecoder()
     
     
@@ -50,10 +50,8 @@ class APIController {
             
             do {
                 var users: [User] = []
-                let results = try self.decoder.decode([String : [User]].self, from: data)
-                for result in results {
-                    users = result.value
-                }
+                let results = try self.decoder.decode(UserBlock.self, from: data)
+                users = results.results
                 completion(.success(users))
             } catch {
                 NSLog("Error decoding users: \(error) \(error.localizedDescription)")
