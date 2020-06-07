@@ -8,17 +8,32 @@
 
 import UIKit
 
+
 class UsersTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    // MARK: - Properties
+
+    var user: User! {
+        didSet {
+            updateViews()
+        }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    // MARK: - Outlets
+    
+    @IBOutlet weak var thumbnailImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    // MARK: - Private Methods
+    
+    private func updateViews() {
+        nameLabel.text = user.name.full
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        thumbnailImageView.image = #imageLiteral(resourceName: "Lambda_Logo_Full")
+        nameLabel.text = nil
     }
 
 }
