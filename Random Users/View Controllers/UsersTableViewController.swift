@@ -10,8 +10,9 @@ import UIKit
 
 class UsersTableViewController: UITableViewController {
     
-    private let controller = APIController()
+    @IBOutlet var getMoreUsersButton: UIBarButtonItem!
     
+    private let controller = APIController()
     
     private let thumbnailFetchQueue = OperationQueue()
     private let thumbnailCache = Cache<String, Data>()
@@ -92,13 +93,18 @@ class UsersTableViewController: UITableViewController {
         }
     }
     
+    // MARK: - IBAction functions
+    @IBAction func getMoreUsersButtonPressed(_ sender: UIBarButtonItem) {
+        getUsers()
+    }
+    
     // MARK: - Util functions
     private func getUsers() {
         controller.getUsersFromAPI { result in
             do {
                 let userResults = try result.get()
                 DispatchQueue.main.async {
-                    self.users = userResults.results
+                    self.users.append(contentsOf: userResults.results)
                 }
             } catch {
                 NSLog("Error fetching users. Logging function called from UsersTableViewController")

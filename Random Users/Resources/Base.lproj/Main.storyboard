@@ -59,7 +59,16 @@
                             <outlet property="delegate" destination="9jo-yV-5Rf" id="fqb-R8-nLN"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Users" id="L0V-Wm-gia"/>
+                    <navigationItem key="navigationItem" title="Users" id="L0V-Wm-gia">
+                        <barButtonItem key="rightBarButtonItem" title="Fetch More" id="C2k-yr-gOJ">
+                            <connections>
+                                <action selector="getMoreUsersButtonPressed:" destination="9jo-yV-5Rf" id="Wgr-gP-fmt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="getMoreUsersButton" destination="C2k-yr-gOJ" id="wex-LL-YDc"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pra-PA-qmF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
