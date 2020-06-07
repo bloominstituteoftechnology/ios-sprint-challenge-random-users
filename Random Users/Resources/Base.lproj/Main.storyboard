@@ -121,7 +121,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vhy-oL-yun">
-                                <rect key="frame" x="13.999999999999996" y="509.99999999999994" width="56.666666666666657" height="26.333333333333314"/>
+                                <rect key="frame" x="14" y="509.99999999999994" width="390" height="26.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -132,7 +132,7 @@
                             <constraint firstItem="SO3-6n-jxx" firstAttribute="leading" secondItem="EGl-hH-eRx" secondAttribute="leading" constant="14" id="126-Ce-YRF"/>
                             <constraint firstItem="EGl-hH-eRx" firstAttribute="trailing" secondItem="QQj-AP-bFt" secondAttribute="trailing" constant="10" id="Dfa-tD-Pww"/>
                             <constraint firstItem="Vhy-oL-yun" firstAttribute="top" secondItem="QQj-AP-bFt" secondAttribute="bottom" constant="7.9999999999999432" id="P5H-Lc-esp"/>
-                            <constraint firstItem="EGl-hH-eRx" firstAttribute="trailing" secondItem="Vhy-oL-yun" secondAttribute="trailing" constant="343.32999999999998" id="YTb-MW-qr6"/>
+                            <constraint firstItem="EGl-hH-eRx" firstAttribute="trailing" secondItem="Vhy-oL-yun" secondAttribute="trailing" constant="10" id="YTb-MW-qr6"/>
                             <constraint firstItem="Vhy-oL-yun" firstAttribute="leading" secondItem="EGl-hH-eRx" secondAttribute="leading" constant="13.999999999999996" id="fgi-bG-hyZ"/>
                             <constraint firstItem="SO3-6n-jxx" firstAttribute="top" secondItem="QQj-AP-bFt" secondAttribute="bottom" constant="41" id="hIi-2i-623"/>
                             <constraint firstItem="39E-CR-OBg" firstAttribute="leading" secondItem="SO3-6n-jxx" secondAttribute="trailing" constant="8.6666666666666714" id="hx5-N0-Pbd"/>
