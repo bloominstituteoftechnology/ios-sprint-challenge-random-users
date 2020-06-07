@@ -14,6 +14,8 @@ class UsersTableViewController: UITableViewController {
     var fetchedUsers: [User]?
     let apiController = APIController()
     let thumbnailCache = Cache<Int, Data>()
+    var thumbnailFetchQueue = OperationQueue()
+    var operations: [Int: Operation] = [:]
     
     
     //MARK: - Life Cycles -
@@ -54,8 +56,6 @@ class UsersTableViewController: UITableViewController {
         return cell
     }
     
-
-
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

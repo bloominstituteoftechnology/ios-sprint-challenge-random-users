@@ -30,7 +30,7 @@ class FetchThumbnailOperation: ConcurrentOperation {
             }
             
             guard let data = data else {
-                NSLog("No data returned for image \(imageURL)")
+                NSLog("No data returned for image: \(imageURL)")
                 return
             }
             self.imageData = data

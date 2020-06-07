@@ -15,8 +15,4 @@ class UserTableViewCell: UITableViewCell {
     
     static let reuseIdentifier = "UserCell"
     var user: User?
-    
-    
-    //MARK: - Methods -
-    
 }

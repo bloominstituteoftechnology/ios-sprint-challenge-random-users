@@ -45,8 +45,6 @@ class UserDetailViewController: UIViewController {
             }.resume()
         }
         
-        
-        
         nameLabel.text = "\(user?.title ?? "NO") \(user?.name ?? "USER")"
         phoneNumberLabel.text = user?.phoneNumber
         emailLabel.text = user?.email
