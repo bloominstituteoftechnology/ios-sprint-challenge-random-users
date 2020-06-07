@@ -11,11 +11,15 @@ import UIKit
 class UsersTableViewController: UITableViewController {
     //MARK: - Properties -
     let segueID = "UserDetailSegue"
-    var fetchedUsers: [User]?
     let apiController = APIController()
-    let thumbnailCache = Cache<Int, Data>()
+    let thumbnailCache = Cache<String, Data>()
     var thumbnailFetchQueue = OperationQueue()
-    var operations: [Int: Operation] = [:]
+    var operations: [String: Operation] = [:]
+    var fetchedUsers = [User](){
+        didSet{
+            DispatchQueue.main.async { self.tableView?.reloadData() }
+        }
+    }
     
     
     //MARK: - Life Cycles -
@@ -41,7 +45,7 @@ class UsersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return fetchedUsers?.count ?? 0
+        return fetchedUsers.count
     }
 
     
@@ -49,11 +53,16 @@ class UsersTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: UserTableViewCell.reuseIdentifier,
                                                        for: indexPath) as? UserTableViewCell else { return UserTableViewCell() }
         
-        cell.user = fetchedUsers?[indexPath.row]
+        cell.user = fetchedUsers[indexPath.row]
         cell.userNameLabel.text = cell.user?.name
         loadImage(forCell: cell, forItemAt: indexPath)
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let user = fetchedUsers[indexPath.row]
+        operations[user.phoneNumber]?.cancel()
     }
     
     
@@ -64,15 +73,41 @@ class UsersTableViewController: UITableViewController {
         if segue.identifier == segueID {
             guard let detailVC = segue.destination as? UserDetailViewController,
                 let index = tableView.indexPathForSelectedRow else { return }
-            detailVC.user = fetchedUsers?[index.row]
+            detailVC.user = fetchedUsers[index.row]
         }
     }
     
     
     //MARK: - Methods -
     private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
+        let user = fetchedUsers[indexPath.row]
         
+        if let cachedData = thumbnailCache.value(for: user.phoneNumber) {
+            cell.imageView?.image = UIImage(data: cachedData)
+            return
+        }
         
+        let fetchThumbnail = FetchThumbnailOperation(user: user)
+        let cacheThumbnail = BlockOperation {
+            if let fetchedThumbnail = fetchThumbnail.imageData {
+                self.thumbnailCache.cache(for: user.phoneNumber, value: fetchedThumbnail)
+            }
+        }
+        let completeThumbnailOperations = BlockOperation {
+            if let currentIndex = self.tableView.indexPath(for: cell),
+                currentIndex != indexPath {
+                NSLog("Finished image loading after cell had passed in view.")
+                return
+            }
+            if let fetchedThumbnail = fetchThumbnail.imageData {
+                cell.imageView?.image = UIImage(data: fetchedThumbnail)
+            }
+        }
+        cacheThumbnail.addDependency(fetchThumbnail)
+        completeThumbnailOperations.addDependency(fetchThumbnail)
+        thumbnailFetchQueue.addOperations([fetchThumbnail, cacheThumbnail], waitUntilFinished: false)
+        OperationQueue.main.addOperation(completeThumbnailOperations)
+        operations[user.phoneNumber] = fetchThumbnail
     }
     
 
