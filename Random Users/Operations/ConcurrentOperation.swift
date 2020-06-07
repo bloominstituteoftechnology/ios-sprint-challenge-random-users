@@ -1,9 +1,9 @@
 //
 //  ConcurrentOperation.swift
-//  Astronomy
+//  Random Users
 //
-//  Created by Andrew R Madsen on 9/5/18.
-//  Copyright © 2018 Lambda School. All rights reserved.
+//  Created by Nonye on 6/6/20.
+//  Copyright © 2020 Erica Sadun. All rights reserved.
 //
 
 import Foundation
