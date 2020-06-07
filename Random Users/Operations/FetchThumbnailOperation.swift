@@ -22,21 +22,21 @@ class FetchThumbnailOperation: ConcurrentOperation {
     override func start() {
         state = .isExecuting
         
-        let imageURL = user.image
-        let fetchImage = URLSession.shared.dataTask(with: imageURL) { data, _, error in
+        let thumbnailURL = user.thumbnail
+        let fetchThumbnail = URLSession.shared.dataTask(with: thumbnailURL) { data, _, error in
             if let error = error {
                 NSLog("Something went horribly wrong during fetch operation. Here's some data about what happened: \(error) \(error.localizedDescription)")
                 return
             }
             
             guard let data = data else {
-                NSLog("No data returned for image: \(imageURL)")
+                NSLog("No data returned for image: \(thumbnailURL)")
                 return
             }
             self.imageData = data
         }
-        fetchImage.resume()
-        imageTask = fetchImage
+        fetchThumbnail.resume()
+        imageTask = fetchThumbnail
     }
     
     override func cancel() {

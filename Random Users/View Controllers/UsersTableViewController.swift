@@ -51,7 +51,7 @@ class UsersTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: UserTableViewCell.reuseIdentifier,
-                                                       for: indexPath) as? UserTableViewCell else { return UserTableViewCell() }
+                                                       for: indexPath) as? UserTableViewCell else { fatalError("Couldn't Dequeue cell of type \(UserTableViewCell.reuseIdentifier)") }
         
         cell.user = fetchedUsers[indexPath.row]
         cell.userNameLabel.text = cell.user?.name
