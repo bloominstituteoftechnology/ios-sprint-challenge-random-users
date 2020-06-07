@@ -96,7 +96,7 @@ class UsersTableViewController: UITableViewController {
             
         }
         
-        let fetchOp = FetchPhotoOperation(photoReference: photoReference)
+        let fetchOp = FetchPhotoOperation(photoReference: photoReference, imageType: .thumbnail)
         
         let cacheOp = BlockOperation {
             if let data = fetchOp.imageData {
@@ -127,50 +127,50 @@ class UsersTableViewController: UITableViewController {
         
     }
     
-    func loadLargeImage(forUser user: User, forImageAt indexPath: IndexPath) {
-        
-        let photoReference = usersArray[indexPath.row]
-        
-        guard let id = Int(photoReference.phone) else { return }
-        
-        if let cachedData = cache.value(key: id),
-            let image = UIImage(data: cachedData) {
-            
-            cell.userImageInCell.image = image
-            return
-            
-        }
-        
-        let fetchOp = FetchPhotoOperation(photoReference: photoReference)
-        
-        let cacheOp = BlockOperation {
-            if let data = fetchOp.imageData {
-                self.cache.cache(value: data, key: id)
-            }
-        }
-        
-        let completionOp = BlockOperation {
-            defer { self.operations.removeValue(forKey: id) }
-            if let currentIndexPath = self.tableView.indexPath(for: cell),
-                currentIndexPath != indexPath {
-                print("Got image for reused cell")
-                return
-            }
-            if let data = fetchOp.imageData {
-                cell.userImageInCell.image = UIImage(data: data)
-            }
-        }
-        
-        cacheOp.addDependency(fetchOp)
-        completionOp.addDependency(fetchOp)
-        
-        photoFetchQueue.addOperation(fetchOp)
-        photoFetchQueue.addOperation(cacheOp)
-        OperationQueue.main.addOperation(completionOp)
-        
-        operations[id] = fetchOp
-        
-    }
+//    func loadLargeImage(forUser user: User, forImageAt indexPath: IndexPath) {
+//        
+//        let photoReference = usersArray[indexPath.row]
+//        
+//        guard let id = Int(photoReference.phone) else { return }
+//        
+//        if let cachedData = cache.value(key: id),
+//            let image = UIImage(data: cachedData) {
+//            
+//            cell.userImageInCell.image = image
+//            return
+//            
+//        }
+//        
+//        let fetchOp = FetchPhotoOperation(photoReference: photoReference)
+//        
+//        let cacheOp = BlockOperation {
+//            if let data = fetchOp.imageData {
+//                self.cache.cache(value: data, key: id)
+//            }
+//        }
+//        
+//        let completionOp = BlockOperation {
+//            defer { self.operations.removeValue(forKey: id) }
+//            if let currentIndexPath = self.tableView.indexPath(for: cell),
+//                currentIndexPath != indexPath {
+//                print("Got image for reused cell")
+//                return
+//            }
+//            if let data = fetchOp.imageData {
+//                cell.userImageInCell.image = UIImage(data: data)
+//            }
+//        }
+//        
+//        cacheOp.addDependency(fetchOp)
+//        completionOp.addDependency(fetchOp)
+//        
+//        photoFetchQueue.addOperation(fetchOp)
+//        photoFetchQueue.addOperation(cacheOp)
+//        OperationQueue.main.addOperation(completionOp)
+//        
+//        operations[id] = fetchOp
+//        
+//    }
     
     
     // MARK: - Navigation

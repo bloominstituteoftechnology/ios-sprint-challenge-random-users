@@ -16,7 +16,12 @@ class UserDetailViewController: UIViewController {
     @IBOutlet weak var userEmail: UILabel!
     
     var networkClient: Client?
-    var user: User?
+    var user: User? {
+        didSet {
+            updateViews()
+        }
+    }
+    private let cache = Cache<Int,Data>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,16 +36,43 @@ class UserDetailViewController: UIViewController {
     
     
     func updateViews() {
+        guard isViewLoaded else { return }
         guard let user = user else { return }
         userName.text = "\(user.title). \(user.first) \(user.last)"
         userNumber.text = user.phone
         userEmail.text = user.email
         
-        
-        
-        
+        loadLargeImage(forUser: user)
     }
 
+    func loadLargeImage(forUser user: User) {
+                
+        guard let id = Int(user.phone) else { return }
+        
+        if let cachedData = cache.value(key: id),
+            let image = UIImage(data: cachedData) {
+            
+            userImage.image = image
+            return
+            
+        }
+        
+        let fetchOp = FetchPhotoOperation(photoReference: user, imageType: .large)
+        
+        let completionOp = BlockOperation {
+            guard user == self.user else { return }
+            
+            guard let data = fetchOp.imageDataTwo else { return }
+            
+            self.userImage.image = UIImage(data: data)
+                
+            }
+        
+        completionOp.addDependency(fetchOp)
+    
+        OperationQueue.main.addOperations([fetchOp, completionOp], waitUntilFinished: false)
+    }
+    
     /*
     // MARK: - Navigation
 

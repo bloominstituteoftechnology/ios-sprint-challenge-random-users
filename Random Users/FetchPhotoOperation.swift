@@ -8,6 +8,12 @@
 
 import Foundation
 
+enum ImageType {
+    case thumbnail
+    case large
+    
+}
+
 class FetchPhotoOperation: ConcurrentOperation {
     
     let photoReference: User
@@ -16,40 +22,47 @@ class FetchPhotoOperation: ConcurrentOperation {
     private let session: URLSession
     private var dataTask: URLSessionDataTask?
     private var dataTaskTwo: URLSessionTask?
+    var imageType: ImageType
     
-    init(photoReference: User, session: URLSession = URLSession.shared) {
+    init(photoReference: User, session: URLSession = URLSession.shared, imageType: ImageType) {
         self.photoReference = photoReference
         self.session = session
+        self.imageType = imageType
         super.init()
     }
     
     override func start() {
         state = .isExecuting
-        guard let thumbNailImage = photoReference.thumbnail.usingHTTPS else { return }
-        let task = session.dataTask(with: thumbNailImage) { (data, _, error) in
-            defer { self.state = .isFinished }
-            if self.isCancelled { return }
-            if let error = error {
-                NSLog("Error fetching data for \(self.photoReference): \(error)")
-            }
-            guard let data = data else { return }
-            self.imageData = data
-        }
-        task.resume()
-        dataTask = task
         
-        guard let largeImage = photoReference.large.usingHTTPS else { return }
-        let taskTwo = session.dataTask(with: largeImage) { (data, _, error) in
-            defer { self.state = .isFinished }
-            if self.isCancelled { return }
-            if let error = error {
-                NSLog("Error fetching data for \(self.photoReference): \(error)")
+        if imageType == .thumbnail {
+            guard let thumbNailImage = photoReference.thumbnail.usingHTTPS else { return }
+            print(thumbNailImage)
+            let task = session.dataTask(with: thumbNailImage) { (data, _, error) in
+                defer { self.state = .isFinished }
+                if self.isCancelled { return }
+                if let error = error {
+                    NSLog("Error fetching data for \(self.photoReference): \(error)")
+                }
+                guard let data = data else { return }
+                self.imageData = data
             }
-            guard let data = data else { return }
-            self.imageDataTwo = data
-        }
-        task.resume()
-        dataTaskTwo = taskTwo
+            task.resume()
+            dataTask = task
+        } else if imageType == .large {
+            guard let largeImage = photoReference.large.usingHTTPS else { return }
+            print(largeImage)
+            let taskTwo = session.dataTask(with: largeImage) { (data, _, error) in
+                defer { self.state = .isFinished }
+                if self.isCancelled { return }
+                if let error = error {
+                    NSLog("Error fetching data for \(self.photoReference): \(error)")
+                }
+                guard let data = data else { return }
+                self.imageDataTwo = data
+            }
+            taskTwo.resume()
+            dataTask = taskTwo
+        } 
     }
 
     override func cancel() {

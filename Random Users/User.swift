@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct User {
+struct User: Equatable {
     let title: String
     let first: String
     let last: String
