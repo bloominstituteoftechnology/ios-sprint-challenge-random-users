@@ -11,8 +11,11 @@ import UIKit
 class UsersTableViewController: UITableViewController {
     
     private let controller = APIController()
+    
+    
     private let thumbnailFetchQueue = OperationQueue()
     private let thumbnailCache = Cache<String, Data>()
+    
     private var operationDict: [String : ImageFetchOperation] = [:]
 
     var users: [User] = [] {

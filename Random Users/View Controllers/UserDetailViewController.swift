@@ -30,6 +30,22 @@ class UserDetailViewController: UIViewController {
         userNameLabel.text = user.getName()
         userPhoneLabel.text = user.phone
         userEmailLabel.text = user.email
+        
+        getImageAsync()
+    }
+    
+    private func getImageAsync() {
+        if let user = user {
+            DispatchQueue.main.async {
+                let imageURL = URL(string: user.picture.large)!
+                do {
+                    let image = try Data(contentsOf: imageURL)
+                    self.userImageView.image = UIImage(data: image)
+                } catch {
+                    NSLog("Error retrieving full sized image from server")
+                }
+            }
+        }
     }
 
 }
