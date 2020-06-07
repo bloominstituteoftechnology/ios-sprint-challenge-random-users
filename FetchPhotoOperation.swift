@@ -9,6 +9,7 @@
 import Foundation
 
 class FetchPhotoOperation: ConcurrentOperation {
+    
     // MARK: - PROPERTIES
     let userImageUrl: String
     var imageData: Data?

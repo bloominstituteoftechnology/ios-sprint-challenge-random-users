@@ -9,11 +9,11 @@
 import Foundation
 
 class UserController {
-    
+    // MARK: PROPERTIES
     private let baseUrl = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")
     private (set) var users: [User] = []
     var largeImageCache = Cache<Int, Data>()
-    
+    // MARK: FETCH USERS FUNC
     func fetchUsers(completion: @escaping (Error?) -> ()) {
         guard let url = baseUrl else { return }
         
