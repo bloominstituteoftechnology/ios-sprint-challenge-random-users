@@ -14,6 +14,11 @@
 		B4B0073F248AAF9B002ED086 /* PeopleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B0073E248AAF9B002ED086 /* PeopleCell.swift */; };
 		B4B00743248AB157002ED086 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B00742248AB157002ED086 /* UserController.swift */; };
 		B4B00745248AB1A7002ED086 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B00744248AB1A7002ED086 /* User.swift */; };
+		B4B0074D248BE08A002ED086 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B0074C248BE08A002ED086 /* Cache.swift */; };
+		B4B0074F248BE0BD002ED086 /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B0074E248BE0BD002ED086 /* FetchPhotoOperation.swift */; };
+		B4B00751248BE0F9002ED086 /* PeopleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B00750248BE0F9002ED086 /* PeopleDetailViewController.swift */; };
+		B4B00753248BE141002ED086 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B00752248BE141002ED086 /* ConcurrentOperation.swift */; };
+		B4B00757248BE1F3002ED086 /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B00756248BE1F3002ED086 /* UserTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,11 @@
 		B4B0073E248AAF9B002ED086 /* PeopleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PeopleCell.swift; path = "Random Users/Resources/PeopleCell.swift"; sourceTree = SOURCE_ROOT; };
 		B4B00742248AB157002ED086 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		B4B00744248AB1A7002ED086 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B4B0074C248BE08A002ED086 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		B4B0074E248BE0BD002ED086 /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = SOURCE_ROOT; };
+		B4B00750248BE0F9002ED086 /* PeopleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleDetailViewController.swift; sourceTree = "<group>"; };
+		B4B00752248BE141002ED086 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
+		B4B00756248BE1F3002ED086 /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +89,14 @@
 		9D5CCA56214231E400224681 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
+				B4B00756248BE1F3002ED086 /* UserTableViewController.swift */,
+				B4B0074E248BE0BD002ED086 /* FetchPhotoOperation.swift */,
+				B4B00752248BE141002ED086 /* ConcurrentOperation.swift */,
+				B4B00750248BE0F9002ED086 /* PeopleDetailViewController.swift */,
 				B4B0073E248AAF9B002ED086 /* PeopleCell.swift */,
 				B4B00742248AB157002ED086 /* UserController.swift */,
 				B4B00744248AB1A7002ED086 /* User.swift */,
+				B4B0074C248BE08A002ED086 /* Cache.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -157,10 +172,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4B00753248BE141002ED086 /* ConcurrentOperation.swift in Sources */,
+				B4B00757248BE1F3002ED086 /* UserTableViewController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				B4B0074D248BE08A002ED086 /* Cache.swift in Sources */,
 				B4B00745248AB1A7002ED086 /* User.swift in Sources */,
 				B4B00743248AB157002ED086 /* UserController.swift in Sources */,
+				B4B00751248BE0F9002ED086 /* PeopleDetailViewController.swift in Sources */,
 				B4B0073F248AAF9B002ED086 /* PeopleCell.swift in Sources */,
+				B4B0074F248BE0BD002ED086 /* FetchPhotoOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
