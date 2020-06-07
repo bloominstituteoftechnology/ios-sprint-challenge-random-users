@@ -19,9 +19,21 @@ class UserViewCell: UITableViewCell {
         }
     }
     
+    var thumbnail: UIImage? {
+        didSet {
+            updateThumbnail()
+        }
+    }
+    
     private func updateView() {
         if let user = user {
-            
+            userNameLabel.text = user.getName()
+        }
+    }
+    
+    private func updateThumbnail() {
+        if let thumbnail = thumbnail {
+            userImageView.image = thumbnail
         }
     }
 }

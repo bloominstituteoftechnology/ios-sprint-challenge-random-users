@@ -35,17 +35,13 @@ class ImageFetchOperation: ConcurrentOperation {
             }
             
             self.image = data
+            self.state = .isFinished
         }
-        
-        if let task = imageFetchTask {
-            task.resume()
-        }
+        imageFetchTask?.resume()
     }
     
     override func cancel() {
-        if let task = imageFetchTask {
-            task.cancel()
-        }
+        imageFetchTask?.cancel()
     }
     
     

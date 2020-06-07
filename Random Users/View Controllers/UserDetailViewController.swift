@@ -19,19 +19,17 @@ class UserDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        updateView()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func updateView() {
+        guard let user = user else {
+            NSLog("User is null")
+            return
+        }
+        userNameLabel.text = user.getName()
+        userPhoneLabel.text = user.phone
+        userEmailLabel.text = user.email
     }
-    */
 
 }

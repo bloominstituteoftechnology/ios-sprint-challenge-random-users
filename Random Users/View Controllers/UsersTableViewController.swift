@@ -11,9 +11,9 @@ import UIKit
 class UsersTableViewController: UITableViewController {
     
     private let controller = APIController()
-    private let imageFetchQueue = OperationQueue()
+    private let thumbnailFetchQueue = OperationQueue()
     private let thumbnailCache = Cache<String, Data>()
-    private let operationDict: [String : ImageFetchOperation] = [:]
+    private var operationDict: [String : ImageFetchOperation] = [:]
 
     var users: [User] = [] {
         didSet {
@@ -23,7 +23,6 @@ class UsersTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         getUsers()
     }
 
@@ -42,6 +41,24 @@ class UsersTableViewController: UITableViewController {
         let userEmail = users[indexPath.row].email
         
         operationDict[userEmail]?.cancel()
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellIdentifier = "userCell"
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? UserViewCell else {
+            NSLog("The dequeued cell is not an instance of UserViewCell")
+            
+            let errorCell = UserViewCell()
+            errorCell.userNameLabel.text = "Error occured while generating table cell"
+            return errorCell
+        }
+        
+        let user = users[indexPath.row]
+        
+        setUpCell(user: user, forCell: cell)
+        
+        return cell
     }
 
     // MARK: - Navigation
@@ -65,7 +82,6 @@ class UsersTableViewController: UITableViewController {
             }
             
             let selectedUser = users[indexPath.row]
-            
             userDetailViewController.user = selectedUser
         default:
             NSLog("Unexpected segue indentifier: \(segue.identifier ?? "No segue available")")
@@ -79,7 +95,7 @@ class UsersTableViewController: UITableViewController {
             do {
                 let userResults = try result.get()
                 DispatchQueue.main.async {
-                    self.users = userResults.users
+                    self.users = userResults.results
                 }
             } catch {
                 NSLog("Error fetching users. Logging function called from UsersTableViewController")
@@ -92,6 +108,33 @@ class UsersTableViewController: UITableViewController {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
+    }
+    
+    private func setUpCell(user: User, forCell cell: UserViewCell) {
+        cell.user = user
+        
+        if let cachedThumbnailData = thumbnailCache.getValue(for: user.email) {
+            cell.thumbnail = UIImage(data: cachedThumbnailData)
+        }
+        
+        let thumbnailOperation = ImageFetchOperation(user)
+        operationDict[user.email] = thumbnailOperation
+        let cacheOperation = BlockOperation {
+            if let thumbnail = thumbnailOperation.image {
+                self.thumbnailCache.cache(for: user.email, value: thumbnail)
+            }
+        }
+        let updateCellOperation = BlockOperation {
+            DispatchQueue.main.async {
+                guard let image = thumbnailOperation.image else { return }
+                cell.thumbnail = UIImage(data: image)
+            }
+        }
+        
+        cacheOperation.addDependency(thumbnailOperation)
+        updateCellOperation.addDependency(thumbnailOperation)
+        
+        thumbnailFetchQueue.addOperations([thumbnailOperation, cacheOperation, updateCellOperation], waitUntilFinished: false)
     }
 
 }

@@ -13,7 +13,7 @@ class Cache<Key: Hashable, Value> {
     private var dict: [Key : Value] = [:]
     private let cacheQueue = DispatchQueue(label: "cacheQueue")
     
-    func cache(value: Value, for key: Key) {
+    func cache(for key: Key, value: Value) {
         cacheQueue.async {
             self.dict[key] = value
         }

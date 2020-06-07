@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MXi-9q-p3E">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -12,22 +12,23 @@
         <scene sceneID="FNA-5B-BHH">
             <objects>
                 <tableViewController id="9jo-yV-5Rf" customClass="UsersTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4yd-UJ-BI2">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4yd-UJ-BI2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="userCell" rowHeight="50" id="u8c-ky-9SO" customClass="UserViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="userCell" rowHeight="50" id="u8c-ky-9SO" customClass="UserViewCell" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="u8c-ky-9SO" id="kbf-Yb-4ys">
                                     <rect key="frame" x="0.0" y="0.0" width="348" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="00U-C8-IW8">
-                                            <rect key="frame" x="15" y="-39" width="50" height="128"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Lambda_Logo_Full" translatesAutoresizingMaskIntoConstraints="NO" id="00U-C8-IW8">
+                                            <rect key="frame" x="15" y="0.0" width="50" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="Lck-db-exz"/>
+                                                <constraint firstAttribute="width" secondItem="00U-C8-IW8" secondAttribute="height" multiplier="1:1" id="ht2-di-LwI"/>
                                                 <constraint firstAttribute="height" constant="50" id="uGg-Nb-kVL"/>
                                             </constraints>
                                         </imageView>
@@ -41,12 +42,13 @@
                                     <constraints>
                                         <constraint firstItem="aTa-D0-sUJ" firstAttribute="leading" secondItem="00U-C8-IW8" secondAttribute="trailing" constant="15" id="2Rd-iq-OTf"/>
                                         <constraint firstItem="aTa-D0-sUJ" firstAttribute="centerY" secondItem="kbf-Yb-4ys" secondAttribute="centerY" id="5Z2-eL-5nQ"/>
+                                        <constraint firstItem="00U-C8-IW8" firstAttribute="centerY" secondItem="kbf-Yb-4ys" secondAttribute="centerY" id="H4W-1p-hDu"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="aTa-D0-sUJ" secondAttribute="trailing" constant="15" id="Zcf-Wg-Nw7"/>
                                         <constraint firstItem="00U-C8-IW8" firstAttribute="leading" secondItem="kbf-Yb-4ys" secondAttribute="leading" constant="15" id="yes-7U-fNQ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="userImageView" destination="00U-C8-IW8" id="NX8-ZP-mio"/>
+                                    <outlet property="userImageView" destination="00U-C8-IW8" id="MtO-gN-Ep4"/>
                                     <outlet property="userNameLabel" destination="aTa-D0-sUJ" id="PWh-9j-L7j"/>
                                     <segue destination="Msp-PI-bg7" kind="show" identifier="showUserDetail" id="idm-VT-df1"/>
                                 </connections>
@@ -144,4 +146,7 @@
             <point key="canvasLocation" x="-1223" y="-549"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Lambda_Logo_Full" width="574" height="249"/>
+    </resources>
 </document>
