@@ -60,10 +60,10 @@ class UsersTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let user = fetchedUsers[indexPath.row]
-        operations[user.phoneNumber]?.cancel()
-    }
+//    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        let user = fetchedUsers[indexPath.row]
+//        operations[user.phoneNumber]?.cancel()
+//    }
     
     
     // MARK: - Navigation
