@@ -8,12 +8,11 @@
 
 import Foundation
 
-
 struct User: Codable {
     var name: Name
     var email: String
     var phone: String
-    var pictures: Picture
+    var picture: Picture
 }
 
 // MARK: - Nested Objects

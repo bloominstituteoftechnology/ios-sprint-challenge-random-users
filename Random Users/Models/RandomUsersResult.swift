@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct RandomUserResult: Codable {
+struct RandomUsersResult: Codable {
     var results: [User]
 }

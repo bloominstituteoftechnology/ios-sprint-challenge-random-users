@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class UsersTableViewCell: UITableViewCell {
 
     // MARK: - Properties
