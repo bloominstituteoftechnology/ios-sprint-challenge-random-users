@@ -44,7 +44,7 @@ class UsersTableViewController: UITableViewController {
             return
         }
         
-        let fetchOp = FetchPhotoOperation(user: user) // change to the
+        let fetchOp = FetchPhotoOperation(user: user) 
         
 
         let cacheOp = BlockOperation {
@@ -55,9 +55,9 @@ class UsersTableViewController: UITableViewController {
         
 
         let completionOp = BlockOperation {
-            defer { self.operations.removeValue(forKey: user.email) } //switch id to email or phone numbers same as funcs above
+            defer { self.operations.removeValue(forKey: user.email) }
             if let currentIndexPath = self.tableView.indexPath(for: cell),
-                // refering to the for item at indexpath that is passed in above, not in the line of code below
+                
                 currentIndexPath != indexPath {
                 print("Got image for reused cell")
                 return

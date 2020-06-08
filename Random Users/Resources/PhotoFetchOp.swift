@@ -14,7 +14,6 @@ class FetchPhotoOperation: ConcurrentOperation {
     
     
     let user: User
-    // private set means it can only be changed inside of this class
     private(set) var imageData: Data?
     private let session: URLSession
     private var dataTask: URLSessionDataTask?
