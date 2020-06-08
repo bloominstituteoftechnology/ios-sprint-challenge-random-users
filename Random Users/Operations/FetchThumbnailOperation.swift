@@ -2,7 +2,7 @@
 //  FetchThumbnailOperation.swift
 //  Random Users
 //
-//  Created by Cody Morley on 6/6/20.
+//  Created by Cody Morley on 6/7/20.
 //  Copyright © 2020 Erica Sadun. All rights reserved.
 //
 
@@ -14,26 +14,30 @@ class FetchThumbnailOperation: ConcurrentOperation {
     var imageData: Data?
     var imageTask: URLSessionTask?
     
+    
+    //MARK: - Initialiazers -
     init(user: User) {
         self.user = user
         super.init()
     }
     
+    
+    //MARK: - Actions -
     override func start() {
         state = .isExecuting
-        
-        let thumbnailURL = user.thumbnail
+        let thumbnailURL = user.thumbnailImage
         let fetchThumbnail = URLSession.shared.dataTask(with: thumbnailURL) { data, _, error in
+            defer { self.state = .isFinished }
             if let error = error {
-                NSLog("Something went horribly wrong during fetch operation. Here's some data about what happened: \(error) \(error.localizedDescription)")
+                NSLog("Something went terribly wrong during the FetchThumbnailOperation for user: \(self.user.name) Here's some more info: \(error) \(error.localizedDescription)")
                 return
             }
             
-            guard let data = data else {
-                NSLog("No data returned for image: \(thumbnailURL)")
+            guard let thumbnailData = data else {
+                NSLog("No thumbnail data returned from url: \(thumbnailURL)")
                 return
             }
-            self.imageData = data
+            self.imageData = thumbnailData
         }
         fetchThumbnail.resume()
         imageTask = fetchThumbnail
@@ -42,7 +46,7 @@ class FetchThumbnailOperation: ConcurrentOperation {
     override func cancel() {
         imageTask?.cancel()
         super.cancel()
-        print("Canceled a thumbnail fetch operation.")
+        print("Canceled thumbnail fetch operation for: \(self.user.name)")
     }
     
     
