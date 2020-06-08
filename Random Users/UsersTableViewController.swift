@@ -36,23 +36,12 @@ class UsersTableViewController: UITableViewController {
                 }
             }
         }
-        
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        tableView.reloadData()
-    }
+  
     
     @IBAction func addUsersButtonTapped(_ sender: Any) {
-        //optional if want to keep loading more users
-        networkClient.loadUsers { (result) in
-            
-            if let users = try? result.get() {
-                DispatchQueue.main.async {
-                    self.usersArray = users
-                }
-            }
-        }
+        
     }
     
     
@@ -80,6 +69,14 @@ class UsersTableViewController: UITableViewController {
         
         
         return cell
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let photoReference = usersArray[indexPath.row]
+        guard let id = Int(photoReference.id) else { return }
+        operations[id]?.cancel()
+        print("photo was cancelled")
     }
     
     private func loadImage(forCell cell: UserCustomTableViewCell, forCellAt indexPath: IndexPath) {
@@ -127,50 +124,33 @@ class UsersTableViewController: UITableViewController {
         
     }
     
-//    func loadLargeImage(forUser user: User, forImageAt indexPath: IndexPath) {
-//        
-//        let photoReference = usersArray[indexPath.row]
-//        
-//        guard let id = Int(photoReference.phone) else { return }
-//        
-//        if let cachedData = cache.value(key: id),
-//            let image = UIImage(data: cachedData) {
-//            
-//            cell.userImageInCell.image = image
-//            return
-//            
-//        }
-//        
-//        let fetchOp = FetchPhotoOperation(photoReference: photoReference)
-//        
-//        let cacheOp = BlockOperation {
-//            if let data = fetchOp.imageData {
-//                self.cache.cache(value: data, key: id)
-//            }
-//        }
-//        
-//        let completionOp = BlockOperation {
-//            defer { self.operations.removeValue(forKey: id) }
-//            if let currentIndexPath = self.tableView.indexPath(for: cell),
-//                currentIndexPath != indexPath {
-//                print("Got image for reused cell")
+//        func loadLargeImage(forUser user: User) {
+//
+//            guard let id = Int(user.id) else { return }
+//
+//            if let cachedData = cache.value(key: id),
+//                let image = UIImage(data: cachedData) {
+//
+//                userImage.image = image
 //                return
-//            }
-//            if let data = fetchOp.imageData {
-//                cell.userImageInCell.image = UIImage(data: data)
+//
+//            } else {
+//                let fetchOp = FetchLargePhoto(photoReference: user)
+//
+//                    let completionOp = BlockOperation {
+//                        guard user == self.user else { return }
+//
+//                        guard let data = fetchOp.imageData else { return }
+//
+//                        self.userImage.image = UIImage(data: data)
+//
+//                        }
+//
+//                    completionOp.addDependency(fetchOp)
+//
+//                    OperationQueue.main.addOperations([fetchOp, completionOp], waitUntilFinished: false)
 //            }
 //        }
-//        
-//        cacheOp.addDependency(fetchOp)
-//        completionOp.addDependency(fetchOp)
-//        
-//        photoFetchQueue.addOperation(fetchOp)
-//        photoFetchQueue.addOperation(cacheOp)
-//        OperationQueue.main.addOperation(completionOp)
-//        
-//        operations[id] = fetchOp
-//        
-//    }
     
     
     // MARK: - Navigation
