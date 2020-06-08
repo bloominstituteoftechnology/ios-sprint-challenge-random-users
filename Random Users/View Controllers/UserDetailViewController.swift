@@ -11,6 +11,7 @@ import UIKit
 class UserDetailViewController: UIViewController {
 
     var randomUsersApiController: RandomUsersApiController?
+    var user: User?
     
     @IBOutlet weak var largePhotoImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!

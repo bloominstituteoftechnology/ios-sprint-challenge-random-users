@@ -21,8 +21,8 @@ class UsersTableViewController: UITableViewController {
         self.randomUsersApiController.fetchRandomUserDetails {_ in
             DispatchQueue.main.async { self.tableView.reloadData() }
         }
-
-}
+        
+    }
     
     // MARK: - Table view data source
     
@@ -75,31 +75,29 @@ class UsersTableViewController: UITableViewController {
         operations[user.email] = fetchOp
         
     }
-        
-         override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserTableViewCell else { return UserTableViewCell() }
     
-            let user = randomUsersApiController.users[indexPath.row]
-            cell.user = user
-            loadImage(forCell: cell, forItemAt: indexPath)
-            
-         return cell
-         }
-         
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserTableViewCell else { return UserTableViewCell() }
+        
+        let user = randomUsersApiController.users[indexPath.row]
+        cell.user = user
+        loadImage(forCell: cell, forItemAt: indexPath)
+        
+        return cell
+    }
+    
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let thumbnailReference = randomUsersApiController.users[indexPath.row]
         operations[thumbnailReference.thumbnailImage.absoluteString]?.cancel()
     }
     
-         // MARK: - Navigation
-         
-         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//            if segue.identifier == "UserDetailShowSegue" {
-//                guard let detailVC = segue.destination as?
-//            }
-         // Get the new view controller using segue.destination.
-         // Pass the selected object to the new view controller.
-         }
-         
-        
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "UserDetailShowSegue" {
+            guard let detailVC = segue.destination as? UserDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow else { return }
+            detailVC.user = randomUsersApiController.users[indexPath.row]
+        }
+    }
 }
