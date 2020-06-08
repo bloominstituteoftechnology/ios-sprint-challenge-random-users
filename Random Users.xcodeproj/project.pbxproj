@@ -15,6 +15,9 @@
 		992F0136248E1BCB00F08742 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992F0135248E1BCB00F08742 /* DetailViewController.swift */; };
 		992F0138248E1BDE00F08742 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992F0137248E1BDE00F08742 /* UserTableViewCell.swift */; };
 		992F013A248E1C8300F08742 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992F0139248E1C8300F08742 /* User.swift */; };
+		992F013C248E1D3100F08742 /* UserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992F013B248E1D3100F08742 /* UserClient.swift */; };
+		992F013E248E1E5400F08742 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992F013D248E1E5400F08742 /* Cache.swift */; };
+		992F0140248E1E6200F08742 /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992F013F248E1E6200F08742 /* FetchPhotoOperation.swift */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +32,9 @@
 		992F0135248E1BCB00F08742 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		992F0137248E1BDE00F08742 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		992F0139248E1C8300F08742 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		992F013B248E1D3100F08742 /* UserClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClient.swift; sourceTree = "<group>"; };
+		992F013D248E1E5400F08742 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		992F013F248E1E6200F08742 /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,6 +99,7 @@
 		992F0131248E1A2400F08742 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				992F013B248E1D3100F08742 /* UserClient.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -120,6 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				992F013D248E1E5400F08742 /* Cache.swift */,
+				992F013F248E1E6200F08742 /* FetchPhotoOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -197,8 +206,11 @@
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				992F0140248E1E6200F08742 /* FetchPhotoOperation.swift in Sources */,
+				992F013E248E1E5400F08742 /* Cache.swift in Sources */,
 				992F013A248E1C8300F08742 /* User.swift in Sources */,
 				992F0134248E1B9300F08742 /* UsersTableViewController.swift in Sources */,
+				992F013C248E1D3100F08742 /* UserClient.swift in Sources */,
 				992F0136248E1BCB00F08742 /* DetailViewController.swift in Sources */,
 				992F0138248E1BDE00F08742 /* UserTableViewCell.swift in Sources */,
 			);

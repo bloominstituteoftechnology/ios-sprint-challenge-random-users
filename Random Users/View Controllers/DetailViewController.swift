@@ -15,22 +15,37 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
-
+    var user: User?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        updateViews()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func updateViews() {
+        guard let user = user else { return }
+        print("\(user.name.first)")
+        
+        let image = user.picture.large
+        
+        nameLabel.text = "Name: " + "\(user.name.first)" + " " + "\(user.name.last)"
+        emailLabel.text = "Email: \(user.email)"
+        phoneLabel.text = "Phone Number: \(user.phone)"
+        
+        URLSession.shared.dataTask(with: image) { data, _, error in
+            
+            if let error = error {
+                NSLog("Error fetching image: \(error)")
+                return
+            }
+            
+            guard let data = data else { return }
+            DispatchQueue.main.async {
+                self.userImageView.image = UIImage(data: data)
+            }
+        }
+        .resume()
     }
-    */
-
 }
