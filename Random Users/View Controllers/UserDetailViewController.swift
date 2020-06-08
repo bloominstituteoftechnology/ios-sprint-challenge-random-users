@@ -20,22 +20,21 @@ class UserDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        updateViews()
     }
     
     func updateViews() {
+        nameLabel.text = user?.name
+        phoneNumberLabel.text = user?.phone
+        emailLabel.text = user?.email
         
+        do {
+            guard let url = user?.largeImage else { return }
+            let data = try Data(contentsOf: url)
+            let image = UIImage(data: data)
+            largePhotoImageView.image = image
+        } catch {
+            print("\(error)")
+        }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
