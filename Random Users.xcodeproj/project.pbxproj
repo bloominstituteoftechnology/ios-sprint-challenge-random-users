@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5A56BB6D248CA3E000BF3FF3 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56BB6C248CA3E000BF3FF3 /* UsersTableViewController.swift */; };
+		5A035830248DBA790000E061 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A03582F248DBA790000E061 /* UsersTableViewController.swift */; };
 		5A56BB71248CA47500BF3FF3 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56BB70248CA47500BF3FF3 /* UserDetailViewController.swift */; };
 		5A56BB74248CA4FD00BF3FF3 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56BB73248CA4FD00BF3FF3 /* UserTableViewCell.swift */; };
 		5A56BB79248CC4A300BF3FF3 /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56BB78248CC4A300BF3FF3 /* FetchPhotoOperation.swift */; };
@@ -22,7 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5A56BB6C248CA3E000BF3FF3 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
+		5A03582F248DBA790000E061 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		5A56BB70248CA47500BF3FF3 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		5A56BB73248CA4FD00BF3FF3 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		5A56BB78248CC4A300BF3FF3 /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
@@ -52,8 +52,8 @@
 		5A56BB6B248CA3BE00BF3FF3 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5A56BB6C248CA3E000BF3FF3 /* UsersTableViewController.swift */,
 				5A56BB70248CA47500BF3FF3 /* UserDetailViewController.swift */,
+				5A03582F248DBA790000E061 /* UsersTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -206,12 +206,12 @@
 			files = (
 				5A56BB7C248CC69900BF3FF3 /* Cache.swift in Sources */,
 				5A56BB74248CA4FD00BF3FF3 /* UserTableViewCell.swift in Sources */,
+				5A035830248DBA790000E061 /* UsersTableViewController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				5A56BB7E248CCA5D00BF3FF3 /* User.swift in Sources */,
 				5A56BB71248CA47500BF3FF3 /* UserDetailViewController.swift in Sources */,
 				5A56BB79248CC4A300BF3FF3 /* FetchPhotoOperation.swift in Sources */,
-				5A56BB6D248CA3E000BF3FF3 /* UsersTableViewController.swift in Sources */,
 				5ACFA7E2248CD228003CB269 /* APIController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
