@@ -12,6 +12,13 @@
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
 		8ED6A9922140178C00FC395A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
+		E95982A1248E85EC00BF5637 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95982A0248E85EC00BF5637 /* UserDetailViewController.swift */; };
+		E98BAF23239C392D00A6712A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98BAF22239C392D00A6712A /* User.swift */; };
+		E98BAF25239CE7A500A6712A /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98BAF24239CE7A400A6712A /* APIClient.swift */; };
+		E9D1C0FE23F365ED006EDDC6 /* usersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D1C0FD23F365ED006EDDC6 /* usersTableViewController.swift */; };
+		E9E86C2D23FCC094001CCD21 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E86C2C23FCC094001CCD21 /* Cache.swift */; };
+		E9E86C2F23FDE442001CCD21 /* PhotoFetchOp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E86C2E23FDE442001CCD21 /* PhotoFetchOp.swift */; };
+		E9E86C3123FF2BBB001CCD21 /* userTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E86C3023FF2BBB001CCD21 /* userTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +29,13 @@
 		8ED6A9912140178C00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ED6A9932140178C00FC395A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
+		E95982A0248E85EC00BF5637 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		E98BAF22239C392D00A6712A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E98BAF24239CE7A400A6712A /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		E9D1C0FD23F365ED006EDDC6 /* usersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = usersTableViewController.swift; sourceTree = "<group>"; };
+		E9E86C2C23FCC094001CCD21 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		E9E86C2E23FDE442001CCD21 /* PhotoFetchOp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFetchOp.swift; sourceTree = "<group>"; };
+		E9E86C3023FF2BBB001CCD21 /* userTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +79,13 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A98B2140178A00FC395A /* Main.storyboard */,
+				E9E86C3023FF2BBB001CCD21 /* userTableViewCell.swift */,
+				E98BAF22239C392D00A6712A /* User.swift */,
+				E98BAF24239CE7A400A6712A /* APIClient.swift */,
+				E9D1C0FD23F365ED006EDDC6 /* usersTableViewController.swift */,
+				E95982A0248E85EC00BF5637 /* UserDetailViewController.swift */,
+				E9E86C2E23FDE442001CCD21 /* PhotoFetchOp.swift */,
+				E9E86C2C23FCC094001CCD21 /* Cache.swift */,
 				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
 				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
 				8ED6A9932140178C00FC395A /* Info.plist */,
@@ -151,8 +172,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9D1C0FE23F365ED006EDDC6 /* usersTableViewController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				E95982A1248E85EC00BF5637 /* UserDetailViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				E98BAF23239C392D00A6712A /* User.swift in Sources */,
+				E9E86C3123FF2BBB001CCD21 /* userTableViewCell.swift in Sources */,
+				E9E86C2D23FCC094001CCD21 /* Cache.swift in Sources */,
+				E98BAF25239CE7A500A6712A /* APIClient.swift in Sources */,
+				E9E86C2F23FDE442001CCD21 /* PhotoFetchOp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,13 +325,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = JB43662N59;
 				INFOPLIST_FILE = "$(SRCROOT)/Random Users/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.LambdaSchool.RandomUsers;
+				PRODUCT_BUNDLE_IDENTIFIER = com.LambdaSchool.RandomUserss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -315,13 +343,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = JB43662N59;
 				INFOPLIST_FILE = "$(SRCROOT)/Random Users/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.LambdaSchool.RandomUsers;
+				PRODUCT_BUNDLE_IDENTIFIER = com.LambdaSchool.RandomUserss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
