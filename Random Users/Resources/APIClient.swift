@@ -9,55 +9,60 @@
 
 import Foundation
 
-class userClient{
+class UsersApiController {
+    enum HTTPMethod: String {
+        case get = "GET"
+    }
+    
+    enum NetworkError: Error {
+        case noData
+        case badData
+        case noAuth
+        case badAuth
+        case otherError
+        case noDecode
+        case badImage
+    }
+    
+    // MARK: - Properties -
+    
+    var users: [User] = []
+    private let baseURL = URL(string: "https://randomuser.me/api/?results=1000")!
+    private lazy var jsonDecoder = JSONDecoder()
+    
+    func fetchUserDetails(completion: @escaping (Result<[User], NetworkError>) -> Void) {
+        let userURL = baseURL
+        var request = URLRequest(url: userURL)
+        request.httpMethod = HTTPMethod.get.rawValue
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("Error receiving user details \(error)")
+                completion(.failure(.otherError))
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse,
+                response.statusCode != 200 {
+                print(response)
+                completion(.failure(.badAuth))
+                return
+            }
+            
+            guard let data = data else {
+                completion(.failure(.badData))
+                return
+            }
+            
+            do {
+                self.users = try Array(self.jsonDecoder.decode(Results.self, from: data).results)
+                print(self.users.count)
+                completion(.success(self.users))
+            } catch {
+                print("Error decoding user details object: \(error)")
+                completion(.failure(.noDecode))
+            }
+        }.resume()
+    }
     
 }
-    
-//        enum HTTPMethod: String {
-//            case get = "GET"
-//            case post = "POST"
-//        }
-//
-//        enum NetworkError: Error {
-//            case otherError
-//            case badData
-//            case noDecode
-//        }
-//
-//        private let baseUrl = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
-//
-//        var users: [results] = []
-//        var user: results?
-//
-////
-//        func Search(completion: @escaping () -> ()) {
-//
-//
-//            var request = URLRequest(url: baseUrl)
-//            request.httpMethod = HTTPMethod.get.rawValue
-//
-//            URLSession.shared.dataTask(with: request) { (data, results, error) in
-//                if let error = error {
-//                    print("ERROR receiving data for this pokemon \(error)")
-//                    completion()
-//                }
-//
-//                guard let data = data else {
-//                    completion()
-//                    return
-//                }
-//                let decoder = JSONDecoder()
-//                do{
-//                    let pokemonData = try decoder.decode(user.self, from: data)
-//                    self.user = Data
-//                    completion()
-//                } catch {
-//                    print("ERROR decoding the pokemon \(error)")
-//                    completion()
-//                    return
-//                }
-//            }.resume()
-//        }
-//    }
-//
-

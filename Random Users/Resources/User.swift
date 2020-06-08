@@ -8,70 +8,51 @@
 
 import Foundation
 
-struct userlist: Codable {
+import Foundation
+
+struct Results: Decodable {
+    var results: [User]
+}
+struct User: Decodable {
+    var name: String
+    var email: String
+    var phone: String
+    var thumbnailImage: URL
+    var largeImage: URL
     
-    enum resultsKeys: String, CodingKey {
-    case results
+    enum ContactKeys: String, CodingKey {
+        case name
+        case email
+        case phone
+        case picture
         
-        enum userKeys: String, CodingKey {
-            case name
-            case email
-            case phone
-            case picture
-        
-            enum nameKeys: String, CodingKey {
-                case first
-                case last
-            }
-            enum pictureKeys: String, CodingKey {
-                case large
-                case medium
-                case thumbnail
-            }
-            
+        enum NameKeys: String, CodingKey {
+            case title
+            case first
+            case last
+        }
+        enum PictureKeys: String, CodingKey {
+            case large
+            case medium
+            case thumbnail
         }
     }
     
-    let results: [User]
-    
-    struct User: Codable {
-    var name: Name
-    var email: String
-    var phone: String
-    var picture: Picture
-    
-}
-    
-    struct Name: Codable {
-        var first: String
-        var last: String
-    }
-
-struct Picture: Codable {
-    var large: URL
-    var medium: URL
-    var thumbnail: URL
-}
-
     init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: resultsKeys.self)
+        let container = try decoder.container(keyedBy: ContactKeys.self)
+        let nameContainer = try container.nestedContainer(keyedBy: ContactKeys.NameKeys.self, forKey: .name)
+        let title = try nameContainer.decode(String.self, forKey: .title)
+        let first = try nameContainer.decode(String.self, forKey: .first)
+        let last = try nameContainer.decode(String.self, forKey: .last)
+        let pictureContainer = try container.nestedContainer(keyedBy: ContactKeys.PictureKeys.self, forKey: .picture)
+        let large = try pictureContainer.decode(String.self, forKey: .large)
+        let thumbnail = try pictureContainer.decode(String.self, forKey: .thumbnail)
         
-        results = try container.decode
+        name = "\(title) \(first) \(last)"
+        email = try container.decode(String.self, forKey: .email)
+        phone = try container.decode(String.self, forKey: .phone)
+        
+        thumbnailImage = URL(string: thumbnail)!
+        largeImage = URL(string: large)!
     }
-    
 }
-
-//"results": [
-//  {
-//    "name": {
-//      "title": "Mr",
-//      "first": "Anton",
-//      "last": "Rasmussen"
-//    },
-//    "email": "anton.rasmussen@example.com",
-//    "phone": "53725325",
-//    "picture": {
-//      "large": "https://randomuser.me/api/portraits/men/52.jpg",
-//      "medium": "https://randomuser.me/api/portraits/med/men/52.jpg",
-//      "thumbnail": "https://randomuser.me/api/portraits/thumb/men/52.jpg"
-//    }
