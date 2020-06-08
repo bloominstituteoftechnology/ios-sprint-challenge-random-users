@@ -86,7 +86,7 @@ class UsersTableViewController: UITableViewController {
         
         let photoReference = usersArray[indexPath.row]
         
-        guard let id = Int(photoReference.phone) else { return }
+        guard let id = Int(photoReference.id) else { return }
         
         if let cachedData = cache.value(key: id),
             let image = UIImage(data: cachedData) {

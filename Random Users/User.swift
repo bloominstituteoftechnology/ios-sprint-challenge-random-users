@@ -15,6 +15,7 @@ struct User: Equatable {
     let last: String
     let email: String
     let phone: String
+    let id: String
     //let postCode: String
     let thumbnail: URL
     let large: URL
@@ -26,6 +27,8 @@ struct User: Equatable {
         guard let last = name.string("last") else { return nil }
         guard let email = json.string("email") else { return nil }
         guard let phone = json.string("phone") else { return nil }
+        guard let id = json.dict("id") else { return nil }
+        guard let value = id.string("value") else { return nil }
         //guard let location = json.dict("location") else { return nil }
         //guard let postcode = location.string("postcode") else { return nil }
         guard let thumbnail = json.dict("picture")?.string("thumbnail") else { return nil }
@@ -38,6 +41,7 @@ struct User: Equatable {
         self.last = last
         self.email = email
         self.phone = phone
+        self.id = value
         //self.postCode = postcode
         self.thumbnail = thumbnailURL
         self.large = largeURL

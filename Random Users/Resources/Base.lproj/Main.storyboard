@@ -103,20 +103,20 @@
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nVJ-QP-gSc">
-                                <rect key="frame" x="86" y="327" width="242" height="242"/>
+                                <rect key="frame" x="10" y="108" width="394" height="250"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="nVJ-QP-gSc" secondAttribute="height" multiplier="1:1" id="VSz-1s-qa8"/>
+                                    <constraint firstAttribute="height" constant="250" id="WCu-Ux-K4T"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="nVJ-QP-gSc" firstAttribute="centerX" secondItem="HVY-4R-FgW" secondAttribute="centerX" id="1HZ-Hq-EB2"/>
                             <constraint firstItem="ZWI-Vu-npm" firstAttribute="bottom" secondItem="um2-2R-8oX" secondAttribute="bottom" constant="8" id="EbC-g6-tKI"/>
+                            <constraint firstItem="nVJ-QP-gSc" firstAttribute="leading" secondItem="ZWI-Vu-npm" secondAttribute="leading" constant="10" id="MYV-w4-SQF"/>
+                            <constraint firstItem="ZWI-Vu-npm" firstAttribute="trailing" secondItem="nVJ-QP-gSc" secondAttribute="trailing" constant="10" id="Nyn-gh-V0J"/>
                             <constraint firstItem="um2-2R-8oX" firstAttribute="leading" secondItem="ZWI-Vu-npm" secondAttribute="leading" constant="8" id="elx-b2-yOU"/>
-                            <constraint firstItem="nVJ-QP-gSc" firstAttribute="centerY" secondItem="HVY-4R-FgW" secondAttribute="centerY" id="q1q-UQ-Wqj"/>
+                            <constraint firstItem="nVJ-QP-gSc" firstAttribute="top" secondItem="ZWI-Vu-npm" secondAttribute="top" constant="20" id="mid-z9-FE1"/>
                             <constraint firstItem="ZWI-Vu-npm" firstAttribute="trailing" secondItem="um2-2R-8oX" secondAttribute="trailing" constant="8" id="s0c-De-Tet"/>
-                            <constraint firstItem="nVJ-QP-gSc" firstAttribute="top" secondItem="ZWI-Vu-npm" secondAttribute="top" constant="239" id="vB4-fU-k3m"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZWI-Vu-npm"/>
                     </view>

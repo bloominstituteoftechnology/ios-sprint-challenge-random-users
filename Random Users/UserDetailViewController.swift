@@ -47,7 +47,7 @@ class UserDetailViewController: UIViewController {
 
     func loadLargeImage(forUser user: User) {
                 
-        guard let id = Int(user.phone) else { return }
+        guard let id = Int(user.id) else { return }
         
         if let cachedData = cache.value(key: id),
             let image = UIImage(data: cachedData) {
