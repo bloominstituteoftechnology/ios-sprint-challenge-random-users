@@ -35,7 +35,7 @@
                                                         <constraint firstAttribute="width" constant="50" id="bWa-xn-vnM"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZ6-D7-cdN">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZ6-D7-cdN">
                                                     <rect key="frame" x="58" y="0.0" width="316" height="50"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -52,7 +52,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="WCQ-Mq-2wn" kind="show" id="6qN-Vg-YDX"/>
+                                    <outlet property="nameLabel" destination="vZ6-D7-cdN" id="jG1-My-g7R"/>
+                                    <outlet property="thumbnailImageView" destination="r61-IM-1VD" id="Zfp-J3-73E"/>
+                                    <segue destination="WCQ-Mq-2wn" kind="show" identifier="UserDetailShowSegue" id="6qN-Vg-YDX"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -124,6 +126,12 @@
                         <viewLayoutGuide key="safeArea" id="fAM-Pz-Yol"/>
                     </view>
                     <navigationItem key="navigationItem" id="b5u-lZ-PRB"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="ChU-DC-r9r" id="Abl-Y7-msS"/>
+                        <outlet property="largePhotoImageView" destination="5Di-Wq-sc4" id="9Ed-dU-roS"/>
+                        <outlet property="nameLabel" destination="r8l-Tc-4eK" id="PqE-Tp-UO6"/>
+                        <outlet property="phoneNumberLabel" destination="kwT-6D-4P6" id="iDm-vQ-TQY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ak4-qr-0LC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -149,6 +157,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6fZ-KZ-cNo"/>
+        <segue reference="6qN-Vg-YDX"/>
     </inferredMetricsTieBreakers>
 </document>

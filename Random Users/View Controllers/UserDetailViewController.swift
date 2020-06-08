@@ -10,12 +10,22 @@ import UIKit
 
 class UserDetailViewController: UIViewController {
 
+    var randomUsersApiController: RandomUsersApiController?
+    
+    @IBOutlet weak var largePhotoImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
+    func updateViews() {
+        
+    }
 
     /*
     // MARK: - Navigation
