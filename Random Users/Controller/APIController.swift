@@ -29,7 +29,7 @@ class RandomUsersApiController {
     private let baseURL = URL(string: "https://randomuser.me/api/?results=1000")!
     private lazy var jsonDecoder = JSONDecoder()
     
-    func fetchRandomUserDetails(completion: @escaping (Result<User, NetworkError>) -> Void) {
+    func fetchRandomUserDetails(completion: @escaping (Result<[User], NetworkError>) -> Void) {
         let userURL = baseURL
         var request = URLRequest(url: userURL)
         request.httpMethod = HTTPMethod.get.rawValue
