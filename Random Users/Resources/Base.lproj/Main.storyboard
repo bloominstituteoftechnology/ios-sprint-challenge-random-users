@@ -67,7 +67,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kLS-tj-jlc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3739.130434782609" y="-21.428571428571427"/>
+            <point key="canvasLocation" x="3823" y="-21"/>
         </scene>
         <!--User Detail View Controller-->
         <scene sceneID="D79-Vt-mXs">
@@ -85,7 +85,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="psk-82-zoc">
-                                <rect key="frame" x="57.000000000000007" y="428" width="114.66666666666669" height="77"/>
+                                <rect key="frame" x="149.66666666666666" y="428" width="114.66666666666666" height="77"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8l-Tc-4eK">
                                         <rect key="frame" x="0.0" y="0.0" width="114.66666666666667" height="20.333333333333332"/>
@@ -111,10 +111,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="5Di-Wq-sc4" firstAttribute="top" secondItem="fAM-Pz-Yol" secondAttribute="top" constant="20" id="4rX-6a-5ed"/>
-                            <constraint firstItem="psk-82-zoc" firstAttribute="leading" secondItem="5Di-Wq-sc4" secondAttribute="leading" id="4zm-kf-s8q"/>
                             <constraint firstItem="psk-82-zoc" firstAttribute="top" secondItem="5Di-Wq-sc4" secondAttribute="bottom" constant="20" id="5TH-6p-xf7"/>
                             <constraint firstItem="fAM-Pz-Yol" firstAttribute="trailing" secondItem="5Di-Wq-sc4" secondAttribute="trailing" constant="57" id="HaN-GZ-v9M"/>
-                            <constraint firstItem="5Di-Wq-sc4" firstAttribute="centerX" secondItem="3EN-2s-3B9" secondAttribute="centerX" id="OxK-Wl-C6S"/>
+                            <constraint firstItem="psk-82-zoc" firstAttribute="centerX" secondItem="5Di-Wq-sc4" secondAttribute="centerX" id="eEh-mJ-K8C"/>
                             <constraint firstItem="5Di-Wq-sc4" firstAttribute="leading" secondItem="fAM-Pz-Yol" secondAttribute="leading" constant="57" id="jMB-yj-ubo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fAM-Pz-Yol"/>
@@ -129,7 +128,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ak4-qr-0LC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4440.579710144928" y="-21.428571428571427"/>
+            <point key="canvasLocation" x="4739" y="-21"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="z2r-Mp-ds8">

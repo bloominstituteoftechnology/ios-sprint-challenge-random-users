@@ -37,24 +37,23 @@ class UsersTableViewController: UITableViewController {
     private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
         let user = APIController.users[indexPath.row]
         
-        // Check if there is cached data
+        
         if let cachedData = cache.value(key: user.email),
             let image = UIImage(data: cachedData) {
             cell.imageView?.image = image
             return
         }
         
-        // Start our fetch operations
         let fetchOp = FetchPhotoOperation(user: user) // change to the
         
-        // saving
+
         let cacheOp = BlockOperation {
             if let data = fetchOp.imageData {
                 self.cache.cache(value: data, key: user.email)
             }
         }
         
-        // populating the image
+
         let completionOp = BlockOperation {
             defer { self.operations.removeValue(forKey: user.email) } //switch id to email or phone numbers same as funcs above
             if let currentIndexPath = self.tableView.indexPath(for: cell),
