@@ -14,9 +14,6 @@ class UsersTableViewController: UITableViewController {
     let cache = Cache<URL, Data>()
     var fetchOperation: [URL : FetchPhotoOperation] = [:]
     let photoFetchQueue = OperationQueue()
-    let queue = DispatchQueue(label: "UsersCancelQueue")
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,19 +39,16 @@ class UsersTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserTableViewCell else { return UITableViewCell() }
 
         let user = usersClient.users[indexPath.row]
-        cell.nameLabel.text = "\(user.name.first) \(user.name.last)"
-        loadImage(forCell: cell, forItemAt: indexPath)
-        print("updated")
-        
+        cell.user = user
+        loadImage(forCell: cell , forItemAt: indexPath)
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
         let user = usersClient.users[indexPath.row]
-        let operation = fetchOperation[user.picture.thumbnail]
-        queue.sync {
-            operation?.cancel()
-        }
+        guard let operation = fetchOperation[user.picture.thumbnail] else { return }
+        operation.cancel()
     }
     
        private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
@@ -67,13 +61,13 @@ class UsersTableViewController: UITableViewController {
             cell.userImageView.image = image
         }
             
-        let photoFetchOperation = FetchPhotoOperation(user: user)
+        let fetchOp = FetchPhotoOperation(user: user)
         
         let storeData = BlockOperation {
-            guard let data = photoFetchOperation.imageData else { return }
+            guard let data = fetchOp.imageData else { return }
             self.cache.cache(value: data, for: url)
         }
-            let updateViews = BlockOperation {
+            let completionOperation = BlockOperation {
                 defer {
                     self.fetchOperation.removeValue(forKey: user.picture.thumbnail)
                 }
@@ -83,19 +77,18 @@ class UsersTableViewController: UITableViewController {
                     return
                 }
                 
-                guard let imageData = photoFetchOperation.imageData else { return }
+                guard let imageData = fetchOp.imageData else { return }
                 cell.userImageView.image = UIImage(data: imageData)
             }
-            storeData.addDependency(photoFetchOperation)
-            updateViews.addDependency(photoFetchOperation)
             
-            photoFetchQueue.addOperations([
-            photoFetchOperation, storeData], waitUntilFinished: false)
+            storeData.addDependency(fetchOp)
+            completionOperation.addDependency(fetchOp)
             
-            OperationQueue.main.addOperation(updateViews)
+            photoFetchQueue.addOperation(fetchOp)
+            photoFetchQueue.addOperation(storeData)
+            OperationQueue.main.addOperation(completionOperation)
             
-            fetchOperation[user.picture.thumbnail] = photoFetchOperation
-            
+            fetchOperation[user.picture.thumbnail] = fetchOp
         }
 
     // MARK: - Navigation
@@ -107,5 +100,4 @@ class UsersTableViewController: UITableViewController {
             detailVC.user = usersClient.users[indexPath.row]
         }
     }
-
 }

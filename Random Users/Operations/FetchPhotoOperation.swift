@@ -28,6 +28,7 @@ class FetchPhotoOperation: ConcurrentOperation {
             defer {
                 self.state = .isFinished
             }
+            if self.isCancelled { return }
             if let error = error {
                 NSLog("Error Fetching Operation: \(error)")
                 return
@@ -37,5 +38,13 @@ class FetchPhotoOperation: ConcurrentOperation {
             }
         }
         dataTask?.resume()
+    }
+    
+    override func cancel() {
+        if self.isCancelled {
+            if let task = dataTask {
+                task.cancel()
+            }
+        }
     }
 }

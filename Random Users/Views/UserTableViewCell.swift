@@ -13,7 +13,6 @@ class UserTableViewCell: UITableViewCell {
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
-
     var user: User? {
         didSet {
             updateViews()

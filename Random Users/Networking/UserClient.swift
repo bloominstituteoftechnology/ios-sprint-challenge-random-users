@@ -28,7 +28,6 @@ class UserClient {
             }
             
             do {
-                print(data)
                 let result = try JSONDecoder().decode(UserResults.self, from: data).results
                 self.users = result
             } catch {

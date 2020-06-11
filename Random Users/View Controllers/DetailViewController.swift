@@ -26,7 +26,6 @@ class DetailViewController: UIViewController {
     
     func updateViews() {
         guard let user = user else { return }
-        print("\(user.name.first)")
         
         let image = user.picture.large
         
