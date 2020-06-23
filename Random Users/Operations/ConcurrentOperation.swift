@@ -13,19 +13,21 @@ class ConcurrentOperation: Operation {
     // MARK: Types
     
     enum State: String {
-        case isReady, isExecuting, isFinished
+        case isReady
+        case isExecuting
+        case isFinished
     }
     
     // MARK: Properties
     
     private var _state = State.isReady
-    
     private let stateQueue = DispatchQueue(label: "com.LambdaSchool.Astronomy.ConcurrentOperationStateQueue")
+    
     var state: State {
+        
         get {
             var result: State?
-            let queue = self.stateQueue
-            queue.sync {
+            stateQueue.sync {
                 result = _state
             }
             return result!
@@ -41,6 +43,7 @@ class ConcurrentOperation: Operation {
             didChangeValue(forKey: oldValue.rawValue)
             didChangeValue(forKey: newValue.rawValue)
         }
+        
     }
     
     // MARK: NSOperation
@@ -61,4 +64,4 @@ class ConcurrentOperation: Operation {
         return true
     }
     
-}
+} //End of class
