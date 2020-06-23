@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iNG-v8-xmX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iNG-v8-xmX">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -17,42 +17,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="UserCell" id="1Hk-wR-OG6" customClass="UserTableViewCell" customModule="Random_Users" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="40.5" id="1Hk-wR-OG6" customClass="UserTableViewCell" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="40.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Hk-wR-OG6" id="KrM-Js-sU2">
                                     <rect key="frame" x="0.0" y="0.0" width="348" height="40.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="sxQ-XS-Zx4">
-                                            <rect key="frame" x="30" y="0.0" width="288" height="40.5"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jfC-5O-L80">
-                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40.5"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="40" id="2xt-RH-Nii"/>
-                                                        <constraint firstAttribute="height" constant="40" id="ZYr-y0-HDp"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZ0-py-k4s">
-                                                    <rect key="frame" x="70" y="0.0" width="218" height="40.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </stackView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="n3q-wb-MfK">
+                                            <rect key="frame" x="30" y="0.0" width="40" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="DkM-Z4-0e2"/>
+                                                <constraint firstAttribute="width" constant="40" id="miG-wr-xs3"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nrE-Yj-N3i">
+                                            <rect key="frame" x="85" y="10" width="263" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="sxQ-XS-Zx4" firstAttribute="leading" secondItem="KrM-Js-sU2" secondAttribute="leading" constant="30" id="1cb-LK-gpz"/>
-                                        <constraint firstItem="sxQ-XS-Zx4" firstAttribute="top" secondItem="KrM-Js-sU2" secondAttribute="top" id="3lv-E0-luk"/>
-                                        <constraint firstAttribute="trailing" secondItem="sxQ-XS-Zx4" secondAttribute="trailing" constant="30" id="s08-jz-dO0"/>
-                                        <constraint firstAttribute="bottom" secondItem="sxQ-XS-Zx4" secondAttribute="bottom" id="yUH-6T-5Ra"/>
+                                        <constraint firstAttribute="trailing" secondItem="nrE-Yj-N3i" secondAttribute="trailing" id="Nwo-8K-Pml"/>
+                                        <constraint firstItem="n3q-wb-MfK" firstAttribute="leading" secondItem="KrM-Js-sU2" secondAttribute="leading" constant="30" id="bX5-Uy-jUa"/>
+                                        <constraint firstItem="n3q-wb-MfK" firstAttribute="top" secondItem="KrM-Js-sU2" secondAttribute="top" id="onr-Jd-vo7"/>
+                                        <constraint firstItem="nrE-Yj-N3i" firstAttribute="centerY" secondItem="KrM-Js-sU2" secondAttribute="centerY" id="uZz-CB-uAJ"/>
+                                        <constraint firstItem="nrE-Yj-N3i" firstAttribute="leading" secondItem="n3q-wb-MfK" secondAttribute="trailing" constant="15" id="urg-NG-VtY"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="imageView" destination="jfC-5O-L80" id="Kh5-YT-C4E"/>
-                                    <outlet property="nameLabel" destination="mZ0-py-k4s" id="NpN-HG-ygu"/>
+                                    <outlet property="nameLabel" destination="nrE-Yj-N3i" id="bKu-yv-gJP"/>
+                                    <outlet property="userImageView" destination="n3q-wb-MfK" id="bXf-o0-XN7"/>
                                     <segue destination="KnX-he-vub" kind="show" identifier="UserDetailSegue" id="M31-Tj-awu"/>
                                 </connections>
                             </tableViewCell>

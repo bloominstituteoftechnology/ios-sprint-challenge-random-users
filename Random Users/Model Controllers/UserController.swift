@@ -27,11 +27,7 @@ class UserController {
     
     //MARK: - Methods -
     
-//    init() {
-//        getUser(completion: { _ in } )
-//    }
-    
-    func getUser(completion: @escaping (Result<Bool, NetworkError>) -> Void) {
+    func getUser(completion: @escaping CompletionHandler) {
         
         let dataTask = URLSession.shared.dataTask(with: baseURL) { (data, _, error) in
             
@@ -86,4 +82,4 @@ class UserController {
         dataTask.resume()
     }
     
-}
+} //End of class

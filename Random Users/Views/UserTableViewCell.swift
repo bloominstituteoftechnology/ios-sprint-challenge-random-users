@@ -13,8 +13,9 @@ class UserTableViewCell: UITableViewCell {
     //MARK: - Properties and IBOutlets -
     
     @IBOutlet var nameLabel: UILabel!
+    @IBOutlet weak var userImageView: UIImageView!
     
-    var randomUser: User? {
+    var user: User? {
         didSet {
             updateViews()
         }
@@ -23,12 +24,12 @@ class UserTableViewCell: UITableViewCell {
     //MARK: - Methods -
     
     func updateViews() {
+        guard let unwrappedUser = user else { return }
         
-        guard let randomUser = randomUser else { return }
-        
-        nameLabel.text = "\(randomUser.name.title) \(randomUser.name.first) \(randomUser.name.last)"
-        
+        DispatchQueue.main.async {
+            self.nameLabel.text = "\(unwrappedUser.name.title) \(unwrappedUser.name.first) \(unwrappedUser.name.last)"
+        }
         
     }
 
-}
+} //End of class

@@ -12,7 +12,18 @@ class UsersTableViewController: UITableViewController {
     
     //MARK: - Properties and IBOutlets -
     
+    var imageOpsDictionary: [ Int : BlockOperation ] = [:]
+    
     var userController = UserController()
+    var cache = Cache<Int, UIImage>()
+    
+    var imageFetchingQueue: OperationQueue {
+        
+        let queue = OperationQueue()
+        queue.qualityOfService = .userInteractive
+        return queue
+        
+    }
     
     //MARK: - Methods and IBActions -
     
@@ -27,7 +38,7 @@ class UsersTableViewController: UITableViewController {
         
     }
     
-    // MARK: - Table view data source
+    // MARK: - Table view data source & Methods -
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userController.users.count
@@ -36,24 +47,46 @@ class UsersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
         
-        let currentCellUser = userController.users[indexPath.row]
-        let imageURL = currentCellUser.picture.thumbnail
-        cell.randomUser = currentCellUser
+        let user = userController.users[indexPath.row]
+        let imageURL = user.picture.thumbnail
         
-        userController.getUserImage(imageURLString: imageURL) { (result) in
+        let fetchImageOperation = BlockOperation {
             
-            DispatchQueue.main.async {
-                do {
-                    cell.imageView?.image = try result.get()
-                } catch {
-                    NSLog("Could not acquire the user's thumbnail image: \(error)")
-                    return
+            cell.user = user
+            
+            self.userController.getUserImage(imageURLString: imageURL) { (result) in
+                DispatchQueue.main.async {
+                    do {
+                        let fetchedImage = try result.get()
+                        self.cache.cache(value: fetchedImage, for: indexPath.row)
+                        cell.userImageView.image = fetchedImage
+                        cell.setNeedsLayout()
+                    } catch {
+                        NSLog("Could not acquire the user's thumbnail image: \(error)")
+                        return
+                    }
                 }
+                
             }
-            
+        }
+        
+        cell.user = user
+        imageOpsDictionary[indexPath.row] = fetchImageOperation
+        
+        if let cachedImage = cache.value(for: indexPath.row) {
+            cell.userImageView.image = cachedImage
+        } else {
+            imageFetchingQueue.addOperation(fetchImageOperation)
         }
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        let opToCancel = imageOpsDictionary[indexPath.row]
+        opToCancel?.cancel()
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
