@@ -24,6 +24,7 @@ class ContactDetailViewController: UIViewController {
     let cache = Cache<String, Data>()
     
     // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
