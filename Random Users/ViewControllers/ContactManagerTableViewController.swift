@@ -38,9 +38,9 @@ class ContactManagerTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Giving the navigation bar some color
-        view.backgroundColor = UIColor(red: 248, green: 196, blue: 113)
-        navigationController?.navigationBar.backgroundColor = UIColor(red: 248, green: 196, blue: 113)
-        navigationController?.navigationBar.barTintColor = UIColor(red: 248, green: 196, blue: 113)
+        view.backgroundColor = UIColor(red: 206, green: 218, blue: 218)
+        navigationController?.navigationBar.backgroundColor = UIColor(red: 206, green: 218, blue: 218)
+        navigationController?.navigationBar.barTintColor = UIColor(red: 206, green: 218, blue: 218)
     }
     
     // MARK: - Table view data source
@@ -62,12 +62,12 @@ class ContactManagerTableViewController: UITableViewController {
     }
     // Creating Alternating Cell Backgrounds to give the app some flavor
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let earthGreen = UIColor(red: 133, green: 165, blue: 102)
-        let earthBlue = UIColor(red: 154, green: 198, blue: 186)
+        let colorEven = UIColor(red: 151, green: 177, blue: 166)
+        let colorOdd = UIColor(red: 105, green: 137, blue: 150)
         if(indexPath.row % 2 == 0){
-            cell.backgroundColor = earthGreen
+            cell.backgroundColor = colorEven
         } else {
-            cell.backgroundColor = earthBlue
+            cell.backgroundColor = colorOdd
         }
     }
 

@@ -28,8 +28,8 @@ class ContactDetailViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        view.backgroundColor = UIColor(red: 204, green: 209, blue: 209)
-        navigationController?.navigationBar.backgroundColor = UIColor(red: 204, green: 209, blue: 209)
+        view.backgroundColor = UIColor(red: 206, green: 218, blue: 218)
+        navigationController?.navigationBar.backgroundColor = UIColor(red: 206, green: 218, blue: 218)
     }
     
     // MARK: - Private Functions
