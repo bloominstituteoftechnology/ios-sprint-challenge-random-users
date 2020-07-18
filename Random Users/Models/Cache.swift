@@ -11,7 +11,7 @@ import Foundation
 class Cache<Key: Hashable, Value> {
     
     private var cacheDictionary: [Key : Value] = [:]
-    private let queue = DispatchQueue(label: "serialQueue")
+    private let queue = DispatchQueue(label: "com.LambdaSchool.RandomUsers.CacheQueue")
     
     func cache(value: Value, for key: Key) {
         queue.async {
