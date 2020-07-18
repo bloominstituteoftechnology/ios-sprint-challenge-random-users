@@ -35,6 +35,7 @@ struct Contact: Decodable {
             case medium
             case thumbnail
         }
+
     }
 
     init(from decoder: Decoder) throws {
@@ -53,6 +54,7 @@ struct Contact: Decodable {
         let medium = try pictureContainer.decode(String.self, forKey: .medium)
         let large = try pictureContainer.decode(String.self, forKey: .large)
         picture = [thumbnail, medium, large]
+
     }
 }
 
