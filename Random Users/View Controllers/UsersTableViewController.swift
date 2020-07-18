@@ -17,7 +17,17 @@ class UsersTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        userController.fetchUsers { (possibleError) in
+            guard possibleError == nil else {
+                print("Error fetching Users: \(possibleError!)")
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
        
     }
 
@@ -30,8 +40,8 @@ class UsersTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as? UsersTableViewCell else {
-            fatalError("Can't dequeue cell of type 'UsersCell'")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UsersTableViewCell else {
+            fatalError("Can't dequeue cell of type 'UserCell'")
         }
         // Configure the cell...
         let user = userController.userList[indexPath.row]
@@ -46,11 +56,15 @@ class UsersTableViewController: UITableViewController {
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "UserDetailSegue" {
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            
+            let navController = segue.destination as! UsersDetailViewController
+            navController.user = userController.userList[indexPath.row]
+        }
     }
     
+
 
 }

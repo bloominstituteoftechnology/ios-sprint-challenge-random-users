@@ -49,7 +49,7 @@
                                 <connections>
                                     <outlet property="userImageView" destination="zBG-0Y-Ysy" id="uNZ-ZJ-rw4"/>
                                     <outlet property="userNameLabel" destination="vw5-0X-vVG" id="12i-WT-oDL"/>
-                                    <segue destination="GFA-dR-59A" kind="show" id="sOY-6R-XoH"/>
+                                    <segue destination="GFA-dR-59A" kind="show" identifier="UserDetailSegue" id="sOY-6R-XoH"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

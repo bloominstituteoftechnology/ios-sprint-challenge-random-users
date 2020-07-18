@@ -16,11 +16,14 @@ class UsersDetailViewController: UIViewController {
     @IBOutlet weak var userPhoneNumber: UILabel!
     @IBOutlet weak var userEmailLabel: UILabel!
     
+    let userController = UserController()
+    var user: User?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
     }
     
 
