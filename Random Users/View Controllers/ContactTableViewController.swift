@@ -46,14 +46,18 @@ class ContactTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ContactTableViewCell.reuseIdentifier, for: indexPath) as? ContactTableViewCell else { return UITableViewCell() }
-        
+        populateCell(cell: cell, indexPath: indexPath)
+        return cell
+    }
+    
+    func populateCell(cell: ContactTableViewCell, indexPath: IndexPath) {
         let contact = contacts[indexPath.row]
         let fullName:String = ("\(contact.name.title) \(contact.name.first) \(contact.name.last)")
         cell.contactNameLabel.text = "\(fullName)"
         
         if let cachedImage = cache.getValue(key: contact.email) {
             cell.contactImageThumbnail.image = UIImage(data: cachedImage)
-            // return
+            return
         }
         
         let photoFetchRequest = FetchPhotoOperation(contact: contact)
@@ -76,8 +80,12 @@ class ContactTableViewController: UITableViewController {
         
         OperationQueue.main.addOperation(hasBeenReused)
         operation[contact.email] = photoFetchRequest
-        
-        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let currentFetchOperation = contacts[indexPath.row]
+        guard let operation = operation[currentFetchOperation.email] else { return }
+        operation.cancel()
     }
 
     // MARK: - Navigation
