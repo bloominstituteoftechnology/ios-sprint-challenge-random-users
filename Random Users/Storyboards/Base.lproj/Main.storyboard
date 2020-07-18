@@ -11,13 +11,13 @@
         <!--Classmates-->
         <scene sceneID="I7d-jH-hbX">
             <objects>
-                <tableViewController id="Hyz-CQ-ShK" sceneMemberID="viewController">
+                <tableViewController id="Hyz-CQ-ShK" customClass="ContactTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RTF-H7-axy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactCell" rowHeight="80" id="JGd-FQ-Yvk">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactCell" rowHeight="80" id="JGd-FQ-Yvk" customClass="ContactTableViewCell" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JGd-FQ-Yvk" id="SoV-qk-L5j">
@@ -47,6 +47,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="contactImageThumbnail" destination="hr0-G6-WjV" id="UdH-i2-n2i"/>
+                                    <outlet property="contactNameLabel" destination="Idr-KO-hKg" id="ovB-Fo-8lq"/>
                                     <segue destination="MPZ-3E-e2W" kind="show" identifier="contactDetailSegue" id="aSn-Ur-WsI"/>
                                 </connections>
                             </tableViewCell>
@@ -62,10 +64,10 @@
             </objects>
             <point key="canvasLocation" x="1427.536231884058" y="-168.08035714285714"/>
         </scene>
-        <!--View Controller-->
+        <!--Contact Detail View Controller-->
         <scene sceneID="eQV-yU-e08">
             <objects>
-                <viewController id="MPZ-3E-e2W" sceneMemberID="viewController">
+                <viewController id="MPZ-3E-e2W" customClass="ContactDetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L8q-1G-yoz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -120,6 +122,12 @@
                         <viewLayoutGuide key="safeArea" id="Ahc-Z6-R7c"/>
                     </view>
                     <navigationItem key="navigationItem" id="lCA-eR-Cgb"/>
+                    <connections>
+                        <outlet property="contactEmailLabel" destination="XFi-cx-G5G" id="eBK-Xn-65o"/>
+                        <outlet property="contactImageView" destination="sWO-KN-otT" id="Izo-HK-y3m"/>
+                        <outlet property="contactNameLabel" destination="fB8-oa-bap" id="Wih-aW-R1H"/>
+                        <outlet property="contactPhoneLabel" destination="0YB-gh-sZP" id="hXR-Xl-0ko"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YVb-AR-hBW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -10,6 +10,10 @@ import UIKit
 
 class ContactTableViewCell: UITableViewCell {
     
+    // MARK: - IBOutlets
+    @IBOutlet weak var contactImageThumbnail: UIImageView!
+    @IBOutlet weak var contactNameLabel: UILabel!
+    
     // MARK: - Properties
     
     static var reuseIdentifier = "ContactCell"
