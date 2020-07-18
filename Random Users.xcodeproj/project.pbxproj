@@ -18,6 +18,7 @@
 		E3CF461D24C28F1A00FD9D09 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CF461C24C28F1A00FD9D09 /* APIController.swift */; };
 		E3CF461F24C28F5200FD9D09 /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CF461E24C28F5200FD9D09 /* Contacts.swift */; };
 		E3CF462124C28FD400FD9D09 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CF462024C28FD400FD9D09 /* Cache.swift */; };
+		E3CF462324C2A3CE00FD9D09 /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CF462224C2A3CE00FD9D09 /* FetchPhotoOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		E3CF461C24C28F1A00FD9D09 /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		E3CF461E24C28F5200FD9D09 /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
 		E3CF462024C28FD400FD9D09 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		E3CF462224C2A3CE00FD9D09 /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				E3CF462224C2A3CE00FD9D09 /* FetchPhotoOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 			files = (
 				E3CF461924C28C8700FD9D09 /* ContactTableViewController.swift in Sources */,
 				E3CF461B24C28C9D00FD9D09 /* ContactTableViewCell.swift in Sources */,
+				E3CF462324C2A3CE00FD9D09 /* FetchPhotoOperation.swift in Sources */,
 				E3CF462124C28FD400FD9D09 /* Cache.swift in Sources */,
 				E3CF461D24C28F1A00FD9D09 /* APIController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,

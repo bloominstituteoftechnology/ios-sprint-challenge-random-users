@@ -49,7 +49,7 @@
                                 <connections>
                                     <outlet property="contactImageThumbnail" destination="hr0-G6-WjV" id="UdH-i2-n2i"/>
                                     <outlet property="contactNameLabel" destination="Idr-KO-hKg" id="ovB-Fo-8lq"/>
-                                    <segue destination="MPZ-3E-e2W" kind="show" identifier="contactDetailSegue" id="aSn-Ur-WsI"/>
+                                    <segue destination="MPZ-3E-e2W" kind="show" identifier="ContactDetailSegue" id="aSn-Ur-WsI"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
