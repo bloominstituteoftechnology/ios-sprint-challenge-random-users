@@ -12,6 +12,7 @@ class UserTableViewController: UITableViewController {
     
     let userController = UserController()
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,6 +35,8 @@ class UserTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
         cell.textLabel?.text = userController.savedUser[indexPath.row].name
+        cell.imageView?.image = 
+        
 
         // Configure the cell...
 

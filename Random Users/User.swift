@@ -14,3 +14,5 @@ struct User: Equatable, Decodable {
     let email: String
 
 }
+
+

@@ -43,7 +43,7 @@ class UserController {
                 
                 let userData = try decoder.decode(User.self, from: data)
                 completion(.success(userData))
-            }catch {
+            } catch {
                 NSLog("Error decoding data to type User: \(error)")
                 completion(.failure(error))
             }
@@ -71,8 +71,12 @@ class UserController {
             let image = UIImage(data: data)
             completion(image)
         }.resume()
+        
+        
+        // Getting the image
     }
     
 }
 
 
+// Redo
