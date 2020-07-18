@@ -10,20 +10,18 @@ import Foundation
 
 class Cache<Key: Hashable, Value> {
     
-    private var dictionary: [Key : Value] = [:]
+    private var images: [Key : Value] = [:]
     
-    private let queue = DispatchQueue(label: "photoQueue")
+    private let cacheQueue = DispatchQueue(label: "photoQueue")
     
     func cache(value: Value, for key: Key) {
-        queue.async {
-            self.dictionary[key] = value
+        cacheQueue.async {
+            self.images[key] = value
         }
     }
     
     func value(for key: Key) -> Value? {
-        queue.sync {
-            return dictionary[key]
-        }
+        return cacheQueue.sync { images[key] }
     }
     
 }

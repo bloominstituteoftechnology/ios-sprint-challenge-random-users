@@ -17,7 +17,11 @@ class UserDetailViewController: UIViewController {
     
     
     var userController: UserController?
-    var user: User?
+    var user: User? {
+        didSet {
+            updateViews()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,16 +30,22 @@ class UserDetailViewController: UIViewController {
 
     
     func updateViews() {
-        let imageURL = (user?.picture.large)!
-        userController?.fetchImage(at: imageURL) { (image, error) in
-            guard error == nil, let image = image else {
-                print("Error fetching image: \(error)")
+        guard let user = user else { return }
+        let fetchPhotoOp = FetchPhotoOperation(user: user, imageSize: .thumbnail)
+        fetchPhotoOp.fetchImage(from: user.picture.large) { (data, error) in
+            guard error == nil else {
+                NSLog("Error fetching image: \(error)")
                 return
             }
-            self.userDetailImageView.image = image
+            guard let data = data else { return }
+            DispatchQueue.main.async {
+                self.userDetailImageView.image = UIImage(data: data)
+            }
         }
-        nameLabel.text = user?.name.fullName
-        phoneNumerLabel.text = user?.phone
-        emailLabel.text = user?.email
+
+        nameLabel.text = user.name.fullName
+        phoneNumerLabel.text = user.phone
+        emailLabel.text = user.email
+        
     }
 }
