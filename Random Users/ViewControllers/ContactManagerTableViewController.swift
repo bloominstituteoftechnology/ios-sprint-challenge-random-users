@@ -11,6 +11,13 @@ import UIKit
 class ContactManagerTableViewController: UITableViewController {
 
     // MARK: - Properties
+    var apiController = APIController()
+    var contacts: [Contact] = []{
+        didSet{
+            tableView.reloadData()
+        }
+    }
+    private let cache = Cache<String, Data>()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -20,16 +27,21 @@ class ContactManagerTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return contacts.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath) as? ContactTableViewCell else { return UITableViewCell() }
-        
+        updateCell(forCell: cell, forItemAt: indexPath)
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+    }
+    
+    // MARK: - Private Functions
+    private func updateCell(forCell cell: ContactTableViewCell, forItemAt indexpath: IndexPath){
         
     }
 

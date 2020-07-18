@@ -12,6 +12,7 @@
 		0BD3246424C289E800E1A181 /* ContactManagerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD3246324C289E800E1A181 /* ContactManagerTableViewController.swift */; };
 		0BD3246624C289F600E1A181 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD3246524C289F600E1A181 /* ContactTableViewCell.swift */; };
 		0BD3246924C28D1A00E1A181 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD3246824C28D1A00E1A181 /* APIController.swift */; };
+		0BD3246B24C2917200E1A181 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD3246A24C2917200E1A181 /* Cache.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 		0BD3246324C289E800E1A181 /* ContactManagerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManagerTableViewController.swift; sourceTree = "<group>"; };
 		0BD3246524C289F600E1A181 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		0BD3246824C28D1A00E1A181 /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
+		0BD3246A24C2917200E1A181 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				0BD3246824C28D1A00E1A181 /* APIController.swift */,
+				0BD3246A24C2917200E1A181 /* Cache.swift */,
 			);
 			path = ModelController;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 			files = (
 				0BD3246924C28D1A00E1A181 /* APIController.swift in Sources */,
 				0BD3246624C289F600E1A181 /* ContactTableViewCell.swift in Sources */,
+				0BD3246B24C2917200E1A181 /* Cache.swift in Sources */,
 				0BD3245F24C287D800E1A181 /* Contact.swift in Sources */,
 				0BD3246424C289E800E1A181 /* ContactManagerTableViewController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
