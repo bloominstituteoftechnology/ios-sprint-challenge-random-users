@@ -59,7 +59,6 @@ class UsersTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "UserDetailSegue" {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            
             let navController = segue.destination as! UsersDetailViewController
             navController.user = userController.userList[indexPath.row]
         }

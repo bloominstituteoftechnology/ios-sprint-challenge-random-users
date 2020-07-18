@@ -16,14 +16,27 @@ class UsersDetailViewController: UIViewController {
     @IBOutlet weak var userPhoneNumber: UILabel!
     @IBOutlet weak var userEmailLabel: UILabel!
     
-    let userController = UserController()
     var user: User?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        updateViews()
+    }
+    
+    func updateViews() {
+        if let user = user {
+            let title = user.name.title
+            let firstName = user.name.first
+            let lastName = user.name.last
+            let image = user.picture.large
+            
+            userImageView.image = UIImage(named: image)
+            userNameLabel.text = "\(title) \(firstName) \(lastName)"
+            userPhoneNumber.text = user.phone
+            userEmailLabel.text = user.email
+        }
     }
     
 
