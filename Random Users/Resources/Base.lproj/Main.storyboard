@@ -11,13 +11,13 @@
         <!--Contact Manager-->
         <scene sceneID="YTt-wg-t1A">
             <objects>
-                <tableViewController id="ihY-Dm-Neq" sceneMemberID="viewController">
+                <tableViewController id="ihY-Dm-Neq" customClass="ContactManagerTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dUg-xf-AQe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="95" id="rX8-EJ-N6Y">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="95" id="rX8-EJ-N6Y" customClass="ContactTableViewCell" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="95"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rX8-EJ-N6Y" id="OMz-gY-VYS">
@@ -48,6 +48,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="contactImageView" destination="bkf-DH-CM3" id="nE7-tG-3R0"/>
+                                    <outlet property="contactNameLabel" destination="lDa-jt-TBM" id="6rq-Bi-vNO"/>
                                     <segue destination="bws-Ak-neI" kind="show" id="93j-8H-5ye"/>
                                 </connections>
                             </tableViewCell>
@@ -63,10 +65,10 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="133.92857142857142"/>
         </scene>
-        <!--View Controller-->
+        <!--Contact Detail View Controller-->
         <scene sceneID="GOq-Wo-2n2">
             <objects>
-                <viewController id="bws-Ak-neI" sceneMemberID="viewController">
+                <viewController id="bws-Ak-neI" customClass="ContactDetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UVK-mT-e3i">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -114,6 +116,12 @@
                         <viewLayoutGuide key="safeArea" id="UXx-dG-PA6"/>
                     </view>
                     <navigationItem key="navigationItem" id="SOP-X4-dv3"/>
+                    <connections>
+                        <outlet property="contactEmailLabel" destination="nqZ-lJ-sqR" id="bjy-Hi-5YD"/>
+                        <outlet property="contactImageView" destination="hx4-Zu-l2I" id="zEh-8L-4RZ"/>
+                        <outlet property="contactNameLabel" destination="9ci-mW-QHD" id="fal-IN-5Is"/>
+                        <outlet property="contactPhoneNumberLabel" destination="g1W-BD-gB4" id="gRv-Mx-m4E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V0l-hw-0kr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
