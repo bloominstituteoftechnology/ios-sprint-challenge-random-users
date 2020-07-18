@@ -90,8 +90,12 @@ class ContactManagerTableViewController: UITableViewController {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == "ContactDetailSegue"{
+            if let detailVC = segue.destination as? ContactDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow{
+                detailVC.apiController = apiController
+                detailVC.contact = contacts[indexPath.row]
+            }
+        }
     }
-    
-    
 }

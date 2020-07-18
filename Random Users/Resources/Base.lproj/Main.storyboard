@@ -50,7 +50,7 @@
                                 <connections>
                                     <outlet property="contactImageView" destination="bkf-DH-CM3" id="nE7-tG-3R0"/>
                                     <outlet property="contactNameLabel" destination="lDa-jt-TBM" id="6rq-Bi-vNO"/>
-                                    <segue destination="bws-Ak-neI" kind="show" id="93j-8H-5ye"/>
+                                    <segue destination="bws-Ak-neI" kind="show" identifier="ContactDetailSegue" id="93j-8H-5ye"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
