@@ -10,15 +10,29 @@ import UIKit
 
 class UserTableViewCell: UITableViewCell {
 
+    // Outlets
+    @IBOutlet weak var thumbnailImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    // Properties
+    var user: User? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+    }
+    
+    func updateViews() {
+        guard let user = user else { return }
+        nameLabel.text = user.name
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
 
 }
