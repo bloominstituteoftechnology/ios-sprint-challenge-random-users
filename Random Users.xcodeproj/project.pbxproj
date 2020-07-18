@@ -10,6 +10,9 @@
 		519396F624C28894005C8090 /* RandomUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519396F524C28894005C8090 /* RandomUser.swift */; };
 		519396F924C28AFA005C8090 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519396F824C28AFA005C8090 /* APIController.swift */; };
 		519396FB24C29327005C8090 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519396FA24C29327005C8090 /* Cache.swift */; };
+		519396FD24C293F8005C8090 /* FetchUsersOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519396FC24C293F8005C8090 /* FetchUsersOperation.swift */; };
+		519396FF24C29C9C005C8090 /* RandomUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519396FE24C29C9C005C8090 /* RandomUsersTableViewController.swift */; };
+		5193970124C29CB3005C8090 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5193970024C29CB3005C8090 /* DetailViewController.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -21,6 +24,9 @@
 		519396F524C28894005C8090 /* RandomUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUser.swift; sourceTree = "<group>"; };
 		519396F824C28AFA005C8090 /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		519396FA24C29327005C8090 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		519396FC24C293F8005C8090 /* FetchUsersOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUsersOperation.swift; sourceTree = "<group>"; };
+		519396FE24C29C9C005C8090 /* RandomUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersTableViewController.swift; sourceTree = "<group>"; };
+		5193970024C29CB3005C8090 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -50,18 +56,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		519396F324C287CA005C8090 /* Model View Controller */ = {
+		519396F324C287CA005C8090 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				519396FE24C29C9C005C8090 /* RandomUsersTableViewController.swift */,
+				5193970024C29CB3005C8090 /* DetailViewController.swift */,
 			);
-			path = "Model View Controller";
-			sourceTree = "<group>";
-		};
-		519396F424C287DB005C8090 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		519396F724C28AE9005C8090 /* Controllers */ = {
@@ -76,8 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				519396F724C28AE9005C8090 /* Controllers */,
-				519396F424C287DB005C8090 /* Views */,
-				519396F324C287CA005C8090 /* Model View Controller */,
+				519396F324C287CA005C8090 /* View Controllers */,
 				519396F224C287C4005C8090 /* Model */,
 				8ED6A9862140178A00FC395A /* Random Users */,
 				8ED6A9852140178A00FC395A /* Products */,
@@ -117,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				519396FC24C293F8005C8090 /* FetchUsersOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -197,6 +198,9 @@
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				519396F624C28894005C8090 /* RandomUser.swift in Sources */,
+				519396FD24C293F8005C8090 /* FetchUsersOperation.swift in Sources */,
+				519396FF24C29C9C005C8090 /* RandomUsersTableViewController.swift in Sources */,
+				5193970124C29CB3005C8090 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
