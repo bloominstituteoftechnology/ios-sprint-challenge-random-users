@@ -8,15 +8,15 @@
 
 import Foundation
 
-struct User: Codable, Hashable, Equatable {
+struct User: Codable, Hashable {
     
-    struct Picture: Codable, Hashable, Equatable {
+    struct Picture: Codable, Hashable {
         let large: String
         let medium: String
         let thumbnail: String
     }
     
-    struct Name: Codable, Hashable, Equatable {
+    struct Name: Codable, Hashable {
         let title: String
         let first: String
         let last: String

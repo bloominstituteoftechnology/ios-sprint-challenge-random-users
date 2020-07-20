@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+class UserController {
+    
+    var users: [User] = []
+    
+    
+    func addUsers(addedUsers: [User]) {
+        users.append(contentsOf: addedUsers)
+    }
+}
