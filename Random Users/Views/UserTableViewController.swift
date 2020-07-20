@@ -47,11 +47,12 @@ class UserTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? CustomTableViewCell
 
-        // Configure the cell...
+        let user = randomUserController.users[indexPath.row]
+        cell?.userName.text = (user.name.first + user.name.last)
 
-        return cell
+        return cell!
     }
    
     /*

@@ -22,7 +22,7 @@ class RandomUserController {
         case decodeFailed
     }
     
-    func getUSers(completion: @escaping (Result<Users, NetworkError>) -> Void) {
+    func getUSers(completion: @escaping (Result<[Users], NetworkError>) -> Void) {
        
         let requestURL = baseURL.appendingPathComponent("json")
         var request = URLRequest(url: requestURL)
@@ -40,9 +40,8 @@ class RandomUserController {
                     return
                 }
                 let jsonDecoder = JSONDecoder()
-                
                 do {
-                    let user = try jsonDecoder.decode(Users.self, from: data)
+                    let user = try jsonDecoder.decode([Users].self, from: data)
                     completion(.success(user))
                 } catch {
                     NSLog("Error decoding user from server: \(error)")
