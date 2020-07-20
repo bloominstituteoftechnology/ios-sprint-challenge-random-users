@@ -10,11 +10,32 @@ import UIKit
 
 class UserTableViewController: UITableViewController {
     
-    let randomUserController = RandomUserController()
-
+    private let randomUserController = RandomUserController()
+    private var users: [Users] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        randomUserController.getUSers { (result) in
+            do {
+                let names = try result.get()
+                DispatchQueue.main.sync {
+                    self.users = names
+                }
+            } catch {
+                if let error = error as? RandomUserController.NetworkError {
+                    switch error {
+                    case .noData:
+                        print("Error: The response had no data.")
+                    case .decodeFailed:
+                        print("Error: The data could not be decoded.")
+                    }
+                }
+            }
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
