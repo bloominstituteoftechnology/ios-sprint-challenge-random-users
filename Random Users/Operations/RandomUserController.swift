@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class RandomUserController {
     
@@ -48,6 +49,26 @@ class RandomUserController {
                 return
             }
         }.resume()
+    }
+    
+    func fetchImage(at urlString: String, completion: @escaping (UIImage?) -> Void) {
+        guard let url = URL(string: urlString) else {
+            completion(nil)
+            return
+        }
         
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
+            if let error = error {
+                print("Error: \(error)")
+                return
+            }
+            
+            guard let data = data else {
+                completion(nil)
+                return
+            }
+            let image = UIImage(data: data)
+            completion(image)
+        }.resume()
     }
 }
