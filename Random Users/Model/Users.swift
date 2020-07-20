@@ -10,9 +10,21 @@ import Foundation
 
 struct Users: Codable {
     
-    var name: String
+    var name: Name
+    
+    struct Name: Codable {
+        var title: String
+        var first: String
+        var last: String
+    }
+    
     var phone: String
     var email: String
-    var picture: String
+    var picture: Picture
+    
+    struct Picture: Codable {
+        var medium: String
+        var thumbnail: String
+    }
     
 }

@@ -10,27 +10,44 @@ import Foundation
 
 class RandomUserController {
     
-    
-    
     let baseURL = URL(string: " https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
     
     typealias CompletionHandler = (Result<Bool, NetworkError>) -> Void
     
-    enum HTTPMethod: String {
-        case get = "GET"
-        case post = "POST"
-    }
-    
     enum NetworkError: Error {
-        case noAuth
-        case unauthorized
-        case otherError(Error)
         case noData
         case decodeFailed
-        case failedSignUp
-        case failedSignIn
-        case noToken
-        case failPost
-        case tryAgain
+    }
+    
+    func getUSers(completion: @escaping (Result<Users, NetworkError>) -> Void) {
+       
+        let requestURL = baseURL.appendingPathComponent("json")
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "GET"
+        
+        URLSession.shared.dataTask(with: request) { (data, _, error) in
+            if let error = error {
+                NSLog("Error getting info from server: \(error)")
+                DispatchQueue.main.async {
+                    completion(.failure(.noData))
+                }
+                
+                guard let data = data else {
+                    completion(.failure(.noData))
+                    return
+                }
+                let jsonDecoder = JSONDecoder()
+                
+                do {
+                    let user = try jsonDecoder.decode(Users.self, from: data)
+                    completion(.success(user))
+                } catch {
+                    NSLog("Error decoding user from server: \(error)")
+                    completion(.failure(.decodeFailed))
+                }
+                return
+            }
+        }.resume()
+        
     }
 }
