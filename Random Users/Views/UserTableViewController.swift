@@ -49,7 +49,7 @@ class UserTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? CustomTableViewCell
 
         let user = randomUserController.users[indexPath.row]
-        cell?.userName.text = (user.name.first + user.name.last)
+        cell?.user = user
 
         return cell!
     }
