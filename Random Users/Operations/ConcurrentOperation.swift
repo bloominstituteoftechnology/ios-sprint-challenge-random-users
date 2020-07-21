@@ -1,16 +1,14 @@
 //
 //  ConcurrentOperation.swift
-//  Astronomy
+//  Random Users
 //
-//  Created by Andrew R Madsen on 9/5/18.
-//  Copyright © 2018 Lambda School. All rights reserved.
+//  Created by Lambda_School_loaner_226 on 7/20/20.
+//  Copyright © 2020 Erica Sadun. All rights reserved.
 //
 
 import Foundation
 
 class ConcurrentOperation: Operation {
-    
-    // MARK: Types
     
     enum State: String {
         case isReady, isExecuting, isFinished
@@ -62,3 +60,4 @@ class ConcurrentOperation: Operation {
     }
     
 }
+
