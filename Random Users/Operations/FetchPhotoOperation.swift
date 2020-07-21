@@ -32,7 +32,6 @@ class FetchPhotoOperation: ConcurrentOperation {
     
     override func start() {
         state = .isExecuting
-//        loadImage()
     }
     
     override func cancel() {

@@ -21,7 +21,7 @@ class UserTableViewController: UITableViewController {
     let fetchUsersOp = FetchUserOperation()
     
     var user: User?
-    var cache = Cache<Int, Data>()
+    var photoCache = Cache<String, Data>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +54,11 @@ class UserTableViewController: UITableViewController {
         let user = users[indexPath.row]
         cell.textLabel?.text = user.name.fullName
         
+        if let imageData = photoCache.value(for: user.phone) {
+            cell.imageView?.image = UIImage(data: imageData)
+            return cell
+        }
+        
         let fetchPhotoOperation = FetchPhotoOperation(user: user, imageSize: .thumbnail)
         
         fetchPhotoOperation.fetchImage(from: user.picture.thumbnail) { (data, error) in
@@ -63,15 +68,14 @@ class UserTableViewController: UITableViewController {
             }
             guard let imageData = data else { return }
             
+            self.photoCache.cache(value: imageData, for: user.phone)
+            
             DispatchQueue.main.async {
                 cell.imageView?.image = UIImage(data: imageData)
             }
         }
-        
         return cell
     }
-
-
 
     // MARK: - Navigation
 
