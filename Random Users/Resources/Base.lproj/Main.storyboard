@@ -11,7 +11,7 @@
         <!--Table View Controller-->
         <scene sceneID="qYf-No-fot">
             <objects>
-                <tableViewController id="Rce-It-iH2" sceneMemberID="viewController">
+                <tableViewController id="Rce-It-iH2" customClass="TableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cYf-mM-VU4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,13 +31,6 @@
                                                 <constraint firstAttribute="width" constant="50" id="Woc-im-4uw"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUp-F4-aMi">
-                                            <rect key="frame" x="78" y="26" width="42" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="GIP-Ta-JiX" firstAttribute="top" secondItem="Bo6-xj-E3m" secondAttribute="topMargin" id="2Ju-zQ-vab"/>
@@ -45,7 +38,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Xbj-ia-Qv5" kind="show" id="qHv-7e-cx7"/>
+                                    <segue destination="Xbj-ia-Qv5" kind="show" identifier="ToUserDetailViewController" id="qHv-7e-cx7"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -54,7 +47,14 @@
                             <outlet property="delegate" destination="Rce-It-iH2" id="ulq-ew-a0O"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="jet-B1-CQw"/>
+                    <navigationItem key="navigationItem" id="jet-B1-CQw">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="ICB-ut-xNn">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="addUsers:" destination="Rce-It-iH2" id="CK0-vn-9yv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQR-MX-cXr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -113,10 +113,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="9ww-Ed-rDa"/>
                     <connections>
-                        <outlet property="emailLabel" destination="cEZ-RY-DwY" id="3n4-4y-ecD"/>
-                        <outlet property="imageView" destination="Ogl-Lr-4fQ" id="OZW-Mr-2wW"/>
-                        <outlet property="nameLabel" destination="j5r-oD-Yf9" id="jLl-g6-7f8"/>
-                        <outlet property="phoneLabel" destination="HfM-a4-efQ" id="cEx-1t-UN0"/>
+                        <outlet property="emailLabel" destination="cEZ-RY-DwY" id="EaG-ki-6X1"/>
+                        <outlet property="imageView" destination="Ogl-Lr-4fQ" id="Nwf-iL-5ee"/>
+                        <outlet property="nameLabel" destination="j5r-oD-Yf9" id="69d-f9-zB8"/>
+                        <outlet property="phoneLabel" destination="HfM-a4-efQ" id="hTG-Ub-kXH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ySx-IX-FPD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
