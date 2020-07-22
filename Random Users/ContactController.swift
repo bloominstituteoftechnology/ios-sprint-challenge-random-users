@@ -23,38 +23,38 @@ class ContactController {
     
     var results: [Contact] = []
     
-    func fetchContacts(completion: @escaping (Result<[Contact], NetworkError>) -> Void) {
+    func fetchContacts(completion: @escaping (NetworkError?) -> Void) {
         var request = URLRequest(url: baseURL)
         request.httpMethod = HTTPMethod.get.rawValue
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 print("Error receiving contact data: \(error)")
-                completion(.failure(.tryAgain))
+                completion(.tryAgain)
                 return
             }
             
             if let response = response as? HTTPURLResponse,
                 response.statusCode == 401 {
-                completion(.failure(.networkFailure))
+                completion(.networkFailure)
                 return
             }
             
             guard let data = data else {
                 print("No data received from fetchContacts")
-                completion(.failure(.noData))
+                completion(.noData)
                 return
             }
             
             DispatchQueue.main.async {
                 do {
                     let decoder = JSONDecoder()
-                    let contacts = try decoder.decode([Contact].self, from: data)
-                    self.results = contacts
-                    completion(.success(contacts))
+                    let contacts = try decoder.decode(Contacts.self, from: data)
+                    self.results = contacts.results
+                    completion(nil)
                 } catch {
                     print("Error decoding contact data: \(error)")
-                    completion(.failure(.tryAgain))
+                    completion(.tryAgain)
                     return
                 }
             }

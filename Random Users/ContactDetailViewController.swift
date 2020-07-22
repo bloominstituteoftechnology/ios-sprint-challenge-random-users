@@ -31,9 +31,9 @@ class ContactDetailViewController: UIViewController {
         guard let contact = person else { return }
         
         downloadImage(from: contact.picture)
-        nameLabel.text = contact.name
-        phoneLabel.text = contact.phone
-        emailLabel.text = contact.email
+        nameLabel?.text = contact.name
+        phoneLabel?.text = contact.phone
+        emailLabel?.text = contact.email
     }
     
     private func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {

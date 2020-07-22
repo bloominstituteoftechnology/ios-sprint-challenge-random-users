@@ -61,6 +61,7 @@ class ContactsTableViewController: UITableViewController {
             guard let data = data, error == nil else { return }
             DispatchQueue.main.async() {
                 cell.imageView?.image = UIImage(data: data)
+//                self.tableView.reloadData()
             }
         }
     }

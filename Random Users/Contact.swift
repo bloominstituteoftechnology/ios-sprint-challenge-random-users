@@ -42,7 +42,7 @@ struct Contact: Codable {
         }
         
         enum PictureKeys: String, CodingKey {
-            case medium
+            case large
             case thumbnail
         }
     }
@@ -54,13 +54,13 @@ struct Contact: Codable {
         email = try container.decode(String.self, forKey: .email)
         
         let pictureContainer = try container.nestedContainer(keyedBy: ContactKeys.PictureKeys.self, forKey: .picture)
-        picture = try pictureContainer.decode(URL.self, forKey: .medium)
+        picture = try pictureContainer.decode(URL.self, forKey: .large)
         thumbnail = try pictureContainer.decode(URL.self, forKey: .thumbnail)
         
         let nameContainer = try container.nestedContainer(keyedBy: ContactKeys.NameKeys.self, forKey: .name)
-        let title = try nameContainer.decode(URL.self, forKey: .title)
-        let first = try nameContainer.decode(URL.self, forKey: .first)
-        let last = try nameContainer.decode(URL.self, forKey: .last)
+        let title = try nameContainer.decode(String.self, forKey: .title)
+        let first = try nameContainer.decode(String.self, forKey: .first)
+        let last = try nameContainer.decode(String.self, forKey: .last)
         name = "\(title) \(first) \(last)"
     }
 }
