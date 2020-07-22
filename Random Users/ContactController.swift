@@ -46,15 +46,17 @@ class ContactController {
                 return
             }
             
-            do {
-                let decoder = JSONDecoder()
-                let contacts = try decoder.decode([Contact].self, from: data)
-                self.results = contacts
-                completion(.success(contacts))
-            } catch {
-                print("Error decoding contact data: \(error)")
-                completion(.failure(.tryAgain))
-                return
+            DispatchQueue.main.async {
+                do {
+                    let decoder = JSONDecoder()
+                    let contacts = try decoder.decode([Contact].self, from: data)
+                    self.results = contacts
+                    completion(.success(contacts))
+                } catch {
+                    print("Error decoding contact data: \(error)")
+                    completion(.failure(.tryAgain))
+                    return
+                }
             }
         }
         task.resume()

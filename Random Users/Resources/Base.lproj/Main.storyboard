@@ -17,38 +17,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PersonCell" id="Ffh-8C-blX" customClass="ContactTableViewCell" customModule="Random_Users" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PersonCell" id="Ffh-8C-blX">
                                 <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ffh-8C-blX" id="XSh-HL-xKR">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mgn-Lq-uxo">
-                                            <rect key="frame" x="15.999999999999996" y="0.0" width="43.666666666666657" height="43.666666666666664"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="mgn-Lq-uxo" secondAttribute="height" multiplier="1:1" id="BZh-OZ-uuF"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qcc-eQ-fBa">
-                                            <rect key="frame" x="67.666666666666671" y="11.333333333333336" width="91.000000000000014" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="Qcc-eQ-fBa" firstAttribute="leading" secondItem="mgn-Lq-uxo" secondAttribute="trailing" constant="8" id="QGM-vK-S5r"/>
-                                        <constraint firstItem="mgn-Lq-uxo" firstAttribute="leading" secondItem="XSh-HL-xKR" secondAttribute="leading" constant="16" id="dNA-GY-92S"/>
-                                        <constraint firstAttribute="bottom" secondItem="mgn-Lq-uxo" secondAttribute="bottom" id="lYl-Mk-odd"/>
-                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Qcc-eQ-fBa" secondAttribute="trailing" constant="20" id="m24-Ok-PgH"/>
-                                        <constraint firstItem="Qcc-eQ-fBa" firstAttribute="centerY" secondItem="XSh-HL-xKR" secondAttribute="centerY" id="okm-gO-Nwj"/>
-                                        <constraint firstItem="mgn-Lq-uxo" firstAttribute="top" secondItem="XSh-HL-xKR" secondAttribute="top" id="y2T-Jz-IhX"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="contactImage" destination="mgn-Lq-uxo" id="Yn0-NA-hb3"/>
-                                    <outlet property="nameLabel" destination="Qcc-eQ-fBa" id="OxM-pa-EJC"/>
                                     <segue destination="hUk-Za-VUZ" kind="show" identifier="ShowContactSegue" id="hwe-cI-ERu"/>
                                 </connections>
                             </tableViewCell>

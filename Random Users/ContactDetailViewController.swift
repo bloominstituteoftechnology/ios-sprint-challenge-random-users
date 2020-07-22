@@ -15,14 +15,38 @@ class ContactDetailViewController: UIViewController {
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
-    
-    
-    
+    var person: Contact? {
+        didSet {
+            updateViews()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        updateViews()
+    }
+    
+    func updateViews() {
+        guard let contact = person else { return }
+        
+        downloadImage(from: contact.picture)
+        nameLabel.text = contact.name
+        phoneLabel.text = contact.phone
+        emailLabel.text = contact.email
+    }
+    
+    private func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
+    
+    private func downloadImage(from url: URL) {
+        getData(from: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            DispatchQueue.main.async() {
+                self.contactImage.image = UIImage(data: data)
+            }
+        }
     }
     
 
