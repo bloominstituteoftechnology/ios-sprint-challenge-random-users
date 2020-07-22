@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		613FB32E24C7B9BE00C1F818 /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613FB32D24C7B9BE00C1F818 /* ContactDetailViewController.swift */; };
+		613FB33024C7B9D600C1F818 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613FB32F24C7B9D600C1F818 /* ContactsTableViewController.swift */; };
+		613FB33224C7B9EC00C1F818 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613FB33124C7B9EC00C1F818 /* ContactTableViewCell.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -15,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		613FB32D24C7B9BE00C1F818 /* ContactDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
+		613FB32F24C7B9D600C1F818 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
+		613FB33124C7B9EC00C1F818 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -57,6 +63,9 @@
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
+				613FB32F24C7B9D600C1F818 /* ContactsTableViewController.swift */,
+				613FB33124C7B9EC00C1F818 /* ContactTableViewCell.swift */,
+				613FB32D24C7B9BE00C1F818 /* ContactDetailViewController.swift */,
 			);
 			path = "Random Users";
 			sourceTree = "<group>";
@@ -152,6 +161,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				613FB33224C7B9EC00C1F818 /* ContactTableViewCell.swift in Sources */,
+				613FB32E24C7B9BE00C1F818 /* ContactDetailViewController.swift in Sources */,
+				613FB33024C7B9D600C1F818 /* ContactsTableViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
