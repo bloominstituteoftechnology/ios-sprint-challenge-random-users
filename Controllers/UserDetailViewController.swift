@@ -44,6 +44,14 @@ class UserDetailViewController: UIViewController {
 
             getImage(with: randomUser)
 
+
+            switch randomUser.name.title {
+            case "Miss", "Ms", "Mrs", "Madame":
+                self.view.backgroundColor = UIColor.systemPink
+            default:
+                self.view.backgroundColor = UIColor.systemBlue
+            }
+
         }
 
         func getImage(with user: UserResults) {

@@ -11,11 +11,29 @@ import UIKit
 class UserTableViewController: UITableViewController {
 
 
-    
+    @IBAction func addUserTapped(_ sender: Any) {
+
+        randomUsersController.getUsers { (results) in
+           do {
+               let users = try results.get()
+               DispatchQueue.main.async {
+                   self.users = users.results
+               }
+           } catch {
+               print(results)
+
+           }
+        }
+
+
+        
+    }
+
     var randomUsersController = RandomUsersController()
     var users: [UserResults] = [] {
         didSet {
             tableView.reloadData()
+            
         }
     }
 
@@ -26,6 +44,17 @@ class UserTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        randomUsersController.getUsers { (results) in
+            do {
+                let users = try results.get()
+                DispatchQueue.main.async {
+                    self.users = users.results
+                }
+            } catch {
+                print(results)
+
+            }
+         }
     }
 
     // MARK: - Table view data source
