@@ -8,7 +8,7 @@
 
 import UIKit
 
-let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")
+let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
 
 class UserController {
     var savedUser: [User] = []
@@ -17,35 +17,31 @@ class UserController {
         savedUser.append(user)
     }
     
-    func removeUser(user: User){
-        guard let index = savedUser.firstIndex(of: user) else { return }
-        
-        savedUser.remove(at: index)
-        
-        
-    }
+
     
-    func fetchUser(completion: @escaping (Result<User, Error>)->Void){
-        guard let requestURL = baseURL else { return }
+    func fetchUser(completion: @escaping (User?, Error?)->Void){
+        let request = URLRequest(url: baseURL)
         
-        URLSession.shared.dataTask(with: requestURL) { (data, response, error) in
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 print("Error fetching user")
-                completion(.failure(error))
+                completion(nil, error)
                 return
             }
             guard let data = data else {
-                completion(.failure(NSError()))
+                print("There no data")
+                completion(nil, nil)
                 return
             }
             do {
                 let decoder = JSONDecoder()
                 
+                
                 let userData = try decoder.decode(User.self, from: data)
-                completion(.success(userData))
+                completion(userData, nil)
             } catch {
                 NSLog("Error decoding data to type User: \(error)")
-                completion(.failure(error))
+                completion(nil, error)
             }
         }.resume()
     }
@@ -72,11 +68,9 @@ class UserController {
             completion(image)
         }.resume()
         
-        
-        // Getting the image
     }
     
 }
 
 
-// Redo
+

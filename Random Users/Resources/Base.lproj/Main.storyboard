@@ -38,7 +38,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="1yz-vh-0g1" kind="show" identifier="UserSegue" id="GNZ-c7-qNG"/>
+                                    <segue destination="sci-Ep-KcT" kind="show" identifier="UserSegue" id="1Li-kN-T2f"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -53,48 +53,54 @@
             </objects>
             <point key="canvasLocation" x="938.39999999999998" y="50.824587706146929"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="rm7-3V-SoI">
+        <!--Users Detail View Controller-->
+        <scene sceneID="mC5-KU-tyh">
             <objects>
-                <viewController id="1yz-vh-0g1" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="mTK-Lw-gHj">
+                <viewController id="sci-Ep-KcT" customClass="UsersDetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="deF-gY-p48">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s4D-Iw-qP2">
-                                <rect key="frame" x="16" y="59" width="322" height="284"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GCr-S4-blp">
+                                <rect key="frame" x="16" y="66" width="320" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Syn-KS-VgV">
-                                <rect key="frame" x="26" y="395" width="113" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Taa-9A-qfa">
+                                <rect key="frame" x="37" y="252" width="231" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sv-4Z-aCs">
-                                <rect key="frame" x="26" y="456" width="113" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxG-MF-vVZ">
+                                <rect key="frame" x="37" y="349" width="274" height="73"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4k-IV-N0B">
-                                <rect key="frame" x="26" y="537" width="113" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNW-CL-37I">
+                                <rect key="frame" x="37" y="467" width="274" height="73"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="SH5-94-69n"/>
+                        <viewLayoutGuide key="safeArea" id="vlK-eQ-u5I"/>
                     </view>
-                    <navigationItem key="navigationItem" id="O38-av-2l3"/>
+                    <navigationItem key="navigationItem" id="fXS-p8-hJS"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="zxG-MF-vVZ" id="7Ft-rx-DGg"/>
+                        <outlet property="imageView" destination="GCr-S4-blp" id="lih-Nd-1Le"/>
+                        <outlet property="nameLabel" destination="Taa-9A-qfa" id="hsK-HJ-EmY"/>
+                        <outlet property="numberLabel" destination="hNW-CL-37I" id="4Aa-4T-NXL"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mhC-0c-Lpp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wlJ-1E-PPl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2015.2" y="50.824587706146929"/>
+            <point key="canvasLocation" x="1962.4000000000001" y="40.929535232383813"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="c6I-HH-jLf">

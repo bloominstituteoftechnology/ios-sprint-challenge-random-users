@@ -11,82 +11,111 @@ import UIKit
 class UserTableViewController: UITableViewController {
     
     let userController = UserController()
-
+    var user: User?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        fetchUsers()
+        
     }
-
+    
+    
+    
+    private func fetchUsers() {
+        
+        userController.fetchUser { (result, error) in
+            
+            DispatchQueue.main.async {
+                self.user = result
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    private func loadImage(for result: Result, for cell: UITableViewCell , forItemAt indexPath: IndexPath) {
+        
+        ImageDownloadManager.shared.downloadImage(result.picture.medium, indexPath: indexPath) { (image, url, _, _) in
+            DispatchQueue.main.async {
+                cell.imageView?.image = image
+            }
+        }
+        
+    }
+    
     // MARK: - Table view data source
-
-
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return userController.savedUser.count
+        return user?.results.count ?? 0
     }
-
+    
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
-        cell.textLabel?.text = userController.savedUser[indexPath.row].name
-        cell.imageView?.image = 
+        guard let res = user?.results[indexPath.row] else { return UITableViewCell()
+            
+        }
         
-
+        let firstName = res.name.first
+        let lastName = res.name.last
+        cell.textLabel?.text = (firstName ?? "No first Name") + (lastName ?? "No last name")
+        
+        
+        
+        
+        
+        
         // Configure the cell...
-
+        
         return cell
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let imageURL = user?.results[indexPath.row] { // URL
+            loadImage(for: imageURL, for: cell, forItemAt: indexPath)
+            
+        }
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        ImageDownloadManager.shared.cancelAll()
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "UserSegue" {
+            if let personDetailViewController = segue.destination as? UsersDetailViewController, let indexPath = tableView.indexPathForSelectedRow {
+                guard let result = user?.results[indexPath.row] else { return }
+                
+                personDetailViewController.result = result
+                if let selectedCell = tableView.cellForRow(at: indexPath)?.imageView?.image {
+                    
+                    personDetailViewController.image = selectedCell
+                }
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            }
+        }
     }
-    */
-
 }
