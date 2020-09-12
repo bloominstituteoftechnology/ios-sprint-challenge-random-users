@@ -11,6 +11,9 @@ import UIKit
 class UsersTableViewController: UITableViewController {
     
     let userController = UserController()
+    private var cache = Cache<String, Data>()
+    private let photoFetchQueue = OperationQueue()
+    private var fetchDictionary: [String: FetchPhotoOperation] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +33,15 @@ class UsersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as? UserTableViewCell else { return UITableViewCell() }
         cell.user = userController.users[indexPath.row]
+        loadImage(forCell: cell, forItemAt: indexPath)
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let cell = cell as? UserTableViewCell {
+            let task = fetchDictionary[cell.userID]
+            task?.cancel()
+        }
     }
 
     // MARK: - Navigation
@@ -41,6 +52,37 @@ class UsersTableViewController: UITableViewController {
                 let indexPath = tableView.indexPathForSelectedRow {
                 detailVC.user = userController.users[indexPath.row]
             }
+        }
+    }
+    
+    // MARK: - FetchPhoto
+    
+    private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
+        
+        let user = userController.users[indexPath.item]
+        let userID = user.email
+        cell.userID = userID
+        if let imageData = cache[userID] {
+            cell.thumbnailImageView?.image = UIImage(data: imageData)
+        } else {
+            let fetchImage = FetchPhotoOperation(user: user, imageType: .thumbnail)
+            let cacheImage = BlockOperation {
+                if let data = fetchImage.imageData {
+                    self.cache.cache(key: userID, value: data)
+                }
+            }
+            let setImage = BlockOperation {
+                if let data = fetchImage.imageData {
+                    DispatchQueue.main.async {
+                        guard cell.userID == userID else { return }
+                        cell.thumbnailImageView.image = UIImage(data: data)
+                    }
+                }
+            }
+            cacheImage.addDependency(fetchImage)
+            setImage.addDependency(fetchImage)
+            photoFetchQueue.addOperations([fetchImage, cacheImage, setImage], waitUntilFinished: false)
+            fetchDictionary[userID] = fetchImage
         }
     }
 

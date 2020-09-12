@@ -18,6 +18,7 @@ class UserTableViewCell: UITableViewCell {
             updateViews()
         }
     }
+    var userID: String = ""
     
     // MARK: - Outlets
     
@@ -28,9 +29,6 @@ class UserTableViewCell: UITableViewCell {
     
     private func updateViews() {
         guard let user = user else { return }
-        
-        // Get thumbnail image
-        
         self.nameLabel.text = "\(user.first) \(user.last)"
     }
     

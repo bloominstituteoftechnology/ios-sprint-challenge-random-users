@@ -12,6 +12,11 @@ struct UserResults: Codable {
     let results: [User]
 }
 
+enum ImageType {
+    case large
+    case thumbnail
+}
+
 struct User: Codable {
     
     enum Keys: String, CodingKey {
