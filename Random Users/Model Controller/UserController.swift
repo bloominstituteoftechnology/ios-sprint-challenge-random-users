@@ -10,7 +10,7 @@ import UIKit
 
 class UserController {
     
-    var myUser: UserResult?
+    var myUser: User?
     
     enum NetworkError: Error {
         case noData
@@ -24,7 +24,7 @@ class UserController {
     private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
     
     
-    func getUsers(completion: @escaping (Result<UserResult, NetworkError>) -> Void) {
+    func getUsers(completion: @escaping (Result<User, NetworkError>) -> Void) {
         
         var request = URLRequest(url: baseURL)
         request.httpMethod = "GET"
@@ -47,7 +47,7 @@ class UserController {
             
             do {
                 let jsonDecoder = JSONDecoder()
-                self.myUser = try jsonDecoder.decode(UserResult.self, from: data)
+                self.myUser = try jsonDecoder.decode(User.self, from: data)
                 completion(.success(self.myUser!))
             } catch {
                 print("Failed decoding JSON: \(error)")

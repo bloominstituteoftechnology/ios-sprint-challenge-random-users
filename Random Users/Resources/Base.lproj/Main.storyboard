@@ -80,14 +80,64 @@
                     <view key="view" contentMode="scaleToFill" id="Sbx-jp-81G">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="MeB-g0-tH1">
+                                <rect key="frame" x="20" y="719.5" width="374" height="92.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zy5-gr-oOL">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="31.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="26"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxf-zb-lJd">
+                                        <rect key="frame" x="0.0" y="41.5" width="374" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ASD-L3-NTR">
+                                        <rect key="frame" x="0.0" y="72" width="374" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O0m-pL-aS1">
+                                <rect key="frame" x="57" y="298" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="CF2-9z-lZs"/>
+                                    <constraint firstAttribute="height" constant="300" id="WEw-X4-KGb"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="150"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="YzZ-7L-bmd" firstAttribute="bottom" secondItem="MeB-g0-tH1" secondAttribute="bottom" constant="50" id="2ut-Yx-ynJ"/>
+                            <constraint firstItem="MeB-g0-tH1" firstAttribute="leading" secondItem="YzZ-7L-bmd" secondAttribute="leading" constant="20" id="Jyz-op-kq8"/>
+                            <constraint firstItem="O0m-pL-aS1" firstAttribute="centerY" secondItem="Sbx-jp-81G" secondAttribute="centerY" id="S7I-kc-oLB"/>
+                            <constraint firstItem="O0m-pL-aS1" firstAttribute="centerX" secondItem="Sbx-jp-81G" secondAttribute="centerX" id="vqR-YR-AGj"/>
+                            <constraint firstItem="YzZ-7L-bmd" firstAttribute="trailing" secondItem="MeB-g0-tH1" secondAttribute="trailing" constant="20" id="w3B-bs-bGj"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="YzZ-7L-bmd"/>
                     </view>
                     <navigationItem key="navigationItem" id="0Rq-Yc-YQq"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="ASD-L3-NTR" id="JeX-0d-n0v"/>
+                        <outlet property="nameLabel" destination="zy5-gr-oOL" id="Yjv-a4-MLO"/>
+                        <outlet property="phoneLabel" destination="vxf-zb-lJd" id="DQK-ix-g50"/>
+                        <outlet property="userImageView" destination="O0m-pL-aS1" id="9zh-Zt-oli"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g2z-GZ-pbm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1574" y="134"/>
+            <point key="canvasLocation" x="1573.913043478261" y="133.92857142857142"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pMA-Ob-dQ7">

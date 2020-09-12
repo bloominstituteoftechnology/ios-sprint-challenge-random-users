@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct UserResult: Codable {
-    let result: [User]
+struct User: Codable {
+    let results: [UserResults]
 }
 
-struct User: Codable {
+struct UserResults: Codable {
     let name: Name
     let email: String
     let phone: String

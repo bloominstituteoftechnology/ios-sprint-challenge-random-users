@@ -11,12 +11,12 @@ import Foundation
 
 class FetchImageOperation: ConcurrentOperation {
     
-    var user: User
+    var user: UserResults
     var imageData: Data?
     
     private var loadImageData: URLSessionTask?
     
-    init(user: User) {
+    init(user: UserResults) {
         self.user = user
     }
     
