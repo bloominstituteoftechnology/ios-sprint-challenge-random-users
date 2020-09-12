@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31DCBFDE250C56020068B981 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DCBFDD250C56020068B981 /* Cache.swift */; };
+		31DCBFE0250C57D30068B981 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DCBFDF250C57D30068B981 /* UsersTableViewController.swift */; };
+		31DCBFE2250C58520068B981 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DCBFE1250C58520068B981 /* UserDetailViewController.swift */; };
+		31DCBFE4250C76CC0068B981 /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DCBFE3250C76CC0068B981 /* Contacts.swift */; };
+		31DCBFE6250C79A90068B981 /* FetchOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DCBFE5250C79A90068B981 /* FetchOperation.swift */; };
+		31DCBFE8250C7C780068B981 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DCBFE7250C7C780068B981 /* UserTableViewCell.swift */; };
+		31DCBFEE250C7D1B0068B981 /* NetworkingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DCBFED250C7D1B0068B981 /* NetworkingController.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -15,6 +22,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31DCBFDD250C56020068B981 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		31DCBFDF250C57D30068B981 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
+		31DCBFE1250C58520068B981 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		31DCBFE3250C76CC0068B981 /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
+		31DCBFE5250C79A90068B981 /* FetchOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchOperation.swift; sourceTree = "<group>"; };
+		31DCBFE7250C7C780068B981 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		31DCBFED250C7D1B0068B981 /* NetworkingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingController.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -35,6 +49,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31DCBFE9250C7C830068B981 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				31DCBFDF250C57D30068B981 /* UsersTableViewController.swift */,
+				31DCBFE1250C58520068B981 /* UserDetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		31DCBFEA250C7CA00068B981 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				31DCBFE7250C7C780068B981 /* UserTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		31DCBFEB250C7CA90068B981 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				31DCBFE3250C76CC0068B981 /* Contacts.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		31DCBFEC250C7CC10068B981 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				31DCBFE5250C79A90068B981 /* FetchOperation.swift */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
+		31DCBFEF250C7D200068B981 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				31DCBFED250C7D1B0068B981 /* NetworkingController.swift */,
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
@@ -65,6 +120,11 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A98B2140178A00FC395A /* Main.storyboard */,
+				31DCBFEB250C7CA90068B981 /* Model */,
+				31DCBFEA250C7CA00068B981 /* Views */,
+				31DCBFE9250C7C830068B981 /* View Controllers */,
+				31DCBFEF250C7D200068B981 /* Model Controllers */,
+				31DCBFEC250C7CC10068B981 /* Operations */,
 				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
 				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
 				8ED6A9932140178C00FC395A /* Info.plist */,
@@ -76,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				31DCBFDD250C56020068B981 /* Cache.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -151,7 +212,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31DCBFEE250C7D1B0068B981 /* NetworkingController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				31DCBFE2250C58520068B981 /* UserDetailViewController.swift in Sources */,
+				31DCBFE4250C76CC0068B981 /* Contacts.swift in Sources */,
+				31DCBFDE250C56020068B981 /* Cache.swift in Sources */,
+				31DCBFE8250C7C780068B981 /* UserTableViewCell.swift in Sources */,
+				31DCBFE0250C57D30068B981 /* UsersTableViewController.swift in Sources */,
+				31DCBFE6250C79A90068B981 /* FetchOperation.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
