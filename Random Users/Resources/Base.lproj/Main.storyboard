@@ -1,11 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xWc-JJ-z2M">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Users Table View Controller-->
+        <scene sceneID="WA0-Gg-kmm">
+            <objects>
+                <tableViewController id="fZn-xR-u6J" customClass="UsersTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="lA0-VA-tVd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="100" id="vc1-B2-o4d" customClass="UserTableViewCell" customModule="Random_Users" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vc1-B2-o4d" id="OK4-hA-JIa">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lmv-ne-ojh">
+                                            <rect key="frame" x="15" y="10" width="80" height="80"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="XJl-ak-TN4"/>
+                                                <constraint firstAttribute="height" constant="80" id="la5-JO-UlC"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="40"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Vk-OU-cG7">
+                                            <rect key="frame" x="103" y="39.5" width="301" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="4wc-PX-AkV"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="lmv-ne-ojh" secondAttribute="bottom" constant="10" id="OiP-T2-P4d"/>
+                                        <constraint firstItem="4Vk-OU-cG7" firstAttribute="leading" secondItem="lmv-ne-ojh" secondAttribute="trailing" constant="8" id="Y0N-6X-u5P"/>
+                                        <constraint firstItem="4Vk-OU-cG7" firstAttribute="centerY" secondItem="OK4-hA-JIa" secondAttribute="centerY" id="baB-5Z-C3u"/>
+                                        <constraint firstItem="lmv-ne-ojh" firstAttribute="leading" secondItem="OK4-hA-JIa" secondAttribute="leading" constant="15" id="cFa-f3-Mre"/>
+                                        <constraint firstAttribute="trailing" secondItem="4Vk-OU-cG7" secondAttribute="trailing" constant="10" id="jsz-cK-IGP"/>
+                                        <constraint firstItem="lmv-ne-ojh" firstAttribute="top" secondItem="OK4-hA-JIa" secondAttribute="top" constant="10" id="wYJ-uy-M2j"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="userImageView" destination="lmv-ne-ojh" id="SFF-Pt-0PM"/>
+                                    <outlet property="usernameLabel" destination="4Vk-OU-cG7" id="eTL-Be-9xN"/>
+                                    <segue destination="K7V-cZ-dE4" kind="show" identifier="goToUserDetailVCSegue" id="5do-gF-br4"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="fZn-xR-u6J" id="XUY-l8-a0l"/>
+                            <outlet property="delegate" destination="fZn-xR-u6J" id="dl6-r4-sFX"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="WA4-fV-bUO"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5tw-iT-fEC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="813.04347826086962" y="133.92857142857142"/>
+        </scene>
+        <!--User DetailVC-->
+        <scene sceneID="ASV-sI-50R">
+            <objects>
+                <viewController id="K7V-cZ-dE4" customClass="UserDetailVC" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Sbx-jp-81G">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="YzZ-7L-bmd"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="0Rq-Yc-YQq"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g2z-GZ-pbm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1574" y="134"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="pMA-Ob-dQ7">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xWc-JJ-z2M" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Uv5-0H-gYg">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="fZn-xR-u6J" kind="relationship" relationship="rootViewController" id="OKx-9V-ZUM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MSI-bf-C02" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-97.101449275362327" y="133.92857142857142"/>
+        </scene>
+    </scenes>
 </document>
