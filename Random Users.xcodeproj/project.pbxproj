@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0DB4CC4D250D3C6E0099305E /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB4CC4C250D3C6E0099305E /* Cache.swift */; };
 		0DB4CC4F250D41420099305E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB4CC4E250D41420099305E /* User.swift */; };
+		0DB4CC52250D48350099305E /* UserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB4CC51250D48350099305E /* UserClient.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		0DB4CC4C250D3C6E0099305E /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		0DB4CC4E250D41420099305E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0DB4CC51250D48350099305E /* UserClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClient.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -48,6 +50,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		0DB4CC50250D48010099305E /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				0DB4CC51250D48350099305E /* UserClient.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				0DB4CC4B250D3C4C0099305E /* Model */,
+				0DB4CC50250D48010099305E /* Networking */,
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
@@ -168,6 +179,7 @@
 				0DB4CC4F250D41420099305E /* User.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				0DB4CC4D250D3C6E0099305E /* Cache.swift in Sources */,
+				0DB4CC52250D48350099305E /* UserClient.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
