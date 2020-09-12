@@ -55,7 +55,15 @@ class UsersTableViewController: UITableViewController {
         }
     }
     
-    // MARK: - FetchPhoto
+    // MARK: - Functions
+    
+    @IBAction func addUsersButton(_ sender: UIBarButtonItem) {
+        userController.fetchUsers { (_) in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     private func loadImage(forCell cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
         

@@ -59,7 +59,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Users" id="Emm-dd-G8M">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ov0-BK-370"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ov0-BK-370">
+                            <connections>
+                                <action selector="addUsersButton:" destination="zax-zl-uaW" id="thc-LQ-Tyq"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PXh-NC-rE7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
