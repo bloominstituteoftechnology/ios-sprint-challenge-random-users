@@ -16,6 +16,7 @@
 		C295F32F250C5DB70032DF2A /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C295F32E250C5DB70032DF2A /* APIController.swift */; };
 		C295F331250C622C0032DF2A /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C295F330250C622C0032DF2A /* Cache.swift */; };
 		C295F333250C643B0032DF2A /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C295F332250C643B0032DF2A /* FetchPhotoOperation.swift */; };
+		C295F336250C697B0032DF2A /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C295F335250C697B0032DF2A /* ContactTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		C295F32E250C5DB70032DF2A /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		C295F330250C622C0032DF2A /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		C295F332250C643B0032DF2A /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
+		C295F335250C697B0032DF2A /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,8 +102,17 @@
 			children = (
 				C295F32A250C5B8F0032DF2A /* ContactManagerTableViewController.swift */,
 				C295F32B250C5BA30032DF2A /* ContactDetailViewController.swift */,
+				C295F334250C69470032DF2A /* New Group */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C295F334250C69470032DF2A /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				C295F335250C697B0032DF2A /* ContactTableViewCell.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +190,7 @@
 				C295F331250C622C0032DF2A /* Cache.swift in Sources */,
 				C295F32D250C5BF00032DF2A /* Contact.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				C295F336250C697B0032DF2A /* ContactTableViewCell.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				C295F333250C643B0032DF2A /* FetchPhotoOperation.swift in Sources */,
 			);
