@@ -24,7 +24,7 @@ struct Name: Codable {
 
 struct Picture: Codable {
     let large: String
-    let med: String
+    let medium: String
     let thumbnail: String
 }
 
