@@ -9,6 +9,14 @@
 import UIKit
 
 class ContactDetailViewController: UIViewController {
+    
+    //MARK: - IBOutlets
+    @IBOutlet weak var contactImageView: UIImageView!
+    @IBOutlet weak var contactNameLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
