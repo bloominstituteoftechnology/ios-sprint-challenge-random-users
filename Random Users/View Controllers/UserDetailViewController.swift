@@ -40,5 +40,4 @@ class UserDetailViewController: UIViewController {
         imageView.image = UIImage(data: imageData)
     }
 
-
 }
