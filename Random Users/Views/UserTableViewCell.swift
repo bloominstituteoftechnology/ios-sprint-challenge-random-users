@@ -13,10 +13,25 @@ class UserTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     
+    var user: User? {
+        didSet {
+            updateViews()
+        }
+    }
     
     // MARK: - Outlets
     
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    
+    // MARK: - Functions
+    
+    private func updateViews() {
+        guard let user = user else { return }
+        
+        // Get thumbnail image
+        
+        self.nameLabel.text = "\(user.first) \(user.last)"
+    }
     
 }

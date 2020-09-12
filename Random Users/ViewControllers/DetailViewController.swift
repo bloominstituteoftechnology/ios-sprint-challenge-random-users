@@ -11,6 +11,10 @@ import UIKit
 class DetailViewController: UIViewController {
 
     
+    // MARK: - Properties
+    
+    var user: User?
+    
     // MARK: - Outlets
     
     @IBOutlet weak var imageView: UIImageView!
@@ -22,19 +26,20 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        if let user = user {
+            self.updateViews(with: user)
+        }
     }
+
+    // MARK: - Functions
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func updateViews(with user: User) {
+        
+        // get large image
+        
+        nameLabel.text = "\(user.first) \(user.last)"
+        phoneLabel.text = user.phone
+        emailLabel.text = user.email
     }
-    */
 
 }
