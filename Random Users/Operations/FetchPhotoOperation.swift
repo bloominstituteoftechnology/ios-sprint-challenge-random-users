@@ -7,41 +7,66 @@
 //
 
 import Foundation
+import UIKit
 
-class FetchContactPhotoOperation: ConcurrentOperation {
-    
-    var contact: Contact
-    var imageData: Data?
-    private var loadImageTask: URLSessionDataTask?
-    
-    init(contact: Contact) {
-        self.contact = contact
-        super.init()
+class FetchPhotoOperation: ConcurrentOperation {
+    var imageURL: URL
+    var imageData: UIImage?
+    var theDataTask: URLSessionDataTask? = nil
+
+    init(imageURL: URL, imageData: UIImage? = nil) {
+        self.imageURL = imageURL
+        self.imageData = imageData
     }
-    
+
     override func start() {
-        self.state = .isExecuting
-        
-        let imageURL = URL(string: contact.picture.thumbnail)!
-        
-        loadImageTask = URLSession.shared.dataTask(with: imageURL, completionHandler: { (data, _, error) in
-                    defer{
-                        self.state = .isFinished
-                    }
-                    if let error = error{
-                        print("Error getting image: \(error)")
-                    }
-                    guard let data = data else{
-                        print("Error getting data")
-                        return
-                    }
-                    self.imageData = data
-                })
-                loadImageTask?.resume()
+        state = .isExecuting
+
+        fetchImage(of: imageURL) { result in
+            if let image = try? result.get() {
+                self.imageData = image
+                self.state = .isFinished
+            }
+        }
+    }
+
+    override func cancel() {
+        if let dataTask = theDataTask {
+            dataTask.cancel()
+            print("Data Task was Canceled" )
+        }
+    }
+
+
+    // MARK: - Functions
+    
+    private func fetchImage(of imageUrl: URL, completion: @escaping (Result<UIImage, NetworkError>) -> Void) {
+
+        var request = URLRequest(url: imageUrl)
+        request.httpMethod = HTTPMethod.get.rawValue
+
+        theDataTask = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("\(error)")
+                completion(.failure(.otherNetworkError))
+                return
             }
 
-            override func cancel() {
-                loadImageTask?.cancel()
-                self.state = .isFinished
+            guard let data = data else {
+                print("No data")
+                completion(.failure(.badData))
+                return
+            }
+
+            guard let image = UIImage(data: data) else {
+                print("No data")
+                completion(.failure(.badData))
+                return
+            }
+
+            completion(.success(image))
+
+        }
+        theDataTask!.resume()
     }
 }

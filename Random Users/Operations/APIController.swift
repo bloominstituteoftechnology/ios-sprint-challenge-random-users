@@ -7,76 +7,64 @@
 //
 
 import Foundation
+import UIKit
+
+enum HTTPMethod: String {
+    case get = "GET"
+    case post = "POST"
+}
+
+enum NetworkError: Error{
+    case noAuth
+    case badAuth
+    case decodeFailed
+    case noImage
+    case noConnection
+    case badURL
+    case otherNetworkError
+    case noDecode
+    case badData
+}
 
 class APIController {
     
-    var myContacts: ContactResults?
-    private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
+     private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
 
-    enum NetworkError: Error{
-        case noData
-        case tryAgain
-        case decodeFailed
-        case noImage
-        case noConnection
-    }
-    
-    func getContacts(completion: @escaping (Result<ContactResults, NetworkError>) -> Void) {
-        var request = URLRequest(url: baseURL)
-        request.httpMethod = "GET"
-        
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-        if let error = error{
-            completion(.failure(.tryAgain))
-            print("Error getting Contacts: \(error)")
-            return
+        func fetchRandomUsers(completion: @escaping (Result<[User], NetworkError>) -> Void) {
+
+            let randomUserURL = baseURL
+
+            var request = URLRequest(url: randomUserURL)
+            request.httpMethod = HTTPMethod.get.rawValue
+
+            /// Actual API Request
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    print("Error with API call... \(error)")
+                    completion(.failure(.otherNetworkError))
+                    return
+                }
+
+                if let response = response as? HTTPURLResponse,
+                    response.statusCode != 200 {
+                    completion(.failure(.badAuth))
+                    return
+                }
+
+                guard let data = data else {
+                    completion(.failure(.noConnection))
+                    return
+                }
+
+                let decoder = JSONDecoder()
+
+                do {
+                    let users = try decoder.decode(APIResults.self, from: data).results
+                    completion(.success(users))
+                } catch {
+                    completion(.failure(.noDecode))
+                }
+
+            }.resume()
         }
-            
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                completion(.failure(.noConnection))
-                return
-            }
-            
-            guard let data = data else {
-                completion(.failure(.noData))
-                print("Error getting data")
-                return
-            }
-            
-            do {
-                let jsonDecoder = JSONDecoder()
-                self.myContacts = try jsonDecoder.decode(ContactResults.self, from: data)
-                completion(.success(self.myContacts!))
-                
-            } catch {
-                print("Error decoding JSON: \(error)")
-                completion(.failure(.decodeFailed))
-            }
-        }
-        
-        task.resume()
     }
-    
-    func downloadImage(at urlString: String, completion: @escaping (Result<Data, NetworkError>) -> Void){
-    var request = URLRequest(url: URL(string: urlString)!)
-    request.httpMethod = "GET"
-        
-        let task = URLSession.shared.dataTask(with: request) { (data, _ , error) in
-            if let error = error {
-                completion(.failure(.tryAgain))
-                print("Error getting image: \(error)")
-                return
-            }
-            
-            guard let data = data else {
-                completion(.failure(.noData))
-                print("Error getting image data")
-                return
-            }
-            
-            completion(.success(data))
-        }
-        
-        task.resume()
-    }
-}

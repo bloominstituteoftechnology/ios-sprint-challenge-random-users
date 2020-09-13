@@ -8,16 +8,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Contact Manager Table View Controller-->
+        <!--Contacts Table View Controller-->
         <scene sceneID="T88-pz-lpd">
             <objects>
-                <tableViewController id="LYm-lV-joD" customClass="ContactManagerTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="LYm-lV-joD" customClass="ContactsTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="y9J-k9-32y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactCell" rowHeight="72" id="BL6-f0-GP6" customClass="ContactTableViewCell" customModule="Random_Users" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Person Cell" rowHeight="72" id="BL6-f0-GP6" customClass="PersonTableViewCell" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="72"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BL6-f0-GP6" id="Uua-uQ-aI6">
@@ -40,6 +40,8 @@
                                 <connections>
                                     <outlet property="contactImageView" destination="JbP-BH-3t2" id="yKY-ni-bUK"/>
                                     <outlet property="contactNameLabel" destination="nQX-pf-o9A" id="mQa-ta-HLU"/>
+                                    <outlet property="userName" destination="nQX-pf-o9A" id="gGJ-lM-cf2"/>
+                                    <outlet property="userPicture" destination="JbP-BH-3t2" id="Y3Y-Bi-I9Z"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -56,6 +58,7 @@
                                 <state key="normal" image="plus" catalog="system"/>
                             </button>
                             <connections>
+                                <action selector="refreshTapped:" destination="LYm-lV-joD" id="VOx-9j-a8c"/>
                                 <segue destination="dPi-CV-4wv" kind="show" identifier="ContactDetailSegue" id="VTi-Mj-gbO"/>
                             </connections>
                         </barButtonItem>
@@ -65,10 +68,10 @@
             </objects>
             <point key="canvasLocation" x="2599.1999999999998" y="118.29085457271366"/>
         </scene>
-        <!--Contact Detail View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="rXe-LX-jp7">
             <objects>
-                <viewController id="dPi-CV-4wv" customClass="ContactDetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dPi-CV-4wv" customClass="DetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nsn-bF-bDR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -107,6 +110,10 @@
                         <outlet property="contactEmailLabel" destination="snH-mW-CZh" id="Phi-IY-jU0"/>
                         <outlet property="contactImageView" destination="7SO-tj-9T8" id="ldl-yH-bfH"/>
                         <outlet property="contactNameLabel" destination="eUq-0N-XE6" id="qcR-oI-h8t"/>
+                        <outlet property="personEmailLabel" destination="b7L-qY-bdE" id="pkU-CG-wbY"/>
+                        <outlet property="personImage" destination="7SO-tj-9T8" id="3QE-lR-Kxw"/>
+                        <outlet property="personNameLabel" destination="eUq-0N-XE6" id="SXZ-oK-KMT"/>
+                        <outlet property="personPhoneLabel" destination="snH-mW-CZh" id="Zdy-TI-lKn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hKX-lf-qal" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

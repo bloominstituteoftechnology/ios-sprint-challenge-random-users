@@ -16,7 +16,9 @@
 		C295F32F250C5DB70032DF2A /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C295F32E250C5DB70032DF2A /* APIController.swift */; };
 		C295F331250C622C0032DF2A /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C295F330250C622C0032DF2A /* Cache.swift */; };
 		C295F333250C643B0032DF2A /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C295F332250C643B0032DF2A /* FetchPhotoOperation.swift */; };
-		C295F336250C697B0032DF2A /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C295F335250C697B0032DF2A /* ContactTableViewCell.swift */; };
+		C295F338250EB1A40032DF2A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C295F337250EB1A40032DF2A /* DetailViewController.swift */; };
+		C295F33A250EB3780032DF2A /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C295F339250EB3780032DF2A /* ContactsTableViewController.swift */; };
+		C295F33C250EB4DE0032DF2A /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C295F33B250EB4DE0032DF2A /* PersonTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,13 +29,13 @@
 		8ED6A9912140178C00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ED6A9932140178C00FC395A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
-		C295F32A250C5B8F0032DF2A /* ContactManagerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManagerTableViewController.swift; sourceTree = "<group>"; };
-		C295F32B250C5BA30032DF2A /* ContactDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
 		C295F32C250C5BF00032DF2A /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		C295F32E250C5DB70032DF2A /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		C295F330250C622C0032DF2A /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		C295F332250C643B0032DF2A /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
-		C295F335250C697B0032DF2A /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		C295F337250EB1A40032DF2A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C295F339250EB3780032DF2A /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
+		C295F33B250EB4DE0032DF2A /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,8 +102,8 @@
 		C295F329250C5B830032DF2A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C295F32A250C5B8F0032DF2A /* ContactManagerTableViewController.swift */,
-				C295F32B250C5BA30032DF2A /* ContactDetailViewController.swift */,
+				C295F337250EB1A40032DF2A /* DetailViewController.swift */,
+				C295F339250EB3780032DF2A /* ContactsTableViewController.swift */,
 				C295F334250C69470032DF2A /* New Group */,
 			);
 			path = ViewControllers;
@@ -110,7 +112,7 @@
 		C295F334250C69470032DF2A /* New Group */ = {
 			isa = PBXGroup;
 			children = (
-				C295F335250C697B0032DF2A /* ContactTableViewCell.swift */,
+				C295F33B250EB4DE0032DF2A /* PersonTableViewCell.swift */,
 			);
 			path = "New Group";
 			sourceTree = "<group>";
@@ -189,10 +191,12 @@
 				C295F32F250C5DB70032DF2A /* APIController.swift in Sources */,
 				C295F331250C622C0032DF2A /* Cache.swift in Sources */,
 				C295F32D250C5BF00032DF2A /* Contact.swift in Sources */,
+				C295F33C250EB4DE0032DF2A /* PersonTableViewCell.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
-				C295F336250C697B0032DF2A /* ContactTableViewCell.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				C295F333250C643B0032DF2A /* FetchPhotoOperation.swift in Sources */,
+				C295F33A250EB3780032DF2A /* ContactsTableViewController.swift in Sources */,
+				C295F338250EB1A40032DF2A /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
