@@ -55,6 +55,10 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+				E1799EC8250EFF67000C7943 /* Models */,
+				E1799EC7250EFF55000C7943 /* Views */,
+				E1799EC6250EFF43000C7943 /* View Controllers */,
+				E1799EC5250EFF10000C7943 /* Networking */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
@@ -78,6 +82,34 @@
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
 			);
 			path = Operations;
+			sourceTree = "<group>";
+		};
+		E1799EC5250EFF10000C7943 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		E1799EC6250EFF43000C7943 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		E1799EC7250EFF55000C7943 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E1799EC8250EFF67000C7943 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
