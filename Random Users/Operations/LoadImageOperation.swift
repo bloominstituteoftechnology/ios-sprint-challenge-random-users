@@ -34,16 +34,18 @@ class LoadImageOperation: ConcurrentOperation {
     
     // MARK: - Private
     
+    private var shouldContinue = true
+    
     private lazy var fetchOperation = FetchImageOperation(imageURL: url)
     
     private lazy var  cacheOperation = BlockOperation {
-        guard !self.isCancelled, let imageData = self.fetchOperation.imageData else { return }
+        guard self.shouldContinue, let imageData = self.fetchOperation.imageData else { return }
         let size = imageData.count
         self.cache.cache(imageData, ofSize: size, for: self.url)
     }
     
     private lazy var updateCellOperation = BlockOperation {
-        guard !self.isCancelled, let imageData = self.fetchOperation.imageData,
+        guard self.shouldContinue, let imageData = self.fetchOperation.imageData,
             let image = UIImage(data: imageData) else { return }
         self.imageView.image = image
     }
@@ -72,8 +74,7 @@ class LoadImageOperation: ConcurrentOperation {
     
     override func cancel() {
         fetchOperation.cancel()
-        cacheOperation.cancel()
-        updateCellOperation.cancel()
+        shouldContinue = false
     }
     
 }

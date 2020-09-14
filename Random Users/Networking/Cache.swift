@@ -16,6 +16,7 @@ class Cache<Key: Hashable, Value> {
 
     func cache(_ value: Value, ofSize bytes: Bytes, for key: Key) {
         queue.async {
+            guard self.store[key] == nil else { return }
             self.store[key] = (value, bytes)
             self.chronologicalKeys.append(key)
             
@@ -23,7 +24,7 @@ class Cache<Key: Hashable, Value> {
             if self.storeSize > self.limit {
                 self.evictOldEntries()
             }
-        }
+        } 
     }
     
     func value(for key: Key) -> Value? {

@@ -27,23 +27,13 @@ class FetchImageOperation: ConcurrentOperation {
     override func start() {
         state = .isExecuting
         
-        fetchImageTask = URLSession.shared.dataTask(with: imageURL) { (data, response, error) in
+        fetchImageTask = URLSession.shared.dataTask(with: URLRequest(url: imageURL), completionHandler: { (result) in
             defer { self.state = .isFinished }
             
-            if let error = error {
-                print("Error: \(error)")
-                return
+            if case .success(let data) = result {
+                self.imageData = data
             }
-            
-            if let response = response as? HTTPURLResponse, !(200...299).contains(response.statusCode) {
-                print("Invalid response: \(response.statusCode)")
-                return
-            }
-            
-            guard let data = data else { return }
-            
-            self.imageData = data
-        }
+        })
         
         fetchImageTask?.resume()
     }
@@ -54,3 +44,4 @@ class FetchImageOperation: ConcurrentOperation {
     
     private var fetchImageTask: URLSessionDataTask?
 }
+
