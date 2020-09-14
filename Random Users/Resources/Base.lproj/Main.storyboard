@@ -11,13 +11,13 @@
         <!--Users-->
         <scene sceneID="7qM-m1-QOC">
             <objects>
-                <tableViewController id="kNc-4w-4Kc" sceneMemberID="viewController">
+                <tableViewController id="kNc-4w-4Kc" customClass="UsersTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="PQj-Hi-Mzj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="usersCell" id="Esw-U7-kkI">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="usersCell" id="Esw-U7-kkI" customClass="UsersTableViewCell" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Esw-U7-kkI" id="VZ5-1u-OMO">
@@ -57,6 +57,10 @@
                                         <constraint firstItem="A0m-r6-ryn" firstAttribute="centerY" secondItem="XMo-7G-JiM" secondAttribute="centerY" id="zj1-pt-1Jt"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="userImageView" destination="A0m-r6-ryn" id="JMt-nT-xBW"/>
+                                    <outlet property="usersNameLabel" destination="XMo-7G-JiM" id="fJF-0r-oDv"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

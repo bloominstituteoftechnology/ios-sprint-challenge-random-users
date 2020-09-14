@@ -14,7 +14,10 @@
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
 		E1799ECC250F04F7000C7943 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1799ECB250F04F7000C7943 /* Picture.swift */; };
 		E1799ECE250F050B000C7943 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1799ECD250F050B000C7943 /* Name.swift */; };
-		E1799ED1250F0657000C7943 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1799ED0250F0657000C7943 /* Result.swift */; };
+		E1799ED1250F0657000C7943 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1799ED0250F0657000C7943 /* Results.swift */; };
+		E1799ED3250F0858000C7943 /* UsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1799ED2250F0858000C7943 /* UsersTableViewCell.swift */; };
+		E1799ED5250F0E98000C7943 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1799ED4250F0E98000C7943 /* UsersTableViewController.swift */; };
+		E1799ED7250F1685000C7943 /* UserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1799ED6250F1685000C7943 /* UserClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +30,10 @@
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 		E1799ECB250F04F7000C7943 /* Picture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
 		E1799ECD250F050B000C7943 /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Name.swift; sourceTree = "<group>"; };
-		E1799ED0250F0657000C7943 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		E1799ED0250F0657000C7943 /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
+		E1799ED2250F0858000C7943 /* UsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewCell.swift; sourceTree = "<group>"; };
+		E1799ED4250F0E98000C7943 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
+		E1799ED6250F1685000C7943 /* UserClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +99,7 @@
 		E1799EC5250EFF10000C7943 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				E1799ED6250F1685000C7943 /* UserClient.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -100,6 +107,7 @@
 		E1799EC6250EFF43000C7943 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E1799ED4250F0E98000C7943 /* UsersTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -107,6 +115,7 @@
 		E1799EC7250EFF55000C7943 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E1799ED2250F0858000C7943 /* UsersTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -116,7 +125,7 @@
 			children = (
 				E1799ECD250F050B000C7943 /* Name.swift */,
 				E1799ECB250F04F7000C7943 /* Picture.swift */,
-				E1799ED0250F0657000C7943 /* Result.swift */,
+				E1799ED0250F0657000C7943 /* Results.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -193,9 +202,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1799ECC250F04F7000C7943 /* Picture.swift in Sources */,
-				E1799ED1250F0657000C7943 /* Result.swift in Sources */,
+				E1799ED7250F1685000C7943 /* UserClient.swift in Sources */,
+				E1799ED1250F0657000C7943 /* Results.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				E1799ED3250F0858000C7943 /* UsersTableViewCell.swift in Sources */,
+				E1799ED5250F0E98000C7943 /* UsersTableViewController.swift in Sources */,
 				E1799ECE250F050B000C7943 /* Name.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

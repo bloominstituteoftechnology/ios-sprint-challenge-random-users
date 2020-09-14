@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Result: Codable {
+struct Results: Codable {
     let name: Name
     let email, phone: String
     let picture: Picture
