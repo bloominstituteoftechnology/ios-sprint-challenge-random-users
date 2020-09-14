@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4682310F250F035D00FB2D53 /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4682310E250F035D00FB2D53 /* ContactDetailViewController.swift */; };
+		46823111250F039900FB2D53 /* ContactManagerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46823110250F039900FB2D53 /* ContactManagerTableViewController.swift */; };
+		46823113250F03ED00FB2D53 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46823112250F03ED00FB2D53 /* ContactTableViewCell.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -15,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4682310E250F035D00FB2D53 /* ContactDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
+		46823110250F039900FB2D53 /* ContactManagerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManagerTableViewController.swift; sourceTree = "<group>"; };
+		46823112250F03ED00FB2D53 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -35,6 +41,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4682310B250F02BC00FB2D53 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4682310C250F02CA00FB2D53 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4682310E250F035D00FB2D53 /* ContactDetailViewController.swift */,
+				46823110250F039900FB2D53 /* ContactManagerTableViewController.swift */,
+				46823112250F03ED00FB2D53 /* ContactTableViewCell.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4682310D250F02DE00FB2D53 /* ModelController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ModelController;
+			sourceTree = "<group>";
+		};
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +84,9 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
+				4682310D250F02DE00FB2D53 /* ModelController */,
+				4682310C250F02CA00FB2D53 /* ViewControllers */,
+				4682310B250F02BC00FB2D53 /* Model */,
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
@@ -151,7 +184,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46823111250F039900FB2D53 /* ContactManagerTableViewController.swift in Sources */,
+				46823113250F03ED00FB2D53 /* ContactTableViewCell.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				4682310F250F035D00FB2D53 /* ContactDetailViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
