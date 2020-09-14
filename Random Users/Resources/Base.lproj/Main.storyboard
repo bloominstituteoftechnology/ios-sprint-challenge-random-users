@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2Fl-pm-Q0h">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -38,8 +38,8 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="userImageView" destination="3QI-YP-EiX" id="nFt-1J-uZA"/>
-                                    <outlet property="userNameLabel" destination="0qb-ja-NHA" id="t8R-4R-iTR"/>
+                                    <outlet property="nameLabel" destination="0qb-ja-NHA" id="ptY-5T-zof"/>
+                                    <outlet property="thumbnailImageView" destination="3QI-YP-EiX" id="A0k-sg-RNz"/>
                                     <segue destination="aog-50-bFP" kind="presentation" identifier="UserDetailSegue" id="iwp-Oz-gY0"/>
                                 </connections>
                             </tableViewCell>
@@ -93,10 +93,10 @@
                         <viewLayoutGuide key="safeArea" id="5eV-2o-NY5"/>
                     </view>
                     <connections>
-                        <outlet property="userEmailLabel" destination="5dj-dK-dCP" id="14E-ms-pBe"/>
-                        <outlet property="userImageView" destination="CVj-YV-gcw" id="JhT-tp-JCS"/>
-                        <outlet property="userNameLabel" destination="NoW-BY-d5W" id="sK9-3r-u4A"/>
-                        <outlet property="userPhoneNumber" destination="ER4-F7-2vY" id="PzW-zC-iHu"/>
+                        <outlet property="emailLabel" destination="5dj-dK-dCP" id="PLh-e4-4kt"/>
+                        <outlet property="largePhotoImageView" destination="CVj-YV-gcw" id="C91-sb-lGq"/>
+                        <outlet property="nameLabel" destination="NoW-BY-d5W" id="QQZ-vW-6m5"/>
+                        <outlet property="phoneNumberLabel" destination="ER4-F7-2vY" id="njy-Iu-CIe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uZy-3Y-lJq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

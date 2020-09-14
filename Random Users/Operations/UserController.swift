@@ -7,83 +7,62 @@
 //
 
 import Foundation
-import UIKit
 
-enum HTTPMethod: String {
-    case get = "GET"
-}
 
-enum NetworkError: Error {
-    case noAuth
-    case unauthorized
-    case otherError(Error)
-    case noData
-    case decodeFailed
-    case encodedFailed
-}
+class RandomUsersApiController {
+    enum HTTPMethod: String {
+        case get = "GET"
+    }
 
-class UserController {
-    var user: User?
-    var userList: [User] = []
+    enum NetworkError: Error {
+        case noData
+        case badData
+        case noAuth
+        case badAuth
+        case otherError
+        case noDecode
+        case badImage
+    }
 
-    private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
+    // MARK: - Properties -
+    
+    var users: [User] = []
+    private let baseURL = URL(string: "https://randomuser.me/api/?results=1000")!
+    private lazy var jsonDecoder = JSONDecoder()
 
-    func fetchUsers(completion: @escaping (NetworkError?) -> Void) {
-        var request = URLRequest(url: baseURL)
+    func fetchRandomUserDetails(completion: @escaping (Result<[User], NetworkError>) -> Void) {
+        let userURL = baseURL
+        var request = URLRequest(url: userURL)
         request.httpMethod = HTTPMethod.get.rawValue
 
-        URLSession.shared.dataTask(with: request) { (data, _, error) in
-            guard error == nil else {
-                completion((.otherError(error!)))
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("Error receiving user details \(error)")
+                completion(.failure(.otherError))
+                return
+            }
+
+            if let response = response as? HTTPURLResponse,
+                response.statusCode != 200 {
+                print(response)
+                completion(.failure(.badAuth))
                 return
             }
 
             guard let data = data else {
-                completion((.noData))
+                completion(.failure(.badData))
                 return
             }
 
-            let decoder = JSONDecoder()
             do {
-                let userNames = try decoder.decode(UserResults.self, from: data)
-                self.userList.append(contentsOf: userNames.results)
-                completion(nil)
+                self.users = try Array(self.jsonDecoder.decode(Results.self, from: data).results)
+                print(self.users.count)
+                completion(.success(self.users))
             } catch {
-                completion((.decodeFailed))
+                print("Error decoding user details object: \(error)")
+                completion(.failure(.noDecode))
             }
         }.resume()
     }
 
-    func fetchImage(at urlString: String, completion: @escaping (Result <UIImage, NetworkError>) -> Void) {
-        let imageURL = URL(string: urlString)!
-        var request = URLRequest(url: imageURL)
-        request.httpMethod = HTTPMethod.get.rawValue
-        URLSession.shared.dataTask(with: request) { (data, _, error) in
-            guard error == nil else {
-                completion(.failure(.otherError(error!)))
-                return
-            }
-
-            guard let data = data else {
-                completion(.failure(.noData))
-                return
-            }
-
-            if let image = UIImage(data: data) {
-                completion(.success(image))
-            } else {
-                completion(.failure(.decodeFailed))
-            }
-        }.resume()
-
-    }
-
-}
-
-extension URL {
-    var usingHTTPS: URL? {
-        guard var components = URLComponents(url: self, resolvingAgainstBaseURL: true) else { return nil }
-        components.scheme = "https"
-        return components.url
-    }
 }

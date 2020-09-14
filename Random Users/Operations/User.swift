@@ -8,26 +8,49 @@
 
 import Foundation
 
-struct User: Codable, Hashable, Equatable {
-    
-    let name: Name
-    let email: String
-    let phone: String
-    let picture: Picture
-    
-    struct Name: Codable, Hashable, Equatable {
-        let title: String
-        let first: String
-        let last: String
-    }
-    
-    struct Picture: Codable, Hashable, Equatable {
-        let large: String
-        let medium: String
-        let thumbnail: String
-    }
+struct Results: Decodable {
+    var results: [User]
 }
+struct User: Decodable {
+    var name: String
+    var email: String
+    var phone: String
+    var thumbnailImage: URL
+    var largeImage: URL
 
-struct UserResults: Decodable {
-    let results: [User]
+    enum ContactKeys: String, CodingKey {
+        case name
+        case email
+        case phone
+        case picture
+
+        enum NameKeys: String, CodingKey {
+            case title
+            case first
+            case last
+        }
+        enum PictureKeys: String, CodingKey {
+            case large
+            case medium
+            case thumbnail
+        }
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: ContactKeys.self)
+        let nameContainer = try container.nestedContainer(keyedBy: ContactKeys.NameKeys.self, forKey: .name)
+        let title = try nameContainer.decode(String.self, forKey: .title)
+        let first = try nameContainer.decode(String.self, forKey: .first)
+        let last = try nameContainer.decode(String.self, forKey: .last)
+        let pictureContainer = try container.nestedContainer(keyedBy: ContactKeys.PictureKeys.self, forKey: .picture)
+        let large = try pictureContainer.decode(String.self, forKey: .large)
+        let thumbnail = try pictureContainer.decode(String.self, forKey: .thumbnail)
+
+        name = "\(title) \(first) \(last)"
+        email = try container.decode(String.self, forKey: .email)
+        phone = try container.decode(String.self, forKey: .phone)
+
+        thumbnailImage = URL(string: thumbnail)!
+        largeImage = URL(string: large)!
+    }
 }
