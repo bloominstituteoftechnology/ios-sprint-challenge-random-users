@@ -26,18 +26,10 @@ class UserTableViewCell: UITableViewCell {
         guard let user = user else {return}
         userLabel.text = user.name
         
+        let url = URL(string: "\(user.thumbnail)")!
+        if let data = try? Data(contentsOf: url) {
+            
+            userThumbnail.image = UIImage(data: data)
+        }
     }
-    
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    
 }

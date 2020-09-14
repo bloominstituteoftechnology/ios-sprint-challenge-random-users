@@ -25,9 +25,16 @@ class UserViewController: UIViewController {
     
     private func updateViews() {
         guard let user = user else {return}
+        
         nameLabel.text = user.name
         phoneLabel.text = user.phone
         emailLabel.text = user.email
+        
+        let url = URL(string: "\(user.large)")!
+        if let data = try? Data(contentsOf: url) {
+            
+            userLargeImage.image = UIImage(data: data)
+        }
     }
  
 

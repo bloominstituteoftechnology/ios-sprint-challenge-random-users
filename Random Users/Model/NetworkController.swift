@@ -29,7 +29,7 @@ final class NetworkController {
     
     private (set) var users: [User] = []
     
-    let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=10")!
+    let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
     
     init() {
         fetchUsers()
