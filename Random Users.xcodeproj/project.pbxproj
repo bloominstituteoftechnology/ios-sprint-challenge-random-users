@@ -19,6 +19,7 @@
 		C295F3A3250FF2590032DF2A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C295F3A2250FF2590032DF2A /* User.swift */; };
 		C295F3A5250FF3850032DF2A /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C295F3A4250FF3850032DF2A /* UserController.swift */; };
 		C295F3A7250FF7C70032DF2A /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C295F3A6250FF7C70032DF2A /* FetchPhotoOperation.swift */; };
+		C295F3A92510050E0032DF2A /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C295F3A82510050E0032DF2A /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		C295F3A2250FF2590032DF2A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C295F3A4250FF3850032DF2A /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		C295F3A6250FF7C70032DF2A /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
+		C295F3A82510050E0032DF2A /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				C295F3A4250FF3850032DF2A /* UserController.swift */,
 				C295F3A6250FF7C70032DF2A /* FetchPhotoOperation.swift */,
 				C295F39A250FEF430032DF2A /* UsersTableViewController.swift */,
+				C295F3A82510050E0032DF2A /* TableViewController.swift */,
 				C295F39C250FEF630032DF2A /* UsersDetailViewController.swift */,
 				C295F39E250FEF850032DF2A /* UsersTableViewCell.swift */,
 			);
@@ -175,6 +178,7 @@
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 				C295F3A7250FF7C70032DF2A /* FetchPhotoOperation.swift in Sources */,
+				C295F3A92510050E0032DF2A /* TableViewController.swift in Sources */,
 				C295F3A5250FF3850032DF2A /* UserController.swift in Sources */,
 				C295F39D250FEF630032DF2A /* UsersDetailViewController.swift in Sources */,
 				C295F39B250FEF430032DF2A /* UsersTableViewController.swift in Sources */,
