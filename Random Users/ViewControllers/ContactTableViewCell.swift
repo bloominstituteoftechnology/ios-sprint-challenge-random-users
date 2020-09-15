@@ -10,9 +10,17 @@ import UIKit
 
 class ContactTableViewCell: UITableViewCell {
     
+    //MARK: - PROPERTIES
+    
+
+    
     //MARK: - IBOutlets
     @IBOutlet weak var contactNameLabel: UILabel!
     @IBOutlet weak var contactImageView: UIImageView!
+    
+    private func updateViews() {
+
+    }
     
 
     override func awakeFromNib() {

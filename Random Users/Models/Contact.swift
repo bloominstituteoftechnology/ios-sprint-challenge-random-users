@@ -11,8 +11,8 @@ import Foundation
 
 struct Contact: Codable {
     let name: Name
-    let imageURL: String
-    let phoneNumber: String
+    let picture : Picture
+    let phone: String
     let email: String
 }
 
@@ -34,22 +34,3 @@ struct ContactResults: Codable {
 
 
 
-//SAMPLE JSON
-/*
-{
-  "results": [
-    {
-      "name": {
-        "title": "mr",
-        "first": "brad",
-        "last": "gibson"
-      },
-      "email": "brad.gibson@example.com",
-      "phone": "011-962-7516",
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/men/75.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/men/75.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/75.jpg"
-      },
-}
-/*
