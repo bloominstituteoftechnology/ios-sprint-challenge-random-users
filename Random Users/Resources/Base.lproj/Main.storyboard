@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--User Table View Controller-->
+        <!--Users-->
         <scene sceneID="rlO-44-20u">
             <objects>
                 <tableViewController id="XxB-h3-prO" customClass="UserTableViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,32 +18,27 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" id="GfW-sH-Krv" customClass="UserTableViewCell" customModule="Random_Users" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GfW-sH-Krv" id="Wqx-bc-pl2">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zV3-3g-19o">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zV3-3g-19o">
                                             <rect key="frame" x="20" y="5" width="32" height="32"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="32" id="4K4-XG-gz7"/>
-                                                <constraint firstAttribute="height" constant="32" id="wxe-Rw-rhQ"/>
-                                            </constraints>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6I-Wr-fGf">
-                                            <rect key="frame" x="60" y="11" width="42" height="21"/>
+                                            <rect key="frame" x="69" y="11" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="zV3-3g-19o" firstAttribute="leading" secondItem="Wqx-bc-pl2" secondAttribute="leading" constant="20" id="1k8-Ie-TqP"/>
-                                        <constraint firstItem="h6I-Wr-fGf" firstAttribute="leading" secondItem="zV3-3g-19o" secondAttribute="trailing" constant="8" id="8EV-D1-9p3"/>
-                                        <constraint firstItem="h6I-Wr-fGf" firstAttribute="bottom" secondItem="Wqx-bc-pl2" secondAttribute="bottomMargin" id="OeK-sc-9my"/>
-                                        <constraint firstItem="h6I-Wr-fGf" firstAttribute="top" secondItem="Wqx-bc-pl2" secondAttribute="topMargin" id="ec2-VY-JkZ"/>
-                                        <constraint firstItem="zV3-3g-19o" firstAttribute="top" secondItem="Wqx-bc-pl2" secondAttribute="top" constant="5" id="rjf-du-OdO"/>
+                                        <constraint firstItem="h6I-Wr-fGf" firstAttribute="leading" secondItem="Wqx-bc-pl2" secondAttribute="leading" constant="69" id="3MX-Hr-SGg"/>
+                                        <constraint firstItem="h6I-Wr-fGf" firstAttribute="top" secondItem="Wqx-bc-pl2" secondAttribute="top" constant="11" id="eTh-Df-YW0"/>
+                                        <constraint firstAttribute="bottom" secondItem="h6I-Wr-fGf" secondAttribute="bottom" constant="11.5" id="r5K-7K-MJh"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -58,8 +53,12 @@
                             <outlet property="delegate" destination="XxB-h3-prO" id="dsV-XP-b7h"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="jYN-OH-mgh">
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="pw6-59-m7s"/>
+                    <navigationItem key="navigationItem" title="Users" id="jYN-OH-mgh">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="pw6-59-m7s">
+                            <connections>
+                                <action selector="addButton:" destination="XxB-h3-prO" id="UST-Ko-lAT"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ufo-Ya-R5b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

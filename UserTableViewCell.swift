@@ -25,11 +25,11 @@ class UserTableViewCell: UITableViewCell {
         
         guard let user = user else {return}
         userLabel.text = user.name
-        
-        let url = URL(string: "\(user.thumbnail)")!
-        if let data = try? Data(contentsOf: url) {
-            
-            userThumbnail.image = UIImage(data: data)
-        }
+//
+//        let url = URL(string: "\(user.thumbnail)")!
+//        if let data = try? Data(contentsOf: url) {
+//
+//            userThumbnail.image = UIImage(data: data)
+//        }
     }
 }

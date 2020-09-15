@@ -10,6 +10,8 @@ import Foundation
 
 final class NetworkController {
     
+    // HI SHAWN
+    
     enum HTTPMethod: String {
         case get = "GET"
         case put = "PUT"
@@ -54,7 +56,6 @@ final class NetworkController {
                 let decoder = try JSONDecoder().decode(UserResults.self, from: data)
                 self.users = decoder.results
                 completion(.success(true))
-                print(self.users)
             } catch {
                 print("Error \(error)")
                 completion(.failure(.failedDecoding))
