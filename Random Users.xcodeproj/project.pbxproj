@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		841F3981250F09EB005D8584 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F3980250F09EB005D8584 /* User.swift */; };
+		841F3983250F0A7B005D8584 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F3982250F0A7B005D8584 /* UserDetailViewController.swift */; };
+		841F3985250F0ACF005D8584 /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F3984250F0ACF005D8584 /* UserTableViewController.swift */; };
+		841F3987250F0B49005D8584 /* RandomUserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F3986250F0B49005D8584 /* RandomUserClient.swift */; };
+		841F3989250F0B75005D8584 /* RandomUserResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F3988250F0B75005D8584 /* RandomUserResult.swift */; };
+		841F398B250F0B97005D8584 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F398A250F0B97005D8584 /* Cache.swift */; };
+		841F398D250F0BBC005D8584 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F398C250F0BBC005D8584 /* UserTableViewCell.swift */; };
+		841F398F250F0C10005D8584 /* FetchPictureOp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F398E250F0C10005D8584 /* FetchPictureOp.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -15,6 +23,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		841F3980250F09EB005D8584 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		841F3982250F0A7B005D8584 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		841F3984250F0ACF005D8584 /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
+		841F3986250F0B49005D8584 /* RandomUserClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserClient.swift; sourceTree = "<group>"; };
+		841F3988250F0B75005D8584 /* RandomUserResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserResult.swift; sourceTree = "<group>"; };
+		841F398A250F0B97005D8584 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		841F398C250F0BBC005D8584 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		841F398E250F0C10005D8584 /* FetchPictureOp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPictureOp.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -65,6 +81,14 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A98B2140178A00FC395A /* Main.storyboard */,
+				841F3980250F09EB005D8584 /* User.swift */,
+				841F3982250F0A7B005D8584 /* UserDetailViewController.swift */,
+				841F398A250F0B97005D8584 /* Cache.swift */,
+				841F398C250F0BBC005D8584 /* UserTableViewCell.swift */,
+				841F398E250F0C10005D8584 /* FetchPictureOp.swift */,
+				841F3984250F0ACF005D8584 /* UserTableViewController.swift */,
+				841F3986250F0B49005D8584 /* RandomUserClient.swift */,
+				841F3988250F0B75005D8584 /* RandomUserResult.swift */,
 				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
 				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
 				8ED6A9932140178C00FC395A /* Info.plist */,
@@ -151,8 +175,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				841F3987250F0B49005D8584 /* RandomUserClient.swift in Sources */,
+				841F398D250F0BBC005D8584 /* UserTableViewCell.swift in Sources */,
+				841F3985250F0ACF005D8584 /* UserTableViewController.swift in Sources */,
+				841F398B250F0B97005D8584 /* Cache.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				841F398F250F0C10005D8584 /* FetchPictureOp.swift in Sources */,
+				841F3989250F0B75005D8584 /* RandomUserResult.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				841F3983250F0A7B005D8584 /* UserDetailViewController.swift in Sources */,
+				841F3981250F09EB005D8584 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,8 +328,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = EBAKYB6C6C;
 				INFOPLIST_FILE = "$(SRCROOT)/Random Users/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -305,6 +338,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LambdaSchool.RandomUsers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -314,8 +348,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = EBAKYB6C6C;
 				INFOPLIST_FILE = "$(SRCROOT)/Random Users/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -323,6 +358,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LambdaSchool.RandomUsers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
