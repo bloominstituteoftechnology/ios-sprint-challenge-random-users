@@ -11,40 +11,101 @@ import UIKit
 class UsersTableViewController: UITableViewController {
 
     
-    var contact : Contact?
-    var networkingController : NetworkingController()
+    var contacts : [Contact] = [] {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    var networkingController = NetworkingController()
+
+    private let cache = Cache<String,Data>()
+    private let photoFetchQueue = OperationQueue()
+    var operations = [String : Operation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
+        
+        networkingController.getContacts { (result) in
+            do {
+                let contacts = try result.get()
+                DispatchQueue.main.async {
+                    self.contacts = contacts.results
+                }
+            } catch {
+                print("Error fetching contacts")
+            }
+        }
+        }
+    
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.contacts.count
+    }
+    
+    private func loadStuffInCell(cell: UserTableViewCell, forItemAt indexPath: IndexPath) {
+        
+        // TODO: Implement image loading here
+                let contact = contacts[indexPath.row]
+                let fullName = "\(contact.name.first) \(contact.name.last)"
+                cell.userName.text = fullName
+        
+        
+        if let data = cache.getValue(key: contact.email) {
+            if self.tableView.indexPath(for: cell) == indexPath {
+                cell.userImage.image = UIImage(data: data)
+                print("Not data")
+                return
+            }
+        }
+        
+        let fetchOperation = FetchOperation(contact: contact)
+        let storeCacheData = BlockOperation {
+            if let fetchOp = fetchOperation.imageData {
+                print("No Fetch Op")
+                self.cache.setValue(value: fetchOp, key: contact.email)
+            }
+        }
+        let completeOp = BlockOperation {
+            defer {
+                self.operations.removeValue(forKey: contact.email)
+            }
+            if let currentPath = self.tableView.indexPath(for: cell), currentPath != indexPath {
+                print("No currentPath")
+                return
+            }
+            if let imageData = fetchOperation.imageData {
+                      cell.userImage.image = UIImage(data: imageData)
+                  }
+            
+        }
+
+        storeCacheData.addDependency(fetchOperation)
+        completeOp.addDependency(fetchOperation)
+        
+        photoFetchQueue.addOperations([fetchOperation, storeCacheData], waitUntilFinished: false)
+        OperationQueue.main.addOperations([completeOp], waitUntilFinished: false)
+        
+        self.operations.updateValue(fetchOperation, forKey: contact.email)
+        operations[contact.email] = fetchOperation
+        
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? UserTableViewCell else { return UITableViewCell() }
+        loadStuffInCell(cell: cell, forItemAt: indexPath)
         return cell
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let fetchOperation = contacts[indexPath.row]
+        guard let operation = operations[fetchOperation.email] else { return }
+        operation.cancel()
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -81,14 +142,17 @@ class UsersTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "detail" {
+            if let destinationVC = segue.destination as? UserDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow {
+                destinationVC.networkingController = networkingController
+                destinationVC.contact = contacts[indexPath.row]
+            }
+        }
     }
-    */
 
 }

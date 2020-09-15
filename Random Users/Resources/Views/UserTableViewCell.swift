@@ -10,6 +10,10 @@ import UIKit
 
 class UserTableViewCell: UITableViewCell {
 
+    var networkingController : NetworkingController?
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var userImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

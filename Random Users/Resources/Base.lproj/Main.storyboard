@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="59" id="kJt-LU-TqI">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="59" id="kJt-LU-TqI" customClass="UserTableViewCell" customModule="Random_Users" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="59"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kJt-LU-TqI" id="IUA-o8-b3y">
@@ -48,7 +48,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="TgN-qW-sfa" kind="showDetail" id="W6G-MI-1fs"/>
+                                    <outlet property="userImage" destination="IH4-F6-g3Z" id="RZA-zR-0ie"/>
+                                    <outlet property="userName" destination="Jtc-Z3-yVu" id="hMW-n2-8HH"/>
+                                    <segue destination="TgN-qW-sfa" kind="showDetail" identifier="detail" id="W6G-MI-1fs"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

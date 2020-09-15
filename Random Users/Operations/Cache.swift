@@ -13,7 +13,7 @@ class Cache<Key: Hashable, Value> {
     
     let queue = DispatchQueue(label: "Cache")
     
-    func setValue(value: Value, for key: Key )  {
+    func setValue(value: Value, key: Key )  {
         queue.async {
             self.dict[key] = value
         }
