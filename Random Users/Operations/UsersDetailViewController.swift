@@ -11,7 +11,12 @@ import UIKit
 class UsersDetailViewController: UIViewController {
 
     var randomUsersApiController: RandomUsersApiController?
-    var user: User?
+    var user: User? {
+        didSet {
+       //     updateViews()
+        }
+    }
+   
 
     @IBOutlet weak var largePhotoImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -24,12 +29,13 @@ class UsersDetailViewController: UIViewController {
     }
 
     func updateViews() {
-        nameLabel.text = user?.name
-        phoneNumberLabel.text = user?.phone
-        emailLabel.text = user?.email
+        guard let user = user else { return }
+        nameLabel.text = user.name
+        phoneNumberLabel.text = user.phone
+        emailLabel.text = user.email
 
         do {
-            guard let url = user?.largeImage else { return }
+            let url = user.largeImage //else do { return } //guard
             let data = try Data(contentsOf: url)
             let image = UIImage(data: data)
             largePhotoImageView.image = image

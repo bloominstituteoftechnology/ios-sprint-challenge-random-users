@@ -44,8 +44,9 @@ class UsersTableViewController: UITableViewController {
 
         // Check if there is cached data
         if let cachedData = cache.value(key: user.email),
-            let image = UIImage(data: cachedData) {
-            cell.imageView?.image = image
+            let image = UIImage(data: cachedData) { // image
+           // cell.imageView?.image = image
+            cell.thumbnailImageView?.image = image
             return
         }
 
@@ -71,6 +72,7 @@ class UsersTableViewController: UITableViewController {
 
             if let data = fetchOp.imageData {
                 cell.imageView?.image = UIImage(data: data)
+              //  cell.thumbnailImageView?.image = UIImage(data: data)
             }
         }
 
@@ -107,6 +109,7 @@ class UsersTableViewController: UITableViewController {
             guard let detailVC = segue.destination as? UsersDetailViewController,
                 let indexPath = tableView.indexPathForSelectedRow else { return }
             detailVC.user = randomUsersApiController.users[indexPath.row]
+        
         }
     }
 }
