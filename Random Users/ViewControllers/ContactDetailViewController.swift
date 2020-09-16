@@ -26,17 +26,21 @@ class ContactDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        updateViews()
         
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
     // MARK: - Private Functions
     private func updateViews(){
         guard let contact = contact else { return }
         contactNameLabel.text = "\(contact.name.title) \(contact.name.first) \(contact.name.last)"
         contactEmailLabel.text = "\(contact.email)"
         contactPhoneNumberLabel.text = "\(contact.phone)"
+        
         if let cachedImage = cache.getValue(for: contact.email),
             let image = UIImage(data: cachedImage){
             contactImageView.image = image

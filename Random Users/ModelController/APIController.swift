@@ -57,7 +57,7 @@ class APIController {
         task.resume()
     }
     
-    // Getting the images for the associated contacts
+    // Getting the images for contacts
     func downloadImage(at urlString: String, completion: @escaping (Result<Data, NetworkError>) -> Void) {
         var request = URLRequest(url: URL(string: urlString)!)
         request.httpMethod = "GET"
