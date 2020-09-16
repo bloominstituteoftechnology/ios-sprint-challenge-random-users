@@ -69,12 +69,14 @@ class ContactsTableViewController: UITableViewController {
         let contact = contacts[indexpath.row]
         cell.contactNameLabel.text = "\(contact.name.title). \(contact.name.first) \(contact.name.last)"
         
+        let photoFetchRequest = FetchContactPhotoOperation(contact: contact)
+        
         if let cachedImage = cache.getValue(for: contact.picture.thumbnail){
             cell.contactImageView.image = UIImage(data: cachedImage)
             return
         }
         
-        let photoFetchRequest = FetchContactPhotoOperation(contact: contact)
+        
         
         let storeDataInCache = BlockOperation {
             guard let data = photoFetchRequest.imageData else { return }
@@ -82,6 +84,10 @@ class ContactsTableViewController: UITableViewController {
         }
         
         let wasReused = BlockOperation {
+            defer { self.operation.removeValue(forKey: photoFetchRequest.contact.email)}
+            if let currentIndexPath = self.tableView.indexPath(for: cell), currentIndexPath != indexpath {
+                print("no path")
+            }
             guard let data = photoFetchRequest.imageData else { return }
             cell.contactImageView.image = UIImage(data: data)
         }
