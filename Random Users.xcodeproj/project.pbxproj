@@ -13,6 +13,7 @@
 		7C640070250D388100CDAE60 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64006F250D388100CDAE60 /* ContactTableViewCell.swift */; };
 		7C640072250D38CB00CDAE60 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C640071250D38CB00CDAE60 /* ContactsTableViewController.swift */; };
 		7C640076250D395600CDAE60 /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C640075250D395600CDAE60 /* ContactDetailViewController.swift */; };
+		7C7F40372511405F00FCA614 /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7F40362511405F00FCA614 /* FetchPhotoOperation.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 		7C64006F250D388100CDAE60 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		7C640071250D38CB00CDAE60 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		7C640075250D395600CDAE60 /* ContactDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
+		7C7F40362511405F00FCA614 /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 			children = (
 				7C640075250D395600CDAE60 /* ContactDetailViewController.swift */,
 				7C640071250D38CB00CDAE60 /* ContactsTableViewController.swift */,
+				7C7F40362511405F00FCA614 /* FetchPhotoOperation.swift */,
 				7C64006F250D388100CDAE60 /* ContactTableViewCell.swift */,
 			);
 			path = ViewControllers;
@@ -196,6 +199,7 @@
 			files = (
 				7C0EE4FE250D4EA7000FFE19 /* Contact.swift in Sources */,
 				7C640070250D388100CDAE60 /* ContactTableViewCell.swift in Sources */,
+				7C7F40372511405F00FCA614 /* FetchPhotoOperation.swift in Sources */,
 				7C0EE5042510358D000FFE19 /* Cache.swift in Sources */,
 				7C640076250D395600CDAE60 /* ContactDetailViewController.swift in Sources */,
 				7C0EE502250D5748000FFE19 /* ContactController.swift in Sources */,

@@ -13,6 +13,9 @@ class ContactsTableViewController: UITableViewController {
     //MARK: - PROPERTIES
     
     var contactController = ContactController()
+    private let cache = Cache<String, Data>()
+    private let photoFetchQueue = OperationQueue()
+    var operation = [String : Operation]()
     
     var contacts: [Contact] = [] {
         didSet {
@@ -34,9 +37,6 @@ class ContactsTableViewController: UITableViewController {
             } catch {
                 print("error")
             }
-            
-            
-            
         }
     }
 
@@ -49,62 +49,67 @@ class ContactsTableViewController: UITableViewController {
 
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //Create your cell 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath) as? ContactTableViewCell else { return UITableViewCell() }
         
+        //After creating the cell, update the properties of the cell with appropriate data values.
         updateCell(cell: cell, forItemAt: indexPath)
-        
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let currentFetchOperation = contacts[indexPath.row]
+        
+        guard let currentOperation = operation[currentFetchOperation.email] else { return }
+        
+        currentOperation.cancel()
     }
    
     private func updateCell(cell: ContactTableViewCell, forItemAt indexpath: IndexPath) {
         let contact = contacts[indexpath.row]
         cell.contactNameLabel.text = "\(contact.name.title). \(contact.name.first) \(contact.name.last)"
         
+        if let cachedImage = cache.getValue(for: contact.picture.thumbnail){
+            cell.contactImageView.image = UIImage(data: cachedImage)
+            return
+        }
+        
+        let photoFetchRequest = FetchContactPhotoOperation(contact: contact)
+        
+        let storeDataInCache = BlockOperation {
+            guard let data = photoFetchRequest.imageData else { return }
+            self.cache.storeInCache(value: data, for: contact.email)
+        }
+        
+        let wasReused = BlockOperation {
+            guard let data = photoFetchRequest.imageData else { return }
+            cell.contactImageView.image = UIImage(data: data)
+        }
+        
+        storeDataInCache.addDependency(photoFetchRequest)
+        wasReused.addDependency(photoFetchRequest)
+        photoFetchQueue.addOperation(photoFetchRequest)
+        photoFetchQueue.addOperation(storeDataInCache)
+        OperationQueue.main.addOperation(wasReused)
+        operation[contact.email] = photoFetchRequest
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
+  
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
+    
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
 
-    }
-    */
 
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ContactDetailSegue"{
+            if let detailVC = segue.destination as? ContactDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow{
+                detailVC.contactController = contactController
+                detailVC.contact = contacts[indexPath.row]
+            }
+        }
     }
-    */
 
 }
