@@ -62,7 +62,10 @@ class ContactsTableViewController: UITableViewController {
         
         guard let currentOperation = operation[currentFetchOperation.email] else { return }
         
+        if let currentIndexPath = self.tableView.indexPath(for: cell), currentIndexPath != indexPath {
         currentOperation.cancel()
+        return
+        }
     }
    
     private func updateCell(cell: ContactTableViewCell, forItemAt indexpath: IndexPath) {
@@ -84,17 +87,19 @@ class ContactsTableViewController: UITableViewController {
         }
         
         let wasReused = BlockOperation {
-            defer { self.operation.removeValue(forKey: photoFetchRequest.contact.email)}
-            if let currentIndexPath = self.tableView.indexPath(for: cell), currentIndexPath != indexpath {
-                print("no path")
-            }
+//            defer { self.operation.removeValue(forKey: photoFetchRequest.contact.email)}
+//            if let currentIndexPath = self.tableView.indexPath(for: cell), currentIndexPath != indexpath {
+//                print("no path")
+//            }
             guard let data = photoFetchRequest.imageData else { return }
             cell.contactImageView.image = UIImage(data: data)
         }
         
         storeDataInCache.addDependency(photoFetchRequest)
         wasReused.addDependency(photoFetchRequest)
+        //adding photoFetchRequest to operationQueue
         photoFetchQueue.addOperation(photoFetchRequest)
+        
         photoFetchQueue.addOperation(storeDataInCache)
         OperationQueue.main.addOperation(wasReused)
         operation[contact.email] = photoFetchRequest
