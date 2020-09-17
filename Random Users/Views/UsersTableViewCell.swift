@@ -13,16 +13,28 @@ class UsersTableViewCell: UITableViewCell {
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var usersNameLabel: UILabel!
 
-    var result: Results? {
+    var result: Users? {
         didSet {
             updateViews()
         }
     }
 
     private func updateViews() {
-        guard let result = self.result else { return }
+        guard let result = result else { return }
 
-//        userImageView.image = result.picture
+        usersNameLabel.text = "\(result.name.title)"
+        userImageView.image = UIImage(cgImage: result.picture.large as! CGImage)
 
+    }
+
+    var imageData: Data? {
+        didSet {
+            getImage()
+        }
+    }
+
+    private func getImage() {
+        guard let imageData = imageData else { return }
+        userImageView.image = UIImage(data: imageData)
     }
 }

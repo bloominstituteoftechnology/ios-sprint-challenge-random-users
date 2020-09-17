@@ -22,10 +22,9 @@ final class UserClient {
     }
 
     private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
+     var allUsers: [Users] = []
 
-    var usersResults: Results?
-
-    func fetchUserDetails(completion: @escaping (Result<Results, NetworkError>) -> Void) {
+    func fetchUsers(completion: @escaping (Result<[Users], NetworkError>) -> Void) {
         var request = URLRequest(url: baseURL)
         request.httpMethod = HTTPMethod.get.rawValue
 
@@ -45,9 +44,9 @@ final class UserClient {
 
             do {
                 let jsonDecoder = JSONDecoder()
-                let user = try jsonDecoder.decode(Results.self, from: data)
-                print("Was successful in retreiving User: \(user)")
-                completion(.success(user))
+                let users = try jsonDecoder.decode(UserResults.self, from: data)
+                self.allUsers = users.results
+                completion(.success(self.allUsers))
             } catch {
                 print("An error occurred when decoiding User Detail data: \(error)")
                 completion(.failure(.tryAgain))

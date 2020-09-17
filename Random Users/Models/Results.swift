@@ -8,8 +8,21 @@
 
 import Foundation
 
-struct Results: Codable {
+struct UserResults: Codable {
+    let results: [Users]
+}
+
+struct Users: Codable {
     let name: Name
     let email, phone: String
     let picture: Picture
 }
+
+struct Name: Codable {
+    let title, first, last: String
+}
+
+struct Picture: Codable {
+    let large, medium, thumbnail: String
+}
+

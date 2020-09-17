@@ -9,19 +9,20 @@
 import Foundation
 
 class Cache<Key: Hashable, Value> {
-    private var userImageCache: [Key: Value] = [:]
 
-    let queue = DispatchQueue(label: "User thumbnail and fullsize image")
+    private var imageCache = [Key: Value]()
+
+    let queue = DispatchQueue(label: "QueueItem")
 
     func cache(value: Value , for key: Key) {
         queue.async {
-            self.userImageCache[key] = value
+            self.imageCache.updateValue(value, forKey: key)
         }
     }
 
     func getValue(for key: Key) -> Value? {
         queue.sync {
-            return self.userImageCache[key]
+            return self.imageCache[key]
         }
     }
 }

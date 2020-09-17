@@ -18,27 +18,27 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="usersCell" id="Esw-U7-kkI" customClass="UsersTableViewCell" customModule="Random_Users" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Esw-U7-kkI" id="VZ5-1u-OMO">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A0m-r6-ryn">
-                                            <rect key="frame" x="16" y="-0.5" width="45" height="45"/>
+                                            <rect key="frame" x="16" y="-0.5" width="45" height="45.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="45" id="6a5-xs-xi8"/>
                                                 <constraint firstAttribute="width" constant="45" id="dVY-Oc-MPq"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMo-7G-JiM">
-                                            <rect key="frame" x="82" y="11.5" width="45" height="21"/>
+                                            <rect key="frame" x="82" y="12" width="45" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahc-Ei-y9s">
-                                            <rect key="frame" x="345" y="8.5" width="14" height="27"/>
+                                            <rect key="frame" x="345" y="8.5" width="14" height="27.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -64,7 +64,7 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="kNc-4w-4Kc" id="HYr-IF-dwA"/>
+                            <outlet property="dataSource" destination="kNc-4w-4Kc" id="VE0-pa-EaO"/>
                             <outlet property="delegate" destination="kNc-4w-4Kc" id="6O9-9F-WxO"/>
                         </connections>
                     </tableView>
@@ -80,10 +80,10 @@
             </objects>
             <point key="canvasLocation" x="388" y="150.67466266866569"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="ezr-a1-TfW">
             <objects>
-                <viewController id="TbY-gp-niW" sceneMemberID="viewController">
+                <viewController id="TbY-gp-niW" customClass="DetailViewController" customModule="Random_Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xo5-Zg-wjs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -131,6 +131,12 @@
                         <viewLayoutGuide key="safeArea" id="7YQ-4K-BVo"/>
                     </view>
                     <navigationItem key="navigationItem" id="3j9-PY-17F"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="8qd-jE-IU5" id="ael-4o-i4l"/>
+                        <outlet property="nameLabel" destination="VhX-MS-BTL" id="EHX-FX-v7Z"/>
+                        <outlet property="phoneNumberLabel" destination="zkU-9B-Zyz" id="JmU-Bd-GzH"/>
+                        <outlet property="userImageView" destination="fcv-NC-THc" id="vmM-eW-9Ob"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ZS-Qq-zIj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
