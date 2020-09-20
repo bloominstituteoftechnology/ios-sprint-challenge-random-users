@@ -14,8 +14,8 @@ class UsersTableViewController: UITableViewController {
     let userClient = UserClient()
     
     let cache = Cache<String, Data>()
-    private let queue = OperationQueue()
-    private var operations = [String : Operation]()
+    let queue = OperationQueue()
+    var operations = [String : Operation]()
     
     var users: [User]? {
         didSet {
@@ -65,7 +65,9 @@ class UsersTableViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "UserDetail" {
-            
+            guard let detail = segue.destination as? UserDetailViewController,
+                  let indexPath = tableView.indexPathForSelectedRow else {return}
+            detail.user = users?[indexPath.row]
         }
     }
 
@@ -88,7 +90,7 @@ class UsersTableViewController: UITableViewController {
                 defer { self.operations.removeValue(forKey: email)}
                 
                 if let data = fetchOperation.imageData {
-                    cell.imageView?.image = UIImage(data: data)
+                    cell.userImageView.image = UIImage(data: data)
                     cell.nameLabel?.text = user.name
                 }
             }
