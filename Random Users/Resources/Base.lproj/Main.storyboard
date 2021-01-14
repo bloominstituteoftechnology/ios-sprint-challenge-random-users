@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="R2p-cF-KbY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="R2p-cF-KbY">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,30 +16,30 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="PQj-Hi-Mzj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="usersCell" id="Esw-U7-kkI" customClass="UsersTableViewCell" customModule="Random_Users" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44.5"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Esw-U7-kkI" id="VZ5-1u-OMO">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A0m-r6-ryn">
-                                            <rect key="frame" x="16" y="-0.5" width="45" height="45.5"/>
+                                            <rect key="frame" x="16" y="-0.5" width="45" height="45"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="45" id="6a5-xs-xi8"/>
                                                 <constraint firstAttribute="width" constant="45" id="dVY-Oc-MPq"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMo-7G-JiM">
-                                            <rect key="frame" x="82" y="12" width="45" height="21"/>
+                                            <rect key="frame" x="82" y="11.5" width="45" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahc-Ei-y9s">
-                                            <rect key="frame" x="345" y="8.5" width="14" height="27.5"/>
+                                            <rect key="frame" x="345" y="8.5" width="14" height="27"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -69,12 +70,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Users" id="0Mv-KB-QAV">
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="h1j-g8-HWF">
-                            <connections>
-                                <segue destination="TbY-gp-niW" kind="show" identifier="UsersDetailSegue" id="728-Ix-ggC"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="h1j-g8-HWF"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="TbY-gp-niW" kind="show" identifier="UsersDetailSegue" id="Okb-Dc-DVD"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DZq-vN-3sP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -119,7 +119,8 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="7YQ-4K-BVo"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="fcv-NC-THc" firstAttribute="top" secondItem="7YQ-4K-BVo" secondAttribute="top" constant="24" id="0KQ-cy-Oe1"/>
                             <constraint firstItem="7YQ-4K-BVo" firstAttribute="bottom" secondItem="c9e-xm-FzL" secondAttribute="bottom" constant="169" id="UAa-Al-vX9"/>
@@ -128,7 +129,6 @@
                             <constraint firstItem="7YQ-4K-BVo" firstAttribute="trailing" secondItem="fcv-NC-THc" secondAttribute="trailing" constant="38" id="jHX-4j-pzW"/>
                             <constraint firstItem="c9e-xm-FzL" firstAttribute="top" secondItem="fcv-NC-THc" secondAttribute="bottom" constant="40" id="qFJ-MC-883"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="7YQ-4K-BVo"/>
                     </view>
                     <navigationItem key="navigationItem" id="3j9-PY-17F"/>
                     <connections>
@@ -161,4 +161,9 @@
             <point key="canvasLocation" x="-551.20000000000005" y="150.67466266866569"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

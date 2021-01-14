@@ -1,16 +1,17 @@
 //
-//  UserClient.swift
+//  UserController.swift
 //  Random Users
 //
-//  Created by Sammy Alvarado on 9/13/20.
-//  Copyright © 2020 Erica Sadun. All rights reserved.
+//  Created by Sammy Alvarado on 1/14/21.
+//  Copyright © 2021 Erica Sadun. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-final class UserClient {
-
+class UserController {
+    
+    var myUser: User?
+    
     enum HTTPMethod: String {
         case get = "GET"
     }
@@ -22,9 +23,8 @@ final class UserClient {
     }
 
     private let baseURL = URL(string: "https://randomuser.me/api/?format=json&inc=name,email,phone,picture&results=1000")!
-     var allUsers: [Users] = []
 
-    func fetchUsers(completion: @escaping (Result<[Users], NetworkError>) -> Void) {
+    func fetchUsers(completion: @escaping (Result<User, NetworkError>) -> Void) {
         var request = URLRequest(url: baseURL)
         request.httpMethod = HTTPMethod.get.rawValue
 
@@ -44,9 +44,9 @@ final class UserClient {
 
             do {
                 let jsonDecoder = JSONDecoder()
-                let users = try jsonDecoder.decode(UserResults.self, from: data)
-                self.allUsers = users.results
-                completion(.success(self.allUsers))
+                self.myUser = try jsonDecoder.decode(User.self, from: data)
+//                self.allUsers = users.results
+                completion(.success(self.myUser!))
             } catch {
                 print("An error occurred when decoiding User Detail data: \(error)")
                 completion(.failure(.tryAgain))
@@ -55,7 +55,7 @@ final class UserClient {
         task.resume()
     }
 
-    func fetchUserImage(at urlString: String, completion: @escaping (Result<UIImage, NetworkError>) -> Void) {
+    func fetchUserImage(at urlString: String, completion: @escaping (Result<Data, NetworkError>) -> Void) {
         let image = URL(string: urlString)!
         var request = URLRequest(url: image)
         request.httpMethod = HTTPMethod.get.rawValue
@@ -70,10 +70,14 @@ final class UserClient {
                 return
             }
 
-            let image = UIImage(data: data)!
-            completion(.success(image))
+//            let image = UIImage(data: data)!
+            completion(.success(data))
         }
         task.resume()
     }
-
+    
+    
+    
+    
+    
 }

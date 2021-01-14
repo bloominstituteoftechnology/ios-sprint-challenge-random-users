@@ -8,46 +8,36 @@
 
 import Foundation
 
-class FethchPhotoOperation: ConcurrentOperation {
-
-    var user: Users
+class FetchImageOperation: ConcurrentOperation {
+    
+    var user: UsersResults
     var imageData: Data?
-    var task: URLSessionDataTask?
-
-    init(userImage: Users) {
-        self.user = userImage
+    
+    private var loadImageData: URLSessionTask?
+    
+    init(user: UsersResults) {
+        self.user = user
     }
-
+    
     override func start() {
         state = .isExecuting
-
-        guard let imageURL = URL(string: user.picture.thumbnail) else {
-            return
+        defer { state = .isFinished }
+        // user.picture.thumbnail
+        let imageURL = URL(string: user.picture.thumbnail)!
+        loadImageData = URLSession.shared.dataTask(with: imageURL) { (data, _, error) in
+            if let error = error {
+                print("Error fetching Image: \(error)")
+                return
+            }
+            guard let data = data else {
+                print("Error")
+                return
+            }
+            self.imageData = data
         }
-
-//        task = URLSession.shared.dataTask(with: user.picture.thumbnail) { (data, _, error) in
-//            defer {
-//                self.state = .isFinished
-//            }
-//
-//            if let error = error {
-//                print("Failed to get imageURL \(error)")
-//                return
-//            }
-//
-//            guard let data = data else {
-//                print("no data")
-//                return
-//            }
-//
-//            self.imageData = data
-//
-//        }
-//        task?.resume()
+        loadImageData?.resume()
     }
-
     override func cancel() {
-        task?.cancel()
-        self.state = .isFinished
+        loadImageData?.cancel()
     }
 }

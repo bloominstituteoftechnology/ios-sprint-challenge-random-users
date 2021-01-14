@@ -10,8 +10,9 @@ import Foundation
 
 class Cache<Key: Hashable, Value> {
 
-    private var imageCache = [Key: Value]()
+    private var imageCache: [Key: Value] = [:]
 
+    
     let queue = DispatchQueue(label: "QueueItem")
 
     func cache(value: Value , for key: Key) {

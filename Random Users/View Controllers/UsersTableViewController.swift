@@ -10,11 +10,14 @@ import UIKit
 
 class UsersTableViewController: UITableViewController {
 
-    var userClient = UserClient()
+    var userController = UserController()
+    
     private let cache = Cache<String, Data>()
     private let imageQueue = OperationQueue()
+    
+    var operation = [String : Operation]()
 
-    private var userInfo: [Users] = [] {
+    var users: [UsersResults] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -27,13 +30,14 @@ class UsersTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        userClient.fetchUsers { (error) in
-//            if let error = error {
-//                NSLog("Error getting data for users: \(error)")
-//            }
-
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+        userController.fetchUsers { (results) in
+            do {
+                let users = try results.get()
+                DispatchQueue.main.async {
+                    self.users = users.results
+                }
+            } catch {
+                print(results)
             }
 
         }
@@ -42,37 +46,71 @@ class UsersTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        print("Cell 1")
-//        return 1
-//    }
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         print("Cell 2")
-        return userClient.allUsers.count
+        return users.count
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "usersCell", for: indexPath) as? UsersTableViewCell else { return UITableViewCell()}
 
-        print("Cell 3")
-        let users = userClient.allUsers[indexPath.row]
-        cell.textLabel?.text = users.name.title + users.name.first + users.name.last
-        let imageKey = users.picture.thumbnail
-
-        cell.result = users
+            updateCell(forCell: cell, forItemAt: indexPath)
         
         return cell
     }
 
+    func updateCell(forCell cell: UsersTableViewCell, forItemAt indexPath: IndexPath) {
+        let user = users[indexPath.row]
+        
+        cell.usersNameLabel.text = "\(user.name.title) \(user.name.first) \(user.name.last)"
+        
+        if let cacheData = cache.getValue(for: user.email),
+           let image = UIImage(data: cacheData) {
+            cell.userImageView.image = image
+            return
+        }
+        
+        let fetchImageOperation = FetchImageOperation(user: user)
+        
+        let store = BlockOperation {
+            guard let data = fetchImageOperation.imageData else { return }
+            self.cache.cache(value: data, for: user.email)
+        }
+        
+        let isReused = BlockOperation {
+            guard let data = fetchImageOperation.imageData else { return }
+            cell.userImageView.image = UIImage(data: data)
+        }
+        
+        store.addDependency(fetchImageOperation)
+        isReused.addDependency(fetchImageOperation)
+        imageQueue.addOperation(fetchImageOperation)
+        imageQueue.addOperation(store)
+        OperationQueue.main.addOperation(isReused)
+        operation[user.email] = fetchImageOperation
+    } // updateCell
+    
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let currentOperation = users[indexPath.row]
+        guard let newOperation = operation[currentOperation.email] else { return }
+        newOperation.cancel()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "UsersDetailSegue" {
-            guard let detialVC = segue.destination as? DetailViewController else { return }
-            guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            let user = userClient.allUsers[indexPath.row]
-            detialVC.userResults = user
+            if let detialVC = segue.destination as? DetailViewController,
+               let indexPath = tableView.indexPathForSelectedRow {
+                detialVC.userController = userController
+                detialVC.userResults = users[indexPath.row
+                ]
+            }
         }
     }
 

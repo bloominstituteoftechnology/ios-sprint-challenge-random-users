@@ -15,12 +15,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var emailLabel: UILabel!
 
     let cache = Cache<String, Data>()
-    var userClient: UserClient?
-    var userResults: Users? {
-        didSet {
-            updateViews()
-        }
-    }
+    var userController: UserController?
+    var userResults: UsersResults?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,5 +37,24 @@ class DetailViewController: UIViewController {
             let image = UIImage(data: imageCashe) {
             userImageView.image = image
         }
+    }
+    
+    func fetchImage() {
+        guard let user = userResults else { return }
+        userController?.fetchUserImage(at: user.picture.large, completion: { (result) in
+            
+            do {
+                let imageString = try result.get()
+                let image = UIImage(data: imageString)
+                self.cache.cache(value: imageString, for: user.email)
+                DispatchQueue.main.async {
+                    self.userImageView.image = image
+                }
+            } catch {
+                print("Failed to get images")
+            }
+        })
+        
+        
     }
 }

@@ -13,28 +13,11 @@ class UsersTableViewCell: UITableViewCell {
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var usersNameLabel: UILabel!
 
-    var result: Users? {
-        didSet {
-            updateViews()
-        }
+    override func awakeFromNib() {
+        super.awakeFromNib()
     }
-
-    private func updateViews() {
-        guard let result = result else { return }
-
-        usersNameLabel.text = "\(result.name.title)"
-        userImageView.image = UIImage(cgImage: result.picture.large as! CGImage)
-
-    }
-
-    var imageData: Data? {
-        didSet {
-            getImage()
-        }
-    }
-
-    private func getImage() {
-        guard let imageData = imageData else { return }
-        userImageView.image = UIImage(data: imageData)
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
     }
 }
