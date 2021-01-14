@@ -61,6 +61,7 @@
                                 <connections>
                                     <outlet property="userImageView" destination="A0m-r6-ryn" id="JMt-nT-xBW"/>
                                     <outlet property="usersNameLabel" destination="XMo-7G-JiM" id="fJF-0r-oDv"/>
+                                    <segue destination="TbY-gp-niW" kind="show" identifier="UsersDetailSegue" id="1up-zC-3ja"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -72,9 +73,6 @@
                     <navigationItem key="navigationItem" title="Users" id="0Mv-KB-QAV">
                         <barButtonItem key="rightBarButtonItem" title="Add" id="h1j-g8-HWF"/>
                     </navigationItem>
-                    <connections>
-                        <segue destination="TbY-gp-niW" kind="show" identifier="UsersDetailSegue" id="Okb-Dc-DVD"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DZq-vN-3sP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -88,46 +86,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fcv-NC-THc">
-                                <rect key="frame" x="37" y="68" width="300" height="300"/>
-                            </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="c9e-xm-FzL">
-                                <rect key="frame" x="37" y="408" width="300" height="90"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="c9e-xm-FzL">
+                                <rect key="frame" x="38" y="460" width="317" height="101.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VhX-MS-BTL">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="29"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="45" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zkU-9B-Zyz">
-                                        <rect key="frame" x="0.0" y="39" width="300" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="40.5" width="118.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qd-jE-IU5">
-                                        <rect key="frame" x="0.0" y="69.5" width="300" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="81" width="41" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="BG8-za-HUd"/>
-                                    <constraint firstAttribute="height" constant="90" id="px4-gB-S99"/>
-                                </constraints>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fcv-NC-THc">
+                                <rect key="frame" x="38" y="74" width="298" height="326"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="298" id="UGt-36-MfF"/>
+                                    <constraint firstAttribute="height" constant="326" id="qTd-aS-aZ7"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7YQ-4K-BVo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="fcv-NC-THc" firstAttribute="top" secondItem="7YQ-4K-BVo" secondAttribute="top" constant="24" id="0KQ-cy-Oe1"/>
-                            <constraint firstItem="7YQ-4K-BVo" firstAttribute="bottom" secondItem="c9e-xm-FzL" secondAttribute="bottom" constant="169" id="UAa-Al-vX9"/>
-                            <constraint firstItem="fcv-NC-THc" firstAttribute="leading" secondItem="7YQ-4K-BVo" secondAttribute="leading" constant="37" id="WHP-ab-NrQ"/>
-                            <constraint firstItem="c9e-xm-FzL" firstAttribute="leading" secondItem="fcv-NC-THc" secondAttribute="leading" id="eBY-ej-vGW"/>
-                            <constraint firstItem="7YQ-4K-BVo" firstAttribute="trailing" secondItem="fcv-NC-THc" secondAttribute="trailing" constant="38" id="jHX-4j-pzW"/>
-                            <constraint firstItem="c9e-xm-FzL" firstAttribute="top" secondItem="fcv-NC-THc" secondAttribute="bottom" constant="40" id="qFJ-MC-883"/>
+                            <constraint firstItem="c9e-xm-FzL" firstAttribute="leading" secondItem="7YQ-4K-BVo" secondAttribute="leading" constant="38" id="1JO-ZC-OWN"/>
+                            <constraint firstItem="fcv-NC-THc" firstAttribute="top" secondItem="7YQ-4K-BVo" secondAttribute="top" constant="30" id="Bea-qu-ptq"/>
+                            <constraint firstItem="fcv-NC-THc" firstAttribute="leading" secondItem="7YQ-4K-BVo" secondAttribute="leading" constant="38" id="e8E-ej-PtD"/>
+                            <constraint firstItem="7YQ-4K-BVo" firstAttribute="trailing" secondItem="c9e-xm-FzL" secondAttribute="trailing" constant="20" id="iLk-r1-r5p"/>
+                            <constraint firstItem="7YQ-4K-BVo" firstAttribute="trailing" secondItem="fcv-NC-THc" secondAttribute="trailing" constant="39" id="sQt-zn-rhc"/>
+                            <constraint firstItem="c9e-xm-FzL" firstAttribute="top" secondItem="fcv-NC-THc" secondAttribute="bottom" constant="60" id="vkE-cJ-lXW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3j9-PY-17F"/>

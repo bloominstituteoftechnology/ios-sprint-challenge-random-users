@@ -20,7 +20,9 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        fetchImage()
+        
         updateViews()
     }
 
@@ -30,13 +32,15 @@ class DetailViewController: UIViewController {
         guard let user = userResults else { return }
 
         nameLabel.text = "\(user.name.title) \(user.name.first) \(user.name.first)"
+        print("User label prints")
         phoneNumberLabel.text = "\(user.phone)"
         emailLabel.text = "\(user.email)"
 
-        if let imageCashe = cache.getValue(for: user.email),
-            let image = UIImage(data: imageCashe) {
-            userImageView.image = image
-        }
+//        if let imageCashe = cache.getValue(for: user.email),
+//            let image = UIImage(data: imageCashe) {
+//            userImageView.image = image
+//            print("image prints")
+//        }
     }
     
     func fetchImage() {
@@ -54,7 +58,5 @@ class DetailViewController: UIViewController {
                 print("Failed to get images")
             }
         })
-        
-        
     }
 }

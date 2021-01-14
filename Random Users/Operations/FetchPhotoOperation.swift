@@ -12,23 +12,27 @@ class FetchImageOperation: ConcurrentOperation {
     
     var user: UsersResults
     var imageData: Data?
-    
-    private var loadImageData: URLSessionTask?
+    var loadImageData: URLSessionDataTask?
     
     init(user: UsersResults) {
         self.user = user
+        super.init()
     }
     
     override func start() {
         state = .isExecuting
+
         defer { state = .isFinished }
-        // user.picture.thumbnail
+        
         let imageURL = URL(string: user.picture.thumbnail)!
+        
         loadImageData = URLSession.shared.dataTask(with: imageURL) { (data, _, error) in
+            
             if let error = error {
                 print("Error fetching Image: \(error)")
                 return
             }
+            
             guard let data = data else {
                 print("Error")
                 return
@@ -37,6 +41,7 @@ class FetchImageOperation: ConcurrentOperation {
         }
         loadImageData?.resume()
     }
+    
     override func cancel() {
         loadImageData?.cancel()
     }
