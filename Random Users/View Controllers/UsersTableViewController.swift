@@ -30,6 +30,7 @@ class UsersTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         userController.fetchUsers { (results) in
             do {
                 let users = try results.get()
@@ -51,8 +52,7 @@ class UsersTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-//        print("Cell 2")
+        
         return users.count
     }
 
@@ -83,17 +83,6 @@ class UsersTableViewController: UITableViewController {
         }
         
         let isReused = BlockOperation {
-//            guard let data = fetchImageOperation.imageData else { return }
-//
-//            defer {
-//                self.operation.removeValue(forKey: user.email)
-//            }
-//
-//            if let currentPath = self.tableView.indexPath(for: cell), currentPath != indexPath {
-//                return
-//            }
-//
-//            cell.userImageView.image = UIImage(data: data)
             
             defer {
                 self.operation.removeValue(forKey: user.email)

@@ -16,12 +16,7 @@ struct UsersResults: Codable {
     let name: Name
     let email, phone: String
     let picture: Picture
-//    let id: ID
 }
-
-//struct ID: Codable {
-//    let name: String
-//}
 
 struct Name: Codable {
     let title, first, last: String

@@ -45,7 +45,6 @@ class UserController {
             do {
                 let jsonDecoder = JSONDecoder()
                 self.myUser = try jsonDecoder.decode(User.self, from: data)
-//                self.allUsers = users.results
                 completion(.success(self.myUser!))
             } catch {
                 print("An error occurred when decoiding User Detail data: \(error)")
