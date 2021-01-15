@@ -120,7 +120,6 @@ class UsersTableViewController: UITableViewController {
         
     }
     
-    
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let currentOperation = users[indexPath.row]
         guard let newOperation = operation[currentOperation.email] else { return }
