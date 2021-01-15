@@ -66,7 +66,7 @@ class UsersTableViewController: UITableViewController {
     }
 
     func updateCell(forCell cell: UsersTableViewCell, forItemAt indexPath: IndexPath) {
-        let user = users[indexPath.row]
+        let user = users[indexPath.item]
         
         cell.usersNameLabel.text = "\(user.name.title) \(user.name.first) \(user.name.last)"
         
@@ -77,14 +77,23 @@ class UsersTableViewController: UITableViewController {
         }
         
         let fetchImageOperation = FetchImageOperation(user: user)
-        
         let store = BlockOperation {
             guard let data = fetchImageOperation.imageData else { return }
             self.cache.cache(value: data, for: user.email)
         }
         
         let isReused = BlockOperation {
-            guard let data = fetchImageOperation.imageData else { return }
+//            guard let data = fetchImageOperation.imageData else { return }
+//
+//            defer {
+//                self.operation.removeValue(forKey: user.email)
+//            }
+//
+//            if let currentPath = self.tableView.indexPath(for: cell), currentPath != indexPath {
+//                return
+//            }
+//
+//            cell.userImageView.image = UIImage(data: data)
             
             defer {
                 self.operation.removeValue(forKey: user.email)
@@ -93,17 +102,23 @@ class UsersTableViewController: UITableViewController {
             if let currentPath = self.tableView.indexPath(for: cell), currentPath != indexPath {
                 return
             }
-            
-            cell.userImageView.image = UIImage(data: data)
+            if let someimage = fetchImageOperation.imageData {
+                cell.userImageView.image = UIImage(data: someimage)
+            }
         }
         
         store.addDependency(fetchImageOperation)
         isReused.addDependency(fetchImageOperation)
-        imageQueue.addOperation(fetchImageOperation)
-        imageQueue.addOperation(store)
-        OperationQueue.main.addOperation(isReused)
-        operation[user.email] = fetchImageOperation
-    } // updateCell
+//        imageQueue.addOperation(fetchImageOperation)
+//        imageQueue.addOperation(store)
+        imageQueue.addOperations([fetchImageOperation, store], waitUntilFinished: false)
+//        OperationQueue.main.addOperation(isReused)
+        OperationQueue.main.addOperations([isReused], waitUntilFinished: false)
+//        self.operation[user.email] = fetchImageOperation
+        self.operation.updateValue(fetchImageOperation, forKey: String(user.email))
+
+        
+    }
     
     
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
