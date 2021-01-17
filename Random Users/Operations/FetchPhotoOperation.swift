@@ -22,11 +22,11 @@ class FetchImageOperation: ConcurrentOperation {
     override func start() {
         state = .isExecuting
 
-        defer { state = .isFinished }
-        
         let imageURL = URL(string: user.picture.thumbnail)!
         
         loadImageData = URLSession.shared.dataTask(with: imageURL) { (data, _, error) in
+            
+            defer { self.state = .isFinished }
             
             if let error = error {
                 print("Error fetching Image: \(error)")
@@ -44,5 +44,6 @@ class FetchImageOperation: ConcurrentOperation {
     
     override func cancel() {
         loadImageData?.cancel()
+        state = .isFinished
     }
 }

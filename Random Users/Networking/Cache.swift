@@ -13,7 +13,7 @@ class Cache<Key: Hashable, Value> {
     private var imageCache: [Key: Value] = [:]
 
     
-    let queue = DispatchQueue(label: "QueueItem")
+    let queue = DispatchQueue(label: "QueueItem") //QueueAnon
 
     func cache(value: Value , for key: Key) {
         queue.async {

@@ -31,10 +31,10 @@ class DetailViewController: UIViewController {
 
         guard let user = userResults else { return }
 
-        nameLabel.text = "\(user.name.title) \(user.name.first) \(user.name.first)"
+        nameLabel.text = "Name: \(user.name.title) \(user.name.first) \(user.name.first)"
         print("User label prints")
-        phoneNumberLabel.text = "\(user.phone)"
-        emailLabel.text = "\(user.email)"
+        phoneNumberLabel.text = "Phone Number: \(user.phone)"
+        emailLabel.text = "Email: \(user.email)"
 
 //        if let imageCashe = cache.getValue(for: user.email),
 //            let image = UIImage(data: imageCashe) {
