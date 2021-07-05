@@ -12,6 +12,13 @@
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
 		8ED6A9922140178C00FC395A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
+		A204036D21FB820600BB039E /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A204036C21FB820600BB039E /* Cache.swift */; };
+		A226241321FB6BA50005B8C4 /* RandomUserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A226241221FB6BA50005B8C4 /* RandomUserTableViewController.swift */; };
+		A226241521FB6BD80005B8C4 /* RandomUserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A226241421FB6BD80005B8C4 /* RandomUserDetailViewController.swift */; };
+		A226241A21FB6D1E0005B8C4 /* RandomUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A226241921FB6D1E0005B8C4 /* RandomUser.swift */; };
+		A226241C21FB6E610005B8C4 /* RandomUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A226241B21FB6E610005B8C4 /* RandomUserController.swift */; };
+		A226241E21FB702D0005B8C4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A226241D21FB702D0005B8C4 /* Model.swift */; };
+		A2B0557721FBD39C001DC364 /* FetchImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B0557621FBD39C001DC364 /* FetchImageOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +29,13 @@
 		8ED6A9912140178C00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ED6A9932140178C00FC395A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
+		A204036C21FB820600BB039E /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		A226241221FB6BA50005B8C4 /* RandomUserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserTableViewController.swift; sourceTree = "<group>"; };
+		A226241421FB6BD80005B8C4 /* RandomUserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RandomUserDetailViewController.swift; path = "Random Users/View Controllers/RandomUserDetailViewController.swift"; sourceTree = SOURCE_ROOT; };
+		A226241921FB6D1E0005B8C4 /* RandomUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUser.swift; sourceTree = "<group>"; };
+		A226241B21FB6E610005B8C4 /* RandomUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserController.swift; sourceTree = "<group>"; };
+		A226241D21FB702D0005B8C4 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		A2B0557621FBD39C001DC364 /* FetchImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImageOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +70,9 @@
 			children = (
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				9D5CCA56214231E400224681 /* Operations */,
+				A226241721FB6CE90005B8C4 /* Controllers */,
+				A226241821FB6D060005B8C4 /* Models */,
+				A226241121FB6B570005B8C4 /* View Controllers */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
 			path = "Random Users";
@@ -76,8 +93,36 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				A2B0557621FBD39C001DC364 /* FetchImageOperation.swift */,
 			);
 			path = Operations;
+			sourceTree = "<group>";
+		};
+		A226241121FB6B570005B8C4 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A226241221FB6BA50005B8C4 /* RandomUserTableViewController.swift */,
+				A226241421FB6BD80005B8C4 /* RandomUserDetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		A226241721FB6CE90005B8C4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A226241B21FB6E610005B8C4 /* RandomUserController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A226241821FB6D060005B8C4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A226241921FB6D1E0005B8C4 /* RandomUser.swift */,
+				A226241D21FB702D0005B8C4 /* Model.swift */,
+				A204036C21FB820600BB039E /* Cache.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,8 +196,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A226241E21FB702D0005B8C4 /* Model.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				A204036D21FB820600BB039E /* Cache.swift in Sources */,
+				A226241521FB6BD80005B8C4 /* RandomUserDetailViewController.swift in Sources */,
+				A226241321FB6BA50005B8C4 /* RandomUserTableViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				A226241A21FB6D1E0005B8C4 /* RandomUser.swift in Sources */,
+				A226241C21FB6E610005B8C4 /* RandomUserController.swift in Sources */,
+				A2B0557721FBD39C001DC364 /* FetchImageOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
