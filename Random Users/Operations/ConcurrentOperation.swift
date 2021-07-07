@@ -6,7 +6,7 @@
 //  Copyright © 2018 Lambda School. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class ConcurrentOperation: Operation {
     
@@ -61,4 +61,48 @@ class ConcurrentOperation: Operation {
         return true
     }
     
+}
+
+
+class FetchPhotoOperation: ConcurrentOperation {
+    var user: User
+    var imageType: User.Images
+    var image: UIImage?
+    
+    private var dataTask: URLSessionDataTask?
+    
+    init(user: User, imageType: User.Images) {
+        self.user = user
+        self.imageType = imageType
+    }
+    
+    override func start() {
+        state = .isExecuting
+        
+        var imageURL: URL?
+        if imageType == .large {
+            imageURL = user.largeURL
+        } else if imageType == .thumbnail {
+            imageURL = user.thumbnailURL
+        }
+        
+        guard let url = imageURL else { return }
+        let task = URLSession.shared.dataTask(with: url) { (data, _, error) in
+            defer { self.state = .isFinished }
+            
+            if let error = error {
+                NSLog("Error retrieving image from url: \(error)")
+                return
+            }
+            
+            guard let data = data else { return }
+            self.image = UIImage(data: data)
+        }
+        task.resume()
+        dataTask = task
+    }
+    
+    override func cancel() {
+        dataTask?.cancel()
+    }
 }
