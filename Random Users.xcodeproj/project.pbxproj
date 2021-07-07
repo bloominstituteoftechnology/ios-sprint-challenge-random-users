@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		48754BA8222990FE00DB52B2 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48754BA7222990FE00DB52B2 /* UserTableViewCell.swift */; };
+		48754BAA2229911100DB52B2 /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48754BA92229911100DB52B2 /* UserTableViewController.swift */; };
+		48754BAC2229912600DB52B2 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48754BAB2229912600DB52B2 /* UserDetailViewController.swift */; };
+		48754BB02229936900DB52B2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48754BAF2229936900DB52B2 /* User.swift */; };
+		48754BB22229937900DB52B2 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48754BB12229937900DB52B2 /* UserController.swift */; };
+		48754BB42229938800DB52B2 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48754BB32229938800DB52B2 /* Cache.swift */; };
+		48754BB7222993B800DB52B2 /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48754BB6222993B800DB52B2 /* FetchPhotoOperation.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -15,6 +22,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		48754BA7222990FE00DB52B2 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		48754BA92229911100DB52B2 /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
+		48754BAB2229912600DB52B2 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		48754BAF2229936900DB52B2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		48754BB12229937900DB52B2 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		48754BB32229938800DB52B2 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		48754BB6222993B800DB52B2 /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -35,6 +49,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		48754BAD2229914300DB52B2 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				48754BA92229911100DB52B2 /* UserTableViewController.swift */,
+				48754BAB2229912600DB52B2 /* UserDetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		48754BAE2229916600DB52B2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				48754BA7222990FE00DB52B2 /* UserTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		48754BB52229939000DB52B2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				48754BAF2229936900DB52B2 /* User.swift */,
+				48754BB12229937900DB52B2 /* UserController.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
@@ -55,6 +95,10 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+				48754BB52229939000DB52B2 /* Model */,
+				48754BB32229938800DB52B2 /* Cache.swift */,
+				48754BAE2229916600DB52B2 /* Views */,
+				48754BAD2229914300DB52B2 /* View Controllers */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
@@ -76,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				48754BB6222993B800DB52B2 /* FetchPhotoOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -152,6 +197,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				48754BAC2229912600DB52B2 /* UserDetailViewController.swift in Sources */,
+				48754BB7222993B800DB52B2 /* FetchPhotoOperation.swift in Sources */,
+				48754BB42229938800DB52B2 /* Cache.swift in Sources */,
+				48754BB02229936900DB52B2 /* User.swift in Sources */,
+				48754BA8222990FE00DB52B2 /* UserTableViewCell.swift in Sources */,
+				48754BB22229937900DB52B2 /* UserController.swift in Sources */,
+				48754BAA2229911100DB52B2 /* UserTableViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
