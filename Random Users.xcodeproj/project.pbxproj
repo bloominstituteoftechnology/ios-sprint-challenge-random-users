@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42EB130E22BD2B3B00D8D434 /* RandomUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EB130D22BD2B3B00D8D434 /* RandomUser.swift */; };
+		42EB131022BD306600D8D434 /* RandomUserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EB130F22BD306600D8D434 /* RandomUserTableViewController.swift */; };
+		42EB131222BD307C00D8D434 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EB131122BD307C00D8D434 /* DetailViewController.swift */; };
+		42EB131422BD309500D8D434 /* RandomUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EB131322BD309500D8D434 /* RandomUserTableViewCell.swift */; };
+		42EB131822BD352000D8D434 /* RandomUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EB131722BD352000D8D434 /* RandomUserController.swift */; };
+		42EB131A22BD52B200D8D434 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EB131922BD52B200D8D434 /* Cache.swift */; };
+		42EB131C22BD6B0700D8D434 /* FetchUserOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EB131B22BD6B0700D8D434 /* FetchUserOperation.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -15,6 +22,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		42EB130D22BD2B3B00D8D434 /* RandomUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUser.swift; sourceTree = "<group>"; };
+		42EB130F22BD306600D8D434 /* RandomUserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserTableViewController.swift; sourceTree = "<group>"; };
+		42EB131122BD307C00D8D434 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		42EB131322BD309500D8D434 /* RandomUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserTableViewCell.swift; sourceTree = "<group>"; };
+		42EB131722BD352000D8D434 /* RandomUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserController.swift; sourceTree = "<group>"; };
+		42EB131922BD52B200D8D434 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		42EB131B22BD6B0700D8D434 /* FetchUserOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUserOperation.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -35,6 +49,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		42EB131522BD309F00D8D434 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				42EB130F22BD306600D8D434 /* RandomUserTableViewController.swift */,
+				42EB131322BD309500D8D434 /* RandomUserTableViewCell.swift */,
+				42EB131122BD307C00D8D434 /* DetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		42EB131622BD350900D8D434 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				42EB130D22BD2B3B00D8D434 /* RandomUser.swift */,
+				42EB131922BD52B200D8D434 /* Cache.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
@@ -55,6 +88,9 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+				42EB131722BD352000D8D434 /* RandomUserController.swift */,
+				42EB131622BD350900D8D434 /* Model */,
+				42EB131522BD309F00D8D434 /* View Controllers */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
@@ -76,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				42EB131B22BD6B0700D8D434 /* FetchUserOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -112,6 +149,7 @@
 				TargetAttributes = {
 					8ED6A9832140178A00FC395A = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -152,7 +190,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				42EB131C22BD6B0700D8D434 /* FetchUserOperation.swift in Sources */,
+				42EB131422BD309500D8D434 /* RandomUserTableViewCell.swift in Sources */,
+				42EB131A22BD52B200D8D434 /* Cache.swift in Sources */,
+				42EB131022BD306600D8D434 /* RandomUserTableViewController.swift in Sources */,
+				42EB131222BD307C00D8D434 /* DetailViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				42EB131822BD352000D8D434 /* RandomUserController.swift in Sources */,
+				42EB130E22BD2B3B00D8D434 /* RandomUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,15 +342,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = Z28289DGH6;
 				INFOPLIST_FILE = "$(SRCROOT)/Random Users/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.LambdaSchool.RandomUsers;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thomascacciatore.randomusers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -315,15 +360,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = Z28289DGH6;
 				INFOPLIST_FILE = "$(SRCROOT)/Random Users/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.LambdaSchool.RandomUsers;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thomascacciatore.randomusers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
