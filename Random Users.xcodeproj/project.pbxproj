@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8268B5342170F48200AB7165 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268B5332170F48200AB7165 /* UsersTableViewController.swift */; };
+		8268B5382170F66200AB7165 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268B5372170F66200AB7165 /* DetailViewController.swift */; };
+		8268B53A2170F94F00AB7165 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268B5392170F94F00AB7165 /* User.swift */; };
+		8268B53D217107A800AB7165 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268B53C217107A800AB7165 /* Cache.swift */; };
+		8268B5402171090D00AB7165 /* FetchLargeImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268B53F2171090D00AB7165 /* FetchLargeImageOperation.swift */; };
+		8268B5422171094300AB7165 /* FetchThumbnailImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268B5412171094300AB7165 /* FetchThumbnailImageOperation.swift */; };
+		8268B544217109F200AB7165 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268B543217109F200AB7165 /* UserController.swift */; };
+		8268B5482171240900AB7165 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268B5472171240900AB7165 /* UserTableViewCell.swift */; };
 		8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6A9872140178A00FC395A /* AppDelegate.swift */; };
 		8ED6A98D2140178A00FC395A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98B2140178A00FC395A /* Main.storyboard */; };
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
@@ -15,6 +23,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8268B5332170F48200AB7165 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
+		8268B5372170F66200AB7165 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = "Random Users/View Controller/DetailViewController.swift"; sourceTree = SOURCE_ROOT; };
+		8268B5392170F94F00AB7165 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8268B53C217107A800AB7165 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		8268B53F2171090D00AB7165 /* FetchLargeImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLargeImageOperation.swift; sourceTree = "<group>"; };
+		8268B5412171094300AB7165 /* FetchThumbnailImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchThumbnailImageOperation.swift; sourceTree = "<group>"; };
+		8268B543217109F200AB7165 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		8268B5472171240900AB7165 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		8ED6A9842140178A00FC395A /* Random Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6A9872140178A00FC395A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6A98C2140178A00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -35,6 +51,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8268B5352170F48F00AB7165 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8268B5332170F48200AB7165 /* UsersTableViewController.swift */,
+				8268B5372170F66200AB7165 /* DetailViewController.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		8268B5362170F4A500AB7165 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				8ED6A98B2140178A00FC395A /* Main.storyboard */,
+				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		8268B53B2170F95300AB7165 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8268B5392170F94F00AB7165 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8268B53E217107AB00AB7165 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				8268B53C217107A800AB7165 /* Cache.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		8268B545217109F500AB7165 /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8268B543217109F200AB7165 /* UserController.swift */,
+			);
+			path = "Model Controller";
+			sourceTree = "<group>";
+		};
+		8268B5492171240E00AB7165 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8268B5472171240900AB7165 /* UserTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		8ED6A97B2140178A00FC395A = {
 			isa = PBXGroup;
 			children = (
@@ -54,8 +120,13 @@
 		8ED6A9862140178A00FC395A /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
-				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+				8268B53B2170F95300AB7165 /* Model */,
+				8268B545217109F500AB7165 /* Model Controller */,
+				8268B5492171240E00AB7165 /* View */,
+				8268B5352170F48F00AB7165 /* View Controller */,
+				8268B5362170F4A500AB7165 /* Storyboards */,
 				9D5CCA56214231E400224681 /* Operations */,
+				8268B53E217107AB00AB7165 /* Utilities */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
 			path = "Random Users";
@@ -64,9 +135,8 @@
 		9D5CCA522142305600224681 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8ED6A98B2140178A00FC395A /* Main.storyboard */,
 				8ED6A98E2140178C00FC395A /* Assets.xcassets */,
-				8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */,
+				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
 				8ED6A9932140178C00FC395A /* Info.plist */,
 			);
 			path = Resources;
@@ -75,6 +145,8 @@
 		9D5CCA56214231E400224681 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
+				8268B53F2171090D00AB7165 /* FetchLargeImageOperation.swift */,
+				8268B5412171094300AB7165 /* FetchThumbnailImageOperation.swift */,
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
 			);
 			path = Operations;
@@ -151,8 +223,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8268B544217109F200AB7165 /* UserController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				8268B5402171090D00AB7165 /* FetchLargeImageOperation.swift in Sources */,
+				8268B5482171240900AB7165 /* UserTableViewCell.swift in Sources */,
+				8268B5422171094300AB7165 /* FetchThumbnailImageOperation.swift in Sources */,
+				8268B5342170F48200AB7165 /* UsersTableViewController.swift in Sources */,
+				8268B53A2170F94F00AB7165 /* User.swift in Sources */,
+				8268B53D217107A800AB7165 /* Cache.swift in Sources */,
+				8268B5382170F66200AB7165 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,7 +377,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Random Users/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -315,7 +395,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Random Users/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
