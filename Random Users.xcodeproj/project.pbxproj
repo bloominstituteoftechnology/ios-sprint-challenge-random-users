@@ -12,6 +12,15 @@
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
 		8ED6A9922140178C00FC395A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
+		ABFB3D5B2204C63900065C4F /* RandomUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB3D5A2204C63900065C4F /* RandomUserController.swift */; };
+		ABFB3D5D2204C71000065C4F /* RandomUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB3D5C2204C71000065C4F /* RandomUser.swift */; };
+		ABFB3D5F2204C8EF00065C4F /* URL+Secure.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB3D5E2204C8EF00065C4F /* URL+Secure.swift */; };
+		ABFB3D622204CA0300065C4F /* UIImageView+LoadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB3D612204CA0300065C4F /* UIImageView+LoadImage.swift */; };
+		ABFB3D652204F77300065C4F /* RandomUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB3D642204F77300065C4F /* RandomUserTableViewCell.swift */; };
+		ABFB3D6B2204F8CA00065C4F /* RandomUserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB3D6A2204F8CA00065C4F /* RandomUserTableViewController.swift */; };
+		ABFB3D6D2204F91000065C4F /* RandomUserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB3D6C2204F91000065C4F /* RandomUserDetailViewController.swift */; };
+		ABFB3D6F220501F300065C4F /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB3D6E220501F300065C4F /* Cache.swift */; };
+		ABFB3D722205028A00065C4F /* FetchRandomUserImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB3D712205028A00065C4F /* FetchRandomUserImageOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +31,15 @@
 		8ED6A9912140178C00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ED6A9932140178C00FC395A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
+		ABFB3D5A2204C63900065C4F /* RandomUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserController.swift; sourceTree = "<group>"; };
+		ABFB3D5C2204C71000065C4F /* RandomUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUser.swift; sourceTree = "<group>"; };
+		ABFB3D5E2204C8EF00065C4F /* URL+Secure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Secure.swift"; sourceTree = "<group>"; };
+		ABFB3D612204CA0300065C4F /* UIImageView+LoadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+LoadImage.swift"; sourceTree = "<group>"; };
+		ABFB3D642204F77300065C4F /* RandomUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserTableViewCell.swift; sourceTree = "<group>"; };
+		ABFB3D6A2204F8CA00065C4F /* RandomUserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserTableViewController.swift; sourceTree = "<group>"; };
+		ABFB3D6C2204F91000065C4F /* RandomUserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserDetailViewController.swift; sourceTree = "<group>"; };
+		ABFB3D6E220501F300065C4F /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		ABFB3D712205028A00065C4F /* FetchRandomUserImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRandomUserImageOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +73,13 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+				ABFB3D692204F84000065C4F /* View Controllers */,
+				ABFB3D662204F77900065C4F /* Views */,
+				ABFB3D632204F71700065C4F /* Models */,
+				AB8E399122115A5D005F6FC6 /* Controllers */,
+				ABFB3D602204C9D100065C4F /* Utilities */,
 				9D5CCA56214231E400224681 /* Operations */,
+				ABFB3D702205020200065C4F /* Cache */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
 			path = "Random Users";
@@ -76,8 +100,59 @@
 			isa = PBXGroup;
 			children = (
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
+				ABFB3D712205028A00065C4F /* FetchRandomUserImageOperation.swift */,
 			);
 			path = Operations;
+			sourceTree = "<group>";
+		};
+		AB8E399122115A5D005F6FC6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				ABFB3D5A2204C63900065C4F /* RandomUserController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		ABFB3D602204C9D100065C4F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				ABFB3D5E2204C8EF00065C4F /* URL+Secure.swift */,
+				ABFB3D612204CA0300065C4F /* UIImageView+LoadImage.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		ABFB3D632204F71700065C4F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ABFB3D5C2204C71000065C4F /* RandomUser.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		ABFB3D662204F77900065C4F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ABFB3D642204F77300065C4F /* RandomUserTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ABFB3D692204F84000065C4F /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				ABFB3D6A2204F8CA00065C4F /* RandomUserTableViewController.swift */,
+				ABFB3D6C2204F91000065C4F /* RandomUserDetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		ABFB3D702205020200065C4F /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				ABFB3D6E220501F300065C4F /* Cache.swift */,
+			);
+			path = Cache;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -108,10 +183,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0940;
-				ORGANIZATIONNAME = "Erica Sadun";
+				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					8ED6A9832140178A00FC395A = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -151,8 +227,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABFB3D5F2204C8EF00065C4F /* URL+Secure.swift in Sources */,
+				ABFB3D5B2204C63900065C4F /* RandomUserController.swift in Sources */,
+				ABFB3D6D2204F91000065C4F /* RandomUserDetailViewController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				ABFB3D6F220501F300065C4F /* Cache.swift in Sources */,
+				ABFB3D622204CA0300065C4F /* UIImageView+LoadImage.swift in Sources */,
+				ABFB3D6B2204F8CA00065C4F /* RandomUserTableViewController.swift in Sources */,
+				ABFB3D722205028A00065C4F /* FetchRandomUserImageOperation.swift in Sources */,
+				ABFB3D652204F77300065C4F /* RandomUserTableViewCell.swift in Sources */,
+				ABFB3D5D2204C71000065C4F /* RandomUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,15 +382,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = HSRQC9N69B;
 				INFOPLIST_FILE = "$(SRCROOT)/Random Users/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.LambdaSchool.RandomUsers;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jkaunert.RandomUsers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -315,15 +400,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = HSRQC9N69B;
 				INFOPLIST_FILE = "$(SRCROOT)/Random Users/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.LambdaSchool.RandomUsers;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jkaunert.RandomUsers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
