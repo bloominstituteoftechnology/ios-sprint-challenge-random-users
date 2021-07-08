@@ -12,6 +12,12 @@
 		8ED6A98F2140178C00FC395A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A98E2140178C00FC395A /* Assets.xcassets */; };
 		8ED6A9922140178C00FC395A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6A9902140178C00FC395A /* LaunchScreen.storyboard */; };
 		9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */; };
+		E8D2CC1122AAB7A60010F959 /* PeopleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D2CC1022AAB7A60010F959 /* PeopleTableViewController.swift */; };
+		E8D2CC1422AAB7EB0010F959 /* PeopleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D2CC1322AAB7EB0010F959 /* PeopleTableViewCell.swift */; };
+		E8D2CC1722AABC620010F959 /* PeopleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D2CC1622AABC610010F959 /* PeopleController.swift */; };
+		E8D2CC1A22AABCE80010F959 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D2CC1922AABCE80010F959 /* Person.swift */; };
+		E8D2CC1D22AAD82A0010F959 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D2CC1C22AAD82A0010F959 /* Cache.swift */; };
+		E8D2CC1F22AAE24F0010F959 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D2CC1E22AAE24F0010F959 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +28,12 @@
 		8ED6A9912140178C00FC395A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ED6A9932140178C00FC395A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
+		E8D2CC1022AAB7A60010F959 /* PeopleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewController.swift; sourceTree = "<group>"; };
+		E8D2CC1322AAB7EB0010F959 /* PeopleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewCell.swift; sourceTree = "<group>"; };
+		E8D2CC1622AABC610010F959 /* PeopleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleController.swift; sourceTree = "<group>"; };
+		E8D2CC1922AABCE80010F959 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		E8D2CC1C22AAD82A0010F959 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		E8D2CC1E22AAE24F0010F959 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +67,10 @@
 			isa = PBXGroup;
 			children = (
 				8ED6A9872140178A00FC395A /* AppDelegate.swift */,
+				E8D2CC1B22AABD610010F959 /* Models */,
+				E8D2CC1822AABC800010F959 /* Controller */,
+				E8D2CC1522AAB7F20010F959 /* TableView Cells */,
+				E8D2CC1222AAB7B00010F959 /* View Controllers */,
 				9D5CCA56214231E400224681 /* Operations */,
 				9D5CCA522142305600224681 /* Resources */,
 			);
@@ -78,6 +94,40 @@
 				9D5CCA54214231DD00224681 /* ConcurrentOperation.swift */,
 			);
 			path = Operations;
+			sourceTree = "<group>";
+		};
+		E8D2CC1222AAB7B00010F959 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E8D2CC1022AAB7A60010F959 /* PeopleTableViewController.swift */,
+				E8D2CC1E22AAE24F0010F959 /* DetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		E8D2CC1522AAB7F20010F959 /* TableView Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E8D2CC1322AAB7EB0010F959 /* PeopleTableViewCell.swift */,
+			);
+			path = "TableView Cells";
+			sourceTree = "<group>";
+		};
+		E8D2CC1822AABC800010F959 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E8D2CC1622AABC610010F959 /* PeopleController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E8D2CC1B22AABD610010F959 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E8D2CC1922AABCE80010F959 /* Person.swift */,
+				E8D2CC1C22AAD82A0010F959 /* Cache.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -112,6 +162,7 @@
 				TargetAttributes = {
 					8ED6A9832140178A00FC395A = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -151,8 +202,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8D2CC1D22AAD82A0010F959 /* Cache.swift in Sources */,
+				E8D2CC1A22AABCE80010F959 /* Person.swift in Sources */,
+				E8D2CC1422AAB7EB0010F959 /* PeopleTableViewCell.swift in Sources */,
+				E8D2CC1722AABC620010F959 /* PeopleController.swift in Sources */,
 				8ED6A9882140178A00FC395A /* AppDelegate.swift in Sources */,
+				E8D2CC1122AAB7A60010F959 /* PeopleTableViewController.swift in Sources */,
 				9D5CCA55214231DD00224681 /* ConcurrentOperation.swift in Sources */,
+				E8D2CC1F22AAE24F0010F959 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,7 +362,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LambdaSchool.RandomUsers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -323,7 +380,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LambdaSchool.RandomUsers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
